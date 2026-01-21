@@ -4,23 +4,170 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Magic | Easy Tabletop Fantasy</title>
-<meta name="description" content="Magic rules for Easy Tabletop Fantasy." />
+<meta name="description" content="Magic and spells for Easy Tabletop Fantasy." />
 <link rel="canonical" href="/rules/magic.html" />
 <link rel="stylesheet" href="/assets/styles.css" />
 <meta property="og:title" content="Magic | Easy Tabletop Fantasy" />
-<meta property="og:description" content="Magic rules for Easy Tabletop Fantasy." />
+<meta property="og:description" content="Magic and spells for Easy Tabletop Fantasy." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/rules/magic.html" />
-
 </head>
 <body>
 <header><nav><a href="/index.html">Home</a><a href="/rules/index.html" aria-current="page">Rules</a><a href="/faq.html">FAQ</a><a href="/legal.html">Legal</a></nav></header>
-<main><h1>Magic</h1><p>This section is being reorganized for the web. For now, see <a href="/rules/core.html">Core rules</a> for the canonical text.</p></main>
+<main>
+  <h1>Magic</h1>
+  <div class="content">
+    <p>This page contains all spells for Easy Tabletop Fantasy. Select the spells you want to print, then use the print button to generate printable spell cards.</p>
+    
+    <div class="print-controls">
+      <button onclick="selectAll()">Select All</button>
+      <button onclick="deselectAll()">Deselect All</button>
+      <button onclick="printSelected()">Print Selected Cards</button>
+      <span id="selected-count">0 spells selected</span>
+    </div>
+    
+    <!-- Cantrips -->
+    <div class="spell-level-section">
+      <h3 id="cantrips">Cantrips</h3>
+      <div class="spells-container">
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Magic Missile</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 120 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1 hit of force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.</p>
+            <p><strong>At Higher Levels:</strong> When you cast this spell using additional Spell Power, you create one extra dart for each additional Spell Power spent.</p>
+          </div>
+        </div>
+        
+        <!-- Add more cantrips here -->
+      </div>
+    </div>
+    
+    <!-- Level 1 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-1">1st Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 1 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 2 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-2">2nd Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 2 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 3 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-3">3rd Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 3 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 4 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-4">4th Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 4 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 5 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-5">5th Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 5 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 6 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-6">6th Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 6 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 7 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-7">7th Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 7 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 8 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-8">8th Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 8 spells will be added here -->
+      </div>
+    </div>
+    
+    <!-- Level 9 Spells -->
+    <div class="spell-level-section">
+      <h3 id="level-9">9th Level Spells</h3>
+      <div class="spells-container">
+        <!-- Level 9 spells will be added here -->
+      </div>
+    </div>
+  </div>
+</main>
 <footer class="legal"><p>© Easy Tabletop Fantasy.</p>
 <p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
 <p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
 <p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
 <p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
 <script src="/assets/site.js"></script>
+<script>
+function updateCount(){
+  const checked = document.querySelectorAll('.spell-card-checkbox:checked').length;
+  document.getElementById('selected-count').textContent = checked + ' spell' + (checked !== 1 ? 's' : '') + ' selected';
+}
+
+function selectAll(){
+  document.querySelectorAll('.spell-card-checkbox').forEach(cb => cb.checked = true);
+  updateCount();
+}
+
+function deselectAll(){
+  document.querySelectorAll('.spell-card-checkbox').forEach(cb => cb.checked = false);
+  updateCount();
+}
+
+function printSelected(){
+  const checked = document.querySelectorAll('.spell-card-checkbox:checked').length;
+  if(checked === 0){
+    alert('Please select at least one spell to print.');
+    return;
+  }
+  
+  // Mark selected cards for printing (fallback for browsers without :has() support)
+  document.querySelectorAll('.spell-card').forEach(card => {
+    const checkbox = card.querySelector('.spell-card-checkbox');
+    if(checkbox && checkbox.checked){
+      card.classList.add('print-selected');
+    } else {
+      card.classList.remove('print-selected');
+    }
+  });
+  
+  window.print();
+}
+
+// Initialize count on load
+document.addEventListener('DOMContentLoaded', updateCount);
+</script>
 </body>
 </html>

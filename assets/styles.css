@@ -125,7 +125,7 @@
   }
   
   /* Typography */
-  h1,h2,h3{letter-spacing:-.01em;color:var(--fantasy-blue)}
+  h1,h2,h3,h4{letter-spacing:-.01em;color:var(--fantasy-blue)}
   h1{
     font-size:1.85rem;
     line-height:1.15;
@@ -149,6 +149,12 @@
     margin:16px 0 8px;
     color:var(--fantasy-burgundy);
     scroll-margin-top:80px;
+  }
+  h4{
+    font-size:1rem;
+    line-height:1.3;
+    margin:0;
+    color:var(--fantasy-blue);
   }
   p{margin:0 0 10px;color:var(--fg)}
   p.lede{font-size:1.05rem;color:var(--muted)}
@@ -438,13 +444,203 @@
     transition:all 0.3s ease;
   }
   
-  /* Print */
+  /* Spell Cards */
+  .spells-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:16px;
+    margin:20px 0;
+  }
+  
+  .spell-level-section{
+    margin:32px 0;
+  }
+  
+  .spell-level-section h3{
+    border-bottom:2px solid var(--fantasy-gold);
+    padding-bottom:8px;
+    margin-bottom:16px;
+  }
+  
+  .spell-card{
+    border:2px solid var(--fantasy-gold);
+    border-radius:var(--r2);
+    background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(250,248,244,.95));
+    padding:16px;
+    box-shadow:var(--shadow);
+    position:relative;
+    break-inside:avoid;
+  }
+  
+  .spell-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:12px;
+    gap:12px;
+  }
+  
+  .spell-card-name{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--fantasy-blue);
+    margin:0;
+    flex:1;
+  }
+  
+  .spell-card-level{
+    font-size:.9rem;
+    color:var(--fantasy-burgundy);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  
+  .spell-card-meta{
+    display:flex;
+    gap:12px;
+    font-size:.85rem;
+    color:var(--muted);
+    margin-bottom:12px;
+    flex-wrap:wrap;
+  }
+  
+  .spell-card-meta span{
+    display:flex;
+    align-items:center;
+    gap:4px;
+  }
+  
+  .spell-card-description{
+    font-size:.95rem;
+    line-height:1.5;
+    color:var(--fg);
+  }
+  
+  .spell-card-description p{
+    margin:0 0 8px;
+  }
+  
+  .spell-card-description p:last-child{
+    margin:0;
+  }
+  
+  .spell-card-checkbox{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    accent-color:var(--fantasy-gold);
+  }
+  
+  .spell-card:has(.spell-card-checkbox:checked){
+    border-color:var(--fantasy-gold-light);
+    box-shadow:0 4px 12px rgba(184,134,11,.3);
+  }
+  
+  .print-controls{
+    background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(250,248,244,.9));
+    border:2px solid var(--fantasy-gold);
+    border-radius:var(--r2);
+    padding:16px;
+    margin:20px 0;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  
+  .print-controls button{
+    padding:10px 16px;
+    border:2px solid var(--fantasy-gold);
+    border-radius:999px;
+    background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(250,248,244,.9));
+    color:var(--fantasy-blue);
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  
+  .print-controls button:hover{
+    background:linear-gradient(135deg, rgba(184,134,11,.1), rgba(212,175,55,.05));
+    border-color:var(--fantasy-gold-light);
+  }
+  
+  /* Print styles for spell cards */
   @media print{
-    header,nav,.toc,.btnrow{display:none !important}
-    body{background:#fff}
+    header,nav,.toc,.btnrow,.print-controls{display:none !important}
+    body{background:#fff;color:#000}
     main,footer{max-width:none;padding:0}
-    .content{border:0;box-shadow:none;padding:0}
+    .content{border:0;box-shadow:none;padding:0;background:#fff}
     a{text-decoration:none;color:inherit}
+    
+    /* Hide unchecked spell cards - fallback for browsers without :has() */
+    .spell-card:not(.print-selected){
+      display:none !important;
+    }
+    
+    /* Print spell cards in a grid */
+    .spells-container{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:10px;
+      margin:0;
+      page-break-inside:avoid;
+    }
+    
+    .spell-card{
+      border:2px solid #000;
+      border-radius:6px;
+      padding:10px;
+      page-break-inside:avoid;
+      break-inside:avoid;
+      background:#fff;
+      box-shadow:none;
+      margin:0;
+    }
+    
+    .spell-card-checkbox{
+      display:none;
+    }
+    
+    .spell-card-name{
+      color:#000;
+      font-size:1rem;
+    }
+    
+    .spell-card-level{
+      color:#333;
+    }
+    
+    .spell-card-meta{
+      color:#555;
+      font-size:.8rem;
+    }
+    
+    .spell-card-description{
+      color:#000;
+      font-size:.85rem;
+    }
+    
+    .spell-level-section{
+      page-break-after:auto;
+      margin:12px 0;
+    }
+    
+    .spell-level-section h3{
+      page-break-after:avoid;
+      color:#000;
+      border-bottom-color:#000;
+    }
+    
+    /* Optimize for printing */
+    @page{
+      margin:1.5cm;
+      size:A4;
+    }
+    
+    h1{color:#000;background:none;-webkit-text-fill-color:#000}
   }
   
   /* Dark mode with fantasy theme */
