@@ -28,17 +28,17 @@
       </div>
       <div class="filter-row">
         <span class="filter-label">Filter by level:</span>
-        <button class="filter-btn active" data-level="all" onclick="filterByLevel('all')">All</button>
-        <button class="filter-btn" data-level="cantrip" onclick="filterByLevel('cantrip')">Cantrip</button>
-        <button class="filter-btn" data-level="1" onclick="filterByLevel('1')">1st</button>
-        <button class="filter-btn" data-level="2" onclick="filterByLevel('2')">2nd</button>
-        <button class="filter-btn" data-level="3" onclick="filterByLevel('3')">3rd</button>
-        <button class="filter-btn" data-level="4" onclick="filterByLevel('4')">4th</button>
-        <button class="filter-btn" data-level="5" onclick="filterByLevel('5')">5th</button>
-        <button class="filter-btn" data-level="6" onclick="filterByLevel('6')">6th</button>
-        <button class="filter-btn" data-level="7" onclick="filterByLevel('7')">7th</button>
-        <button class="filter-btn" data-level="8" onclick="filterByLevel('8')">8th</button>
-        <button class="filter-btn" data-level="9" onclick="filterByLevel('9')">9th</button>
+        <button class="filter-btn filter-all active" data-level="all" onclick="toggleFilter('all')">All</button>
+        <button class="filter-btn" data-level="cantrip" onclick="toggleFilter('cantrip')">Cantrip</button>
+        <button class="filter-btn" data-level="1" onclick="toggleFilter('1')">1st</button>
+        <button class="filter-btn" data-level="2" onclick="toggleFilter('2')">2nd</button>
+        <button class="filter-btn" data-level="3" onclick="toggleFilter('3')">3rd</button>
+        <button class="filter-btn" data-level="4" onclick="toggleFilter('4')">4th</button>
+        <button class="filter-btn" data-level="5" onclick="toggleFilter('5')">5th</button>
+        <button class="filter-btn" data-level="6" onclick="toggleFilter('6')">6th</button>
+        <button class="filter-btn" data-level="7" onclick="toggleFilter('7')">7th</button>
+        <button class="filter-btn" data-level="8" onclick="toggleFilter('8')">8th</button>
+        <button class="filter-btn" data-level="9" onclick="toggleFilter('9')">9th</button>
       </div>
     </div>
     
@@ -5775,31 +5775,66 @@ function printSelected(){
   window.print();
 }
 
-function filterByLevel(level){
-  // Update active button
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.remove('active');
+function toggleFilter(level){
+  const btn = document.querySelector(`.filter-btn[data-level="${level}"]`);
+  const allBtn = document.querySelector('.filter-all');
+  
+  if(level === 'all'){
+    // Toggle all: if active, deselect all; if inactive, select all
+    if(btn.classList.contains('active')){
+      // Deselect all
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    } else {
+      // Select all
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('active'));
+    }
+  } else {
+    // Toggle individual level
+    btn.classList.toggle('active');
+    
+    // If all individual levels are selected, activate "All" button
+    const individualBtns = document.querySelectorAll('.filter-btn:not(.filter-all)');
+    const activeCount = Array.from(individualBtns).filter(b => b.classList.contains('active')).length;
+    
+    if(activeCount === individualBtns.length){
+      allBtn.classList.add('active');
+    } else {
+      allBtn.classList.remove('active');
+    }
+  }
+  
+  // Apply filter based on active buttons
+  applyFilter();
+}
+
+function applyFilter(){
+  const activeLevels = new Set();
+  document.querySelectorAll('.filter-btn.active').forEach(btn => {
+    activeLevels.add(btn.getAttribute('data-level'));
   });
-  document.querySelector(`.filter-btn[data-level="${level}"]`).classList.add('active');
+  
+  const showAll = activeLevels.has('all') || activeLevels.size === 0;
   
   // Show/hide spell level sections
   document.querySelectorAll('.spell-level-section').forEach(section => {
-    if(level === 'all'){
+    if(showAll){
       section.style.display = '';
-    } else if(level === 'cantrip'){
-      const h3 = section.querySelector('h3');
-      if(h3 && h3.id === 'cantrips'){
-        section.style.display = '';
-      } else {
-        section.style.display = 'none';
-      }
     } else {
       const h3 = section.querySelector('h3');
-      if(h3 && h3.id === `level-${level}`){
-        section.style.display = '';
-      } else {
-        section.style.display = 'none';
+      let shouldShow = false;
+      
+      if(h3){
+        if(h3.id === 'cantrips' && activeLevels.has('cantrip')){
+          shouldShow = true;
+        } else if(h3.id && h3.id.startsWith('level-')){
+          const levelNum = h3.id.replace('level-', '');
+          if(activeLevels.has(levelNum)){
+            shouldShow = true;
+          }
+        }
       }
+      
+      section.style.display = shouldShow ? '' : 'none';
     }
   });
   
@@ -5807,8 +5842,11 @@ function filterByLevel(level){
   updateCount();
 }
 
-// Initialize count on load
-document.addEventListener('DOMContentLoaded', updateCount);
+// Initialize count and filter on load
+document.addEventListener('DOMContentLoaded', function(){
+  updateCount();
+  applyFilter();
+});
 </script>
 </body>
 </html>
