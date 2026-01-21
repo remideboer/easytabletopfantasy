@@ -76,6 +76,29 @@
           </div>
           
           <div class="form-group">
+            <label for="char-ac">AC:</label>
+            <select id="char-ac" required onchange="generateCharacterSheet()">
+              <option value="">Select AC</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
             <label for="proficiency-display">Proficiency Bonus:</label>
             <div id="proficiency-display" class="proficiency-display">+2</div>
           </div>
@@ -180,9 +203,10 @@ function generateCharacterSheet(){
   const name = document.getElementById('char-name').value || 'Unnamed Character';
   const className = document.getElementById('char-class').value;
   const dndLevel = parseInt(document.getElementById('char-level').value) || 1;
+  const ac = parseInt(document.getElementById('char-ac').value) || 10;
   
   // Check if required fields are filled
-  if(!className || !dndLevel){
+  if(!className || !dndLevel || !ac){
     document.getElementById('character-sheet').style.display = 'none';
     return;
   }
@@ -212,6 +236,9 @@ function generateCharacterSheet(){
   const classHPBase = getClassHPBase(className);
   const maxHP = classHPBase + fitnessMod + (easyLevel - 1);
   
+  // Calculate Defense Bonus (AC - 10)
+  const defenseBonus = ac - 10;
+  
   // Display character sheet
   displayCharacterSheet({
     name: name,
@@ -219,6 +246,8 @@ function generateCharacterSheet(){
     dndLevel: dndLevel,
     easyLevel: easyLevel,
     proficiencyBonus: proficiencyBonus,
+    ac: ac,
+    defenseBonus: defenseBonus,
     abilities: {
       fitness: fitnessMod,
       insight: insightMod,
@@ -275,9 +304,15 @@ function displayCharacterSheet(character){
       
       <div class="character-section combat-section">
         <h3>Combat</h3>
-        <div class="hp-display">
-          <div class="hp-name">Hit Points</div>
-          <div class="hp-value"><span class="hp-number">${character.hitPoints.maximum}</span><span class="hp-slash">/</span></div>
+        <div class="combat-stats">
+          <div class="hp-display">
+            <div class="hp-name">Hit Points</div>
+            <div class="hp-value"><span class="hp-number">${character.hitPoints.maximum}</span><span class="hp-slash">/</span></div>
+          </div>
+          <div class="defense-display">
+            <div class="defense-name">Defense Bonus</div>
+            <div class="defense-value">${formatModifier(character.defenseBonus)}</div>
+          </div>
         </div>
         <div class="proficiency-bonus">
           <strong>Proficiency Bonus:</strong> ${formatModifier(character.proficiencyBonus)}
