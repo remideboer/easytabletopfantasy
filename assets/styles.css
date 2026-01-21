@@ -867,6 +867,55 @@
     background:linear-gradient(135deg, rgba(184,134,11,.2), rgba(212,175,55,.15));
   }
   
+  /* Toggle switch for 5e descriptions */
+  .toggle-switch{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    user-select:none;
+  }
+  
+  .toggle-switch input[type="checkbox"]{
+    display:none;
+  }
+  
+  .toggle-slider{
+    position:relative;
+    width:48px;
+    height:24px;
+    background:var(--line);
+    border-radius:24px;
+    transition:background .3s ease;
+  }
+  
+  .toggle-slider::before{
+    content:'';
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:#fff;
+    border-radius:50%;
+    top:3px;
+    left:3px;
+    transition:transform .3s ease;
+    box-shadow:0 2px 4px rgba(0,0,0,.2);
+  }
+  
+  .toggle-switch input[type="checkbox"]:checked + .toggle-slider{
+    background:var(--fantasy-gold);
+  }
+  
+  .toggle-switch input[type="checkbox"]:checked + .toggle-slider::before{
+    transform:translateX(24px);
+  }
+  
+  .toggle-label{
+    font-weight:500;
+    color:var(--fantasy-blue);
+    font-size:.95rem;
+  }
+  
   /* Print styles for spell cards */
   @media print{
     /* Hide all page elements except selected spell cards */

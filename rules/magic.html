@@ -26,6 +26,13 @@
         <button onclick="printSelected()">Print Selected Cards</button>
         <span id="selected-count">0 spells selected</span>
       </div>
+      <div class="control-row">
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-5e-descriptions" onchange="toggle5eDescriptions()">
+          <span class="toggle-slider"></span>
+          <span class="toggle-label">Show D&D 5e Spell Descriptions</span>
+        </label>
+      </div>
       <div class="filter-row">
         <span class="filter-label">Filter by level:</span>
         <button class="filter-btn filter-all active" data-filter-type="level" data-level="all" onclick="toggleLevelFilter('all')">All</button>
@@ -6085,10 +6092,92 @@ function applyFilter(){
   updateCount();
 }
 
+// Toggle between Easy Tabletop Fantasy and D&D 5e descriptions
+let spellDataCache = null;
+
+async function loadSpellData(){
+  if(spellDataCache) return spellDataCache;
+  
+  try{
+    const [cantripResponse, level1Response, level2Response] = await Promise.all([
+      fetch('/foundation/easy_tabletop_fantasy_spells_cantrip_and_level1.json'),
+      fetch('/foundation/easy_tabletop_fantasy_spells_level2_to_9.json'),
+      fetch('/foundation/easy_tabletop_fantasy_spells_level2_to_9.json')
+    ]);
+    
+    const cantripData = await cantripResponse.json();
+    const level1Data = await level1Response.json();
+    const level2Data = await level2Response.json();
+    
+    spellDataCache = {};
+    
+    // Index spells by name for quick lookup
+    if(cantripData.spells){
+      Object.values(cantripData.spells).flat().forEach(spell => {
+        spellDataCache[spell.name] = spell;
+      });
+    }
+    if(level1Data.spells){
+      Object.values(level1Data.spells).flat().forEach(spell => {
+        spellDataCache[spell.name] = spell;
+      });
+    }
+    if(level2Data.spells){
+      Object.values(level2Data.spells).flat().forEach(spell => {
+        spellDataCache[spell.name] = spell;
+      });
+    }
+    
+    return spellDataCache;
+  } catch(error){
+    console.error('Error loading spell data:', error);
+    return {};
+  }
+}
+
+async function toggle5eDescriptions(){
+  const toggle = document.getElementById('toggle-5e-descriptions');
+  const show5e = toggle.checked;
+  
+  const spellData = await loadSpellData();
+  
+  document.querySelectorAll('.spell-card').forEach(card => {
+    const spellName = card.querySelector('.spell-card-name').textContent.trim();
+    const descDiv = card.querySelector('.spell-card-description');
+    const spell = spellData[spellName];
+    
+    if(show5e && spell && spell.description_srd){
+      // Show 5e description
+      const desc5e = spell.description_srd;
+      // Convert to HTML paragraphs - split on common patterns
+      let html = desc5e;
+      // Split on "Cantrip Upgrade" or "At Higher Levels"
+      html = html.replace(/(Cantrip Upgrade|At Higher Levels)\./g, '</p><p><strong>$1:</strong>');
+      // Wrap in paragraph tags
+      if(!html.startsWith('<p>')) html = '<p>' + html;
+      if(!html.endsWith('</p>')) html = html + '</p>';
+      descDiv.innerHTML = html;
+    } else if(spell && spell.description_easy){
+      // Show Easy Tabletop Fantasy description
+      const descEasy = spell.description_easy;
+      // Convert to HTML - preserve existing formatting
+      let html = descEasy;
+      // Split on "Cantrip Upgrade" or "At Higher Levels"
+      html = html.replace(/(Cantrip Upgrade|At Higher Levels)\./g, '</p><p><strong>$1:</strong>');
+      // Wrap in paragraph tags
+      if(!html.startsWith('<p>')) html = '<p>' + html;
+      if(!html.endsWith('</p>')) html = html + '</p>';
+      descDiv.innerHTML = html;
+    }
+  });
+}
+
 // Initialize count and filter on load
 document.addEventListener('DOMContentLoaded', function(){
   updateCount();
   applyFilter();
+  // Preload spell data
+  loadSpellData();
 });
 </script>
 </body>
