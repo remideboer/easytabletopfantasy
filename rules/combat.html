@@ -48,7 +48,7 @@
       
       <h2 id="your-turn">Your Turn</h2>
       <p>On your turn, you can move a distance up to your speed and take one or more actions. The basic options for how you spend your turn are described in the "Actions and Time (Encounter Mode)" section of the <a href="/rules/core.html#actions-and-time-encounter-mode">Core rules</a>.</p>
-      <p>Each turn consists of <strong>3 Moments</strong>. You can spend these Moments on movement, actions, bonus actions, and spellcasting as described below.</p>
+      <p>Each turn consists of <strong>3 Moments</strong>. You can spend these Moments on movement, actions, and spellcasting as described below.</p>
       
       <h3 id="movement">Movement</h3>
       <p>Moving up to your full speed costs 1 Moment. On your turn, you can move a distance up to your speed. You can use as much or as little of your speed as you like on your turn, following the rules here.</p>
@@ -60,7 +60,6 @@
       <h4>Moving Around Other Creatures</h4>
       <p>You can move through a nonhostile creature's space. In contrast, you can move through a hostile creature's space only if the creature is at least two sizes larger or smaller than you. Remember that another creature's space is difficult terrain for you.</p>
       <p>Whether a creature is a friend or an enemy, you can't willingly end your move in its space.</p>
-      <p>If you leave a hostile creature's reach during your move, you provoke an opportunity attack.</p>
       
       <h3 id="actions">Actions</h3>
       <p>Most actions cost 1 Moment. The most common actions you can take are described here. Many class features and other abilities provide additional options for your action.</p>
@@ -68,15 +67,15 @@
       <h4>Attack</h4>
       <p>The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.</p>
       <p>With this action, you make one melee or ranged attack. See the "Attacks and Defense" section in the <a href="/rules/core.html#attacks-and-defense">Core rules</a> for the rules on making attacks.</p>
-      <p>Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action.</p>
+      <p>Each attack costs 1 Moment. You can make multiple attacks during your turn by spending additional Moments, but each subsequent attack in the same turn suffers from stacking Disadvantage, as described in the <a href="#multiple-attacks">Multiple Attacks</a> section below.</p>
       
       <h4>Cast a Spell</h4>
-      <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells have a casting time of 1 action, a bonus action, or 1 reaction.</p>
+      <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies how many Moments it takes to cast the spell.</p>
       <p>In Easy Tabletop Fantasy, casting times are converted to Moments:</p>
       <ul>
-        <li><strong>Cantrip or Bonus Action:</strong> 1 Moment</li>
-        <li><strong>Action (Leveled Spell):</strong> Usually 2 Moments, unless otherwise noted</li>
-        <li><strong>Reaction:</strong> Can be taken outside your turn when triggered</li>
+        <li><strong>Cantrip:</strong> 1 Moment</li>
+        <li><strong>Leveled Spell:</strong> Usually 2 Moments, unless otherwise noted</li>
+        <li><strong>Reaction:</strong> Can be taken outside your turn when triggered (doesn't cost Moments)</li>
       </ul>
       
       <h4>Dash</h4>
@@ -85,7 +84,7 @@
       <p>Dash costs 1 Moment.</p>
       
       <h4>Disengage</h4>
-      <p>If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn.</p>
+      <p>If you take the Disengage action, you can move away from enemies without them being able to easily follow or interfere with your movement. This action represents careful, defensive movement that keeps you ready to react.</p>
       <p>Disengage costs 1 Moment.</p>
       
       <h4>Dodge</h4>
@@ -116,12 +115,6 @@
       <p>You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn.</p>
       <p>Use an Object costs 1 Moment.</p>
       
-      <h3 id="bonus-actions">Bonus Actions</h3>
-      <p>Various class features, spells, and other abilities let you take an additional action on your turn called a bonus action. The Cunning Action feature, for example, allows a rogue to take a bonus action. You can take a bonus action only when a special ability, spell, or other feature of the game states that you can do something as a bonus action. You otherwise don't have a bonus action to take.</p>
-      <p>You can take only one bonus action on your turn, so you must choose which bonus action to use when you have more than one available.</p>
-      <p>You choose when to take a bonus action during your turn, unless the bonus action's timing is specified, and anything that deprives you of your ability to take actions also prevents you from taking a bonus action.</p>
-      <p>Bonus actions cost 1 Moment.</p>
-      
       <h3 id="other-activity-on-your-turn">Other Activity on Your Turn</h3>
       <p>Your turn can include a variety of flourishes that require neither your action nor your move.</p>
       <p>You can communicate however you are able, through brief utterances and gestures, as you take your turn.</p>
@@ -130,26 +123,47 @@
       <p>The Game Master is free to decide that circumstances influence a situation in a way that might require an action or might be done as part of another action. For example, the Game Master might reasonably allow you to speak a few words as part of your movement, but require an action to deliver a speech.</p>
       
       <h2 id="reactions">Reactions</h2>
-      <p>Certain special abilities, spells, and situations allow you to take a special action called a reaction. A reaction is an instant response to a trigger of some kind, which can occur on your turn or on someone else's. The opportunity attack, described later in this chapter, is the most common type of reaction.</p>
+      <p>Certain special abilities, spells, and situations allow you to take a special action called a reaction. A reaction is an instant response to a trigger of some kind, which can occur on your turn or on someone else's.</p>
       <p>When you take a reaction, you can't take another one until the start of your next turn. If the reaction interrupts another creature's turn, that creature can continue its turn right after the reaction.</p>
-      <p>Reactions don't cost Moments and can be taken outside your turn when triggered.</p>
+      <p>Reactions don't cost Moments and can be taken outside your turn when triggered. Examples include casting <em>shield</em> in response to being hit, or using a class feature that triggers on a specific condition.</p>
       
-      <h2 id="opportunity-attacks">Opportunity Attacks</h2>
-      <p>In a fight, everyone is constantly watching for enemies to drop their guard. You can rarely move heedlessly past your foes without putting yourself in danger; doing so provokes an opportunity attack.</p>
-      <p>You can make an opportunity attack when a hostile creature that you can see moves out of your reach. To make the opportunity attack, you use your reaction to make one melee attack against the provoking creature. The attack occurs right before the creature leaves your reach.</p>
-      <p>You can avoid provoking an opportunity attack by taking the Disengage action. You also don't provoke an opportunity attack when you teleport or when someone or something moves you without using your movement, action, or reaction. For example, you don't provoke an opportunity attack if an explosion hurls you out of a foe's reach or if gravity causes you to fall past an enemy.</p>
+      <h2 id="multiple-attacks">Multiple Attacks</h2>
+      <p>During your turn, you can make multiple attacks by spending Moments. Each attack costs 1 Moment. However, making multiple attacks in quick succession becomes less accurate due to the diminishing returns of rapid strikes.</p>
+      
+      <h3>Stacking Disadvantage</h3>
+      <p>When you make multiple attacks during your turn, each attack after the first suffers stacking Disadvantage. This represents the difficulty of maintaining accuracy and power when attacking rapidly.</p>
+      <ul>
+        <li><strong>First attack:</strong> No Disadvantage. Make your attack roll normally.</li>
+        <li><strong>Second attack:</strong> Disadvantage on the attack roll.</li>
+        <li><strong>Third attack:</strong> Disadvantage on Disadvantage. Roll three d20s and take the lowest result.</li>
+        <li><strong>Fourth attack and beyond:</strong> Continue stacking Disadvantage. Roll one additional d20 for each additional attack and take the lowest result.</li>
+      </ul>
+      <p>Disadvantage stacks cumulatively. For example, if you make three attacks in a turn, the first has no Disadvantage, the second has Disadvantage (roll 2d20, take lowest), and the third has Disadvantage on Disadvantage (roll 3d20, take lowest).</p>
+      
+      <h3>Agile Weapons</h3>
+      <p>Some weapons are designed for rapid, fluid combat and reduce the stacking Disadvantage. When wielding a weapon with the <strong>agile</strong> property, the second attack in a turn does not suffer Disadvantage. The third attack still suffers Disadvantage (not Disadvantage on Disadvantage), and subsequent attacks continue to stack normally.</p>
+      <p>Examples of agile weapons include shortswords, scimitars, daggers, and handaxes.</p>
+      
+      <h3>Class Features and Abilities</h3>
+      <p>Certain class features, such as a fighter's Extra Attack, allow you to make multiple attacks more effectively. These features may reduce or eliminate the stacking Disadvantage for specific attacks, as described in the class feature.</p>
+      <p>Some abilities grant you additional attacks that don't count toward your stacking Disadvantage, such as natural weapon attacks or special combat maneuvers.</p>
+      
+      <h3>Distributing Attacks</h3>
+      <p>You can direct your attacks at one target or divide them among multiple targets, as long as all targets are within your reach (for melee attacks) or range (for ranged attacks). You must declare all targets before making any attack rolls.</p>
       
       <h2 id="two-weapon-fighting">Two-Weapon Fighting</h2>
-      <p>When you take the Attack action and attack with a light melee weapon that you're holding in one hand, you can use a bonus action to attack with a different light melee weapon that you're holding in the other hand. You don't add your ability modifier to the damage of the bonus attack, unless that modifier is negative.</p>
+      <p>When you attack with a light melee weapon that you're holding in one hand, you can spend an additional Moment to attack with a different light melee weapon that you're holding in the other hand. The second attack suffers the normal stacking Disadvantage (no Disadvantage if both weapons are agile).</p>
+      <p>You don't add your ability modifier to the damage of the second attack, unless that modifier is negative.</p>
       <p>If either weapon has the thrown property, you can throw the weapon, instead of making a melee attack with it.</p>
+      <p>Two-weapon fighting requires 2 Moments total: 1 Moment for the first attack, and 1 Moment for the second attack.</p>
       
       <h2 id="grappling">Grappling</h2>
-      <p>When you want to grab a creature or wrestle with it, you can use the Attack action to make a special melee attack, a grapple. If you're able to make multiple attacks with the Attack action, this attack replaces one of them.</p>
+      <p>When you want to grab a creature or wrestle with it, you can use the Attack action to make a special melee attack, a grapple. This attack counts as one of your attacks for the purpose of the Multiple Attack Penalty.</p>
       <p>The target of your grapple must be no more than one size larger than you and must be within your reach. Using at least one free hand, you try to seize the target by making a grapple check instead of an attack roll: a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you succeed, you subject the target to the grappled condition. The condition specifies the things that end it, and you can release the target whenever you like (no action required).</p>
       <p>Grappling costs 1 Moment.</p>
       
       <h2 id="shoving-a-creature">Shoving a Creature</h2>
-      <p>Using the Attack action, you can make a special melee attack to shove a creature, either to knock it prone or push it away from you. If you're able to make multiple attacks with the Attack action, this attack replaces one of them.</p>
+      <p>Using the Attack action, you can make a special melee attack to shove a creature, either to knock it prone or push it away from you. This attack counts as one of your attacks for the purpose of the Multiple Attack Penalty.</p>
       <p>The target must be no more than one size larger than you and must be within your reach. Instead of making an attack roll, you make a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you win the contest, you either knock the target prone or push it 5 feet away from you.</p>
       <p>Shoving costs 1 Moment.</p>
       
