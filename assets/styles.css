@@ -351,6 +351,76 @@
     font-style:italic;
   }
   
+  /* Turn examples with used Moments */
+  .turn-example{
+    margin:24px 0;
+    padding:16px 20px;
+    background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(250,248,244,.95));
+    border:2px solid var(--line);
+    border-radius:var(--r2);
+    box-shadow:0 2px 6px rgba(44,35,22,.08);
+  }
+  
+  .example-label{
+    font-weight:600;
+    color:var(--fantasy-blue);
+    margin-bottom:12px;
+    font-size:1rem;
+  }
+  
+  .example-bar{
+    margin:12px 0;
+  }
+  
+  .moment-segment.used{
+    background:linear-gradient(135deg, var(--fantasy-green), var(--fantasy-green-light));
+    border-color:var(--fantasy-gold);
+    opacity:1;
+  }
+  
+  .moment-segment.used.multi{
+    background:linear-gradient(135deg, var(--fantasy-burgundy), var(--fantasy-burgundy-light));
+  }
+  
+  .moment-segment.multi-start{
+    border-right:1px solid var(--fantasy-gold);
+    border-radius:var(--r) 0 0 var(--r);
+  }
+  
+  .moment-segment.multi-end{
+    border-left:1px solid var(--fantasy-gold);
+    border-radius:0 var(--r) var(--r) 0;
+  }
+  
+  .moment-segment.multi-start + .moment-segment.multi-end{
+    margin-left:-2px;
+  }
+  
+  .moment-segment.empty{
+    background:transparent;
+    border:2px dashed var(--line);
+    opacity:.4;
+    cursor:default;
+  }
+  
+  .moment-segment.empty:hover{
+    transform:none;
+    box-shadow:none;
+  }
+  
+  .moment-segment.empty .moment-number,
+  .moment-segment.empty .moment-label{
+    opacity:.3;
+  }
+  
+  .example-description{
+    margin-top:12px;
+    font-size:.9rem;
+    color:var(--muted);
+    font-style:italic;
+    padding-left:4px;
+  }
+  
   @media (max-width:640px){
     .moments-bar{
       flex-direction:column;
@@ -364,6 +434,10 @@
     
     .moment-number{
       font-size:1.5rem;
+    }
+    
+    .turn-example{
+      padding:12px 16px;
     }
   }
   
