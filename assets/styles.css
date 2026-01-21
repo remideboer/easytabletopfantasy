@@ -1197,9 +1197,10 @@
     margin:8px 0;
     line-height:1;
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     align-items:center;
     gap:8px;
+    padding-left:8px;
   }
   
   .hp-number{
