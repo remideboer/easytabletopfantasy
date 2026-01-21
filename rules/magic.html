@@ -53,6 +53,18 @@
         <button class="filter-btn" data-filter-type="class" data-class="Warlock" onclick="toggleClassFilter('Warlock')">Warlock</button>
         <button class="filter-btn" data-filter-type="class" data-class="Wizard" onclick="toggleClassFilter('Wizard')">Wizard</button>
       </div>
+      <div class="filter-row">
+        <span class="filter-label">Filter by school:</span>
+        <button class="filter-btn filter-all active" data-filter-type="school" data-school="all" onclick="toggleSchoolFilter('all')">All</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Abjuration" onclick="toggleSchoolFilter('Abjuration')">Abjuration</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Conjuration" onclick="toggleSchoolFilter('Conjuration')">Conjuration</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Divination" onclick="toggleSchoolFilter('Divination')">Divination</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Enchantment" onclick="toggleSchoolFilter('Enchantment')">Enchantment</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Evocation" onclick="toggleSchoolFilter('Evocation')">Evocation</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Illusion" onclick="toggleSchoolFilter('Illusion')">Illusion</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Necromancy" onclick="toggleSchoolFilter('Necromancy')">Necromancy</button>
+        <button class="filter-btn" data-filter-type="school" data-school="Transmutation" onclick="toggleSchoolFilter('Transmutation')">Transmutation</button>
+      </div>
     </div>
     
     <!-- Cantrips -->
@@ -5852,6 +5864,38 @@ function toggleClassFilter(className){
   applyFilter();
 }
 
+function toggleSchoolFilter(schoolName){
+  const btn = document.querySelector(`.filter-btn[data-filter-type="school"][data-school="${schoolName}"]`);
+  const allBtn = document.querySelector('.filter-btn[data-filter-type="school"][data-school="all"]');
+  
+  if(schoolName === 'all'){
+    // Toggle all: if active, deselect all; if inactive, select all
+    if(btn.classList.contains('active')){
+      // Deselect all school filters
+      document.querySelectorAll('.filter-btn[data-filter-type="school"]').forEach(b => b.classList.remove('active'));
+    } else {
+      // Select all school filters
+      document.querySelectorAll('.filter-btn[data-filter-type="school"]').forEach(b => b.classList.add('active'));
+    }
+  } else {
+    // Toggle individual school
+    btn.classList.toggle('active');
+    
+    // If all individual schools are selected, activate "All" button
+    const individualBtns = document.querySelectorAll('.filter-btn[data-filter-type="school"]:not([data-school="all"])');
+    const activeCount = Array.from(individualBtns).filter(b => b.classList.contains('active')).length;
+    
+    if(activeCount === individualBtns.length){
+      allBtn.classList.add('active');
+    } else {
+      allBtn.classList.remove('active');
+    }
+  }
+  
+  // Apply filter based on active buttons
+  applyFilter();
+}
+
 function applyFilter(){
   // Get active level filters
   const activeLevels = new Set();
@@ -5867,8 +5911,16 @@ function applyFilter(){
     if(className) activeClasses.add(className);
   });
   
+  // Get active school filters
+  const activeSchools = new Set();
+  document.querySelectorAll('.filter-btn[data-filter-type="school"].active').forEach(btn => {
+    const schoolName = btn.getAttribute('data-school');
+    if(schoolName) activeSchools.add(schoolName);
+  });
+  
   const showAllLevels = activeLevels.has('all') || activeLevels.size === 0;
   const showAllClasses = activeClasses.has('all') || activeClasses.size === 0;
+  const showAllSchools = activeSchools.has('all') || activeSchools.size === 0;
   
   // Show/hide spell level sections
   document.querySelectorAll('.spell-level-section').forEach(section => {
@@ -5891,15 +5943,18 @@ function applyFilter(){
       }
     }
     
-    // If section should be shown, check individual spell cards for class filter
+    // If section should be shown, check individual spell cards for class and school filters
     if(shouldShowSection){
       section.style.display = '';
       
-      // Filter individual spell cards by class
-      if(!showAllClasses){
-        section.querySelectorAll('.spell-card').forEach(card => {
+      // Filter individual spell cards by class and school
+      section.querySelectorAll('.spell-card').forEach(card => {
+        let shouldShowCard = true;
+        
+        // Check class filter
+        if(!showAllClasses){
           const classesSpan = card.querySelector('.spell-card-meta span');
-          let shouldShowCard = false;
+          let matchesClass = false;
           
           if(classesSpan && classesSpan.textContent.includes('Classes:')){
             const classesText = classesSpan.textContent.replace('Classes:', '').trim();
@@ -5908,20 +5963,38 @@ function applyFilter(){
             // Check if any of the card's classes match active filters
             for(const cardClass of cardClasses){
               if(activeClasses.has(cardClass)){
-                shouldShowCard = true;
+                matchesClass = true;
                 break;
               }
             }
           }
           
-          card.style.display = shouldShowCard ? '' : 'none';
-        });
-      } else {
-        // Show all cards in section
-        section.querySelectorAll('.spell-card').forEach(card => {
-          card.style.display = '';
-        });
-      }
+          if(!matchesClass){
+            shouldShowCard = false;
+          }
+        }
+        
+        // Check school filter
+        if(shouldShowCard && !showAllSchools){
+          const schoolSpan = Array.from(card.querySelectorAll('.spell-card-meta span')).find(span => 
+            span.textContent.includes('School:')
+          );
+          let matchesSchool = false;
+          
+          if(schoolSpan){
+            const schoolText = schoolSpan.textContent.replace('School:', '').trim();
+            if(activeSchools.has(schoolText)){
+              matchesSchool = true;
+            }
+          }
+          
+          if(!matchesSchool){
+            shouldShowCard = false;
+          }
+        }
+        
+        card.style.display = shouldShowCard ? '' : 'none';
+      });
     } else {
       section.style.display = 'none';
     }
