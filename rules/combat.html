@@ -15,7 +15,204 @@
 </head>
 <body>
 <header><nav><a href="/index.html">Home</a><div class="nav-dropdown"><a href="/rules/core.html">Rules</a><div class="nav-dropdown-menu"><a href="/rules/core.html#overview">Overview</a><a href="/rules/core.html#design-goals">Design Goals</a><a href="/rules/core.html#dice-and-tests">Dice and Tests</a><a href="/rules/core.html#ability-scores">Ability Scores</a><a href="/rules/core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="/rules/core.html#converting-ability-scores-d-and-d-5e-to-easy-tabletop-fantasy">Converting Ability Scores</a><a href="/rules/core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="/rules/core.html#hit-points-and-scale">Hit Points and Scale</a><a href="/rules/core.html#level-advancement">Level Advancement</a><a href="/rules/core.html#attacks-and-defense">Attacks and Defense</a><a href="/rules/core.html#weapon-and-bonus-conversion">Weapon and Bonus Conversion</a><a href="/rules/core.html#damage-conversion-spells-and-effects">Damage Conversion</a><a href="/rules/core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="/rules/core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="/rules/core.html#resolve">Resolve</a><a href="/rules/core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="/rules/core.html#spell-school-expertise">Spell School Expertise</a></div></div><a href="/rules/characters.html">Characters</a><a href="/rules/combat.html" aria-current="page">Combat</a><a href="/rules/magic.html">Magic</a><a href="/rules/gear.html">Gear</a><a href="/faq.html">FAQ</a><a href="/legal.html">Legal</a></nav></header>
-<main><h1>Combat</h1><p>This section is being reorganized for the web. For now, see <a href="/rules/core.html">Core rules</a> for the canonical text.</p></main>
+<main>
+  <h1>Combat</h1>
+  <div class="layout">
+    <aside class="toc">
+      <h2>On this page</h2>
+      <div data-toc></div>
+    </aside>
+    <div class="content">
+      <p class="lede">Combat in Easy Tabletop Fantasy uses a streamlined system focused on clear choices, consistent resolution, and fast-paced action. Each turn consists of 3 Moments, allowing characters to move, attack, cast spells, and take other actions in a flexible, time-based structure.</p>
+      
+      <h2 id="the-order-of-combat">The Order of Combat</h2>
+      <p>A typical combat encounter follows this sequence:</p>
+      <ol>
+        <li><strong>Surprise.</strong> The Game Master determines whether anyone is surprised.</li>
+        <li><strong>Initiative.</strong> Everyone involved in the combat encounter rolls initiative.</li>
+        <li><strong>Combat Rounds.</strong> Each round, participants act in initiative order.</li>
+        <li><strong>End of Combat.</strong> The encounter ends when one side is defeated, flees, or surrenders.</li>
+      </ol>
+      
+      <h2 id="surprise">Surprise</h2>
+      <p>A band of adventurers sneaks up on a bandit camp, springing from the bushes. A gelatinous cube glides down a dungeon passage, unnoticed by the adventurers until the cube engulfs one of them. In these situations, one side of the battle gains surprise over the other.</p>
+      <p>The Game Master determines who might be surprised. If neither side tries to be stealthy, they automatically notice each other. Otherwise, the Game Master compares the Dexterity (Stealth) checks of anyone hiding with the passive Wisdom (Perception) score of each creature on the opposing side. Any character or monster that doesn't notice a threat is surprised at the start of the encounter.</p>
+      <p>If you're surprised, you can't move or take an action on your first turn of the combat, and you can't take a reaction until that turn ends. A member of a group can be surprised even if the other members aren't.</p>
+      
+      <h2 id="initiative">Initiative</h2>
+      <p>Initiative determines the order of turns during combat. When combat starts, every participant makes a Dexterity check to determine their place in the initiative order. The Game Master makes one roll for an entire group of identical creatures, so each member of the group acts at the same time.</p>
+      <p><strong>Initiative in Easy Tabletop Fantasy:</strong> Roll initiative as normal using a Dexterity check. The highest roll acts first. After the highest roll is determined, the players determine the order among themselves for their turns. This allows for tactical coordination and faster play.</p>
+      <p><strong>Surprise Exception:</strong> If any creatures are surprised, surprised creatures act after all non-surprised creatures, regardless of initiative rolls. Among surprised creatures, monsters act first, followed by player characters who determine their order among themselves.</p>
+      <p>The Game Master ranks the combatants in order from the one with the highest Dexterity check total to the one with the lowest. This is the order (called the initiative order) in which everyone acts during each round. The initiative order remains the same from round to round.</p>
+      <p>If a tie occurs, the Game Master decides the order among tied Game Master-controlled creatures, and the players decide the order among their tied characters. The Game Master can decide the order if the tie is between a monster and a player character. Optionally, the Game Master can have the tied characters and monsters each roll a d20 to determine the order among themselves.</p>
+      
+      <h2 id="your-turn">Your Turn</h2>
+      <p>On your turn, you can move a distance up to your speed and take one or more actions. The basic options for how you spend your turn are described in the "Actions and Time (Encounter Mode)" section of the <a href="/rules/core.html#actions-and-time-encounter-mode">Core rules</a>.</p>
+      <p>Each turn consists of <strong>3 Moments</strong>. You can spend these Moments on movement, actions, bonus actions, and spellcasting as described below.</p>
+      
+      <h3 id="movement">Movement</h3>
+      <p>Moving up to your full speed costs 1 Moment. On your turn, you can move a distance up to your speed. You can use as much or as little of your speed as you like on your turn, following the rules here.</p>
+      <p>Your movement can include jumping, climbing, and swimming. These different modes of movement can be combined with walking, or they can constitute your entire move. However you're moving, you deduct the distance of each part of your move from your speed until it is used up or until you are done moving.</p>
+      
+      <h4>Breaking Up Your Move</h4>
+      <p>You can break up your movement on your turn, using some of your speed before and after your action. For example, if you have a speed of 30 feet, you can move 10 feet, take your action, and then move 20 feet.</p>
+      
+      <h4>Moving Around Other Creatures</h4>
+      <p>You can move through a nonhostile creature's space. In contrast, you can move through a hostile creature's space only if the creature is at least two sizes larger or smaller than you. Remember that another creature's space is difficult terrain for you.</p>
+      <p>Whether a creature is a friend or an enemy, you can't willingly end your move in its space.</p>
+      <p>If you leave a hostile creature's reach during your move, you provoke an opportunity attack.</p>
+      
+      <h3 id="actions">Actions</h3>
+      <p>Most actions cost 1 Moment. The most common actions you can take are described here. Many class features and other abilities provide additional options for your action.</p>
+      
+      <h4>Attack</h4>
+      <p>The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.</p>
+      <p>With this action, you make one melee or ranged attack. See the "Attacks and Defense" section in the <a href="/rules/core.html#attacks-and-defense">Core rules</a> for the rules on making attacks.</p>
+      <p>Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action.</p>
+      
+      <h4>Cast a Spell</h4>
+      <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells have a casting time of 1 action, a bonus action, or 1 reaction.</p>
+      <p>In Easy Tabletop Fantasy, casting times are converted to Moments:</p>
+      <ul>
+        <li><strong>Cantrip or Bonus Action:</strong> 1 Moment</li>
+        <li><strong>Action (Leveled Spell):</strong> Usually 2 Moments, unless otherwise noted</li>
+        <li><strong>Reaction:</strong> Can be taken outside your turn when triggered</li>
+      </ul>
+      
+      <h4>Dash</h4>
+      <p>When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.</p>
+      <p>Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can dash up to 30 feet, rather than 60 feet.</p>
+      <p>Dash costs 1 Moment.</p>
+      
+      <h4>Disengage</h4>
+      <p>If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn.</p>
+      <p>Disengage costs 1 Moment.</p>
+      
+      <h4>Dodge</h4>
+      <p>When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated or if your speed drops to 0.</p>
+      <p>Dodge costs 1 Moment.</p>
+      
+      <h4>Help</h4>
+      <p>You can lend your aid to another creature in the completion of a task. When you take the Help action, the creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.</p>
+      <p>Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally's attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage.</p>
+      <p>Help costs 1 Moment.</p>
+      
+      <h4>Hide</h4>
+      <p>When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules for hiding. If you succeed, you gain certain benefits, as described in the "Unseen Attackers and Targets" section later in this chapter.</p>
+      <p>Hide costs 1 Moment.</p>
+      
+      <h4>Ready</h4>
+      <p>Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn, which lets you act using your reaction before the start of your next turn.</p>
+      <p>First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include "If the cultist steps on the trapdoor, I'll pull the lever that opens it," and "If the goblin steps next to me, I move away."</p>
+      <p>When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.</p>
+      <p>When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration. If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the <em>web</em> spell and ready <em>magic missile</em>, your <em>web</em> spell ends, and if you take damage before you release <em>magic missile</em> with your reaction, your concentration might be broken.</p>
+      <p>Ready costs 1 Moment.</p>
+      
+      <h4>Search</h4>
+      <p>When you take the Search action, you devote your attention to finding something. Depending on the nature of your search, the Game Master might have you make a Wisdom (Perception) check or an Intelligence (Investigation) check.</p>
+      <p>Search costs 1 Moment.</p>
+      
+      <h4>Use an Object</h4>
+      <p>You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn.</p>
+      <p>Use an Object costs 1 Moment.</p>
+      
+      <h3 id="bonus-actions">Bonus Actions</h3>
+      <p>Various class features, spells, and other abilities let you take an additional action on your turn called a bonus action. The Cunning Action feature, for example, allows a rogue to take a bonus action. You can take a bonus action only when a special ability, spell, or other feature of the game states that you can do something as a bonus action. You otherwise don't have a bonus action to take.</p>
+      <p>You can take only one bonus action on your turn, so you must choose which bonus action to use when you have more than one available.</p>
+      <p>You choose when to take a bonus action during your turn, unless the bonus action's timing is specified, and anything that deprives you of your ability to take actions also prevents you from taking a bonus action.</p>
+      <p>Bonus actions cost 1 Moment.</p>
+      
+      <h3 id="other-activity-on-your-turn">Other Activity on Your Turn</h3>
+      <p>Your turn can include a variety of flourishes that require neither your action nor your move.</p>
+      <p>You can communicate however you are able, through brief utterances and gestures, as you take your turn.</p>
+      <p>You can also interact with one object or feature of the environment for free, during either your move or your action. For example, you could open a door during your move as you stride toward a foe, or you could draw your weapon as part of the same action you use to attack.</p>
+      <p>If you want to interact with a second object, you need to use your action. Some magic items and other special objects always require an action to use, as stated in their descriptions.</p>
+      <p>The Game Master is free to decide that circumstances influence a situation in a way that might require an action or might be done as part of another action. For example, the Game Master might reasonably allow you to speak a few words as part of your movement, but require an action to deliver a speech.</p>
+      
+      <h2 id="reactions">Reactions</h2>
+      <p>Certain special abilities, spells, and situations allow you to take a special action called a reaction. A reaction is an instant response to a trigger of some kind, which can occur on your turn or on someone else's. The opportunity attack, described later in this chapter, is the most common type of reaction.</p>
+      <p>When you take a reaction, you can't take another one until the start of your next turn. If the reaction interrupts another creature's turn, that creature can continue its turn right after the reaction.</p>
+      <p>Reactions don't cost Moments and can be taken outside your turn when triggered.</p>
+      
+      <h2 id="opportunity-attacks">Opportunity Attacks</h2>
+      <p>In a fight, everyone is constantly watching for enemies to drop their guard. You can rarely move heedlessly past your foes without putting yourself in danger; doing so provokes an opportunity attack.</p>
+      <p>You can make an opportunity attack when a hostile creature that you can see moves out of your reach. To make the opportunity attack, you use your reaction to make one melee attack against the provoking creature. The attack occurs right before the creature leaves your reach.</p>
+      <p>You can avoid provoking an opportunity attack by taking the Disengage action. You also don't provoke an opportunity attack when you teleport or when someone or something moves you without using your movement, action, or reaction. For example, you don't provoke an opportunity attack if an explosion hurls you out of a foe's reach or if gravity causes you to fall past an enemy.</p>
+      
+      <h2 id="two-weapon-fighting">Two-Weapon Fighting</h2>
+      <p>When you take the Attack action and attack with a light melee weapon that you're holding in one hand, you can use a bonus action to attack with a different light melee weapon that you're holding in the other hand. You don't add your ability modifier to the damage of the bonus attack, unless that modifier is negative.</p>
+      <p>If either weapon has the thrown property, you can throw the weapon, instead of making a melee attack with it.</p>
+      
+      <h2 id="grappling">Grappling</h2>
+      <p>When you want to grab a creature or wrestle with it, you can use the Attack action to make a special melee attack, a grapple. If you're able to make multiple attacks with the Attack action, this attack replaces one of them.</p>
+      <p>The target of your grapple must be no more than one size larger than you and must be within your reach. Using at least one free hand, you try to seize the target by making a grapple check instead of an attack roll: a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you succeed, you subject the target to the grappled condition. The condition specifies the things that end it, and you can release the target whenever you like (no action required).</p>
+      <p>Grappling costs 1 Moment.</p>
+      
+      <h2 id="shoving-a-creature">Shoving a Creature</h2>
+      <p>Using the Attack action, you can make a special melee attack to shove a creature, either to knock it prone or push it away from you. If you're able to make multiple attacks with the Attack action, this attack replaces one of them.</p>
+      <p>The target must be no more than one size larger than you and must be within your reach. Instead of making an attack roll, you make a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you win the contest, you either knock the target prone or push it 5 feet away from you.</p>
+      <p>Shoving costs 1 Moment.</p>
+      
+      <h2 id="cover">Cover</h2>
+      <p>Walls, trees, creatures, and other obstacles can provide cover during combat, making a target more difficult to harm. A target can benefit from cover only when an attack or other effect originates on the opposite side of the cover.</p>
+      <p>There are three degrees of cover. If a target is behind multiple sources of cover, only the most protective degree of cover applies; the degrees aren't added together. For example, if a target is behind a creature that gives it half cover and a tree trunk that gives it three-quarters cover, the target has three-quarters cover.</p>
+      
+      <h3>Half Cover</h3>
+      <p>A target with half cover has a +2 bonus to AC and Dexterity saving throws. A target has half cover if an obstacle blocks at least half of its body. The obstacle might be a low wall, a large piece of furniture, a narrow tree trunk, or a creature, whether that creature is an enemy or a friend.</p>
+      
+      <h3>Three-Quarters Cover</h3>
+      <p>A target with three-quarters cover has a +5 bonus to AC and Dexterity saving throws. A target has three-quarters cover if an obstacle blocks at least three-quarters of its body. The obstacle might be a portcullis, an arrow slit, or a thick tree trunk.</p>
+      
+      <h3>Total Cover</h3>
+      <p>A target with total cover can't be targeted directly by an attack or a spell, although some spells can reach such a target by including it in an area of effect. A target has total cover if it is completely concealed by an obstacle.</p>
+      
+      <h2 id="damage-and-healing">Damage and Healing</h2>
+      <p>Injury and the risk of death are constant companions of those who explore fantasy gaming worlds. The thrust of a sword, a well-placed arrow, or a blast of felfire magic all have the potential to damage, or even kill, the hardiest of creatures.</p>
+      <p>In Easy Tabletop Fantasy, damage is expressed in <strong>hits</strong> rather than hit points. A successful attack deals 1 hit. A critical hit deals 2 hits. See the <a href="/rules/core.html#attacks-and-defense">Attacks and Defense</a> section for more details.</p>
+      
+      <h3>Damage Types</h3>
+      <p>Different attacks, damaging spells, and other harmful effects deal different types of damage. Damage types have no rules of their own, but other rules, such as damage resistance, rely on the types.</p>
+      <p>The damage types follow, with examples to help a Game Master assign a damage type to a new effect.</p>
+      <ul>
+        <li><strong>Acid.</strong> The corrosive spray of a black dragon's breath and the dissolving enzymes secreted by a black pudding deal acid damage.</li>
+        <li><strong>Bludgeoning.</strong> Blunt force attacks—hammers, falling, constriction, and the like—deal bludgeoning damage.</li>
+        <li><strong>Cold.</strong> The infernal chill radiating from an ice devil's spear and the frigid blast of a white dragon's breath deal cold damage.</li>
+        <li><strong>Fire.</strong> Red dragons breathe fire, and many spells conjure flames to deal fire damage.</li>
+        <li><strong>Force.</strong> Force is pure magical energy focused into a damaging form. Most effects that deal force damage are spells, including <em>magic missile</em> and <em>spiritual weapon</em>.</li>
+        <li><strong>Lightning.</strong> A lightning bolt spell and a blue dragon's breath deal lightning damage.</li>
+        <li><strong>Necrotic.</strong> Necrotic damage, dealt by certain undead and some spells, withers matter and even the soul.</li>
+        <li><strong>Piercing.</strong> Puncturing and impaling attacks, including spears and monsters' bites, deal piercing damage.</li>
+        <li><strong>Poison.</strong> Venomous stings and the toxic gas of a green dragon's breath deal poison damage.</li>
+        <li><strong>Psychic.</strong> Mental abilities such as a psionic blast deal psychic damage.</li>
+        <li><strong>Radiant.</strong> Radiant damage, dealt by a cleric's flame strike spell or an angel's smiting weapon, sears the flesh like fire and overloads the spirit with power.</li>
+        <li><strong>Slashing.</strong> Swords, axes, and monsters' claws deal slashing damage.</li>
+        <li><strong>Thunder.</strong> A concussive burst of sound, such as the effect of the <em>thunderwave</em> spell, deals thunder damage.</li>
+      </ul>
+      
+      <h3>Damage Resistance and Vulnerability</h3>
+      <p>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</p>
+      <p>If a creature or an object has <strong>resistance</strong> to a damage type, damage of that type is halved against it. If a creature or an object has <strong>vulnerability</strong> to a damage type, damage of that type is doubled against it.</p>
+      <p>Resistance and then vulnerability are applied after all other modifiers to damage. For example, a creature has resistance to bludgeoning damage and is hit by an attack that deals 2 hits. The damage is halved, so the creature takes 1 hit.</p>
+      <p>Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance. For example, if a creature has resistance to fire damage and also has resistance to all nonmagical damage, the damage of a nonmagical fire is reduced by half, not reduced by three-quarters.</p>
+      
+      <h3>Healing</h3>
+      <p>Unless it results from death, damage isn't permanent. Even death is reversible through powerful magic. Rest can restore a creature's hit points (as explained in the <a href="/rules/core.html#recovery-points-and-rest">Recovery Points and Rest</a> section), and magical methods such as a <em>cure wounds</em> spell or a <em>potion of healing</em> can remove damage in an instant.</p>
+      <p>When a creature receives healing of any kind, hit points regained are added to its current hit points. A creature's hit points can't exceed its hit point maximum, so any hit points regained in excess of this number are lost. For example, a druid grants a ranger 3 hit points of healing. If the ranger has 14 current hit points and has a hit point maximum of 20, the ranger regains 3 hit points, increasing their current hit points to 17, not 20.</p>
+      <p>A creature that has died can't regain hit points until magic such as the <em>revivify</em> spell has restored it to life.</p>
+      
+      <h2 id="mounting-and-dismounting">Mounting and Dismounting</h2>
+      <p>Once during your move, you can mount a creature that is within 5 feet of you or dismount. Doing so costs an amount of movement equal to half your speed. For example, if your speed is 30 feet, you must spend 15 feet of movement to mount a horse. Therefore, you can't mount it if you don't have 15 feet of movement left or if your speed is 0.</p>
+      <p>If an effect moves your mount against its will while you're on it, you must succeed on a DC 10 Dexterity saving throw or fall off the mount, landing prone in a space within 5 feet of it. If you're knocked prone while mounted, you must make the same saving throw.</p>
+      <p>If your mount is knocked prone, you can use your reaction to dismount it as it falls and land on your feet. Otherwise, you are dismounted and fall prone in a space within 5 feet it.</p>
+      
+      <h2 id="underwater-combat">Underwater Combat</h2>
+      <p>When adventurers pursue sahuagin back to their undersea homes, fight off sharks in an ancient shipwreck, or find themselves in a flooded dungeon room, they must fight in a challenging environment. Underwater the following rules apply.</p>
+      <p>When making a melee weapon attack, a creature that doesn't have a swimming speed (either natural or granted by magic) has disadvantage on the attack roll unless the weapon is a dagger, javelin, shortsword, spear, or trident.</p>
+      <p>A ranged weapon attack automatically misses a target beyond the weapon's normal range. Even against a target within normal range, the attack roll has disadvantage unless the weapon is a crossbow, a net, or a weapon that is thrown like a javelin (including a spear, trident, or dart).</p>
+      <p>Creatures and objects that are fully immersed in water have resistance to fire damage.</p>
+    </div>
+  </div>
+</main>
 <footer class="legal"><p>© Easy Tabletop Fantasy.</p>
 <p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
 <p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
