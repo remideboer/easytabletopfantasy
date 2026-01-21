@@ -478,6 +478,7 @@
     align-items:flex-start;
     margin-bottom:12px;
     gap:12px;
+    padding-right:32px;
   }
   
   .spell-card-name{
