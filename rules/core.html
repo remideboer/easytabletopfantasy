@@ -65,10 +65,21 @@
 <ol>
 <li><strong>Determine modifiers.</strong></li>
 <li>For each composite score, determine the modifier using the standard fifth edition formula:</li>
-<li>\[</li>
-<li>\text{modifier} = \lfloor (\text{score} - 10) / 2 \rfloor</li>
-<li>\]</li>
 </ol>
+<div class="formula-box">
+  <span class="formula-label">Ability Modifier</span>
+  <span class="formula-equation">
+    <span class="variable">modifier</span>
+    <span class="operator">=</span>
+    <span>⌊</span>
+    <span class="variable">(score</span>
+    <span class="operator">−</span>
+    <span>10)</span>
+    <span class="operator">÷</span>
+    <span>2</span>
+    <span>⌋</span>
+  </span>
+</div>
 <p>Record only the resulting three modifiers on the EasyDnD character sheet. The intermediate composite scores are not used in play.</p>
 <p><strong>Example: Converting Ability Scores</strong></p>
 <p>Given the following fifth edition scores: Strength 14, Dexterity 10, Constitution 13, Intelligence 11, Wisdom 16, Charisma 12.</p>
@@ -86,9 +97,22 @@
 <hr>
 <h3>Hit Points and Scale</h3>
 <p>EasyDnD uses a compressed hit point scale. Most creatures have roughly one-tenth of their fifth edition hit points (rounded up). Player characters track hit points using the following expression:</p>
-<p>\[</p>
-<p>HP = \text{class hit die maximum} + \text{Fitness modifier} + (\text{level} - 1)</p>
-<p>\]</p>
+<div class="formula-box">
+  <span class="formula-label">Hit Points</span>
+  <span class="formula-equation">
+    <span class="variable">HP</span>
+    <span class="operator">=</span>
+    <span class="variable">class hit die maximum</span>
+    <span class="operator">+</span>
+    <span class="variable">Fitness modifier</span>
+    <span class="operator">+</span>
+    <span>(</span>
+    <span class="variable">level</span>
+    <span class="operator">−</span>
+    <span>1</span>
+    <span>)</span>
+  </span>
+</div>
 <p>Damage and healing are expressed in <strong>hits</strong> (or <strong>wounds</strong>) rather than raw numbers.</p>
 <div class="table-wrap"><table>
 <thead><tr><th>Class</th><th>HP</th><th>Class</th><th>HP</th></tr></thead>
@@ -120,9 +144,18 @@
 <li>On a natural 20: The attack deals 2 hits and triggers exploding dice—roll again for a chance to deal an additional hit. Each additional natural 20 continues to add hits.</li>
 </ul>
 <p>When a creature attacks a player character, the character makes a d20 save:</p>
-<p>\[</p>
-<p>d20 + (\text{AC} - 10)</p>
-<p>\]</p>
+<div class="formula-box">
+  <span class="formula-label">Defense Save</span>
+  <span class="formula-equation">
+    <code class="dice">d20</code>
+    <span class="operator">+</span>
+    <span>(</span>
+    <span class="variable">AC</span>
+    <span class="operator">−</span>
+    <span>10</span>
+    <span>)</span>
+  </span>
+</div>
 <p>The save is rolled against a target number determined by the Game Master. For a creature that would normally attack at +X to hit, the target number is 11 + X.</p>
 <ul>
 <li>On a failed save: The character takes 1 hit.</li>
@@ -142,11 +175,40 @@
 <li>d12: +5</li>
 <li>2d6: +6</li>
 </ul>
+<p>Weapon attack rolls use the following formula:</p>
+<div class="formula-box">
+  <span class="formula-label">Attack Roll</span>
+  <span class="formula-equation">
+    <code class="dice">d20</code>
+    <span class="operator">+</span>
+    <span class="variable">weapon bonus</span>
+    <span class="operator">+</span>
+    <span class="variable">ability modifier</span>
+    <span class="operator">+</span>
+    <span class="variable">proficiency bonus</span>
+  </span>
+</div>
 <p><strong>Example: Weapon Attack Bonus</strong></p>
-<p>A fighter with Fitness +2, proficiency bonus +2, and a shortsword (1d6 damage in fifth edition) has a weapon bonus of +2. The fighter’s attack roll is:</p>
-<p>\[</p>
-<p>d20 + 2 \text{ (weapon)} + 2 \text{ (Fitness)} + 2 \text{ (proficiency)} = d20 + 6</p>
-<p>\]</p>
+<p>A fighter with Fitness +2, proficiency bonus +2, and a shortsword (1d6 damage in fifth edition) has a weapon bonus of +2. The fighter's attack roll is:</p>
+<div class="formula-box">
+  <span class="formula-label">Attack Roll</span>
+  <span class="formula-equation">
+    <code class="dice">d20</code>
+    <span class="operator">+</span>
+    <span>2</span>
+    <span class="variable">(weapon)</span>
+    <span class="operator">+</span>
+    <span>2</span>
+    <span class="variable">(Fitness)</span>
+    <span class="operator">+</span>
+    <span>2</span>
+    <span class="variable">(proficiency)</span>
+    <span class="operator">=</span>
+    <code class="dice">d20</code>
+    <span class="operator">+</span>
+    <span>6</span>
+  </span>
+</div>
 <p>On a hit, the attack deals 1 hit of damage. EasyDnD assumes that better weapons improve the chance to hit, while spells generally increase the number of hits dealt and/or apply additional effects.</p>
 <hr>
 <h3>Damage Conversion (Spells and Effects)</h3>
@@ -181,10 +243,17 @@
 <p>This structure ensures that every choice has a clear time cost and that different actions are easy to compare at the table.</p>
 <hr>
 <h3>Magic and Spell Resources</h3>
-<p>EasyDnD measures a caster’s capacity with <strong>Spell Power</strong>:</p>
-<p>\[</p>
-<p>\text{Spell Power} = 3 \times \text{spellcasting ability modifier}</p>
-<p>\]</p>
+<p>EasyDnD measures a caster's capacity with <strong>Spell Power</strong>:</p>
+<div class="formula-box">
+  <span class="formula-label">Spell Power</span>
+  <span class="formula-equation">
+    <span class="variable">Spell Power</span>
+    <span class="operator">=</span>
+    <span>3</span>
+    <span class="operator">×</span>
+    <span class="variable">spellcasting ability modifier</span>
+  </span>
+</div>
 <p>The Spell Power cost of a spell equals its spell level. A spellcaster spends Spell Power to cast spells and regains it through rest and Recovery Points.</p>
 <p><strong>Example: Magic Missile</strong></p>
 <p>Magic Missile costs 1 Spell Power to cast and creates three missiles. Each missile deals 1 hit of damage, automatically hits, and ignores defenses. Each additional Spell Power spent when casting Magic Missile creates one extra missile.</p>
