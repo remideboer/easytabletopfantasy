@@ -20,10 +20,26 @@
     <p>This page contains all spells for Easy Tabletop Fantasy. Select the spells you want to print, then use the print button to generate printable spell cards.</p>
     
     <div class="print-controls">
-      <button onclick="selectAll()">Select All</button>
-      <button onclick="deselectAll()">Deselect All</button>
-      <button onclick="printSelected()">Print Selected Cards</button>
-      <span id="selected-count">0 spells selected</span>
+      <div class="control-row">
+        <button onclick="selectAll()">Select All</button>
+        <button onclick="deselectAll()">Deselect All</button>
+        <button onclick="printSelected()">Print Selected Cards</button>
+        <span id="selected-count">0 spells selected</span>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Filter by level:</span>
+        <button class="filter-btn active" data-level="all" onclick="filterByLevel('all')">All</button>
+        <button class="filter-btn" data-level="cantrip" onclick="filterByLevel('cantrip')">Cantrip</button>
+        <button class="filter-btn" data-level="1" onclick="filterByLevel('1')">1st</button>
+        <button class="filter-btn" data-level="2" onclick="filterByLevel('2')">2nd</button>
+        <button class="filter-btn" data-level="3" onclick="filterByLevel('3')">3rd</button>
+        <button class="filter-btn" data-level="4" onclick="filterByLevel('4')">4th</button>
+        <button class="filter-btn" data-level="5" onclick="filterByLevel('5')">5th</button>
+        <button class="filter-btn" data-level="6" onclick="filterByLevel('6')">6th</button>
+        <button class="filter-btn" data-level="7" onclick="filterByLevel('7')">7th</button>
+        <button class="filter-btn" data-level="8" onclick="filterByLevel('8')">8th</button>
+        <button class="filter-btn" data-level="9" onclick="filterByLevel('9')">9th</button>
+      </div>
     </div>
     
     <!-- Cantrips -->
@@ -5757,6 +5773,38 @@ function printSelected(){
   });
   
   window.print();
+}
+
+function filterByLevel(level){
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`.filter-btn[data-level="${level}"]`).classList.add('active');
+  
+  // Show/hide spell level sections
+  document.querySelectorAll('.spell-level-section').forEach(section => {
+    if(level === 'all'){
+      section.style.display = '';
+    } else if(level === 'cantrip'){
+      const h3 = section.querySelector('h3');
+      if(h3 && h3.id === 'cantrips'){
+        section.style.display = '';
+      } else {
+        section.style.display = 'none';
+      }
+    } else {
+      const h3 = section.querySelector('h3');
+      if(h3 && h3.id === `level-${level}`){
+        section.style.display = '';
+      } else {
+        section.style.display = 'none';
+      }
+    }
+  });
+  
+  // Update count after filtering
+  updateCount();
 }
 
 // Initialize count on load
