@@ -603,6 +603,13 @@
       margin:0;
       padding:0;
       page-break-inside:avoid;
+      background:none !important;
+      background-image:none !important;
+    }
+    
+    .spell-level-section{
+      background:none !important;
+      background-image:none !important;
     }
     
     .spell-card{
@@ -612,6 +619,7 @@
       page-break-inside:avoid;
       break-inside:avoid;
       background:#fff !important;
+      background-color:#fff !important;
       background-image:none !important;
       box-shadow:none !important;
       margin:0;
@@ -620,6 +628,20 @@
     .spell-card::before,
     .spell-card::after{
       display:none !important;
+      background:none !important;
+      background-image:none !important;
+    }
+    
+    .spell-card *{
+      background:none !important;
+      background-image:none !important;
+    }
+    
+    .spell-card-header,
+    .spell-card-meta,
+    .spell-card-description{
+      background:none !important;
+      background-image:none !important;
     }
     
     .spell-card-checkbox{
