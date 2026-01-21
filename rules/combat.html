@@ -54,11 +54,11 @@
             <span class="moment-number">1</span>
             <span class="moment-label">Move</span>
           </div>
-          <div class="moment-segment used" data-moment="2">
+          <div class="moment-segment used attack-normal" data-moment="2">
             <span class="moment-number">2</span>
             <span class="moment-label">Attack</span>
           </div>
-          <div class="moment-segment used" data-moment="3">
+          <div class="moment-segment used attack-disadvantage" data-moment="3">
             <span class="moment-number">3</span>
             <span class="moment-label">Attack</span>
           </div>
@@ -77,7 +77,7 @@
             <span class="moment-number">2</span>
             <span class="moment-label">Spell</span>
           </div>
-          <div class="moment-segment used" data-moment="3">
+          <div class="moment-segment used attack-disadvantage" data-moment="3">
             <span class="moment-number">3</span>
             <span class="moment-label">Attack</span>
           </div>
@@ -111,7 +111,7 @@
             <span class="moment-number">1</span>
             <span class="moment-label">Cantrip</span>
           </div>
-          <div class="moment-segment used" data-moment="2">
+          <div class="moment-segment used attack-disadvantage" data-moment="2">
             <span class="moment-number">2</span>
             <span class="moment-label">Attack</span>
           </div>
@@ -120,21 +120,21 @@
             <span class="moment-label">Move</span>
           </div>
         </div>
-        <p class="example-description">Cast a cantrip (1 Moment), attack, then move away to safety.</p>
+        <p class="example-description">Cast a cantrip (1 Moment), attack, then move away to safety. The attack suffers Disadvantage because it's the second ATTACK action in your turn.</p>
       </div>
       
       <div class="turn-example">
         <div class="example-label">Example 5: Full Assault</div>
         <div class="moments-bar example-bar">
-          <div class="moment-segment used" data-moment="1">
+          <div class="moment-segment used attack-normal" data-moment="1">
             <span class="moment-number">1</span>
             <span class="moment-label">Attack</span>
           </div>
-          <div class="moment-segment used" data-moment="2">
+          <div class="moment-segment used attack-disadvantage" data-moment="2">
             <span class="moment-number">2</span>
             <span class="moment-label">Attack</span>
           </div>
-          <div class="moment-segment used" data-moment="3">
+          <div class="moment-segment used attack-double-disadvantage" data-moment="3">
             <span class="moment-number">3</span>
             <span class="moment-label">Attack</span>
           </div>
@@ -246,6 +246,7 @@
       
       <h2 id="multiple-attacks">Multiple Attacks</h2>
       <p>During your turn, you can make multiple attacks by spending Moments. Each attack costs 1 Moment. However, making multiple attacks in quick succession becomes less accurate due to the diminishing returns of rapid strikes.</p>
+      <p><strong>One Primary Attack Per Turn:</strong> By default, you can make one primary attack per turn. Additional attacks are only possible through class features, abilities, or special rules that explicitly grant extra attacks. These extra attacks still suffer stacking Disadvantage as described below.</p>
       
       <h3>Stacking Disadvantage</h3>
       <p>When you make multiple attacks during your turn, each attack after the first suffers stacking Disadvantage. This represents the difficulty of maintaining accuracy and power when attacking rapidly. This system is inspired by <a href="https://nimblerpg.com/" target="_blank" rel="noopener">Nimble (1e)</a>.</p>

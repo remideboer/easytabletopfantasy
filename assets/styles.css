@@ -382,6 +382,22 @@
     background:linear-gradient(135deg, var(--fantasy-burgundy), var(--fantasy-burgundy-light));
   }
   
+  /* Attack states - showing stacking Disadvantage progression */
+  .moment-segment.attack-normal{
+    background:linear-gradient(135deg, var(--fantasy-green), var(--fantasy-green-light));
+    border-color:var(--fantasy-gold);
+  }
+  
+  .moment-segment.attack-disadvantage{
+    background:linear-gradient(135deg, #d4a574, #e6b886);
+    border-color:#b8860b;
+  }
+  
+  .moment-segment.attack-double-disadvantage{
+    background:linear-gradient(135deg, #c97a5a, #d98a6a);
+    border-color:#a85555;
+  }
+  
   .moment-segment.multi-start{
     border-right:1px solid var(--fantasy-gold);
     border-radius:var(--r) 0 0 var(--r);
