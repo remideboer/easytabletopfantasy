@@ -785,6 +785,10 @@
   }
   
   .spell-card-description p{
+    color:var(--fg);
+  }
+  
+  .spell-card-description p{
     margin:0 0 8px;
   }
   
