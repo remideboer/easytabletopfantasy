@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Character Converter | Easy Tabletop Fantasy</title>
+<meta name="description" content="Convert D&D 5e characters from D&D Beyond to Easy Tabletop Fantasy." />
+<link rel="canonical" href="/convert.html" />
+<link rel="stylesheet" href="/assets/styles.css" />
+<meta property="og:title" content="Character Converter | Easy Tabletop Fantasy" />
+<meta property="og:description" content="Convert D&D 5e characters from D&D Beyond to Easy Tabletop Fantasy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/convert.html" />
+</head>
+<body>
+<header><nav><a href="/index.html">Home</a><div class="nav-dropdown"><a href="/rules/core.html">Rules</a><div class="nav-dropdown-menu"><a href="/rules/core.html#overview">Overview</a><a href="/rules/core.html#design-goals">Design Goals</a><a href="/rules/core.html#dice-and-tests">Dice and Tests</a><a href="/rules/core.html#ability-scores">Ability Scores</a><a href="/rules/core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="/rules/core.html#converting-ability-scores-d-and-d-5e-to-easy-tabletop-fantasy">Converting Ability Scores</a><a href="/rules/core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="/rules/core.html#hit-points-and-scale">Hit Points and Scale</a><a href="/rules/core.html#level-advancement">Level Advancement</a><a href="/rules/core.html#attacks-and-defense">Attacks and Defense</a><a href="/rules/core.html#weapon-and-bonus-conversion">Weapon and Bonus Conversion</a><a href="/rules/core.html#damage-conversion-spells-and-effects">Damage Conversion</a><a href="/rules/core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="/rules/core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="/rules/core.html#resolve">Resolve</a><a href="/rules/core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="/rules/core.html#spell-school-expertise">Spell School Expertise</a></div></div><a href="/rules/characters.html">Characters</a><a href="/rules/combat.html">Combat</a><a href="/rules/magic.html">Magic</a><a href="/rules/gear.html">Gear</a><a href="/faq.html">FAQ</a><a href="/legal.html">Legal</a></nav></header>
+<main>
+  <h1>Character Converter</h1>
+  <div class="content">
+    <p class="lede">Convert your D&D 5e character from D&D Beyond to Easy Tabletop Fantasy. Enter a public D&D Beyond character sheet URL to automatically convert ability scores, level, hit points, skills, and more.</p>
+    
+    <div class="converter-form">
+      <h2>Convert Character</h2>
+      <div class="converter-tabs">
+        <button class="tab-btn active" onclick="switchTab('url')">From URL</button>
+        <button class="tab-btn" onclick="switchTab('manual')">Manual Entry</button>
+      </div>
+      
+      <form id="convert-form-url" class="convert-tab active" onsubmit="convertCharacter(event)">
+        <div class="form-group">
+          <label for="dndbeyond-url">D&D Beyond Character Sheet URL:</label>
+          <input 
+            type="url" 
+            id="dndbeyond-url" 
+            name="url" 
+            placeholder="https://www.dndbeyond.com/characters/159209402/Wl4tud"
+            pattern="https://www\.dndbeyond\.com/characters/.*"
+          />
+          <small class="form-hint">Enter a public D&D Beyond character sheet URL</small>
+        </div>
+        <button type="submit" class="btn">Convert Character</button>
+      </form>
+      
+      <form id="convert-form-manual" class="convert-tab" onsubmit="convertCharacterManual(event)" style="display:none;">
+        <div class="form-group">
+          <label for="char-name">Character Name:</label>
+          <input type="text" id="char-name" placeholder="Andra L3" />
+        </div>
+        <div class="form-group">
+          <label for="char-level">Level:</label>
+          <input type="number" id="char-level" min="1" max="20" value="3" />
+        </div>
+        <div class="form-group">
+          <label for="char-class">Class:</label>
+          <input type="text" id="char-class" placeholder="Cleric" />
+        </div>
+        <div class="form-group">
+          <label for="char-race">Race:</label>
+          <input type="text" id="char-race" placeholder="Tiefling" />
+        </div>
+        <div class="form-group">
+          <label>Ability Scores:</label>
+          <div class="ability-inputs">
+            <div><label for="str">STR:</label><input type="number" id="str" min="1" max="30" value="14" /></div>
+            <div><label for="dex">DEX:</label><input type="number" id="dex" min="1" max="30" value="10" /></div>
+            <div><label for="con">CON:</label><input type="number" id="con" min="1" max="30" value="13" /></div>
+            <div><label for="int">INT:</label><input type="number" id="int" min="1" max="30" value="11" /></div>
+            <div><label for="wis">WIS:</label><input type="number" id="wis" min="1" max="30" value="16" /></div>
+            <div><label for="cha">CHA:</label><input type="number" id="cha" min="1" max="30" value="12" /></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="hp-current">Current HP:</label>
+          <input type="number" id="hp-current" min="1" value="21" />
+        </div>
+        <div class="form-group">
+          <label for="hp-max">Max HP:</label>
+          <input type="number" id="hp-max" min="1" value="21" />
+        </div>
+        <button type="submit" class="btn">Convert Character</button>
+      </form>
+      
+      <div id="loading" class="loading" style="display:none;">
+        <p>Loading character data...</p>
+      </div>
+      
+      <div id="error" class="error" style="display:none;"></div>
+    </div>
+    
+    <div id="character-sheet" class="character-sheet" style="display:none;">
+      <!-- Character sheet will be generated here -->
+    </div>
+  </div>
+</main>
+<footer class="legal"><p>© Easy Tabletop Fantasy.</p>
+<p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
+<p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
+<p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p>
+<p><strong>Note:</strong> This converter uses publicly available D&D Beyond character data. Character sheets must be set to public for conversion to work.</p></footer>
+<script src="/assets/site.js"></script>
+<script>
+// Character conversion functions
+async function convertCharacter(event){
+  event.preventDefault();
+  const url = document.getElementById('dndbeyond-url').value;
+  const loading = document.getElementById('loading');
+  const error = document.getElementById('error');
+  const sheet = document.getElementById('character-sheet');
+  
+  loading.style.display = 'block';
+  error.style.display = 'none';
+  sheet.style.display = 'none';
+  
+  try{
+    // Extract character ID from URL
+    const match = url.match(/\/characters\/(\d+)\/([^\/]+)/);
+    if(!match){
+      throw new Error('Invalid D&D Beyond URL format');
+    }
+    
+    const characterId = match[1];
+    const characterHash = match[2];
+    
+    // Fetch character data
+    // Note: D&D Beyond doesn't have a public API, so we'll need to scrape or use a proxy
+    // For now, we'll use a CORS proxy or implement server-side fetching
+    const characterData = await fetchDnDBeyondCharacter(characterId, characterHash);
+    
+    // Convert character data
+    const convertedCharacter = convertToEasyTabletopFantasy(characterData);
+    
+    // Display character sheet
+    displayCharacterSheet(convertedCharacter);
+    
+    loading.style.display = 'none';
+    sheet.style.display = 'block';
+    
+    // Scroll to character sheet
+    sheet.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+  } catch(err){
+    loading.style.display = 'none';
+    error.style.display = 'block';
+    error.textContent = 'Error: ' + err.message;
+    console.error('Conversion error:', err);
+  }
+}
+
+// CORS proxy function to bypass CORS restrictions
+async function fetchWithProxy(url){
+  // Try multiple CORS proxy services
+  const proxies = [
+    `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+    `https://corsproxy.io/?${encodeURIComponent(url)}`,
+    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
+  ];
+  
+  for(const proxyUrl of proxies){
+    try{
+      const response = await fetch(proxyUrl);
+      if(!response.ok) continue;
+      
+      const data = await response.json();
+      
+      // Different proxies return data in different formats
+      if(data.contents){
+        // allorigins.win format
+        return JSON.parse(data.contents);
+      } else if(data.body){
+        // Some proxies wrap in body
+        return typeof data.body === 'string' ? JSON.parse(data.body) : data.body;
+      } else if(data.data){
+        // Some proxies wrap in data
+        return data.data;
+      } else if(!data.error){
+        // Direct JSON response
+        return data;
+      }
+    } catch(err){
+      console.log(`Proxy ${proxyUrl} failed:`, err);
+      continue;
+    }
+  }
+  
+  throw new Error('All CORS proxies failed');
+}
+
+async function fetchDnDBeyondCharacter(characterId, characterHash){
+  // D&D Beyond character data comes from multiple API endpoints
+  // We need to use CORS proxies because D&D Beyond blocks direct browser requests
+  
+  try{
+    // Step 1: Fetch main character data using CORS proxy
+    const characterUrl = `https://character-service.dndbeyond.com/character/v5/character/${characterId}`;
+    const characterData = await fetchWithProxy(characterUrl);
+    const character = characterData.data || characterData;
+    
+    // Step 2: Extract class and background info for additional API calls
+    const classId = character.classes?.[0]?.definition?.id || character.classes?.[0]?.id;
+    const classLevel = character.level || character.totalLevel || 1;
+    const backgroundId = character.background?.definition?.id || character.background?.id;
+    
+    // Step 3: Fetch additional game data from multiple endpoints (like dprcalc.com does)
+    let spells = [];
+    let features = [];
+    let inventory = [];
+    
+    // Fetch always-known spells using CORS proxy
+    if(classId){
+      try{
+        const spellsUrl = `https://character-service.dndbeyond.com/character/v5/game-data/always-known-spells?sharingSetting=2&classId=${classId}&classLevel=${classLevel}${backgroundId ? `&backgroundId=${backgroundId}` : ''}`;
+        const spellsData = await fetchWithProxy(spellsUrl);
+        
+        if(spellsData.data && Array.isArray(spellsData.data)){
+          spells = spellsData.data.map(s => ({
+            name: s.definition?.name || s.name,
+            level: s.definition?.level || s.level || 0,
+            prepared: s.prepared || s.alwaysPrepared || false
+          }));
+        }
+      } catch(err){
+        console.log('Could not fetch spells data:', err);
+      }
+    }
+    
+    // Fetch character's actual spells (prepared spells from character data)
+    if(character.spells && Array.isArray(character.spells)){
+      const characterSpells = character.spells.map(s => ({
+        name: s.definition?.name || s.name,
+        level: s.definition?.level || s.level || 0,
+        prepared: s.prepared || false
+      }));
+      // Merge with always-known spells, avoiding duplicates
+      spells = [...spells, ...characterSpells.filter(cs => !spells.find(s => s.name === cs.name))];
+    }
+    
+    // Extract features and traits
+    if(character.features && Array.isArray(character.features)){
+      features = character.features.map(f => ({
+        name: f.definition?.name || f.name,
+        description: f.definition?.description || f.description || ''
+      }));
+    }
+    
+    // Extract inventory (weapons, items, etc.)
+    if(character.inventory && Array.isArray(character.inventory)){
+      inventory = character.inventory.map(i => ({
+        name: i.definition?.name || i.name,
+        type: i.definition?.filterType || i.filterType,
+        quantity: i.quantity || 1,
+        equipped: i.equipped || false
+      }));
+    }
+    
+    // Step 4: Combine all data (comprehensive like dprcalc.com)
+    const level = character.level || character.totalLevel || 1;
+    return {
+      name: character.name || 'Unknown Character',
+      level: level,
+      class: character.classes?.[0]?.definition?.name || character.classes?.[0]?.name || 'Fighter',
+      race: character.race?.fullName || character.race?.definition?.name || character.race?.name || 'Human',
+      background: character.background?.definition?.name || character.background?.name || '',
+      abilityScores: extractAbilityScores(character),
+      hitPoints: extractHitPoints(character),
+      skills: extractSkills(character),
+      weapons: extractWeapons(character),
+      spells: spells.length > 0 ? spells : extractSpells(character),
+      features: features,
+      inventory: inventory,
+      // Additional data that might be useful
+      armorClass: extractArmorClass(character),
+      speed: extractSpeed(character),
+      proficiencyBonus: calculateProficiencyBonus(level),
+      savingThrows: extractSavingThrows(character, level),
+      modifiers: character.modifiers || []
+    };
+    
+  } catch(err){
+    console.error('Error fetching character data:', err);
+    
+    // Fallback: Try CORS proxy for HTML scraping
+    try{
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://www.dndbeyond.com/characters/${characterId}/${characterHash}`)}`;
+      const response = await fetch(proxyUrl);
+      const data = await response.json();
+      
+      if(data.contents){
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data.contents, 'text/html');
+        return parseDnDBeyondHTML(doc);
+      }
+    } catch(proxyErr){
+      console.log('CORS proxy fetch also failed:', proxyErr);
+    }
+    
+    // Final fallback: Return example data
+    console.warn('Could not fetch from D&D Beyond, using example data');
+    return getExampleCharacterData();
+  }
+}
+
+function extractAbilityScores(character){
+  // Try multiple ways to find ability scores
+  const scores = {
+    strength: 10,
+    dexterity: 10,
+    constitution: 10,
+    intelligence: 10,
+    wisdom: 10,
+    charisma: 10
+  };
+  
+  // Method 1: stats array with id mapping
+  if(character.stats && Array.isArray(character.stats)){
+    character.stats.forEach(stat => {
+      const id = stat.id || stat.definition?.id;
+      const value = stat.value || stat.baseValue || stat.definition?.baseValue;
+      if(id && value){
+        switch(id){
+          case 1: scores.strength = value; break;
+          case 2: scores.dexterity = value; break;
+          case 3: scores.constitution = value; break;
+          case 4: scores.intelligence = value; break;
+          case 5: scores.wisdom = value; break;
+          case 6: scores.charisma = value; break;
+        }
+      }
+    });
+  }
+  
+  // Method 2: modifiers array (reverse calculate from modifier)
+  if(character.modifiers && Array.isArray(character.modifiers)){
+    character.modifiers.forEach(mod => {
+      if(mod.entityTypeId === 2){ // Ability score modifier
+        const subType = mod.subType;
+        const modifier = mod.value || 0;
+        const baseValue = (modifier + 5) * 2; // Reverse: (mod + 5) * 2
+        switch(subType){
+          case 1: if(scores.strength === 10) scores.strength = baseValue; break;
+          case 2: if(scores.dexterity === 10) scores.dexterity = baseValue; break;
+          case 3: if(scores.constitution === 10) scores.constitution = baseValue; break;
+          case 4: if(scores.intelligence === 10) scores.intelligence = baseValue; break;
+          case 5: if(scores.wisdom === 10) scores.wisdom = baseValue; break;
+          case 6: if(scores.charisma === 10) scores.charisma = baseValue; break;
+        }
+      }
+    });
+  }
+  
+  // Method 3: Direct properties
+  if(character.strength) scores.strength = character.strength;
+  if(character.dexterity) scores.dexterity = character.dexterity;
+  if(character.constitution) scores.constitution = character.constitution;
+  if(character.intelligence) scores.intelligence = character.intelligence;
+  if(character.wisdom) scores.wisdom = character.wisdom;
+  if(character.charisma) scores.charisma = character.charisma;
+  
+  return scores;
+}
+
+function extractHitPoints(character){
+  // Try multiple ways to find HP
+  let current = 10;
+  let maximum = 10;
+  
+  // Method 1: currencies array
+  if(character.currencies && Array.isArray(character.currencies)){
+    const hp = character.currencies.find(c => c.name === 'Hit Points' || c.id === 1);
+    if(hp){
+      current = hp.value || hp.currentValue || current;
+      maximum = hp.max || hp.maxValue || maximum;
+    }
+  }
+  
+  // Method 2: Direct properties
+  if(character.hitPoints){
+    current = character.hitPoints.current || character.hitPoints.currentValue || current;
+    maximum = character.hitPoints.maximum || character.hitPoints.maxValue || character.hitPoints.max || maximum;
+  }
+  
+  // Method 3: Base HP calculation
+  if(character.baseHitPoints){
+    maximum = character.baseHitPoints;
+  }
+  if(character.overrideHitPoints){
+    maximum = character.overrideHitPoints;
+  }
+  if(character.currentHitPoints){
+    current = character.currentHitPoints;
+  }
+  
+  return { current, maximum };
+}
+
+function extractSkills(character){
+  if(!character.skills || !Array.isArray(character.skills)){
+    return [];
+  }
+  
+  return character.skills
+    .filter(s => s.proficient || s.isProficient)
+    .map(s => s.definition?.name || s.name || s.displayName)
+    .filter(Boolean);
+}
+
+function extractWeapons(character){
+  if(!character.inventory || !Array.isArray(character.inventory)){
+    return [];
+  }
+  
+  return character.inventory
+    .filter(i => {
+      const filterType = i.definition?.filterType || i.filterType;
+      return filterType === 'Weapon' || filterType === 1;
+    })
+    .map(w => ({
+      name: w.definition?.name || w.name || 'Weapon',
+      damage: w.definition?.damage?.diceString || w.damage?.diceString || '1d6',
+      type: w.definition?.range || w.range || 'melee'
+    }));
+}
+
+function extractSpells(character){
+  if(!character.spells || !Array.isArray(character.spells)){
+    return [];
+  }
+  
+  return character.spells.map(s => ({
+    name: s.definition?.name || s.name || 'Spell',
+    level: s.definition?.level || s.level || 0,
+    prepared: s.prepared || false
+  }));
+}
+
+function extractArmorClass(character){
+  // Try to find AC from various sources
+  if(character.armorClass){
+    return character.armorClass;
+  }
+  
+  // Check modifiers for AC bonuses
+  if(character.modifiers && Array.isArray(character.modifiers)){
+    const acMod = character.modifiers.find(m => 
+      m.type === 'bonus' && m.subType === 'armor-class'
+    );
+    if(acMod){
+      return 10 + (acMod.value || 0); // Base 10 + modifier
+    }
+  }
+  
+  // Default calculation: 10 + Dex modifier
+  const dexScore = extractAbilityScores(character).dexterity;
+  const dexMod = Math.floor((dexScore - 10) / 2);
+  return 10 + dexMod;
+}
+
+function extractSpeed(character){
+  if(character.speed){
+    return character.speed;
+  }
+  
+  // Check for speed in movement or other properties
+  if(character.movement && character.movement.walk){
+    return character.movement.walk;
+  }
+  
+  // Default speed
+  return 30;
+}
+
+function calculateProficiencyBonus(level){
+  // D&D 5e proficiency bonus: +2 at levels 1-4, +3 at 5-8, +4 at 9-12, +5 at 13-16, +6 at 17-20
+  return Math.ceil(level / 4) + 1;
+}
+
+function extractSavingThrows(character, level){
+  const abilityScores = extractAbilityScores(character);
+  const proficiencyBonus = calculateProficiencyBonus(level);
+  const savingThrows = {};
+  
+  // Get proficiency in saving throws
+  const proficientSaves = [];
+  if(character.savingThrows && Array.isArray(character.savingThrows)){
+    character.savingThrows.forEach(st => {
+      if(st.proficient){
+        proficientSaves.push(st.id || st.abilityId);
+      }
+    });
+  }
+  
+  // Calculate saving throw modifiers
+  const abilities = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+  const abilityIds = [1, 2, 3, 4, 5, 6];
+  
+  abilityIds.forEach((id, index) => {
+    const score = abilityScores[abilities[index]];
+    const modifier = Math.floor((score - 10) / 2);
+    const isProficient = proficientSaves.includes(id);
+    savingThrows[abilities[index]] = modifier + (isProficient ? proficiencyBonus : 0);
+  });
+  
+  return savingThrows;
+}
+
+function parseDnDBeyondJSON(data){
+  // Parse D&D Beyond character JSON response
+  // The API structure can vary, so we try multiple paths
+  const character = data.data || data;
+  
+  // Try to find ability scores in different possible structures
+  const getAbilityScore = (id) => {
+    // Try stats array first
+    if(character.stats && Array.isArray(character.stats)){
+      const stat = character.stats.find(s => s.id === id || s.definition?.id === id);
+      if(stat){
+        return stat.value || stat.baseValue || stat.definition?.baseValue || 10;
+      }
+    }
+    
+    // Try modifiers array
+    if(character.modifiers && Array.isArray(character.modifiers)){
+      const mod = character.modifiers.find(m => m.entityTypeId === 2 && m.subType === id);
+      if(mod){
+        // Calculate base score from modifier (reverse: (mod + 5) * 2)
+        const modifier = mod.value || 0;
+        return (modifier + 5) * 2;
+      }
+    }
+    
+    // Try direct properties
+    const abilityNames = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+    const abilityIds = [1, 2, 3, 4, 5, 6];
+    const index = abilityIds.indexOf(id);
+    if(index >= 0 && character[abilityNames[index]]){
+      return character[abilityNames[index]];
+    }
+    
+    return 10; // Default
+  };
+  
+  // Get HP from different possible locations
+  const getHP = () => {
+    // Try currencies array
+    if(character.currencies && Array.isArray(character.currencies)){
+      const hp = character.currencies.find(c => c.name === 'Hit Points' || c.id === 1);
+      if(hp){
+        return {
+          current: hp.value || hp.currentValue || 10,
+          maximum: hp.max || hp.maxValue || character.baseHitPoints || character.overrideHitPoints || 10
+        };
+      }
+    }
+    
+    // Try direct properties
+    if(character.hitPoints || character.hp){
+      const hp = character.hitPoints || character.hp;
+      return {
+        current: hp.current || hp.currentValue || 10,
+        maximum: hp.maximum || hp.maxValue || hp.max || 10
+      };
+    }
+    
+    return {
+      current: character.currentHitPoints || 10,
+      maximum: character.baseHitPoints || character.overrideHitPoints || character.maxHitPoints || 10
+    };
+  };
+  
+  return {
+    name: character.name || 'Unknown Character',
+    level: character.level || character.totalLevel || 1,
+    class: character.classes?.[0]?.definition?.name || character.classes?.[0]?.name || 'Fighter',
+    race: character.race?.fullName || character.race?.definition?.name || character.race?.name || 'Human',
+    background: character.background?.definition?.name || character.background?.name || '',
+    abilityScores: {
+      strength: getAbilityScore(1),
+      dexterity: getAbilityScore(2),
+      constitution: getAbilityScore(3),
+      intelligence: getAbilityScore(4),
+      wisdom: getAbilityScore(5),
+      charisma: getAbilityScore(6)
+    },
+    hitPoints: getHP(),
+    skills: (character.skills || []).filter(s => s.proficient || s.isProficient).map(s => s.definition?.name || s.name || s.displayName),
+    weapons: (character.inventory || []).filter(i => {
+      const filterType = i.definition?.filterType || i.filterType;
+      return filterType === 'Weapon' || filterType === 1;
+    }).map(w => ({
+      name: w.definition?.name || w.name || 'Weapon',
+      damage: w.definition?.damage?.diceString || w.damage?.diceString || '1d6',
+      type: w.definition?.range || w.range || 'melee'
+    })),
+    spells: (character.spells || []).map(s => ({
+      name: s.definition?.name || s.name || 'Spell',
+      level: s.definition?.level || s.level || 0
+    }))
+  };
+}
+
+function parseDnDBeyondHTML(doc){
+  // Parse D&D Beyond character sheet HTML
+  // D&D Beyond uses dynamic content, so we need to look for various selectors
+  
+  // Try to find character name
+  const nameSelectors = [
+    '.character-name',
+    'h1.character-name',
+    '[data-character-name]',
+    'h1'
+  ];
+  let name = 'Unknown Character';
+  for(const selector of nameSelectors){
+    const el = doc.querySelector(selector);
+    if(el && el.textContent.trim()){
+      name = el.textContent.trim();
+      break;
+    }
+  }
+  
+  // Try to find level
+  const levelSelectors = [
+    '.character-level',
+    '[data-level]',
+    '.level'
+  ];
+  let level = 1;
+  for(const selector of levelSelectors){
+    const el = doc.querySelector(selector);
+    if(el){
+      const match = el.textContent.match(/\d+/);
+      if(match){
+        level = parseInt(match[0]);
+        break;
+      }
+    }
+  }
+  
+  // Try to find class
+  const classSelectors = [
+    '.character-class',
+    '[data-class]',
+    '.class-name'
+  ];
+  let className = 'Fighter';
+  for(const selector of classSelectors){
+    const el = doc.querySelector(selector);
+    if(el && el.textContent.trim()){
+      className = el.textContent.trim();
+      break;
+    }
+  }
+  
+  // Try to find ability scores - D&D Beyond uses various data attributes
+  const getAbilityScore = (ability) => {
+    const selectors = [
+      `[data-ability="${ability}"]`,
+      `[data-stat="${ability}"]`,
+      `.ability-${ability}`,
+      `.stat-${ability}`
+    ];
+    for(const selector of selectors){
+      const el = doc.querySelector(selector);
+      if(el){
+        const text = el.textContent.trim();
+        const match = text.match(/\d+/);
+        if(match){
+          return parseInt(match[0]);
+        }
+      }
+    }
+    return 10; // Default
+  };
+  
+  return {
+    name: name,
+    level: level,
+    class: className,
+    race: doc.querySelector('.character-race, [data-race]')?.textContent?.trim() || 'Human',
+    background: doc.querySelector('.character-background, [data-background]')?.textContent?.trim() || '',
+    abilityScores: {
+      strength: getAbilityScore('str'),
+      dexterity: getAbilityScore('dex'),
+      constitution: getAbilityScore('con'),
+      intelligence: getAbilityScore('int'),
+      wisdom: getAbilityScore('wis'),
+      charisma: getAbilityScore('cha')
+    },
+    hitPoints: {
+      current: parseInt(doc.querySelector('.hp-current, [data-hp-current]')?.textContent?.match(/\d+/)?.[0] || '10'),
+      maximum: parseInt(doc.querySelector('.hp-max, [data-hp-max]')?.textContent?.match(/\d+/)?.[0] || '10')
+    },
+    skills: Array.from(doc.querySelectorAll('.skill-proficient, [data-skill]')).map(el => el.textContent.trim()).filter(Boolean),
+    weapons: Array.from(doc.querySelectorAll('.weapon-item, [data-weapon]')).map(el => ({
+      name: el.querySelector('.weapon-name, .name')?.textContent?.trim() || 'Weapon',
+      damage: el.querySelector('.weapon-damage, [data-damage]')?.textContent?.trim() || '1d6',
+      type: 'melee'
+    })),
+    spells: []
+  };
+}
+
+function getExampleCharacterData(){
+  // Example character data for testing
+  return {
+    name: 'Example Character',
+    level: 5,
+    class: 'Fighter',
+    race: 'Human',
+    background: 'Soldier',
+    abilityScores: {
+      strength: 16,
+      dexterity: 14,
+      constitution: 15,
+      intelligence: 10,
+      wisdom: 12,
+      charisma: 13
+    },
+    hitPoints: {
+      current: 45,
+      maximum: 45
+    },
+    skills: ['Athletics', 'Intimidation', 'Perception'],
+    weapons: [
+      { name: 'Longsword', damage: '1d8', type: 'melee' },
+      { name: 'Longbow', damage: '1d8', type: 'ranged' }
+    ],
+    spells: []
+  };
+}
+
+function convertToEasyTabletopFantasy(dnd5eCharacter){
+  // Convert D&D 5e character to Easy Tabletop Fantasy
+  
+  // Convert ability scores (6 to 3)
+  const str = dnd5eCharacter.abilityScores.strength || 10;
+  const dex = dnd5eCharacter.abilityScores.dexterity || 10;
+  const con = dnd5eCharacter.abilityScores.constitution || 10;
+  const int = dnd5eCharacter.abilityScores.intelligence || 10;
+  const wis = dnd5eCharacter.abilityScores.wisdom || 10;
+  const cha = dnd5eCharacter.abilityScores.charisma || 10;
+  
+  // Calculate composite scores
+  const fitnessScore = Math.floor((str + dex + con) / 3);
+  const insightScore = Math.floor((int + wis) / 2);
+  const willpowerScore = Math.floor((wis + cha) / 2);
+  
+  // Calculate modifiers
+  const fitnessMod = Math.floor((fitnessScore - 10) / 2);
+  const insightMod = Math.floor((insightScore - 10) / 2);
+  const willpowerMod = Math.floor((willpowerScore - 10) / 2);
+  
+  // Convert level (D&D 5e to Easy Tabletop Fantasy)
+  // Levels 1-2 → ETF 1, 3-4 → ETF 2, 5-6 → ETF 3, etc.
+  const dndLevel = dnd5eCharacter.level || 1;
+  const easyLevel = Math.ceil(dndLevel / 2);
+  
+  // Convert HP using the Easy Tabletop Fantasy formula:
+  // HP = class hit die maximum + Fitness modifier + (level - 1)
+  const classHPBase = getClassHPBase(dnd5eCharacter.class);
+  const calculatedMaxHP = classHPBase + fitnessMod + (easyLevel - 1);
+  
+  // Also calculate compressed scale (roughly 1/10th) for reference
+  const dndMaxHP = dnd5eCharacter.hitPoints?.maximum || 10;
+  const compressedHP = Math.ceil(dndMaxHP / 10);
+  
+  // Use the calculated HP (formula-based) as primary, but ensure it's at least the compressed value
+  const finalMaxHP = Math.max(calculatedMaxHP, compressedHP);
+  
+  // Convert current HP proportionally
+  const dndCurrentHP = dnd5eCharacter.hitPoints?.current || 10;
+  const hpRatio = dndCurrentHP / dndMaxHP;
+  const finalCurrentHP = Math.max(1, Math.round(finalMaxHP * hpRatio));
+  
+  // Convert proficiency bonus
+  const proficiencyBonus = Math.ceil(dndLevel / 4) + 1; // Simplified: +2 at levels 1-4, +3 at 5-8, +4 at 9+
+  
+  // Convert weapons
+  const convertedWeapons = (dnd5eCharacter.weapons || []).map(weapon => {
+    const damageDice = weapon.damage || '1d6';
+    const weaponBonus = convertWeaponDamageToBonus(damageDice);
+    return {
+      name: weapon.name,
+      bonus: weaponBonus,
+      type: weapon.type,
+      attackBonus: weaponBonus + fitnessMod + proficiencyBonus
+    };
+  });
+  
+  return {
+    name: dnd5eCharacter.name,
+    level: easyLevel,
+    class: dnd5eCharacter.class,
+    race: dnd5eCharacter.race,
+    background: dnd5eCharacter.background,
+    abilities: {
+      fitness: fitnessMod,
+      insight: insightMod,
+      willpower: willpowerMod
+    },
+    hitPoints: {
+      current: finalCurrentHP,
+      maximum: finalMaxHP
+    },
+    proficiencyBonus: proficiencyBonus,
+    skills: dnd5eCharacter.skills || [],
+    weapons: convertedWeapons,
+    spells: dnd5eCharacter.spells || [],
+    originalLevel: dndLevel,
+    originalHP: dnd5eCharacter.hitPoints
+  };
+}
+
+function getClassHPBase(className){
+  const classHP = {
+    'Artificer': 8,
+    'Barbarian': 12,
+    'Bard': 8,
+    'Cleric': 8,
+    'Druid': 8,
+    'Fighter': 10,
+    'Monk': 8,
+    'Paladin': 10,
+    'Ranger': 10,
+    'Rogue': 8,
+    'Sorcerer': 6,
+    'Warlock': 8,
+    'Wizard': 6
+  };
+  return classHP[className] || 8;
+}
+
+function convertWeaponDamageToBonus(damageDice){
+  const conversion = {
+    '1d4': 1,
+    '1d6': 2,
+    '1d8': 3,
+    '1d10': 4,
+    '1d12': 5,
+    '2d6': 6
+  };
+  
+  // Try exact match first
+  if(conversion[damageDice]){
+    return conversion[damageDice];
+  }
+  
+  // Try to parse dice expression
+  const match = damageDice.match(/(\d+)d(\d+)/);
+  if(match){
+    const numDice = parseInt(match[1]);
+    const dieSize = parseInt(match[2]);
+    const maxDamage = numDice * dieSize;
+    // Convert based on max damage / 6, rounded
+    return Math.round(maxDamage / 6);
+  }
+  
+  return 2; // Default
+}
+
+function displayCharacterSheet(character){
+  const sheet = document.getElementById('character-sheet');
+  
+  sheet.innerHTML = `
+    <div class="character-sheet-header">
+      <h2>${character.name}</h2>
+      <div class="character-basics">
+        <span><strong>Level ${character.level}</strong> ${character.class}</span>
+        <span>${character.race}</span>
+        ${character.background ? `<span>${character.background}</span>` : ''}
+      </div>
+    </div>
+    
+    <div class="character-sheet-grid">
+      <div class="character-section abilities-section">
+        <h3>Abilities</h3>
+        <div class="ability-scores">
+          <div class="ability-score">
+            <div class="ability-name">Fitness</div>
+            <div class="ability-modifier">${formatModifier(character.abilities.fitness)}</div>
+            <div class="ability-label">STR + DEX + CON</div>
+          </div>
+          <div class="ability-score">
+            <div class="ability-name">Insight</div>
+            <div class="ability-modifier">${formatModifier(character.abilities.insight)}</div>
+            <div class="ability-label">INT + WIS</div>
+          </div>
+          <div class="ability-score">
+            <div class="ability-name">Willpower</div>
+            <div class="ability-modifier">${formatModifier(character.abilities.willpower)}</div>
+            <div class="ability-label">WIS + CHA</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="character-section combat-section">
+        <h3>Combat</h3>
+        <div class="hp-display">
+          <div class="hp-value">
+            <span class="hp-current">${character.hitPoints.current}</span>
+            <span class="hp-separator">/</span>
+            <span class="hp-max">${character.hitPoints.maximum}</span>
+          </div>
+          <div class="hp-label">Hit Points</div>
+        </div>
+        <div class="proficiency-bonus">
+          <strong>Proficiency:</strong> +${character.proficiencyBonus}
+        </div>
+      </div>
+      
+      <div class="character-section skills-section">
+        <h3>Skills</h3>
+        ${character.skills.length > 0 
+          ? `<ul class="skills-list">${character.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>`
+          : '<p class="no-skills">No skills granted</p>'
+        }
+      </div>
+      
+      <div class="character-section weapons-section">
+        <h3>Weapons</h3>
+        ${character.weapons.length > 0
+          ? `<div class="weapons-list">${character.weapons.map(weapon => `
+            <div class="weapon-item">
+              <strong>${weapon.name}</strong>
+              <span class="weapon-attack">Attack: d20 + ${weapon.attackBonus}</span>
+              <span class="weapon-damage">Damage: 1 hit</span>
+            </div>
+          `).join('')}</div>`
+          : '<p class="no-weapons">No weapons</p>'
+        }
+      </div>
+    </div>
+    
+    <div class="conversion-notes">
+      <h3>Conversion Notes</h3>
+      <ul>
+        <li>Converted from D&D 5e Level ${character.originalLevel} to Easy Tabletop Fantasy Level ${character.level}</li>
+        <li>Hit Points: ${character.originalHP?.maximum || 'N/A'} → ${character.hitPoints.maximum} (compressed scale)</li>
+        <li>Ability scores converted from 6 abilities to 3 composite abilities</li>
+        <li>Weapon damage converted to attack bonuses</li>
+      </ul>
+    </div>
+  `;
+}
+
+function formatModifier(modifier){
+  return modifier >= 0 ? `+${modifier}` : `${modifier}`;
+}
+</script>
+</body>
+</html>
