@@ -1166,38 +1166,67 @@
   
   .hp-display{
     text-align:center;
-    padding:20px;
+    padding:16px;
     background:linear-gradient(135deg, rgba(255,255,255,.9), rgba(250,248,244,.8));
     border:2px solid var(--fantasy-gold);
     border-radius:var(--r);
     margin-bottom:16px;
+    box-shadow:0 2px 4px rgba(184,134,11,.1);
+  }
+  
+  .hp-name{
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--fantasy-blue);
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
   }
   
   .hp-value{
     font-size:2.5rem;
     font-weight:700;
     color:var(--fantasy-burgundy);
-    margin-bottom:8px;
+    margin:8px 0;
+    line-height:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
   }
   
-  .hp-current{
-    color:var(--fantasy-green);
+  .hp-number{
+    display:inline-block;
   }
   
-  .hp-separator{
+  .hp-slash{
+    display:inline-block;
     color:var(--muted);
-    margin:0 8px;
+    font-weight:400;
   }
   
-  .hp-max{
+  .hp-labels{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    margin-top:8px;
+  }
+  
+  .hp-label-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+  
+  .hp-label-text{
+    font-style:italic;
+  }
+  
+  .hp-label-value{
+    font-weight:600;
     color:var(--fantasy-burgundy);
-  }
-  
-  .hp-label{
-    font-size:.9rem;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:.1em;
   }
   
   .proficiency-bonus{
@@ -1312,9 +1341,19 @@
   
   .ability-scores-input{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
-    gap:16px;
+    grid-template-columns:repeat(6, 1fr);
+    gap:12px;
     margin:16px 0 24px;
+  }
+  
+  .ability-scores-input .form-group{
+    margin-bottom:0;
+  }
+  
+  .ability-scores-input input{
+    width:100%;
+    padding:8px 12px;
+    font-size:0.9rem;
   }
   
   .calculation-preview{

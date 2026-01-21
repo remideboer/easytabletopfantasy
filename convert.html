@@ -21,16 +21,16 @@
     
     <div class="converter-form">
       <h2>Character Information</h2>
-      <form id="convert-form" onsubmit="convertCharacter(event)">
+      <form id="convert-form">
         <div class="form-group">
           <label for="char-name">Character Name:</label>
-          <input type="text" id="char-name" placeholder="Enter character name" />
+          <input type="text" id="char-name" placeholder="Enter character name" oninput="generateCharacterSheet()" />
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="char-class">Class:</label>
-            <select id="char-class" required>
+            <select id="char-class" required onchange="updateCalculations()">
               <option value="">Select a class</option>
               <option value="Artificer">Artificer</option>
               <option value="Barbarian">Barbarian</option>
@@ -108,30 +108,7 @@
             <input type="number" id="cha" min="1" max="30" value="10" required oninput="updateCalculations()" />
           </div>
         </div>
-        
-        <div id="calculation-preview" class="calculation-preview" style="display:none;">
-          <h3>Conversion Preview</h3>
-          <div class="preview-grid">
-            <div class="preview-item">
-              <strong>Fitness:</strong>
-              <span id="fitness-calculation"></span>
-              <span class="modifier">Modifier: <span id="fitness-mod"></span></span>
-            </div>
-            <div class="preview-item">
-              <strong>Insight:</strong>
-              <span id="insight-calculation"></span>
-              <span class="modifier">Modifier: <span id="insight-mod"></span></span>
-            </div>
-            <div class="preview-item">
-              <strong>Willpower:</strong>
-              <span id="willpower-calculation"></span>
-              <span class="modifier">Modifier: <span id="willpower-mod"></span></span>
-            </div>
-          </div>
-        </div>
-        
-        <button type="submit" class="btn">Generate Character Sheet</button>
-      </form>
+              </form>
     </div>
     
     <div id="character-sheet" class="character-sheet" style="display:none;"></div>
@@ -169,26 +146,8 @@ function updateCalculations(){
   const wis = parseInt(document.getElementById('wis').value) || 10;
   const cha = parseInt(document.getElementById('cha').value) || 10;
   
-  // Calculate composite scores
-  const fitnessScore = Math.floor((str + dex + con) / 3);
-  const insightScore = Math.floor((int + wis) / 2);
-  const willpowerScore = Math.floor((wis + cha) / 2);
-  
-  // Calculate modifiers
-  const fitnessMod = Math.floor((fitnessScore - 10) / 2);
-  const insightMod = Math.floor((insightScore - 10) / 2);
-  const willpowerMod = Math.floor((willpowerScore - 10) / 2);
-  
-  // Update preview
-  document.getElementById('fitness-calculation').textContent = `(${str} + ${dex} + ${con}) / 3 = ${fitnessScore}`;
-  document.getElementById('insight-calculation').textContent = `(${int} + ${wis}) / 2 = ${insightScore}`;
-  document.getElementById('willpower-calculation').textContent = `(${wis} + ${cha}) / 2 = ${willpowerScore}`;
-  
-  document.getElementById('fitness-mod').textContent = formatModifier(fitnessMod);
-  document.getElementById('insight-mod').textContent = formatModifier(insightMod);
-  document.getElementById('willpower-mod').textContent = formatModifier(willpowerMod);
-  
-  document.getElementById('calculation-preview').style.display = 'block';
+  // Generate character sheet dynamically
+  generateCharacterSheet();
 }
 
 function formatModifier(mod){
@@ -215,14 +174,18 @@ function getClassHPBase(className){
   return classHP[className] || 8;
 }
 
-// Convert character
-function convertCharacter(event){
-  event.preventDefault();
-  
+// Generate character sheet dynamically
+function generateCharacterSheet(){
   // Get form values
   const name = document.getElementById('char-name').value || 'Unnamed Character';
   const className = document.getElementById('char-class').value;
   const dndLevel = parseInt(document.getElementById('char-level').value) || 1;
+  
+  // Check if required fields are filled
+  if(!className || !dndLevel){
+    document.getElementById('character-sheet').style.display = 'none';
+    return;
+  }
   
   const str = parseInt(document.getElementById('str').value) || 10;
   const dex = parseInt(document.getElementById('dex').value) || 10;
@@ -275,9 +238,6 @@ function convertCharacter(event){
     },
     classHPBase: classHPBase
   });
-  
-  // Scroll to character sheet
-  document.getElementById('character-sheet').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // Display character sheet
@@ -289,7 +249,7 @@ function displayCharacterSheet(character){
       <h2>${character.name}</h2>
       <div class="character-basics">
         <div><strong>Class:</strong> ${character.class}</div>
-        <div><strong>Level:</strong> ${character.easyLevel} (D&D 5e Level ${character.dndLevel})</div>
+        <div><strong>Level:</strong> ${character.easyLevel}</div>
         <div><strong>Proficiency Bonus:</strong> ${formatModifier(character.proficiencyBonus)}</div>
       </div>
     </div>
@@ -301,42 +261,23 @@ function displayCharacterSheet(character){
           <div class="ability-score">
             <div class="ability-name">Fitness</div>
             <div class="ability-modifier">${formatModifier(character.abilities.fitness)}</div>
-            <div class="ability-label">${character.compositeScores.fitness}</div>
           </div>
           <div class="ability-score">
             <div class="ability-name">Insight</div>
             <div class="ability-modifier">${formatModifier(character.abilities.insight)}</div>
-            <div class="ability-label">${character.compositeScores.insight}</div>
           </div>
           <div class="ability-score">
             <div class="ability-name">Willpower</div>
             <div class="ability-modifier">${formatModifier(character.abilities.willpower)}</div>
-            <div class="ability-label">${character.compositeScores.willpower}</div>
           </div>
-        </div>
-        <div class="conversion-notes">
-          <p><strong>Conversion Details:</strong></p>
-          <ul>
-            <li>Fitness: (${character.abilityScores.str} + ${character.abilityScores.dex} + ${character.abilityScores.con}) / 3 = ${character.compositeScores.fitness} → ${formatModifier(character.abilities.fitness)}</li>
-            <li>Insight: (${character.abilityScores.int} + ${character.abilityScores.wis}) / 2 = ${character.compositeScores.insight} → ${formatModifier(character.abilities.insight)}</li>
-            <li>Willpower: (${character.abilityScores.wis} + ${character.abilityScores.cha}) / 2 = ${character.compositeScores.willpower} → ${formatModifier(character.abilities.willpower)}</li>
-          </ul>
         </div>
       </div>
       
       <div class="character-section combat-section">
         <h3>Combat</h3>
         <div class="hp-display">
-          <div class="hp-value">
-            <span class="hp-current">${character.hitPoints.current}</span>
-            <span class="hp-separator">/</span>
-            <span class="hp-max">${character.hitPoints.maximum}</span>
-          </div>
-          <div class="hp-label">Hit Points</div>
-        </div>
-        <div class="hp-calculation">
-          <p><strong>HP Calculation:</strong></p>
-          <p>${character.classHPBase} (${character.class} base) + ${formatModifier(character.abilities.fitness)} (Fitness) + (${character.easyLevel} - 1) = <strong>${character.hitPoints.maximum}</strong></p>
+          <div class="hp-name">Hit Points</div>
+          <div class="hp-value"><span class="hp-number">${character.hitPoints.maximum}</span><span class="hp-slash">/</span></div>
         </div>
         <div class="proficiency-bonus">
           <strong>Proficiency Bonus:</strong> ${formatModifier(character.proficiencyBonus)}
