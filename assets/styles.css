@@ -1092,9 +1092,17 @@
   
   .character-sheet-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns:2fr 1fr;
     gap:20px;
     margin-top:24px;
+  }
+  
+  .abilities-section{
+    grid-column:1;
+  }
+  
+  .combat-section{
+    grid-column:2;
   }
   
   .character-section{
@@ -1115,8 +1123,10 @@
   
   .ability-scores{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     gap:16px;
+    justify-content:center;
+    flex-wrap:nowrap;
   }
   
   .ability-score{
@@ -1126,10 +1136,12 @@
     border:2px solid var(--fantasy-gold);
     border-radius:var(--r);
     box-shadow:0 2px 4px rgba(184,134,11,.1);
+    flex:1;
+    min-width:0;
   }
   
   .ability-name{
-    font-size:1.1rem;
+    font-size:0.85rem;
     font-weight:700;
     color:var(--fantasy-blue);
     margin-bottom:8px;
@@ -1266,6 +1278,7 @@
     margin-bottom:24px;
   }
   
+  .form-group input[type="text"],
   .form-group input[type="number"],
   .form-group select{
     width:100%;
@@ -1278,6 +1291,7 @@
     transition:border-color .2s ease;
   }
   
+  .form-group input[type="text"]:focus,
   .form-group input[type="number"]:focus,
   .form-group select:focus{
     outline:none;
@@ -1366,6 +1380,11 @@
   @media (max-width:640px){
     .character-sheet-grid{
       grid-template-columns:1fr;
+    }
+    
+    .abilities-section,
+    .combat-section{
+      grid-column:1;
     }
     
     .character-basics{
