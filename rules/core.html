@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Core rules | Easy Tabletop Fantasy</title>
+<meta name="description" content="Core rules for Easy Tabletop Fantasy." />
+<link rel="canonical" href="/rules/core.html" />
+<link rel="stylesheet" href="/assets/styles.css" />
+<meta property="og:title" content="Core rules | Easy Tabletop Fantasy" />
+<meta property="og:description" content="Core rules for Easy Tabletop Fantasy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/rules/core.html" />
+
+</head>
+<body>
+<header><nav><a href="/index.html">Home</a><a href="/rules/index.html" aria-current="page">Rules</a><a href="/faq.html">FAQ</a><a href="/legal.html">Legal</a></nav></header>
+<main><h1>Core rules</h1>
+<div class="layout">
+  <aside class="toc">
+    <h2>On this page</h2>
+    <div data-toc></div>
+  </aside>
+  <div class="content"><p>Here is a revised version in a D&amp;D-style rulebook voice, with headings, short paragraphs, and imperative phrasing:</p>
+<hr>
+<p><strong>EasyDnD Overview</strong></p>
+<p>EasyDnD is a streamlined adaptation of the fifth edition of the Dungeons &amp; Dragons rules, designed for new players and quick-start campaigns. EasyDnD teaches the core gameplay loop quickly and intuitively, without heavy arithmetic, complex corner cases, or excessive dice handling. The focus is on clear choices, consistent procedures, and a strong sense of time and consequence at the table. The standard rules of the fifth edition of Dungeons &amp; Dragons apply, except where this document explicitly replaces or overrides them.</p>
+<hr>
+<h3>Dice and Tests</h3>
+<p>EasyDnD uses the d20 for nearly all resolution.</p>
+<p>All actions, attacks, saving throws, and ability checks are d20 tests. Some spells apply a d4 as a bonus or penalty to a d20 roll; alternatively, you can use a fixed modifier of +4 or −4 in place of the die. EasyDnD does not use separate damage rolls: damage is resolved as <strong>hits</strong>.</p>
+<hr>
+<h3>Ability Scores</h3>
+<p>EasyDnD replaces the six traditional ability scores with three core ability statistics:</p>
+<ul>
+<li><strong>Fitness</strong> combines Strength, Dexterity, and Constitution.</li>
+<li><strong>Insight</strong> reflects the rational aspect of Intelligence and Wisdom.</li>
+<li><strong>Willpower</strong> reflects the mystical and force-of-personality aspect of Wisdom and Charisma.</li>
+</ul>
+<p>EasyDnD uses ability modifiers only. There are no underlying scores and no derived modifiers as in the core fifth edition rules. The value recorded for each ability is the modifier applied to all related tests, attacks, and defenses.</p>
+<hr>
+<h3>Determining Ability Modifiers</h3>
+<p>When you create a character, choose one of the following methods to determine your ability modifiers. In both methods, you work only with modifiers; you do not track ability scores.</p>
+<p><strong>Fixed Array</strong></p>
+<p>Assign the modifiers +2, +1, and +0 to Fitness, Insight, and Willpower in any order. No ability can start higher than +2.</p>
+<p><strong>Point Allocation</strong></p>
+<p>You start with 3 modifier points to distribute among Fitness, Insight, and Willpower.</p>
+<ul>
+<li>Starting value per ability: 0</li>
+<li>Maximum per ability: +2</li>
+<li>Minimum per ability: −1</li>
+<li>You may “borrow” points by lowering an ability below 0, down to a minimum of −1.</li>
+</ul>
+<hr>
+<h3>Converting Ability Scores (D&amp;D 5e to EasyDnD)</h3>
+<p>When you convert an existing fifth edition character, use this procedure to derive the three EasyDnD abilities. This process is only used during conversion; after conversion, you record modifiers only.</p>
+<ol>
+<li><strong>Calculate composite scores.</strong></li>
+</ol>
+<ul>
+<li>Fitness: Add Strength, Dexterity, and Constitution, divide the total by 3, and round down.</li>
+<li>Insight: Add Intelligence and Wisdom, divide the total by 2, and round down.</li>
+<li>Willpower: Add Wisdom and Charisma, divide the total by 2, and round down.</li>
+</ul>
+<ol>
+<li><strong>Determine modifiers.</strong></li>
+<li>For each composite score, determine the modifier using the standard fifth edition formula:</li>
+<li>\[</li>
+<li>\text{modifier} = \lfloor (\text{score} - 10) / 2 \rfloor</li>
+<li>\]</li>
+</ol>
+<p>Record only the resulting three modifiers on the EasyDnD character sheet. The intermediate composite scores are not used in play.</p>
+<p><strong>Example: Converting Ability Scores</strong></p>
+<p>Given the following fifth edition scores: Strength 14, Dexterity 10, Constitution 13, Intelligence 11, Wisdom 16, Charisma 12.</p>
+<ul>
+<li>Fitness = (14 + 10 + 13) / 3 = 37 / 3 = 12 (round down) → modifier +1</li>
+<li>Insight = (11 + 16) / 2 = 27 / 2 = 13 (round down) → modifier +1</li>
+<li>Willpower = (16 + 12) / 2 = 28 / 2 = 14 → modifier +2</li>
+</ul>
+<p>The EasyDnD modifiers are: Fitness +1, Insight +1, Willpower +2.</p>
+<hr>
+<h3>Skills and Ability Checks</h3>
+<p>EasyDnD does not use a fixed skill list like Athletics, Arcana, or Stealth by default. All ability checks are made directly with Fitness, Insight, or Willpower. Classes, backgrounds, and feats can grant specific skills; only those listed skills benefit from the character’s proficiency bonus, which is added to the relevant core ability.</p>
+<p>The core ability always forms the basis of the roll. Skills indicate where a character has additional training or talent and make explicit why the character is good at a particular task. When converting from fifth edition, record only the skills the character actually possesses. This approach keeps character sheets compact and supports clear, consistent roleplaying.</p>
+<p>Because there is no fixed global skill list, new or setting-specific skills can be attached to classes, backgrounds, or feats without friction, making EasyDnD flexible and easy to expand.</p>
+<hr>
+<h3>Hit Points and Scale</h3>
+<p>EasyDnD uses a compressed hit point scale. Most creatures have roughly one-tenth of their fifth edition hit points (rounded up). Player characters track hit points using the following expression:</p>
+<p>\[</p>
+<p>HP = \text{class hit die maximum} + \text{Fitness modifier} + (\text{level} - 1)</p>
+<p>\]</p>
+<p>Damage and healing are expressed in <strong>hits</strong> (or <strong>wounds</strong>) rather than raw numbers.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Class</th><th>HP</th><th>Class</th><th>HP</th></tr></thead>
+<tbody>
+<tr><td>Artificer</td><td>8</td><td>Paladin</td><td>10</td></tr>
+<tr><td>Barbarian</td><td>12</td><td>Ranger</td><td>10</td></tr>
+<tr><td>Bard</td><td>8</td><td>Rogue</td><td>8</td></tr>
+<tr><td>Cleric</td><td>8</td><td>Sorcerer</td><td>6</td></tr>
+<tr><td>Druid</td><td>8</td><td>Warlock</td><td>8</td></tr>
+<tr><td>Fighter</td><td>10</td><td>Wizard</td><td>6</td></tr>
+<tr><td>Monk</td><td>8</td><td></td><td></td></tr>
+</tbody></table></div>
+<hr>
+<h3>Level Advancement</h3>
+<p>EasyDnD characters advance from level 1 to level 10. Every two fifth edition levels combine into one EasyDnD level:</p>
+<ul>
+<li>Levels 1–2 → EasyDnD level 1</li>
+<li>Levels 3–4 → EasyDnD level 2</li>
+<li>Levels 5–6 → EasyDnD level 3</li>
+<li>and so on</li>
+</ul>
+<p>This structure ensures that each new level provides a noticeable increase in power and that class progression, including spellcasting progression, remains coherent and easy to track.</p>
+<hr>
+<h3>Attacks and Defense</h3>
+<p>EasyDnD resolves combat with a single attack roll and fixed damage in hits. On a successful attack roll with a weapon, the target takes 1 hit. A critical hit deals 2 hits. Weapons provide bonuses to hit, not to damage.</p>
+<ul>
+<li>On a failed attack roll: The attack deals no damage.</li>
+<li>On a natural 1: The attacker suffers a critical failure, and the target immediately makes a reaction counter‑attack.</li>
+<li>On a natural 20: The attack deals 2 hits and triggers exploding dice—roll again for a chance to deal an additional hit. Each additional natural 20 continues to add hits.</li>
+</ul>
+<p>When a creature attacks a player character, the character makes a d20 save:</p>
+<p>\[</p>
+<p>d20 + (\text{AC} - 10)</p>
+<p>\]</p>
+<p>The save is rolled against a target number determined by the Game Master. For a creature that would normally attack at +X to hit, the target number is 11 + X.</p>
+<ul>
+<li>On a failed save: The character takes 1 hit.</li>
+<li>On a natural 1: The attack becomes a critical hit, and the character takes 2 hits.</li>
+<li>On a natural 20: The character takes no damage and can immediately make a reaction counter‑attack.</li>
+</ul>
+<p>As an option, a group can instead retain the standard fifth edition Armor Class rules for resolving attacks against player characters.</p>
+<hr>
+<h3>Weapon and Bonus Conversion</h3>
+<p>Weapon damage dice from fifth edition convert to fixed bonuses to hit in EasyDnD:</p>
+<ul>
+<li>Unarmed: +0</li>
+<li>d4: +1</li>
+<li>d6: +2</li>
+<li>d8: +3</li>
+<li>d10: +4</li>
+<li>d12: +5</li>
+<li>2d6: +6</li>
+</ul>
+<p><strong>Example: Weapon Attack Bonus</strong></p>
+<p>A fighter with Fitness +2, proficiency bonus +2, and a shortsword (1d6 damage in fifth edition) has a weapon bonus of +2. The fighter’s attack roll is:</p>
+<p>\[</p>
+<p>d20 + 2 \text{ (weapon)} + 2 \text{ (Fitness)} + 2 \text{ (proficiency)} = d20 + 6</p>
+<p>\]</p>
+<p>On a hit, the attack deals 1 hit of damage. EasyDnD assumes that better weapons improve the chance to hit, while spells generally increase the number of hits dealt and/or apply additional effects.</p>
+<hr>
+<h3>Damage Conversion (Spells and Effects)</h3>
+<p>Damage and healing expressed in dice are converted into hits for EasyDnD. To convert dice-based values from fifth edition:</p>
+<ol>
+<li>Take the maximum total of the dice expression.</li>
+<li>Divide by 6.</li>
+<li>Round the result to the nearest whole number.</li>
+</ol>
+<p>Examples:</p>
+<ul>
+<li>3d4 → maximum 12 → 12 / 6 = 2 hits</li>
+<li>1d8 → maximum 8 → 8 / 6 ≈ 1 hit</li>
+<li>2d8 → maximum 16 → 16 / 6 ≈ 3 hits</li>
+</ul>
+<p>For mixed expressions, convert dice and flat bonuses separately, then add the results.</p>
+<p>Example: 2d4 + 5</p>
+<ul>
+<li>Dice: maximum 8 → 8 / 6 ≈ 1 hit</li>
+<li>Static bonus: 5 / 6 ≈ 1 hit</li>
+<li>Total: 2 hits.</li>
+</ul>
+<hr>
+<h3>Actions and Time (Encounter Mode)</h3>
+<p>EasyDnD resolves turns in <strong>Moments</strong> rather than traditional action types. Each turn consists of 3 Moments. Each Moment represents a chunk of time devoted to an action or movement.</p>
+<ul>
+<li>Move up to your full speed: 1 Moment</li>
+<li>Cast a cantrip or take a bonus action: 1 Moment</li>
+<li>Take an action (attack, interact, etc.): 1 Moment</li>
+<li>Cast a leveled spell: usually 2 Moments unless otherwise noted</li>
+</ul>
+<p>This structure ensures that every choice has a clear time cost and that different actions are easy to compare at the table.</p>
+<hr>
+<h3>Magic and Spell Resources</h3>
+<p>EasyDnD measures a caster’s capacity with <strong>Spell Power</strong>:</p>
+<p>\[</p>
+<p>\text{Spell Power} = 3 \times \text{spellcasting ability modifier}</p>
+<p>\]</p>
+<p>The Spell Power cost of a spell equals its spell level. A spellcaster spends Spell Power to cast spells and regains it through rest and Recovery Points.</p>
+<p><strong>Example: Magic Missile</strong></p>
+<p>Magic Missile costs 1 Spell Power to cast and creates three missiles. Each missile deals 1 hit of damage, automatically hits, and ignores defenses. Each additional Spell Power spent when casting Magic Missile creates one extra missile.</p>
+<p>Spells can also apply additional effects, such as fire, frost, control, or movement, as described in their individual entries.</p>
+<hr>
+<h3>Resolve</h3>
+<p>Resolve represents a character’s growing determination and focus after setbacks. Each time a character fails a d20 test—no matter the type of roll—the character gains 1 Resolve. Resolve can accumulate, up to a maximum of 4.</p>
+<p>When a character with 4 Resolve fails a d20 test, roll a d4. The result becomes the character’s new Resolve value, replacing the previous total. Resolve is then available as a resource to interact with advanced rules, features, or optional systems defined elsewhere in EasyDnD (for example, to boost rolls or activate special abilities).</p>
+<hr>
+<h3>Recovery Points and Rest</h3>
+<p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character’s level. The player can spend Recovery Points to restore hit points and/or Spell Power in any combination. Unspent Recovery Points remain available for later short rests until they are used.</p>
+<p>A character’s maximum Recovery Points equal the character’s level. During a long rest, a character regains half of their total Recovery Points (rounded up), similar to the way hit dice are recovered in the core fifth edition rules.</p>
+<hr>
+<h3>Spell School Expertise</h3>
+<p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school applies double proficiency bonus when calculating both spell attack rolls and spell save DCs for spells of that school.</p>
+<p>The number of spell schools in which a caster is proficient is equal to their spellcasting ability modifier divided by 2, rounded up.</p>
+<hr>
+<h3>Design Goals</h3>
+<p>EasyDnD favors speed of play, consistent resolution, and ease of learning. It uses a single core mechanic, a compressed numerical scale, and a limited set of meaningful decisions. The system is designed so that players always understand what their actions cost, where their capabilities come from, and what effects their choices have on the fiction at the table.</p></div>
+</div></main>
+<footer class="legal"><p>© Easy Tabletop Fantasy.</p>
+<p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
+<p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
+<p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
+<script src="/assets/site.js"></script>
+</body>
+</html>

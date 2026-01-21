@@ -1,0 +1,323 @@
+/* Easy Tabletop Fantasy – clean docs theme (pure CSS)
+   Drop-in replacement for /assets/styles.css
+*/
+:root{
+    color-scheme:light;
+    --bg:#ffffff;
+    --fg:#111111;
+    --muted:#5b6068;
+    --line:#e7e7ea;
+    --soft:#f6f7f9;
+    --soft2:#fbfbfc;
+    --link:#1a1a1a;
+    --max:920px;
+    --r:14px;
+    --r2:18px;
+    --shadow:0 1px 0 rgba(0,0,0,.03),0 10px 30px rgba(0,0,0,.04);
+    --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+    --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    --note-b:#d9e7ff; --note-bg:#f6faff;
+    --ex-b:#eadfbe; --ex-bg:#fffdf6;
+    --warn-b:#f2c2c2; --warn-bg:#fff7f7;
+  }
+
+  :root{
+    --color-primary:#1f2937;
+    --color-secondary:#64748b;
+    --color-focus:#3b82f6;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    line-height:1.55;
+    color:var(--fg);
+    background:linear-gradient(180deg,var(--soft2),var(--bg) 120px);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img,svg,video{max-width:100%;height:auto}
+  a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:2px}
+  a:hover{color:#000}
+  ::selection{background:#e8f0ff}
+  
+  /* Layout */
+  header,main,footer{max-width:var(--max);margin:0 auto;padding:18px}
+  header{
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.8);
+    backdrop-filter:saturate(150%) blur(8px);
+    position:sticky;top:0;z-index:10;
+  }
+  main{padding-top:22px}
+  footer{
+    border-top:1px solid var(--line);
+    font-size:.95rem;
+    color:var(--muted);
+  }
+  
+  /* Nav */
+  nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  nav a{
+    text-decoration:none;
+    padding:8px 10px;
+    border-radius:999px;
+    border:1px solid transparent;
+    color:var(--muted);
+  }
+  nav a:hover{border-color:var(--line);background:rgba(255,255,255,.8);color:var(--fg)}
+  nav a[aria-current="page"]{
+    border-color:var(--line);
+    background:#fff;
+    color:var(--fg);
+    font-weight:600;
+    box-shadow:0 1px 0 rgba(0,0,0,.02);
+  }
+  
+  /* Typography */
+  h1,h2,h3{letter-spacing:-.01em}
+  h1{font-size:1.85rem;line-height:1.15;margin:0 0 10px}
+  h2{font-size:1.25rem;line-height:1.25;margin:20px 0 10px}
+  h3{font-size:1.06rem;line-height:1.3;margin:16px 0 8px}
+  p{margin:0 0 10px;color:var(--fg)}
+  p.lede{font-size:1.05rem;color:var(--muted)}
+  hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+  small,.small{font-size:.95rem;color:var(--muted)}
+  kbd{
+    font-family:var(--mono);
+    font-size:.9em;
+    border:1px solid var(--line);
+    background:#fff;
+    border-bottom-color:#d9d9de;
+    border-radius:8px;
+    padding:2px 6px;
+  }
+  
+  /* Lists */
+  ul,ol{margin:0 0 10px 22px;padding:0}
+  li{margin:0 0 6px}
+  
+  /* Inline code & blocks */
+  code.dice,code{
+    font-family:var(--mono);
+    font-size:.95em;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1px 6px;
+  }
+  pre,pre.formula{
+    font-family:var(--mono);
+    font-size:.95rem;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:var(--r);
+    padding:12px 14px;
+    overflow:auto;
+    margin:0 0 12px;
+    box-shadow:0 1px 0 rgba(0,0,0,.02);
+  }
+  pre code{border:0;background:transparent;padding:0}
+  
+  /* Tables */
+  .table-wrap{
+    overflow:auto;
+    border:1px solid var(--line);
+    border-radius:var(--r);
+    background:#fff;
+    box-shadow:0 1px 0 rgba(0,0,0,.02);
+    margin:0 0 14px;
+  }
+  table{border-collapse:separate;border-spacing:0;width:100%;font-size:.98rem}
+  thead th{
+    position:sticky;top:0; /* helpt bij lange tabellen */
+    background:linear-gradient(180deg,#fff,var(--soft));
+    border-bottom:1px solid var(--line);
+    font-weight:700;
+  }
+  th,td{
+    text-align:left;
+    vertical-align:top;
+    padding:10px 12px;
+    border-bottom:1px solid #f0f0f2;
+  }
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover td{background:rgba(246,247,249,.7)}
+  
+  /* Buttons */
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:9px 12px;
+    background:#fff;
+    text-decoration:none;
+    color:var(--fg);
+    box-shadow:0 1px 0 rgba(0,0,0,.02);
+  }
+  .btn:hover{background:var(--soft);border-color:#dcdce0}
+  .btn:active{transform:translateY(1px)}
+  
+  /* Callouts */
+  .callout{
+    border:1px solid var(--line);
+    border-radius:var(--r2);
+    padding:12px 14px;
+    background:#fff;
+    box-shadow:var(--shadow);
+    margin:0 0 12px;
+  }
+  .callout-title{font-weight:800;margin:0 0 6px;letter-spacing:-.01em}
+  .callout.note{border-color:var(--note-b);background:var(--note-bg)}
+  .callout.example{border-color:var(--ex-b);background:var(--ex-bg)}
+  .callout.warning{border-color:var(--warn-b);background:var(--warn-bg)}
+  .callout p{margin:0 0 8px}
+  .callout p:last-child{margin:0}
+  
+  /* Rules layout + TOC */
+  .layout{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:980px){
+    .layout{grid-template-columns:240px 1fr;gap:18px}
+    .toc{position:sticky;top:86px;align-self:start}
+  }
+  .toc{
+    border:1px solid var(--line);
+    border-radius:var(--r2);
+    padding:12px 12px;
+    background:rgba(255,255,255,.9);
+    box-shadow:var(--shadow);
+  }
+  .toc h2{margin:0 0 10px;font-size:1rem;color:var(--muted);letter-spacing:.02em;text-transform:uppercase}
+  .toc ul{margin:0 0 0 18px}
+  .toc li{margin:0 0 6px}
+  .toc a{color:var(--muted);text-decoration:none}
+  .toc a:hover{color:var(--fg);text-decoration:underline}
+  .toc-h3{margin-left:10px}
+  
+  /* Content “card” feel on rules pages */
+  .content{
+    border:1px solid var(--line);
+    border-radius:var(--r2);
+    background:rgba(255,255,255,.95);
+    padding:16px 16px;
+    box-shadow:var(--shadow);
+  }
+  
+  /* Print */
+  @media print{
+    header,nav,.toc,.btnrow{display:none !important}
+    body{background:#fff}
+    main,footer{max-width:none;padding:0}
+    .content{border:0;box-shadow:none;padding:0}
+    a{text-decoration:none;color:inherit}
+  }
+  
+  /* Dark mode (no tooling) */
+@media (prefers-color-scheme: dark){
+    :root{
+      color-scheme:dark;
+      --bg:#0b0d10;
+      --fg:#e9edf2;
+      --muted:#a6adba;
+      --line:#232834;
+      --soft:#0f1217;
+      --soft2:#0b0d10;
+      --link:#e9edf2;
+      --shadow:0 1px 0 rgba(0,0,0,.25),0 10px 30px rgba(0,0,0,.35);
+      --note-b:#2a3c63; --note-bg:#0e1626;
+      --ex-b:#3e3320; --ex-bg:#14110a;
+      --warn-b:#4b2222; --warn-bg:#160b0b;
+    }
+  
+    body{background:linear-gradient(180deg,var(--soft2),var(--bg) 120px)}
+    header{
+      background:rgba(11,13,16,.7);
+      border-bottom-color:var(--line);
+    }
+    footer{border-top-color:var(--line);color:var(--muted)}
+  
+    a:hover{color:#fff}
+  
+    nav a{color:var(--muted)}
+    nav a:hover{border-color:var(--line);background:rgba(255,255,255,.04);color:var(--fg)}
+    nav a[aria-current="page"]{
+      background:rgba(255,255,255,.06);
+      border-color:var(--line);
+      color:var(--fg);
+      box-shadow:none;
+    }
+  
+    hr{border-top-color:var(--line)}
+  
+    code.dice,code{
+      background:rgba(255,255,255,.04);
+      border-color:var(--line);
+      color:var(--fg);
+    }
+  
+    pre,pre.formula{
+      background:rgba(255,255,255,.03);
+      border-color:var(--line);
+      box-shadow:none;
+    }
+  
+    .table-wrap{
+      border-color:var(--line);
+      background:rgba(255,255,255,.02);
+      box-shadow:none;
+    }
+    table{color:var(--fg)}
+    thead th{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border-bottom-color:var(--line);
+    }
+    th,td{border-bottom-color:rgba(255,255,255,.06)}
+    tbody tr:hover td{background:rgba(255,255,255,.03)}
+  
+    .btn{
+      background:rgba(255,255,255,.04);
+      border-color:var(--line);
+      color:var(--fg);
+      box-shadow:none;
+    }
+    .btn:hover{background:rgba(255,255,255,.07);border-color:#2b3140}
+  
+    .callout{
+      border-color:var(--line);
+      background:rgba(255,255,255,.03);
+      box-shadow:none;
+    }
+    .callout.note{border-color:var(--note-b);background:var(--note-bg)}
+    .callout.example{border-color:var(--ex-b);background:var(--ex-bg)}
+    .callout.warning{border-color:var(--warn-b);background:var(--warn-bg)}
+  
+    .toc{
+      border-color:var(--line);
+      background:rgba(255,255,255,.03);
+      box-shadow:none;
+    }
+    .toc h2{color:var(--muted)}
+    .toc a{color:var(--muted)}
+    .toc a:hover{color:var(--fg)}
+  
+    .content{
+      border-color:var(--line);
+      background:rgba(255,255,255,.03);
+      box-shadow:none;
+    }
+  
+    ::selection{background:#1a2a4a}
+  }
+  
+  @media (prefers-color-scheme: dark){
+    :root{
+      --color-primary:#e5e7eb;
+      --color-secondary:#94a3b8;
+      --color-focus:#60a5fa;
+    }
+  }

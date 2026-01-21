@@ -1,0 +1,25 @@
+# General OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+
+# Node / tooling (future-proof, harmless if unused)
+node_modules/
+dist/
+build/
+.cache/
+
+# Python / virtualenv (voor eventuele tooling)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Cursor / IDE metadata
+.cursor/
+.vscode/
+.idea/
+
+# Project-specific: do not version source packs and drafts
+foundation/
+
