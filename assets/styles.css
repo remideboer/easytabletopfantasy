@@ -570,14 +570,27 @@
   
   /* Print styles for spell cards */
   @media print{
-    header,nav,.toc,.btnrow,.print-controls{display:none !important}
-    body{background:#fff;color:#000}
-    main,footer{max-width:none;padding:0}
-    .content{border:0;box-shadow:none;padding:0;background:#fff}
+    /* Hide all page elements except selected spell cards */
+    header,nav,.toc,.btnrow,.print-controls,footer{display:none !important}
+    h1{display:none !important}
+    body{background:#fff;color:#000;margin:0;padding:0}
+    main{max-width:none;padding:0;margin:0}
+    .content{border:0;box-shadow:none;padding:0;background:#fff;margin:0}
+    .content > p:first-child{display:none !important}
     a{text-decoration:none;color:inherit}
     
     /* Hide unchecked spell cards - fallback for browsers without :has() */
     .spell-card:not(.print-selected){
+      display:none !important;
+    }
+    
+    /* Hide spell level sections that have no selected cards */
+    .spell-level-section:not(:has(.print-selected)){
+      display:none !important;
+    }
+    
+    /* Hide section headers - only show spell cards */
+    .spell-level-section h3{
       display:none !important;
     }
     
@@ -587,6 +600,7 @@
       grid-template-columns:repeat(2, 1fr);
       gap:10px;
       margin:0;
+      padding:0;
       page-break-inside:avoid;
     }
     
@@ -626,13 +640,8 @@
     
     .spell-level-section{
       page-break-after:auto;
-      margin:12px 0;
-    }
-    
-    .spell-level-section h3{
-      page-break-after:avoid;
-      color:#000;
-      border-bottom-color:#000;
+      margin:0;
+      padding:0;
     }
     
     /* Optimize for printing */
@@ -640,8 +649,6 @@
       margin:1.5cm;
       size:A4;
     }
-    
-    h1{color:#000;background:none;-webkit-text-fill-color:#000}
   }
   
   /* Dark mode with fantasy theme */
