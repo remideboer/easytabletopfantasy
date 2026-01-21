@@ -567,6 +567,11 @@
     border-top:1px solid var(--line);
   }
   
+  .print-controls .filter-row:first-of-type{
+    border-top:none;
+    padding-top:0;
+  }
+  
   .print-controls .filter-label{
     font-weight:500;
     color:var(--fantasy-blue);
