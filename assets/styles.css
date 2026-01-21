@@ -250,6 +250,62 @@
   .callout p{margin:0 0 8px}
   .callout p:last-child{margin:0}
   
+  /* Feature highlight callout - special styling */
+  .callout.feature{
+    border:3px solid var(--fantasy-gold);
+    background:linear-gradient(135deg, rgba(184,134,11,.08), rgba(212,175,55,.05));
+    box-shadow:0 4px 16px rgba(184,134,11,.2),0 8px 32px rgba(44,35,22,.15);
+    padding:20px 24px;
+    margin:24px 0;
+  }
+  
+  .callout.feature::before{
+    width:6px;
+    background:linear-gradient(180deg, var(--fantasy-gold), var(--fantasy-gold-light));
+  }
+  
+  .callout.feature .callout-title{
+    color:var(--fantasy-blue);
+    font-size:1.1rem;
+    margin-bottom:12px;
+  }
+  
+  .callout.feature h3{
+    color:var(--fantasy-burgundy);
+    font-size:1rem;
+    margin-top:16px;
+    margin-bottom:8px;
+    font-weight:700;
+  }
+  
+  .callout.feature ul{
+    margin:8px 0 8px 20px;
+    list-style:none;
+    padding-left:0;
+  }
+  
+  .callout.feature ul li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:6px;
+  }
+  
+  .callout.feature ul li::before{
+    content:'✦';
+    position:absolute;
+    left:0;
+    color:var(--fantasy-gold);
+    font-weight:bold;
+  }
+  
+  .callout.feature .summary{
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid rgba(184,134,11,.2);
+    font-style:italic;
+    color:var(--muted);
+  }
+  
   /* Rules layout + TOC */
   .layout{display:grid;grid-template-columns:1fr;gap:14px}
   @media(min-width:980px){
@@ -431,6 +487,29 @@
     .callout.note{border-color:var(--note-b);background:var(--note-bg)}
     .callout.example{border-color:var(--ex-b);background:var(--ex-bg)}
     .callout.warning{border-color:var(--warn-b);background:var(--warn-bg)}
+    
+    .callout.feature{
+      border-color:var(--fantasy-gold);
+      background:linear-gradient(135deg, rgba(212,175,55,.12), rgba(244,208,63,.08));
+      box-shadow:0 4px 16px rgba(212,175,55,.3),0 8px 32px rgba(0,0,0,.4);
+    }
+    
+    .callout.feature::before{
+      background:linear-gradient(180deg, var(--fantasy-gold), var(--fantasy-gold-light));
+    }
+    
+    .callout.feature .callout-title{
+      color:var(--fantasy-blue-light);
+    }
+    
+    .callout.feature h3{
+      color:var(--fantasy-burgundy-light);
+    }
+    
+    .callout.feature .summary{
+      border-top-color:rgba(212,175,55,.3);
+      color:var(--muted);
+    }
   
     .toc{
       border-color:var(--line);
