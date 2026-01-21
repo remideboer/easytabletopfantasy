@@ -33,21 +33,455 @@
         <div class="spell-card">
           <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
           <div class="spell-card-header">
-            <h4 class="spell-card-name">Magic Missile</h4>
+            <h4 class="spell-card-name">Acid Splash</h4>
             <span class="spell-card-level">Cantrip</span>
           </div>
           <div class="spell-card-meta">
+            <span><strong>Classes:</strong> Artificer, Sorcerer, Wizard</span>
+            <span><strong>School:</strong> Evocation</span>
             <span><strong>Casting Time:</strong> 1 Moment</span>
-            <span><strong>Range:</strong> 120 feet</span>
+            <span><strong>Range:</strong> 60 feet</span>
             <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
           </div>
           <div class="spell-card-description">
-            <p>You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1 hit of force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.</p>
-            <p><strong>At Higher Levels:</strong> When you cast this spell using additional Spell Power, you create one extra dart for each additional Spell Power spent.</p>
+            <p>You create an acidic bubble at a point within range, where it explodes in a 5-foot-radius Sphere. Each creature in that Sphere must succeed on a Fitness saving throw or take 1 Acid damage.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
           </div>
         </div>
         
-        <!-- Add more cantrips here -->
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Blade Ward</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>Classes:</strong> Bard, Sorcerer, Warlock, Wizard</span>
+            <span><strong>School:</strong> Abjuration</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Self</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Concentration, up to 1 minute</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Whenever a creature makes an attack roll against you before the spell ends, the attacker subtracts 1d4 from the attack roll.</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Chill Touch</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>Classes:</strong> Sorcerer, Warlock, Wizard</span>
+            <span><strong>School:</strong> Necromancy</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Touch</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Channeling the chill of the grave, make a melee spell attack against a target within reach. On a hit, the target takes 2 Necrotic damage, and it can't regain Hit Points until the end of your next turn.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Dancing Lights</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>Classes:</strong> Artificer, Bard, Sorcerer, Wizard</span>
+            <span><strong>School:</strong> Illusion</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 120 feet</span>
+            <span><strong>Components:</strong> V, S, M (a bit of phosphorus)</span>
+            <span><strong>Duration:</strong> Concentration, up to 1 minute</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You create up to four torch-size lights within range, making them appear as torches, lanterns, or glowing orbs that hover for the duration. Alternatively, you combine the four lights into one glowing Medium form that is vaguely humanlike. Whichever form you choose, each light sheds Dim Light in a 10-foot radius.</p>
+            <p>In a Moment, you can move the lights up to 60 feet to a space within range. A light must be within 20 feet of another light created by this spell, and a light vanishes if it exceeds the spell's range.</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Druidcraft</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>Classes:</strong> Druid</span>
+            <span><strong>School:</strong> Transmutation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 30 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Whispering to the spirits of nature, you create one of the following effects within range.</p>
+            <p><strong>Weather Sensor.</strong> You create a Tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.</p>
+            <p><strong>Bloom.</strong> You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.</p>
+            <p><strong>Sensory Effect.</strong> You create a harmless sensory effect, such as falling leaves, spectral dancing fairies, a gentle breeze, the sound of an animal, or the faint odor of skunk. The effect must fit in a 5-foot Cube.</p>
+            <p><strong>Fire Play.</strong> You light or snuff out a candle, a torch, or a campfire.</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Eldritch Blast</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>Classes:</strong> Warlock</span>
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 120 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You hurl a beam of crackling energy. Make a ranged spell attack against one creature or object in range. On a hit, the target takes 2 Force damage.</p>
+            <p><strong>Cantrip Upgrade:</strong> The spell creates two beams at level 5, three beams at level 11, and four beams at level 17. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Elementalism</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>Classes:</strong> Artificer, Druid, Sorcerer, Wizard</span>
+            <span><strong>School:</strong> Transmutation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 30 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You exert control over the elements, creating one of the following effects within range.</p>
+            <p><strong>Beckon Air.</strong> You create a breeze strong enough to ripple cloth, stir dust, rustle leaves, and close open doors and shutters, all in a 5-foot Cube. Doors and shutters being held open by someone or something aren't affected.</p>
+            <p><strong>Beckon Earth.</strong> You create a thin shroud of dust or sand that covers surfaces in a 5-foot-square area, or you cause a single word to appear in your handwriting in a patch of dirt or sand.</p>
+            <p><strong>Beckon Fire.</strong> You create a thin cloud of harmless embers and colored, scented smoke in a 5-foot Cube. You choose the color and scent, and the embers can light candles, torches, or lamps in that area. The smoke's scent lingers for 1 minute.</p>
+            <p><strong>Beckon Water.</strong> You create a spray of cool mist that lightly dampens creatures and objects in a 5-foot Cube. Alternatively, you create 1 cup of clean water either in an open container or on a surface, and the water evaporates in 1 minute.</p>
+            <p><strong>Sculpt Element.</strong> You cause dirt, sand, fire, smoke, mist, or water that can fit in a 1-foot Cube to assume a crude shape (such as that of a creature) for 1 hour.</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Firebolt</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 120 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 2 Fire damage. A flammable object hit by this spell starts burning if it isn't being worn or carried.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Mind Sliver</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Enchantment</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 60 feet</span>
+            <span><strong>Components:</strong> V</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You try to temporarily sliver the mind of one creature you can see within range. The target must succeed on an Insight saving throw or take 1 Psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Poison Spray</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Necromancy</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 30 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You spray toxic mist at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2 Poison damage.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 2 when you reach levels 5 (4), 11 (6), and 17 (8).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Produce Flame</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Conjuration</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Self</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> 10 minutes</span>
+          </div>
+          <div class="spell-card-description">
+            <p>A flickering flame appears in your hand and remains there for the duration. While there, the flame emits no heat and ignites nothing, and it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The spell ends if you cast it again.</p>
+            <p>Until the spell ends, you can take a Magic action to hurl fire at a creature or an object within 60 feet of you. Make a ranged spell attack. On a hit, the target takes 1 Fire damage.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Ray of Frost</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 60 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1 Cold damage, and its Speed is reduced by 10 feet until the start of your next turn.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Sacred Flame</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 60 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Fitness saving throw or take 1 Radiant damage. The target gains no benefit from Half Cover or Three-Quarters Cover for this save.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Shillelagh</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Transmutation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Self</span>
+            <span><strong>Components:</strong> V, S, M (mistletoe)</span>
+            <span><strong>Duration:</strong> 1 minute</span>
+          </div>
+          <div class="spell-card-description">
+            <p>A Club or Quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Fitness for the attack and damage rolls of melee attacks using that weapon, and the weapon's attack bonus becomes +3. If the attack deals damage, it can be Force damage or the weapon's normal damage type (your choice).</p>
+            <p>The spell ends early if you cast it again or if you let go of the weapon.</p>
+            <p><strong>Cantrip Upgrade:</strong> The attack bonus changes when you reach levels 5 (+4), 11 (+5), and 17 (+6).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Shocking Grasp</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Touch</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Lightning springs from you to a creature that you try to touch. Make a melee spell attack against the target. On a hit, the target takes 1 Lightning damage, and it can't make Reaction Attacks until the start of its next turn.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Sorcerous Burst</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 120 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1 damage of a type you choose: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder.</p>
+            <p>If you roll a 20 for this spell, you can roll another d20, and add it to the damage. When you cast this spell, the maximum number of these d20s you can add to the spell's damage equals your spellcasting ability modifier.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Starry Wisp</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 60 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You launch a mote of light at one creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1 Radiant damage, and until the end of your next turn, it emits Dim Light in a 10-foot radius and can't benefit from the Invisible condition.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Thorn Whip</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Transmutation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 30 feet</span>
+            <span><strong>Components:</strong> V, S, M (the stem of a plant with thorns)</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You create a vine-like whip covered in thorns that lashes out at your command toward a creature in range. Make a melee spell attack against the target. On a hit, the target takes 1 Piercing damage, and if it is Large or smaller, you can pull it up to 10 feet closer to you.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Thunder Clap</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Self</span>
+            <span><strong>Components:</strong> S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Each creature in a 5-foot Emanation originating from you must succeed on a Fitness saving throw or take 1 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Toll the Dead</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Necromancy</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 60 feet</span>
+            <span><strong>Components:</strong> V, S</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You point at one creature you can see within range, and the single chime of a dolorous bell is audible within 10 feet of the target. The target must succeed on a Willpower saving throw or take 1 Necrotic damage. If the target is missing any of its Hit Points, it instead takes 2 Necrotic damage.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by one die when you reach levels 5 (2 or 4), 11 (3 or 6), and 17 (4 or 8).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">True Strike</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Divination</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Self</span>
+            <span><strong>Components:</strong> S, M (a weapon with which you have proficiency and that is worth 1+ CP)</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Guided by a flash of magical insight, you make one attack with the weapon used in the spell's casting. The attack uses your spellcasting ability for the attack and damage rolls instead of using Fitness. If the attack deals damage, it can be Radiant damage or the weapon's normal damage type (your choice).</p>
+            <p><strong>Cantrip Upgrade:</strong> Whether you deal Radiant damage or the weapon's normal damage type, the attack deals extra Radiant damage when you reach levels 5 (1), 11 (2), and 17 (3).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Vicious Mockery</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Enchantment</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> 60 feet</span>
+            <span><strong>Components:</strong> V</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>You unleash a string of insults laced with subtle enchantments at one creature you can see or hear within range. The target must succeed on a Willpower saving throw or take 1 Psychic damage and have Disadvantage on the next attack roll it makes before the end of its next turn.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
+        
+        <div class="spell-card">
+          <input type="checkbox" class="spell-card-checkbox" onchange="updateCount()">
+          <div class="spell-card-header">
+            <h4 class="spell-card-name">Word of Radiance</h4>
+            <span class="spell-card-level">Cantrip</span>
+          </div>
+          <div class="spell-card-meta">
+            <span><strong>School:</strong> Evocation</span>
+            <span><strong>Casting Time:</strong> 1 Moment</span>
+            <span><strong>Range:</strong> Self</span>
+            <span><strong>Components:</strong> V, M (a sunburst token)</span>
+            <span><strong>Duration:</strong> Instantaneous</span>
+          </div>
+          <div class="spell-card-description">
+            <p>Burning radiance erupts from you in a 5-foot Emanation. Each creature of your choice that you can see in it must succeed on a Fitness saving throw or take 1 Radiant damage.</p>
+            <p><strong>Cantrip Upgrade:</strong> The damage increases by 1 when you reach levels 5 (2), 11 (3), and 17 (4).</p>
+          </div>
+        </div>
       </div>
     </div>
     
