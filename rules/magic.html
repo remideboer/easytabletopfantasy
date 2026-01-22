@@ -72,19 +72,6 @@
         <button class="filter-btn" data-filter-type="school" data-school="Necromancy" onclick="toggleSchoolFilter('Necromancy')">Necromancy</button>
         <button class="filter-btn" data-filter-type="school" data-school="Transmutation" onclick="toggleSchoolFilter('Transmutation')">Transmutation</button>
       </div>
-      <div class="filter-row">
-        <span class="filter-label">Filter by type:</span>
-        <button class="filter-btn filter-all active" data-filter-type="spell-type" data-spell-type="all" onclick="toggleSpellTypeFilter('all')">All</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="damage" onclick="toggleSpellTypeFilter('damage')">Damage</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="heal" onclick="toggleSpellTypeFilter('heal')">Heal</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="control" onclick="toggleSpellTypeFilter('control')">Control</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="buff" onclick="toggleSpellTypeFilter('buff')">Buff</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="debuff" onclick="toggleSpellTypeFilter('debuff')">Debuff</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="defense" onclick="toggleSpellTypeFilter('defense')">Defense</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="utility-travel" onclick="toggleSpellTypeFilter('utility-travel')">Utility–Travel</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="utility-info" onclick="toggleSpellTypeFilter('utility-info')">Utility–Info</button>
-        <button class="filter-btn" data-filter-type="spell-type" data-spell-type="utility-creation" onclick="toggleSpellTypeFilter('utility-creation')">Utility–Creation</button>
-      </div>
     </div>
     
     <!-- Cantrips -->
@@ -5918,38 +5905,6 @@ function toggleSchoolFilter(schoolName){
   applyFilter();
 }
 
-function toggleSpellTypeFilter(spellType){
-  const btn = document.querySelector(`.filter-btn[data-filter-type="spell-type"][data-spell-type="${spellType}"]`);
-  const allBtn = document.querySelector('.filter-btn[data-filter-type="spell-type"][data-spell-type="all"]');
-  
-  if(spellType === 'all'){
-    // Toggle all: if active, deselect all; if inactive, select all
-    if(btn.classList.contains('active')){
-      // Deselect all spell type filters
-      document.querySelectorAll('.filter-btn[data-filter-type="spell-type"]').forEach(b => b.classList.remove('active'));
-    } else {
-      // Select all spell type filters
-      document.querySelectorAll('.filter-btn[data-filter-type="spell-type"]').forEach(b => b.classList.add('active'));
-    }
-  } else {
-    // Toggle individual spell type
-    btn.classList.toggle('active');
-    
-    // If all individual spell types are selected, activate "All" button
-    const individualBtns = document.querySelectorAll('.filter-btn[data-filter-type="spell-type"]:not([data-spell-type="all"])');
-    const activeCount = Array.from(individualBtns).filter(b => b.classList.contains('active')).length;
-    
-    if(activeCount === individualBtns.length){
-      allBtn.classList.add('active');
-    } else {
-      allBtn.classList.remove('active');
-    }
-  }
-  
-  // Apply filter based on active buttons
-  applyFilter();
-}
-
 function applyFilter(){
   // Get active level filters
   const activeLevels = new Set();
@@ -5972,17 +5927,9 @@ function applyFilter(){
     if(schoolName) activeSchools.add(schoolName);
   });
   
-  // Get active spell type filters
-  const activeSpellTypes = new Set();
-  document.querySelectorAll('.filter-btn[data-filter-type="spell-type"].active').forEach(btn => {
-    const spellType = btn.getAttribute('data-spell-type');
-    if(spellType) activeSpellTypes.add(spellType);
-  });
-  
   const showAllLevels = activeLevels.has('all') || activeLevels.size === 0;
   const showAllClasses = activeClasses.has('all') || activeClasses.size === 0;
   const showAllSchools = activeSchools.has('all') || activeSchools.size === 0;
-  const showAllSpellTypes = activeSpellTypes.has('all') || activeSpellTypes.size === 0;
   
   // Show/hide spell level sections
   document.querySelectorAll('.spell-level-section').forEach(section => {
@@ -6053,30 +6000,6 @@ function applyFilter(){
           }
           
           if(!matchesSchool){
-            shouldShowCard = false;
-          }
-        }
-        
-        // Check spell type filter (SECONDARY: only applies if other filters match)
-        // Type filter is optional - if no type filters are active, show all cards that match level/class/school
-        if(shouldShowCard && !showAllSpellTypes && activeSpellTypes.size > 0){
-          const spellTypes = card.getAttribute('data-spell-types');
-          let matchesType = false;
-          
-          if(spellTypes){
-            const cardTypes = spellTypes.split(' ');
-            // Check if any of the card's types match active filters
-            for(const cardType of cardTypes){
-              if(activeSpellTypes.has(cardType)){
-                matchesType = true;
-                break;
-              }
-            }
-          }
-          
-          // Only hide if type filter is active and doesn't match
-          // If no type filters are active, show all cards that match level/class/school
-          if(!matchesType){
             shouldShowCard = false;
           }
         }
