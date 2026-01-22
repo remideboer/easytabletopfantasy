@@ -1031,6 +1031,46 @@
   .spell-search-input::placeholder{
     color:var(--text-secondary);
   }
+  .toggle-filters-btn{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    border:2px solid var(--fantasy-gold);
+    border-radius:var(--r);
+    background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(250,248,244,.9));
+    color:var(--fantasy-blue);
+    font-weight:500;
+    font-size:0.9em;
+    cursor:pointer;
+    transition:all 0.2s ease;
+    white-space:nowrap;
+    font-family:var(--sans);
+  }
+  .toggle-filters-btn:hover{
+    background:linear-gradient(135deg, rgba(255,255,255,1), rgba(250,248,244,.95));
+    transform:translateY(-1px);
+    box-shadow:0 2px 4px rgba(0,0,0,.1);
+  }
+  .toggle-filters-icon{
+    font-size:0.8em;
+    transition:transform 0.2s ease;
+  }
+  .toggle-filters-text{
+    display:inline-block;
+  }
+  .filters-container{
+    overflow:hidden;
+    transition:max-height 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
+    max-height:1000px;
+    opacity:1;
+  }
+  .filters-container.filters-hidden{
+    max-height:0;
+    opacity:0;
+    margin-bottom:0;
+    padding-top:0;
+  }
   
   @media (prefers-color-scheme: dark){
     .spell-search-input{
@@ -1040,19 +1080,34 @@
     .spell-search-input:focus{
       box-shadow:0 0 0 3px rgba(185,131,255,.2);
     }
+    .toggle-filters-btn{
+      background:linear-gradient(135deg, rgba(30,20,40,.95), rgba(40,30,50,.9));
+      color:var(--text-primary);
+    }
+    .toggle-filters-btn:hover{
+      background:linear-gradient(135deg, rgba(30,20,40,1), rgba(40,30,50,.95));
+    }
   }
   
   @media (max-width: 600px){
     .print-controls .search-row{
-      flex-direction:column;
-      align-items:stretch;
+      flex-wrap:wrap;
       gap:8px;
     }
     .search-label{
-      margin-bottom:4px;
+      width:100%;
+      margin-bottom:0;
     }
     .spell-search-input{
       max-width:100%;
+      flex:1 1 auto;
+      min-width:200px;
+    }
+    .toggle-filters-btn{
+      flex:0 0 auto;
+    }
+    .toggle-filters-text{
+      display:none;
     }
   }
   
@@ -1065,12 +1120,21 @@
     border-top:1px solid var(--line);
   }
   
-  .print-controls .search-row + .filter-row{
+  .filters-container{
     border-top:1px solid var(--line);
     padding-top:8px;
   }
   
-  .print-controls .filter-row:first-of-type{
+  .filters-container .filter-row{
+    border-top:none;
+    padding-top:8px;
+  }
+  
+  .filters-container .filter-row:first-of-type{
+    padding-top:0;
+  }
+  
+  .filters-container.filters-hidden{
     border-top:none;
     padding-top:0;
   }

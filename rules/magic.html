@@ -23,6 +23,10 @@
       <div class="search-row">
         <label for="spell-search" class="search-label">Search spells:</label>
         <input type="text" id="spell-search" class="spell-search-input" placeholder="Type spell name to search..." oninput="handleSearchInput()" />
+        <button id="toggle-filters-btn" class="toggle-filters-btn" onclick="toggleFilters()" title="Show/Hide filters">
+          <span class="toggle-filters-icon">▼</span>
+          <span class="toggle-filters-text">Filters</span>
+        </button>
       </div>
       <div class="control-row">
         <button onclick="selectAll()">Select All</button>
@@ -37,6 +41,7 @@
           <span class="toggle-label">Show D&D 5e Spell Descriptions</span>
         </label>
       </div>
+      <div id="filters-container" class="filters-container">
       <div class="filter-row">
         <span class="filter-label">Filter by level:</span>
         <button class="filter-btn filter-all active" data-filter-type="level" data-level="all" onclick="toggleLevelFilter('all')">All</button>
@@ -75,6 +80,7 @@
         <button class="filter-btn" data-filter-type="school" data-school="Illusion" onclick="toggleSchoolFilter('Illusion')">Illusion</button>
         <button class="filter-btn" data-filter-type="school" data-school="Necromancy" onclick="toggleSchoolFilter('Necromancy')">Necromancy</button>
         <button class="filter-btn" data-filter-type="school" data-school="Transmutation" onclick="toggleSchoolFilter('Transmutation')">Transmutation</button>
+      </div>
       </div>
     </div>
     
@@ -6124,12 +6130,43 @@ async function toggle5eDescriptions(){
   });
 }
 
+// Toggle filters visibility
+function toggleFilters(){
+  const container = document.getElementById('filters-container');
+  const btn = document.getElementById('toggle-filters-btn');
+  const icon = btn.querySelector('.toggle-filters-icon');
+  const isHidden = container.classList.contains('filters-hidden');
+  
+  if(isHidden){
+    container.classList.remove('filters-hidden');
+    icon.textContent = '▼';
+    btn.setAttribute('title', 'Hide filters');
+    localStorage.setItem('spellFiltersVisible', 'true');
+  } else {
+    container.classList.add('filters-hidden');
+    icon.textContent = '▶';
+    btn.setAttribute('title', 'Show filters');
+    localStorage.setItem('spellFiltersVisible', 'false');
+  }
+}
+
 // Initialize count and filter on load
 document.addEventListener('DOMContentLoaded', function(){
   updateCount();
   applyFilter();
   // Preload spell data
   loadSpellData();
+  
+  // Restore filter visibility state
+  const filtersVisible = localStorage.getItem('spellFiltersVisible');
+  if(filtersVisible === 'false'){
+    const container = document.getElementById('filters-container');
+    const btn = document.getElementById('toggle-filters-btn');
+    const icon = btn.querySelector('.toggle-filters-icon');
+    container.classList.add('filters-hidden');
+    icon.textContent = '▶';
+    btn.setAttribute('title', 'Show filters');
+  }
 });
 </script>
 </body>
