@@ -1790,6 +1790,11 @@
       border-top-color:var(--fantasy-gold);
       background:linear-gradient(135deg, rgba(26,22,16,.95), rgba(31,26,20,.9));
     }
+
+    .spell-card-description p{
+      color:#504127;
+      font-size:.85rem;
+    }
   
     ::selection{background:rgba(212,175,55,.3)}
     
