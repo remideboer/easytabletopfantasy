@@ -20,6 +20,10 @@
     <p>This page contains all spells for Easy Tabletop Fantasy. Select the spells you want to print, then use the print button to generate printable spell cards.</p>
     
     <div class="print-controls">
+      <div class="search-row">
+        <label for="spell-search" class="search-label">Search spells:</label>
+        <input type="text" id="spell-search" class="spell-search-input" placeholder="Type spell name to search..." oninput="handleSearchInput()" />
+      </div>
       <div class="control-row">
         <button onclick="selectAll()">Select All</button>
         <button onclick="deselectAll()">Deselect All</button>
@@ -5905,7 +5909,21 @@ function toggleSchoolFilter(schoolName){
   applyFilter();
 }
 
+// Debounce function for search input
+let searchTimeout = null;
+function handleSearchInput(){
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    applyFilter();
+  }, 150); // Wait 150ms after user stops typing
+}
+
 function applyFilter(){
+  // Get search query
+  const searchInput = document.getElementById('spell-search');
+  const searchQuery = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  const hasSearchQuery = searchQuery.length > 0;
+  
   // Get active level filters
   const activeLevels = new Set();
   document.querySelectorAll('.filter-btn[data-filter-type="level"].active').forEach(btn => {
@@ -5934,81 +5952,92 @@ function applyFilter(){
   // Show/hide spell level sections
   document.querySelectorAll('.spell-level-section').forEach(section => {
     let shouldShowSection = false;
+    let hasVisibleCards = false;
     
-    // Check level filter
-    if(showAllLevels){
-      shouldShowSection = true;
-    } else {
-      const h3 = section.querySelector('h3');
-      if(h3){
-        if(h3.id === 'cantrips' && activeLevels.has('cantrip')){
-          shouldShowSection = true;
-        } else if(h3.id && h3.id.startsWith('level-')){
-          const levelNum = h3.id.replace('level-', '');
-          if(activeLevels.has(levelNum)){
-            shouldShowSection = true;
+    // First, check if any cards match the filters (including search)
+    section.querySelectorAll('.spell-card').forEach(card => {
+      let shouldShowCard = true;
+      
+      // Check search query first (most restrictive)
+      if(hasSearchQuery){
+        const spellNameElement = card.querySelector('.spell-card-name');
+        if(spellNameElement){
+          const spellName = spellNameElement.textContent.trim().toLowerCase();
+          if(!spellName.includes(searchQuery)){
+            shouldShowCard = false;
+          }
+        } else {
+          shouldShowCard = false;
+        }
+      }
+      
+      // Check level filter
+      if(shouldShowCard && !showAllLevels){
+        const h3 = section.querySelector('h3');
+        if(h3){
+          if(h3.id === 'cantrips' && !activeLevels.has('cantrip')){
+            shouldShowCard = false;
+          } else if(h3.id && h3.id.startsWith('level-')){
+            const levelNum = h3.id.replace('level-', '');
+            if(!activeLevels.has(levelNum)){
+              shouldShowCard = false;
+            }
           }
         }
       }
-    }
-    
-    // If section should be shown, check individual spell cards for class and school filters
-    if(shouldShowSection){
-      section.style.display = '';
       
-      // Filter individual spell cards by class and school
-      section.querySelectorAll('.spell-card').forEach(card => {
-        let shouldShowCard = true;
+      // Check class filter (PRIMARY: must match if filter is active)
+      if(shouldShowCard && !showAllClasses){
+        const classesSpan = Array.from(card.querySelectorAll('.spell-card-meta span')).find(span => 
+          span.textContent.includes('Classes:')
+        );
+        let matchesClass = false;
         
-        // Check class filter (PRIMARY: must match if filter is active)
-        if(!showAllClasses){
-          const classesSpan = Array.from(card.querySelectorAll('.spell-card-meta span')).find(span => 
-            span.textContent.includes('Classes:')
-          );
-          let matchesClass = false;
+        if(classesSpan){
+          const classesText = classesSpan.textContent.replace('Classes:', '').trim();
+          const cardClasses = classesText.split(',').map(c => c.trim());
           
-          if(classesSpan){
-            const classesText = classesSpan.textContent.replace('Classes:', '').trim();
-            const cardClasses = classesText.split(',').map(c => c.trim());
-            
-            // Check if any of the card's classes match active filters
-            for(const cardClass of cardClasses){
-              if(activeClasses.has(cardClass)){
-                matchesClass = true;
-                break;
-              }
+          // Check if any of the card's classes match active filters
+          for(const cardClass of cardClasses){
+            if(activeClasses.has(cardClass)){
+              matchesClass = true;
+              break;
             }
-          }
-          
-          if(!matchesClass){
-            shouldShowCard = false;
           }
         }
         
-        // Check school filter
-        if(shouldShowCard && !showAllSchools){
-          const schoolSpan = Array.from(card.querySelectorAll('.spell-card-meta span')).find(span => 
-            span.textContent.includes('School:')
-          );
-          let matchesSchool = false;
-          
-          if(schoolSpan){
-            const schoolText = schoolSpan.textContent.replace('School:', '').trim();
-            if(activeSchools.has(schoolText)){
-              matchesSchool = true;
-            }
-          }
-          
-          if(!matchesSchool){
-            shouldShowCard = false;
+        if(!matchesClass){
+          shouldShowCard = false;
+        }
+      }
+      
+      // Check school filter
+      if(shouldShowCard && !showAllSchools){
+        const schoolSpan = Array.from(card.querySelectorAll('.spell-card-meta span')).find(span => 
+          span.textContent.includes('School:')
+        );
+        let matchesSchool = false;
+        
+        if(schoolSpan){
+          const schoolText = schoolSpan.textContent.replace('School:', '').trim();
+          if(activeSchools.has(schoolText)){
+            matchesSchool = true;
           }
         }
         
-        card.style.display = shouldShowCard ? '' : 'none';
-      });
-    } else {
-      section.style.display = 'none';
-    }
+        if(!matchesSchool){
+          shouldShowCard = false;
+        }
+      }
+      
+      card.style.display = shouldShowCard ? '' : 'none';
+      if(shouldShowCard){
+        hasVisibleCards = true;
+      }
+    });
+    
+    // Show section if it has visible cards
+    section.style.display = hasVisibleCards ? '' : 'none';
   });
   
   // Update count after filtering
