@@ -23,11 +23,16 @@
       <div class="search-row">
         <label for="spell-search" class="search-label">Search spells:</label>
         <input type="text" id="spell-search" class="spell-search-input" placeholder="Type spell name to search..." oninput="handleSearchInput()" />
+        <button id="toggle-print-controls-btn" class="toggle-filters-btn" onclick="togglePrintControls()" title="Show/Hide print controls">
+          <span class="toggle-filters-icon">▼</span>
+          <span class="toggle-filters-text">Controls</span>
+        </button>
         <button id="toggle-filters-btn" class="toggle-filters-btn" onclick="toggleFilters()" title="Show/Hide filters">
           <span class="toggle-filters-icon">▼</span>
           <span class="toggle-filters-text">Filters</span>
         </button>
       </div>
+      <div id="print-controls-container" class="filters-container">
       <div class="control-row">
         <button onclick="selectAll()">Select All</button>
         <button onclick="deselectAll()">Deselect All</button>
@@ -40,6 +45,7 @@
           <span class="toggle-slider"></span>
           <span class="toggle-label">Show D&D 5e Spell Descriptions</span>
         </label>
+      </div>
       </div>
       <div id="filters-container" class="filters-container">
       <div class="filter-row">
@@ -6130,6 +6136,24 @@ async function toggle5eDescriptions(){
   });
 }
 
+// Toggle print controls visibility
+function togglePrintControls(){
+  const container = document.getElementById('print-controls-container');
+  const btn = document.getElementById('toggle-print-controls-btn');
+  const icon = btn.querySelector('.toggle-filters-icon');
+  const isHidden = container.classList.contains('filters-hidden');
+  
+  if(isHidden){
+    container.classList.remove('filters-hidden');
+    icon.textContent = '▼';
+    btn.setAttribute('title', 'Hide print controls');
+  } else {
+    container.classList.add('filters-hidden');
+    icon.textContent = '▶';
+    btn.setAttribute('title', 'Show print controls');
+  }
+}
+
 // Toggle filters visibility
 function toggleFilters(){
   const container = document.getElementById('filters-container');
@@ -6141,12 +6165,10 @@ function toggleFilters(){
     container.classList.remove('filters-hidden');
     icon.textContent = '▼';
     btn.setAttribute('title', 'Hide filters');
-    localStorage.setItem('spellFiltersVisible', 'true');
   } else {
     container.classList.add('filters-hidden');
     icon.textContent = '▶';
     btn.setAttribute('title', 'Show filters');
-    localStorage.setItem('spellFiltersVisible', 'false');
   }
 }
 
@@ -6157,16 +6179,21 @@ document.addEventListener('DOMContentLoaded', function(){
   // Preload spell data
   loadSpellData();
   
-  // Restore filter visibility state
-  const filtersVisible = localStorage.getItem('spellFiltersVisible');
-  if(filtersVisible === 'false'){
-    const container = document.getElementById('filters-container');
-    const btn = document.getElementById('toggle-filters-btn');
-    const icon = btn.querySelector('.toggle-filters-icon');
-    container.classList.add('filters-hidden');
-    icon.textContent = '▶';
-    btn.setAttribute('title', 'Show filters');
-  }
+  // Hide print controls by default
+  const printControlsContainer = document.getElementById('print-controls-container');
+  const printControlsBtn = document.getElementById('toggle-print-controls-btn');
+  const printControlsIcon = printControlsBtn.querySelector('.toggle-filters-icon');
+  printControlsContainer.classList.add('filters-hidden');
+  printControlsIcon.textContent = '▶';
+  printControlsBtn.setAttribute('title', 'Show print controls');
+  
+  // Hide filters by default
+  const filtersContainer = document.getElementById('filters-container');
+  const filtersBtn = document.getElementById('toggle-filters-btn');
+  const filtersIcon = filtersBtn.querySelector('.toggle-filters-icon');
+  filtersContainer.classList.add('filters-hidden');
+  filtersIcon.textContent = '▶';
+  filtersBtn.setAttribute('title', 'Show filters');
 });
 </script>
 </body>
