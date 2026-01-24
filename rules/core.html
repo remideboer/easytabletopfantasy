@@ -94,8 +94,20 @@
 </ul>
 <p>The Easy Tabletop Fantasy modifiers are: Fitness +1, Insight +1, Willpower +2.</p>
 <hr>
+<h3>Proficiency and Advantage</h3>
+<p>Easy Tabletop Fantasy uses a stacking advantage system instead of proficiency bonuses. When you are proficient with something (such as a weapon, armor, skill, or saving throw), you gain advantage on related rolls. Advantage means you roll two d20s and take the higher result.</p>
+<p>Advantage can stack. If you have multiple sources of advantage, you roll additional d20s and take the highest. For example, if you have proficiency (1 advantage) and another source grants advantage, you roll 3d20 and take the highest. This is called "stacking advantage."</p>
+<p>Disadvantage works similarly but in reverse—you roll multiple d20s and take the lowest. Advantage and disadvantage cancel each other out on a one-to-one basis.</p>
+<p>Your proficiency level determines how many advantage dice you gain:</p>
+<ul>
+<li><strong>Proficient:</strong> You have advantage (roll 2d20, take highest)</li>
+<li><strong>Expertise:</strong> You have double advantage (roll 3d20, take highest)</li>
+<li><strong>Mastery:</strong> You have triple advantage (roll 4d20, take highest)</li>
+</ul>
+<p>Proficiency is typically granted by your class, background, or feats. When converting from D&amp;D 5e or Tales of the Valiant, proficiency bonuses are replaced by advantage on the relevant rolls.</p>
+<hr>
 <h3>Skills and Ability Checks</h3>
-<p>Easy Tabletop Fantasy does not use a fixed skill list like Athletics, Arcana, or Stealth by default. All ability checks are made directly with Fitness, Insight, or Willpower. Classes, backgrounds, and feats can grant specific skills; only those listed skills benefit from the character’s proficiency bonus, which is added to the relevant core ability.</p>
+<p>Easy Tabletop Fantasy does not use a fixed skill list like Athletics, Arcana, or Stealth by default. All ability checks are made directly with Fitness, Insight, or Willpower. Classes, backgrounds, and feats can grant specific skills; only those listed skills benefit from the character's proficiency advantage, granting you advantage on ability checks made with that skill.</p>
 <p>The core ability always forms the basis of the roll. Skills indicate where a character has additional training or talent and make explicit why the character is good at a particular task. When converting from fifth edition, record only the skills the character actually possesses. This approach keeps character sheets compact and supports clear, consistent roleplaying.</p>
 <p>Because there is no fixed global skill list, new or setting-specific skills can be attached to classes, backgrounds, or feats without friction, making Easy Tabletop Fantasy flexible and easy to expand.</p>
 <hr>
@@ -185,30 +197,11 @@
     <span class="operator">+</span>
     <span class="variable">ability modifier</span>
     <span class="operator">+</span>
-    <span class="variable">proficiency bonus</span>
+    <span class="variable">(advantage if proficient)</span>
   </span>
 </div>
-<p><strong>Example: Weapon Attack Bonus</strong></p>
-<p>A fighter with Fitness +2, proficiency bonus +2, and a shortsword (1d6 damage in fifth edition) has a weapon bonus of +2. The fighter's attack roll is:</p>
-<div class="formula-box">
-  <span class="formula-label">Attack Roll</span>
-  <span class="formula-equation">
-    <code class="dice">d20</code>
-    <span class="operator">+</span>
-    <span>2</span>
-    <span class="variable">(weapon)</span>
-    <span class="operator">+</span>
-    <span>2</span>
-    <span class="variable">(Fitness)</span>
-    <span class="operator">+</span>
-    <span>2</span>
-    <span class="variable">(proficiency)</span>
-    <span class="operator">=</span>
-    <code class="dice">d20</code>
-    <span class="operator">+</span>
-    <span>6</span>
-  </span>
-</div>
+<p><strong>Example: Weapon Attack Roll</strong></p>
+<p>A fighter with Fitness +2 and a shortsword (attack bonus +2) who is proficient with martial weapons makes an attack roll with advantage (roll 2d20, take highest) + 2 (weapon) + 2 (Fitness) = highest of 2d20 + 4.</p>
 <p>On a hit, the attack deals 1 hit of damage. Easy Tabletop Fantasy assumes that better weapons improve the chance to hit, while spells generally increase the number of hits dealt and/or apply additional effects.</p>
 <hr>
 <h3>Weapon Mastery</h3>
@@ -319,7 +312,7 @@
 <p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. During this rest, however, no HP is restored; HP must be regained separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also restore HP again. The order of recovery during a long rest is always: first hearts, then HP. See the <a href="combat.html#life-and-death-saves">Life and Death Saves</a> section for more details on hearts and death saves.</p>
 <hr>
 <h3>Spell School Expertise</h3>
-<p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school applies double proficiency bonus when calculating both spell attack rolls and spell save DCs for spells of that school.</p>
+<p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school gains double advantage (roll 3d20, take highest) on spell attack rolls for spells of that school, and targets of those spells have disadvantage (roll 2d20, take lowest) on saving throws against them.</p>
 <p>The number of spell schools in which a caster is proficient is equal to their spellcasting ability modifier divided by 2, rounded up.</p></div>
 </div></main>
 <footer class="legal"><p>© Easy Tabletop Fantasy.</p>

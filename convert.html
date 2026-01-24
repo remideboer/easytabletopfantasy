@@ -17,7 +17,7 @@
 <main>
   <h1>Character Converter</h1>
   <div class="content">
-    <p class="lede">Convert your D&D 5e character to Easy Tabletop Fantasy. Enter your ability scores, class, and level to automatically calculate Easy Tabletop Fantasy modifiers, hit points, and proficiency bonus.</p>
+    <p class="lede">Convert your D&D 5e character to Easy Tabletop Fantasy. Enter your ability scores, class, and level to automatically calculate Easy Tabletop Fantasy modifiers and hit points.</p>
     
     <div class="converter-form">
       <h2>Character Information</h2>
@@ -99,8 +99,8 @@
           </div>
           
           <div class="form-group">
-            <label for="proficiency-display">Proficiency Bonus:</label>
-            <div id="proficiency-display" class="proficiency-display">+2</div>
+            <label for="proficiency-display">Proficiency Level:</label>
+            <div id="proficiency-display" class="proficiency-display">1</div>
           </div>
         </div>
         
@@ -138,13 +138,10 @@
   </div>
 </main>
 <script>
-// Calculate proficiency bonus based on D&D 5e level
-function calculateProficiencyBonus(level){
-  if(level >= 17) return 6;
-  if(level >= 13) return 5;
-  if(level >= 9) return 4;
-  if(level >= 5) return 3;
-  return 2;
+// Calculate proficiency level based on ETF level (proficiency level = ETF level, which is D&D level / 2 rounded up)
+function calculateProficiencyLevel(dndLevel){
+  const easyLevel = convertLevel(dndLevel);
+  return easyLevel;
 }
 
 // Convert D&D 5e level to Easy Tabletop Fantasy level
@@ -155,8 +152,8 @@ function convertLevel(dndLevel){
 // Update proficiency display when level changes
 function updateProficiency(){
   const level = parseInt(document.getElementById('char-level').value) || 1;
-  const proficiency = calculateProficiencyBonus(level);
-  document.getElementById('proficiency-display').textContent = `+${proficiency}`;
+  const proficiencyLevel = calculateProficiencyLevel(level);
+  document.getElementById('proficiency-display').textContent = proficiencyLevel;
   updateCalculations();
 }
 
@@ -230,7 +227,7 @@ function generateCharacterSheet(){
   
   // Convert level
   const easyLevel = convertLevel(dndLevel);
-  const proficiencyBonus = calculateProficiencyBonus(dndLevel);
+  const proficiencyLevel = calculateProficiencyLevel(dndLevel);
   
   // Calculate HP
   const classHPBase = getClassHPBase(className);
@@ -245,7 +242,7 @@ function generateCharacterSheet(){
     class: className,
     dndLevel: dndLevel,
     easyLevel: easyLevel,
-    proficiencyBonus: proficiencyBonus,
+    proficiencyLevel: proficiencyLevel,
     ac: ac,
     defenseBonus: defenseBonus,
     abilities: {
@@ -279,7 +276,7 @@ function displayCharacterSheet(character){
       <div class="character-basics">
         <div><strong>Class:</strong> ${character.class}</div>
         <div><strong>Level:</strong> ${character.easyLevel}</div>
-        <div><strong>Proficiency Bonus:</strong> ${formatModifier(character.proficiencyBonus)}</div>
+        <div><strong>Proficiency Level:</strong> ${character.proficiencyLevel} (grants advantage on proficient rolls)</div>
       </div>
     </div>
     
