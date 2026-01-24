@@ -19,7 +19,12 @@
 <div class="content">
   <p class="lede">Equipment and weapons for Easy Tabletop Fantasy characters.</p>
   
-  <h2 id="armor">Armor</h2>
+  <div class="gear-tabs">
+    <button class="tab-btn active" data-tab="armor">Armor</button>
+    <button class="tab-btn" data-tab="weapons">Weapons</button>
+  </div>
+  
+  <div id="armor-tab" class="tab-content active">
   <p>Wearing armor increases your Defense bonus, which improves your Defense roll when you are attacked. When you are attacked, you make a Defense roll (d20 + Defense bonus). Your Defense roll total must meet or beat the attack's target number to avoid damage. So, the higher your Defense bonus, the greater your chance of avoiding damage!</p>
   
   <h3 id="calculating-defense">Calculating Defense</h3>
@@ -120,10 +125,9 @@
   <p><strong>Cumbersome.</strong> This armor is heavy and difficult to move in unless you have the required Fitness modifier. If your Fitness modifier doesn't equal or exceed the Fitness modifier listed in parentheses, your movement speed is reduced by 10 feet while you wear the armor, even if you're proficient with it.</p>
   <p><strong>Natural Materials.</strong> This armor is made from materials like wood, leather, or other organic materials. This renders the item immune to the effects of spells like <em>heat metal</em> or features like the rust monster's Antenna action.</p>
   <p><strong>Noisy.</strong> This armor imposes disadvantage on any ability checks made to avoid notice, like sneaking, hiding, or otherwise attempting to move silently.</p>
+  </div>
   
-  <hr>
-  
-  <h2 id="weapons">Weapons</h2>
+  <div id="weapons-tab" class="tab-content">
   <p>In Easy Tabletop Fantasy, weapons provide bonuses to attack rolls rather than damage dice. All successful weapon attacks deal 1 hit of damage. On a natural 20 (critical hit), the attack deals 2 hits and triggers exploding dice—roll again. If you roll another natural 20, you deal 2 hits again and roll again. This effect stacks, allowing multiple critical hits in a single attack. The weapon's attack bonus is added to your d20 roll along with your Fitness modifier. If you are proficient with the weapon, you also gain advantage on the attack roll (roll 2d20, take highest).</p>
   
   <h3 id="simple-melee">Simple Melee Weapons</h3>
@@ -247,6 +251,7 @@
     </span>
   </div>
   <p>For example, a fighter with Fitness +2 and a shortsword (attack bonus +2) who is proficient with martial weapons makes an attack roll with advantage (roll 2d20, take highest) + 2 (weapon) + 2 (Fitness) = highest of 2d20 + 4. On a successful hit, the attack deals 1 hit of damage.</p>
+  </div>
 </div></main>
 <footer class="legal"><p>© Easy Tabletop Fantasy.</p>
 <p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>

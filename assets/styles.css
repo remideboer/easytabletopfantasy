@@ -1510,6 +1510,21 @@
     font-weight:600;
   }
   
+  .gear-tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px;
+    border-bottom:2px solid var(--fantasy-gold);
+  }
+  
+  .tab-content{
+    display:none;
+  }
+  
+  .tab-content.active{
+    display:block;
+  }
+  
   .ability-inputs{
     display:grid;
     grid-template-columns:repeat(3, 1fr);

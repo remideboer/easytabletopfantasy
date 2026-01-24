@@ -49,4 +49,36 @@
     // DOM already ready, run immediately
     initTOC();
   }
+  
+  // Tab functionality for gear page
+  function initGearTabs(){
+    const tabButtons = document.querySelectorAll('.gear-tabs .tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if(tabButtons.length === 0) return;
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        const targetContent = document.getElementById(targetTab + '-tab');
+        if(targetContent){
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  }
+  
+  // Initialize gear tabs
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initGearTabs);
+  } else {
+    initGearTabs();
+  }
 })();
