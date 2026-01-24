@@ -139,6 +139,142 @@
       
       <div class="lineage-item">
         <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Tiefling</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Tieflings are offspring of humans and fiends. No two tieflings look alike—their fiendish traits manifest inconsistently, with variations like horns, tails, wings, fangs, or claws depending on their infernal bloodline.</p>
+          <p><strong>Your tiefling character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Tieflings mature at the same rate as humans but live a few years longer.</p>
+          <p><strong>Size.</strong> Your size is Medium. Tieflings are similar in size and build to humans.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
+          <p><strong>Darkvision.</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</p>
+          <p><strong>Fiendish Legacy.</strong> You have a fiendish legacy. Choose one legacy from the Fiendish Legacy table. This determines your damage resistance, cantrip, and spells.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Legacy</th>
+                  <th>Resistance</th>
+                  <th>Cantrip</th>
+                  <th>Level 3 Spell</th>
+                  <th>Level 5 Spell</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Abyssal</td>
+                  <td>Poison</td>
+                  <td><em>poison spray</em></td>
+                  <td><em>ray of sickness</em></td>
+                  <td><em>hold person</em></td>
+                </tr>
+                <tr>
+                  <td>Chthonic</td>
+                  <td>Necrotic</td>
+                  <td><em>chill touch</em></td>
+                  <td><em>false life</em></td>
+                  <td><em>ray of enfeeblement</em></td>
+                </tr>
+                <tr>
+                  <td>Infernal</td>
+                  <td>Fire</td>
+                  <td><em>fire bolt</em></td>
+                  <td><em>hellish rebuke</em></td>
+                  <td><em>darkness</em></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Damage Resistance.</strong> You have resistance to the damage type associated with your fiendish legacy.</p>
+          <p><strong>Legacy Spells.</strong> You know the cantrip associated with your fiendish legacy. When you reach 3rd level, you can cast the 1st-level spell associated with your legacy once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the 2nd-level spell associated with your legacy once with this trait and regain the ability to do so when you finish a long rest. Willpower is your spellcasting ability for these spells.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and Infernal.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Dragonborn</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Dragonborn are humanoids with draconic ancestry. They stand well over 6 feet tall and average around 250 pounds. Their small scales, talonlike claws, and draconic features reflect their heritage, though they lack wings or tails.</p>
+          <p><strong>Your dragonborn character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Dragonborn reach adulthood by age 15 and live to around 80 years old.</p>
+          <p><strong>Size.</strong> Your size is Medium. Dragonborn stand well over 6 feet tall and average around 250 pounds.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
+          <p><strong>Draconic Ancestry.</strong> You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. This determines the damage type of your breath weapon and your damage resistance.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Dragon</th>
+                  <th>Damage Type</th>
+                  <th>Breath Weapon (Fitness save)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Black</td>
+                  <td>Acid</td>
+                  <td>5 by 30 ft. line</td>
+                </tr>
+                <tr>
+                  <td>Blue</td>
+                  <td>Lightning</td>
+                  <td>5 by 30 ft. line</td>
+                </tr>
+                <tr>
+                  <td>Brass</td>
+                  <td>Fire</td>
+                  <td>5 by 30 ft. line</td>
+                </tr>
+                <tr>
+                  <td>Bronze</td>
+                  <td>Lightning</td>
+                  <td>5 by 30 ft. line</td>
+                </tr>
+                <tr>
+                  <td>Copper</td>
+                  <td>Acid</td>
+                  <td>5 by 30 ft. line</td>
+                </tr>
+                <tr>
+                  <td>Gold</td>
+                  <td>Fire</td>
+                  <td>15 ft. cone</td>
+                </tr>
+                <tr>
+                  <td>Green</td>
+                  <td>Poison</td>
+                  <td>15 ft. cone</td>
+                </tr>
+                <tr>
+                  <td>Red</td>
+                  <td>Fire</td>
+                  <td>15 ft. cone</td>
+                </tr>
+                <tr>
+                  <td>Silver</td>
+                  <td>Cold</td>
+                  <td>15 ft. cone</td>
+                </tr>
+                <tr>
+                  <td>White</td>
+                  <td>Cold</td>
+                  <td>15 ft. cone</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Breath Weapon.</strong> You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation. When you use your breath weapon, each creature in the area of the exhalation must make a Fitness saving throw. The DC for this saving throw equals 8 + your Fitness modifier + your proficiency bonus. A creature takes 1 hit on a failed save, and no damage on a successful one. The damage increases by 1 hit when you reach 6th level (2 hits), 11th level (3 hits), and 16th level (4 hits). You can't use your breath weapon again until you complete a short or long rest.</p>
+          <p><strong>Damage Resistance.</strong> You have resistance to the damage type associated with your draconic ancestry.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and Draconic.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
           <span class="lineage-title">Eonic Human</span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
