@@ -329,6 +329,50 @@
     width:100%;
     height:auto;
     display:block;
+    position:relative;
+    border:2px solid var(--fantasy-gold);
+    border-radius:var(--r2);
+    background:var(--bg-card);
+    box-shadow:var(--shadow);
+  }
+  
+  @media (prefers-color-scheme: dark){
+    .hero-logo-combined{
+      box-shadow:var(--shadow-strong);
+      border-color:var(--accent-gold-soft);
+      background:var(--bg-card);
+    }
+  }
+  
+  /* Decorative border using SVG pattern */
+  .hero-logo-combined::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    border-radius:var(--r2);
+    padding:2px;
+    background:
+      url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><style>.border-path{fill:none;stroke:%23b8860b;stroke-width:0.8;opacity:0.6;}.corner-ornament{fill:%23b8860b;opacity:0.4;}</style></defs><rect x="5" y="5" width="90" height="90" class="border-path" rx="2"/><path d="M 5 5 Q 5 8 8 8 Q 8 5 5 5" class="corner-ornament"/><path d="M 8 8 Q 8 12 12 12 Q 12 8 8 8" class="corner-ornament" opacity="0.3"/><path d="M 95 5 Q 92 5 92 8 Q 95 8 95 5" class="corner-ornament"/><path d="M 92 8 Q 88 8 88 12 Q 92 12 92 8" class="corner-ornament" opacity="0.3"/><path d="M 5 95 Q 5 92 8 92 Q 8 95 5 95" class="corner-ornament"/><path d="M 8 92 Q 8 88 12 88 Q 12 92 8 92" class="corner-ornament" opacity="0.3"/><path d="M 95 95 Q 92 95 92 92 Q 95 92 95 95" class="corner-ornament"/><path d="M 92 92 Q 88 92 88 88 Q 92 88 92 92" class="corner-ornament" opacity="0.3"/><circle cx="25" cy="5" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="50" cy="5" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="75" cy="5" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="25" cy="95" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="50" cy="95" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="75" cy="95" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="5" cy="25" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="5" cy="50" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="5" cy="75" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="95" cy="25" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="95" cy="50" r="1.5" class="corner-ornament" opacity="0.2"/><circle cx="95" cy="75" r="1.5" class="corner-ornament" opacity="0.2"/></svg>')
+      repeat;
+    background-size:40px 40px;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite:exclude;
+    pointer-events:none;
+    z-index:0;
+  }
+  
+  .hero-logo-combined{
+    position:relative;
+    z-index:1;
   }
   .hero-section-mobile{
     display:flex;
