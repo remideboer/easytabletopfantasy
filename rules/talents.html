@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Talents | Easy Tabletop Fantasy</title>
+<meta name="description" content="Character talents for Easy Tabletop Fantasy." />
+<link rel="canonical" href="rules/talents.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<meta property="og:title" content="Talents | Easy Tabletop Fantasy" />
+<meta property="og:description" content="Character talents for Easy Tabletop Fantasy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/talents.html" />
+</head>
+<body>
+<header><nav><a href="../index.html" class="logo-link"><img src="../assets/easy_table_top_fantasy_emblem.png" alt="Easy Tabletop Fantasy" class="nav-logo" /></a><div class="nav-dropdown"><a href="core.html">Rules</a><div class="nav-dropdown-menu"><a href="core.html#core-game-loop">Core Game Loop</a><a href="core.html#modes-of-play">Modes of Play</a><a href="core.html#dice-and-tests">Dice and Tests</a><a href="core.html#ability-scores">Abilities and Properties</a><a href="core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="core.html#proficiency-and-advantage">Proficiency and Advantage</a><a href="core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="core.html#talents">Talents</a><a href="core.html#hit-points-and-scale">Hit Points and Scale</a><a href="core.html#level-advancement">Level Advancement</a><a href="core.html#attacks-and-defense">Attacks and Defense</a><a href="core.html#weapon-attacks">Weapon Attacks</a><a href="core.html#weapon-mastery">Weapon Mastery</a><a href="core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="core.html#resolve">Resolve</a><a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="characters.html">Characters</a><div class="nav-dropdown-menu"><a href="characters.html">Character Creation</a><a href="lineages.html">Lineages</a><a href="backgrounds.html">Backgrounds</a><a href="talents.html" aria-current="page">Talents</a></div></div><a href="../convert.html">Converter</a><a href="conversion.html">Conversion Guide</a><a href="combat.html">Combat</a><a href="magic.html">Magic</a><a href="gear.html">Gear</a><a href="../faq.html">FAQ</a><a href="../legal.html">Legal</a></nav></header>
+<main>
+  <h1>Talents</h1>
+  <div class="content">
+    <p class="lede">Talents represent the specific ways an adventurer has improved over the course of their adventures. Talents are divided into three categories: magic talents, martial talents, and technical talents. Your class typically determines which talent lists you have access to.</p>
+    
+    <p>Talents are gained in two main ways:</p>
+    <ul>
+      <li>When a character chooses their background during character creation, they select one talent from a list of options provided in the background.</li>
+      <li>When a character class grants an Improvement, they choose a talent from the list specified by their class features—assuming the character meets any necessary prerequisites.</li>
+    </ul>
+    
+    <div class="lineages-controls">
+      <button id="expand-all-talents" class="lineage-control-btn" onclick="expandAllTalents()">Expand All</button>
+      <button id="collapse-all-talents" class="lineage-control-btn" onclick="collapseAllTalents()">Collapse All</button>
+    </div>
+    
+    <h2>Magic Talents</h2>
+    <p>Most magic talents affect a character's spellcasting abilities, but they also include features that strengthen the mind and defend against harmful magic effects.</p>
+    
+    <div class="lineages-container">
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Combat Casting</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Experience on the battlefield has given you superior focus to cast your spells. You gain these benefits:</p>
+          <ul>
+            <li>When you make a Fitness save to maintain concentration on a spell, treat any d20 roll of 7 or less as though you rolled an 8.</li>
+            <li>When a creature provokes an opportunity attack from you, you can use your reaction to cast a cantrip instead of making a melee attack.</li>
+            <li>You can use a shield or weapon you wield as a spellcasting focus. As normal, you can use the same hand or hands holding this focus to perform somatic spell components.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Mental Fortitude</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Through rigid mental exercise, you have fortified yourself against mind-altering effects. You gain these benefits:</p>
+          <ul>
+            <li>Once per short rest, when you fail an Insight or Willpower save, you can choose to reroll the save and take the new result.</li>
+            <li>When you start your turn charmed, frightened, paralyzed, or stunned, you gain 1 Resolve.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Ritualist</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Spellcasting Class Feature</p>
+          <p>Your study of magic has unlocked the mysteries of ritual spells. When you gain this talent, you also gain a ritual book, which contains the rituals you know. To cast a ritual spell, you must have your ritual book in hand.</p>
+          <p>Choose a spell source: Arcane, Divine, Primordial, or Wyrd. You must choose your rituals from that source's spell list. Regardless of which source you choose, you use your normal spellcasting ability for these spells.</p>
+          <p>When you gain your ritual book, add one ritual of each spell circle you have already unlocked via your spellcasting class. For example, a cleric who selects this talent at 4th level has spell slots for 1st and 2nd circles, so they would add one 1st-circle ritual and one 2nd-circle ritual to their book.</p>
+          <p>Each time you gain access to a new circle of spell slots by gaining a level in your spellcasting class, add one new ritual spell to your book. This new ritual must be from the same circle of magic you originally chose, and it must be of a circle for which you have spell slots.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">School Specialization</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Choose one of the eight schools of magic: abjuration, conjuration, divination, enchantment, evocation, illusion, necromancy, or transmutation. You gain these benefits:</p>
+          <ul>
+            <li>When you cast spells of your chosen school, your spell attack bonus and spell save DC are both increased by 1.</li>
+            <li>If you use a spellbook to cast your spells, the gold and time you must spend copying a spell of that school into your spellbook is halved.</li>
+            <li>When you spend two or more sorcery points while casting a spell of that school, you regain 1 sorcery point at the end of your turn.</li>
+          </ul>
+          <p>You can select this talent multiple times, selecting a different school of magic each time.</p>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <h2>Martial Talents</h2>
+    <p>Martial talents affect a character's combat abilities, including enhancements to overall fitness and the ability to wield weaponry.</p>
+    
+    <div class="lineages-container">
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Armor Expert</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Fitness +1 or higher</p>
+          <p>Your experience with armor allows you to weather mighty onslaughts. While you are wearing medium or heavy armor with which you are proficient, you gain these benefits:</p>
+          <ul>
+            <li>Your Defense bonus increases by 1.</li>
+            <li>You have advantage on Fitness saves to avoid being pulled, shoved, or knocked prone.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Combat Conditioning</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You've endured extensive training to withstand the rigors of combat. You gain these benefits:</p>
+          <ul>
+            <li>Your hit point maximum increases by 2 for each character level you have. Each time you gain a level after taking this talent, your hit point maximum increases by 2.</li>
+            <li>You have 1 extra Recovery Point. Your maximum Recovery Points equals your character level + 1.</li>
+            <li>During a long rest, you regain all of your Recovery Points instead of half.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <h2>Technical Talents</h2>
+    <p>Technical talents affect a character's noncombat abilities, granting utility-based improvements to social encounters, exploration, and object interactions.</p>
+    
+    <div class="lineages-container">
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Covert</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Proficiency with the Stealth skill, Fitness +1 or higher</p>
+          <p>You trained in the art of espionage. You gain these benefits:</p>
+          <ul>
+            <li>You can attempt to hide while in three-quarters cover or while lightly obscured.</li>
+            <li>Creatures that rely on darkvision can't see you while you remain motionless in dim light or darkness. This effect ends if you move, take an action or bonus action, or use a reaction while in the creature's line of sight.</li>
+            <li>You don't have disadvantage on attack rolls and Insight (Perception) checks against targets in dim light.</li>
+            <li>If you make a ranged attack against a creature or if a creature spots you while you are hidden, you can use your reaction to make a Fitness (Stealth) check at disadvantage opposed by the creature's Perception. On a success, you remain hidden and the creature is unaware of your position. Once used on a creature, the target can't be affected by this feature again for 24 hours.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Field Medic</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You trained to provide emergency medical assistance. When you select this talent, you gain these benefits:</p>
+          <ul>
+            <li>When you make an Insight (Medicine) check, treat any d20 roll of 9 or lower as though you rolled a 10.</li>
+            <li>As an action, you can tend to the wounds of a creature you can see and touch. When you do, the creature regains a number of hit points equal to your proficiency level + their Fitness modifier. A creature healed in this way can't receive the benefits of this feature again until it finishes a short or long rest.</li>
+            <li>When you spend hit dice to regain hit points during a short rest, you can reroll a number of dice equal to your proficiency level and must take the new result.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Polyglot</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You have studied language extensively. You can communicate in multiple languages and puzzle out critical information from languages you don't know. When you select this talent, you gain these benefits:</p>
+          <ul>
+            <li>Learn three languages of your choice.</li>
+            <li>When you converse with a creature in a language you both know (other than Common) you have advantage on a single Willpower ability check made to influence or interact with that creature. Once you use this feature, you can't do so again until you finish a long rest.</li>
+            <li>When you make an ability check related to understanding the meaning of a verbal or written language you don't know, you can add your proficiency level to the result. If you have proficiency in a relevant skill or tool, double your proficiency level for the roll.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalent(this)">
+          <span class="lineage-title">Scrutinous</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You have a keen eye for detail. You gain these benefits:</p>
+          <ul>
+            <li>When a creature you can see speaks in a language that you know, you can discern what they are saying even if you can't hear them.</li>
+            <li>You gain a +5 bonus to your passive Perception and passive Investigation.</li>
+            <li>When you spend 1 minute or longer examining an object for fine or hidden details, you can ask your GM one question about it, and they must answer truthfully.</li>
+            <li>If you hear a creature speak for 1 minute or longer, you can mimic its voice. A creature familiar with your target can succeed on an Insight check opposed by your Willpower (Deception) to understand the ruse.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <p><em>Note: Easy Tabletop Fantasy's talent system is based on the talent system found in Tales of the Valiant and the Black Flag Reference Document. For detailed talent descriptions and complete talent lists, refer to those sources or consult with your Game Master.</em></p>
+  </div>
+</main>
+<footer class="legal"><p>© Easy Tabletop Fantasy.</p>
+<p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
+<p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
+<p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
+<script>
+function toggleTalent(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  
+  if(isExpanded){
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function expandAllTalents(){
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+
+function collapseAllTalents(){
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+
+// Initialize: all collapsed by default
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
