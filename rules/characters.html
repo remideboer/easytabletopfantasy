@@ -15,7 +15,153 @@
 </head>
 <body>
 <header><nav><a href="../index.html" class="logo-link"><img src="../assets/easy_table_top_fantasy_emblem.png" alt="Easy Tabletop Fantasy" class="nav-logo" /></a><div class="nav-dropdown"><a href="core.html">Rules</a><div class="nav-dropdown-menu"><a href="core.html#overview">Overview</a><a href="core.html#design-goals">Design Goals</a><a href="core.html#dice-and-tests">Dice and Tests</a><a href="core.html#ability-scores">Ability Scores</a><a href="core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="core.html#converting-ability-scores-d-and-d-5e-to-easy-tabletop-fantasy">Converting Ability Scores</a><a href="core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="core.html#hit-points-and-scale">Hit Points and Scale</a><a href="core.html#level-advancement">Level Advancement</a><a href="core.html#attacks-and-defense">Attacks and Defense</a><a href="core.html#weapon-and-bonus-conversion">Weapon and Bonus Conversion</a><a href="core.html#damage-conversion-spells-and-effects">Damage Conversion</a><a href="core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="core.html#resolve">Resolve</a><a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="core.html#spell-school-expertise">Spell School Expertise</a></div></div><a href="characters.html" aria-current="page">Characters</a><a href="../convert.html">Converter</a><a href="combat.html">Combat</a><a href="magic.html">Magic</a><a href="gear.html">Gear</a><a href="../faq.html">FAQ</a><a href="../legal.html">Legal</a></nav></header>
-<main><h1>Characters</h1><p>This section is being reorganized for the web. For now, see <a href="core.html">Core rules</a> for the canonical text.</p></main>
+<main><h1>Characters</h1>
+<div class="content">
+  <p class="lede">Character creation in Easy Tabletop Fantasy follows the Tales of the Valiant framework, adapted for the streamlined three-ability system. This guide walks you through creating your character step by step.</p>
+  
+  <h2 id="character-creation-overview">Character Creation Overview</h2>
+  <p>Creating a character in Easy Tabletop Fantasy involves the following steps, typically completed in this order:</p>
+  <ol>
+    <li>Character Concept</li>
+    <li>Choose a Class</li>
+    <li>Determine Ability Scores</li>
+    <li>Choose a Lineage</li>
+    <li>Choose a Heritage</li>
+    <li>Choose a Background</li>
+    <li>Determine Starting Equipment</li>
+  </ol>
+  <p>Once your character is created, you'll also need to understand how leveling works for your campaign.</p>
+  
+  <hr>
+  <h2 id="character-concept">Character Concept</h2>
+  <p>Before diving into the mechanical details of character creation, start with a character concept. The most important question to consider is: <strong>what kind of character do you want to play?</strong></p>
+  
+  <h3 id="what-kind-of-character">What Kind of Character?</h3>
+  <p>Think about how your character approaches challenges and combat. This will help guide your class choice and ability score distribution. Common character types include:</p>
+  
+  <p><strong>Melee Combatant:</strong> A character who fights up close with weapons like swords, axes, or hammers. They're often on the front lines, protecting allies and dealing damage in melee. These characters typically prioritize Fitness and might choose classes like Fighter, Barbarian, Paladin, or Monk.</p>
+  
+  <p><strong>Magic User:</strong> A character who casts spells to deal damage, support allies, or control the battlefield. They rely on their spellcasting ability (Insight for most casters, Willpower for Bards, Sorcerers, and Warlocks) and often stay at range. Classes include Wizard, Cleric, Druid, Sorcerer, Warlock, and Bard.</p>
+  
+  <p><strong>Ranged Fighter:</strong> A character who attacks from a distance using bows, crossbows, or thrown weapons. They maintain distance from enemies while dealing consistent damage. Rangers, some Fighters, and characters with ranged weapons fit this role. They typically need good Fitness for accuracy.</p>
+  
+  <p><strong>Sneaky Character:</strong> A character who relies on stealth, cunning, and precision strikes. They might be a Rogue who sneaks around, strikes from shadows, and disables traps, or a character who uses deception and misdirection. These characters often balance Fitness (for stealth and combat) with Insight or Willpower (for social situations and problem-solving).</p>
+  
+  <p><strong>Support Character:</strong> A character who focuses on helping and protecting allies rather than dealing damage themselves. They might heal, buff allies, debuff enemies, or control the battlefield. Clerics, Bards, and some Druids excel at this role, typically prioritizing their spellcasting ability.</p>
+  
+  <p><strong>Hybrid Character:</strong> A character who combines multiple approaches. For example, a Paladin who fights in melee but also casts spells, or a Ranger who uses both ranged weapons and nature magic. These characters often need to balance multiple abilities.</p>
+  
+  <p>Your character type will influence which class you choose and how you distribute your ability modifiers. Don't worry if you're not sure yet—you can refine your concept as you go through character creation.</p>
+  
+  <h3 id="other-considerations">Other Considerations</h3>
+  <p>While the character type is the most important starting point, you might also consider:</p>
+  <ul>
+    <li>What is your character's basic personality? (This can develop during play)</li>
+    <li>What motivates them to adventure? (This can be simple: seeking treasure, protecting others, exploring, etc.)</li>
+    <li>What role do they play in the party? (This often follows from your character type)</li>
+  </ul>
+  <p>Your character concept doesn't need to be fully formed at this stage—it can evolve as you make choices during character creation. However, having a basic idea of your character type helps guide your decisions about class, lineage, heritage, and background, ensuring all the mechanical pieces work together to create a cohesive character.</p>
+  <p>Remember: the mechanical choices you make should support and enhance your character concept, not constrain it. Easy Tabletop Fantasy is designed to be flexible enough to accommodate a wide variety of character ideas.</p>
+  
+  <hr>
+  <h2 id="choose-a-class">Choose a Class</h2>
+  <p>Your class represents your character's profession and primary role in the party. It determines your hit points, proficiencies, class features, and spellcasting ability (if applicable).</p>
+  <p>Easy Tabletop Fantasy uses the standard classes from Tales of the Valiant, adapted for the three-ability system:</p>
+  <ul>
+    <li><strong>Fitness-based classes:</strong> Barbarian, Fighter, Monk, Paladin, Ranger, Rogue</li>
+    <li><strong>Insight-based classes:</strong> Artificer, Cleric, Druid, Wizard</li>
+    <li><strong>Willpower-based classes:</strong> Bard, Sorcerer, Warlock</li>
+  </ul>
+  <p>Your class determines which ability modifier you use for spellcasting, class features, and certain saving throws. Refer to your class description for specific details.</p>
+  
+  <hr>
+  <h2 id="determine-ability-scores">Determine Ability Scores</h2>
+  <p>Easy Tabletop Fantasy uses three core abilities: <strong>Fitness</strong>, <strong>Insight</strong>, and <strong>Willpower</strong>. Unlike traditional systems, you work directly with modifiers, not underlying scores.</p>
+  <p>You have three methods to determine your ability modifiers. Your Game Master will tell you which method to use, or you can choose one that fits your group's play style.</p>
+  
+  <h3 id="three-ways-to-score">Three Ways to Score</h3>
+  
+  <h4 id="method-1-rolling">Method 1: Rolling</h4>
+  <p><em>This method is still being developed. Rolling for ability modifiers in Easy Tabletop Fantasy requires a different approach than traditional systems since we work with modifiers directly.</em></p>
+  <p>For now, groups using this method should use one of the other two methods or work with the Game Master to develop a rolling system that fits the three-ability modifier structure.</p>
+  
+  <h4 id="method-2-point-buy">Method 2: Point-Buy</h4>
+  <p>This method gives you control over your ability modifiers while maintaining balance. You start with 3 modifier points to distribute among Fitness, Insight, and Willpower.</p>
+  <ul>
+    <li><strong>Starting value per ability:</strong> 0</li>
+    <li><strong>Maximum per ability:</strong> +2</li>
+    <li><strong>Minimum per ability:</strong> −1</li>
+    <li>You may "borrow" points by lowering an ability below 0, down to a minimum of −1, to gain more points for other abilities.</li>
+  </ul>
+  <p><strong>Example:</strong> You could create a character with Fitness +2, Insight +1, Willpower 0, or Fitness +2, Insight +2, Willpower −1 (borrowing 1 point from Willpower).</p>
+  
+  <h4 id="method-3-standard-array">Method 3: Standard Array</h4>
+  <p>This is the simplest method and ensures all characters start with balanced modifiers. Assign the modifiers +2, +1, and +0 to Fitness, Insight, and Willpower in any order.</p>
+  <p><strong>Example:</strong> A fighter might assign +2 to Fitness, +1 to Willpower, and +0 to Insight. A wizard might assign +2 to Insight, +1 to Fitness, and +0 to Willpower.</p>
+  <p>No ability can start higher than +2 using this method.</p>
+  
+  <hr>
+  <h2 id="choose-a-lineage">Choose a Lineage</h2>
+  <p>Your lineage represents your character's ancestry and provides fundamental traits that shape who you are. In Tales of the Valiant, lineages replace the traditional race system and provide a more flexible approach to character ancestry.</p>
+  <p>Choose a lineage that fits your character concept. Each lineage provides specific traits, ability score increases (which you'll adapt to the Easy Tabletop Fantasy three-ability system), and other features.</p>
+  <p><strong>Note:</strong> When applying lineage ability score increases to Easy Tabletop Fantasy, work with your Game Master to determine how traditional ability score bonuses translate to Fitness, Insight, or Willpower modifiers. Generally:</p>
+  <ul>
+    <li>Physical bonuses (Strength, Dexterity, Constitution) → Fitness</li>
+    <li>Mental bonuses (Intelligence, Wisdom) → Insight</li>
+    <li>Social bonuses (Charisma) → Willpower</li>
+  </ul>
+  <p>If a lineage provides bonuses to multiple abilities that would map to the same ETF ability, you may need to adjust or discuss alternatives with your Game Master.</p>
+  
+  <hr>
+  <h2 id="choose-a-heritage">Choose a Heritage</h2>
+  <p>Heritage represents a specific cultural or biological variation within your lineage. It provides additional traits and features that further customize your character.</p>
+  <p>Your heritage choice is separate from your lineage and adds another layer of customization to your character. Each lineage typically has several heritage options available.</p>
+  <p>Select a heritage that complements your character concept and class choice. Heritage features work alongside your lineage traits and class features.</p>
+  
+  <hr>
+  <h2 id="choose-a-background">Choose a Background</h2>
+  <p>Your background represents your character's life before becoming an adventurer. It provides skills, tool proficiencies, languages, equipment, and a feature that reflects your past experiences.</p>
+  <p>In Easy Tabletop Fantasy, backgrounds work similarly to Tales of the Valiant, but remember that skills are optional additions to your core abilities (Fitness, Insight, Willpower). Only skills explicitly granted by your background, class, or feats benefit from proficiency bonus.</p>
+  <p>Choose a background that fits your character's story. You can also work with your Game Master to create a custom background that better represents your character's unique history.</p>
+  
+  <hr>
+  <h2 id="starting-equipment">Starting Equipment</h2>
+  <p>You have two methods for determining your starting equipment. Your class description and background will indicate which method to use, or your Game Master may specify a preference.</p>
+  
+  <h3 id="method-1-take-class-background-equipment">Method 1: Take Class & Background Equipment</h3>
+  <p>This is the simplest method. You receive the equipment listed in your class's starting equipment section, plus the equipment granted by your background.</p>
+  <p>This method ensures you start with appropriate gear for your class and background without needing to track starting wealth or make purchasing decisions.</p>
+  
+  <h3 id="method-2-determine-starting-wealth-buy-equipment">Method 2: Determine Starting Wealth & Buy Equipment</h3>
+  <p>This method gives you more flexibility but requires more decision-making. Instead of taking the listed equipment, you receive a starting wealth amount based on your class and can purchase equipment from the equipment lists.</p>
+  <p>Your class description will specify your starting wealth (typically in gold pieces). You can then buy weapons, armor, adventuring gear, and other equipment as you see fit, within your budget.</p>
+  <p>This method is useful if you want specific equipment combinations not covered by the standard starting equipment packages.</p>
+  
+  <hr>
+  <h2 id="leveling-up">Leveling Up</h2>
+  <p>As your character adventures, they gain experience and advance in level. Easy Tabletop Fantasy characters advance from level 1 to level 10, with each level representing roughly two levels from traditional fifth edition play.</p>
+  <p>Your Game Master will determine which leveling method your campaign uses. Both methods are valid, and the choice depends on your group's preferences.</p>
+  
+  <h3 id="leveling-methods">Leveling Methods</h3>
+  
+  <h4 id="awarding-xp">Awarding XP</h4>
+  <p>In this method, characters gain experience points (XP) for overcoming challenges, defeating enemies, completing quests, and achieving goals. When a character accumulates enough XP, they advance to the next level.</p>
+  <p>The Game Master awards XP based on the difficulty of encounters and accomplishments. This method provides clear, measurable progress and gives players a sense of advancement through accumulated points.</p>
+  <p>XP values are typically scaled for Easy Tabletop Fantasy's compressed level system, so the amounts will differ from standard fifth edition XP tables.</p>
+  
+  <h4 id="tracking-milestones">Tracking Milestones</h4>
+  <p>In this method, characters advance to the next level when they reach significant story milestones rather than accumulating XP. The Game Master determines when milestones are reached, typically after:</p>
+  <ul>
+    <li>Completing a major quest or story arc</li>
+    <li>Reaching a significant location or achieving an important goal</li>
+    <li>Overcoming a particularly challenging encounter or obstacle</li>
+    <li>Accomplishing something that advances the campaign's narrative</li>
+  </ul>
+  <p>This method focuses on story progression rather than mechanical point accumulation. It's ideal for narrative-driven campaigns where the story's pace matters more than tracking numbers.</p>
+  <p>Milestone leveling is often simpler for Game Masters to manage and ensures all characters level up together at appropriate story moments.</p>
+  
+  <p><strong>Note:</strong> Whichever method you use, remember that Easy Tabletop Fantasy uses a compressed level system. Each level represents significant growth, and leveling up should feel meaningful and impactful.</p>
+</div></main>
 <footer class="legal"><p>© Easy Tabletop Fantasy.</p>
 <p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
 <p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
