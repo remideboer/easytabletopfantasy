@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lineages | Easy Tabletop Fantasy</title>
+<meta name="description" content="Character lineages for Easy Tabletop Fantasy." />
+<link rel="canonical" href="rules/lineages.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<meta property="og:title" content="Lineages | Easy Tabletop Fantasy" />
+<meta property="og:description" content="Character lineages for Easy Tabletop Fantasy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/lineages.html" />
+</head>
+<body>
+<header><nav><a href="../index.html" class="logo-link"><img src="../assets/easy_table_top_fantasy_emblem.png" alt="Easy Tabletop Fantasy" class="nav-logo" /></a><div class="nav-dropdown"><a href="core.html">Rules</a><div class="nav-dropdown-menu"><a href="core.html#overview">Overview</a><a href="core.html#design-goals">Design Goals</a><a href="core.html#dice-and-tests">Dice and Tests</a><a href="core.html#ability-scores">Ability Scores</a><a href="core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="core.html#converting-ability-scores-d-and-d-5e-to-easy-tabletop-fantasy">Converting Ability Scores</a><a href="core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="core.html#hit-points-and-scale">Hit Points and Scale</a><a href="core.html#level-advancement">Level Advancement</a><a href="core.html#attacks-and-defense">Attacks and Defense</a><a href="core.html#weapon-and-bonus-conversion">Weapon and Bonus Conversion</a><a href="core.html#damage-conversion-spells-and-effects">Damage Conversion</a><a href="core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="core.html#resolve">Resolve</a><a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="characters.html">Characters</a><div class="nav-dropdown-menu"><a href="characters.html">Character Creation</a><a href="lineages.html" aria-current="page">Lineages</a></div></div><a href="../convert.html">Converter</a><a href="combat.html">Combat</a><a href="magic.html">Magic</a><a href="gear.html">Gear</a><a href="../faq.html">FAQ</a><a href="../legal.html">Legal</a></nav></header>
+<main>
+  <h1>Lineages</h1>
+  <div class="content">
+    <p class="lede">Lineage represents the blood ties and hereditary traits of a creature. It's what you're born to, no matter where you were born.</p>
+    
+    <p>In Easy Tabletop Fantasy, <strong>lineage</strong> is the concept that replaces the traditional "species" or "race" system from D&amp;D. Lineages provide fundamental traits that shape who your character is, representing their ancestry and hereditary characteristics.</p>
+    
+    <p>Each lineage provides specific traits, ability score increases (which you'll adapt to the Easy Tabletop Fantasy three-ability system), and other features. When applying lineage ability score increases to Easy Tabletop Fantasy, work with your Game Master to determine how traditional ability score bonuses translate to Fitness, Insight, or Willpower modifiers.</p>
+    
+    <div class="lineages-controls">
+      <button id="expand-all-lineages" class="lineage-control-btn" onclick="expandAllLineages()">Expand All</button>
+      <button id="collapse-all-lineages" class="lineage-control-btn" onclick="collapseAllLineages()">Collapse All</button>
+    </div>
+    
+    <div class="lineages-container">
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Beastkin</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Your beastkin character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Beastkin mature far more quickly than humans, reaching adulthood around age 12. They live slightly longer than humans, often reaching 100 years of age.</p>
+          <p><strong>Size.</strong> Beastkin vary widely in height and build, from barely 5 feet to well over 6 feet tall. Your size is Medium.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
+          <p><strong>Animalistic Features.</strong> You have physical features that reflect an animal. You choose the kind of animal when you create your character, such as bear, cat, dog, hawk, or wolf. Your choice might affect how you roleplay your character, but it doesn't grant you any game statistics.</p>
+          <p><strong>Keen Senses.</strong> You have proficiency in the Perception skill.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and one other language of your choice.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Dwarf</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Your dwarf character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Dwarves are physically mature around age 18 and live about 350 years.</p>
+          <p><strong>Size.</strong> Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is Medium.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 25 feet. Your speed is not reduced by wearing heavy armor.</p>
+          <p><strong>Darkvision.</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</p>
+          <p><strong>Dwarven Resilience.</strong> You have advantage on saving throws against poison, and you have resistance against poison damage.</p>
+          <p><strong>Dwarven Combat Training.</strong> You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.</p>
+          <p><strong>Tool Proficiency.</strong> You gain proficiency with the artisan's tools of your choice: smith's tools, brewer's supplies, or mason's tools.</p>
+          <p><strong>Stonecunning.</strong> Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and Dwarvish.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Elf</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Your elf character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Although elves reach physical maturity around age 18, the elven understanding of adulthood goes beyond physical growth to encompass worldly experience. An elf typically claims adulthood and an adult name around the age of 100 and can live to be 750 years old.</p>
+          <p><strong>Size.</strong> Elves range from under 5 to over 6 feet tall and have slender builds. Your size is Medium.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
+          <p><strong>Darkvision.</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</p>
+          <p><strong>Keen Senses.</strong> You have proficiency in the Perception skill.</p>
+          <p><strong>Fey Ancestry.</strong> You have advantage on saving throws against being charmed, and magic can't put you to sleep.</p>
+          <p><strong>Trance.</strong> Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is "trance.") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and Elvish.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Gnoll</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Your gnoll character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Gnolls mature quickly, reaching adulthood around age 10. They live about 50 years.</p>
+          <p><strong>Size.</strong> Gnolls stand between 6 and 7 feet tall and average about 200 pounds. Your size is Medium.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
+          <p><strong>Darkvision.</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</p>
+          <p><strong>Rampage.</strong> When you reduce a creature to 0 hit points with a melee attack on your turn, you can take a bonus action to move up to your speed and make a bite attack.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and Gnoll.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Human</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Your human character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Humans reach adulthood in their late teens and live less than a century.</p>
+          <p><strong>Size.</strong> Humans vary widely in height and build, from barely 5 feet to well over 6 feet tall. Regardless of your position in that range, your size is Medium.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
+          <p><strong>Versatile.</strong> You gain proficiency in one skill of your choice.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and one other language of your choice.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Smallfolk</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Your smallfolk character has the following hereditary traits.</strong></p>
+          <p><strong>Age.</strong> Smallfolk reach adulthood around 20 and live about 150 years.</p>
+          <p><strong>Size.</strong> Smallfolk are between 2 and 4 feet tall and average about 40 pounds. Your size is Small.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 25 feet.</p>
+          <p><strong>Brave.</strong> You have advantage on saving throws against being frightened.</p>
+          <p><strong>Smallfolk Nimbleness.</strong> You can move through the space of any creature that is of a size larger than yours.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and one other language of your choice.</p>
+        </div>
+      </div>
+      
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineage(this)">
+          <span class="lineage-title">Eonic Human</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Eonics hail from a dying civilization in the far future.</strong></p>
+          <p>To save their people, a group of eonics traveled back in time to the present era. Eonic humans appear similar to standard humans but often have subtle technological augmentations or unusual features that hint at their advanced origins.</p>
+          <p><strong>Age.</strong> Eonic humans reach adulthood in their late teens and can live up to 120 years due to their advanced medical knowledge.</p>
+          <p><strong>Size.</strong> Eonic humans vary in height and build similar to standard humans. Your size is Medium.</p>
+          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
+          <p><strong>Future Knowledge.</strong> You have proficiency with one type of artisan's tools or one gaming set of your choice, representing knowledge from your advanced civilization.</p>
+          <p><strong>Adaptive.</strong> You gain proficiency in one skill of your choice.</p>
+          <p><strong>Languages.</strong> You can speak, read, and write Common and one other language of your choice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="legal"><p>© Easy Tabletop Fantasy.</p>
+<p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
+<p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
+<p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
+<script>
+function toggleLineage(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  
+  if(isExpanded){
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function expandAllLineages(){
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+
+function collapseAllLineages(){
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+
+// Initialize: all collapsed by default
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
