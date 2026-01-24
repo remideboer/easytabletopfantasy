@@ -32,8 +32,28 @@
   <p>When you wear armor, use the Defense equation listed with the type of armor you are wearing instead of the typical Fitness modifier equation. See the Armor table for an armor type's Defense equation as well as specific bonuses or limitations it imposes when calculating Defense.</p>
   
   <h3 id="armor-types-proficiencies">Armor Types & Proficiencies</h3>
-  <p>Armor types are categorized into three weights: light, medium, or heavy. You need proficiency in a weight of armor to use it well. For instance, a character with proficiency in light armor can wear any type of armor listed as light armor without penalty.</p>
-  <p>Your character can wear any kind of armor, regardless of proficiency. However, if you don't have proficiency, you have disadvantage on all Fitness ability checks made while wearing it. You also can't cast spells while wearing armor you aren't proficient with.</p>
+  <p>Armor types are categorized into three weights: light, medium, or heavy, with an ordering from none to heavy. You need proficiency in a weight of armor to use it well. For instance, a character with proficiency in light armor can wear any type of armor listed as light armor without penalty.</p>
+  <p>Your character can wear any kind of armor, regardless of proficiency. However, if you wear armor from a higher category than you are proficient with, you gain stacking disadvantage. For each step higher in category than your proficiency, you gain one level of disadvantage. For example, if you are proficient in light armor and wear medium armor, you have disadvantage (roll 2d20, take lowest). If you wear heavy armor while only proficient in light armor, you have double disadvantage (roll 3d20, take lowest).</p>
+  
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Armor Category Order</th>
+          <th>Step</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>None</strong></td><td>0</td></tr>
+        <tr><td><strong>Light</strong></td><td>1</td></tr>
+        <tr><td><strong>Medium</strong></td><td>2</td></tr>
+        <tr><td><strong>Heavy</strong></td><td>3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <p>The armor categories are ordered from none (no armor) to heavy armor. Each step higher in category than your proficiency level adds one level of disadvantage to your rolls.</p>
+  <p>If you don't have proficiency in the armor category you're wearing, you also have disadvantage on all Fitness ability checks made while wearing it. You also have disadvantage on Defense saves because you are less practiced at moving effectively in that specific armor type. This is especially important for spellcasters like wizards who need to move freely to perform spells with somatic components. You also have disadvantage on spellcasting rolls while wearing armor you aren't proficient with.</p>
   
   <h4 id="light-armor">Light Armor</h4>
   <p>Light armor provides minimal protection while still allowing its wearer to move with relative ease.</p>
@@ -99,7 +119,7 @@
   <h3 id="getting-into-and-out-of-armor">Getting Into and Out of Armor</h3>
   <p>The time it takes to don (put on) or doff (take off) armor depends on the armor's weight.</p>
   <p><strong>Don.</strong> This is the time it takes to put on armor. You benefit from the armor's Defense only if you take the full time to don the suit of armor.</p>
-  <p><strong>Doff.</strong> This is the time it takes to remove armor. If you have help, halve this time, except for shields, which take 1 action regardless of help.</p>
+  <p><strong>Doff.</strong> This is the time it takes to remove armor. If you have help, halve this time, except for shields, which take 1 Moment regardless of help.</p>
   
   <h4 id="donning-and-doffing-armor">Donning and Doffing Armor</h4>
   <div class="table-wrap">
@@ -115,7 +135,7 @@
         <tr><td>Light Armor</td><td>1 minute</td><td>1 minute</td></tr>
         <tr><td>Medium Armor</td><td>5 minutes</td><td>1 minute</td></tr>
         <tr><td>Heavy Armor</td><td>10 minutes</td><td>5 minutes</td></tr>
-        <tr><td>Shield</td><td>1 action</td><td>1 action</td></tr>
+        <tr><td>Shield</td><td>1 Moment</td><td>1 Moment</td></tr>
       </tbody>
     </table>
   </div>
