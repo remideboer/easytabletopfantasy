@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Monsters | Easy Tabletop Fantasy</title>
+<meta name="description" content="Monster stat blocks for Easy Tabletop Fantasy." />
+<link rel="canonical" href="rules/monsters.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<meta property="og:title" content="Monsters | Easy Tabletop Fantasy" />
+<meta property="og:description" content="Monster stat blocks for Easy Tabletop Fantasy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/monsters.html" />
+<style>
+/* CR Filter Slider Styles */
+.cr-filter-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.cr-slider-wrapper {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cr-slider-label {
+  font-weight: bold;
+  min-width: 80px;
+}
+
+.cr-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.cr-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #4a90e2;
+  cursor: pointer;
+}
+
+.cr-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #4a90e2;
+  cursor: pointer;
+  border: none;
+}
+
+.cr-value-display {
+  min-width: 60px;
+  text-align: center;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+.monster-item {
+  margin-bottom: 20px;
+}
+
+.monster-stat-block-content {
+  margin-top: 10px;
+}
+
+.monster-etf-version {
+  display: block;
+}
+
+.monster-original-version {
+  display: none;
+}
+
+.monster-level-scaling {
+  margin: 15px 0;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 5px;
+}
+
+.monster-level-scaling label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.monster-level-scaling select {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.lineage-subtitle {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  font-weight: normal;
+  margin-left: 10px;
+}
+</style>
+</head>
+<body>
+<header><nav><a href="../index.html" class="logo-link"><img src="../assets/easy_table_top_fantasy_emblem.png" alt="Easy Tabletop Fantasy" class="nav-logo" /></a><div class="nav-dropdown"><a href="core.html">Rules</a><div class="nav-dropdown-menu"><a href="core.html#core-game-loop">Core Game Loop</a><a href="core.html#modes-of-play">Modes of Play</a><a href="core.html#dice-and-tests">Dice and Tests</a><a href="core.html#ability-scores">Abilities and Properties</a><a href="core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="core.html#proficiency-and-advantage">Proficiency and Advantage</a><a href="core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="core.html#talents">Talents</a><a href="core.html#hit-points-and-scale">Hit Points and Scale</a><a href="core.html#level-advancement">Level Advancement</a><a href="core.html#attacks-and-defense">Attacks and Defense</a><a href="core.html#weapon-attacks">Weapon Attacks</a><a href="core.html#weapon-mastery">Weapon Mastery</a><a href="core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="core.html#resolve">Resolve</a><a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="characters.html">Characters</a><div class="nav-dropdown-menu"><a href="characters.html">Character Creation</a><a href="lineages.html">Lineages</a><a href="backgrounds.html">Backgrounds</a><a href="talents.html">Talents</a></div></div><a href="../convert.html">Converter</a><a href="conversion.html">Conversion Guide</a><a href="combat.html">Combat</a><a href="magic.html">Magic</a><a href="gear.html">Gear</a><a href="monsters.html" aria-current="page">Monsters</a><a href="../faq.html">FAQ</a><a href="../legal.html">Legal</a></nav></header>
+<main>
+  <h1>Monsters</h1>
+  <div class="content">
+    <p class="lede">This page contains monster stat blocks from the Black Flag Reference Document, converted to the Easy Tabletop Fantasy system. All monsters are displayed with their ETF-converted stats by default, with the option to view original D&D 5e stat blocks.</p>
+    
+    <p>Monsters can be scaled to different levels using the level dropdown. This adjusts Defense Save DCs, damage, and other scalable properties based on the monster's Challenge Rating (CR).</p>
+    
+    <div class="print-controls">
+      <div class="search-row">
+        <label for="monster-search" class="search-label">Search monsters:</label>
+        <input type="text" id="monster-search" class="spell-search-input" placeholder="Type monster name to search..." oninput="handleMonsterSearch()" />
+        <button id="toggle-filters-btn" class="toggle-filters-btn" onclick="toggleFilters()" title="Show/Hide filters">
+          <span class="toggle-filters-icon">▼</span>
+          <span class="toggle-filters-text">Filters</span>
+        </button>
+      </div>
+      <div id="filters-container" class="filters-container">
+        <div class="filter-row">
+          <span class="filter-label">Filter by CR (Challenge Rating):</span>
+          <div class="cr-filter-slider-container">
+            <div class="cr-slider-wrapper">
+              <span class="cr-slider-label">Min CR:</span>
+              <input type="range" id="cr-min-slider" class="cr-slider" min="0" max="30" value="0" step="0.125" oninput="updateCRFilter()" />
+              <span id="cr-min-value" class="cr-value-display">0</span>
+            </div>
+            <div class="cr-slider-wrapper">
+              <span class="cr-slider-label">Max CR:</span>
+              <input type="range" id="cr-max-slider" class="cr-slider" min="0" max="30" value="30" step="0.125" oninput="updateCRFilter()" />
+              <span id="cr-max-value" class="cr-value-display">30</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="lineages-controls">
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-original-stats" onchange="toggleOriginalStats()">
+        <span class="toggle-slider"></span>
+        <span class="toggle-label">Show Original D&D 5e Stat Blocks</span>
+      </label>
+      <button id="expand-all-monsters" class="lineage-control-btn" onclick="expandAllMonsters()">Expand All</button>
+      <button id="collapse-all-monsters" class="lineage-control-btn" onclick="collapseAllMonsters()">Collapse All</button>
+    </div>
+    
+    <div class="lineages-container" id="monsters-container">
+      <!-- Monsters will be loaded here via JavaScript -->
+    </div>
+  </div>
+</main>
+<footer class="legal"><p>© Easy Tabletop Fantasy.</p>
+<p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
+<p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
+<p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
+<script>
+// CR to Level mapping (same as monster-abilities.html)
+function crToLevel(cr) {
+  if (cr <= 0) return 1;
+  if (cr <= 1) return 1;
+  if (cr <= 3) return 2;
+  if (cr <= 5) return 3;
+  if (cr <= 7) return 4;
+  if (cr <= 9) return 5;
+  if (cr <= 11) return 6;
+  if (cr <= 13) return 7;
+  if (cr <= 15) return 8;
+  if (cr <= 17) return 9;
+  return 10;
+}
+
+// Calculate scaling adjustments
+function calculateScaling(baseCR, targetLevel) {
+  const baseLevel = crToLevel(baseCR);
+  const levelDiff = targetLevel - baseLevel;
+  
+  return {
+    dcAdjustment: levelDiff,
+    damageAdjustment: Math.ceil(levelDiff / 2),
+    hpAdjustment: levelDiff
+  };
+}
+
+// Format CR value for display
+function formatCR(cr) {
+  if (cr === 0) return '0';
+  if (cr === 0.125) return '1/8';
+  if (cr === 0.25) return '1/4';
+  if (cr === 0.5) return '1/2';
+  return cr.toString();
+}
+
+// Parse CR value from string
+function parseCR(crStr) {
+  if (crStr === '0') return 0;
+  if (crStr === '1/8') return 0.125;
+  if (crStr === '1/4') return 0.25;
+  if (crStr === '1/2') return 0.5;
+  return parseFloat(crStr) || 0;
+}
+
+// Load monsters data
+let monstersData = [];
+let originalETFContent = new Map();
+let original5eContent = new Map();
+
+async function loadMonstersData() {
+  if (monstersData.length > 0) return monstersData;
+  
+  try {
+    const response = await fetch('../foundation/monsters_data.json');
+    monstersData = await response.json();
+    return monstersData;
+  } catch (error) {
+    console.error('Error loading monsters data:', error);
+    return [];
+  }
+}
+
+// Render monsters
+async function renderMonsters() {
+  const data = await loadMonstersData();
+  const container = document.getElementById('monsters-container');
+  
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  // Sort monsters by CR, then by name
+  const sorted = [...data].sort((a, b) => {
+    if (a.cr !== b.cr) return a.cr - b.cr;
+    return a.name.localeCompare(b.name);
+  });
+  
+  sorted.forEach((monster, index) => {
+    const monsterId = `monster-${index}`;
+    const safeId = monsterId.replace(/[^a-z0-9-]/gi, '-');
+    const defaultLevel = crToLevel(monster.cr);
+    
+    const monsterHTML = `
+      <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" id="item-${safeId}">
+        <button class="lineage-header" onclick="toggleMonster(this)">
+          <span class="lineage-title">${escapeHtml(monster.name)}</span>
+          <span class="lineage-subtitle">CR ${formatCR(monster.cr)}</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <div class="monster-level-scaling">
+            <label for="${safeId}-level">Scale for level:</label>
+            <select id="${safeId}-level" class="level-scaling-select" onchange="updateMonsterScaling('${safeId}', ${monster.cr})">
+              ${[1,2,3,4,5,6,7,8,9,10].map(lvl => 
+                `<option value="${lvl}" ${lvl === defaultLevel ? 'selected' : ''}>Level ${lvl}</option>`
+              ).join('')}
+            </select>
+          </div>
+          <div class="monster-stat-block-content">
+            <div class="monster-etf-version" id="${safeId}-etf">
+              ${monster.etf_html}
+            </div>
+            <div class="monster-original-version" id="${safeId}-original" style="display:none;">
+              ${monster.original_html}
+            </div>
+          </div>
+          <div class="scaling-info" data-base-cr="${monster.cr}" data-base-hp="${monster.hp}" data-base-ac="${monster.ac}" style="display:none;"></div>
+        </div>
+      </div>
+    `;
+    
+    container.innerHTML += monsterHTML;
+  });
+  
+  // Store original content after rendering
+  document.querySelectorAll('.monster-item').forEach(item => {
+    const etfDiv = item.querySelector('.monster-etf-version');
+    const originalDiv = item.querySelector('.monster-original-version');
+    if (etfDiv && !originalETFContent.has(item)) {
+      originalETFContent.set(item, etfDiv.innerHTML);
+    }
+    if (originalDiv && !original5eContent.has(item)) {
+      original5eContent.set(item, originalDiv.innerHTML);
+    }
+  });
+  
+  // Initialize all collapsed
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+}
+
+// Toggle monster accordion
+function toggleMonster(button) {
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  
+  if (isExpanded) {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// Expand/Collapse all
+function expandAllMonsters() {
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+
+function collapseAllMonsters() {
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+
+// Toggle between ETF and Original stats
+function toggleOriginalStats() {
+  const showOriginal = document.getElementById('toggle-original-stats').checked;
+  
+  document.querySelectorAll('.monster-item').forEach(item => {
+    const etfDiv = item.querySelector('.monster-etf-version');
+    const originalDiv = item.querySelector('.monster-original-version');
+    
+    if (showOriginal) {
+      if (etfDiv) etfDiv.style.display = 'none';
+      if (originalDiv) originalDiv.style.display = 'block';
+    } else {
+      if (etfDiv) etfDiv.style.display = 'block';
+      if (originalDiv) originalDiv.style.display = 'none';
+    }
+  });
+}
+
+// Update CR filter slider values
+function updateCRFilter() {
+  const minSlider = document.getElementById('cr-min-slider');
+  const maxSlider = document.getElementById('cr-max-slider');
+  const minValue = document.getElementById('cr-min-value');
+  const maxValue = document.getElementById('cr-max-value');
+  
+  let min = parseFloat(minSlider.value);
+  let max = parseFloat(maxSlider.value);
+  
+  // Ensure min <= max
+  if (min > max) {
+    const temp = min;
+    min = max;
+    max = temp;
+    minSlider.value = min;
+    maxSlider.value = max;
+  }
+  
+  minValue.textContent = formatCR(min);
+  maxValue.textContent = formatCR(max);
+  
+  // Apply filter
+  applyFilters();
+}
+
+// Search functionality
+function handleMonsterSearch() {
+  applyFilters();
+}
+
+// Apply all filters
+function applyFilters() {
+  const searchTerm = (document.getElementById('monster-search')?.value || '').toLowerCase();
+  const minSlider = document.getElementById('cr-min-slider');
+  const maxSlider = document.getElementById('cr-max-slider');
+  
+  if (!minSlider || !maxSlider) return;
+  
+  const minCR = parseFloat(minSlider.value);
+  const maxCR = parseFloat(maxSlider.value);
+  
+  let visibleCount = 0;
+  
+  document.querySelectorAll('.monster-item').forEach(item => {
+    const name = (item.getAttribute('data-monster-name') || '').toLowerCase();
+    const cr = parseFloat(item.getAttribute('data-cr')) || 0;
+    
+    const matchesSearch = !searchTerm || name.includes(searchTerm);
+    const matchesCR = cr >= minCR && cr <= maxCR;
+    
+    if (matchesSearch && matchesCR) {
+      item.style.display = '';
+      visibleCount++;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+  
+  // Update container visibility
+  const container = document.getElementById('monsters-container');
+  if (container) {
+    container.style.display = visibleCount > 0 ? '' : 'none';
+  }
+}
+
+// Update monster scaling based on level
+function updateMonsterScaling(monsterId, baseCR) {
+  const item = document.getElementById(`item-${monsterId}`);
+  if (!item) return;
+  
+  const levelSelect = document.getElementById(`${monsterId}-level`);
+  if (!levelSelect) return;
+  
+  const targetLevel = parseInt(levelSelect.value);
+  const scaling = calculateScaling(baseCR, targetLevel);
+  const etfDiv = item.querySelector('.monster-etf-version');
+  
+  if (!etfDiv) return;
+  
+  // Get original ETF content
+  let etfHTML = originalETFContent.get(item);
+  if (!etfHTML) {
+    etfHTML = etfDiv.innerHTML;
+    originalETFContent.set(item, etfHTML);
+  }
+  
+  // Apply scaling
+  let updatedHTML = etfHTML;
+  
+  // Scale Defense Save DCs (Defense Save DC XX)
+  updatedHTML = updatedHTML.replace(/Defense Save DC (\d+)/g, (match, dc) => {
+    const baseDC = parseInt(dc);
+    const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
+    return `Defense Save DC ${newDC}`;
+  });
+  
+  // Scale other DCs (escape DC, save DCs, etc.) - but avoid double-scaling Defense Save DCs
+  // First, temporarily replace "Defense Save DC" to avoid matching it
+  updatedHTML = updatedHTML.replace(/Defense Save DC/g, '___DEFENSE_SAVE_DC___');
+  
+  // Now scale all remaining DCs
+  updatedHTML = updatedHTML.replace(/\bDC (\d+)/g, (match, dc) => {
+    const baseDC = parseInt(dc);
+    const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
+    return `DC ${newDC}`;
+  });
+  
+  // Also handle "escape DC" and similar patterns
+  updatedHTML = updatedHTML.replace(/(escape|save) DC (\d+)/gi, (match, type, dc) => {
+    const baseDC = parseInt(dc);
+    const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
+    return `${type} DC ${newDC}`;
+  });
+  
+  // Restore "Defense Save DC"
+  updatedHTML = updatedHTML.replace(/___DEFENSE_SAVE_DC___/g, 'Defense Save DC');
+  
+  // Scale HP
+  const scalingInfo = item.querySelector('.scaling-info');
+  if (scalingInfo) {
+    const baseHP = parseInt(scalingInfo.getAttribute('data-base-hp')) || 1;
+    const newHP = Math.max(1, baseHP + scaling.hpAdjustment);
+    // Replace HP in the stat block
+    updatedHTML = updatedHTML.replace(
+      /<strong>Hit Points<\/strong>\s*(\d+)/gi,
+      `<strong>Hit Points</strong> ${newHP}`
+    );
+  }
+  
+  // Update display
+  etfDiv.innerHTML = updatedHTML;
+}
+
+// Toggle filters visibility
+function toggleFilters() {
+  const container = document.getElementById('filters-container');
+  const btn = document.getElementById('toggle-filters-btn');
+  const icon = btn.querySelector('.toggle-filters-icon');
+  
+  if (container.style.display === 'none' || !container.style.display) {
+    container.style.display = 'block';
+    icon.textContent = '▲';
+  } else {
+    container.style.display = 'none';
+    icon.textContent = '▼';
+  }
+}
+
+// Escape HTML
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  renderMonsters();
+  
+  // Initialize filters hidden
+  const filtersContainer = document.getElementById('filters-container');
+  if (filtersContainer) {
+    filtersContainer.style.display = 'none';
+  }
+});
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

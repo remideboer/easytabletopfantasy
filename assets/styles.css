@@ -457,6 +457,31 @@
     background:var(--bg-card);
     border:1px solid var(--line);
     border-radius:var(--r);
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  
+  .level-scaling-select{
+    padding:8px 12px;
+    border:2px solid var(--fantasy-gold);
+    border-radius:var(--r);
+    background:var(--bg-card);
+    color:var(--text-primary);
+    font-family:var(--sans);
+    font-size:0.9em;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  
+  .level-scaling-select:hover{
+    background:var(--bg-page);
+    border-color:var(--accent-gold);
+  }
+  
+  .level-scaling-select:focus{
+    outline:none;
+    border-color:var(--brand-focus);
+    box-shadow:0 0 0 3px rgba(124,58,237,.1);
   }
   .lineage-control-btn{
     padding:8px 16px;

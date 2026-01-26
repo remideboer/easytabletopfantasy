@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Monster Abilities | Easy Tabletop Fantasy</title>
+<meta name="description" content="Monster abilities, actions, and traits for Easy Tabletop Fantasy." />
+<link rel="canonical" href="rules/monster-abilities.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<meta property="og:title" content="Monster Abilities | Easy Tabletop Fantasy" />
+<meta property="og:description" content="Monster abilities, actions, and traits for Easy Tabletop Fantasy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/monster-abilities.html" />
+</head>
+<body>
+<header><nav><a href="../index.html" class="logo-link"><img src="../assets/easy_table_top_fantasy_emblem.png" alt="Easy Tabletop Fantasy" class="nav-logo" /></a><div class="nav-dropdown"><a href="core.html">Rules</a><div class="nav-dropdown-menu"><a href="core.html#core-game-loop">Core Game Loop</a><a href="core.html#modes-of-play">Modes of Play</a><a href="core.html#dice-and-tests">Dice and Tests</a><a href="core.html#ability-scores">Abilities and Properties</a><a href="core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="core.html#proficiency-and-advantage">Proficiency and Advantage</a><a href="core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="core.html#talents">Talents</a><a href="core.html#hit-points-and-scale">Hit Points and Scale</a><a href="core.html#level-advancement">Level Advancement</a><a href="core.html#attacks-and-defense">Attacks and Defense</a><a href="core.html#weapon-attacks">Weapon Attacks</a><a href="core.html#weapon-mastery">Weapon Mastery</a><a href="core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="core.html#resolve">Resolve</a><a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="characters.html">Characters</a><div class="nav-dropdown-menu"><a href="characters.html">Character Creation</a><a href="lineages.html">Lineages</a><a href="backgrounds.html">Backgrounds</a><a href="talents.html">Talents</a></div></div><a href="../convert.html">Converter</a><a href="conversion.html">Conversion Guide</a><a href="combat.html">Combat</a><a href="magic.html">Magic</a><a href="gear.html">Gear</a><a href="monsters.html">Monsters</a><a href="../faq.html">FAQ</a><a href="../legal.html">Legal</a></nav></header>
+<main>
+  <h1>Monster Abilities</h1>
+  <div class="content">
+    <p class="lede">This page contains a collection of monster abilities, actions, and traits extracted from monster stat blocks. These abilities are decoupled from specific monster implementations, allowing Game Masters to easily mix and match abilities when creating custom monsters.</p>
+    
+    <p>All abilities have been converted to the Easy Tabletop Fantasy system. Attack rolls have been converted to Defense Save DCs using the formula: <strong>Defense Save DC = 11 + original to hit modifier</strong>. For example, an attack with +9 to hit becomes a Defense Save DC of 20.</p>
+    
+    <div class="print-controls">
+      <div class="search-row">
+        <label for="ability-search" class="search-label">Search abilities:</label>
+        <input type="text" id="ability-search" class="spell-search-input" placeholder="Type ability name to search..." oninput="handleAbilitySearch()" />
+        <button id="toggle-filters-btn" class="toggle-filters-btn" onclick="toggleFilters()" title="Show/Hide filters">
+          <span class="toggle-filters-icon">▼</span>
+          <span class="toggle-filters-text">Filters</span>
+        </button>
+      </div>
+      <div id="filters-container" class="filters-container">
+        <div class="filter-row">
+          <span class="filter-label">Filter by type:</span>
+          <button class="filter-btn filter-all active" data-filter-type="ability-type" data-ability-type="all" onclick="toggleAbilityTypeFilter('all')">All</button>
+          <button class="filter-btn" data-filter-type="ability-type" data-ability-type="Trait" onclick="toggleAbilityTypeFilter('Trait')">Trait</button>
+          <button class="filter-btn" data-filter-type="ability-type" data-ability-type="Action" onclick="toggleAbilityTypeFilter('Action')">Action</button>
+          <button class="filter-btn" data-filter-type="ability-type" data-ability-type="Bonus Action" onclick="toggleAbilityTypeFilter('Bonus Action')">Bonus Action</button>
+          <button class="filter-btn" data-filter-type="ability-type" data-ability-type="Legendary Action" onclick="toggleAbilityTypeFilter('Legendary Action')">Legendary Action</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">Filter by damage type:</span>
+          <button class="filter-btn filter-all active" data-filter-type="damage" data-damage="all" onclick="toggleDamageFilter('all')">All</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Acid" onclick="toggleDamageFilter('Acid')">Acid</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Cold" onclick="toggleDamageFilter('Cold')">Cold</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Fire" onclick="toggleDamageFilter('Fire')">Fire</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Lightning" onclick="toggleDamageFilter('Lightning')">Lightning</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Necrotic" onclick="toggleDamageFilter('Necrotic')">Necrotic</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Poison" onclick="toggleDamageFilter('Poison')">Poison</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Psychic" onclick="toggleDamageFilter('Psychic')">Psychic</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Radiant" onclick="toggleDamageFilter('Radiant')">Radiant</button>
+          <button class="filter-btn" data-filter-type="damage" data-damage="Thunder" onclick="toggleDamageFilter('Thunder')">Thunder</button>
+        </div>
+        <div class="filter-row" id="cr-filter-row" style="display:none;">
+          <span class="filter-label">Filter by CR:</span>
+          <button class="filter-btn filter-all active" data-filter-type="cr" data-cr="all" onclick="toggleCRFilter('all')">All</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="0" onclick="toggleCRFilter('0')">CR 0</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="1" onclick="toggleCRFilter('1')">CR 1</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="2" onclick="toggleCRFilter('2')">CR 2</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="3" onclick="toggleCRFilter('3')">CR 3</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="4" onclick="toggleCRFilter('4')">CR 4</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="5" onclick="toggleCRFilter('5')">CR 5</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="6" onclick="toggleCRFilter('6')">CR 6</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="7" onclick="toggleCRFilter('7')">CR 7</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="8" onclick="toggleCRFilter('8')">CR 8</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="9" onclick="toggleCRFilter('9')">CR 9</button>
+          <button class="filter-btn" data-filter-type="cr" data-cr="10" onclick="toggleCRFilter('10')">CR 10+</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="lineages-controls">
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-original-text" onchange="toggleOriginalText()">
+        <span class="toggle-slider"></span>
+        <span class="toggle-label">Show Original D&D 5e Text</span>
+      </label>
+      <button id="expand-all-abilities" class="lineage-control-btn" onclick="expandAllAbilities()">Expand All</button>
+      <button id="collapse-all-abilities" class="lineage-control-btn" onclick="collapseAllAbilities()">Collapse All</button>
+    </div>
+    
+    <div class="lineages-container" id="abilities-container">
+      <!-- Template for monster abilities -->
+      <!-- Add abilities here using the following structure: -->
+      <!--
+      <div class="lineage-item" data-ability-type="Trait|Action|Bonus Action|Legendary Action" data-damage="" data-cr="0">
+        <button class="lineage-header" onclick="toggleAbility(this)">
+          <span class="lineage-title">Ability Name</span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Type:</strong> Trait</p>
+          <!-- Only include scaling dropdown if ability has scalable properties (save DCs, damage) -->
+          <div style="margin: 12px 0;">
+            <label for="ability-id-scaling" style="margin-right: 8px;">Scale for level:</label>
+            <select id="ability-id-scaling" class="level-scaling-select" onchange="updateSingleAbilityScaling(this, 0)">
+              <option value="1" selected>Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option><option value="5">Level 5</option><option value="6">Level 6</option><option value="7">Level 7</option><option value="8">Level 8</option><option value="9">Level 9</option><option value="10">Level 10</option>
+            </select>
+          </div>
+          <div class="ability-etf-version">
+            <p>ETF converted text here</p>
+          </div>
+          <div class="ability-original-version" style="display:none;">
+            <p><strong>CR:</strong> 0</p>
+            <p>Original D&D 5e text here</p>
+          </div>
+          <div class="scaling-info" data-base-dc="0" data-base-damage="0" data-base-save-dc="0" data-base-cr="0" style="display:none;"></div>
+        </div>
+      </div>
+      -->
+    </div>
+  </div>
+</main>
+<footer class="legal"><p>© Easy Tabletop Fantasy.</p>
+<p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
+<p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
+<p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
+<script>
+// CR to Level mapping
+function crToLevel(cr) {
+  if (cr <= 1) return 1;
+  if (cr <= 3) return 2;
+  if (cr <= 5) return 3;
+  if (cr <= 7) return 4;
+  if (cr <= 9) return 5;
+  if (cr <= 11) return 6;
+  if (cr <= 13) return 7;
+  if (cr <= 15) return 8;
+  if (cr <= 17) return 9;
+  return 10;
+}
+
+// Level to CR range
+function levelToCRRange(level) {
+  const ranges = {
+    1: { min: 0, max: 1 },
+    2: { min: 2, max: 3 },
+    3: { min: 4, max: 5 },
+    4: { min: 6, max: 7 },
+    5: { min: 8, max: 9 },
+    6: { min: 10, max: 11 },
+    7: { min: 12, max: 13 },
+    8: { min: 14, max: 15 },
+    9: { min: 16, max: 17 },
+    10: { min: 18, max: 30 }
+  };
+  return ranges[level] || ranges[1];
+}
+
+// Calculate scaling adjustments
+function calculateScaling(baseCR, targetLevel) {
+  const baseLevel = crToLevel(baseCR);
+  const levelDiff = targetLevel - baseLevel;
+  
+  return {
+    dcAdjustment: levelDiff,
+    damageAdjustment: Math.ceil(levelDiff / 2)
+  };
+}
+
+// Store original ETF and original D&D 5e content for each ability
+const originalETFContent = new Map();
+const original5eContent = new Map();
+
+// Store original content on load
+function storeOriginalContent() {
+  document.querySelectorAll('.lineage-item[data-cr]').forEach(ability => {
+    const etfVersion = ability.querySelector('.ability-etf-version');
+    const originalVersion = ability.querySelector('.ability-original-version');
+    if (etfVersion && !originalETFContent.has(ability)) {
+      originalETFContent.set(ability, etfVersion.innerHTML);
+    }
+    if (originalVersion && !original5eContent.has(ability)) {
+      original5eContent.set(ability, originalVersion.innerHTML);
+    }
+  });
+}
+
+// Toggle between original D&D 5e and ETF text
+function toggleOriginalText() {
+  const showOriginal = document.getElementById('toggle-original-text').checked;
+  const etfVersions = document.querySelectorAll('.ability-etf-version');
+  const originalVersions = document.querySelectorAll('.ability-original-version');
+  const crFilterRow = document.getElementById('cr-filter-row');
+  
+  etfVersions.forEach(version => {
+    version.style.display = showOriginal ? 'none' : '';
+  });
+  
+  originalVersions.forEach(version => {
+    version.style.display = showOriginal ? '' : 'none';
+  });
+  
+  // Show/hide CR filter based on toggle
+  if (crFilterRow) {
+    crFilterRow.style.display = showOriginal ? '' : 'none';
+  }
+  
+  // Reapply filters when toggling
+  applyFilters();
+}
+
+// Update scaling for a single ability
+function updateSingleAbilityScaling(selectElement, baseCR) {
+  const selectedLevel = parseInt(selectElement.value);
+  const ability = selectElement.closest('.lineage-item');
+  const scalingInfo = ability.querySelector('.scaling-info');
+  if (!scalingInfo) return;
+  
+  const baseDC = parseInt(scalingInfo.getAttribute('data-base-dc')) || 0;
+  const baseDamage = parseInt(scalingInfo.getAttribute('data-base-damage')) || 0;
+  const baseSaveDC = parseInt(scalingInfo.getAttribute('data-base-save-dc')) || 0;
+  
+  const scaling = calculateScaling(baseCR, selectedLevel);
+  const newDC = baseDC + scaling.dcAdjustment;
+  const newDamage = Math.max(1, baseDamage + scaling.damageAdjustment);
+  const newSaveDC = baseSaveDC > 0 ? baseSaveDC + scaling.dcAdjustment : 0;
+  
+  // Get original ETF content
+  let etfHTML = originalETFContent.get(ability);
+  if (!etfHTML) {
+    const etfVersion = ability.querySelector('.ability-etf-version');
+    etfHTML = etfVersion.innerHTML;
+    originalETFContent.set(ability, etfHTML);
+  }
+  
+  // Apply scaling to ETF version
+  let updatedETF = etfHTML;
+  
+  // Replace primary DC
+  if (baseDC > 0) {
+    updatedETF = updatedETF.replace(new RegExp(`DC ${baseDC}`, 'g'), `DC ${newDC}`);
+  }
+  
+  // Replace secondary save DC
+  if (baseSaveDC > 0) {
+    updatedETF = updatedETF.replace(new RegExp(`DC ${baseSaveDC}`, 'g'), `DC ${newSaveDC}`);
+  }
+  
+  // Replace damage
+  if (baseDamage > 0) {
+    updatedETF = updatedETF.replace(new RegExp(`${baseDamage} hits`, 'g'), `${newDamage} hits`);
+  }
+  
+  // Update ETF version content
+  const etfVersion = ability.querySelector('.ability-etf-version');
+  if (etfVersion) {
+    etfVersion.innerHTML = updatedETF;
+  }
+}
+
+// Search functionality
+function handleAbilitySearch() {
+  const searchTerm = document.getElementById('ability-search').value.toLowerCase();
+  const abilities = document.querySelectorAll('.lineage-item');
+  
+  abilities.forEach(ability => {
+    const title = ability.querySelector('.lineage-title').textContent.toLowerCase();
+    const content = ability.querySelector('.lineage-content').textContent.toLowerCase();
+    
+    if (title.includes(searchTerm) || content.includes(searchTerm)) {
+      ability.style.display = '';
+    } else {
+      ability.style.display = 'none';
+    }
+  });
+  
+  applyFilters();
+}
+
+// Filter functionality
+let activeAbilityTypes = new Set(['all']);
+let activeDamageTypes = new Set(['all']);
+let activeCRs = new Set(['all']);
+
+function toggleAbilityTypeFilter(type) {
+  if (type === 'all') {
+    activeAbilityTypes.clear();
+    activeAbilityTypes.add('all');
+    document.querySelectorAll('[data-filter-type="ability-type"]').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector('[data-filter-type="ability-type"][data-ability-type="all"]').classList.add('active');
+  } else {
+    activeAbilityTypes.delete('all');
+    if (activeAbilityTypes.has(type)) {
+      activeAbilityTypes.delete(type);
+    } else {
+      activeAbilityTypes.add(type);
+    }
+    const btn = document.querySelector(`[data-filter-type="ability-type"][data-ability-type="${type}"]`);
+    btn.classList.toggle('active');
+    
+    if (activeAbilityTypes.size === 0) {
+      activeAbilityTypes.add('all');
+      document.querySelector('[data-filter-type="ability-type"][data-ability-type="all"]').classList.add('active');
+    }
+  }
+  applyFilters();
+}
+
+function toggleDamageFilter(type) {
+  if (type === 'all') {
+    activeDamageTypes.clear();
+    activeDamageTypes.add('all');
+    document.querySelectorAll('[data-filter-type="damage"]').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector('[data-filter-type="damage"][data-damage="all"]').classList.add('active');
+  } else {
+    activeDamageTypes.delete('all');
+    if (activeDamageTypes.has(type)) {
+      activeDamageTypes.delete(type);
+    } else {
+      activeDamageTypes.add(type);
+    }
+    const btn = document.querySelector(`[data-filter-type="damage"][data-damage="${type}"]`);
+    btn.classList.toggle('active');
+    
+    if (activeDamageTypes.size === 0) {
+      activeDamageTypes.add('all');
+      document.querySelector('[data-filter-type="damage"][data-damage="all"]').classList.add('active');
+    }
+  }
+  applyFilters();
+}
+
+function toggleCRFilter(cr) {
+  if (cr === 'all') {
+    activeCRs.clear();
+    activeCRs.add('all');
+    document.querySelectorAll('[data-filter-type="cr"]').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector('[data-filter-type="cr"][data-cr="all"]').classList.add('active');
+  } else {
+    activeCRs.delete('all');
+    if (activeCRs.has(cr)) {
+      activeCRs.delete(cr);
+    } else {
+      activeCRs.add(cr);
+    }
+    const btn = document.querySelector(`[data-filter-type="cr"][data-cr="${cr}"]`);
+    btn.classList.toggle('active');
+    
+    if (activeCRs.size === 0) {
+      activeCRs.add('all');
+      document.querySelector('[data-filter-type="cr"][data-cr="all"]').classList.add('active');
+    }
+  }
+  applyFilters();
+}
+
+function applyFilters() {
+  const abilities = document.querySelectorAll('.lineage-item');
+  const showOriginal = document.getElementById('toggle-original-text').checked;
+  
+  abilities.forEach(ability => {
+    if (ability.style.display === 'none') return; // Skip if hidden by search
+    
+    const abilityType = ability.getAttribute('data-ability-type');
+    const damageType = ability.getAttribute('data-damage') || '';
+    const cr = ability.getAttribute('data-cr') || '';
+    
+    let showAbility = true;
+    
+    // Check ability type filter
+    if (!activeAbilityTypes.has('all') && !activeAbilityTypes.has(abilityType)) {
+      showAbility = false;
+    }
+    
+    // Check damage type filter
+    if (showAbility && !activeDamageTypes.has('all')) {
+      if (damageType === '' && !activeDamageTypes.has('None')) {
+        // Check if ability has any damage mentioned in content
+        const content = ability.querySelector('.lineage-content').textContent.toLowerCase();
+        const hasDamage = activeDamageTypes.has(damageType) || 
+          Array.from(activeDamageTypes).some(type => content.includes(type.toLowerCase()));
+        if (!hasDamage) {
+          showAbility = false;
+        }
+      } else if (!activeDamageTypes.has(damageType)) {
+        showAbility = false;
+      }
+    }
+    
+    // Check CR filter (only when showing original text)
+    if (showAbility && showOriginal && !activeCRs.has('all')) {
+      const crValue = parseInt(cr);
+      let matchesCR = false;
+      
+      for (const activeCR of activeCRs) {
+        if (activeCR === '10') {
+          // CR 10+ filter
+          if (crValue >= 10) {
+            matchesCR = true;
+            break;
+          }
+        } else {
+          const filterCR = parseInt(activeCR);
+          if (crValue === filterCR) {
+            matchesCR = true;
+            break;
+          }
+        }
+      }
+      
+      if (!matchesCR) {
+        showAbility = false;
+      }
+    }
+    
+    ability.style.display = showAbility ? '' : 'none';
+  });
+}
+
+function toggleFilters() {
+  const container = document.getElementById('filters-container');
+  const icon = document.querySelector('#toggle-filters-btn .toggle-filters-icon');
+  container.classList.toggle('filters-hidden');
+  icon.textContent = container.classList.contains('filters-hidden') ? '▼' : '▲';
+}
+
+function toggleAbility(button) {
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  
+  if (isExpanded) {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function expandAllAbilities() {
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+
+function collapseAllAbilities() {
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+
+// Initialize: all collapsed by default
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  document.querySelectorAll('.lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+  storeOriginalContent();
+  
+  // Set default scaling for each ability based on their CR
+  document.querySelectorAll('.lineage-item[data-cr]').forEach(ability => {
+    const baseCR = parseInt(ability.getAttribute('data-cr'));
+    const defaultLevel = crToLevel(baseCR);
+    const select = ability.querySelector('.level-scaling-select');
+    if (select) {
+      select.value = defaultLevel;
+      updateSingleAbilityScaling(select, baseCR);
+    }
+  });
+});
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
