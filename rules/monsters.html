@@ -178,16 +178,16 @@
       </div>
       <div id="filters-container" class="filters-container">
         <div class="filter-row">
-          <span class="filter-label">Filter by CR (Challenge Rating):</span>
+          <span class="filter-label" id="filter-label">Filter by Level:</span>
           <div class="cr-filter-slider-container">
             <div class="cr-slider-wrapper">
               <div class="cr-slider-track"></div>
-              <input type="range" id="cr-min-slider" class="cr-slider cr-slider-min" min="0" max="30" value="0" step="1" oninput="updateCRFilter()" />
-              <input type="range" id="cr-max-slider" class="cr-slider cr-slider-max" min="0" max="30" value="30" step="1" oninput="updateCRFilter()" />
+              <input type="range" id="cr-min-slider" class="cr-slider cr-slider-min" min="1" max="10" value="1" step="1" oninput="updateCRFilter()" />
+              <input type="range" id="cr-max-slider" class="cr-slider cr-slider-max" min="1" max="10" value="10" step="1" oninput="updateCRFilter()" />
             </div>
             <div class="cr-slider-labels">
-              <span class="cr-slider-label-min">Min: <span id="cr-min-value">0</span></span>
-              <span class="cr-slider-label-max">Max: <span id="cr-max-value">30</span></span>
+              <span class="cr-slider-label-min">Min: <span id="cr-min-value">1</span></span>
+              <span class="cr-slider-label-max">Max: <span id="cr-max-value">10</span></span>
             </div>
           </div>
         </div>
@@ -311,8 +311,9 @@ async function renderMonsters() {
     const safeId = monsterId.replace(/[^a-z0-9-]/gi, '-');
     const defaultLevel = crToLevel(monster.cr);
     
+    const monsterLevel = monster.level || crToLevel(monster.cr);
     htmlParts.push(`
-      <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" id="item-${safeId}">
+      <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" data-level="${monsterLevel}" id="item-${safeId}">
         <button class="lineage-header" onclick="toggleMonster(this)">
           <span class="lineage-title">${escapeHtml(monster.name)}</span>
           <span class="lineage-subtitle">CR ${formatCR(monster.cr)}</span>
@@ -418,6 +419,40 @@ function collapseAllMonsters() {
 function toggleOriginalStats() {
   const showOriginal = document.getElementById('toggle-original-stats').checked;
   
+  // Update filter slider based on toggle state
+  const minSlider = document.getElementById('cr-min-slider');
+  const maxSlider = document.getElementById('cr-max-slider');
+  const minValue = document.getElementById('cr-min-value');
+  const maxValue = document.getElementById('cr-max-value');
+  const filterLabel = document.getElementById('filter-label');
+  
+  if (showOriginal) {
+    // Show CR filter (0-30)
+    filterLabel.textContent = 'Filter by CR (Challenge Rating):';
+    minSlider.min = 0;
+    minSlider.max = 30;
+    minSlider.value = 0;
+    maxSlider.min = 0;
+    maxSlider.max = 30;
+    maxSlider.value = 30;
+    minValue.textContent = '0';
+    maxValue.textContent = '30';
+  } else {
+    // Show Level filter (1-10)
+    filterLabel.textContent = 'Filter by Level:';
+    minSlider.min = 1;
+    minSlider.max = 10;
+    minSlider.value = 1;
+    maxSlider.min = 1;
+    maxSlider.max = 10;
+    maxSlider.value = 10;
+    minValue.textContent = '1';
+    maxValue.textContent = '10';
+  }
+  
+  // Update slider track tick marks
+  updateSliderTicks();
+  
   document.querySelectorAll('.monster-item').forEach(item => {
     const etfDiv = item.querySelector('.monster-etf-version');
     const originalDiv = item.querySelector('.monster-original-version');
@@ -430,9 +465,34 @@ function toggleOriginalStats() {
       if (originalDiv) originalDiv.style.display = 'none';
     }
   });
+  
+  // Reapply filters with new criteria
+  applyFilters();
 }
 
-// Update CR filter slider values
+// Update slider track tick marks based on current range
+function updateSliderTicks() {
+  const minSlider = document.getElementById('cr-min-slider');
+  const maxSlider = document.getElementById('cr-max-slider');
+  const track = document.querySelector('.cr-slider-track');
+  
+  if (!minSlider || !maxSlider || !track) return;
+  
+  const min = parseInt(minSlider.min);
+  const max = parseInt(maxSlider.max);
+  const range = max - min + 1;
+  
+  // Update CSS for tick marks
+  track.style.backgroundImage = `repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(100% / ${range} - 1px),
+    #999 calc(100% / ${range} - 1px),
+    #999 calc(100% / ${range})
+  )`;
+}
+
+// Update CR/Level filter slider values
 function updateCRFilter() {
   const minSlider = document.getElementById('cr-min-slider');
   const maxSlider = document.getElementById('cr-max-slider');
@@ -473,24 +533,33 @@ function applyFilters() {
   const searchTerm = (document.getElementById('monster-search')?.value || '').toLowerCase();
   const minSlider = document.getElementById('cr-min-slider');
   const maxSlider = document.getElementById('cr-max-slider');
+  const showOriginal = document.getElementById('toggle-original-stats')?.checked || false;
   
   if (!minSlider || !maxSlider) return;
   
-  const minCR = parseInt(minSlider.value);
-  const maxCR = parseInt(maxSlider.value);
+  const minValue = parseInt(minSlider.value);
+  const maxValue = parseInt(maxSlider.value);
   
   let visibleCount = 0;
   
   document.querySelectorAll('.monster-item').forEach(item => {
     const name = (item.getAttribute('data-monster-name') || '').toLowerCase();
-    const cr = parseFloat(item.getAttribute('data-cr')) || 0;
-    
     const matchesSearch = !searchTerm || name.includes(searchTerm);
-    // For CR matching, round CR to nearest integer for comparison
-    const crInt = Math.round(cr);
-    const matchesCR = crInt >= minCR && crInt <= maxCR;
     
-    if (matchesSearch && matchesCR) {
+    let matchesFilter = false;
+    
+    if (showOriginal) {
+      // Filter by CR (for original D&D stats)
+      const cr = parseFloat(item.getAttribute('data-cr')) || 0;
+      const crInt = Math.round(cr);
+      matchesFilter = crInt >= minValue && crInt <= maxValue;
+    } else {
+      // Filter by Level (for ETF stats)
+      const level = parseInt(item.getAttribute('data-level')) || 1;
+      matchesFilter = level >= minValue && level <= maxValue;
+    }
+    
+    if (matchesSearch && matchesFilter) {
       item.style.display = '';
       visibleCount++;
     } else {
@@ -605,6 +674,9 @@ document.addEventListener('DOMContentLoaded', function() {
   if (filtersContainer) {
     filtersContainer.style.display = 'none';
   }
+  
+  // Initialize slider ticks for level filter (default)
+  updateSliderTicks();
 });
 </script>
 <script src="../assets/site.js"></script>

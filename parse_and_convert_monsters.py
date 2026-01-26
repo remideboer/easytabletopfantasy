@@ -38,6 +38,30 @@ def parse_cr_value(cr_text: str) -> float:
     except:
         return 0.0
 
+def cr_to_level(cr: float) -> int:
+    """Convert CR to ETF level (same as JavaScript function)"""
+    if cr <= 0:
+        return 1
+    if cr <= 1:
+        return 1
+    if cr <= 3:
+        return 2
+    if cr <= 5:
+        return 3
+    if cr <= 7:
+        return 4
+    if cr <= 9:
+        return 5
+    if cr <= 11:
+        return 6
+    if cr <= 13:
+        return 7
+    if cr <= 15:
+        return 8
+    if cr <= 17:
+        return 9
+    return 10
+
 def convert_to_hit_to_defense_save_dc(text: str) -> str:
     """Convert attack rolls to Defense Save DC: +X to hit -> Defense Save DC (11+X)"""
     def replace_attack(match):
@@ -283,9 +307,13 @@ def extract_monster_stat_block(article_html: str) -> Optional[Dict]:
         flags=re.IGNORECASE
     )
     
+    # Calculate default ETF level from CR
+    level = cr_to_level(cr)
+    
     return {
         'name': monster_name,
         'cr': cr,
+        'level': level,
         'hp': hp,
         'ac': ac,
         'original_html': stat_block_html,
