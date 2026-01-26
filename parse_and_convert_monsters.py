@@ -67,8 +67,126 @@ def convert_hp(hp_text: str) -> int:
         return max(1, converted)  # Minimum 1
     return 1
 
+def modifier_to_score(modifier: int) -> int:
+    """Convert modifier to ability score: score = modifier * 2 + 10"""
+    return modifier * 2 + 10
+
+def score_to_modifier(score: int) -> int:
+    """Convert ability score to modifier: modifier = floor((score - 10) / 2)"""
+    return (score - 10) // 2
+
+def convert_ability_scores_table(html: str) -> str:
+    """Convert D&D ability scores table to ETF 3-column table"""
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    # Find all ability score tables
+    tables = soup.find_all('figure', class_='monster-ability-scores')
+    
+    for table_figure in tables:
+        table = table_figure.find('table')
+        if not table:
+            continue
+        
+        thead = table.find('thead')
+        tbody = table.find('tbody')
+        
+        if not thead or not tbody:
+            continue
+        
+        # Get header row
+        header_row = thead.find('tr')
+        if not header_row:
+            continue
+        
+        # Get data row
+        data_row = tbody.find('tr')
+        if not data_row:
+            continue
+        
+        # Extract modifiers from original table
+        headers = [th.get_text().strip() for th in header_row.find_all('th')]
+        cells = [td.get_text().strip() for td in data_row.find_all('td')]
+        
+        # Find indices for each ability
+        str_idx = next((i for i, h in enumerate(headers) if h.upper() == 'STR'), None)
+        dex_idx = next((i for i, h in enumerate(headers) if h.upper() == 'DEX'), None)
+        con_idx = next((i for i, h in enumerate(headers) if h.upper() == 'CON'), None)
+        int_idx = next((i for i, h in enumerate(headers) if h.upper() == 'INT'), None)
+        wis_idx = next((i for i, h in enumerate(headers) if h.upper() == 'WIS'), None)
+        cha_idx = next((i for i, h in enumerate(headers) if h.upper() == 'CHA'), None)
+        
+        if None in [str_idx, dex_idx, con_idx, int_idx, wis_idx, cha_idx]:
+            continue
+        
+        # Parse modifiers (handle +0, -4, etc.)
+        def parse_modifier(text: str) -> int:
+            text = text.strip()
+            if not text:
+                return 0
+            if text.startswith('+'):
+                return int(text[1:]) if text[1:] else 0
+            elif text.startswith('-'):
+                return int(text) if text != '-' else 0
+            else:
+                return int(text) if text else 0
+        
+        str_mod = parse_modifier(cells[str_idx])
+        dex_mod = parse_modifier(cells[dex_idx])
+        con_mod = parse_modifier(cells[con_idx])
+        int_mod = parse_modifier(cells[int_idx])
+        wis_mod = parse_modifier(cells[wis_idx])
+        cha_mod = parse_modifier(cells[cha_idx])
+        
+        # Convert modifiers to scores
+        str_score = modifier_to_score(str_mod)
+        dex_score = modifier_to_score(dex_mod)
+        con_score = modifier_to_score(con_mod)
+        int_score = modifier_to_score(int_mod)
+        wis_score = modifier_to_score(wis_mod)
+        cha_score = modifier_to_score(cha_mod)
+        
+        # Calculate ETF composite scores (round down)
+        fitness_score = (str_score + dex_score + con_score) // 3
+        insight_score = (int_score + wis_score) // 2
+        willpower_score = (wis_score + cha_score) // 2
+        
+        # Calculate ETF modifiers
+        fitness_mod = score_to_modifier(fitness_score)
+        insight_mod = score_to_modifier(insight_score)
+        willpower_mod = score_to_modifier(willpower_score)
+        
+        # Format modifiers
+        def format_modifier(mod: int) -> str:
+            if mod >= 0:
+                return f'+{mod}'
+            return str(mod)
+        
+        # Clear and rebuild header row
+        header_row.clear()
+        for ability in ['FIT', 'INS', 'WIL']:
+            th = soup.new_tag('th')
+            th['class'] = 'has-text-align-center'
+            th['data-align'] = 'center'
+            th.string = ability
+            header_row.append(th)
+        
+        # Clear and rebuild data row
+        data_row.clear()
+        for mod in [fitness_mod, insight_mod, willpower_mod]:
+            td = soup.new_tag('td')
+            td['class'] = 'has-text-align-center'
+            td['data-align'] = 'center'
+            td.string = f'\n          {format_modifier(mod)}\n        '
+            data_row.append(td)
+    
+    return str(soup)
+
 def convert_ability_scores(text: str) -> str:
-    """Convert D&D ability scores to ETF"""
+    """Convert D&D ability scores references in text to ETF"""
+    # First convert the table
+    text = convert_ability_scores_table(text)
+    
+    # Then convert text references
     replacements = {
         r'\bSTR\b': 'FIT',
         r'\bDEX\b': 'FIT',
