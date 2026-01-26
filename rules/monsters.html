@@ -12,59 +12,105 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="rules/monsters.html" />
 <style>
-/* CR Filter Slider Styles */
+/* CR Filter Dual Range Slider Styles */
 .cr-filter-slider-container {
   display: flex;
-  align-items: center;
-  gap: 15px;
+  flex-direction: column;
+  gap: 10px;
   margin: 15px 0;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .cr-slider-wrapper {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
 }
 
-.cr-slider-label {
-  font-weight: bold;
-  min-width: 80px;
+.cr-slider-track {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: #ddd;
+  border-radius: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cr-slider-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(100% / 31 - 1px),
+    #999 calc(100% / 31 - 1px),
+    #999 calc(100% / 31)
+  );
+  pointer-events: none;
 }
 
 .cr-slider {
-  flex: 1;
+  position: absolute;
+  width: 100%;
   height: 6px;
-  border-radius: 3px;
-  background: #ddd;
+  background: transparent;
   outline: none;
   -webkit-appearance: none;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .cr-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #4a90e2;
   cursor: pointer;
+  pointer-events: all;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .cr-slider::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #4a90e2;
   cursor: pointer;
-  border: none;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  pointer-events: all;
 }
 
-.cr-value-display {
-  min-width: 60px;
-  text-align: center;
+.cr-slider-min {
+  z-index: 1;
+}
+
+.cr-slider-max {
+  z-index: 2;
+}
+
+.cr-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
+
+.cr-slider-label-min,
+.cr-slider-label-max {
   font-weight: bold;
   color: #4a90e2;
 }
@@ -135,14 +181,13 @@
           <span class="filter-label">Filter by CR (Challenge Rating):</span>
           <div class="cr-filter-slider-container">
             <div class="cr-slider-wrapper">
-              <span class="cr-slider-label">Min CR:</span>
-              <input type="range" id="cr-min-slider" class="cr-slider" min="0" max="30" value="0" step="0.125" oninput="updateCRFilter()" />
-              <span id="cr-min-value" class="cr-value-display">0</span>
+              <div class="cr-slider-track"></div>
+              <input type="range" id="cr-min-slider" class="cr-slider cr-slider-min" min="0" max="30" value="0" step="1" oninput="updateCRFilter()" />
+              <input type="range" id="cr-max-slider" class="cr-slider cr-slider-max" min="0" max="30" value="30" step="1" oninput="updateCRFilter()" />
             </div>
-            <div class="cr-slider-wrapper">
-              <span class="cr-slider-label">Max CR:</span>
-              <input type="range" id="cr-max-slider" class="cr-slider" min="0" max="30" value="30" step="0.125" oninput="updateCRFilter()" />
-              <span id="cr-max-value" class="cr-value-display">30</span>
+            <div class="cr-slider-labels">
+              <span class="cr-slider-label-min">Min: <span id="cr-min-value">0</span></span>
+              <span class="cr-slider-label-max">Max: <span id="cr-max-value">30</span></span>
             </div>
           </div>
         </div>
@@ -169,6 +214,7 @@
 <p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
 <p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
 <p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
+<script src="../data/monsters_data.js"></script>
 <script>
 // CR to Level mapping (same as monster-abilities.html)
 function crToLevel(cr) {
@@ -223,24 +269,33 @@ let original5eContent = new Map();
 async function loadMonstersData() {
   if (monstersData.length > 0) return monstersData;
   
-  try {
-    const response = await fetch('../foundation/monsters_data.json');
-    monstersData = await response.json();
+  // Data is embedded in the page via script tag, so it should already be available
+  // Check if monstersDataEmbedded is defined (from embedded script)
+  if (typeof monstersDataEmbedded !== 'undefined') {
+    monstersData = monstersDataEmbedded;
     return monstersData;
-  } catch (error) {
-    console.error('Error loading monsters data:', error);
-    return [];
   }
+  
+  // Also check window object
+  if (typeof window.monstersDataEmbedded !== 'undefined') {
+    monstersData = window.monstersDataEmbedded;
+    return monstersData;
+  }
+  
+  // Fallback: return empty array if data not found
+  console.warn('Monsters data not found. Make sure monsters_data.js is included.');
+  return [];
 }
 
-// Render monsters
+// Render monsters with optimized batch rendering
 async function renderMonsters() {
   const data = await loadMonstersData();
   const container = document.getElementById('monsters-container');
   
   if (!container) return;
   
-  container.innerHTML = '';
+  // Show loading indicator
+  container.innerHTML = '<p>Loading monsters...</p>';
   
   // Sort monsters by CR, then by name
   const sorted = [...data].sort((a, b) => {
@@ -248,12 +303,15 @@ async function renderMonsters() {
     return a.name.localeCompare(b.name);
   });
   
+  // Build HTML string in memory first (much faster than innerHTML +=)
+  const htmlParts = [];
+  
   sorted.forEach((monster, index) => {
     const monsterId = `monster-${index}`;
     const safeId = monsterId.replace(/[^a-z0-9-]/gi, '-');
     const defaultLevel = crToLevel(monster.cr);
     
-    const monsterHTML = `
+    htmlParts.push(`
       <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" id="item-${safeId}">
         <button class="lineage-header" onclick="toggleMonster(this)">
           <span class="lineage-title">${escapeHtml(monster.name)}</span>
@@ -280,26 +338,32 @@ async function renderMonsters() {
           <div class="scaling-info" data-base-cr="${monster.cr}" data-base-hp="${monster.hp}" data-base-ac="${monster.ac}" style="display:none;"></div>
         </div>
       </div>
-    `;
+    `);
+  });
+  
+  // Set innerHTML once with all content (much faster)
+  container.innerHTML = htmlParts.join('');
+  
+  // Store original content after rendering (use requestAnimationFrame for better performance)
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.monster-item').forEach(item => {
+      const etfDiv = item.querySelector('.monster-etf-version');
+      const originalDiv = item.querySelector('.monster-original-version');
+      if (etfDiv && !originalETFContent.has(item)) {
+        originalETFContent.set(item, etfDiv.innerHTML);
+      }
+      if (originalDiv && !original5eContent.has(item)) {
+        original5eContent.set(item, originalDiv.innerHTML);
+      }
+    });
     
-    container.innerHTML += monsterHTML;
-  });
-  
-  // Store original content after rendering
-  document.querySelectorAll('.monster-item').forEach(item => {
-    const etfDiv = item.querySelector('.monster-etf-version');
-    const originalDiv = item.querySelector('.monster-original-version');
-    if (etfDiv && !originalETFContent.has(item)) {
-      originalETFContent.set(item, etfDiv.innerHTML);
-    }
-    if (originalDiv && !original5eContent.has(item)) {
-      original5eContent.set(item, originalDiv.innerHTML);
-    }
-  });
-  
-  // Initialize all collapsed
-  document.querySelectorAll('.lineage-content').forEach(content => {
-    content.style.display = 'none';
+    // Initialize all collapsed
+    document.querySelectorAll('.lineage-content').forEach(content => {
+      content.style.display = 'none';
+    });
+    
+    // Apply filters after rendering
+    applyFilters();
   });
 }
 
@@ -375,20 +439,25 @@ function updateCRFilter() {
   const minValue = document.getElementById('cr-min-value');
   const maxValue = document.getElementById('cr-max-value');
   
-  let min = parseFloat(minSlider.value);
-  let max = parseFloat(maxSlider.value);
+  let min = parseInt(minSlider.value);
+  let max = parseInt(maxSlider.value);
   
-  // Ensure min <= max
+  // Ensure min <= max (they can be equal)
   if (min > max) {
-    const temp = min;
-    min = max;
-    max = temp;
-    minSlider.value = min;
-    maxSlider.value = max;
+    // If min slider moved past max, set min to max
+    if (minSlider === document.activeElement) {
+      min = max;
+      minSlider.value = min;
+    }
+    // If max slider moved below min, set max to min
+    else if (maxSlider === document.activeElement) {
+      max = min;
+      maxSlider.value = max;
+    }
   }
   
-  minValue.textContent = formatCR(min);
-  maxValue.textContent = formatCR(max);
+  minValue.textContent = min;
+  maxValue.textContent = max;
   
   // Apply filter
   applyFilters();
@@ -407,8 +476,8 @@ function applyFilters() {
   
   if (!minSlider || !maxSlider) return;
   
-  const minCR = parseFloat(minSlider.value);
-  const maxCR = parseFloat(maxSlider.value);
+  const minCR = parseInt(minSlider.value);
+  const maxCR = parseInt(maxSlider.value);
   
   let visibleCount = 0;
   
@@ -417,7 +486,9 @@ function applyFilters() {
     const cr = parseFloat(item.getAttribute('data-cr')) || 0;
     
     const matchesSearch = !searchTerm || name.includes(searchTerm);
-    const matchesCR = cr >= minCR && cr <= maxCR;
+    // For CR matching, round CR to nearest integer for comparison
+    const crInt = Math.round(cr);
+    const matchesCR = crInt >= minCR && crInt <= maxCR;
     
     if (matchesSearch && matchesCR) {
       item.style.display = '';
@@ -526,6 +597,7 @@ function escapeHtml(text) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
+  // monsters_data.js should be loaded by now (it's before this script)
   renderMonsters();
   
   // Initialize filters hidden

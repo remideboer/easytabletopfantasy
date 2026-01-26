@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from typing import Dict, List, Optional
 
 MONSTERS_DIR = Path('foundation/monsters-bfrd')
-OUTPUT_FILE = Path('foundation/monsters_data.json')
+OUTPUT_FILE = Path('data/monsters_data.json')
 
 def parse_cr_value(cr_text: str) -> float:
     """Parse CR value from text like 'CR 0', 'CR 1/8', 'CR 1/4', 'CR 1/2', 'CR 5'"""
