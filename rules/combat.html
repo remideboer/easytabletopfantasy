@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Combat | Easy Tabletop Fantasy</title>
-<meta name="description" content="Combat rules for Easy Tabletop Fantasy." />
+<title>Combat | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Combat rules for You-Meet-In-A-Tavern (YMIAT)." />
 <link rel="canonical" href="rules/combat.html" />
 <link rel="stylesheet" href="../assets/styles.css" />
-<meta property="og:title" content="Combat | Easy Tabletop Fantasy" />
-<meta property="og:description" content="Combat rules for Easy Tabletop Fantasy." />
+<meta property="og:title" content="Combat | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Combat rules for You-Meet-In-A-Tavern (YMIAT)." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="rules/combat.html" />
 
 </head>
 <body>
-<header><nav><a href="../index.html" class="logo-link"><img src="../assets/easy_table_top_fantasy_emblem.png" alt="Easy Tabletop Fantasy" class="nav-logo" /></a><div class="nav-dropdown"><a href="core.html">Rules</a><div class="nav-dropdown-menu"><a href="core.html#core-game-loop">Core Game Loop</a><a href="core.html#modes-of-play">Modes of Play</a><a href="core.html#dice-and-tests">Dice and Tests</a><a href="core.html#ability-scores">Abilities and Properties</a><a href="core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="core.html#proficiency-and-advantage">Proficiency and Advantage</a><a href="core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="core.html#talents">Talents</a><a href="core.html#hit-points-and-scale">Hit Points and Scale</a><a href="core.html#level-advancement">Level Advancement</a><a href="core.html#attacks-and-defense">Attacks and Defense</a><a href="core.html#weapon-attacks">Weapon Attacks</a><a href="core.html#weapon-mastery">Weapon Mastery</a><a href="core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="core.html#resolve">Resolve</a><a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="characters.html">Characters</a><div class="nav-dropdown-menu"><a href="characters.html">Character Creation</a><a href="lineages.html">Lineages</a><a href="backgrounds.html">Backgrounds</a><a href="talents.html">Talents</a></div></div><a href="../convert.html">Converter</a><a href="conversion.html">Conversion Guide</a><a href="combat.html" aria-current="page">Combat</a><a href="magic.html">Magic</a><a href="gear.html">Gear</a><a href="monsters.html">Monsters</a><a href="../faq.html">FAQ</a><a href="../legal.html">Legal</a></nav></header>
+<header><nav><a href="../index.html" class="logo-link"><img src="../assets/You-Meet-In-A-Tavern.png" alt="You-Meet-In-A-Tavern (YMIAT)" class="nav-logo" /></a><div class="nav-dropdown"><a href="core.html">Rules</a><div class="nav-dropdown-menu"><a href="core.html#core-game-loop">Core Game Loop</a><a href="core.html#modes-of-play">Modes of Play</a><a href="core.html#dice-and-tests">Dice and Tests</a><a href="core.html#ability-scores">Abilities and Properties</a><a href="core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="core.html#proficiency-and-advantage">Proficiency and Advantage</a><a href="core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="core.html#talents">Talents</a><a href="core.html#hit-points-and-scale">Hit Points and Scale</a><a href="core.html#level-advancement">Level Advancement</a><a href="core.html#attacks-and-defense">Attacks and Defense</a><a href="core.html#weapon-attacks">Weapon Attacks</a><a href="core.html#weapon-mastery">Weapon Mastery</a><a href="core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="core.html#resolve">Resolve</a><a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="characters.html">Characters</a><div class="nav-dropdown-menu"><a href="characters.html">Character Creation</a><a href="lineages.html">Lineages</a><a href="backgrounds.html">Backgrounds</a><a href="talents.html">Talents</a></div></div><a href="../convert.html">Converter</a><a href="conversion.html">Conversion Guide</a><a href="combat.html" aria-current="page">Combat</a><a href="magic.html">Magic</a><a href="gear.html">Gear</a><a href="monsters.html">Monsters</a><a href="../faq.html">FAQ</a><a href="../legal.html">Legal</a></nav></header>
 <main>
   <h1>Combat</h1>
   <div class="layout">
@@ -23,7 +23,7 @@
       <div data-toc></div>
     </aside>
     <div class="content">
-      <p class="lede">Combat in Easy Tabletop Fantasy uses a streamlined system focused on clear choices, consistent resolution, and fast-paced action. Each turn consists of 3 Moments, allowing characters to move, attack, cast spells, and take other actions in a flexible, time-based structure.</p>
+      <p class="lede">Combat in You-Meet-In-A-Tavern (YMIAT) uses a streamlined system focused on clear choices, consistent resolution, and fast-paced action. Each turn consists of 3 Moments, allowing characters to move, attack, cast spells, and take other actions in a flexible, time-based structure.</p>
       
       <div class="moments-indicator">
         <div class="moments-label">Your Turn: 3 Moments</div>
@@ -146,8 +146,8 @@
       <p>A typical combat encounter follows this sequence:</p>
       <ol>
         <li><strong>Surprise.</strong> The Game Master determines whether anyone is surprised.</li>
-        <li><strong>Initiative.</strong> Everyone involved in the combat encounter rolls initiative.</li>
-        <li><strong>Combat Rounds.</strong> Each round, participants act in initiative order.</li>
+        <li><strong>Combat order.</strong> Participants act in combat order (players first by default; see Combat order below).</li>
+        <li><strong>Combat Rounds.</strong> Each round, participants act in combat order.</li>
         <li><strong>End of Combat.</strong> The encounter ends when one side is defeated, flees, or surrenders.</li>
       </ol>
       
@@ -156,12 +156,10 @@
       <p>The Game Master determines who might be surprised. If neither side tries to be stealthy, they automatically notice each other. Otherwise, the Game Master compares the Fitness (Stealth) checks of anyone hiding with the passive Insight (Perception) score of each creature on the opposing side. Any character or monster that doesn't notice a threat is surprised at the start of the encounter.</p>
       <p>If you're surprised, you can't move or take an action on your first turn of the combat, and you can't take a reaction until that turn ends. A member of a group can be surprised even if the other members aren't.</p>
       
-      <h2 id="initiative">Initiative</h2>
-      <p>Initiative determines the order of turns during combat. When combat starts, every participant makes a Dexterity check to determine their place in the initiative order. The Game Master makes one roll for an entire group of identical creatures, so each member of the group acts at the same time.</p>
-      <p><strong>Initiative in Easy Tabletop Fantasy:</strong> Roll initiative as normal using a Dexterity check. The highest roll acts first. After the highest roll is determined, the players determine the order among themselves for their turns. This allows for tactical coordination and faster play.</p>
-      <p><strong>Surprise Exception:</strong> If any creatures are surprised, surprised creatures act after all non-surprised creatures, regardless of initiative rolls. Among surprised creatures, monsters act first, followed by player characters who determine their order among themselves.</p>
-      <p>The Game Master ranks the combatants in order from the one with the highest Dexterity check total to the one with the lowest. This is the order (called the initiative order) in which everyone acts during each round. The initiative order remains the same from round to round.</p>
-      <p>If a tie occurs, the Game Master decides the order among tied Game Master-controlled creatures, and the players decide the order among their tied characters. The Game Master can decide the order if the tie is between a monster and a player character. Optionally, the Game Master can have the tied characters and monsters each roll a d20 to determine the order among themselves.</p>
+      <h2 id="combat-order">Combat order</h2>
+      <p>Combat order determines who acts when during a round. By default, <strong>the players go first</strong>, in whatever order best fits the narrative. The players decide among themselves in which order they take their turns. Monsters and other opponents act after the players, in an order that makes sense for the situation.</p>
+      <p>If the players are surprised, the <strong>monsters (or other threats) go first</strong>, in an order that fits the narrative. After they have acted, the players take their turns as above. Whether anyone is surprised can be determined by a check or by the situation; that is left to the Game Master.</p>
+      <p><strong>Initiative (variant):</strong> Roll initiative using a Fitness check. The highest roll acts first. After the highest roll is determined, the players determine the order among themselves for their turns.</p>
       
       <h2 id="your-turn">Your Turn</h2>
       <p>On your turn, you can move a distance up to your speed and take one or more actions. The basic options for how you spend your turn are described in the "Actions and Time (Encounter Mode)" section of the <a href="core.html#actions-and-time-encounter-mode">Core rules</a>.</p>
@@ -188,7 +186,7 @@
       
       <h4>Cast a Spell</h4>
       <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies how many Moments it takes to cast the spell.</p>
-      <p>In Easy Tabletop Fantasy, casting times are converted to Moments:</p>
+      <p>In You-Meet-In-A-Tavern (YMIAT), casting times are converted to Moments:</p>
       <ul>
         <li><strong>Cantrip:</strong> 1 Moment</li>
         <li><strong>Leveled Spell:</strong> Usually 2 Moments, unless otherwise noted</li>
@@ -205,7 +203,7 @@
       <p>Disengage costs 1 Moment.</p>
       
       <h4>Dodge</h4>
-      <p>When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated or if your speed drops to 0.</p>
+      <p>When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Fitness saving throws with advantage. You lose this benefit if you are incapacitated or if your speed drops to 0.</p>
       <p>Dodge costs 1 Moment.</p>
       
       <h4>Help</h4>
@@ -214,7 +212,7 @@
       <p>Help costs 1 Moment.</p>
       
       <h4>Hide</h4>
-      <p>When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules for hiding. If you succeed, you gain certain benefits, as described in the "Unseen Attackers and Targets" section later in this chapter.</p>
+      <p>When you take the Hide action, you make a Fitness (Stealth) check in an attempt to hide, following the rules for hiding. If you succeed, you gain certain benefits, as described in the "Unseen Attackers and Targets" section later in this chapter.</p>
       <p>Hide costs 1 Moment.</p>
       
       <h4>Ready</h4>
@@ -263,47 +261,31 @@
       
       <h3>Class Features and Abilities</h3>
       <p>Certain class features, such as a fighter's Extra Attack, allow you to make multiple attacks more effectively. These features may reduce or eliminate the stacking Disadvantage for specific attacks, as described in the class feature.</p>
-      <p>When converting abilities from D&D 5e that grant extra attacks (whether as part of an action or bonus action), these extra attacks in Easy Tabletop Fantasy occur during the same Moment as the initial attack. For example, if a D&D 5e ability allows you to make an extra attack as part of your action, in Easy Tabletop Fantasy you make both attacks during the same Moment, with the second attack suffering stacking Disadvantage as normal.</p>
+      <p>When converting abilities from D&D 5e that grant extra attacks (whether as part of an action or bonus action), these extra attacks in You-Meet-In-A-Tavern (YMIAT) occur during the same Moment as the initial attack. For example, if a D&D 5e ability allows you to make an extra attack as part of your action, in You-Meet-In-A-Tavern (YMIAT) you make both attacks during the same Moment, with the second attack suffering stacking Disadvantage as normal.</p>
       <p>Some abilities grant you additional attacks that don't count toward your stacking Disadvantage, such as natural weapon attacks or special combat maneuvers.</p>
       
       <h3>Distributing Attacks</h3>
       <p>You can direct your attacks at one target or divide them among multiple targets, as long as all targets are within your reach (for melee attacks) or range (for ranged attacks). You must declare all targets before making any attack rolls.</p>
       
       <h3>Tactical Positioning</h3>
-      <p>Easy Tabletop Fantasy does not include specific rules for tactical positioning such as flanking, facing, or similar mechanics. These elements are left to Game Master discretion. The GM may choose to grant advantage, impose disadvantage, or apply other modifiers based on tactical positioning and narrative circumstances as they see fit for their game.</p>
-      
-      <h2 id="two-weapon-fighting">Two-Weapon Fighting</h2>
-      <p>When you attack with a light melee weapon that you're holding in one hand, you can spend an additional Moment to attack with a different light melee weapon that you're holding in the other hand. The second attack suffers the normal stacking Disadvantage (no Disadvantage if both weapons are agile).</p>
-      <p>You don't add your ability modifier to the damage of the second attack, unless that modifier is negative.</p>
-      <p>If either weapon has the thrown property, you can throw the weapon, instead of making a melee attack with it.</p>
-      <p>Two-weapon fighting requires 2 Moments total: 1 Moment for the first attack, and 1 Moment for the second attack.</p>
-      
-      <h2 id="grappling">Grappling</h2>
-      <p>When you want to grab a creature or wrestle with it, you can use the Attack action to make a special melee attack, a grapple. This attack counts as one of your attacks for the purpose of the Multiple Attack Penalty.</p>
-      <p>The target of your grapple must be no more than one size larger than you and must be within your reach. Using at least one free hand, you try to seize the target by making a grapple check instead of an attack roll: a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you succeed, you subject the target to the grappled condition. The condition specifies the things that end it, and you can release the target whenever you like (no action required).</p>
-      <p>Grappling costs 1 Moment.</p>
-      
-      <h2 id="shoving-a-creature">Shoving a Creature</h2>
-      <p>Using the Attack action, you can make a special melee attack to shove a creature, either to knock it prone or push it away from you. This attack counts as one of your attacks for the purpose of the Multiple Attack Penalty.</p>
-      <p>The target must be no more than one size larger than you and must be within your reach. Instead of making an attack roll, you make a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you win the contest, you either knock the target prone or push it 5 feet away from you.</p>
-      <p>Shoving costs 1 Moment.</p>
-      
+      <p>You-Meet-In-A-Tavern (YMIAT) does not include specific rules for tactical positioning such as flanking, facing, or similar mechanics. These elements are left to Game Master discretion. The GM may choose to grant advantage, impose disadvantage, or apply other modifiers based on tactical positioning and narrative circumstances as they see fit for their game.</p>
+    
       <h2 id="cover">Cover</h2>
       <p>Walls, trees, creatures, and other obstacles can provide cover during combat, making a target more difficult to harm. A target can benefit from cover only when an attack or other effect originates on the opposite side of the cover.</p>
       <p>There are three degrees of cover. If a target is behind multiple sources of cover, only the most protective degree of cover applies; the degrees aren't added together. For example, if a target is behind a creature that gives it half cover and a tree trunk that gives it three-quarters cover, the target has three-quarters cover.</p>
       
       <h3>Half Cover</h3>
-      <p>A target with half cover has a +2 bonus to AC and Dexterity saving throws. A target has half cover if an obstacle blocks at least half of its body. The obstacle might be a low wall, a large piece of furniture, a narrow tree trunk, or a creature, whether that creature is an enemy or a friend.</p>
+      <p>A target with half cover has a +2 bonus to AC and Fitness saving throws. A target has half cover if an obstacle blocks at least half of its body. The obstacle might be a low wall, a large piece of furniture, a narrow tree trunk, or a creature, whether that creature is an enemy or a friend.</p>
       
       <h3>Three-Quarters Cover</h3>
-      <p>A target with three-quarters cover has a +5 bonus to AC and Dexterity saving throws. A target has three-quarters cover if an obstacle blocks at least three-quarters of its body. The obstacle might be a portcullis, an arrow slit, or a thick tree trunk.</p>
+      <p>A target with three-quarters cover has a +5 bonus to AC and Fitness saving throws. A target has three-quarters cover if an obstacle blocks at least three-quarters of its body. The obstacle might be a portcullis, an arrow slit, or a thick tree trunk.</p>
       
       <h3>Total Cover</h3>
       <p>A target with total cover can't be targeted directly by an attack or a spell, although some spells can reach such a target by including it in an area of effect. A target has total cover if it is completely concealed by an obstacle.</p>
       
       <h2 id="damage-and-healing">Damage and Healing</h2>
       <p>Injury and the risk of death are constant companions of those who explore fantasy gaming worlds. The thrust of a sword, a well-placed arrow, or a blast of felfire magic all have the potential to damage, or even kill, the hardiest of creatures.</p>
-      <p>In Easy Tabletop Fantasy, damage is expressed in <strong>hits</strong> rather than hit points. A successful attack deals 1 hit. A critical hit deals 2 hits. See the <a href="core.html#attacks-and-defense">Attacks and Defense</a> section for more details.</p>
+      <p>In You-Meet-In-A-Tavern (YMIAT), damage is expressed in <strong>hits</strong> rather than hit points. A successful attack deals 1 hit. A critical hit deals 2 hits. See the <a href="core.html#attacks-and-defense">Attacks and Defense</a> section for more details.</p>
       
       <h3>Damage Types</h3>
       <p>Different attacks, damaging spells, and other harmful effects deal different types of damage. Damage types have no rules of their own, but other rules, such as damage resistance, rely on the types.</p>
@@ -326,9 +308,9 @@
       
       <h3>Damage Resistance and Vulnerability</h3>
       <p>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</p>
-      <p>If a creature or an object has <strong>resistance</strong> to a damage type, damage of that type is halved against it. If a creature or an object has <strong>vulnerability</strong> to a damage type, damage of that type is doubled against it.</p>
-      <p>Resistance and then vulnerability are applied after all other modifiers to damage. For example, a creature has resistance to bludgeoning damage and is hit by an attack that deals 2 hits. The damage is halved, so the creature takes 1 hit.</p>
-      <p>Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance. For example, if a creature has resistance to fire damage and also has resistance to all nonmagical damage, the damage of a nonmagical fire is reduced by half, not reduced by three-quarters.</p>
+      <p>If a creature or an object has <strong>resistance</strong> to a damage type, attacks that deal damage of that type are made with <strong>disadvantage</strong> against it. If a creature or an object has <strong>vulnerability</strong> to a damage type, attacks that deal damage of that type are made with <strong>advantage</strong> against it.</p>
+      <p>Resistance and vulnerability affect the attack roll only; they do not change the number of hits dealt on a successful hit. For example, a creature with resistance to bludgeoning is attacked with a bludgeoning weapon: the attacker rolls the attack with disadvantage. If the attack hits, it still deals its normal hits (e.g. 1 hit, or 2 on a critical).</p>
+      <p>Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance. A creature with several sources of resistance to fire still imposes disadvantage only once on fire attacks; a creature with several sources of vulnerability to fire still grants advantage only once.</p>
       
       <h3>Healing</h3>
       <p>Unless it results from death, damage isn't permanent. Even death is reversible through powerful magic. Rest can restore a creature's hit points (as explained in the <a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a> section), and magical methods such as a <em>cure wounds</em> spell or a <em>potion of healing</em> can remove damage in an instant.</p>
@@ -342,23 +324,13 @@
       <p>Restoring a lost heart requires one long rest. During this rest, however, no HP is restored; HP must be regained separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also restore HP again.</p>
       <p>The order of recovery during a long rest is always: first hearts, then HP.</p>
       
-      <h2 id="mounting-and-dismounting">Mounting and Dismounting</h2>
-      <p>Once during your move, you can mount a creature that is within 5 feet of you or dismount. Doing so costs an amount of movement equal to half your speed. For example, if your speed is 30 feet, you must spend 15 feet of movement to mount a horse. Therefore, you can't mount it if you don't have 15 feet of movement left or if your speed is 0.</p>
-      <p>If an effect moves your mount against its will while you're on it, you must succeed on a DC 10 Dexterity saving throw or fall off the mount, landing prone in a space within 5 feet of it. If you're knocked prone while mounted, you must make the same saving throw.</p>
-      <p>If your mount is knocked prone, you can use your reaction to dismount it as it falls and land on your feet. Otherwise, you are dismounted and fall prone in a space within 5 feet it.</p>
-      
-      <h2 id="underwater-combat">Underwater Combat</h2>
-      <p>When adventurers pursue sahuagin back to their undersea homes, fight off sharks in an ancient shipwreck, or find themselves in a flooded dungeon room, they must fight in a challenging environment. Underwater the following rules apply.</p>
-      <p>When making a melee weapon attack, a creature that doesn't have a swimming speed (either natural or granted by magic) has disadvantage on the attack roll unless the weapon is a dagger, javelin, shortsword, spear, or trident.</p>
-      <p>A ranged weapon attack automatically misses a target beyond the weapon's normal range. Even against a target within normal range, the attack roll has disadvantage unless the weapon is a crossbow, a net, or a weapon that is thrown like a javelin (including a spear, trident, or dart).</p>
-      <p>Creatures and objects that are fully immersed in water have resistance to fire damage.</p>
     </div>
   </div>
 </main>
-<footer class="legal"><p>© Easy Tabletop Fantasy.</p>
+<footer class="legal"><p>© You-Meet-In-A-Tavern (YMIAT).</p>
 <p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
 <p>Portions of this work are derived from the <em>5.1 System Reference Document (SRD 5.1)</em> and are used under the Creative Commons Attribution 4.0 International License.</p>
-<p>Easy Tabletop Fantasy is an independent project and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
+<p>You-Meet-In-A-Tavern (YMIAT) is a fan-made D&D 5e homebrew and is not affiliated with, sponsored by, or endorsed by Wizards of the Coast, Kobold Press, Paizo, or any other publisher.</p>
 <p><em>Dungeons &amp; Dragons</em> and <em>D&amp;D</em> are trademarks of Wizards of the Coast. <em>Tales of the Valiant</em> is a trademark of Kobold Press. <em>Pathfinder</em> is a trademark of Paizo Inc.</p></footer>
 <script src="../assets/site.js"></script>
 </body>

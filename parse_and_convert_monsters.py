@@ -91,6 +91,208 @@ def convert_hp(hp_text: str) -> int:
         return max(1, converted)  # Minimum 1
     return 1
 
+def convert_weapon_damage(text: str) -> str:
+    """
+    Convert weapon attack damage to ETF format.
+    Weapons always deal 1 hit (2 hits on critical hit).
+    According to rules/conversion.html#converting-weapons:
+    - Weapon damage dice convert to attack bonuses, NOT to hits
+    - All weapon attacks deal 1 hit on a successful hit
+    
+    This function identifies weapon attacks by looking for "Melee Weapon Attack" 
+    or "Ranged Weapon Attack" patterns and converts their damage to "1 hit".
+    """
+    def replace_weapon_hit_single(match):
+        """Replace single weapon damage"""
+        damage_type = match.group(1).strip() if match.lastindex >= 1 and match.group(1) else ''
+        if damage_type:
+            return f"Hit: 1 hit of {damage_type} damage"
+        return "Hit: 1 hit of damage"
+    
+    def replace_weapon_hit_plus(match):
+        """Replace weapon damage with plus"""
+        first_type = match.group(1).strip() if match.lastindex >= 1 and match.group(1) else ''
+        second_type = match.group(2).strip() if match.lastindex >= 2 and match.group(2) else ''
+        if first_type and second_type:
+            return f"Hit: 1 hit of {first_type} damage plus 1 hit of {second_type} damage"
+        elif first_type:
+            return f"Hit: 1 hit of {first_type} damage plus 1 hit of damage"
+        elif second_type:
+            return f"Hit: 1 hit of damage plus 1 hit of {second_type} damage"
+        return "Hit: 1 hit of damage plus 1 hit of damage"
+    
+    # Strategy: Find all "Hit:" patterns that appear after a weapon attack
+    # We'll process the text by finding weapon attack sections and converting their damage
+    
+    # Split text into chunks around weapon attacks
+    # Find all positions where weapon attacks occur
+    weapon_positions = []
+    for match in re.finditer(r'(Melee|Ranged)\s+Weapon\s+Attack', text, re.IGNORECASE):
+        weapon_positions.append(match.start())
+    
+    if not weapon_positions:
+        # No weapon attacks found, return as-is
+        return text
+    
+    # Process each weapon attack section
+    result_parts = []
+    last_pos = 0
+    
+    for weapon_pos in weapon_positions:
+        # Add text before this weapon attack
+        result_parts.append(text[last_pos:weapon_pos])
+        
+        # Find the "Hit:" pattern after this weapon attack (within 500 chars)
+        section_end = min(weapon_pos + 500, len(text))
+        section = text[weapon_pos:section_end]
+        
+        # Find "Hit:" damage in this section
+        hit_match = re.search(
+            r'Hit:\s*\d+\s*\(\d+d\d+(?:\s*[+\-]\s*\d+)?\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage(?:\s+plus\s+\d+\s*\(\d+d\d+(?:\s*[+\-]\s*\d+)?\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage)?',
+            section,
+            re.IGNORECASE
+        )
+        
+        if hit_match:
+            # Replace the damage part
+            hit_start = weapon_pos + hit_match.start()
+            hit_end = weapon_pos + hit_match.end()
+            
+            # Get the damage replacement
+            if 'plus' in hit_match.group(0).lower():
+                replacement = replace_weapon_hit_plus(hit_match)
+            else:
+                replacement = replace_weapon_hit_single(hit_match)
+            
+            # Add text up to the hit, then replacement, then continue
+            result_parts.append(text[weapon_pos:hit_start])
+            result_parts.append(replacement)
+            last_pos = hit_end
+        else:
+            # No hit found in this section, just add the section
+            result_parts.append(section)
+            last_pos = section_end
+    
+    # Add remaining text
+    result_parts.append(text[last_pos:])
+    
+    return ''.join(result_parts)
+
+def convert_damage_to_hits(text: str) -> str:
+    """
+    Convert D&D damage expressions to ETF hits format.
+    Rules from conversion.html:
+    - For WEAPONS: Always 1 hit (handled by convert_weapon_damage)
+    - For SPELLS/EFFECTS: 
+      1. Take maximum total of dice expression
+      2. Divide by 6
+      3. Round to nearest whole number
+    For mixed: convert dice and bonus separately, then add.
+    
+    Examples (spells/effects):
+    - "Hit: 16 (2d10 + 5) piercing damage" -> "Hit: 4 hits of piercing damage"
+      (2d10 max=20, 20/6=3.33->3 hits; +5, 5/6=0.83->1 hit; total=4 hits)
+    - "Hit: 2 (1d4) piercing damage" -> "Hit: 1 hit of piercing damage"
+      (1d4 max=4, 4/6=0.67->1 hit)
+    - "Hit: 6 (1d6 + 3) bludgeoning damage plus 9 (2d8) piercing damage" 
+      -> "Hit: 2 hits of bludgeoning damage plus 3 hits of piercing damage"
+    """
+    # First, convert weapon damage (weapons always deal 1 hit)
+    text = convert_weapon_damage(text)
+    
+    def calculate_hits(dice_expr: str, bonus: int = 0) -> int:
+        """Calculate hits from dice expression and optional bonus"""
+        # Parse dice (e.g., "2d10", "3d4", "1d8")
+        dice_match = re.match(r'(\d+)d(\d+)', dice_expr.strip())
+        if not dice_match:
+            return 1
+        
+        num_dice = int(dice_match.group(1))
+        die_size = int(dice_match.group(2))
+        max_dice = num_dice * die_size
+        
+        # Divide by 6, round to nearest
+        dice_hits = round(max_dice / 6)
+        dice_hits = max(1, dice_hits)  # Minimum 1 hit from dice
+        
+        # Add bonus hits if any
+        if bonus > 0:
+            bonus_hits = round(bonus / 6)
+            dice_hits += bonus_hits
+        
+        return max(1, dice_hits)  # Ensure minimum 1 hit total
+    
+    def convert_single_damage_expr(dice_expr: str, damage_type: str = '') -> str:
+        """Convert a single damage expression to hits format"""
+        bonus_match = re.search(r'([+\-])\s*(\d+)', dice_expr)
+        bonus = 0
+        if bonus_match:
+            sign = bonus_match.group(1)
+            bonus_val = int(bonus_match.group(2))
+            dice_expr = re.sub(r'\s*[+\-]\s*\d+', '', dice_expr)
+            if sign == '+':
+                bonus = bonus_val
+        
+        hits = calculate_hits(dice_expr, bonus if bonus > 0 else 0)
+        hit_text = f"{hits} hit{'s' if hits != 1 else ''}"
+        
+        if damage_type:
+            return f"{hit_text} of {damage_type} damage"
+        else:
+            return hit_text
+    
+    # Pattern 1: "Hit: X (YdZ + B) damage_type damage plus A (BdC) other_type damage"
+    # Handle "plus" patterns first (most complex)
+    def replace_hit_with_plus(match):
+        # Extract both damage parts
+        first_dice = match.group(1)
+        first_type = match.group(2).strip() if match.lastindex >= 2 and match.group(2) else ''
+        second_dice = match.group(3)
+        second_type = match.group(4).strip() if match.lastindex >= 4 and match.group(4) else ''
+        
+        first_converted = convert_single_damage_expr(first_dice, first_type)
+        second_converted = convert_single_damage_expr(second_dice, second_type)
+        
+        return f"Hit: {first_converted} plus {second_converted}"
+    
+    # Match "Hit: X (YdZ) type damage plus A (BdC) other_type damage"
+    text = re.sub(
+        r'Hit:\s*\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage\s+plus\s+\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage',
+        replace_hit_with_plus,
+        text,
+        flags=re.IGNORECASE
+    )
+    
+    # Pattern 2: "Hit: X (YdZ + B) damage_type damage" (single damage)
+    def replace_hit_damage(match):
+        dice_expr = match.group(1)
+        damage_type = match.group(2).strip() if match.lastindex >= 2 and match.group(2) else ''
+        converted = convert_single_damage_expr(dice_expr, damage_type)
+        return f"Hit: {converted}"
+    
+    text = re.sub(
+        r'Hit:\s*\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage',
+        replace_hit_damage,
+        text,
+        flags=re.IGNORECASE
+    )
+    
+    # Pattern 3: Just dice in parentheses, like "2 (1d4) damage" (without "Hit:")
+    def replace_damage_in_parens(match):
+        dice_expr = match.group(1)
+        damage_type = match.group(2).strip() if match.lastindex >= 2 and match.group(2) else ''
+        converted = convert_single_damage_expr(dice_expr, damage_type)
+        return f"({converted})"
+    
+    text = re.sub(
+        r'\(\s*(\d+d\d+(?:\s*[+\-]\s*\d+)?)\s*\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage',
+        replace_damage_in_parens,
+        text,
+        flags=re.IGNORECASE
+    )
+    
+    return text
+
 def modifier_to_score(modifier: int) -> int:
     """Convert modifier to ability score: score = modifier * 2 + 10"""
     return modifier * 2 + 10
@@ -292,6 +494,9 @@ def extract_monster_stat_block(article_html: str) -> Optional[Dict]:
     
     # Convert to hit to Defense Save DC
     etf_stat_block = convert_to_hit_to_defense_save_dc(etf_stat_block)
+    
+    # Convert damage to hits
+    etf_stat_block = convert_damage_to_hits(etf_stat_block)
     
     # Convert ability scores
     etf_stat_block = convert_ability_scores(etf_stat_block)
