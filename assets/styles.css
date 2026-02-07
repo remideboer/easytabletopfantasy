@@ -1391,7 +1391,7 @@
     .spell-card-description p{
       color:var(--text-primary);
     }
-    /* Print controls & filter area in dark mode */
+    /* Print controls & filter area in dark mode – override base rules that come later */
     .print-controls{
       background:var(--bg-card);
       border-color:var(--accent-gold-soft);
@@ -1400,23 +1400,23 @@
       color:var(--text-primary);
     }
     .print-controls button{
-      background:var(--bg-page);
-      border-color:var(--accent-gold-soft);
-      color:var(--text-primary);
+      background:var(--bg-page) !important;
+      border-color:var(--accent-gold-soft) !important;
+      color:var(--text-primary) !important;
     }
     .print-controls button:hover{
-      background:rgba(201,162,39,.15);
-      border-color:var(--accent-gold-soft);
-      color:var(--text-primary);
+      background:rgba(201,162,39,.15) !important;
+      border-color:var(--accent-gold-soft) !important;
+      color:var(--text-primary) !important;
     }
     .print-controls .filter-btn.active{
-      background:rgba(201,162,39,.25);
-      border-color:var(--accent-gold-soft);
-      color:var(--accent-gold-soft);
+      background:rgba(201,162,39,.25) !important;
+      border-color:var(--accent-gold-soft) !important;
+      color:var(--accent-gold-soft) !important;
     }
     .print-controls .filter-btn.active:hover{
-      background:rgba(201,162,39,.35);
-      color:var(--accent-gold-soft);
+      background:rgba(201,162,39,.35) !important;
+      color:var(--accent-gold-soft) !important;
     }
   }
   
