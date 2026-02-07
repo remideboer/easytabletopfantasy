@@ -1099,6 +1099,104 @@
       background:var(--bg-card);
       color:var(--text-primary);
     }
+    /* TOC sidebar: dark background, light text */
+    .toc{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+    .toc h2{
+      color:var(--text-secondary);
+    }
+    .toc a{
+      color:var(--text-secondary);
+    }
+    .toc a:hover{
+      color:var(--text-primary);
+    }
+    /* Moments indicator card */
+    .moments-indicator{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+    .moments-label{
+      color:var(--brand-primary);
+    }
+    .moments-hint{
+      color:var(--text-secondary);
+    }
+    /* Turn example cards */
+    .turn-example{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+    .example-label{
+      color:var(--brand-primary);
+    }
+    .example-description{
+      color:var(--text-secondary);
+    }
+    /* Moment segment buttons: darker backgrounds so white text has contrast */
+    .moment-segment{
+      background:linear-gradient(135deg, rgba(74,58,140,.95), rgba(88,28,135,.95));
+      border-color:var(--accent-gold-soft);
+      box-shadow:0 2px 6px rgba(0,0,0,.4);
+    }
+    .moment-segment.used{
+      background:linear-gradient(135deg, rgba(55,48,90,.95), rgba(70,55,120,.95));
+      border-color:var(--accent-gold-soft);
+    }
+    .moment-segment.used.multi{
+      background:linear-gradient(135deg, rgba(80,45,100,.95), rgba(100,60,130,.95));
+    }
+    .moment-segment.attack-normal{
+      background:linear-gradient(135deg, rgba(55,48,90,.95), rgba(70,55,120,.95));
+      border-color:var(--accent-gold-soft);
+    }
+    .moment-segment.attack-disadvantage{
+      background:linear-gradient(135deg, rgba(100,70,50,.95), rgba(120,85,60,.95));
+      border-color:var(--accent-gold-soft);
+    }
+    .moment-segment.attack-double-disadvantage{
+      background:linear-gradient(135deg, rgba(100,55,50,.95), rgba(120,65,60,.95));
+      border-color:var(--accent-gold-soft);
+    }
+    /* Formula box */
+    .formula-box{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+      color:var(--text-primary);
+    }
+    .formula-box .formula-label{
+      color:var(--text-secondary);
+    }
+    .formula-box .formula-equation,
+    .formula-box .formula-equation .variable{
+      color:var(--brand-primary);
+    }
+    .formula-box .formula-equation .operator{
+      color:var(--accent-gold-soft);
+    }
+    /* General callouts (note, example, warning keep distinct tint but dark) */
+    .callout{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+    .callout.note{
+      background:rgba(100,80,140,.25);
+      border-color:var(--brand-secondary);
+    }
+    .callout.example{
+      background:rgba(120,100,60,.2);
+      border-color:var(--accent-gold-soft);
+    }
+    .callout.warning{
+      background:rgba(120,60,60,.2);
+      border-color:#c97a5a;
+    }
+    .callout p,
+    .callout .callout-title{
+      color:var(--text-primary);
+    }
   }
   
   /* Decorative border using SVG pattern */
