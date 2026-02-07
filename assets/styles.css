@@ -1166,6 +1166,7 @@
     box-shadow:var(--shadow);
     position:relative;
     break-inside:avoid;
+    color:var(--text-primary);
   }
   
   .spell-card-header{
@@ -1348,12 +1349,74 @@
     .spell-search-input:focus{
       box-shadow:0 0 0 3px rgba(185,131,255,.2);
     }
-    .toggle-filters-btn{
-      background:linear-gradient(135deg, rgba(30,20,40,.95), rgba(40,30,50,.9));
+    .print-controls .toggle-filters-btn{
+      background:var(--bg-card) !important;
+      border-color:var(--accent-gold-soft);
+      color:var(--text-primary) !important;
+    }
+    .print-controls .toggle-filters-btn .toggle-filters-icon{
       color:var(--text-primary);
     }
-    .toggle-filters-btn:hover{
-      background:linear-gradient(135deg, rgba(30,20,40,1), rgba(40,30,50,.95));
+    .print-controls .toggle-filters-btn:hover{
+      background:var(--bg-page) !important;
+      box-shadow:0 0 0 2px var(--accent-gold-soft);
+      color:var(--text-primary) !important;
+    }
+    .print-controls .toggle-filters-btn:hover .toggle-filters-icon{
+      color:var(--text-primary);
+    }
+    /* Spell cards: dark background so light text is readable */
+    .spell-card{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+      color:var(--text-primary);
+    }
+    .spell-card-name{
+      color:var(--brand-primary);
+    }
+    .spell-card-level{
+      color:var(--accent-gold-soft);
+    }
+    .spell-card-meta{
+      color:var(--text-secondary);
+    }
+    .spell-card-meta span{
+      color:var(--text-secondary);
+    }
+    .spell-card-description{
+      background:rgba(0,0,0,.25);
+      border-color:rgba(201,162,39,.3);
+      color:var(--text-primary);
+    }
+    .spell-card-description p{
+      color:var(--text-primary);
+    }
+    /* Print controls & filter area in dark mode */
+    .print-controls{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+    .print-controls .filter-label{
+      color:var(--text-primary);
+    }
+    .print-controls button{
+      background:var(--bg-page);
+      border-color:var(--accent-gold-soft);
+      color:var(--text-primary);
+    }
+    .print-controls button:hover{
+      background:rgba(201,162,39,.15);
+      border-color:var(--accent-gold-soft);
+      color:var(--text-primary);
+    }
+    .print-controls .filter-btn.active{
+      background:rgba(201,162,39,.25);
+      border-color:var(--accent-gold-soft);
+      color:var(--accent-gold-soft);
+    }
+    .print-controls .filter-btn.active:hover{
+      background:rgba(201,162,39,.35);
+      color:var(--accent-gold-soft);
     }
   }
   
