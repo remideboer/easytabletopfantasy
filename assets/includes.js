@@ -17,11 +17,16 @@ const HTML_INCLUDES = {
   // Detect if we're in a subdirectory
   function getRootPath(){
     const path = window.location.pathname;
-    // Check if we're in a subdirectory (contains /rules/, /foundation/, etc.)
-    if(path.includes('/rules/') || path.includes('/foundation/')){
-      return '../';
-    }
-    return '';
+    // Count directory depth by checking slashes after the root
+    // Remove leading slash and split by remaining slashes
+    const parts = path.replace(/^\//, '').split('/').filter(p => p);
+    const depth = parts.length - 1; // -1 because last part is the filename
+
+    // Return appropriate number of '../' based on depth
+    if(depth === 0) return '';
+    if(depth === 1) return '../';
+    if(depth === 2) return '../../';
+    return '../'.repeat(depth);
   }
 
   function loadIncludes(){
