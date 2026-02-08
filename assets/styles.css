@@ -2193,7 +2193,185 @@
       align-items:center;
     }
   }
-  
+
+  /* Dark mode for Character Converter */
+  @media (prefers-color-scheme: dark){
+    .converter-form{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+
+    .tab-btn{
+      color:var(--text-secondary);
+      border-bottom-color:transparent;
+    }
+
+    .tab-btn:hover{
+      color:var(--brand-primary);
+    }
+
+    .tab-btn.active{
+      color:var(--brand-primary);
+      border-bottom-color:var(--accent-gold-soft);
+    }
+
+    .form-group label{
+      color:var(--brand-primary);
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="url"],
+    .form-group select,
+    .ability-inputs input{
+      background:var(--bg-card);
+      border-color:var(--border-subtle);
+      color:var(--text-primary);
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="number"]:focus,
+    .form-group input[type="url"]:focus,
+    .form-group select:focus,
+    .ability-inputs input:focus{
+      border-color:var(--accent-gold-soft);
+      box-shadow:0 0 0 3px rgba(212,175,55,.2);
+    }
+
+    .character-sheet{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+
+    .character-sheet-header{
+      border-bottom-color:var(--accent-gold-soft);
+    }
+
+    .character-sheet-header h2{
+      color:var(--brand-primary);
+    }
+
+    .character-basics span{
+      background:rgba(212,175,55,.15);
+      border-color:var(--accent-gold-soft);
+      color:var(--text-secondary);
+    }
+
+    .character-section{
+      background:var(--bg-page);
+      border-color:var(--border-subtle);
+    }
+
+    .character-section h3{
+      color:var(--accent-gold);
+      border-bottom-color:var(--accent-gold-soft);
+    }
+
+    .ability-score,
+    .hp-display,
+    .defense-display{
+      background:var(--bg-card);
+      border-color:var(--accent-gold-soft);
+    }
+
+    .ability-name,
+    .hp-name,
+    .defense-name{
+      color:var(--brand-primary);
+    }
+
+    .ability-modifier,
+    .hp-value,
+    .defense-value{
+      color:var(--accent-gold);
+    }
+
+    .ability-label,
+    .hp-label-item{
+      color:var(--text-secondary);
+    }
+
+    .hp-label-value{
+      color:var(--accent-gold-soft);
+    }
+
+    .proficiency-bonus{
+      background:rgba(124,58,237,.15);
+      color:var(--brand-primary);
+    }
+
+    .skills-list li,
+    .weapon-item{
+      background:var(--bg-card);
+      border-left-color:var(--accent-gold-soft);
+    }
+
+    .weapon-item strong{
+      color:var(--brand-primary);
+    }
+
+    .weapon-attack,
+    .weapon-damage{
+      color:var(--text-secondary);
+    }
+
+    .no-skills,
+    .no-weapons{
+      color:var(--text-secondary);
+    }
+
+    .conversion-notes{
+      background:rgba(212,175,55,.12);
+      border-color:var(--accent-gold-soft);
+    }
+
+    .conversion-notes h3{
+      color:var(--brand-primary);
+    }
+
+    .conversion-notes li{
+      color:var(--text-secondary);
+    }
+
+    .proficiency-display{
+      background:rgba(124,58,237,.15);
+      border-color:var(--accent-gold-soft);
+      color:var(--brand-primary);
+    }
+
+    .calculation-preview{
+      background:rgba(212,175,55,.12);
+      border-color:var(--accent-gold-soft);
+    }
+
+    .calculation-preview h3{
+      color:var(--brand-primary);
+    }
+
+    .preview-item{
+      background:var(--bg-card);
+      border-left-color:var(--accent-gold-soft);
+    }
+
+    .preview-item strong{
+      color:var(--brand-primary);
+    }
+
+    .preview-item .modifier{
+      color:var(--accent-gold-soft);
+    }
+
+    .hp-calculation{
+      background:var(--bg-card);
+      border-left-color:var(--accent-gold-soft);
+      color:var(--text-secondary);
+    }
+
+    .hp-calculation strong{
+      color:var(--accent-gold-soft);
+    }
+  }
+
   /* Print styles for spell cards */
   @media print {
     /* Reset all backgrounds and shadows */
