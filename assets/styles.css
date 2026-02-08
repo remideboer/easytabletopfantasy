@@ -115,25 +115,6 @@
     }
   }
   
-  /* Subtle texture overlay */
-  body::before{
-    content:'';
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(107,47,168,.02) 2px, rgba(107,47,168,.02) 4px),
-      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(107,47,168,.02) 2px, rgba(107,47,168,.02) 4px);
-    pointer-events:none;
-    z-index:0;
-  }
-  
-  body > *{
-    position:relative;
-    z-index:1;
-  }
   img,svg,video{max-width:100%;height:auto}
   a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:2px}
   a:hover{color:var(--accent-gold-soft);text-decoration:underline}
