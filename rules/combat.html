@@ -24,124 +24,18 @@
       <div data-toc></div>
     </aside>
     <div class="content">
-      <p class="lede">Combat in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a streamlined system focused on clear choices, consistent resolution, and fast-paced action. Each turn consists of 3 Moments, allowing characters to move, attack, cast spells, and take other actions in a flexible, time-based structure.</p>
-      
-      <div class="moments-indicator">
-        <div class="moments-label">Your Turn: 3 Moments</div>
-        <div class="moments-bar">
-          <div class="moment-segment" data-moment="1">
-            <span class="moment-number">1</span>
-            <span class="moment-label">Moment</span>
-          </div>
-          <div class="moment-segment" data-moment="2">
-            <span class="moment-number">2</span>
-            <span class="moment-label">Moment</span>
-          </div>
-          <div class="moment-segment" data-moment="3">
-            <span class="moment-number">3</span>
-            <span class="moment-label">Moment</span>
-          </div>
-        </div>
-        <div class="moments-hint">Spend your Moments on movement, attacks, spells, or other actions</div>
-      </div>
+      <p class="lede">Combat in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a streamlined system focused on clear choices, consistent resolution, and fast-paced action. On your turn, you can take <strong>one action</strong> and move up to your speed. This simple structure makes combat easy to learn while still offering tactical depth through positioning, spell selection, and resource management.</p>
       
       <h2 id="turn-examples">Turn Examples</h2>
-      <p>Here are some examples of how you might spend your 3 Moments during a turn:</p>
-      
-      <div class="turn-example">
-        <div class="example-label">Example 1: Mobile Fighter</div>
-        <div class="moments-bar example-bar">
-          <div class="moment-segment used" data-moment="1">
-            <span class="moment-number">1</span>
-            <span class="moment-label">Move</span>
-          </div>
-          <div class="moment-segment used attack-normal" data-moment="2">
-            <span class="moment-number">2</span>
-            <span class="moment-label">Attack</span>
-          </div>
-          <div class="moment-segment used attack-disadvantage" data-moment="3">
-            <span class="moment-number">3</span>
-            <span class="moment-label">Attack</span>
-          </div>
-        </div>
-        <p class="example-description">Move up to your speed, then make two attacks. The second attack suffers Disadvantage.</p>
-      </div>
-      
-      <div class="turn-example">
-        <div class="example-label">Example 2: Spellcaster</div>
-        <div class="moments-bar example-bar">
-          <div class="moment-segment used multi multi-start" data-moment="1">
-            <span class="moment-number">1</span>
-            <span class="moment-label">Spell</span>
-          </div>
-          <div class="moment-segment used multi multi-end" data-moment="2">
-            <span class="moment-number">2</span>
-            <span class="moment-label">Spell</span>
-          </div>
-          <div class="moment-segment used attack-disadvantage" data-moment="3">
-            <span class="moment-number">3</span>
-            <span class="moment-label">Attack</span>
-          </div>
-        </div>
-        <p class="example-description">Cast a leveled spell (2 Moments), then make one attack with a cantrip or weapon. The attack suffers Disadvantage because it's the second ATTACK action in your turn.</p>
-      </div>
-      
-      <div class="turn-example">
-        <div class="example-label">Example 3: Defensive Warrior</div>
-        <div class="moments-bar example-bar">
-          <div class="moment-segment used" data-moment="1">
-            <span class="moment-number">1</span>
-            <span class="moment-label">Move</span>
-          </div>
-          <div class="moment-segment used" data-moment="2">
-            <span class="moment-number">2</span>
-            <span class="moment-label">Attack</span>
-          </div>
-          <div class="moment-segment used" data-moment="3">
-            <span class="moment-number">3</span>
-            <span class="moment-label">Dodge</span>
-          </div>
-        </div>
-        <p class="example-description">Move into position, attack, then take the Dodge action to protect yourself.</p>
-      </div>
-      
-      <div class="turn-example">
-        <div class="example-label">Example 4: Quick Strikes</div>
-        <div class="moments-bar example-bar">
-          <div class="moment-segment used" data-moment="1">
-            <span class="moment-number">1</span>
-            <span class="moment-label">Cantrip</span>
-          </div>
-          <div class="moment-segment used attack-disadvantage" data-moment="2">
-            <span class="moment-number">2</span>
-            <span class="moment-label">Attack</span>
-          </div>
-          <div class="moment-segment used" data-moment="3">
-            <span class="moment-number">3</span>
-            <span class="moment-label">Move</span>
-          </div>
-        </div>
-        <p class="example-description">Cast a cantrip (1 Moment), attack, then move away to safety. The attack suffers Disadvantage because it's the second ATTACK action in your turn.</p>
-      </div>
-      
-      <div class="turn-example">
-        <div class="example-label">Example 5: Full Assault</div>
-        <div class="moments-bar example-bar">
-          <div class="moment-segment used attack-normal" data-moment="1">
-            <span class="moment-number">1</span>
-            <span class="moment-label">Attack</span>
-          </div>
-          <div class="moment-segment used attack-disadvantage" data-moment="2">
-            <span class="moment-number">2</span>
-            <span class="moment-label">Attack</span>
-          </div>
-          <div class="moment-segment used attack-double-disadvantage" data-moment="3">
-            <span class="moment-number">3</span>
-            <span class="moment-label">Attack</span>
-          </div>
-        </div>
-        <p class="example-description">Make three attacks. The second has Disadvantage, the third has Disadvantage on Disadvantage (roll 3d20, take lowest).</p>
-      </div>
+      <p>Here are some examples of typical turns in combat:</p>
+
+      <ul>
+        <li><strong>Fighter:</strong> Move up to your speed, then take the Attack action (with Extra Attack, you make multiple attacks as part of this single action).</li>
+        <li><strong>Wizard:</strong> Move into position, then cast <em>fireball</em> (1 action).</li>
+        <li><strong>Cleric:</strong> Move to an injured ally, then cast <em>healing word</em> (1 action) to restore their hit points.</li>
+        <li><strong>Rogue:</strong> Take the Dash action to move up to double your speed, positioning yourself for a surprise attack next turn.</li>
+        <li><strong>Barbarian:</strong> Enter rage (free action), move to an enemy, then take the Attack action.</li>
+      </ul>
       
       <h2 id="the-order-of-combat">The Order of Combat</h2>
       <p>A typical combat encounter follows this sequence:</p>
@@ -163,11 +57,20 @@
       <p><strong>Initiative (variant):</strong> Roll initiative using a Fitness check. The highest roll acts first. After the highest roll is determined, the players determine the order among themselves for their turns.</p>
       
       <h2 id="your-turn">Your Turn</h2>
-      <p>On your turn, you can move a distance up to your speed and take one or more actions. The basic options for how you spend your turn are described in the "Actions and Time (Encounter Mode)" section of the <a href="core.html#actions-and-time-encounter-mode">Core rules</a>.</p>
-      <p>Each turn consists of <strong>3 Moments</strong>. You can spend these Moments on movement, actions, and spellcasting as described below.</p>
+      <p>On your turn, you can <strong>move up to your speed</strong> and take <strong>one action</strong>. You decide whether to move first or take your action first, and you can split your movement, using some before and some after your action.</p>
+      <p>The basic action options are described below. Many class features and spells provide additional options for what you can do with your action.</p>
+
+      <h3 id="free-actions">Free Actions</h3>
+      <p>Some abilities can be used as <strong>free actions</strong> on your turn without using your action. Free actions include:</p>
+      <ul>
+        <li><strong>Rage</strong> (Barbarian feature)</li>
+        <li><strong>Wild Shape</strong> (Circle of the Moon Druid only - the enhanced, instant transformation)</li>
+        <li>Other abilities specifically marked as free actions</li>
+      </ul>
+      <p>Free actions don't cost your action for the turn, so you can use a free action and still take your normal action. However, you can generally only use one free action per turn unless an ability says otherwise.</p>
       
       <h3 id="movement">Movement</h3>
-      <p>Moving up to your full speed costs 1 Moment. On your turn, you can move a distance up to your speed. You can use as much or as little of your speed as you like on your turn, following the rules here.</p>
+      <p>On your turn, you can move a distance up to your speed. You can use as much or as little of your speed as you like on your turn, following the rules here.</p>
       <p>Your movement can include jumping, climbing, and swimming. These different modes of movement can be combined with walking, or they can constitute your entire move. However you're moving, you deduct the distance of each part of your move from your speed until it is used up or until you are done moving.</p>
       
       <h4>Breaking Up Your Move</h4>
@@ -178,58 +81,59 @@
       <p>Whether a creature is a friend or an enemy, you can't willingly end your move in its space.</p>
       
       <h3 id="actions">Actions</h3>
-      <p>Most actions cost 1 Moment. The most common actions you can take are described here. Many class features and other abilities provide additional options for your action.</p>
-      
+      <p>On your turn, you can take one action. The most common actions you can take are described here. Many class features and other abilities provide additional options for your action.</p>
+
       <h4>Attack</h4>
       <p>The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.</p>
       <p>With this action, you make one melee or ranged attack. See the "Attacks and Defense" section in the <a href="core.html#attacks-and-defense">Core rules</a> for the rules on making attacks.</p>
-      <p>Each attack costs 1 Moment. You can make multiple attacks during your turn by spending additional Moments, but each subsequent attack in the same turn suffers from stacking Disadvantage, as described in the <a href="#multiple-attacks">Multiple Attacks</a> section below.</p>
+      <p>Certain class features, such as the Fighter's Extra Attack, allow you to make more than one attack when you take the Attack action. These extra attacks are all part of the same action. See the <a href="#multiple-attacks">Multiple Attacks</a> section below for details.</p>
       
       <h4>Cast a Spell</h4>
-      <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies how many Moments it takes to cast the spell.</p>
-      <p>In <strong>You-Meet-In-A-Tavern</strong> (YMIAT), casting times are converted to Moments:</p>
+      <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether you can cast it as an action, a reaction, or with some other timing.</p>
+      <p>Most combat spells can be cast using your action:</p>
       <ul>
-        <li><strong>Cantrip:</strong> 1 Moment</li>
-        <li><strong>Leveled Spell:</strong> Usually 2 Moments, unless otherwise noted</li>
-        <li><strong>Reaction:</strong> Can be taken outside your turn when triggered (doesn't cost Moments)</li>
+        <li><strong>Cantrips:</strong> Use your action to cast a cantrip (e.g., <em>fire bolt</em>, <em>sacred flame</em>)</li>
+        <li><strong>Leveled Spells:</strong> Use your action to cast a leveled spell (e.g., <em>fireball</em>, <em>healing word</em>, <em>cure wounds</em>)</li>
+        <li><strong>Reaction Spells:</strong> Some spells can be cast as a reaction outside your turn when triggered (e.g., <em>shield</em>, <em>counterspell</em>)</li>
       </ul>
+      <p>When you cast a spell that requires an action, it uses your action for the turn. You can still move on the same turn.</p>
       
       <h4>Dash</h4>
       <p>When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.</p>
       <p>Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can dash up to 30 feet, rather than 60 feet.</p>
-      <p>Dash costs 1 Moment.</p>
+      <p>Taking the Dash action uses your action for the turn.</p>
       
       <h4>Disengage</h4>
       <p>If you take the Disengage action, you can move away from enemies without them being able to easily follow or interfere with your movement. This action represents careful, defensive movement that keeps you ready to react.</p>
-      <p>Disengage costs 1 Moment.</p>
+      <p>Taking the Disengage action uses your action for the turn.</p>
       
       <h4>Dodge</h4>
       <p>When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Fitness saving throws with advantage. You lose this benefit if you are incapacitated or if your speed drops to 0.</p>
-      <p>Dodge costs 1 Moment.</p>
+      <p>Taking the Dodge action uses your action for the turn.</p>
       
       <h4>Help</h4>
       <p>You can lend your aid to another creature in the completion of a task. When you take the Help action, the creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.</p>
       <p>Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally's attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage.</p>
-      <p>Help costs 1 Moment.</p>
+      <p>Taking the Help action uses your action for the turn.</p>
       
       <h4>Hide</h4>
       <p>When you take the Hide action, you make a Fitness (Stealth) check in an attempt to hide, following the rules for hiding. If you succeed, you gain certain benefits, as described in the "Unseen Attackers and Targets" section later in this chapter.</p>
-      <p>Hide costs 1 Moment.</p>
+      <p>Taking the Hide action uses your action for the turn.</p>
       
       <h4>Ready</h4>
       <p>Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn, which lets you act using your reaction before the start of your next turn.</p>
       <p>First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include "If the cultist steps on the trapdoor, I'll pull the lever that opens it," and "If the goblin steps next to me, I move away."</p>
       <p>When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.</p>
       <p>When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration. If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the <em>web</em> spell and ready <em>magic missile</em>, your <em>web</em> spell ends, and if you take damage before you release <em>magic missile</em> with your reaction, your concentration might be broken.</p>
-      <p>Ready costs 1 Moment.</p>
+      <p>Taking the Ready action uses your action for the turn.</p>
       
       <h4>Search</h4>
       <p>When you take the Search action, you devote your attention to finding something. Depending on the nature of your search, the Game Master might have you make a Wisdom (Perception) check or an Intelligence (Investigation) check.</p>
-      <p>Search costs 1 Moment.</p>
+      <p>Taking the Search action uses your action for the turn.</p>
       
       <h4>Use an Object</h4>
       <p>You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn.</p>
-      <p>Use an Object costs 1 Moment.</p>
+      <p>Taking the Use an Object action uses your action for the turn.</p>
       
       <h3 id="other-activity-on-your-turn">Other Activity on Your Turn</h3>
       <p>Your turn can include a variety of flourishes that require neither your action nor your move.</p>
@@ -241,35 +145,79 @@
       <h2 id="reactions">Reactions</h2>
       <p>Certain special abilities, spells, and situations allow you to take a special action called a reaction. A reaction is an instant response to a trigger of some kind, which can occur on your turn or on someone else's.</p>
       <p>When you take a reaction, you can't take another one until the start of your next turn. If the reaction interrupts another creature's turn, that creature can continue its turn right after the reaction.</p>
-      <p>Reactions don't cost Moments and can be taken outside your turn when triggered. Examples include casting <em>shield</em> in response to being hit, or using a class feature that triggers on a specific condition.</p>
+      <p>Reactions don't use your action and can be taken outside your turn when triggered. Examples include casting <em>shield</em> in response to being hit, making an opportunity attack when an enemy leaves your reach, or using <em>counterspell</em> when an enemy casts a spell.</p>
       
       <h2 id="multiple-attacks">Multiple Attacks</h2>
-      <p>During your turn, you can make multiple attacks by spending Moments. Each attack costs 1 Moment. However, making multiple attacks in quick succession becomes less accurate due to the diminishing returns of rapid strikes.</p>
-      <p><strong>One Primary Attack Per Turn:</strong> By default, you can make one primary attack per turn. Additional attacks are only possible through class features, abilities, or special rules that explicitly grant extra attacks. These extra attacks still suffer stacking Disadvantage as described below.</p>
-      
-      <h3>Stacking Disadvantage</h3>
-      <p>When you make multiple attacks during your turn, each attack after the first suffers stacking Disadvantage. This represents the difficulty of maintaining accuracy and power when attacking rapidly. This system is inspired by <a href="https://nimblerpg.com/" target="_blank" rel="noopener">Nimble (1e)</a>.</p>
-      <ul>
-        <li><strong>First attack:</strong> No Disadvantage. Make your attack roll normally.</li>
-        <li><strong>Second attack:</strong> Disadvantage on the attack roll.</li>
-        <li><strong>Third attack:</strong> Disadvantage on Disadvantage. Roll three d20s and take the lowest result.</li>
-      </ul>
-      <p>Disadvantage stacks cumulatively. For example, if you make three attacks in a turn, the first has no Disadvantage, the second has Disadvantage (roll 2d20, take lowest), and the third has Disadvantage on Disadvantage (roll 3d20, take lowest).</p>
-      
-      <h3>Agile Weapons</h3>
-      <p>Some weapons are designed for rapid, fluid combat and reduce the stacking Disadvantage. When wielding a weapon with the <strong>agile</strong> property, the second attack in a turn does not suffer Disadvantage. The third attack still suffers Disadvantage (not Disadvantage on Disadvantage), and subsequent attacks continue to stack normally.</p>
-      <p>Examples of agile weapons include shortswords, scimitars, daggers, and handaxes.</p>
-      
+      <p>When you take the Attack action, you normally make one attack. However, certain class features grant you the ability to make more than one attack with a single Attack action.</p>
+
+      <h3>Extra Attack</h3>
+      <p>Class features like the Fighter's <strong>Extra Attack</strong> allow you to make multiple attacks when you take the Attack action. All of these attacks are part of the same action and happen during your turn.</p>
+      <p>For example, a 5th-level Fighter with Extra Attack takes the Attack action and makes two attacks. Both attacks are part of a single Attack action, and the Fighter can still move before, after, or between these attacks.</p>
+
+      <h3>Two-Weapon Fighting</h3>
+      <p>When you take the Attack action and are wielding a light melee weapon in each hand, you can make an additional attack with your off-hand weapon as part of the same Attack action. This doesn't require a separate action or bonus action - it's all part of your Attack action.</p>
+      <p>You don't add your ability modifier to the damage of the off-hand attack unless the modifier is negative, or unless you have a feature that specifically allows you to add it.</p>
+
       <h3>Class Features and Abilities</h3>
-      <p>Certain class features, such as a fighter's Extra Attack, allow you to make multiple attacks more effectively. These features may reduce or eliminate the stacking Disadvantage for specific attacks, as described in the class feature.</p>
-      <p>When converting abilities from D&D 5e that grant extra attacks (whether as part of an action or bonus action), these extra attacks in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) occur during the same Moment as the initial attack. For example, if a D&D 5e ability allows you to make an extra attack as part of your action, in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) you make both attacks during the same Moment, with the second attack suffering stacking Disadvantage as normal.</p>
-      <p>Some abilities grant you additional attacks that don't count toward your stacking Disadvantage, such as natural weapon attacks or special combat maneuvers.</p>
+      <p>Many D&D 5e abilities that originally granted bonus action attacks (such as Polearm Master, Crossbow Expert, or Martial Arts) now allow an additional attack as part of your Attack action in <strong>You-Meet-In-A-Tavern</strong> (YMIAT).</p>
+      <p>When converting from D&D 5e, follow these guidelines:</p>
+      <ul>
+        <li><strong>Bonus action attacks:</strong> Most become additional attacks as part of the Attack action (like Two-Weapon Fighting above)</li>
+        <li><strong>Features that enhance attacks:</strong> These work as part of the Attack action (e.g., Sneak Attack, Divine Smite)</li>
+        <li><strong>Quick activations:</strong> Abilities like Rage, Channel Divinity, or Circle of the Moon's Wild Shape become free actions</li>
+      </ul>
       
       <h3>Distributing Attacks</h3>
       <p>You can direct your attacks at one target or divide them among multiple targets, as long as all targets are within your reach (for melee attacks) or range (for ranged attacks). You must declare all targets before making any attack rolls.</p>
-      
+
       <h3>Tactical Positioning</h3>
       <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) does not include specific rules for tactical positioning such as flanking, facing, or similar mechanics. These elements are left to Game Master discretion. The GM may choose to grant advantage, impose disadvantage, or apply other modifiers based on tactical positioning and narrative circumstances as they see fit for their game.</p>
+
+      <h2 id="variant-3-moments-system">Variant: 3 Moments System</h2>
+      <p>For groups that want more tactical flexibility and granular action economy, you can use the <strong>3 Moments System</strong>. This variant allows characters to split their turn into smaller units for more complex tactical choices.</p>
+
+      <h3>How It Works</h3>
+      <p>Each turn consists of <strong>3 Moments</strong>. You can spend these Moments on movement, actions, and spellcasting as follows:</p>
+      <ul>
+        <li><strong>Movement:</strong> 1 Moment to move up to your speed</li>
+        <li><strong>Attack:</strong> 1 Moment per attack</li>
+        <li><strong>Cantrip:</strong> 1 Moment</li>
+        <li><strong>Leveled Spell:</strong> 2 Moments</li>
+        <li><strong>Most other actions:</strong> 1 Moment (Dash, Dodge, Hide, Help, etc.)</li>
+      </ul>
+
+      <h3>Stacking Disadvantage</h3>
+      <p>When you make multiple attacks during your turn using the 3 Moments System, each attack after the first suffers stacking Disadvantage. This represents the difficulty of maintaining accuracy and power when attacking rapidly. This system is inspired by <a href="https://nimblerpg.com/" target="_blank" rel="noopener">Nimble (1e)</a>.</p>
+      <ul>
+        <li><strong>First attack:</strong> No Disadvantage. Make your attack roll normally.</li>
+        <li><strong>Second attack:</strong> Disadvantage on the attack roll (roll 2d20, take lowest).</li>
+        <li><strong>Third attack:</strong> Disadvantage on Disadvantage (roll 3d20, take lowest).</li>
+      </ul>
+
+      <h3>Agile Weapons</h3>
+      <p>Some weapons are designed for rapid, fluid combat and reduce the stacking Disadvantage. When wielding a weapon with the <strong>agile</strong> property, the second attack in a turn does not suffer Disadvantage. The third attack still suffers Disadvantage (not Disadvantage on Disadvantage), and subsequent attacks continue to stack normally.</p>
+      <p>Examples of agile weapons include shortswords, scimitars, daggers, and handaxes.</p>
+
+      <h3>Extra Attack and Class Features</h3>
+      <p>In the 3 Moments System, class features like Extra Attack work differently. When you have Extra Attack, you can make multiple attacks by spending Moments, but you still benefit from your class feature by getting reduced or eliminated Disadvantage penalties on those attacks, as specified in the class feature description.</p>
+
+      <h3>Turn Examples with 3 Moments</h3>
+      <p>Here are some examples of how you might spend your 3 Moments:</p>
+      <ul>
+        <li><strong>Mobile Fighter:</strong> Move (1 Moment), Attack (1 Moment), Attack (1 Moment, with Disadvantage)</li>
+        <li><strong>Wizard:</strong> Cast <em>fireball</em> (2 Moments), Move away to safety (1 Moment)</li>
+        <li><strong>Aggressive Combatant:</strong> Attack (1 Moment), Attack (1 Moment, with Disadvantage), Attack (1 Moment, with double Disadvantage)</li>
+        <li><strong>Tactical Rogue:</strong> Hide (1 Moment), Move into position (1 Moment), Attack with Advantage from hiding (1 Moment)</li>
+      </ul>
+
+      <h3>When to Use This Variant</h3>
+      <p>The 3 Moments System is best suited for groups that enjoy:</p>
+      <ul>
+        <li>More tactical decision-making during combat</li>
+        <li>Flexibility to mix movement and actions in creative ways</li>
+        <li>A faster-paced combat where characters can do multiple things per turn</li>
+      </ul>
+      <p>The standard action system (1 action + movement) is recommended for new players or groups that prefer simpler, faster combat resolution.</p>
     
       <h2 id="cover">Cover</h2>
       <p>Walls, trees, creatures, and other obstacles can provide cover during combat, making a target more difficult to harm. A target can benefit from cover only when an attack or other effect originates on the opposite side of the cover.</p>
