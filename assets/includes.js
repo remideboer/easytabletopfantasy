@@ -1,8 +1,9 @@
 // HTML Templates - Single source of truth for navigation and footer
 // Edit these templates to update across all pages
+// NOTE: Use {{ROOT}} placeholder which gets replaced with correct path
 
 const HTML_INCLUDES = {
-  nav: `<nav><a href="/index.html" class="logo-link"><img src="/assets/You-Meet-In-A-Tavern.png" alt="You-Meet-In-A-Tavern (YMIAT)" class="nav-logo" /></a><div class="nav-dropdown"><a href="/rules/core.html">Rules</a><div class="nav-dropdown-menu"><a href="/rules/core.html#core-game-loop">Core Game Loop</a><a href="/rules/core.html#modes-of-play">Modes of Play</a><a href="/rules/core.html#dice-and-tests">Dice and Tests</a><a href="/rules/core.html#ability-scores">Abilities and Properties</a><a href="/rules/core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="/rules/core.html#proficiency-and-advantage">Proficiency and Advantage</a><a href="/rules/core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="/rules/core.html#talents">Talents</a><a href="/rules/core.html#hit-points-and-scale">Hit Points and Scale</a><a href="/rules/core.html#level-advancement">Level Advancement</a><a href="/rules/core.html#attacks-and-defense">Attacks and Defense</a><a href="/rules/core.html#weapon-attacks">Weapon Attacks</a><a href="/rules/core.html#weapon-mastery">Weapon Mastery</a><a href="/rules/core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="/rules/core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="/rules/core.html#resolve">Resolve</a><a href="/rules/core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="/rules/core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="/rules/characters.html">Characters</a><div class="nav-dropdown-menu"><a href="/rules/characters.html">Character Creation</a><a href="/rules/lineages.html">Lineages</a><a href="/rules/backgrounds.html">Backgrounds</a><a href="/rules/talents.html">Talents</a></div></div><a href="/convert.html">Converter</a><a href="/rules/conversion.html">Conversion Guide</a><a href="/rules/combat.html">Combat</a><a href="/rules/magic.html">Magic</a><a href="/rules/gear.html">Gear</a><a href="/rules/monsters.html">Monsters</a><a href="/faq.html">FAQ</a><a href="/legal.html">Legal</a></nav>`,
+  nav: `<nav><a href="{{ROOT}}index.html" class="logo-link"><img src="{{ROOT}}assets/You-Meet-In-A-Tavern.png" alt="You-Meet-In-A-Tavern (YMIAT)" class="nav-logo" /></a><div class="nav-dropdown"><a href="{{ROOT}}rules/core.html">Rules</a><div class="nav-dropdown-menu"><a href="{{ROOT}}rules/core.html#core-game-loop">Core Game Loop</a><a href="{{ROOT}}rules/core.html#modes-of-play">Modes of Play</a><a href="{{ROOT}}rules/core.html#dice-and-tests">Dice and Tests</a><a href="{{ROOT}}rules/core.html#ability-scores">Abilities and Properties</a><a href="{{ROOT}}rules/core.html#determining-ability-modifiers">Determining Ability Modifiers</a><a href="{{ROOT}}rules/core.html#proficiency-and-advantage">Proficiency and Advantage</a><a href="{{ROOT}}rules/core.html#skills-and-ability-checks">Skills and Ability Checks</a><a href="{{ROOT}}rules/core.html#talents">Talents</a><a href="{{ROOT}}rules/core.html#hit-points-and-scale">Hit Points and Scale</a><a href="{{ROOT}}rules/core.html#level-advancement">Level Advancement</a><a href="{{ROOT}}rules/core.html#attacks-and-defense">Attacks and Defense</a><a href="{{ROOT}}rules/core.html#weapon-attacks">Weapon Attacks</a><a href="{{ROOT}}rules/core.html#weapon-mastery">Weapon Mastery</a><a href="{{ROOT}}rules/core.html#actions-and-time-encounter-mode">Actions and Time</a><a href="{{ROOT}}rules/core.html#magic-and-spell-resources">Magic and Spell Resources</a><a href="{{ROOT}}rules/core.html#resolve">Resolve</a><a href="{{ROOT}}rules/core.html#recovery-points-and-rest">Recovery Points and Rest</a><a href="{{ROOT}}rules/core.html#spell-school-expertise">Spell School Expertise</a></div></div><div class="nav-dropdown"><a href="{{ROOT}}rules/characters.html">Characters</a><div class="nav-dropdown-menu"><a href="{{ROOT}}rules/characters.html">Character Creation</a><a href="{{ROOT}}rules/lineages.html">Lineages</a><a href="{{ROOT}}rules/backgrounds.html">Backgrounds</a><a href="{{ROOT}}rules/talents.html">Talents</a></div></div><a href="{{ROOT}}convert.html">Converter</a><a href="{{ROOT}}rules/conversion.html">Conversion Guide</a><a href="{{ROOT}}rules/combat.html">Combat</a><a href="{{ROOT}}rules/magic.html">Magic</a><a href="{{ROOT}}rules/gear.html">Gear</a><a href="{{ROOT}}rules/monsters.html">Monsters</a><a href="{{ROOT}}faq.html">FAQ</a><a href="{{ROOT}}legal.html">Legal</a></nav>`,
 
   footer: `<p>© <strong>You-Meet-In-A-Tavern</strong> (YMIAT).</p>
 <p>This work is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
@@ -13,11 +14,23 @@ const HTML_INCLUDES = {
 
 // Load includes into page - works with file:// protocol
 (function(){
+  // Detect if we're in a subdirectory
+  function getRootPath(){
+    const path = window.location.pathname;
+    // Check if we're in a subdirectory (contains /rules/, /foundation/, etc.)
+    if(path.includes('/rules/') || path.includes('/foundation/')){
+      return '../';
+    }
+    return '';
+  }
+
   function loadIncludes(){
-    // Load navigation
+    const rootPath = getRootPath();
+
+    // Load navigation with correct path
     const navPlaceholder = document.querySelector('[data-include="nav"]');
     if(navPlaceholder){
-      navPlaceholder.innerHTML = HTML_INCLUDES.nav;
+      navPlaceholder.innerHTML = HTML_INCLUDES.nav.replace(/\{\{ROOT\}\}/g, rootPath);
       updateActiveNav();
     }
 
