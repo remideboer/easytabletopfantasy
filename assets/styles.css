@@ -5,6 +5,20 @@
 
 /* Map new color schema to existing variable names for compatibility */
 :root{
+    /* Base colors from kleurenschema.css */
+    --bg-page:#f7f7fb;
+    --bg-card:#ffffff;
+    --text-primary:#1f2937;
+    --text-secondary:#4b5563;
+    --brand-primary:#4c1d95;
+    --brand-secondary:#6d28d9;
+    --brand-focus:#7c3aed;
+    --accent-gold:#7a5c00;
+    --accent-gold-soft:#c9a227;
+    --border-subtle:#e5e7eb;
+    --radius:14px;
+    --radius-lg:18px;
+
     /* Map to new schema variables */
     --color-primary:var(--brand-primary);
     --color-primary-glow:var(--brand-focus);
@@ -17,7 +31,7 @@
     --color-text-dark:var(--text-primary);
     --color-text-dark-muted:var(--text-secondary);
     --color-focus:var(--brand-focus);
-    
+
     /* Mapped variables for compatibility */
     --bg:var(--bg-page);
     --fg:var(--text-primary);
@@ -26,7 +40,7 @@
     --soft:var(--bg-page);
     --soft2:var(--bg-card);
     --link:var(--brand-focus);
-    
+
     /* Fantasy accent colors mapped to new scheme */
     --fantasy-gold:var(--accent-gold-soft);
     --fantasy-gold-light:var(--accent-gold);
@@ -36,7 +50,7 @@
     --fantasy-burgundy-light:var(--brand-secondary);
     --fantasy-green:var(--accent-gold-soft);
     --fantasy-green-light:var(--accent-gold);
-    
+
     --max:920px;
     --r:var(--radius);
     --r2:var(--radius-lg);
@@ -55,6 +69,18 @@
   /* Dark mode mapping */
   @media (prefers-color-scheme: dark){
     :root{
+      /* Base colors - dark mode */
+      --bg-page:#120814;
+      --bg-card:#1b0f24;
+      --text-primary:#f5f3f7;
+      --text-secondary:#d6d3dd;
+      --brand-primary:#d8b4fe;
+      --brand-secondary:#9b5de5;
+      --brand-focus:#b983ff;
+      --accent-gold:#f2d27c;
+      --accent-gold-soft:#d4af37;
+      --border-subtle:#2a2033;
+
       --color-primary:var(--brand-primary);
       --color-primary-glow:var(--brand-focus);
       --color-secondary:var(--accent-gold);
@@ -65,7 +91,7 @@
       --color-text-muted:var(--text-secondary);
       --color-text-dark:var(--text-primary);
       --color-text-dark-muted:var(--text-secondary);
-      
+
       --bg:var(--bg-page);
       --fg:var(--text-primary);
       --muted:var(--text-secondary);
@@ -73,7 +99,7 @@
       --soft:var(--bg-page);
       --soft2:var(--bg-card);
       --link:var(--brand-focus);
-      
+
       --fantasy-gold:var(--accent-gold);
       --fantasy-gold-light:var(--accent-gold-soft);
       --fantasy-blue:var(--brand-primary);
@@ -82,7 +108,7 @@
       --fantasy-burgundy-light:var(--brand-secondary);
       --fantasy-green:var(--accent-gold);
       --fantasy-green-light:var(--accent-gold-soft);
-      
+
       --shadow:0 2px 8px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.5);
       --shadow-strong:0 4px 12px rgba(0,0,0,.6),0 12px 32px rgba(0,0,0,.7);
     }
