@@ -23,10 +23,13 @@ const HTML_INCLUDES = {
   // Calculate the root path for navigation links
   function getRootPath(){
     const protocol = window.location.protocol;
+    const hostname = window.location.hostname;
     const path = window.location.pathname;
 
-    // For file:// protocol (local development), use relative paths
-    if(protocol === 'file:'){
+    // For file:// protocol or localhost (local development), use relative paths
+    const isLocal = protocol === 'file:' || hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '';
+
+    if(isLocal){
       // Count directory depth by checking slashes
       const parts = path.replace(/^\//, '').split('/').filter(p => p);
       const depth = parts.length - 1; // -1 because last part is the filename
@@ -44,7 +47,7 @@ const HTML_INCLUDES = {
       return BASE_PATH.endsWith('/') ? BASE_PATH : BASE_PATH + '/';
     }
 
-    // No BASE_PATH set, use relative paths
+    // No BASE_PATH set, use relative paths as fallback
     const parts = path.replace(/^\//, '').split('/').filter(p => p);
     const depth = parts.length - 1;
 
