@@ -232,76 +232,9 @@
     
     <p>Monsters can be scaled to different levels using the level dropdown. This adjusts Defense Save DCs, damage, and other scalable properties based on the monster's Challenge Rating (CR).</p>
 
-    <h2>Browse Monsters by Challenge Rating</h2>
-    <p>View monsters organized by their Challenge Rating (CR). Hover over a CR button to see all monsters at that level:</p>
-    <div class="btnrow" id="cr-buttons">
-      <!-- CR buttons with dropdowns will be generated here by JavaScript -->
-    </div>
-    <script src="monsters-bfrd-index.js"></script>
-    <script>
-      // Function to create dropdown button HTML
-      function createCRButton(cr, filename) {
-        const monsters = monstersByCR[cr] || [];
-        let html = '<div class="btn-dropdown">';
-        html += `<a class="btn" href="monsters-bfrd/${filename}">CR ${cr}</a>`;
-
-        if (monsters.length > 0) {
-          html += '<div class="btn-dropdown-menu">';
-          monsters.forEach(monster => {
-            html += `<a href="monsters-bfrd/${filename}#${monster.slug}">${monster.name}</a>`;
-          });
-          html += '</div>';
-        }
-
-        html += '</div>';
-        return html;
-      }
-
-      // Initialize CR buttons
-      function initializeCRButtons() {
-        const crPages = [
-          { cr: '0', file: 'monster-cr-0.html' },
-          { cr: '1/8', file: 'monster-cr-1-8.html' },
-          { cr: '1/4', file: 'monster-cr-1-4.html' },
-          { cr: '1/2', file: 'monster-cr-1-2.html' },
-          { cr: '1', file: 'monster-cr-1.html' },
-          { cr: '2', file: 'monster-cr-2.html' },
-          { cr: '3', file: 'monster-cr-3.html' },
-          { cr: '4', file: 'monster-cr-4.html' },
-          { cr: '5', file: 'monster-cr-5.html' },
-          { cr: '6', file: 'monster-cr-6.html' },
-          { cr: '7', file: 'monster-cr-7.html' },
-          { cr: '8', file: 'monster-cr-8.html' },
-          { cr: '9', file: 'monster-cr-9.html' },
-          { cr: '10', file: 'monster-cr-10.html' },
-          { cr: '11', file: 'monster-cr-11.html' },
-          { cr: '12', file: 'monster-cr-12.html' },
-          { cr: '13', file: 'monster-cr-13.html' },
-          { cr: '14', file: 'monster-cr-14.html' },
-          { cr: '15', file: 'monster-cr-15.html' },
-          { cr: '16', file: 'monster-cr-16.html' },
-          { cr: '17', file: 'monster-cr-17.html' },
-          { cr: '18', file: 'monster-cr-18.html' },
-          { cr: '19', file: 'monster-cr-19.html' },
-          { cr: '20', file: 'monster-cr-20.html' },
-          { cr: '21', file: 'monster-cr-21.html' },
-          { cr: '23', file: 'monster-cr-23.html' },
-          { cr: '30', file: 'monster-cr-30.html' }
-        ];
-
-        // Generate buttons with dropdowns
-        const buttonContainer = document.getElementById('cr-buttons');
-        const buttonsHTML = crPages.map(page => createCRButton(page.cr, page.file)).join('');
-        buttonContainer.innerHTML = buttonsHTML;
-      }
-
-      // Initialize when page loads
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeCRButtons);
-      } else {
-        initializeCRButtons();
-      }
-    </script>
+    <h2>Browse Monsters</h2>
+    <p>Looking for the original Black Flag Reference Document monsters organized by CR?</p>
+    <p><a href="monsters-bfrd.html" class="btn">Browse BFRD Monsters by CR →</a></p>
 
     <div class="print-controls">
       <div class="search-row">
