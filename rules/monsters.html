@@ -221,6 +221,176 @@
     background: rgba(255, 255, 255, 0.05);
   }
 }
+
+/* Multi-select dropdown with chips */
+.multi-select-filter {
+  margin: 15px 0;
+}
+
+.multi-select-filter label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.multi-select-dropdown {
+  position: relative;
+  width: 280px;
+}
+
+.multi-select-input {
+  display: flex;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+  align-items: center;
+}
+
+.multi-select-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  padding-left: 6px;
+}
+
+.clear-all-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.clear-all-btn:hover {
+  color: #333;
+}
+
+.dropdown-arrow {
+  color: #999;
+  font-size: 0.8rem;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.multi-select-input:hover {
+  border-color: var(--brand-secondary);
+}
+
+.multi-select-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: var(--brand-secondary);
+  color: white;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.multi-select-chip-remove {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0 4px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.multi-select-chip-remove:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.multi-select-placeholder {
+  color: #999;
+  font-size: 0.95rem;
+  padding: 4px;
+}
+
+.multi-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 250px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: none;
+}
+
+.multi-select-options.open {
+  display: block;
+}
+
+.multi-select-option {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.multi-select-option:hover {
+  background: rgba(106, 90, 205, 0.1);
+}
+
+.multi-select-option.selected {
+  background: rgba(106, 90, 205, 0.2);
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .multi-select-input {
+    background: #2a2a2a;
+    border-color: #555;
+    color: #fff;
+  }
+
+  .multi-select-options {
+    background: #2a2a2a;
+    border-color: #555;
+  }
+
+  .multi-select-option:hover {
+    background: rgba(106, 90, 205, 0.2);
+  }
+
+  .multi-select-option.selected {
+    background: rgba(106, 90, 205, 0.3);
+  }
+
+  .clear-all-btn {
+    color: #aaa;
+  }
+
+  .clear-all-btn:hover {
+    color: #fff;
+  }
+
+  .dropdown-arrow {
+    color: #aaa;
+  }
+}
 </style>
 </head>
 <body>
@@ -257,6 +427,42 @@
             <div class="cr-slider-labels">
               <span class="cr-slider-label-min">Min: <span id="cr-min-value">1</span></span>
               <span class="cr-slider-label-max">Max: <span id="cr-max-value">10</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type Filter -->
+        <div class="filter-row">
+          <div class="multi-select-filter">
+            <label>Filter by Type:</label>
+            <div class="multi-select-dropdown" id="type-filter-dropdown">
+              <div class="multi-select-input" onclick="toggleMultiSelect('type-filter')">
+                <div id="type-filter-chips" class="chips-container"></div>
+                <span class="multi-select-placeholder" id="type-filter-placeholder">Select types...</span>
+                <div class="multi-select-controls">
+                  <button class="clear-all-btn" id="type-filter-clear" onclick="event.stopPropagation(); clearAll('type-filter')" style="display: none;" title="Clear all">✕</button>
+                  <span class="dropdown-arrow">▼</span>
+                </div>
+              </div>
+              <div class="multi-select-options" id="type-filter-options"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Size Filter -->
+        <div class="filter-row">
+          <div class="multi-select-filter">
+            <label>Filter by Size:</label>
+            <div class="multi-select-dropdown" id="size-filter-dropdown">
+              <div class="multi-select-input" onclick="toggleMultiSelect('size-filter')">
+                <div id="size-filter-chips" class="chips-container"></div>
+                <span class="multi-select-placeholder" id="size-filter-placeholder">Select sizes...</span>
+                <div class="multi-select-controls">
+                  <button class="clear-all-btn" id="size-filter-clear" onclick="event.stopPropagation(); clearAll('size-filter')" style="display: none;" title="Clear all">✕</button>
+                  <span class="dropdown-arrow">▼</span>
+                </div>
+              </div>
+              <div class="multi-select-options" id="size-filter-options"></div>
             </div>
           </div>
         </div>
@@ -395,7 +601,7 @@ async function renderMonsters() {
 
     const monsterLevel = monster.level || crToLevel(monster.cr);
     htmlParts.push(`
-      <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" data-level="${monsterLevel}" id="item-${safeId}">
+      <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" data-level="${monsterLevel}" data-type="${escapeHtml(monster.type || '')}" data-size="${escapeHtml(monster.size || '')}" id="item-${safeId}">
         <button class="lineage-header" onclick="toggleMonster(this)">
           <span class="lineage-title">${escapeHtml(monster.name)}</span>
           <span class="lineage-subtitle" id="${safeId}-cr-label">Level ${monsterLevel}</span>
@@ -651,39 +857,50 @@ function applyFilters() {
   const minSlider = document.getElementById('cr-min-slider');
   const maxSlider = document.getElementById('cr-max-slider');
   const showOriginal = false; // No global toggle - each monster has individual toggle
-  
+
   if (!minSlider || !maxSlider) return;
-  
+
   const minValue = parseInt(minSlider.value);
   const maxValue = parseInt(maxSlider.value);
-  
+
   let visibleCount = 0;
-  
+
   document.querySelectorAll('.monster-item').forEach(item => {
     const name = (item.getAttribute('data-monster-name') || '').toLowerCase();
+    const type = item.getAttribute('data-type') || '';
+    const size = item.getAttribute('data-size') || '';
+
+    // Check search
     const matchesSearch = !searchTerm || name.includes(searchTerm);
-    
-    let matchesFilter = false;
-    
+
+    // Check level/CR
+    let matchesLevel = false;
     if (showOriginal) {
       // Filter by CR (for original D&D stats)
       const cr = parseFloat(item.getAttribute('data-cr')) || 0;
       const crInt = Math.round(cr);
-      matchesFilter = crInt >= minValue && crInt <= maxValue;
+      matchesLevel = crInt >= minValue && crInt <= maxValue;
     } else {
       // Filter by Level (for You-Meet-In-A-Tavern (YMIAT) stats)
       const level = parseInt(item.getAttribute('data-level')) || 1;
-      matchesFilter = level >= minValue && level <= maxValue;
+      matchesLevel = level >= minValue && level <= maxValue;
     }
-    
-    if (matchesSearch && matchesFilter) {
+
+    // Check type filter
+    const matchesType = selectedTypes.size === 0 || selectedTypes.has(type);
+
+    // Check size filter
+    const matchesSize = selectedSizes.size === 0 || selectedSizes.has(size);
+
+    // Show item only if it matches all filters
+    if (matchesSearch && matchesLevel && matchesType && matchesSize) {
       item.style.display = '';
       visibleCount++;
     } else {
       item.style.display = 'none';
     }
   });
-  
+
   // Update container visibility
   const container = document.getElementById('monsters-container');
   if (container) {
@@ -772,17 +989,151 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+// Multi-select filter state
+const selectedTypes = new Set();
+const selectedSizes = new Set();
+
+// Multi-select dropdown functions
+function initializeMultiSelect(filterName, options) {
+  const optionsContainer = document.getElementById(`${filterName}-options`);
+  if (!optionsContainer) return;
+
+  // Sort options alphabetically
+  const sortedOptions = [...options].sort();
+
+  // Create option elements
+  sortedOptions.forEach(option => {
+    const optionDiv = document.createElement('div');
+    optionDiv.className = 'multi-select-option';
+    optionDiv.textContent = option;
+    optionDiv.onclick = (e) => {
+      e.stopPropagation();
+      toggleOption(filterName, option);
+    };
+    optionsContainer.appendChild(optionDiv);
+  });
+}
+
+function toggleMultiSelect(filterName) {
+  const optionsContainer = document.getElementById(`${filterName}-options`);
+  if (!optionsContainer) return;
+
+  // Close other dropdowns
+  document.querySelectorAll('.multi-select-options').forEach(el => {
+    if (el.id !== `${filterName}-options`) {
+      el.classList.remove('open');
+    }
+  });
+
+  optionsContainer.classList.toggle('open');
+}
+
+function toggleOption(filterName, option) {
+  const selectedSet = filterName === 'type-filter' ? selectedTypes : selectedSizes;
+
+  if (selectedSet.has(option)) {
+    selectedSet.delete(option);
+  } else {
+    selectedSet.add(option);
+  }
+
+  updateChips(filterName, selectedSet);
+  updateOptionStyles(filterName, selectedSet);
+  applyFilters();
+}
+
+function removeChip(filterName, option) {
+  const selectedSet = filterName === 'type-filter' ? selectedTypes : selectedSizes;
+  selectedSet.delete(option);
+  updateChips(filterName, selectedSet);
+  updateOptionStyles(filterName, selectedSet);
+  applyFilters();
+}
+
+function updateChips(filterName, selectedSet) {
+  const chipsContainer = document.getElementById(`${filterName}-chips`);
+  const placeholder = document.getElementById(`${filterName}-placeholder`);
+  const clearBtn = document.getElementById(`${filterName}-clear`);
+
+  if (!chipsContainer || !placeholder) return;
+
+  chipsContainer.innerHTML = '';
+
+  if (selectedSet.size === 0) {
+    placeholder.style.display = 'inline';
+    if (clearBtn) clearBtn.style.display = 'none';
+  } else {
+    placeholder.style.display = 'none';
+    if (clearBtn) clearBtn.style.display = 'block';
+    selectedSet.forEach(option => {
+      const chip = document.createElement('div');
+      chip.className = 'multi-select-chip';
+      chip.innerHTML = `
+        <span>${escapeHtml(option)}</span>
+        <span class="multi-select-chip-remove" onclick="event.stopPropagation(); removeChip('${filterName}', '${option}')">×</span>
+      `;
+      chipsContainer.appendChild(chip);
+    });
+  }
+}
+
+function clearAll(filterName) {
+  const selectedSet = filterName === 'type-filter' ? selectedTypes : selectedSizes;
+  selectedSet.clear();
+  updateChips(filterName, selectedSet);
+  updateOptionStyles(filterName, selectedSet);
+  applyFilters();
+}
+
+function updateOptionStyles(filterName, selectedSet) {
+  const optionsContainer = document.getElementById(`${filterName}-options`);
+  if (!optionsContainer) return;
+
+  const options = optionsContainer.querySelectorAll('.multi-select-option');
+  options.forEach(option => {
+    if (selectedSet.has(option.textContent)) {
+      option.classList.add('selected');
+    } else {
+      option.classList.remove('selected');
+    }
+  });
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.multi-select-dropdown')) {
+    document.querySelectorAll('.multi-select-options').forEach(el => {
+      el.classList.remove('open');
+    });
+  }
+});
+
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-  // monsters_data.js should be loaded by now (it's before this script)
+document.addEventListener('DOMContentLoaded', async function() {
+  // Load monsters data first to extract unique types and sizes
+  const data = await loadMonstersData();
+
+  // Extract unique types and sizes
+  const types = new Set();
+  const sizes = new Set();
+  data.forEach(monster => {
+    if (monster.type) types.add(monster.type);
+    if (monster.size) sizes.add(monster.size);
+  });
+
+  // Initialize multi-select dropdowns
+  initializeMultiSelect('type-filter', types);
+  initializeMultiSelect('size-filter', sizes);
+
+  // Render monsters
   renderMonsters();
-  
+
   // Initialize filters hidden
   const filtersContainer = document.getElementById('filters-container');
   if (filtersContainer) {
     filtersContainer.style.display = 'none';
   }
-  
+
   // Initialize slider ticks for level filter (default)
   updateSliderTicks();
 });
