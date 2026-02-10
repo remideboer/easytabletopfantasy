@@ -1311,6 +1311,11 @@
     z-index:100;
   }
 
+  /* Override for print-controls to ensure filter dropdowns appear above other content */
+  .content > .print-controls{
+    z-index:100;
+  }
+
   /* Enhanced card hover effect */
   .content:hover{
     border-color:var(--fantasy-gold-light);
@@ -1508,7 +1513,7 @@
     display:inline-block;
   }
   .filters-container{
-    overflow:hidden;
+    overflow:visible;
     transition:max-height 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
     max-height:1000px;
     opacity:1;

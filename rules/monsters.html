@@ -237,6 +237,7 @@
 .multi-select-dropdown {
   position: relative;
   width: 280px;
+  z-index: 100;
 }
 
 .multi-select-input {
@@ -336,7 +337,7 @@
   border-top: none;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  z-index: 10000;
   display: none;
 }
 
@@ -1018,14 +1019,21 @@ function toggleMultiSelect(filterName) {
   const optionsContainer = document.getElementById(`${filterName}-options`);
   if (!optionsContainer) return;
 
-  // Close other dropdowns
+  // Close other dropdowns and reset their z-index
   document.querySelectorAll('.multi-select-options').forEach(el => {
     if (el.id !== `${filterName}-options`) {
       el.classList.remove('open');
+      // Reset z-index of the options menu itself
+      el.style.zIndex = '10000';
     }
   });
 
+  // Toggle current dropdown
+  const isOpening = !optionsContainer.classList.contains('open');
   optionsContainer.classList.toggle('open');
+
+  // Increase z-index of the options menu when opening, reset when closing
+  optionsContainer.style.zIndex = isOpening ? '20000' : '10000';
 }
 
 function toggleOption(filterName, option) {
