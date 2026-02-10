@@ -10,8 +10,8 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from typing import Dict, List, Optional
 
-MONSTERS_DIR = Path('foundation/monsters-bfrd')
-OUTPUT_FILE = Path('data/monsters_data.json')
+MONSTERS_DIR = Path('rules/monsters-bfrd')
+OUTPUT_FILE = Path('data/monsters_data.js')
 
 def parse_cr_value(cr_text: str) -> float:
     """Parse CR value from text like 'CR 0', 'CR 1/8', 'CR 1/4', 'CR 1/2', 'CR 5'"""
@@ -148,7 +148,7 @@ def convert_weapon_damage(text: str) -> str:
         
         # Find "Hit:" damage in this section
         hit_match = re.search(
-            r'Hit:\s*\d+\s*\(\d+d\d+(?:\s*[+\-]\s*\d+)?\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage(?:\s+plus\s+\d+\s*\(\d+d\d+(?:\s*[+\-]\s*\d+)?\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage)?',
+            r'Hit:\s*\d+\s*\(\d+d\d+(?:\s*[+\-]\s*\d+)?\)\s*([^.]+?)?\s*damage(?:\s+plus\s+\d+\s*\(\d+d\d+(?:\s*[+\-]\s*\d+)?\)\s*([^.]+?)?\s*damage)?',
             section,
             re.IGNORECASE
         )
@@ -257,7 +257,7 @@ def convert_damage_to_hits(text: str) -> str:
     
     # Match "Hit: X (YdZ) type damage plus A (BdC) other_type damage"
     text = re.sub(
-        r'Hit:\s*\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage\s+plus\s+\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage',
+        r'Hit:\s*\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^.]+?)?\s*damage\s+plus\s+\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^.]+?)?\s*damage',
         replace_hit_with_plus,
         text,
         flags=re.IGNORECASE
@@ -271,7 +271,7 @@ def convert_damage_to_hits(text: str) -> str:
         return f"Hit: {converted}"
     
     text = re.sub(
-        r'Hit:\s*\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage',
+        r'Hit:\s*\d+\s*\((\d+d\d+(?:\s*[+\-]\s*\d+)?)\)\s*([^.]+?)?\s*damage',
         replace_hit_damage,
         text,
         flags=re.IGNORECASE
@@ -285,7 +285,7 @@ def convert_damage_to_hits(text: str) -> str:
         return f"({converted})"
     
     text = re.sub(
-        r'\(\s*(\d+d\d+(?:\s*[+\-]\s*\d+)?)\s*\)\s*([^,]+(?:,\s*[^,]+)*(?:\s+or\s+[^,]+)?)?\s*damage',
+        r'\(\s*(\d+d\d+(?:\s*[+\-]\s*\d+)?)\s*\)\s*([^.]+?)?\s*damage',
         replace_damage_in_parens,
         text,
         flags=re.IGNORECASE
@@ -436,6 +436,7 @@ def convert_ability_scores(text: str) -> str:
 def convert_terminology(text: str) -> str:
     """Convert D&D terminology to ETF"""
     replacements = {
+        r'\bCR\s+': 'Level ',
         r'\bActions\b': 'Moments',
         r'\bopportunity attacks\b': 'reactions',
         r'\bhalf the damage\b': 'half as much damage',
@@ -446,10 +447,10 @@ def convert_terminology(text: str) -> str:
         r'\bDC\s+(\d+)\s+INT\s+save\b': r'DC \1 INS save',
         r'\bDC\s+(\d+)\s+WIS\s+save\b': r'DC \1 INS save',
     }
-    
+
     for pattern, replacement in replacements.items():
         text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
-    
+
     return text
 
 def extract_monster_stat_block(article_html: str) -> Optional[Dict]:
@@ -566,10 +567,12 @@ def main():
         print(f"  Found {len(monsters)} monsters")
         all_monsters.extend(monsters)
     
-    # Save to JSON
+    # Save to JavaScript file
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+        f.write('const monstersDataEmbedded = ')
         json.dump(all_monsters, f, indent=2, ensure_ascii=False)
-    
+        f.write(';\n')
+
     print("=" * 60)
     print(f"Total monsters parsed: {len(all_monsters)}")
     print(f"Saved to {OUTPUT_FILE}")

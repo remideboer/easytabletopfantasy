@@ -338,10 +338,39 @@
     <div class="lineages-container" id="monsters-container">
       <!-- Monsters will be loaded here via JavaScript -->
     </div>
+
+    <!-- Monster stat block template -->
+    <template id="monster-stat-block-template">
+      <div class="stat-block-header">
+        <p class="stat-block-title"><span class="cr-level-label"></span><br/><em class="size-type"></em></p>
+      </div>
+      <div class="stat-block-stats">
+        <p class="basic-stats">
+          <strong>Armor Class</strong> <span class="ac"></span><br/>
+          <strong>Hit Points</strong> <span class="hp"></span><br/>
+          <strong>Speed</strong> <span class="speed"></span><br/>
+          <strong>Perception</strong> <span class="perception"></span> <strong>Stealth</strong> <span class="stealth"></span>
+        </p>
+        <p class="additional-stats">
+          <span class="resistances-block"></span>
+          <span class="immunities-block"></span>
+          <strong>Senses</strong> <span class="senses"></span><br/>
+          <strong>Languages</strong> <span class="languages"></span>
+        </p>
+      </div>
+      <hr/>
+      <div class="ability-scores-table"></div>
+      <hr/>
+      <div class="traits-section"></div>
+      <div class="actions-section"></div>
+      <div class="bonus-actions-section"></div>
+      <div class="reactions-section"></div>
+      <div class="legendary-actions-section"></div>
+    </template>
   </div>
 </main>
 <footer class="legal" data-include="footer"></footer>
-<script src="../data/monsters_data.js"></script>
+<script src="../assets/monster-renderer.js"></script>
 <script>
 // CR to Level mapping (same as monster-abilities.html)
 function crToLevel(cr) {
@@ -390,28 +419,21 @@ function parseCR(crStr) {
 
 // Load monsters data
 let monstersData = [];
-let originalETFContent = new Map();
-let original5eContent = new Map();
 
 async function loadMonstersData() {
   if (monstersData.length > 0) return monstersData;
-  
-  // Data is embedded in the page via script tag, so it should already be available
-  // Check if monstersDataEmbedded is defined (from embedded script)
-  if (typeof monstersDataEmbedded !== 'undefined') {
-    monstersData = monstersDataEmbedded;
+
+  try {
+    const response = await fetch('../data/monsters_data.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    monstersData = await response.json();
     return monstersData;
+  } catch (error) {
+    console.error('Failed to load monsters data:', error);
+    return [];
   }
-  
-  // Also check window object
-  if (typeof window.monstersDataEmbedded !== 'undefined') {
-    monstersData = window.monstersDataEmbedded;
-    return monstersData;
-  }
-  
-  // Fallback: return empty array if data not found
-  console.warn('Monsters data not found. Make sure monsters_data.js is included.');
-  return [];
 }
 
 // Render monsters with optimized batch rendering
@@ -437,7 +459,7 @@ async function renderMonsters() {
     const monsterId = `monster-${index}`;
     const safeId = monsterId.replace(/[^a-z0-9-]/gi, '-');
     const defaultLevel = crToLevel(monster.cr);
-    
+
     const monsterLevel = monster.level || crToLevel(monster.cr);
     htmlParts.push(`
       <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" data-level="${monsterLevel}" id="item-${safeId}">
@@ -463,40 +485,41 @@ async function renderMonsters() {
             </label>
           </div>
           <div class="monster-stat-block-content">
-            <div class="monster-etf-version" id="${safeId}-etf">
-              ${monster.etf_html}
-            </div>
-            <div class="monster-original-version" id="${safeId}-original" style="display:none;">
-              ${monster.original_html}
-            </div>
+            <div class="monster-etf-version" id="${safeId}-etf" data-monster-index="${index}"></div>
+            <div class="monster-original-version" id="${safeId}-original" data-monster-index="${index}" style="display:none;"></div>
           </div>
-          <div class="scaling-info" data-base-cr="${monster.cr}" data-base-hp="${monster.hp}" data-base-ac="${monster.ac}" style="display:none;"></div>
+          <div class="scaling-info" data-base-cr="${monster.cr}" data-base-hp="${monster.ymiat.hp}" data-base-ac="${monster.ymiat.ac}" style="display:none;"></div>
         </div>
       </div>
     `);
   });
-  
+
   // Set innerHTML once with all content (much faster)
   container.innerHTML = htmlParts.join('');
-  
-  // Store original content after rendering (use requestAnimationFrame for better performance)
+
+  // Render stat blocks using template (use requestAnimationFrame for better performance)
   requestAnimationFrame(() => {
     document.querySelectorAll('.monster-item').forEach(item => {
       const etfDiv = item.querySelector('.monster-etf-version');
       const originalDiv = item.querySelector('.monster-original-version');
-      if (etfDiv && !originalETFContent.has(item)) {
-        originalETFContent.set(item, etfDiv.innerHTML);
-      }
-      if (originalDiv && !original5eContent.has(item)) {
-        original5eContent.set(item, originalDiv.innerHTML);
-      }
+
+      const monsterIndex = parseInt(etfDiv.getAttribute('data-monster-index'));
+      const monster = sorted[monsterIndex];
+
+      // Render YMIAT version
+      const ymiatBlock = renderStatBlock(monster, true);
+      etfDiv.innerHTML = ymiatBlock.innerHTML;
+
+      // Render 5e version
+      const originalBlock = renderStatBlock(monster, false);
+      originalDiv.innerHTML = originalBlock.innerHTML;
     });
-    
+
     // Initialize all collapsed
     document.querySelectorAll('.lineage-content').forEach(content => {
       content.style.display = 'none';
     });
-    
+
     // Apply filters after rendering
     applyFilters();
   });
@@ -736,69 +759,60 @@ function applyFilters() {
 }
 
 // Update monster scaling based on level
-function updateMonsterScaling(monsterId, baseCR) {
+async function updateMonsterScaling(monsterId, baseCR) {
   const item = document.getElementById(`item-${monsterId}`);
   if (!item) return;
-  
+
   const levelSelect = document.getElementById(`${monsterId}-level`);
   if (!levelSelect) return;
-  
+
   const targetLevel = parseInt(levelSelect.value);
   const scaling = calculateScaling(baseCR, targetLevel);
   const etfDiv = item.querySelector('.monster-etf-version');
-  
+
   if (!etfDiv) return;
-  
-  // Get original You-Meet-In-A-Tavern (YMIAT) content
-  let etfHTML = originalETFContent.get(item);
-  if (!etfHTML) {
-    etfHTML = etfDiv.innerHTML;
-    originalETFContent.set(item, etfHTML);
-  }
-  
-  // Apply scaling
-  let updatedHTML = etfHTML;
-  
-  // Scale Defense Save DCs (Defense Save DC XX)
+
+  // Get the monster data
+  const monsterIndex = parseInt(etfDiv.getAttribute('data-monster-index'));
+  const data = await loadMonstersData();
+  const sortedData = [...data].sort((a, b) => {
+    if (a.cr !== b.cr) return a.cr - b.cr;
+    return a.name.localeCompare(b.name);
+  });
+  const monster = sortedData[monsterIndex];
+
+  // Re-render with scaled values
+  const ymiatBlock = renderStatBlock(monster, true);
+  let updatedHTML = ymiatBlock.innerHTML;
+
+  // Apply scaling adjustments
+  // Scale Defense Save DCs
   updatedHTML = updatedHTML.replace(/Defense Save DC (\d+)/g, (match, dc) => {
     const baseDC = parseInt(dc);
     const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
     return `Defense Save DC ${newDC}`;
   });
-  
-  // Scale other DCs (escape DC, save DCs, etc.) - but avoid double-scaling Defense Save DCs
-  // First, temporarily replace "Defense Save DC" to avoid matching it
+
+  // Scale other DCs
   updatedHTML = updatedHTML.replace(/Defense Save DC/g, '___DEFENSE_SAVE_DC___');
-  
-  // Now scale all remaining DCs
   updatedHTML = updatedHTML.replace(/\bDC (\d+)/g, (match, dc) => {
     const baseDC = parseInt(dc);
     const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
     return `DC ${newDC}`;
   });
-  
-  // Also handle "escape DC" and similar patterns
-  updatedHTML = updatedHTML.replace(/(escape|save) DC (\d+)/gi, (match, type, dc) => {
-    const baseDC = parseInt(dc);
-    const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
-    return `${type} DC ${newDC}`;
-  });
-  
-  // Restore "Defense Save DC"
   updatedHTML = updatedHTML.replace(/___DEFENSE_SAVE_DC___/g, 'Defense Save DC');
-  
+
   // Scale HP
   const scalingInfo = item.querySelector('.scaling-info');
   if (scalingInfo) {
     const baseHP = parseInt(scalingInfo.getAttribute('data-base-hp')) || 1;
     const newHP = Math.max(1, baseHP + scaling.hpAdjustment);
-    // Replace HP in the stat block
     updatedHTML = updatedHTML.replace(
       /<strong>Hit Points<\/strong>\s*(\d+)/gi,
       `<strong>Hit Points</strong> ${newHP}`
     );
   }
-  
+
   // Update display
   etfDiv.innerHTML = updatedHTML;
 }
