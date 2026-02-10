@@ -443,7 +443,7 @@ async function renderMonsters() {
       <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" data-level="${monsterLevel}" id="item-${safeId}">
         <button class="lineage-header" onclick="toggleMonster(this)">
           <span class="lineage-title">${escapeHtml(monster.name)}</span>
-          <span class="lineage-subtitle">CR ${formatCR(monster.cr)}</span>
+          <span class="lineage-subtitle" id="${safeId}-cr-label">Level ${monsterLevel}</span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
@@ -527,15 +527,25 @@ function toggleMonsterStats(monsterId) {
   const toggle = document.getElementById(`${monsterId}-toggle`);
   const etfVersion = document.getElementById(`${monsterId}-etf`);
   const originalVersion = document.getElementById(`${monsterId}-original`);
+  const crLabel = document.getElementById(`${monsterId}-cr-label`);
+
+  // Get the monster item to access its data
+  const item = document.getElementById(`item-${monsterId}`);
+  if (!item) return;
+
+  const cr = parseFloat(item.getAttribute('data-cr')) || 0;
+  const level = parseInt(item.getAttribute('data-level')) || crToLevel(cr);
 
   if (toggle.checked) {
     // Show original 5e stats
     etfVersion.style.display = 'none';
     originalVersion.style.display = 'block';
+    if (crLabel) crLabel.textContent = `CR ${formatCR(cr)}`;
   } else {
     // Show YMIAT stats
     etfVersion.style.display = 'block';
     originalVersion.style.display = 'none';
+    if (crLabel) crLabel.textContent = `Level ${level}`;
   }
 }
 
