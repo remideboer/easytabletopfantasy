@@ -197,6 +197,55 @@
       margin-top: 10px;
     }
 
+    .stat-block-top-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .stat-block-top-row .stat-block-stats {
+      flex: 1 1 50%;
+    }
+
+    .stat-block-top-row .stat-block-stats .basic-stats {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .stat-block-top-row .ability-scores-table {
+      flex: 1 1 50%;
+      min-width: 0;
+    }
+
+    .ability-scores-vertical {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .ability-scores-vertical th {
+      text-align: left;
+      font-weight: 700;
+      padding: 2px 8px 2px 0;
+      white-space: nowrap;
+      color: var(--brand-primary);
+    }
+
+    .ability-scores-vertical td {
+      text-align: center;
+      padding: 2px 12px 2px 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-block-details {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      padding: 4px 0;
+      border-top: 1px solid rgba(184,134,11,.2);
+      margin-top: 4px;
+    }
+
     .monster-etf-version {
       display: block;
     }
@@ -827,23 +876,24 @@
         <div class="stat-block-header">
           <p class="stat-block-title"><span class="cr-level-label"></span><br /><em class="size-type"></em></p>
         </div>
-        <div class="stat-block-stats">
-          <p class="basic-stats">
-            <strong>Armor Class</strong> <span class="ac"></span><br />
-            <strong>Hit Points</strong> <span class="hp"></span><br />
-            <strong>Speed</strong> <span class="speed"></span><br />
-            <strong>Perception</strong> <span class="perception"></span> <strong>Stealth</strong> <span
-              class="stealth"></span>
-          </p>
-          <p class="additional-stats">
-            <span class="resistances-block"></span>
-            <span class="immunities-block"></span>
-            <strong>Senses</strong> <span class="senses"></span><br />
-            <strong>Languages</strong> <span class="languages"></span>
-          </p>
+        <div class="stat-block-top-row">
+          <div class="stat-block-stats">
+            <p class="basic-stats">
+              <strong>Armor Class</strong> <span class="ac"></span><br />
+              <strong>Hit Points</strong> <span class="hp"></span><br />
+              <strong>Speed</strong> <span class="speed"></span><br />
+              <strong>Perception</strong> <span class="perception"></span> <strong>Stealth</strong> <span
+                class="stealth"></span>
+            </p>
+          </div>
+          <div class="ability-scores-table"></div>
         </div>
-        <hr />
-        <div class="ability-scores-table"></div>
+        <div class="stat-block-details">
+          <span class="resistances-block"></span>
+          <span class="immunities-block"></span>
+          <strong>Senses</strong> <span class="senses"></span><br />
+          <strong>Languages</strong> <span class="languages"></span>
+        </div>
         <hr />
         <div class="traits-section"></div>
         <div class="actions-section"></div>

@@ -3,30 +3,40 @@
  * Renders monster data from structured JSON using templates
  */
 
-// Render ability scores table
+// Render ability scores as vertical table
+// YMIAT: 2 columns (label, value), 3 rows (FIT, INS, WIL)
+// 5e: 4 columns (label, value, label, value), 3 rows (STR/INT, DEX/WIS, CON/CHA)
 function renderAbilityScores(abilities, isYMIAT) {
   if (!abilities || Object.keys(abilities).length === 0) {
     return '';
   }
 
-  const headers = Object.keys(abilities);
-  const values = Object.values(abilities);
+  const entries = Object.entries(abilities);
+  const formatVal = v => (v >= 0 ? '+' : '') + v;
 
-  let html = '<figure class="wp-block-table monster-ability-scores is-style-stripes"><table><thead><tr>';
+  let html = '<table class="ability-scores-vertical">';
 
-  headers.forEach(header => {
-    html += `<th class="has-text-align-center" data-align="center">${escapeHtml(header)}</th>`;
-  });
+  if (isYMIAT || entries.length <= 3) {
+    // YMIAT: simple 2-column vertical list
+    entries.forEach(([key, val]) => {
+      html += `<tr><th>${escapeHtml(key)}</th><td>${formatVal(val)}</td></tr>`;
+    });
+  } else {
+    // 5e: split into two halves side by side (STR/INT, DEX/WIS, CON/CHA)
+    const half = Math.ceil(entries.length / 2);
+    for (let i = 0; i < half; i++) {
+      const left = entries[i];
+      const right = entries[i + half];
+      html += '<tr>';
+      html += `<th>${escapeHtml(left[0])}</th><td>${formatVal(left[1])}</td>`;
+      if (right) {
+        html += `<th>${escapeHtml(right[0])}</th><td>${formatVal(right[1])}</td>`;
+      }
+      html += '</tr>';
+    }
+  }
 
-  html += '</tr></thead><tbody><tr>';
-
-  values.forEach(value => {
-    const sign = value >= 0 ? '+' : '';
-    html += `<td class="has-text-align-center" data-align="center">${sign}${value}</td>`;
-  });
-
-  html += '</tr></tbody></table></figure>';
-
+  html += '</table>';
   return html;
 }
 
