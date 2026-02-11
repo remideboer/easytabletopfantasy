@@ -1218,11 +1218,14 @@
       const cr = parseFloat(item.getAttribute('data-cr')) || 0;
       const level = parseInt(item.getAttribute('data-level')) || crToLevel(cr);
 
+      const levelScaling = item.querySelector('.monster-level-scaling');
+
       if (toggle.checked) {
         // Show original 5e stats
         etfVersion.style.display = 'none';
         originalVersion.style.display = 'block';
         if (crLabel) crLabel.textContent = `CR ${formatCR(cr)}`;
+        if (levelScaling) levelScaling.style.visibility = 'hidden';
       } else {
         // Show YMIAT stats — use current slider level, not base level
         etfVersion.style.display = 'block';
@@ -1230,6 +1233,7 @@
         const levelSlider = document.getElementById(`${monsterId}-level`);
         const currentLevel = levelSlider ? parseInt(levelSlider.value) : level;
         if (crLabel) crLabel.textContent = `Level ${currentLevel}`;
+        if (levelScaling) levelScaling.style.visibility = 'visible';
       }
     }
 
