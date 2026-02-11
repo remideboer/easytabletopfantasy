@@ -51,7 +51,7 @@
     --fantasy-green:var(--accent-gold-soft);
     --fantasy-green-light:var(--accent-gold);
 
-    --max:920px;
+    --max:1104px;
     --r:var(--radius);
     --r2:var(--radius-lg);
     --shadow:0 2px 8px rgba(0,0,0,.1),0 8px 24px rgba(0,0,0,.08);
@@ -1138,7 +1138,7 @@
   
   /* Rules layout + TOC */
   .layout{display:grid;grid-template-columns:1fr;gap:14px}
-  @media(min-width:980px){
+  @media(min-width:1164px){
     .layout{grid-template-columns:240px 1fr;gap:18px}
     .toc{position:sticky;top:86px;align-self:start}
   }
