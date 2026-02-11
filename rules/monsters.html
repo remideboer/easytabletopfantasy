@@ -18,75 +18,73 @@
     .cr-filter-slider-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin: 15px 0;
-      width: 100%;
+      gap: 0;
     }
 
     .cr-slider-wrapper {
       position: relative;
       width: 100%;
-      height: 50px;
-      margin: 20px 0;
+      height: 28px;
     }
 
     .cr-slider-track {
       position: absolute;
-      width: 100%;
-      height: 6px;
+      height: 8px;
       background: #ddd;
-      border-radius: 3px;
+      border-radius: 4px;
       top: 50%;
       transform: translateY(-50%);
-    }
-
-    .cr-slider-track::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-image: repeating-linear-gradient(to right,
-          transparent 0,
-          transparent calc(100% / 31 - 1px),
-          #999 calc(100% / 31 - 1px),
-          #999 calc(100% / 31));
-      pointer-events: none;
+      left: 11px;
+      right: 11px;
     }
 
     .cr-slider {
       position: absolute;
       width: 100%;
-      height: 6px;
+      height: 8px;
       background: transparent;
       outline: none;
       -webkit-appearance: none;
+      appearance: none;
       pointer-events: none;
       top: 50%;
       transform: translateY(-50%);
+      margin: 0;
+      padding: 0;
+    }
+
+    .cr-slider::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      background: transparent;
+    }
+
+    .cr-slider::-moz-range-track {
+      width: 100%;
+      height: 8px;
+      background: transparent;
+      border: none;
     }
 
     .cr-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: #4a90e2;
+      background: var(--brand-secondary);
       cursor: pointer;
       pointer-events: all;
       border: 2px solid #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      position: relative;
-      z-index: 2;
+      margin-top: -7px;
     }
 
     .cr-slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: #4a90e2;
+      background: var(--brand-secondary);
       cursor: pointer;
       border: 2px solid #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -101,18 +99,21 @@
       z-index: 2;
     }
 
-    .cr-slider-labels {
+    .cr-slider-ticks {
       display: flex;
       justify-content: space-between;
-      margin-top: 5px;
-      font-size: 0.9em;
-      color: var(--text-secondary);
+      padding: 4px 0 0 0;
     }
 
-    .cr-slider-label-min,
-    .cr-slider-label-max {
-      font-weight: bold;
-      color: #4a90e2;
+    .cr-slider-ticks span {
+      font-size: 0.7rem;
+      color: var(--text-secondary, #888);
+      width: 0;
+      text-align: center;
+    }
+
+    .cr-slider-labels {
+      display: none;
     }
 
     .monster-item {
@@ -511,24 +512,28 @@
             oninput="handleMonsterSearch()" />
         </div>
         <div id="filters-container" class="filters-container">
-          <div class="filter-row">
-            <span class="filter-label" id="filter-label">Filter by Level:</span>
-            <div class="cr-filter-slider-container">
-              <div class="cr-slider-wrapper">
-                <div class="cr-slider-track"></div>
-                <input type="range" id="cr-min-slider" class="cr-slider cr-slider-min" min="1" max="10" value="1"
-                  step="1" oninput="updateCRFilter()" />
-                <input type="range" id="cr-max-slider" class="cr-slider cr-slider-max" min="1" max="10" value="10"
-                  step="1" oninput="updateCRFilter()" />
-              </div>
-              <div class="cr-slider-labels">
-                <span class="cr-slider-label-min">Min: <span id="cr-min-value">1</span></span>
-                <span class="cr-slider-label-max">Max: <span id="cr-max-value">10</span></span>
+          <div class="filter-grid">
+            <div class="multi-select-filter">
+              <label>Level</label>
+              <div class="cr-filter-slider-container">
+                <div class="cr-slider-wrapper">
+                  <div class="cr-slider-track"></div>
+                  <input type="range" id="cr-min-slider" class="cr-slider cr-slider-min" min="1" max="10" value="1"
+                    step="1" oninput="updateCRFilter()" />
+                  <input type="range" id="cr-max-slider" class="cr-slider cr-slider-max" min="1" max="10" value="10"
+                    step="1" oninput="updateCRFilter()" />
+                </div>
+                <div class="cr-slider-ticks">
+                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                  <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                </div>
+                <div class="cr-slider-labels">
+                  <span class="cr-slider-label-min">Min: <span id="cr-min-value">1</span></span>
+                  <span class="cr-slider-label-max">Max: <span id="cr-max-value">10</span></span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="filter-grid">
             <div class="multi-select-filter">
               <label>Type</label>
               <div class="multi-select-dropdown" id="type-filter-dropdown">
