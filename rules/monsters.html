@@ -185,6 +185,16 @@
       .monster-item .lineage-title {
         color: var(--text-primary);
       }
+
+      .monster-description-block {
+        background: rgba(0,0,0,.25);
+        border-color: rgba(201,162,39,.3);
+        color: var(--text-primary);
+      }
+
+      .monster-description-block p {
+        color: var(--text-primary);
+      }
     }
 
     @media (max-width: 768px) {
@@ -244,6 +254,27 @@
       padding: 4px 0;
       border-top: 1px solid rgba(184,134,11,.2);
       margin-top: 4px;
+    }
+
+    .monster-description-block {
+      font-size: .95rem;
+      line-height: 1.5;
+      color: var(--fg);
+      background: linear-gradient(135deg, rgba(245,241,234,.95), rgba(240,236,228,.9));
+      border: 1px solid rgba(184,134,11,.15);
+      border-radius: var(--r, 8px);
+      padding: 14px 16px;
+      margin-top: 8px;
+      box-shadow: inset 0 1px 2px rgba(44,35,22,.05);
+    }
+
+    .monster-description-block p {
+      color: var(--fg);
+      margin: 0 0 8px;
+    }
+
+    .monster-description-block p:last-child {
+      margin: 0;
     }
 
     .monster-etf-version {
@@ -973,30 +1004,34 @@
         <div class="stat-block-header">
           <p class="stat-block-title"><span class="cr-level-label"></span><br /><em class="size-type"></em></p>
         </div>
-        <div class="stat-block-top-row">
-          <div class="stat-block-stats">
-            <p class="basic-stats">
-              <strong>AC</strong> <span class="ac"></span><br />
-              <strong>HP</strong> <span class="hp"></span><br />
-              <strong>Speed</strong> <span class="speed"></span><br />
-              <strong>Perception</strong> <span class="perception"></span> <strong>Stealth</strong> <span
-                class="stealth"></span>
-            </p>
+        <div class="monster-description-block">
+          <div class="stat-block-top-row">
+            <div class="stat-block-stats">
+              <p class="basic-stats">
+                <strong>AC</strong> <span class="ac"></span><br />
+                <strong>HP</strong> <span class="hp"></span><br />
+                <strong>Speed</strong> <span class="speed"></span><br />
+                <strong>Perception</strong> <span class="perception"></span> <strong>Stealth</strong> <span
+                  class="stealth"></span>
+              </p>
+            </div>
+            <div class="ability-scores-table"></div>
           </div>
-          <div class="ability-scores-table"></div>
-        </div>
-        <div class="stat-block-details">
-          <span class="resistances-block"></span>
-          <span class="immunities-block"></span>
-          <strong>Senses</strong> <span class="senses"></span><br />
-          <strong>Languages</strong> <span class="languages"></span>
+          <div class="stat-block-details">
+            <span class="resistances-block"></span>
+            <span class="immunities-block"></span>
+            <strong>Senses</strong> <span class="senses"></span><br />
+            <strong>Languages</strong> <span class="languages"></span>
+          </div>
         </div>
         <hr />
-        <div class="traits-section"></div>
-        <div class="actions-section"></div>
-        <div class="bonus-actions-section"></div>
-        <div class="reactions-section"></div>
-        <div class="legendary-actions-section"></div>
+        <div class="monster-description-block">
+          <div class="traits-section"></div>
+          <div class="actions-section"></div>
+          <div class="bonus-actions-section"></div>
+          <div class="reactions-section"></div>
+          <div class="legendary-actions-section"></div>
+        </div>
       </template>
     </div>
   </main>
