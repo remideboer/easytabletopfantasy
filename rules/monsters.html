@@ -129,11 +129,28 @@
       background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(250,248,244,.95));
       box-shadow: var(--shadow);
       break-inside: avoid;
+      position: relative;
+    }
+
+    .monster-card-checkbox {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: var(--fantasy-gold);
+      z-index: 5;
+    }
+
+    .monster-item:has(.monster-card-checkbox:checked) {
+      border-color: var(--fantasy-gold-light);
+      box-shadow: 0 4px 12px rgba(184,134,11,.3);
     }
 
     .monster-item .lineage-header {
       background: transparent;
-      padding: 14px 16px;
+      padding: 14px 40px 14px 16px;
     }
 
     .monster-item .lineage-header:hover {
@@ -541,6 +558,99 @@
         background: #555;
       }
     }
+
+    /* Print styles */
+    @media print {
+      header, nav, .print-controls, .lineages-controls, footer, h1, h2,
+      .content > p, .content > .lede, .filter-drawer-btn {
+        display: none !important;
+      }
+
+      body {
+        background: #fff !important;
+        margin: 0;
+        padding: 0;
+      }
+
+      .content {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* Hide unselected monsters */
+      .monster-item:not(.print-selected) {
+        display: none !important;
+      }
+
+      /* Grid layout for printing */
+      #monsters-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        margin: 0 !important;
+      }
+
+      /* Card styling for print */
+      .monster-item {
+        border: 2px solid #000 !important;
+        border-radius: 6px !important;
+        padding: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        background: #fff !important;
+        box-shadow: none !important;
+      }
+
+      .monster-card-checkbox {
+        display: none !important;
+      }
+
+      .monster-item .lineage-header {
+        padding: 8px 12px !important;
+      }
+
+      .lineage-title {
+        color: #000 !important;
+        font-size: 1rem !important;
+      }
+
+      .lineage-subtitle {
+        color: #333 !important;
+      }
+
+      .lineage-toggle-icon {
+        display: none !important;
+      }
+
+      /* Force content visible for selected cards */
+      .print-selected .lineage-content {
+        display: block !important;
+        border-top: 1px solid #000 !important;
+        padding: 4px 12px 8px !important;
+      }
+
+      /* Hide interactive controls in print */
+      .monster-controls-row {
+        display: none !important;
+      }
+
+      .monster-stat-block-content {
+        margin-top: 0 !important;
+      }
+
+      /* Stat block text */
+      .monster-etf-version,
+      .monster-original-version {
+        color: #000 !important;
+        font-size: 0.85rem !important;
+      }
+
+      @page {
+        margin: 1.5cm;
+        size: A4;
+      }
+    }
   </style>
 </head>
 
@@ -566,6 +676,12 @@
           <label for="monster-search" class="search-label">Search monsters:</label>
           <input type="text" id="monster-search" class="spell-search-input" placeholder="Type monster name to search..."
             oninput="handleMonsterSearch()" />
+        </div>
+        <div class="control-row">
+          <button onclick="selectAllMonsters()">Select All</button>
+          <button onclick="deselectAllMonsters()">Deselect All</button>
+          <button onclick="printSelectedMonsters()">Print Selected</button>
+          <span id="monster-selected-count">0 monsters selected</span>
         </div>
         <div id="filters-container" class="filters-container">
           <div class="filter-grid">
@@ -831,6 +947,7 @@
         const monsterLevel = monster.level || crToLevel(monster.cr);
         htmlParts.push(`
       <div class="lineage-item monster-item" data-monster-name="${escapeHtml(monster.name.toLowerCase())}" data-cr="${monster.cr}" data-level="${monsterLevel}" data-type="${escapeHtml(monster.type || '')}" data-size="${escapeHtml(monster.size || '')}" data-immunities="${escapeHtml(monster.ymiat?.immunities || '')}" data-resistances="${monster.ymiat?.resistances ? 'true' : 'false'}" data-languages="${escapeHtml(monster.ymiat?.languages || '')}" data-senses="${escapeHtml(monster.ymiat?.senses || '')}" data-has-legendary="${(monster.ymiat?.legendary_actions?.length > 0) ? 'true' : 'false'}" id="item-${safeId}">
+        <input type="checkbox" class="monster-card-checkbox" onchange="updateMonsterCount()">
         <button class="lineage-header" onclick="toggleMonster(this)">
           <span class="lineage-title">${escapeHtml(monster.name)}</span>
           <span class="lineage-subtitle" id="${safeId}-cr-label">Level ${monsterLevel}</span>
@@ -1078,6 +1195,47 @@
     // Search functionality
     function handleMonsterSearch() {
       applyFilters();
+    }
+
+    // Print selection functions
+    function updateMonsterCount() {
+      const checked = document.querySelectorAll('.monster-card-checkbox:checked').length;
+      const el = document.getElementById('monster-selected-count');
+      if (el) el.textContent = checked + ' monster' + (checked !== 1 ? 's' : '') + ' selected';
+    }
+
+    function selectAllMonsters() {
+      document.querySelectorAll('.monster-card-checkbox').forEach(cb => {
+        if (cb.closest('.monster-item').style.display !== 'none') cb.checked = true;
+      });
+      updateMonsterCount();
+    }
+
+    function deselectAllMonsters() {
+      document.querySelectorAll('.monster-card-checkbox').forEach(cb => cb.checked = false);
+      updateMonsterCount();
+    }
+
+    function printSelectedMonsters() {
+      const checked = document.querySelectorAll('.monster-card-checkbox:checked').length;
+      if (checked === 0) {
+        alert('Please select at least one monster to print.');
+        return;
+      }
+
+      // Expand all selected monsters so their stat blocks are visible
+      document.querySelectorAll('.monster-item').forEach(card => {
+        const checkbox = card.querySelector('.monster-card-checkbox');
+        if (checkbox && checkbox.checked) {
+          card.classList.add('print-selected');
+          const content = card.querySelector('.lineage-content');
+          if (content) content.classList.add('expanded');
+        } else {
+          card.classList.remove('print-selected');
+        }
+      });
+
+      window.print();
     }
 
     // Apply all filters
