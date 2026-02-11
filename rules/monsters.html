@@ -1224,10 +1224,12 @@
         originalVersion.style.display = 'block';
         if (crLabel) crLabel.textContent = `CR ${formatCR(cr)}`;
       } else {
-        // Show YMIAT stats
+        // Show YMIAT stats — use current slider level, not base level
         etfVersion.style.display = 'block';
         originalVersion.style.display = 'none';
-        if (crLabel) crLabel.textContent = `Level ${level}`;
+        const levelSlider = document.getElementById(`${monsterId}-level`);
+        const currentLevel = levelSlider ? parseInt(levelSlider.value) : level;
+        if (crLabel) crLabel.textContent = `Level ${currentLevel}`;
       }
     }
 
