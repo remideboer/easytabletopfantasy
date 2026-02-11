@@ -116,8 +116,64 @@
       display: none;
     }
 
+    /* Monster cards grid - 2 per row like spell cards */
+    #monsters-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
     .monster-item {
-      margin-bottom: 20px;
+      border: 2px solid var(--fantasy-gold);
+      border-radius: var(--r2);
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(250,248,244,.95));
+      box-shadow: var(--shadow);
+      break-inside: avoid;
+    }
+
+    .monster-item .lineage-header {
+      background: transparent;
+      padding: 14px 16px;
+    }
+
+    .monster-item .lineage-header:hover {
+      background: rgba(184,134,11,.05);
+    }
+
+    .monster-item .lineage-title {
+      color: var(--fantasy-blue);
+      font-weight: 700;
+    }
+
+    .monster-item .lineage-subtitle {
+      color: var(--fantasy-burgundy);
+      font-weight: 600;
+    }
+
+    .monster-item .lineage-content {
+      border-top: 1px solid rgba(184,134,11,.2);
+      padding: 0 16px 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .monster-item {
+        background: var(--bg-card);
+        border-color: var(--accent-gold-soft);
+      }
+
+      .monster-item .lineage-header:hover {
+        background: rgba(255,255,255,.03);
+      }
+
+      .monster-item .lineage-title {
+        color: var(--text-primary);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #monsters-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     .monster-stat-block-content {
