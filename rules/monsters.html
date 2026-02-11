@@ -221,6 +221,34 @@
       }
     }
 
+    /* Filter drawer button */
+    .filter-drawer-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: var(--brand-secondary);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 5px;
+    }
+
+    .filter-drawer-btn:hover {
+      background: color-mix(in srgb, var(--brand-secondary) 85%, black);
+    }
+
+    .filter-drawer-btn .toggle-filters-icon {
+      font-size: 0.8em;
+      transition: transform 0.2s ease;
+    }
+
     /* Multi-select dropdown with chips */
     .filter-grid {
       display: grid;
@@ -481,11 +509,6 @@
           <label for="monster-search" class="search-label">Search monsters:</label>
           <input type="text" id="monster-search" class="spell-search-input" placeholder="Type monster name to search..."
             oninput="handleMonsterSearch()" />
-          <button id="toggle-filters-btn" class="toggle-filters-btn" onclick="toggleFilters()"
-            title="Show/Hide filters">
-            <span class="toggle-filters-icon">▼</span>
-            <span class="toggle-filters-text">Filters</span>
-          </button>
         </div>
         <div id="filters-container" class="filters-container">
           <div class="filter-row">
@@ -605,6 +628,11 @@
             </div>
           </div>
         </div>
+        <button id="toggle-filters-btn" class="filter-drawer-btn" onclick="toggleFilters()">
+          <span class="toggle-filters-icon">▽</span>
+          <span class="toggle-filters-text">Filters</span>
+          <span class="toggle-filters-icon">▽</span>
+        </button>
       </div>
 
       <div class="lineages-controls">
@@ -1143,14 +1171,14 @@
     function toggleFilters() {
       const container = document.getElementById('filters-container');
       const btn = document.getElementById('toggle-filters-btn');
-      const icon = btn.querySelector('.toggle-filters-icon');
+      const icons = btn.querySelectorAll('.toggle-filters-icon');
 
       if (container.style.display === 'none' || !container.style.display) {
         container.style.display = 'block';
-        icon.textContent = '▲';
+        icons.forEach(i => i.textContent = '△');
       } else {
         container.style.display = 'none';
-        icon.textContent = '▼';
+        icons.forEach(i => i.textContent = '▽');
       }
     }
 
