@@ -921,16 +921,40 @@
       return 10;
     }
 
-    // Calculate scaling adjustments
-    function calculateScaling(baseCR, targetLevel) {
-      const baseLevel = crToLevel(baseCR);
-      const levelDiff = targetLevel - baseLevel;
+    // Scale numeric values in description text (saves, DCs)
+    function scaleDescriptionText(text, levelDiff) {
+      // Scale "X to save" (weapon attacks)
+      text = text.replace(/(\d+) to save/g, (_, n) =>
+        `${Math.max(1, parseInt(n) + levelDiff)} to save`);
+      // Scale "DC X" (ability saves, escape DCs, spell attack DCs)
+      text = text.replace(/\bDC (\d+)/g, (_, n) =>
+        `DC ${Math.max(1, parseInt(n) + levelDiff)}`);
+      return text;
+    }
 
-      return {
-        dcAdjustment: levelDiff,
-        damageAdjustment: Math.ceil(levelDiff / 2),
-        hpAdjustment: levelDiff
-      };
+    // Deep-clone monster data and scale all ymiat values
+    function scaleMonsterData(monster, levelDiff) {
+      if (levelDiff === 0) return monster;
+      const m = JSON.parse(JSON.stringify(monster));
+      const y = m.ymiat;
+
+      y.hp = Math.max(1, y.hp + levelDiff);
+      y.ac = Math.max(1, y.ac + Math.trunc(levelDiff / 2));
+      y.perception = Math.max(1, y.perception + levelDiff);
+      y.stealth = Math.max(1, y.stealth + levelDiff);
+
+      for (const key of Object.keys(y.abilities)) {
+        y.abilities[key] += levelDiff;
+      }
+
+      for (const section of ['traits', 'actions', 'bonus_actions', 'reactions', 'legendary_actions']) {
+        for (const item of y[section]) {
+          item.description = scaleDescriptionText(item.description, levelDiff);
+        }
+      }
+
+      m.level = Math.max(1, (m.level || crToLevel(monster.cr)) + levelDiff);
+      return m;
     }
 
     // Format CR value for display
@@ -1023,7 +1047,6 @@
             <div class="monster-etf-version" id="${safeId}-etf" data-monster-index="${index}"></div>
             <div class="monster-original-version" id="${safeId}-original" data-monster-index="${index}" style="display:none;"></div>
           </div>
-          <div class="scaling-info" data-base-cr="${monster.cr}" data-base-hp="${monster.ymiat.hp}" data-base-ac="${monster.ymiat.ac}" style="display:none;"></div>
         </div>
       </div>
     `);
@@ -1386,54 +1409,25 @@
       if (!levelSelect) return;
 
       const targetLevel = parseInt(levelSelect.value);
-      const scaling = calculateScaling(baseCR, targetLevel);
+      const levelDiff = targetLevel - crToLevel(baseCR);
       const etfDiv = item.querySelector('.monster-etf-version');
-
       if (!etfDiv) return;
 
-      // Get the monster data
+      // Get the original monster data
       const monsterIndex = parseInt(etfDiv.getAttribute('data-monster-index'));
       const data = await loadMonstersData();
-      const sortedData = [...data].sort((a, b) => {
-        if (a.cr !== b.cr) return a.cr - b.cr;
-        return a.name.localeCompare(b.name);
-      });
+      const sortedData = [...data].sort((a, b) =>
+        a.cr !== b.cr ? a.cr - b.cr : a.name.localeCompare(b.name));
       const monster = sortedData[monsterIndex];
 
-      // Re-render with scaled values
-      const ymiatBlock = renderStatBlock(monster, true);
-      let updatedHTML = ymiatBlock.innerHTML;
+      // Clone, scale, and re-render
+      const scaled = scaleMonsterData(monster, levelDiff);
+      const ymiatBlock = renderStatBlock(scaled, true);
+      etfDiv.innerHTML = ymiatBlock.innerHTML;
 
-      // Apply scaling adjustments
-      // Scale Defense Save DCs
-      updatedHTML = updatedHTML.replace(/Defense Save DC (\d+)/g, (match, dc) => {
-        const baseDC = parseInt(dc);
-        const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
-        return `Defense Save DC ${newDC}`;
-      });
-
-      // Scale other DCs
-      updatedHTML = updatedHTML.replace(/Defense Save DC/g, '___DEFENSE_SAVE_DC___');
-      updatedHTML = updatedHTML.replace(/\bDC (\d+)/g, (match, dc) => {
-        const baseDC = parseInt(dc);
-        const newDC = Math.max(1, baseDC + scaling.dcAdjustment);
-        return `DC ${newDC}`;
-      });
-      updatedHTML = updatedHTML.replace(/___DEFENSE_SAVE_DC___/g, 'Defense Save DC');
-
-      // Scale HP
-      const scalingInfo = item.querySelector('.scaling-info');
-      if (scalingInfo) {
-        const baseHP = parseInt(scalingInfo.getAttribute('data-base-hp')) || 1;
-        const newHP = Math.max(1, baseHP + scaling.hpAdjustment);
-        updatedHTML = updatedHTML.replace(
-          /<strong>Hit Points<\/strong>\s*(\d+)/gi,
-          `<strong>Hit Points</strong> ${newHP}`
-        );
-      }
-
-      // Update display
-      etfDiv.innerHTML = updatedHTML;
+      // Update header level label
+      const crLabel = document.getElementById(`${monsterId}-cr-label`);
+      if (crLabel) crLabel.textContent = `Level ${targetLevel}`;
     }
 
     // Toggle filters visibility
