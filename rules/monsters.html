@@ -268,19 +268,116 @@
     .monster-level-scaling {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
     }
 
     .monster-level-scaling label {
       font-weight: bold;
       margin: 0;
+      white-space: nowrap;
+      font-size: 0.85rem;
     }
 
-    .monster-level-scaling select {
-      padding: 5px 10px;
-      border: 1px solid #ddd;
+    .monster-level-slider-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 80px;
+      max-width: 200px;
+    }
+
+    .monster-level-slider-wrap {
+      position: relative;
+      width: 100%;
+      height: 22px;
+    }
+
+    .monster-level-slider-track {
+      position: absolute;
+      height: 6px;
+      background: #ddd;
       border-radius: 3px;
-      font-size: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 9px;
+      right: 9px;
+    }
+
+    .monster-level-slider {
+      position: absolute;
+      width: 100%;
+      height: 6px;
+      background: transparent;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0;
+      padding: 0;
+    }
+
+    .monster-level-slider::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      background: transparent;
+    }
+
+    .monster-level-slider::-moz-range-track {
+      width: 100%;
+      height: 6px;
+      background: transparent;
+      border: none;
+    }
+
+    .monster-level-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand-secondary);
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      margin-top: -6px;
+    }
+
+    .monster-level-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand-secondary);
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .monster-level-slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 9px;
+    }
+
+    .monster-level-slider-ticks span {
+      font-size: 0.6rem;
+      color: var(--text-secondary, #888);
+      width: 0;
+      text-align: center;
+      position: relative;
+      padding-top: 6px;
+    }
+
+    .monster-level-slider-ticks span::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 4px;
+      background: #ccc;
     }
 
     /* Individual monster toggle switch */
@@ -1030,12 +1127,16 @@
         <div class="lineage-content">
           <div class="monster-controls-row">
             <div class="monster-level-scaling">
-              <label for="${safeId}-level">Scale for level:</label>
-              <select id="${safeId}-level" class="level-scaling-select" onchange="updateMonsterScaling('${safeId}', ${monster.cr})">
-                ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(lvl =>
-          `<option value="${lvl}" ${lvl === defaultLevel ? 'selected' : ''}>Level ${lvl}</option>`
-        ).join('')}
-              </select>
+              <label>Lvl <span id="${safeId}-level-val">${defaultLevel}</span></label>
+              <div class="monster-level-slider-container">
+                <div class="monster-level-slider-wrap">
+                  <div class="monster-level-slider-track"></div>
+                  <input type="range" id="${safeId}-level" class="monster-level-slider" min="1" max="10" value="${defaultLevel}" step="1" oninput="document.getElementById('${safeId}-level-val').textContent=this.value; updateMonsterScaling('${safeId}', ${monster.cr})">
+                </div>
+                <div class="monster-level-slider-ticks">
+                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                </div>
+              </div>
             </div>
             <label class="monster-toggle-switch">
               <input type="checkbox" id="${safeId}-toggle" onchange="toggleMonsterStats('${safeId}')">
