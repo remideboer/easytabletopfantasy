@@ -418,6 +418,10 @@
       background: #ccc;
     }
 
+    .global-5e-toggle {
+      margin-left: auto;
+    }
+
     /* Individual monster toggle switch */
     .monster-toggle-switch {
       display: flex;
@@ -1000,6 +1004,11 @@
         <button id="expand-all-monsters" class="lineage-control-btn" onclick="expandAllMonsters()">Expand All</button>
         <button id="collapse-all-monsters" class="lineage-control-btn" onclick="collapseAllMonsters()">Collapse
           All</button>
+        <label class="monster-toggle-switch global-5e-toggle">
+          <input type="checkbox" id="global-5e-toggle" onchange="toggleAll5eStats(this.checked)">
+          <span class="monster-toggle-slider"></span>
+          <span class="monster-toggle-label">5e stats</span>
+        </label>
       </div>
 
       <div class="lineages-container" id="monsters-container">
@@ -1275,6 +1284,17 @@
         if (crLabel) crLabel.textContent = `Level ${currentLevel}`;
         if (levelScaling) levelScaling.style.visibility = 'visible';
       }
+    }
+
+    // Toggle all monsters between YMIAT and 5e stats
+    function toggleAll5eStats(show5e) {
+      document.querySelectorAll('.monster-item').forEach(item => {
+        const toggle = item.querySelector('.monster-toggle-switch input[type="checkbox"]');
+        if (toggle && toggle.checked !== show5e) {
+          toggle.checked = show5e;
+          toggle.dispatchEvent(new Event('change'));
+        }
+      });
     }
 
     // Expand/Collapse all
