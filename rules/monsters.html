@@ -162,6 +162,13 @@
       font-weight: 700;
     }
 
+    .monster-item .lineage-size-type {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-secondary, #888);
+      font-size: 0.85em;
+    }
+
     .monster-item .lineage-subtitle {
       color: var(--fantasy-burgundy);
       font-weight: 600;
@@ -1001,9 +1008,6 @@
 
       <!-- Monster stat block template -->
       <template id="monster-stat-block-template">
-        <div class="stat-block-header">
-          <p class="stat-block-title"><span class="cr-level-label"></span><br /><em class="size-type"></em></p>
-        </div>
         <div class="monster-description-block">
           <div class="stat-block-top-row">
             <div class="stat-block-stats">
@@ -1156,6 +1160,7 @@
         <input type="checkbox" class="monster-card-checkbox" onchange="updateMonsterCount()">
         <button class="lineage-header" onclick="toggleMonster(this)">
           <span class="lineage-title">${escapeHtml(monster.name)}</span>
+          <span class="lineage-size-type">${escapeHtml(monster.size)} ${escapeHtml(monster.type)}</span>
           <span class="lineage-subtitle" id="${safeId}-cr-label">Level ${monsterLevel}</span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
