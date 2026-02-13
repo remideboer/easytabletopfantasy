@@ -193,15 +193,6 @@
         color: var(--text-primary);
       }
 
-      .monster-description-block {
-        background: rgba(0,0,0,.25);
-        border-color: rgba(201,162,39,.3);
-        color: var(--text-primary);
-      }
-
-      .monster-description-block p {
-        color: var(--text-primary);
-      }
     }
 
     @media (max-width: 768px) {
@@ -282,6 +273,27 @@
 
     .monster-description-block p:last-child {
       margin: 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .monster-description-block {
+        background: rgba(0,0,0,.25);
+        border-color: rgba(201,162,39,.3);
+        color: var(--text-primary);
+      }
+
+      .monster-description-block p,
+      .monster-description-block strong,
+      .monster-description-block span,
+      .monster-description-block td,
+      .monster-description-block th,
+      .monster-description-block em {
+        color: var(--text-primary);
+      }
+
+      .monster-description-block .ability-scores-vertical th {
+        color: var(--accent-gold-soft);
+      }
     }
 
     .monster-etf-version {
