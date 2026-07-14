@@ -7,6 +7,9 @@
   function initTOC(){
     const main = document.querySelector('main');
     if(!main) return;
+
+    // Collapsible class/lineage pages handle their own hash navigation.
+    if(main.querySelector('.lineages-container')) return;
     
     // Add IDs to headings FIRST (before any scroll happens)
     const headings = Array.from(main.querySelectorAll('h2, h3'));

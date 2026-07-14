@@ -83,16 +83,16 @@ def render_class(cls):
             '<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> '
             "instead of spell slots. Spell cost equals spell circle.</p>"
         )
-    blocks.append("<h3>Progression</h3>")
+    blocks.append(f'<h3 id="{pid}-progression">Progression</h3>')
     blocks.append(render_progression(cls["table_headers"], cls["table_rows"], pid))
-    blocks.append("<h3>Class Features</h3>")
+    blocks.append(f'<h3 id="{pid}-features">Class Features</h3>')
     blocks.append(
         f'<p>Full rules: <a href="class-abilities/{pid}.html">All {cls["name"]} abilities →</a> '
         f'(<a href="class-abilities/index.html#{pid}">index</a>) · '
         f'<a href="class-abilities/{pid}.html#subclasses">subclasses</a></p>'
     )
     if cls.get("subclasses"):
-        blocks.append("<h3>Subclasses</h3>")
+        blocks.append(f'<h3 id="{pid}-subclasses">Subclasses</h3>')
         blocks.append("<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>")
         blocks.append("<ul>")
         for sub_name in cls["subclasses"]:
@@ -702,42 +702,53 @@ HTML_FOOT = """    </div>
 </main>
 <footer class="legal" data-include="footer"></footer>
 <script>
-function toggleClass(button){
-  const item = button.closest('.lineage-item');
-  const content = item.querySelector('.lineage-content');
-  const icon = button.querySelector('.lineage-toggle-icon');
-  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
-  if(isExpanded){
-    content.style.display = 'none';
-    content.classList.remove('expanded');
-    icon.textContent = '▼';
-    button.setAttribute('aria-expanded', 'false');
-  } else {
-    content.style.display = 'block';
-    content.classList.add('expanded');
-    icon.textContent = '▲';
-    button.setAttribute('aria-expanded', 'true');
-  }
+function classItems(){
+  return document.querySelectorAll('.lineages-container > .lineage-item');
 }
-function expandAllClasses(){
-  document.querySelectorAll('.lineage-content').forEach(c => { c.style.display = 'block'; c.classList.add('expanded'); });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(i => { i.textContent = '▲'; });
-  document.querySelectorAll('.lineage-header').forEach(b => { b.setAttribute('aria-expanded', 'true'); });
+function setClassExpanded(item, expanded){
+  const content = item.querySelector('.lineage-content');
+  const btn = item.querySelector('.lineage-header');
+  if(!content || !btn) return;
+  const icon = btn.querySelector('.lineage-toggle-icon');
+  content.classList.toggle('expanded', expanded);
+  content.style.removeProperty('display');
+  icon.textContent = expanded ? '▲' : '▼';
+  btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
 }
 function collapseAllClasses(){
-  document.querySelectorAll('.lineage-content').forEach(c => { c.style.display = 'none'; c.classList.remove('expanded'); });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(i => { i.textContent = '▼'; });
-  document.querySelectorAll('.lineage-header').forEach(b => { b.setAttribute('aria-expanded', 'false'); });
+  classItems().forEach(function(item){ setClassExpanded(item, false); });
+}
+function expandClassFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item') || !target.closest('.lineages-container')) return;
+  collapseAllClasses();
+  setClassExpanded(target, true);
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+function toggleClass(button){
+  const item = button.closest('.lineage-item');
+  if(!item) return;
+  const content = item.querySelector('.lineage-content');
+  setClassExpanded(item, !content.classList.contains('expanded'));
+}
+function expandAllClasses(){
+  classItems().forEach(function(item){ setClassExpanded(item, true); });
 }
 document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.lineage-content').forEach(c => { c.style.display = 'none'; });
-  document.querySelectorAll('.lineage-header').forEach(b => { b.setAttribute('aria-expanded', 'false'); });
-  if(window.location.hash){
-    const target = document.querySelector(window.location.hash);
-    if(target && target.classList.contains('lineage-item')){
-      const btn = target.querySelector('.lineage-header');
-      if(btn) toggleClass(btn);
-    }
+  collapseAllClasses();
+  expandClassFromHash();
+  window.addEventListener('hashchange', expandClassFromHash);
+  const glance = document.getElementById('classes-at-a-glance');
+  if(glance){
+    glance.addEventListener('click', function(event){
+      const link = event.target.closest('a[href^="#"]');
+      if(!link) return;
+      window.setTimeout(expandClassFromHash, 0);
+    });
   }
   initAbilityTooltips();
 });
