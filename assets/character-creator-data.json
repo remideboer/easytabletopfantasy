@@ -1,0 +1,1605 @@
+{
+  "version": 1,
+  "generatedFrom": [
+    "scripts/character_options_data.py",
+    "scripts/generate-classes-html.py",
+    "scripts/class_subclasses_data.py"
+  ],
+  "rulesOverviewUrl": "rules/characters.html#character-creation-overview",
+  "steps": [
+    {
+      "id": "concept",
+      "title": "Character Concept",
+      "shortTitle": "Concept",
+      "overviewAnchor": "character-concept",
+      "description": "What kind of hero do you want to play? Pick an archetype and jot a few notes—mechanical choices come next.",
+      "type": "concept"
+    },
+    {
+      "id": "class",
+      "title": "Choose a Class",
+      "shortTitle": "Class",
+      "overviewAnchor": "choose-a-class",
+      "description": "Your class defines combat role, Max Wounds, and core features.",
+      "type": "class"
+    },
+    {
+      "id": "subclass",
+      "title": "Choose a Subclass",
+      "shortTitle": "Subclass",
+      "overviewAnchor": "choose-a-class",
+      "description": "At 2nd level in YMIAT you take a subclass—choose yours now so your build stays cohesive.",
+      "type": "subclass",
+      "requires": [
+        "class"
+      ]
+    },
+    {
+      "id": "abilities",
+      "title": "Determine Ability Scores",
+      "shortTitle": "Abilities",
+      "overviewAnchor": "determine-ability-scores",
+      "description": "Assign Fitness, Insight, and Willpower modifiers using your group's preferred method.",
+      "type": "abilities"
+    },
+    {
+      "id": "lineage",
+      "title": "Choose a Lineage",
+      "shortTitle": "Lineage",
+      "overviewAnchor": "choose-a-lineage",
+      "description": "Lineage traits shape ancestry and fundamental abilities.",
+      "type": "lineage"
+    },
+    {
+      "id": "heritage",
+      "title": "Choose a Heritage",
+      "shortTitle": "Heritage",
+      "overviewAnchor": "choose-a-heritage",
+      "description": "Heritage adds cultural flavor and extra traits. Any heritage works with any lineage—recommendations highlight common pairings.",
+      "type": "heritage",
+      "requires": [
+        "lineage"
+      ]
+    },
+    {
+      "id": "background",
+      "title": "Choose a Background",
+      "shortTitle": "Background",
+      "overviewAnchor": "choose-a-background",
+      "description": "Background reflects life before adventuring—skills, gear, and a defining talent.",
+      "type": "background"
+    },
+    {
+      "id": "equipment",
+      "title": "Starting Equipment",
+      "shortTitle": "Equipment",
+      "overviewAnchor": "starting-equipment",
+      "description": "Take standard packages or roll starting wealth—confirm with your GM.",
+      "type": "equipment",
+      "requires": [
+        "class",
+        "background"
+      ]
+    },
+    {
+      "id": "review",
+      "title": "Review Character",
+      "shortTitle": "Review",
+      "overviewAnchor": "character-creation-overview",
+      "description": "Check your choices, copy a summary, or start over.",
+      "type": "review"
+    }
+  ],
+  "conceptArchetypes": [
+    {
+      "id": "melee",
+      "label": "Melee Combatant",
+      "hint": "Front-line fighter with sword, axe, or fist.",
+      "suggestedKeyAbility": "fit",
+      "suggestedClasses": [
+        "barbarian",
+        "fighter",
+        "paladin",
+        "monk"
+      ]
+    },
+    {
+      "id": "magic",
+      "label": "Magic User",
+      "hint": "Spells to harm, heal, or control the field.",
+      "suggestedKeyAbility": "ins",
+      "suggestedClasses": [
+        "wizard",
+        "cleric",
+        "druid",
+        "sorcerer",
+        "warlock",
+        "bard",
+        "theurge",
+        "witch"
+      ]
+    },
+    {
+      "id": "ranged",
+      "label": "Ranged Fighter",
+      "hint": "Bow, crossbow, or thrown weapons at distance.",
+      "suggestedKeyAbility": "fit",
+      "suggestedClasses": [
+        "ranger",
+        "fighter",
+        "rogue"
+      ]
+    },
+    {
+      "id": "sneaky",
+      "label": "Sneaky Character",
+      "hint": "Stealth, cunning, and precision.",
+      "suggestedKeyAbility": "fit",
+      "suggestedClasses": [
+        "rogue",
+        "ranger",
+        "monk"
+      ]
+    },
+    {
+      "id": "support",
+      "label": "Support Character",
+      "hint": "Buff allies, heal, and control enemies.",
+      "suggestedKeyAbility": "wil",
+      "suggestedClasses": [
+        "cleric",
+        "bard",
+        "druid",
+        "vanguard",
+        "witch"
+      ]
+    },
+    {
+      "id": "hybrid",
+      "label": "Hybrid Character",
+      "hint": "Blend martial prowess with magic or tactics.",
+      "suggestedKeyAbility": "fit",
+      "suggestedClasses": [
+        "paladin",
+        "ranger",
+        "artificer",
+        "theurge",
+        "vanguard"
+      ]
+    }
+  ],
+  "abilityMethods": [
+    {
+      "id": "standard-array",
+      "label": "Standard Array",
+      "description": "Assign +2, +1, and +0 to Fitness, Insight, and Willpower in any order."
+    },
+    {
+      "id": "point-buy",
+      "label": "Point-Buy",
+      "description": "Start at 0 with 3 points. Each ability may be −1 to +2; lowering one below 0 frees a point."
+    },
+    {
+      "id": "gm-roll",
+      "label": "Rolling (GM)",
+      "description": "Rolling is still being adapted for YMIAT—use another method or agree on rolls with your GM.",
+      "disabled": true
+    }
+  ],
+  "equipmentMethods": [
+    {
+      "id": "packages",
+      "label": "Class & background equipment",
+      "description": "Take the gear listed for your class and background—fastest option at the table."
+    },
+    {
+      "id": "wealth",
+      "label": "Starting wealth",
+      "description": "Receive starting gold from your class and buy gear from the equipment lists."
+    }
+  ],
+  "classes": [
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "summary": "A primal warrior who channels fury in battle. High Max Wounds, melee dominance, and resistance while raging.",
+      "maxWd": 12,
+      "keyAbility": "fit",
+      "keyAbilityLabel": "Fitness (FIT)",
+      "saves": "FIT (advantage on save)",
+      "proficiencies": "Light and medium armor, shields, simple and martial weapons, herbalism tools. Skills: choose two from Animal Handling, Athletics, Intimidation, Nature, Perception, Survival.",
+      "spellcasting": null,
+      "rulesUrl": "rules/classes.html#barbarian",
+      "abilitiesUrl": "rules/class-abilities/barbarian.html",
+      "subclasses": [
+        {
+          "id": "berserker",
+          "name": "Berserker",
+          "summary": "Primal bloodlust pushes your rage into a devastating frenzy.",
+          "rulesUrl": "rules/class-abilities/barbarian.html#berserker"
+        },
+        {
+          "id": "wild-fury",
+          "name": "Wild Fury",
+          "summary": "Animal spirits guide your rage—choose a beast focus at each subclass level.",
+          "rulesUrl": "rules/class-abilities/barbarian.html#wild-fury"
+        },
+        {
+          "id": "chaos",
+          "name": "Chaos",
+          "summary": "Entropic fury warps the battlefield around your rage.",
+          "rulesUrl": "rules/class-abilities/barbarian.html#chaos"
+        },
+        {
+          "id": "four-winds",
+          "name": "Four Winds",
+          "summary": "Elemental winds empower your movement and strikes.",
+          "rulesUrl": "rules/class-abilities/barbarian.html#four-winds"
+        },
+        {
+          "id": "kraken",
+          "name": "Kraken",
+          "summary": "Crushing tentacle-like force and abyssal resilience.",
+          "rulesUrl": "rules/class-abilities/barbarian.html#kraken"
+        }
+      ]
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "summary": "A versatile performer whose magic and inspiration support allies and confound foes.",
+      "maxWd": 8,
+      "keyAbility": "wil",
+      "keyAbilityLabel": "Willpower (WIL)",
+      "saves": "WIL (advantage on save)",
+      "proficiencies": "Light armor; simple weapons and martial finesse weapons; three musical instruments or tools; any three skills.",
+      "spellcasting": "Arcane spells. Spells known (no preparation). Rituals known per level.",
+      "rulesUrl": "rules/classes.html#bard",
+      "abilitiesUrl": "rules/class-abilities/bard.html",
+      "subclasses": [
+        {
+          "id": "lore",
+          "name": "Lore",
+          "summary": "A collector of knowledge who weaves magic and talents from every tradition.",
+          "rulesUrl": "rules/class-abilities/bard.html#lore"
+        },
+        {
+          "id": "victory",
+          "name": "Victory",
+          "summary": "Inspire allies to triumph through martial cadence.",
+          "rulesUrl": "rules/class-abilities/bard.html#victory"
+        },
+        {
+          "id": "allure",
+          "name": "Allure",
+          "summary": "Bards who align with the college of Allure understand the power of the mind and how the smallest nudge can bend that power in their favor. These bards are masters of subtle",
+          "rulesUrl": "rules/class-abilities/bard.html#allure"
+        },
+        {
+          "id": "mockery",
+          "name": "Mockery",
+          "summary": "Bards aligned with the college of Mockery have devoted their lives to perfecting their mordant repartee—both to entertain audiences and to use as a devastating weapon",
+          "rulesUrl": "rules/class-abilities/bard.html#mockery"
+        },
+        {
+          "id": "sound",
+          "name": "Sound",
+          "summary": "Bards aligned with the college of Sound are often drawn to it out of a desire to master their musical talents. Those with perfect pitch or who are virtuosos with the lute are",
+          "rulesUrl": "rules/class-abilities/bard.html#sound"
+        }
+      ]
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "summary": "A divine champion who channels deity power through spells and channel divinity.",
+      "maxWd": 8,
+      "keyAbility": "ins",
+      "keyAbilityLabel": "Insight (INS)",
+      "saves": "INS (advantage on save)",
+      "proficiencies": "Light and medium armor, shields, simple weapons. Skills: History, Insight, Medicine, Persuasion, Religion (choose two).",
+      "spellcasting": "Divine spells (prepared). Domain spells always prepared.",
+      "rulesUrl": "rules/classes.html#cleric",
+      "abilitiesUrl": "rules/class-abilities/cleric.html",
+      "subclasses": [
+        {
+          "id": "life",
+          "name": "Life",
+          "summary": "Celebrate vitality and oppose the perversion of undeath.",
+          "rulesUrl": "rules/class-abilities/cleric.html#life"
+        },
+        {
+          "id": "light",
+          "name": "Light",
+          "summary": "Wield radiant fire and searing truth against darkness.",
+          "rulesUrl": "rules/class-abilities/cleric.html#light"
+        },
+        {
+          "id": "war",
+          "name": "War",
+          "summary": "Champion courage and decisive victory in battle.",
+          "rulesUrl": "rules/class-abilities/cleric.html#war"
+        },
+        {
+          "id": "death",
+          "name": "Death",
+          "summary": "Gods of the Death domain govern death and the afterlife, exemplifying the inevitability and mystery of the beyond. Devotees of this domain bring peace to the bereaved,",
+          "rulesUrl": "rules/class-abilities/cleric.html#death"
+        },
+        {
+          "id": "nature",
+          "name": "Nature",
+          "summary": "Gods of the Nature domain protect and govern the overgrown wilds and fertile lands. Dogmatic followers of this domain are entrusted with the safety and prosperity",
+          "rulesUrl": "rules/class-abilities/cleric.html#nature"
+        },
+        {
+          "id": "tempest",
+          "name": "Tempest",
+          "summary": "Gods of the Tempest domain embody the awesome destructive power of storms, earthquakes, wildfires, and similar natural disasters. Clerics of this domain are often as",
+          "rulesUrl": "rules/class-abilities/cleric.html#tempest"
+        }
+      ]
+    },
+    {
+      "id": "druid",
+      "name": "Druid",
+      "summary": "A guardian of nature wielding primordial magic and wild shape.",
+      "maxWd": 8,
+      "keyAbility": "ins",
+      "keyAbilityLabel": "Insight (INS)",
+      "saves": "INS (advantage on save)",
+      "proficiencies": "Light and medium armor, shields, simple weapons, herbalist tools.",
+      "spellcasting": "Primordial spells (prepared). Ring spells always prepared.",
+      "rulesUrl": "rules/classes.html#druid",
+      "abilitiesUrl": "rules/class-abilities/druid.html",
+      "subclasses": [
+        {
+          "id": "leaf",
+          "name": "Leaf",
+          "summary": "Guardian of growing things and peaceful wild places.",
+          "rulesUrl": "rules/class-abilities/druid.html#leaf"
+        },
+        {
+          "id": "shifter",
+          "name": "Shifter",
+          "summary": "Master of beast forms and primal transformation.",
+          "rulesUrl": "rules/class-abilities/druid.html#shifter"
+        },
+        {
+          "id": "elementalist",
+          "name": "Elementalist",
+          "summary": "Command acid, cold, fire, lightning, and thunder to protect nature.",
+          "rulesUrl": "rules/class-abilities/druid.html#elementalist"
+        },
+        {
+          "id": "fey",
+          "name": "Fey",
+          "summary": "Summon seelie spirits and wield mercurial fey magic.",
+          "rulesUrl": "rules/class-abilities/druid.html#fey"
+        },
+        {
+          "id": "stoneheart",
+          "name": "Stoneheart",
+          "summary": "Wrap yourself in earthen armor and stand as nature's sentinel.",
+          "rulesUrl": "rules/class-abilities/druid.html#stoneheart"
+        }
+      ]
+    },
+    {
+      "id": "fighter",
+      "name": "Fighter",
+      "summary": "A master of weapons and battlefield tactics with action surge and martial actions.",
+      "maxWd": 10,
+      "keyAbility": "fit",
+      "keyAbilityLabel": "Fitness (FIT)",
+      "saves": "FIT (advantage on save)",
+      "proficiencies": "All armor and shields; simple and martial weapons.",
+      "spellcasting": null,
+      "rulesUrl": "rules/classes.html#fighter",
+      "abilitiesUrl": "rules/class-abilities/fighter.html",
+      "subclasses": [
+        {
+          "id": "spell-blade",
+          "name": "Spell Blade",
+          "summary": "Blend arcane magic with weapon mastery.",
+          "rulesUrl": "rules/class-abilities/fighter.html#spell-blade"
+        },
+        {
+          "id": "weapon-master",
+          "name": "Weapon Master",
+          "summary": "Mastery of chosen weapons and tactical stunts.",
+          "rulesUrl": "rules/class-abilities/fighter.html#weapon-master"
+        },
+        {
+          "id": "scrapper",
+          "name": "Scrapper",
+          "summary": "Fighters typically engage with their opponents with manufactured weapons. However, some of them enjoy the physicality of using their bodies as weapons and become",
+          "rulesUrl": "rules/class-abilities/fighter.html#scrapper"
+        },
+        {
+          "id": "stunt-archer",
+          "name": "Stunt Archer",
+          "summary": "Some fighters eschew melee weapons completely, choosing the greater range afforded by bows and crossbows. They become so comfortable with these weapons that they can",
+          "rulesUrl": "rules/class-abilities/fighter.html#stunt-archer"
+        },
+        {
+          "id": "twinblade",
+          "name": "Twinblade",
+          "summary": "Fighters that choose the Twinblade discipline are master dual-wielders, forgoing cumbersome armaments to become a whirling death that moves through battles with",
+          "rulesUrl": "rules/class-abilities/fighter.html#twinblade"
+        }
+      ]
+    },
+    {
+      "id": "artificer",
+      "name": "Artificer",
+      "summary": "An inventor who augments gear and crafts magical items. (BFRD Mechanist.)",
+      "maxWd": 8,
+      "keyAbility": "ins",
+      "keyAbilityLabel": "Insight (INS)",
+      "saves": "INS (advantage on save)",
+      "proficiencies": "Light and medium armor, shields, all weapons, tinker tools + two tools.",
+      "spellcasting": null,
+      "rulesUrl": "rules/classes.html#artificer",
+      "abilitiesUrl": "rules/class-abilities/artificer.html",
+      "subclasses": [
+        {
+          "id": "armorer",
+          "name": "Armorer",
+          "summary": "Mystic metal armor and absorbing augments (BFRD Metallurgist).",
+          "rulesUrl": "rules/class-abilities/artificer.html#armorer"
+        },
+        {
+          "id": "alchemist",
+          "name": "Alchemist",
+          "summary": "Brew volatile concoctions and supportive elixirs.",
+          "rulesUrl": "rules/class-abilities/artificer.html#alchemist"
+        },
+        {
+          "id": "artillerist",
+          "name": "Artillerist",
+          "summary": "Deploy ranged magical ordnance.",
+          "rulesUrl": "rules/class-abilities/artificer.html#artillerist"
+        },
+        {
+          "id": "battle-smith",
+          "name": "Battle Smith",
+          "summary": "Field a steel defender companion.",
+          "rulesUrl": "rules/class-abilities/artificer.html#battle-smith"
+        },
+        {
+          "id": "cog-augur",
+          "name": "Cog Augur",
+          "summary": "Some mechanists see the universe and its workings as mathematical calculations. They turn their expertise toward crafting baroque devices to help them read these",
+          "rulesUrl": "rules/class-abilities/artificer.html#cog-augur"
+        },
+        {
+          "id": "grenadier",
+          "name": "Grenadier",
+          "summary": "Mechanists who pursue the Grenadier’s craft are disciples of entropy, more interested in how things come apart than how they come together. Grenadiers expertly manipulate",
+          "rulesUrl": "rules/class-abilities/artificer.html#grenadier"
+        },
+        {
+          "id": "toymaker",
+          "name": "Toymaker",
+          "summary": "Toymakers are mechanists who revel in creating miniature replicas of animals and humans for their own entertainment, to help with various tasks, and to inflict a",
+          "rulesUrl": "rules/class-abilities/artificer.html#toymaker"
+        }
+      ]
+    },
+    {
+      "id": "monk",
+      "name": "Monk",
+      "summary": "A martial artist channeling technique points for supernatural strikes and mobility.",
+      "maxWd": 8,
+      "keyAbility": "fit",
+      "keyAbilityLabel": "Fitness (FIT)",
+      "saves": "FIT (advantage on save)",
+      "proficiencies": "Simple weapons, shortswords; no armor.",
+      "spellcasting": null,
+      "rulesUrl": "rules/classes.html#monk",
+      "abilitiesUrl": "rules/class-abilities/monk.html",
+      "subclasses": [
+        {
+          "id": "flickering-dark",
+          "name": "Flickering Dark",
+          "summary": "Harness shadow energy between strikes.",
+          "rulesUrl": "rules/class-abilities/monk.html#flickering-dark"
+        },
+        {
+          "id": "open-hand",
+          "name": "Open Hand",
+          "summary": "Push, trip, and shatter foes with perfected technique.",
+          "rulesUrl": "rules/class-abilities/monk.html#open-hand"
+        },
+        {
+          "id": "affliction-eater",
+          "name": "Affliction Eater",
+          "summary": "Some monks realize the careful balance between life and death, and they’ve honed their bodies and minds to ensure the balance tips in their favor. However, they",
+          "rulesUrl": "rules/class-abilities/monk.html#affliction-eater"
+        },
+        {
+          "id": "elemental-voice",
+          "name": "Elemental Voice",
+          "summary": "Monks that pursue the way of the Elemental Voice seek to reshape the primordial world around them with their will. These monks often share similarities in manner or dress",
+          "rulesUrl": "rules/class-abilities/monk.html#elemental-voice"
+        },
+        {
+          "id": "seal-guardian",
+          "name": "Seal Guardian",
+          "summary": "Seal Guardian monks apply the knowledge they gain from transcribing written works to the creation of magical seals, which they can offer to others for protection or to drive out",
+          "rulesUrl": "rules/class-abilities/monk.html#seal-guardian"
+        }
+      ]
+    },
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "summary": "A holy warrior combining martial prowess with divine spells and smites.",
+      "maxWd": 10,
+      "keyAbility": "fit",
+      "keyAbilityLabel": "Fitness (FIT)",
+      "saves": "INS (advantage on save)",
+      "proficiencies": "All armor, shields, simple and martial weapons.",
+      "spellcasting": "Divine spells known (half caster). Oath spells always known.",
+      "rulesUrl": "rules/classes.html#paladin",
+      "abilitiesUrl": "rules/class-abilities/paladin.html",
+      "subclasses": [
+        {
+          "id": "devotion",
+          "name": "Devotion",
+          "summary": "Oath-bound knight of duty, honor, and righteous order.",
+          "rulesUrl": "rules/class-abilities/paladin.html#devotion"
+        },
+        {
+          "id": "justice",
+          "name": "Justice",
+          "summary": "Paladin of law who punishes the guilty without mercy.",
+          "rulesUrl": "rules/class-abilities/paladin.html#justice"
+        },
+        {
+          "id": "anathema",
+          "name": "Anathema",
+          "summary": "Paladins wishing to end immediate threats posed by evil creatures and who don’t mind the stains of close dealings with such creatures swear an oath of Anathema. These",
+          "rulesUrl": "rules/class-abilities/paladin.html#anathema"
+        },
+        {
+          "id": "safekeeping",
+          "name": "Safekeeping",
+          "summary": "Swearing an oath of Safekeeping binds a paladin to a person, place, or object, which they steadfastly guard. These paladins might change the subjects of their protection, but",
+          "rulesUrl": "rules/class-abilities/paladin.html#safekeeping"
+        },
+        {
+          "id": "unbound",
+          "name": "Unbound",
+          "summary": "Paladins who have witnessed duplicity in their leaders or that feel taken advantage of often swear an oath of the Unbound. They saw their leaders’ corruption and blasé",
+          "rulesUrl": "rules/class-abilities/paladin.html#unbound"
+        }
+      ]
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "summary": "A wilderness hunter marked by mystic quarry and primordial magic.",
+      "maxWd": 10,
+      "keyAbility": "fit",
+      "keyAbilityLabel": "Fitness (FIT)",
+      "saves": "FIT (advantage on save)",
+      "proficiencies": "Light and medium armor, shields, all weapons; herbalist, navigator, or trapper tools.",
+      "spellcasting": "Primordial spells known (half caster).",
+      "rulesUrl": "rules/classes.html#ranger",
+      "abilitiesUrl": "rules/class-abilities/ranger.html",
+      "subclasses": [
+        {
+          "id": "hunter",
+          "name": "Hunter",
+          "summary": "Slayer of supernatural predators threatening the wilds.",
+          "rulesUrl": "rules/class-abilities/ranger.html#hunter"
+        },
+        {
+          "id": "pack-master",
+          "name": "Pack Master",
+          "summary": "Lead beast companions and coordinated pack tactics.",
+          "rulesUrl": "rules/class-abilities/ranger.html#pack-master"
+        },
+        {
+          "id": "arrow-binder",
+          "name": "Arrow Binder",
+          "summary": "Arrow binders are rangers who have melded their mastery of the wilds with their mastery of the bow. They channel primordial magic into their ammunition, unleashing spell",
+          "rulesUrl": "rules/class-abilities/ranger.html#arrow-binder"
+        },
+        {
+          "id": "shadow",
+          "name": "Shadow",
+          "summary": "The Shadow’s calling is a rare one, often drawing in rangers who have lost much to the world’s monsters. Such rangers draw on the gloom of night and the dark of sunless caves",
+          "rulesUrl": "rules/class-abilities/ranger.html#shadow"
+        },
+        {
+          "id": "trailblazer",
+          "name": "Trailblazer",
+          "summary": "Trailblazers lead expeditions into the unknown and guard travelers through the most dangerous wilds. They are unparalleled experts of the natural world, navigating",
+          "rulesUrl": "rules/class-abilities/ranger.html#trailblazer"
+        }
+      ]
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "summary": "A skilled infiltrator delivering precision Sneak Attack damage.",
+      "maxWd": 8,
+      "keyAbility": "fit",
+      "keyAbilityLabel": "Fitness (FIT)",
+      "saves": "FIT (advantage on save)",
+      "proficiencies": "Light armor; simple and martial finesse weapons; thieves' tools; four skills.",
+      "spellcasting": null,
+      "rulesUrl": "rules/classes.html#rogue",
+      "abilitiesUrl": "rules/class-abilities/rogue.html",
+      "subclasses": [
+        {
+          "id": "enforcer",
+          "name": "Enforcer",
+          "summary": "Intimidation, control, and ruthless precision.",
+          "rulesUrl": "rules/class-abilities/rogue.html#enforcer"
+        },
+        {
+          "id": "thief",
+          "name": "Thief",
+          "summary": "Climb, appraise, and strike before foes react.",
+          "rulesUrl": "rules/class-abilities/rogue.html#thief"
+        },
+        {
+          "id": "con-arcanist",
+          "name": "Con Arcanist",
+          "summary": "You add magic to your bag of tricks to confound your foes or relieve others of their possessions. Your spellcasting allows you to perform more dangerous stunts from a distance.",
+          "rulesUrl": "rules/class-abilities/rogue.html#con-arcanist"
+        },
+        {
+          "id": "nightblade",
+          "name": "Nightblade",
+          "summary": "Instead of relying on physical weapons, you draw from your inner resolve to manifest soul-bound knives. As you progress in power, you can use these knives to impose your",
+          "rulesUrl": "rules/class-abilities/rogue.html#nightblade"
+        },
+        {
+          "id": "trapsmith",
+          "name": "Trapsmith",
+          "summary": "Some rogues focus all their attention on understanding traps. This fixation makes them better at avoiding dangers and keeping their companions safe. Trapsmith rogues also",
+          "rulesUrl": "rules/class-abilities/rogue.html#trapsmith"
+        }
+      ]
+    },
+    {
+      "id": "sorcerer",
+      "name": "Sorcerer",
+      "summary": "An innate spellcaster shaping arcane magic with metamagic and sorcery points.",
+      "maxWd": 6,
+      "keyAbility": "wil",
+      "keyAbilityLabel": "Willpower (WIL)",
+      "saves": "WIL (advantage on save)",
+      "proficiencies": "Simple weapons.",
+      "spellcasting": "Arcane spells known. Sorcery points for metamagic and flexible casting.",
+      "rulesUrl": "rules/classes.html#sorcerer",
+      "abilitiesUrl": "rules/class-abilities/sorcerer.html",
+      "subclasses": [
+        {
+          "id": "chaos",
+          "name": "Chaos",
+          "summary": "Wild surges of uncontrolled arcane power.",
+          "rulesUrl": "rules/class-abilities/sorcerer.html#chaos"
+        },
+        {
+          "id": "draconic",
+          "name": "Draconic",
+          "summary": "Innate power from draconic ancestry.",
+          "rulesUrl": "rules/class-abilities/sorcerer.html#draconic"
+        },
+        {
+          "id": "abominable",
+          "name": "Abominable",
+          "summary": "You receive your magic from the primordial beings who existed before the creation of reality and that remain uncaring about its existence or their horrific",
+          "rulesUrl": "rules/class-abilities/sorcerer.html#abominable"
+        },
+        {
+          "id": "cyclonic",
+          "name": "Cyclonic",
+          "summary": "The power of the storm thunders within you. The magic that courses through you is as inescapable as a blizzard, as undeniable as a hurricane. Highly prized as sailors",
+          "rulesUrl": "rules/class-abilities/sorcerer.html#cyclonic"
+        },
+        {
+          "id": "sacred",
+          "name": "Sacred",
+          "summary": "Your magical power derives from a deity. An avatar or a powerful celestial or fiendish proxy might feature in your distant ancestry, or you might be linked to a major",
+          "rulesUrl": "rules/class-abilities/sorcerer.html#sacred"
+        }
+      ]
+    },
+    {
+      "id": "warlock",
+      "name": "Warlock",
+      "summary": "A pact-bound spellcaster with eldritch invocations and short-rest recovery.",
+      "maxWd": 8,
+      "keyAbility": "wil",
+      "keyAbilityLabel": "Willpower (WIL)",
+      "saves": "WIL (advantage on save)",
+      "proficiencies": "Light and medium armor, shields, simple weapons.",
+      "spellcasting": "Arcane spells (pact magic). Few slots, short-rest recovery. Invocations at 2nd level.",
+      "rulesUrl": "rules/classes.html#warlock",
+      "abilitiesUrl": "rules/class-abilities/warlock.html",
+      "subclasses": [
+        {
+          "id": "archfey",
+          "name": "Archfey",
+          "summary": "Bargains with capricious fey lords.",
+          "rulesUrl": "rules/class-abilities/warlock.html#archfey"
+        },
+        {
+          "id": "fiend",
+          "name": "Fiend",
+          "summary": "Power from a greater fiend patron.",
+          "rulesUrl": "rules/class-abilities/warlock.html#fiend"
+        },
+        {
+          "id": "great-old-one",
+          "name": "Great Old One",
+          "summary": "Whispers from beyond the stars.",
+          "rulesUrl": "rules/class-abilities/warlock.html#great-old-one"
+        },
+        {
+          "id": "archon",
+          "name": "Archon",
+          "summary": "Your patron is an otherworldly being bound to the forces of law and order. Archon patrons relentlessly pursue whichever cosmic plan guides their path, eliminating anything that",
+          "rulesUrl": "rules/class-abilities/warlock.html#archon"
+        },
+        {
+          "id": "elemental-regent",
+          "name": "Elemental Regent",
+          "summary": "Your patron is an elemental entity with dominion over a sizeable territory within its elemental plane. You are one of its elemental representatives on the Material Plane, and",
+          "rulesUrl": "rules/class-abilities/warlock.html#elemental-regent"
+        },
+        {
+          "id": "fey-noble",
+          "name": "Fey Noble",
+          "summary": "Your patron is an immortal fey, one whose existence predates the advent of mortals. The patron’s intentions remain unknown to you, or it might deceive you about",
+          "rulesUrl": "rules/class-abilities/warlock.html#fey-noble"
+        }
+      ]
+    },
+    {
+      "id": "wizard",
+      "name": "Wizard",
+      "summary": "A scholarly arcane caster with a spellbook and ritual mastery.",
+      "maxWd": 6,
+      "keyAbility": "ins",
+      "keyAbilityLabel": "Insight (INS)",
+      "saves": "INS (advantage on save)",
+      "proficiencies": "Simple weapons.",
+      "spellcasting": "Arcane spells (prepared from spellbook). Rituals and rote spells.",
+      "rulesUrl": "rules/classes.html#wizard",
+      "abilitiesUrl": "rules/class-abilities/wizard.html",
+      "subclasses": [
+        {
+          "id": "battle-mage",
+          "name": "Battle Mage",
+          "summary": "Arcane offense with martial discipline.",
+          "rulesUrl": "rules/class-abilities/wizard.html#battle-mage"
+        },
+        {
+          "id": "cantrip-adept",
+          "name": "Cantrip Adept",
+          "summary": "Cantrip mastery and ritual ingenuity.",
+          "rulesUrl": "rules/class-abilities/wizard.html#cantrip-adept"
+        },
+        {
+          "id": "arcanist",
+          "name": "Arcanist",
+          "summary": "Among wizards, who might mollify their curiosity with any manner of research, the Arcanist is often considered the most preoccupied with the empirical and esoteric",
+          "rulesUrl": "rules/class-abilities/wizard.html#arcanist"
+        },
+        {
+          "id": "necromancer",
+          "name": "Necromancer",
+          "summary": "Some wizards are naturally drawn to necromancy, and others are turned to it by trauma—learning the incredible power of using the dead to do their bidding as they attempt",
+          "rulesUrl": "rules/class-abilities/wizard.html#necromancer"
+        },
+        {
+          "id": "summoner",
+          "name": "Summoner",
+          "summary": "Every good adventurer knows that surrounding yourself with quality companions is a must. Summoners know that quantity is just as important. Why put yourself in jeopardy",
+          "rulesUrl": "rules/class-abilities/wizard.html#summoner"
+        }
+      ]
+    },
+    {
+      "id": "theurge",
+      "name": "Theurge",
+      "summary": "A dual-source caster who prepares Arcane and Divine spells from a mystic libram and manipulates magic with Spellcraft.",
+      "maxWd": 6,
+      "keyAbility": "ins",
+      "keyAbilityLabel": "Insight (INS)",
+      "saves": "INS (advantage on save)",
+      "proficiencies": "Simple weapons. Skills: choose two from Arcana, History, Insight, Investigation, Medicine, and Religion.",
+      "spellcasting": "Arcane and Divine spells (prepared from libram). Rituals known per level. Must include spells from both lists when learning.",
+      "rulesUrl": "rules/classes.html#theurge",
+      "abilitiesUrl": "rules/class-abilities/theurge.html",
+      "subclasses": [
+        {
+          "id": "conduit",
+          "name": "Conduit",
+          "summary": "Exchange vitality for spell power and disrupt enemy magic.",
+          "rulesUrl": "rules/class-abilities/theurge.html#conduit"
+        },
+        {
+          "id": "illuminary",
+          "name": "Illuminary",
+          "summary": "Inscribe sacred signs and sigils to extend your magic.",
+          "rulesUrl": "rules/class-abilities/theurge.html#illuminary"
+        },
+        {
+          "id": "source-spinner",
+          "name": "Source Spinner",
+          "summary": "Unravel and realign the weave of magic.",
+          "rulesUrl": "rules/class-abilities/theurge.html#source-spinner"
+        }
+      ]
+    },
+    {
+      "id": "vanguard",
+      "name": "Vanguard",
+      "summary": "A battlefield commander who plants war banners, issues stratagems, and shields allies through tactical leadership.",
+      "maxWd": 12,
+      "keyAbility": "wil",
+      "keyAbilityLabel": "Willpower (WIL)",
+      "saves": "WIL (advantage on save)",
+      "proficiencies": "All armor, shields, simple and martial weapons. Skills: choose two from Animal Handling, Athletics, History, Insight, Intimidation, Medicine, and Persuasion.",
+      "spellcasting": null,
+      "rulesUrl": "rules/classes.html#vanguard",
+      "abilitiesUrl": "rules/class-abilities/vanguard.html",
+      "subclasses": [
+        {
+          "id": "bulwark",
+          "name": "Bulwark",
+          "summary": "Battlefield healer and protector with the Surgeon's Standard banner.",
+          "rulesUrl": "rules/class-abilities/vanguard.html#bulwark"
+        },
+        {
+          "id": "herald",
+          "name": "Herald",
+          "summary": "Living standard-bearer who teleports allies through battle.",
+          "rulesUrl": "rules/class-abilities/vanguard.html#herald"
+        },
+        {
+          "id": "marshal",
+          "name": "Marshal",
+          "summary": "Inspiring commander who coordinates allied strikes.",
+          "rulesUrl": "rules/class-abilities/vanguard.html#marshal"
+        }
+      ]
+    },
+    {
+      "id": "witch",
+      "name": "Witch",
+      "summary": "A Wyrd caster who hexes foes, binds spirits, and draws power from otherworldly covens.",
+      "maxWd": 8,
+      "keyAbility": "wil",
+      "keyAbilityLabel": "Willpower (WIL)",
+      "saves": "WIL (advantage on save)",
+      "proficiencies": "Light armor, simple weapons. Skills: choose two from Arcana, Animal Handling, Insight, Intimidation, Nature, and Religion.",
+      "spellcasting": "Wyrd spells (known, not prepared). Rituals known per level. Coven spells from subclass.",
+      "rulesUrl": "rules/classes.html#witch",
+      "abilitiesUrl": "rules/class-abilities/witch.html",
+      "subclasses": [
+        {
+          "id": "crimson-cord",
+          "name": "Crimson Cord",
+          "summary": "Vitality witch who heals allies and wastes foes with blood magic.",
+          "rulesUrl": "rules/class-abilities/witch.html#crimson-cord"
+        },
+        {
+          "id": "night-song",
+          "name": "Night Song",
+          "summary": "Predator witch empowered by darkness and night blessings.",
+          "rulesUrl": "rules/class-abilities/witch.html#night-song"
+        },
+        {
+          "id": "twilight-soul",
+          "name": "Twilight Soul",
+          "summary": "Spirit diplomat with a sentinel companion.",
+          "rulesUrl": "rules/class-abilities/witch.html#twilight-soul"
+        }
+      ]
+    }
+  ],
+  "lineages": [
+    {
+      "id": "beastkin",
+      "name": "Beastkin",
+      "teaser": "Age. Adulthood within 5 years; lifespan up to a century (some only 20–30 years). Size. Medium or Small (under 4 feet tall → Small). Speed. 30 feet. Animal Instinct. Proficiency in Perception or Survival. Natural…",
+      "body": "<p><strong>Age.</strong> Adulthood within 5 years; lifespan up to a century (some only 20–30 years).</p>\n<p><strong>Size.</strong> Medium or Small (under 4 feet tall → Small).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Animal Instinct.</strong> Proficiency in Perception or Survival.</p>\n<p><strong>Natural Weapons.</strong> Unarmed strikes deal 1 Wound + Fitness modifier (work with your GM on damage type).</p>\n<p><strong>Natural Adaptation.</strong> Choose one: Avian (fly speed = walk), Agile (climb speed = walk; advantage vs. prone), Aquatic (swim speed = walk; hold breath 20 min), or Sturdy (AC 13 + Fitness without armor; count as one size larger for carry capacity).</p>\n<p><em>PG2 expansion:</em> Fossorial (burrow 20 ft through soft earth) or Quillback (reaction quill strike when hit in melee).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#beastkin"
+    },
+    {
+      "id": "dhampir",
+      "name": "Dhampir",
+      "teaser": "Children of vampires and mortals—compelling or repulsive to those they meet. Age. Mature in late teens; can live up to 750 years. Size. Medium or Small. Speed. 30 feet walk, 30 feet climb (hands free). Dark Thirst.…",
+      "body": "<p>Children of vampires and mortals—compelling or repulsive to those they meet.</p>\n<p><strong>Age.</strong> Mature in late teens; can live up to 750 years.</p>\n<p><strong>Size.</strong> Medium or Small.</p>\n<p><strong>Speed.</strong> 30 feet walk, 30 feet climb (hands free).</p>\n<p><strong>Dark Thirst.</strong> Bite: 1 Wound piercing; optional feed for +1 Wound necrotic, temp Wounds, and advantage on your next attack.</p>\n<p><strong>Darkvision.</strong> 60 feet; disadvantage on Insight (Perception) by sight in sunlight.</p>\n<p><strong>Hybrid Humanoid.</strong> Advantage vs. poisoned and exhaustion checks.</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#dhampir"
+    },
+    {
+      "id": "dragonborn",
+      "name": "Dragonborn",
+      "teaser": "Draconic humanoids with breath weapons and scaled hides. Age. Adult by 15; ~80 years. Size. Medium (~6–7 ft, ~300 lb). Speed. 30 feet. Breath Weapon. Bonus action: 30×5 ft line or 15-ft cone (Fitness save); 1 Wound on…",
+      "body": "<p>Draconic humanoids with breath weapons and scaled hides.</p>\n<p><strong>Age.</strong> Adult by 15; ~80 years.</p>\n<p><strong>Size.</strong> Medium (~6–7 ft, ~300 lb).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Breath Weapon.</strong> Bonus action: 30×5 ft line or 15-ft cone (Fitness save); 1 Wound on fail, none on success; damage type by ancestry; scales at higher levels. Uses = proficiency bonus per long rest.</p>\n<p><strong>Draconic Ancestry.</strong> Black/Copper acid, Blue/Bronze lightning, Brass/Gold/Red fire, Green poison, Silver/White cold, Void necrotic, Yellow radiant.</p>\n<p><strong>Dragon Hide.</strong> Resistance to your ancestry damage type.</p>\n<p><strong>Dragon Sight.</strong> Darkvision 60 ft and keensense 10 ft.</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#dragonborn"
+    },
+    {
+      "id": "drow",
+      "name": "Drow",
+      "teaser": "Variant elf lineage adapted to the underworld. Age. Physical maturity ~20; full maturity ~100; lifespan to 750. Size. Medium. Speed. 30 feet. Arachnid Kismet. Advantage interacting with spiders and scorpions; when a…",
+      "body": "<p>Variant elf lineage adapted to the underworld.</p>\n<p><strong>Age.</strong> Physical maturity ~20; full maturity ~100; lifespan to 750.</p>\n<p><strong>Size.</strong> Medium.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Arachnid Kismet.</strong> Advantage interacting with spiders and scorpions; when a d20 result includes 8, gain 1 Resolve.</p>\n<p><strong>Superior Darkvision.</strong> 120 feet; disadvantage on Perception by sight in sunlight.</p>\n<p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>",
+      "tag": "PG2 variant",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#drow"
+    },
+    {
+      "id": "duergar",
+      "name": "Duergar",
+      "teaser": "Variant dwarf lineage from the deep underworld. Age. Mature by 20; ~350 years (often shorter in the depths). Size. Medium, 4–5 ft, dense build. Speed. 30 feet. Duergar Resilience. Advantage vs. charmed or paralyzed;…",
+      "body": "<p>Variant dwarf lineage from the deep underworld.</p>\n<p><strong>Age.</strong> Mature by 20; ~350 years (often shorter in the depths).</p>\n<p><strong>Size.</strong> Medium, 4–5 ft, dense build.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Duergar Resilience.</strong> Advantage vs. charmed or paralyzed; advantage vs. illusions.</p>\n<p><strong>Enlarge.</strong> Bonus action: Large for 1 minute, double weapon damage dice, advantage on Fitness checks/saves (once per long rest).</p>\n<p><strong>Superior Darkvision.</strong> 120 feet.</p>",
+      "tag": "PG2 variant",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#duergar"
+    },
+    {
+      "id": "dwarf",
+      "name": "Dwarf",
+      "teaser": "Age. Mature ~20; young until 50; ~350 years. Size. Medium, 4–5 ft, broad frame. Speed. 30 feet. Darkvision. 60 feet. Dwarven Resilience. Advantage vs. poisoned; resistance to poison Wounds. Dwarven Toughness. Max…",
+      "body": "<p><strong>Age.</strong> Mature ~20; young until 50; ~350 years.</p>\n<p><strong>Size.</strong> Medium, 4–5 ft, broad frame.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Dwarven Resilience.</strong> Advantage vs. poisoned; resistance to poison Wounds.</p>\n<p><strong>Dwarven Toughness.</strong> Max Wounds +1, and +1 Max Wounds each level.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#dwarf"
+    },
+    {
+      "id": "elemental-scion",
+      "name": "Elemental Scion",
+      "teaser": "Mortals infused with elemental power (sometimes called jinnborn). Age. Adult ~15; ~75 years (up to 150). Size. Medium, 5–7 ft. Speed. 30 feet. Darkvision. 60 feet. Hybrid Humanoid. Poison resistance; resistance by…",
+      "body": "<p>Mortals infused with elemental power (sometimes called jinnborn).</p>\n<p><strong>Age.</strong> Adult ~15; ~75 years (up to 150).</p>\n<p><strong>Size.</strong> Medium, 5–7 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Hybrid Humanoid.</strong> Poison resistance; resistance by adaptation; advantage vs. paralyzed, petrified, poisoned.</p>\n<p><strong>Natural Adaptation.</strong> Earthborn (tremorsense 10 ft, ignore difficult terrain), Fireborn (emit light; +proficiency fire on melee hit), Waterborn (swim speed, squeeze through 1-inch gaps), or Windborn (fly 10 ft hover; hold breath for proficiency bonus hours).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#elemental-scion"
+    },
+    {
+      "id": "elf",
+      "name": "Elf",
+      "teaser": "Age. Physical maturity ~20; emotional maturity ~100; up to 750 years. Size. Medium, slender builds. Speed. 30 feet. Heightened Senses. Advantage on Perception (sight/hearing); see through light obscurement. Magic…",
+      "body": "<p><strong>Age.</strong> Physical maturity ~20; emotional maturity ~100; up to 750 years.</p>\n<p><strong>Size.</strong> Medium, slender builds.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Heightened Senses.</strong> Advantage on Perception (sight/hearing); see through light obscurement.</p>\n<p><strong>Magic Ancestry.</strong> Advantage vs. charmed; magic can't put you to sleep.</p>\n<p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#elf"
+    },
+    {
+      "id": "gearforged",
+      "name": "Gearforged",
+      "teaser": "Living minds in mechanical bodies of metal and wood. Age. Soul age varies; body lasts indefinitely with maintenance. Size. Medium or Small (pick a chassis lineage such as human or kobold). Speed. 30 feet. Constructed…",
+      "body": "<p>Living minds in mechanical bodies of metal and wood.</p>\n<p><strong>Age.</strong> Soul age varies; body lasts indefinitely with maintenance.</p>\n<p><strong>Size.</strong> Medium or Small (pick a chassis lineage such as human or kobold).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Constructed Vitality.</strong> No eat/drink/breathe; 6-hour dormant rest.</p>\n<p><strong>Hybrid Humanoid.</strong> Disease immune; poison resistance; advantage vs. paralyzed, petrified, poisoned.</p>\n<p><strong>Machine Speech.</strong> Speak and understand Machine Speech.</p>\n<p><strong>Upgrade.</strong> Always Armed (integrated weapons), Bulk Up (Large temporarily), or Quick Fix (temp Wounds when below half Max Wounds).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#gearforged"
+    },
+    {
+      "id": "goblin",
+      "name": "Goblin",
+      "teaser": "Adaptable humanoids found in vast numbers across harsh environments. Age. Adult 14–16; rarely past 100. Size. Small, 3–4 ft. Speed. 30 feet. Darkvision. 60 feet. Nimble Escape. Bonus action Disengage or Hide. Strength…",
+      "body": "<p>Adaptable humanoids found in vast numbers across harsh environments.</p>\n<p><strong>Age.</strong> Adult 14–16; rarely past 100.</p>\n<p><strong>Size.</strong> Small, 3–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Nimble Escape.</strong> Bonus action Disengage or Hide.</p>\n<p><strong>Strength in Numbers.</strong> Extra damage equal to proficiency bonus when an ally is within 5 feet of your target.</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#goblin"
+    },
+    {
+      "id": "gnoll",
+      "name": "Gnoll",
+      "teaser": "Hyena-like humanoids; often found in deserts and port cities. Age. Adult ~12; rarely past 70. Size. Medium, 7–8 ft. Speed. 30 feet. Darkvision. 60 feet. Scent Prey. Advantage on Survival checks relying on smell.…",
+      "body": "<p>Hyena-like humanoids; often found in deserts and port cities.</p>\n<p><strong>Age.</strong> Adult ~12; rarely past 70.</p>\n<p><strong>Size.</strong> Medium, 7–8 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Scent Prey.</strong> Advantage on Survival checks relying on smell.</p>\n<p><strong>Sprinter.</strong> When you Dash, move triple speed (uses per day = proficiency bonus).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#gnoll"
+    },
+    {
+      "id": "human",
+      "name": "Human",
+      "teaser": "Age. Adult late teens; rarely past 100. Size. Medium or Small. Speed. 30 feet. Ambitious. One skill proficiency and one talent (any list, meeting prerequisites).",
+      "body": "<p><strong>Age.</strong> Adult late teens; rarely past 100.</p>\n<p><strong>Size.</strong> Medium or Small.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Ambitious.</strong> One skill proficiency and one talent (any list, meeting prerequisites).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#human"
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "teaser": "Small draconic humanoids with mechanical aptitude. Age. Teen adulthood; elderly ~80; rarely 100. Size. Small, or Medium if truescale (~5 ft). Speed. 30 feet. Darkvision. 60 feet. Tinker's Fascination. Add 1d8 to tool…",
+      "body": "<p>Small draconic humanoids with mechanical aptitude.</p>\n<p><strong>Age.</strong> Teen adulthood; elderly ~80; rarely 100.</p>\n<p><strong>Size.</strong> Small, or Medium if truescale (~5 ft).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Tinker's Fascination.</strong> Add 1d8 to tool ability checks.</p>\n<p><strong>Natural Adaptation.</strong> Fierce (Small: react attack when Large+ hits you) or Truescale (Medium: AC 13 + Fitness; one elemental resistance).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#kobold"
+    },
+    {
+      "id": "orc",
+      "name": "Orc",
+      "teaser": "Resilient explorers driven to travel and survive extremes. Age. Adult within two decades; seldom past 60. Size. Medium, 6–8 ft. Speed. 30 feet. Heightened Senses. As elf (sight/hearing). Orcish Perseverance. Instead of…",
+      "body": "<p>Resilient explorers driven to travel and survive extremes.</p>\n<p><strong>Age.</strong> Adult within two decades; seldom past 60.</p>\n<p><strong>Size.</strong> Medium, 6–8 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Heightened Senses.</strong> As elf (sight/hearing).</p>\n<p><strong>Orcish Perseverance.</strong> Instead of dying from suffocation or exhaustion levels, enter death-like stasis until healed or destroyed.</p>\n<p><strong>Stalwart.</strong> Make end-of-turn saves at the start of your turn instead.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#orc"
+    },
+    {
+      "id": "rachisan",
+      "name": "Rachisan",
+      "teaser": "Plant-featured humanoids resembling ground-grown vegetables. Age. Adult ~5; typically ~50 (up to 100). Size. Small, 3–4 ft. Speed. 30 feet. Hybrid Humanoid. Advantage vs. paralyzed, petrified, and exhaustion effects.…",
+      "body": "<p>Plant-featured humanoids resembling ground-grown vegetables.</p>\n<p><strong>Age.</strong> Adult ~5; typically ~50 (up to 100).</p>\n<p><strong>Size.</strong> Small, 3–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Hybrid Humanoid.</strong> Advantage vs. paralyzed, petrified, and exhaustion effects.</p>\n<p><strong>Green Thumb.</strong> +1d8 on plant-related checks; ignore difficult terrain from plant growth.</p>\n<p><strong>Natural Adaptation.</strong> Alliumite (blinding spore reaction), Cruciferan (rest meal heals allies), or Tuberkith (immune blinded; hear while unconscious).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#rachisan"
+    },
+    {
+      "id": "sapopova",
+      "name": "Sapopova",
+      "teaser": "Amphibious folk with frog or toad traits. Age. Mature ~8; rarely past 50. Size. Small, 2–4 ft. Speed. 30 feet walk, 30 feet swim. Amphibian. Breathe air and water. Superior Vision. Darkvision 60 ft; color in dim…",
+      "body": "<p>Amphibious folk with frog or toad traits.</p>\n<p><strong>Age.</strong> Mature ~8; rarely past 50.</p>\n<p><strong>Size.</strong> Small, 2–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet walk, 30 feet swim.</p>\n<p><strong>Amphibian.</strong> Breathe air and water.</p>\n<p><strong>Superior Vision.</strong> Darkvision 60 ft; color in dim light/darkness; advantage locating moving targets.</p>\n<p><strong>Natural Adaptation.</strong> Frogkin (Athletics proficiency; standing long/high jump) or Toadfolk (cheek storage; spit improvised ranged attacks 30 ft).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#sapopova"
+    },
+    {
+      "id": "sea-elf",
+      "name": "Sea Elf",
+      "teaser": "Variant elf lineage from undersea realms. Age. As elf. Size. Medium, sleek swimmer's build. Speed. 30 feet walk, swim speed equal to walk; Dash as bonus action while submerged. Darkvision. 60 feet. Seaborn. Breathe air…",
+      "body": "<p>Variant elf lineage from undersea realms.</p>\n<p><strong>Age.</strong> As elf.</p>\n<p><strong>Size.</strong> Medium, sleek swimmer's build.</p>\n<p><strong>Speed.</strong> 30 feet walk, swim speed equal to walk; Dash as bonus action while submerged.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Seaborn.</strong> Breathe air and water; comfortable to 0°F; ignore extreme cold hazard.</p>\n<p><strong>Trance.</strong> 4 hours.</p>",
+      "tag": "PG2 variant",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#sea-elf"
+    },
+    {
+      "id": "shade",
+      "name": "Shade",
+      "teaser": "Beings caught between life and undeath, formed from memory. Age. Appear as at death; potentially centuries. Size. Medium or Small (living form lineage). Speed. As living form. Hybrid Humanoid. Poison resistance;…",
+      "body": "<p>Beings caught between life and undeath, formed from memory.</p>\n<p><strong>Age.</strong> Appear as at death; potentially centuries.</p>\n<p><strong>Size.</strong> Medium or Small (living form lineage).</p>\n<p><strong>Speed.</strong> As living form.</p>\n<p><strong>Hybrid Humanoid.</strong> Poison resistance; advantage vs. poisoned and exhaustion.</p>\n<p><strong>Phantasmal Form.</strong> Action: ghostly form 1 minute (resistance to nonmagical B/P/S, pass through creatures/objects, fly 30 ft hover) once per long rest.</p>\n<p><strong>Spectral Sight.</strong> Darkvision 60 ft; see into Ethereal Plane 30 ft (uses = proficiency bonus per long rest).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#shade"
+    },
+    {
+      "id": "smallfolk",
+      "name": "Smallfolk",
+      "teaser": "Age. Adult ~20; ~150 years (gnomes sometimes twice). Size. Small. Speed. 30 feet. Grounded. Once per day reroll a failed save and gain 1 Resolve. Small Stature. Move through Medium+ spaces; hide behind Medium+…",
+      "body": "<p><strong>Age.</strong> Adult ~20; ~150 years (gnomes sometimes twice).</p>\n<p><strong>Size.</strong> Small.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Grounded.</strong> Once per day reroll a failed save and gain 1 Resolve.</p>\n<p><strong>Small Stature.</strong> Move through Medium+ spaces; hide behind Medium+ creatures.</p>\n<p><strong>Natural Adaptation.</strong> Gnomish (darkvision 60 ft, <em>minor illusion</em>) or Halfling (advantage vs. charmed/frightened).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#smallfolk"
+    },
+    {
+      "id": "syderean",
+      "name": "Syderean",
+      "teaser": "Plane-touched mortals (starborn) tied to cosmic forces. Age. Adult ~20; ~150 years. Size. Medium, 5–7 ft. Speed. 30 feet. Far Sight. Darkvision 60 ft; see in magical darkness 30 ft. Otherworldly Form. Necrotic…",
+      "body": "<p>Plane-touched mortals (starborn) tied to cosmic forces.</p>\n<p><strong>Age.</strong> Adult ~20; ~150 years.</p>\n<p><strong>Size.</strong> Medium, 5–7 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Far Sight.</strong> Darkvision 60 ft; see in magical darkness 30 ft.</p>\n<p><strong>Otherworldly Form.</strong> Necrotic resistance; double time without air, food, water, or sleep.</p>\n<p><strong>Natural Adaptation.</strong> Celestial (Blessed Guise), Fiendish (Dreadful Guise), Aberrant, or Spellborn (see PG2 expansion).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#syderean"
+    },
+    {
+      "id": "tiefling",
+      "name": "Tiefling",
+      "teaser": "Offspring of humans and fiends with varied infernal traits. Age. As human, slightly longer. Size. Medium. Speed. 30 feet. Darkvision. 60 feet. Fiendish Legacy. Abyssal, Chthonic, or Infernal: resistance, cantrip, and…",
+      "body": "<p>Offspring of humans and fiends with varied infernal traits.</p>\n<p><strong>Age.</strong> As human, slightly longer.</p>\n<p><strong>Size.</strong> Medium.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Fiendish Legacy.</strong> Abyssal, Chthonic, or Infernal: resistance, cantrip, and leveled spells at 3rd and 5th (Willpower as spellcasting ability).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#tiefling"
+    },
+    {
+      "id": "tosculi",
+      "name": "Tosculi",
+      "teaser": "Insectoid wasp-folk, often hive-born. Age. Mature ~13; rarely past 40. Size. Small, 3–4 ft. Speed. 30 feet. Glide. Reaction when falling 10+ ft: glide 30 ft horizontally. Hive Mind. Bonus action telepathic link 30 ft…",
+      "body": "<p>Insectoid wasp-folk, often hive-born.</p>\n<p><strong>Age.</strong> Mature ~13; rarely past 40.</p>\n<p><strong>Size.</strong> Small, 3–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Glide.</strong> Reaction when falling 10+ ft: glide 30 ft horizontally.</p>\n<p><strong>Hive Mind.</strong> Bonus action telepathic link 30 ft (uses = proficiency bonus).</p>\n<p><strong>Hiveborn Duty.</strong> Detached Drone (Golden Song charm/deafen) or Roving Trooper (stinger unarmed + poison).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#tosculi"
+    },
+    {
+      "id": "eonic-human",
+      "name": "Eonic Human",
+      "teaser": "Displaced time travelers from a dying far-future civilization. Age. Effectively immortal from time dilation. Size. Medium, 5–6 ft. Speed. 30 feet. Jittery. Can't be surprised while conscious; unseen attackers don't…",
+      "body": "<p>Displaced time travelers from a dying far-future civilization.</p>\n<p><strong>Age.</strong> Effectively immortal from time dilation.</p>\n<p><strong>Size.</strong> Medium, 5–6 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Jittery.</strong> Can't be surprised while conscious; unseen attackers don't gain advantage on your first combat turn.</p>\n<p><strong>Practiced and Prepared.</strong> Once per rest, add 1d6 to an ability check when shaping recorded history.</p>\n<p><strong>Wizened Flesh.</strong> Disadvantage on Willpower (Persuasion); +proficiency bonus to Defense; exhaustion from wearing armor (light 1, medium 2, heavy 3 levels, recovered when doffed).</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/lineages.html#eonic-human"
+    }
+  ],
+  "heritages": [
+    {
+      "id": "anointed",
+      "name": "Anointed",
+      "teaser": "You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden. Favored Disciple. You know the thaumaturgy cantrip and have advantage on death saves.…",
+      "body": "<p>You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden.</p>\n<p><strong>Favored Disciple.</strong> You know the <em>thaumaturgy</em> cantrip and have advantage on death saves.</p>\n<p><strong>Occult Studies.</strong> Proficiency in History or Religion. Advantage on checks to recall information about Celestials, Fiends, or Outsiders.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Abyssal, Celestial, or Infernal).</p>",
+      "tag": null,
+      "recommendedFor": "Syderean",
+      "rulesUrl": "rules/heritages.html#anointed"
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud",
+      "teaser": "You were raised among arcane towers and academies where magic is the center of civic life. Touch of Magic. Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from…",
+      "body": "<p>You were raised among arcane towers and academies where magic is the center of civic life.</p>\n<p><strong>Touch of Magic.</strong> Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from that school—cast once per long rest without Spell Power. Spellcasting ability: Insight or Willpower (choose at creation).</p>\n<p><strong>World of Wonders.</strong> Proficiency in Arcana.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Elvish and Draconic).</p>",
+      "tag": null,
+      "recommendedFor": "Elf",
+      "rulesUrl": "rules/heritages.html#cloud"
+    },
+    {
+      "id": "cosmopolitan",
+      "name": "Cosmopolitan",
+      "teaser": "Raised in a major city or nomadic between cultures—you are a citizen of the wider world. Street Smarts. In urban environments: advantage on checks to avoid getting lost or find public destinations; can't be surprised…",
+      "body": "<p>Raised in a major city or nomadic between cultures—you are a citizen of the wider world.</p>\n<p><strong>Street Smarts.</strong> In urban environments: advantage on checks to avoid getting lost or find public destinations; can't be surprised unless asleep or incapacitated.</p>\n<p><strong>Worldly Wisdom.</strong> Proficiency in History. Add PB to checks about unfamiliar cultures' buildings, rites, or objects (double PB if proficient in a relevant skill or tool).</p>\n<p><strong>Languages.</strong> Common plus three additional (typical: Dwarvish and Elvish).</p>",
+      "tag": null,
+      "recommendedFor": "Human, Gearforged",
+      "rulesUrl": "rules/heritages.html#cosmopolitan"
+    },
+    {
+      "id": "cottage",
+      "name": "Cottage",
+      "teaser": "You grew up in a tight agricultural community—hardworking, practical, and hearth-focused. Comforts of Home. During a long rest, cook or comfort up to PB allies (including you); each gains temp Wounds equal to twice PB…",
+      "body": "<p>You grew up in a tight agricultural community—hardworking, practical, and hearth-focused.</p>\n<p><strong>Comforts of Home.</strong> During a long rest, cook or comfort up to PB allies (including you); each gains temp Wounds equal to twice PB until your next long rest.</p>\n<p><strong>Homesteader.</strong> Proficiency in Animal Handling or Nature.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>",
+      "tag": null,
+      "recommendedFor": "Smallfolk, Rachisan",
+      "rulesUrl": "rules/heritages.html#cottage"
+    },
+    {
+      "id": "diaspora",
+      "name": "Diaspora",
+      "teaser": "Your displaced community preserves the legacy of a lost homeland through guilds, mercenary companies, or faith. Preserved Traditions. Proficiency in History and one martial weapon of your choice. Timeless Resolve. You…",
+      "body": "<p>Your displaced community preserves the legacy of a lost homeland through guilds, mercenary companies, or faith.</p>\n<p><strong>Preserved Traditions.</strong> Proficiency in History and one martial weapon of your choice.</p>\n<p><strong>Timeless Resolve.</strong> You and allies within 5 feet have advantage on saves vs. frightened.</p>\n<p><strong>Languages.</strong> Common plus one additional (often Orcish or Dwarvish).</p>",
+      "tag": null,
+      "recommendedFor": "Orc, Duergar, Shade",
+      "rulesUrl": "rules/heritages.html#diaspora"
+    },
+    {
+      "id": "fireforge",
+      "name": "Fireforge",
+      "teaser": "Raised in volcanic forge-clans where dwarves craft amid magma and ally with elementals. Forgecraft. Smithing tools proficiency; double PB on checks with them. You know mending . Heat Resilience. Fire damage resistance.…",
+      "body": "<p>Raised in volcanic forge-clans where dwarves craft amid magma and ally with elementals.</p>\n<p><strong>Forgecraft.</strong> Smithing tools proficiency; double PB on checks with them. You know <em>mending</em>.</p>\n<p><strong>Heat Resilience.</strong> Fire damage resistance.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>",
+      "tag": null,
+      "recommendedFor": "Dwarf",
+      "rulesUrl": "rules/heritages.html#fireforge"
+    },
+    {
+      "id": "grove",
+      "name": "Grove",
+      "teaser": "Forest communities living in harmony with nature—sacred groves, canopy paths, and guardians of the wild. Canopy Walker. Climb speed equal to walking speed. Nature's Camouflage. Advantage on Stealth while lightly…",
+      "body": "<p>Forest communities living in harmony with nature—sacred groves, canopy paths, and guardians of the wild.</p>\n<p><strong>Canopy Walker.</strong> Climb speed equal to walking speed.</p>\n<p><strong>Nature's Camouflage.</strong> Advantage on Stealth while lightly obscured by natural phenomena; you can Hide when lightly obscured by nature even if normally you couldn't.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Elvish).</p>",
+      "tag": null,
+      "recommendedFor": "Elf",
+      "rulesUrl": "rules/heritages.html#grove"
+    },
+    {
+      "id": "nomadic",
+      "name": "Nomadic",
+      "teaser": "Your people migrate with seasons, trade routes, or tradition—you know the rigors of the road. Resilient. Advantage vs. extreme weather effects. Once per long rest, reduce exhaustion by one when you finish a short rest.…",
+      "body": "<p>Your people migrate with seasons, trade routes, or tradition—you know the rigors of the road.</p>\n<p><strong>Resilient.</strong> Advantage vs. extreme weather effects. Once per long rest, reduce exhaustion by one when you finish a short rest.</p>\n<p><strong>Traveler.</strong> Proficiency in Survival.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>",
+      "tag": null,
+      "recommendedFor": "Human",
+      "rulesUrl": "rules/heritages.html#nomadic"
+    },
+    {
+      "id": "salvager",
+      "name": "Salvager",
+      "teaser": "Raised to build, repair, and survive with whatever materials are at hand—patient, resourceful, and inventive. Repurpose. In 1 minute, create a Tiny nonmagical item (≤25 gp adventuring gear) from surroundings; lasts one…",
+      "body": "<p>Raised to build, repair, and survive with whatever materials are at hand—patient, resourceful, and inventive.</p>\n<p><strong>Repurpose.</strong> In 1 minute, create a Tiny nonmagical item (≤25 gp adventuring gear) from surroundings; lasts one use then breaks.</p>\n<p><strong>Tinkerer.</strong> Tinker's tools or other tool proficiency; double PB on checks to create, identify, or disarm objects/traps with relevant proficiency.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Draconic or Gnomish).</p>",
+      "tag": null,
+      "recommendedFor": "Kobold, Smallfolk, Goblin",
+      "rulesUrl": "rules/heritages.html#salvager"
+    },
+    {
+      "id": "slayer",
+      "name": "Slayer",
+      "teaser": "Monster-hunting packs trained from youth to track and kill dangerous predators. Natural Predator. Proficiency in Intimidation; advantage on Intimidation vs. Beasts and Animals. Tracker. Add PB to locate/spot/track…",
+      "body": "<p>Monster-hunting packs trained from youth to track and kill dangerous predators.</p>\n<p><strong>Natural Predator.</strong> Proficiency in Intimidation; advantage on Intimidation vs. Beasts and Animals.</p>\n<p><strong>Tracker.</strong> Add PB to locate/spot/track checks (double PB if proficient in the skill or tool used).</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>",
+      "tag": null,
+      "recommendedFor": "Beastkin, Orc, Dragonborn",
+      "rulesUrl": "rules/heritages.html#slayer"
+    },
+    {
+      "id": "stone",
+      "name": "Stone",
+      "teaser": "Subterranean miners and masons who defend ancestral delves beneath the world. Ancestral Arts. Construction tools proficiency (double PB); proficiency with one martial weapon. Eye for Quality. Add PB to checks about…",
+      "body": "<p>Subterranean miners and masons who defend ancestral delves beneath the world.</p>\n<p><strong>Ancestral Arts.</strong> Construction tools proficiency (double PB); proficiency with one martial weapon.</p>\n<p><strong>Eye for Quality.</strong> Add PB to checks about metal/stone objects or structures (double PB if proficient in a relevant skill or tool).</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>",
+      "tag": null,
+      "recommendedFor": "Dwarf",
+      "rulesUrl": "rules/heritages.html#stone"
+    },
+    {
+      "id": "supplicant",
+      "name": "Supplicant",
+      "teaser": "A community bound to serve a monstrous overlord—often dragons—building traps and hazards around their lair. Scurry. Bonus action: move 10 feet without opportunity attacks; doesn't trigger traps you know about.…",
+      "body": "<p>A community bound to serve a monstrous overlord—often dragons—building traps and hazards around their lair.</p>\n<p><strong>Scurry.</strong> Bonus action: move 10 feet without opportunity attacks; doesn't trigger traps you know about.</p>\n<p><strong>Supplicant.</strong> Proficiency in Insight or Persuasion. When a creature within 30 feet spends Resolve, you have advantage on checks and saves until your next turn.</p>\n<p><strong>Languages.</strong> Common plus one additional (overlord's tongue: Draconic, Giant, or Undercommon).</p>",
+      "tag": null,
+      "recommendedFor": "Kobold, Dhampir",
+      "rulesUrl": "rules/heritages.html#supplicant"
+    },
+    {
+      "id": "vexed",
+      "name": "Vexed",
+      "teaser": "Your life is defined by defying a supernatural bond—claimed at birth, haunted by dreams, or inheriting a blood debt. Prodigal Disciple. Treat d20 rolls of 9 or lower as 10 on saves vs. charmed or possessed. Quarry's…",
+      "body": "<p>Your life is defined by defying a supernatural bond—claimed at birth, haunted by dreams, or inheriting a blood debt.</p>\n<p><strong>Prodigal Disciple.</strong> Treat d20 rolls of 9 or lower as 10 on saves vs. charmed or possessed.</p>\n<p><strong>Quarry's Cunning.</strong> Proficiency in Deception or Insight.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical esoteric: Abyssal, Celestial, or Infernal).</p>",
+      "tag": null,
+      "recommendedFor": "Syderean, Shade",
+      "rulesUrl": "rules/heritages.html#vexed"
+    },
+    {
+      "id": "wildlands",
+      "name": "Wildlands",
+      "teaser": "Primordial-magic communities where beasts and humanoids live as equals in unspoiled territory. Beast Affinity. Communicate simple ideas with Beasts/Animals; advantage interacting with them. Shepherd's Gift. Animal…",
+      "body": "<p>Primordial-magic communities where beasts and humanoids live as equals in unspoiled territory.</p>\n<p><strong>Beast Affinity.</strong> Communicate simple ideas with Beasts/Animals; advantage interacting with them.</p>\n<p><strong>Shepherd's Gift.</strong> Animal Handling proficiency. Beasts/Animals with CR ≤ PB must pass a Willpower (Animal Handling) contest to attack you or choose a new target.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>",
+      "tag": null,
+      "recommendedFor": "Beastkin, Tosculi",
+      "rulesUrl": "rules/heritages.html#wildlands"
+    },
+    {
+      "id": "conflicted",
+      "name": "Conflicted",
+      "teaser": "Raised in a society torn by factional violence, revolution, or rebellion—survival means reading danger early. Prepared for Trouble. Proficiency with improvised weapons. Disarm traps without thieves' tools. Talk Your…",
+      "body": "<p>Raised in a society torn by factional violence, revolution, or rebellion—survival means reading danger early.</p>\n<p><strong>Prepared for Trouble.</strong> Proficiency with improvised weapons. Disarm traps without thieves' tools.</p>\n<p><strong>Talk Your Way Out.</strong> Proficiency in Deception or Persuasion.</p>\n<p><strong>Languages.</strong> Common plus one additional (language of the conflict zone).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Dhampir, Drow, Duergar, Goblin, Gearforged, Shade",
+      "rulesUrl": "rules/heritages.html#conflicted"
+    },
+    {
+      "id": "coterminous",
+      "name": "Coterminous",
+      "teaser": "From a border community where the Material Plane meets an Elemental Plane—trade hub, genie dominion, and elemental hazard. Elemental Community. Choose Air (lightning), Earth (acid), Fire (fire), or Water (cold).…",
+      "body": "<p>From a border community where the Material Plane meets an Elemental Plane—trade hub, genie dominion, and elemental hazard.</p>\n<p><strong>Elemental Community.</strong> Choose Air (lightning), Earth (acid), Fire (fire), or Water (cold).</p>\n<p><strong>Ambient Absorption.</strong> When you take your element's damage type, roll d8s equal to half PB (min 1) and reduce damage by the total.</p>\n<p><strong>Environmental Acclimatization.</strong> Proficiency on checks/saves vs. hazards of your element (double PB if already proficient).</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Primordial).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Dragonborn, Elemental Scion",
+      "rulesUrl": "rules/heritages.html#coterminous"
+    },
+    {
+      "id": "covenant",
+      "name": "Covenant",
+      "teaser": "A magic-obsessed community hoarding arcane power near raw magical nodes—spellcraft above all else. Expert Caster. Arcana proficiency; learn one cantrip from any source (Insight or Willpower as casting ability). Spell…",
+      "body": "<p>A magic-obsessed community hoarding arcane power near raw magical nodes—spellcraft above all else.</p>\n<p><strong>Expert Caster.</strong> Arcana proficiency; learn one cantrip from any source (Insight or Willpower as casting ability).</p>\n<p><strong>Spell Inoculation.</strong> Advantage on saves vs. spells that target you specifically (not area effects).</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Draconic, Infernal, or Sylvan).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Drow",
+      "rulesUrl": "rules/heritages.html#covenant"
+    },
+    {
+      "id": "feysworn",
+      "name": "Feysworn",
+      "teaser": "Raised under fey dominion, bound by oaths to archfey and their alien goals. Accustomed to Trickery. You know prestidigitation (Insight or Willpower). Advantage vs. charmed; on failed charm save, gain 2 Resolve instead…",
+      "body": "<p>Raised under fey dominion, bound by oaths to archfey and their alien goals.</p>\n<p><strong>Accustomed to Trickery.</strong> You know <em>prestidigitation</em> (Insight or Willpower). Advantage vs. charmed; on failed charm save, gain 2 Resolve instead of 1.</p>\n<p><strong>Enchanting Call.</strong> Action: one creature makes Willpower save (DC 10 + PB) or is charmed until end of your next turn. Or spend 2 Resolve to attempt frighten (Resolve lost only if successful). Once per short or long rest.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Rachisan",
+      "rulesUrl": "rules/heritages.html#feysworn"
+    },
+    {
+      "id": "hivebound",
+      "name": "Hivebound",
+      "teaser": "A telepathically linked community functioning as a collective—unity over individuality. Open Mind. Insight proficiency. Bonus action: temporary telepathic link with one willing creature you touch until you stop…",
+      "body": "<p>A telepathically linked community functioning as a collective—unity over individuality.</p>\n<p><strong>Open Mind.</strong> Insight proficiency. Bonus action: temporary telepathic link with one willing creature you touch until you stop touching or link someone else.</p>\n<p><strong>Unity.</strong> When you Help on a check, target gains +PB; when helped, you gain +PB from the helper.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Tosculi",
+      "rulesUrl": "rules/heritages.html#hivebound"
+    },
+    {
+      "id": "ironwrought",
+      "name": "Ironwrought",
+      "teaser": "Raised among gearforged and artificers who treat born and made people as equals. Construct Affinity. Communicate simple ideas with Constructs; advantage interacting with them. Mechanic. Tinker's or smithing tools…",
+      "body": "<p>Raised among gearforged and artificers who treat born and made people as equals.</p>\n<p><strong>Construct Affinity.</strong> Communicate simple ideas with Constructs; advantage interacting with them.</p>\n<p><strong>Mechanic.</strong> Tinker's or smithing tools proficiency; double PB on checks to create, repair, or upgrade metal-bodied creatures with relevant proficiency.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Draconic).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Gearforged",
+      "rulesUrl": "rules/heritages.html#ironwrought"
+    },
+    {
+      "id": "islander",
+      "name": "Islander",
+      "teaser": "From an archipelago chain trading specialty goods between islands—hardy, personable, and resilient. Like Water off Your Back. Advantage on saves vs. frightened. Tiderider. Vehicles (water) proficiency; swim speed equal…",
+      "body": "<p>From an archipelago chain trading specialty goods between islands—hardy, personable, and resilient.</p>\n<p><strong>Like Water off Your Back.</strong> Advantage on saves vs. frightened.</p>\n<p><strong>Tiderider.</strong> Vehicles (water) proficiency; swim speed equal to walking speed.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Sylvan).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Sapopova",
+      "rulesUrl": "rules/heritages.html#islander"
+    },
+    {
+      "id": "joymonger",
+      "name": "Joymonger",
+      "teaser": "Raised in a community that sells happiness—performers, artisans, and laborers keeping attractions running. Joyful Endurance. Advantage on Fitness checks for weariness/survival outside combat. Once per long rest, negate…",
+      "body": "<p>Raised in a community that sells happiness—performers, artisans, and laborers keeping attractions running.</p>\n<p><strong>Joyful Endurance.</strong> Advantage on Fitness checks for weariness/survival outside combat. Once per long rest, negate gaining an exhaustion level.</p>\n<p><strong>Welcome to the Show.</strong> Proficiency in Persuasion or Performance.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/heritages.html#joymonger"
+    },
+    {
+      "id": "kithren",
+      "name": "Kithren",
+      "teaser": "Nomadic rebuilders who travel to devastated settlements and help survivors recover. Helping Hands. Medicine or Survival proficiency; proficiency with one melee weapon of your choice. Search and Rescue. Network of…",
+      "body": "<p>Nomadic rebuilders who travel to devastated settlements and help survivors recover.</p>\n<p><strong>Helping Hands.</strong> Medicine or Survival proficiency; proficiency with one melee weapon of your choice.</p>\n<p><strong>Search and Rescue.</strong> Network of kithren contacts can point toward a Humanoid's last known location (GM discretion). Cast <em>mending</em> once per long rest even if not a spellcaster.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Goblin or Gnomish).</p>",
+      "tag": "PG2",
+      "recommendedFor": null,
+      "rulesUrl": "rules/heritages.html#kithren"
+    },
+    {
+      "id": "seafarer",
+      "name": "Seafarer",
+      "teaser": "Raised on a traveling flotilla—scout ships, farms, trawlers, and cruisers crossing open water together. Jack of all Trades. Once per long rest, add PB to a tool or ability check without proficiency. Sea Legs. Vehicles…",
+      "body": "<p>Raised on a traveling flotilla—scout ships, farms, trawlers, and cruisers crossing open water together.</p>\n<p><strong>Jack of all Trades.</strong> Once per long rest, add PB to a tool or ability check without proficiency.</p>\n<p><strong>Sea Legs.</strong> Vehicles (water) proficiency; advantage on Fitness checks aboard floating vessels.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Sea Elf, Elemental Scion",
+      "rulesUrl": "rules/heritages.html#seafarer"
+    },
+    {
+      "id": "waterside",
+      "name": "Waterside",
+      "teaser": "Edge-of-water communities splitting life between land and water—fishing, boating, and aquaculture. Knowledgeable. History or Nature proficiency; double PB on that skill for waterside areas. Water Legs. Vehicles (water)…",
+      "body": "<p>Edge-of-water communities splitting life between land and water—fishing, boating, and aquaculture.</p>\n<p><strong>Knowledgeable.</strong> History or Nature proficiency; double PB on that skill for waterside areas.</p>\n<p><strong>Water Legs.</strong> Vehicles (water) proficiency; advantage on Fitness (Athletics) and Fitness (Acrobatics) balance checks near water; water up to waist isn't difficult terrain.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan, Dwarvish, or Elvish).</p>",
+      "tag": "PG2",
+      "recommendedFor": "Sapopova, Sea Elf",
+      "rulesUrl": "rules/heritages.html#waterside"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "adherent",
+      "name": "Adherent",
+      "teaser": "Before you began adventuring, you committed yourself to a faith, belief, or cause. Skill, equipment, and devotion from that life still shape you. Skill Proficiencies: Choose two from History, Investigation, Religion,…",
+      "body": "<p>Before you began adventuring, you committed yourself to a faith, belief, or cause. Skill, equipment, and devotion from that life still shape you.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Investigation, Religion, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> Artist's tools and one additional tool of your choice.</p>\n<p><strong>Equipment:</strong> A prayer book or ceremonial dagger, a holy symbol, fragrant incense, vestments, common clothes, and a pouch containing 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#adherent"
+    },
+    {
+      "id": "alchemist",
+      "name": "Alchemist",
+      "teaser": "You combine natural and alchemical components to create wonders—potions, poisons, and transformative substances. Skill Proficiencies: Choose two from Arcana, Investigation, Nature, or Perception. Additional…",
+      "body": "<p>You combine natural and alchemical components to create wonders—potions, poisons, and transformative substances.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, Investigation, Nature, or Perception.</p>\n<p><strong>Additional Proficiencies:</strong> Alchemist's tools and one of charlatan's tools, herbalism tools, or provisioner's tools.</p>\n<p><strong>Equipment:</strong> Common clothes, alchemist's tools, stained gloves, a flask of alchemist's fire, glass vials, and a coin purse with 5 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Alchemy Adept</em>, <em>Elemental Savant</em>, or <em>Learned Researcher</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#alchemist"
+    },
+    {
+      "id": "artist",
+      "name": "Artist",
+      "teaser": "You doggedly practiced an artistic pursuit before adventuring—acrobat, puppeteer, thespian, singer, or similar. Skill Proficiencies: Choose two from Acrobatics, Insight, Performance, or Persuasion. Additional…",
+      "body": "<p>You doggedly practiced an artistic pursuit before adventuring—acrobat, puppeteer, thespian, singer, or similar.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Acrobatics, Insight, Performance, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> One additional language and one tool representing your art.</p>\n<p><strong>Equipment:</strong> A musical instrument or artisan tool, steel mirror, fine clothes, ink and quill, and 4 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Quick</em>, <em>Scrutinous</em>, or <em>Trade Skills</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#artist"
+    },
+    {
+      "id": "chronicler",
+      "name": "Chronicler",
+      "teaser": "You documented the world—records, investigations, or daily life preserved for posterity. Skill Proficiencies: Choose two from History, Investigation, Perception, or Persuasion. Additional Proficiencies: One additional…",
+      "body": "<p>You documented the world—records, investigations, or daily life preserved for posterity.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Investigation, Perception, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> One additional language and artist's, navigator's, or provisioner's tools.</p>\n<p><strong>Equipment:</strong> Proficient tools from above, ink and 25 sheets of paper, bedroll, common clothes, and 3 gp in small coin.</p>\n<p><strong>Talent:</strong> Choose one: <em>Learned Researcher</em>, <em>Polyglot</em>, or <em>Spell Recall</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#chronicler"
+    },
+    {
+      "id": "courtier",
+      "name": "Courtier",
+      "teaser": "You spent years in royal or noble courts, learning decorum, duty, and the station of others. Skill Proficiencies: Choose two from History, Religion, Insight, or Deception. Additional Proficiencies: One additional…",
+      "body": "<p>You spent years in royal or noble courts, learning decorum, duty, and the station of others.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Religion, Insight, or Deception.</p>\n<p><strong>Additional Proficiencies:</strong> One additional language, artist's or navigator's tools, and a musical instrument.</p>\n<p><strong>Equipment:</strong> A writ of nobility or patronage, signet ring, fine clothes, and 12 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Combat Conditioning</em>, <em>Mental Fortitude</em>, or <em>Polyglot</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#courtier"
+    },
+    {
+      "id": "criminal",
+      "name": "Criminal",
+      "teaser": "You survived the criminal underworld as cutpurse, grifter, thief, or assassin. Skill Proficiencies: Choose two from Stealth, Investigation, Insight, or Deception. Additional Proficiencies: Thieves' Cant (or another…",
+      "body": "<p>You survived the criminal underworld as cutpurse, grifter, thief, or assassin.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Stealth, Investigation, Insight, or Deception.</p>\n<p><strong>Additional Proficiencies:</strong> Thieves' Cant (or another language if you already know it), plus one tool and one vehicle.</p>\n<p><strong>Equipment:</strong> Five pieces of chalk, grappling hook, dark traveler's clothes or costume, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Scrutinous</em>, or <em>Touch of Resolve</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#criminal"
+    },
+    {
+      "id": "gravedigger",
+      "name": "Gravedigger",
+      "teaser": "You put the dead to rest—city graveyards, crypts, or lonely burial grounds. Skill Proficiencies: Choose two from Athletics, Insight, Nature, or Religion. Additional Proficiencies: Construction tools and either scythes…",
+      "body": "<p>You put the dead to rest—city graveyards, crypts, or lonely burial grounds.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Athletics, Insight, Nature, or Religion.</p>\n<p><strong>Additional Proficiencies:</strong> Construction tools and either scythes or thieves' tools.</p>\n<p><strong>Equipment:</strong> Common clothes, construction tools, holy water, small shovel, a burial keepsake, and 2 gp in copper and silver.</p>\n<p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Hardy</em>, or <em>Mental Fortitude</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#gravedigger"
+    },
+    {
+      "id": "healer",
+      "name": "Healer",
+      "teaser": "You cared for your community with herbal remedies, charms, and practical lore. Skill Proficiencies: Choose two from Arcana, Insight, Medicine, or Survival. Additional Proficiencies: Herbalism tools and one additional…",
+      "body": "<p>You cared for your community with herbal remedies, charms, and practical lore.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, Insight, Medicine, or Survival.</p>\n<p><strong>Additional Proficiencies:</strong> Herbalism tools and one additional tool.</p>\n<p><strong>Equipment:</strong> Herbalism tools, healer's kit, candle, potion bottles, common clothes, and 5 days of rations.</p>\n<p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Field Medic</em>, or <em>Ritualist</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#healer"
+    },
+    {
+      "id": "homesteader",
+      "name": "Homesteader",
+      "teaser": "You forged a livelihood between civilization and the wild hinterlands. Skill Proficiencies: Survival and one of Athletics, Animal Handling, or Intimidation. Additional Proficiencies: Herbalism or navigator's tools.…",
+      "body": "<p>You forged a livelihood between civilization and the wild hinterlands.</p>\n<p><strong>Skill Proficiencies:</strong> Survival and one of Athletics, Animal Handling, or Intimidation.</p>\n<p><strong>Additional Proficiencies:</strong> Herbalism or navigator's tools.</p>\n<p><strong>Equipment:</strong> Hunting trap, fishing tackle, skinning knife, canvas hammock, heavy traveler's clothes, and 8 gp of gold-crusted quartz.</p>\n<p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Dungeoneer</em>, or <em>Far Traveler</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#homesteader"
+    },
+    {
+      "id": "investigator",
+      "name": "Investigator",
+      "teaser": "You solved problems for pay—authority, clients, or yourself. Skill Proficiencies: Choose two from Deception, Insight, Investigation, or Perception. Additional Proficiencies: Charlatan's and thieves' tools. Equipment:…",
+      "body": "<p>You solved problems for pay—authority, clients, or yourself.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Insight, Investigation, or Perception.</p>\n<p><strong>Additional Proficiencies:</strong> Charlatan's and thieves' tools.</p>\n<p><strong>Equipment:</strong> Common and fine clothes, charlatan's or thieves' tools, letter of reference, magnifying glass, notebook, case memento, and two purses of 5 gp each.</p>\n<p><strong>Talent:</strong> Choose one: <em>Scrutinous</em>, <em>Situational Awareness</em>, or <em>Sleuth</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#investigator"
+    },
+    {
+      "id": "maker",
+      "name": "Maker",
+      "teaser": "You pursued a craft until expert quality defined your reputation. Skill Proficiencies: Investigation and one of History, Performance, or Sleight of Hand. Additional Proficiencies: One tool; double proficiency bonus on…",
+      "body": "<p>You pursued a craft until expert quality defined your reputation.</p>\n<p><strong>Skill Proficiencies:</strong> Investigation and one of History, Performance, or Sleight of Hand.</p>\n<p><strong>Additional Proficiencies:</strong> One tool; double proficiency bonus on checks with that tool.</p>\n<p><strong>Equipment:</strong> That tool, personal emblem stamp or chisel, traveler's clothes, and 10 gp in shavings or dust.</p>\n<p><strong>Talent:</strong> Choose one: <em>Artillerist</em>, <em>School Specialization</em>, or <em>Trade Skills</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#maker"
+    },
+    {
+      "id": "outcast",
+      "name": "Outcast",
+      "teaser": "You survived on scraps and street skills, sometimes on the wrong side of the law. Skill Proficiencies: Choose two from Deception, Insight, Sleight of Hand, or Stealth. Additional Proficiencies: One gaming set and…",
+      "body": "<p>You survived on scraps and street skills, sometimes on the wrong side of the law.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Insight, Sleight of Hand, or Stealth.</p>\n<p><strong>Additional Proficiencies:</strong> One gaming set and charlatan's, herbalism, or thieves' tools.</p>\n<p><strong>Equipment:</strong> Dark cloak and clothes, a silver coin from a stranger, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Opportunist</em>, or <em>Quick</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#outcast"
+    },
+    {
+      "id": "rebel",
+      "name": "Rebel",
+      "teaser": "You fought for your beliefs against the status quo—openly or from the shadows. Skill Proficiencies: Choose two from History, Insight, Performance, or Persuasion. Additional Proficiencies: Artist's or alchemist's tools…",
+      "body": "<p>You fought for your beliefs against the status quo—openly or from the shadows.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Insight, Performance, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> Artist's or alchemist's tools and provisioner's tools, a musical instrument, or Thieves' Cant.</p>\n<p><strong>Equipment:</strong> Common clothes, artist's or alchemist's tools, flag or banner, pamphlets, alchemist's fire, and 3 gp in small coin.</p>\n<p><strong>Talent:</strong> Choose one: <em>Brave</em>, <em>Comrade</em>, or <em>Hard to Kill</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#rebel"
+    },
+    {
+      "id": "rustic",
+      "name": "Rustic",
+      "teaser": "Years of hard work gave you unshakeable resolve, but no grand mysteries in your past. Skill Proficiencies: Choose two from Athletics, Acrobatics, Investigation, or Medicine. Additional Proficiencies: Land vehicles and…",
+      "body": "<p>Years of hard work gave you unshakeable resolve, but no grand mysteries in your past.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Athletics, Acrobatics, Investigation, or Medicine.</p>\n<p><strong>Additional Proficiencies:</strong> Land vehicles and one martial weapon, instrument, tool, or armor type.</p>\n<p><strong>Equipment:</strong> Backpack, bedroll, woven blanket, three candles, traveler's clothes, and 20 sp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Comrade</em>, <em>Hand to Hand</em>, or <em>Physical Fortitude</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#rustic"
+    },
+    {
+      "id": "scholar",
+      "name": "Scholar",
+      "teaser": "Years in academic pursuits honed your mind and intellectual lens on the world. Skill Proficiencies: Choose two from Arcana, History, Nature, or Religion. Additional Proficiencies: Two languages or one tool or vehicle…",
+      "body": "<p>Years in academic pursuits honed your mind and intellectual lens on the world.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, History, Nature, or Religion.</p>\n<p><strong>Additional Proficiencies:</strong> Two languages or one tool or vehicle relevant to your field.</p>\n<p><strong>Equipment:</strong> Ink, quill, knife, reference book, common clothes, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Polyglot</em>, <em>Ritualist</em>, or <em>School Specialization</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#scholar"
+    },
+    {
+      "id": "servant",
+      "name": "Servant",
+      "teaser": "You anticipated others' needs while working behind the scenes for employers. Skill Proficiencies: Choose two from Insight, Perception, Sleight of Hand, or Stealth. Additional Proficiencies: Two of clothier's,…",
+      "body": "<p>You anticipated others' needs while working behind the scenes for employers.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Insight, Perception, Sleight of Hand, or Stealth.</p>\n<p><strong>Additional Proficiencies:</strong> Two of clothier's, provisioner's, thieves', tinkerer's tools, or a musical instrument.</p>\n<p><strong>Equipment:</strong> Common clothes, sturdy shoes, proficient tools, notebook, employer's essential item, and 3 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Hardy</em>, <em>Quick</em>, or <em>Tag Team</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#servant"
+    },
+    {
+      "id": "smuggler",
+      "name": "Smuggler",
+      "teaser": "You moved contraband where it was forbidden, by wit and careful planning. Skill Proficiencies: Choose two from Deception, Persuasion, Sleight of Hand, or Stealth. Additional Proficiencies: Thieves' Cant (or another…",
+      "body": "<p>You moved contraband where it was forbidden, by wit and careful planning.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Persuasion, Sleight of Hand, or Stealth.</p>\n<p><strong>Additional Proficiencies:</strong> Thieves' Cant (or another language), navigator's tools, and one vehicle.</p>\n<p><strong>Equipment:</strong> Navigator's tools, magnifying glass, merchant's scale, common and fine clothes, hooded cloak, lantern, empty pouches, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Escamotage</em>, or <em>Slippery</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#smuggler"
+    },
+    {
+      "id": "soldier",
+      "name": "Soldier",
+      "teaser": "Rigorous training and discipline defined your time in military service. Skill Proficiencies: Choose two from Animal Handling, Athletics, Medicine, or Survival. Additional Proficiencies: One tool and one vehicle.…",
+      "body": "<p>Rigorous training and discipline defined your time in military service.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Animal Handling, Athletics, Medicine, or Survival.</p>\n<p><strong>Additional Proficiencies:</strong> One tool and one vehicle.</p>\n<p><strong>Equipment:</strong> Symbol of rank, mess kit, playing cards or dice, common clothes, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Combat Casting</em>, <em>Combat Conditioning</em>, or <em>Field Medic</em>.</p>",
+      "tag": null,
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#soldier"
+    }
+  ],
+  "heritageRecommendations": {
+    "Beastkin": [
+      "Slayer",
+      "Wildlands"
+    ],
+    "Dhampir": [
+      "Conflicted",
+      "Supplicant"
+    ],
+    "Dragonborn": [
+      "Coterminous",
+      "Slayer"
+    ],
+    "Drow (Elf variant)": [
+      "Conflicted",
+      "Covenant"
+    ],
+    "Drow": [
+      "Conflicted",
+      "Covenant"
+    ],
+    "Duergar (Dwarf variant)": [
+      "Conflicted",
+      "Diaspora"
+    ],
+    "Duergar": [
+      "Conflicted",
+      "Diaspora"
+    ],
+    "Dwarf": [
+      "Fireforge",
+      "Stone"
+    ],
+    "Elemental Scion": [
+      "Coterminous",
+      "Seafarer"
+    ],
+    "Elf": [
+      "Cloud",
+      "Grove"
+    ],
+    "Gearforged": [
+      "Cosmopolitan",
+      "Ironwrought"
+    ],
+    "Goblin": [
+      "Conflicted",
+      "Salvager"
+    ],
+    "Human": [
+      "Cosmopolitan",
+      "Nomadic"
+    ],
+    "Kobold": [
+      "Salvager",
+      "Supplicant"
+    ],
+    "Orc": [
+      "Diaspora",
+      "Slayer"
+    ],
+    "Rachisan": [
+      "Cottage",
+      "Feysworn"
+    ],
+    "Sapopova": [
+      "Islander",
+      "Waterside"
+    ],
+    "Sea Elf (Elf variant)": [
+      "Seafarer",
+      "Waterside"
+    ],
+    "Sea Elf": [
+      "Seafarer",
+      "Waterside"
+    ],
+    "Shade": [
+      "Diaspora",
+      "Vexed"
+    ],
+    "Smallfolk": [
+      "Cottage",
+      "Salvager"
+    ],
+    "Syderean": [
+      "Anointed",
+      "Vexed"
+    ],
+    "Tosculi": [
+      "Hivebound",
+      "Wildlands"
+    ]
+  }
+}

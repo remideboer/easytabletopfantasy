@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Character Creator | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Step-by-step character creator for You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="character-creator.html" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script src="assets/includes.js"></script>
+<meta property="og:title" content="Character Creator | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Build a YMIAT character step by step—class, abilities, lineage, heritage, background, and equipment." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="character-creator.html" />
+</head>
+<body class="cc-page">
+<header data-include="nav"></header>
+<main class="cc-main">
+  <div class="cc-hero">
+    <h1>Character Creator</h1>
+    <p class="lede">Build a level&nbsp;1 character step by step—the same order as the <a href="rules/characters.html#character-creation-overview">character creation overview</a>. Options update automatically as you choose.</p>
+  </div>
+
+  <div id="cc-loading" class="cc-loading" aria-live="polite">
+    <span class="cc-loading-spinner" aria-hidden="true"></span>
+    Loading character options…
+  </div>
+
+  <div id="cc-app" class="cc-app" hidden>
+    <nav class="cc-progress" id="cc-progress" aria-label="Creation steps"></nav>
+
+    <aside class="cc-summary cc-summary--bar" aria-labelledby="cc-summary-title">
+      <h2 id="cc-summary-title" class="cc-summary-title">Your character</h2>
+      <dl class="cc-summary-list" id="cc-summary-list"></dl>
+      <p class="cc-summary-hint">Draft saved automatically in this browser.</p>
+    </aside>
+
+    <div class="cc-stage">
+      <section class="cc-options-pane" aria-label="Step options">
+        <div class="cc-step-body" id="cc-step-body"></div>
+      </section>
+
+      <aside class="cc-sidebar" id="cc-sidebar" aria-labelledby="cc-step-title">
+        <div class="cc-sidebar-step">
+          <p class="cc-step-kicker" id="cc-step-kicker"></p>
+          <h2 id="cc-step-title" tabindex="-1"></h2>
+          <p class="cc-step-desc" id="cc-step-desc"></p>
+          <a class="cc-rules-link" id="cc-rules-link" href="rules/characters.html">Read full rules</a>
+        </div>
+
+        <div class="cc-sidebar-detail cc-detail-panel" id="cc-detail-panel" aria-labelledby="cc-detail-title">
+          <p class="cc-detail-placeholder" id="cc-detail-placeholder">Select or hover an option to see its full description.</p>
+          <h3 class="cc-detail-title" id="cc-detail-title" hidden></h3>
+          <div class="cc-detail-body" id="cc-detail-body"></div>
+          <a class="cc-detail-link" id="cc-detail-link" href="#" target="_blank" rel="noopener" hidden>Open full rules</a>
+        </div>
+
+        <div class="cc-sidebar-nav">
+          <button type="button" class="btn cc-btn-secondary" id="cc-btn-back">Back</button>
+          <button type="button" class="btn" id="cc-btn-next">Next</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="cc-error" class="cc-error" hidden role="alert">
+    <p>Could not load character data. Try refreshing, or run <code>python scripts/generate-character-creator-data.py</code> if you're developing locally.</p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="assets/character-creator.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
