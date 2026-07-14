@@ -19,25 +19,25 @@
   <h1>Character Classes</h1>
   <div class="content">
     <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) compresses the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
-    <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots.</p>
+    <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots. Each class lists <strong>one</strong> save with advantage—the class's primary saving throw.</p>
 
     <h2 id="classes-at-a-glance">Classes at a Glance</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>Class</th><th>Max WD</th><th>Key Ability</th><th>Saves</th><th>Spell Source</th></tr></thead>
       <tbody>
-        <tr><td><a href="#barbarian">Barbarian</a></td><td>12</td><td>FIT</td><td>FIT</td><td>Martial</td></tr>
-        <tr><td><a href="#bard">Bard</a></td><td>8</td><td>WIL</td><td>FIT, WIL</td><td>Arcane</td></tr>
-        <tr><td><a href="#cleric">Cleric</a></td><td>8</td><td>INS</td><td>INS, WIL</td><td>Divine</td></tr>
-        <tr><td><a href="#druid">Druid</a></td><td>8</td><td>INS</td><td>INS, WIL</td><td>Primordial</td></tr>
-        <tr><td><a href="#fighter">Fighter</a></td><td>10</td><td>FIT/DEX</td><td>FIT, WIL</td><td>Martial</td></tr>
-        <tr><td><a href="#artificer">Artificer</a></td><td>8</td><td>INS</td><td>FIT, INS</td><td>Martial/Tech</td></tr>
-        <tr><td><a href="#monk">Monk</a></td><td>8</td><td>DEX</td><td>FIT, DEX</td><td>Martial</td></tr>
-        <tr><td><a href="#paladin">Paladin</a></td><td>10</td><td>FIT</td><td>INS, WIL</td><td>Divine/Martial</td></tr>
-        <tr><td><a href="#ranger">Ranger</a></td><td>10</td><td>FIT/DEX</td><td>FIT, DEX</td><td>Primordial/Martial</td></tr>
-        <tr><td><a href="#rogue">Rogue</a></td><td>8</td><td>DEX</td><td>DEX, INS</td><td>Martial</td></tr>
-        <tr><td><a href="#sorcerer">Sorcerer</a></td><td>6</td><td>WIL</td><td>FIT, WIL</td><td>Arcane</td></tr>
-        <tr><td><a href="#warlock">Warlock</a></td><td>8</td><td>WIL</td><td>INS, WIL</td><td>Arcane</td></tr>
-        <tr><td><a href="#wizard">Wizard</a></td><td>6</td><td>INS</td><td>INS, WIL</td><td>Arcane</td></tr>
+        <tr><td><a href="#barbarian">Barbarian</a></td><td>12</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#bard">Bard</a></td><td>8</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
+        <tr><td><a href="#cleric">Cleric</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Divine</td></tr>
+        <tr><td><a href="#druid">Druid</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Primordial</td></tr>
+        <tr><td><a href="#fighter">Fighter</a></td><td>10</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#artificer">Artificer</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Martial/Tech</td></tr>
+        <tr><td><a href="#monk">Monk</a></td><td>8</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#paladin">Paladin</a></td><td>10</td><td>FIT</td><td>INS (advantage)</td><td>Divine/Martial</td></tr>
+        <tr><td><a href="#ranger">Ranger</a></td><td>10</td><td>FIT</td><td>FIT (advantage)</td><td>Primordial/Martial</td></tr>
+        <tr><td><a href="#rogue">Rogue</a></td><td>8</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#sorcerer">Sorcerer</a></td><td>6</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
+        <tr><td><a href="#warlock">Warlock</a></td><td>8</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
+        <tr><td><a href="#wizard">Wizard</a></td><td>6</td><td>INS</td><td>INS (advantage)</td><td>Arcane</td></tr>
       </tbody>
     </table></div>
 
@@ -106,7 +106,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Bard</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A versatile performer whose magic and inspiration support allies and confound foes.</p>
-<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> FIT, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Light armor; simple weapons and martial finesse weapons; three musical instruments or tools; any three skills.</p>
 <p><strong>Spellcasting:</strong> Arcane spells. Spells known (no preparation). Rituals known per level.</p>
 <p><strong>Max spell circle by level:</strong></p>
@@ -153,7 +153,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Cleric</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A divine champion who channels deity power through spells and channel divinity.</p>
-<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Light and medium armor, shields, simple weapons. Skills: History, Insight, Medicine, Persuasion, Religion (choose two).</p>
 <p><strong>Spellcasting:</strong> Divine spells (prepared). Domain spells always prepared.</p>
 <p><strong>Max spell circle by level:</strong></p>
@@ -201,7 +201,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Druid</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A guardian of nature wielding primordial magic and wild shape.</p>
-<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Light and medium armor, shields, simple weapons, herbalist tools.</p>
 <p><strong>Spellcasting:</strong> Primordial spells (prepared). Ring spells always prepared.</p>
 <p><strong>Max spell circle by level:</strong></p>
@@ -248,7 +248,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Fighter</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A master of weapons and battlefield tactics with action surge and martial actions.</p>
-<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT) or Agility. <strong>Saves:</strong> FIT, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
 <p><strong>Proficiencies:</strong> All armor and shields; simple and martial weapons.</p>
 <h3>Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
@@ -285,7 +285,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Artificer</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">An inventor who augments gear and crafts magical items. (BFRD Mechanist.)</p>
-<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> FIT, INS.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Light and medium armor, shields, all weapons, tinker tools + two tools.</p>
 <h3>Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Augments</th><th>Items</th><th>Features</th></tr></thead><tbody>
@@ -321,7 +321,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Monk</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A martial artist channeling technique points for supernatural strikes and mobility.</p>
-<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Fitness (Agility). <strong>Saves:</strong> FIT, Agility.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Simple weapons, shortswords; no armor.</p>
 <h3>Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Martial Arts</th><th>Technique Pts</th><th>Movement</th><th>Features</th></tr></thead><tbody>
@@ -342,7 +342,7 @@
 <p>Spend technique points on Flurry of Blows, Patient Defense, Step of the Wind, and more. Regain points on short or long rest (30 min meditation).</p>
 <h4>Unarmored Defense</h4>
 <p><em>1st-level feature</em></p>
-<p>AC = 10 + Agility modifier + INS modifier while unarmored and without shield.</p>
+<p>AC = 10 + Fitness modifier + INS modifier while unarmored and without shield.</p>
 <h3>Subclasses</h3>
 <p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
 <ul>
@@ -355,7 +355,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Paladin</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A holy warrior combining martial prowess with divine spells and smites.</p>
-<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> INS (advantage on save).</p>
 <p><strong>Proficiencies:</strong> All armor, shields, simple and martial weapons.</p>
 <p><strong>Spellcasting:</strong> Divine spells known (half caster). Oath spells always known.</p>
 <p><strong>Max spell circle by level:</strong></p>
@@ -402,7 +402,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Ranger</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A wilderness hunter marked by mystic quarry and primordial magic.</p>
-<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT) or Agility. <strong>Saves:</strong> FIT, Agility.</p>
+<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Light and medium armor, shields, all weapons; herbalist, navigator, or trapper tools.</p>
 <p><strong>Spellcasting:</strong> Primordial spells known (half caster).</p>
 <p><strong>Max spell circle by level:</strong></p>
@@ -449,7 +449,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Rogue</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A skilled infiltrator delivering precision Sneak Attack damage.</p>
-<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Agility. <strong>Saves:</strong> Agility, INS.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Light armor; simple and martial finesse weapons; thieves' tools; four skills.</p>
 <h3>Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Sneak Attack</th><th>Features</th></tr></thead><tbody>
@@ -483,7 +483,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Sorcerer</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">An innate spellcaster shaping arcane magic with metamagic and sorcery points.</p>
-<p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> FIT, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Simple weapons.</p>
 <p><strong>Spellcasting:</strong> Arcane spells known. Sorcery points for metamagic and flexible casting.</p>
 <p><strong>Max spell circle by level:</strong></p>
@@ -530,7 +530,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Warlock</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A pact-bound spellcaster with eldritch invocations and short-rest recovery.</p>
-<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Light and medium armor, shields, simple weapons.</p>
 <p><strong>Spellcasting:</strong> Arcane spells (pact magic). Few slots, short-rest recovery. Invocations at 2nd level.</p>
 <p><strong>Max spell circle by level:</strong></p>
@@ -578,7 +578,7 @@
 <button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Wizard</span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A scholarly arcane caster with a spellbook and ritual mastery.</p>
-<p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
 <p><strong>Proficiencies:</strong> Simple weapons.</p>
 <p><strong>Spellcasting:</strong> Arcane spells (prepared from spellbook). Rituals and rote spells.</p>
 <p><strong>Max spell circle by level:</strong></p>
