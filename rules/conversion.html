@@ -82,15 +82,15 @@
     <p>Your proficiency level in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) equals your <strong>You-Meet-In-A-Tavern</strong> (YMIAT) level (which is your D&amp;D 5e level divided by 2, rounded up).</p>
     <p>When converting from fifth edition, record only the skills the character actually possesses. This approach keeps character sheets compact and supports clear, consistent roleplaying.</p>
     <hr>
-    <h2 id="converting-hit-points">Converting Hit Points</h2>
-    <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a compressed hit point scale. Most creatures have roughly one-tenth of their fifth edition hit points (rounded up).</p>
-    <p>For player characters, use the <strong>You-Meet-In-A-Tavern</strong> (YMIAT) hit point formula:</p>
+    <h2 id="converting-max-wounds">Converting Max Wounds</h2>
+    <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a compressed Wounds scale. Most creatures have roughly one-tenth of their fifth edition hit points (rounded up) as <strong>Max Wounds</strong>. Creatures start at 0 Wounds (WD).</p>
+    <p>For player characters, use the <strong>You-Meet-In-A-Tavern</strong> (YMIAT) Max Wounds formula:</p>
     <div class="formula-box">
-      <span class="formula-label">Hit Points</span>
+      <span class="formula-label">Max Wounds</span>
       <span class="formula-equation">
-        <span class="variable">HP</span>
+        <span class="variable">Max Wounds</span>
         <span class="operator">=</span>
-        <span class="variable">class hit die maximum</span>
+        <span class="variable">class Max Wounds base</span>
         <span class="operator">+</span>
         <span class="variable">Fitness modifier</span>
         <span class="operator">+</span>
@@ -101,7 +101,7 @@
         <span>)</span>
       </span>
     </div>
-    <p>Damage and healing are expressed in <strong>hits</strong> (or <strong>wounds</strong>) rather than raw numbers.</p>
+    <p>Harm adds Wounds; healing removes Wounds. A successful weapon attack typically inflicts <strong>1 Wound</strong>.</p>
     <hr>
     <h2 id="converting-weapons">Converting Weapons</h2>
     <p>Weapon damage dice from fifth edition convert to fixed bonuses to hit in <strong>You-Meet-In-A-Tavern</strong> (YMIAT):</p>
@@ -129,10 +129,10 @@
     </div>
     <p><strong>Example: Weapon Attack Roll</strong></p>
     <p>A fighter with Fitness +2 and a shortsword (attack bonus +2) who is proficient with martial weapons makes an attack roll with advantage (roll 2d20, take highest) + 2 (weapon) + 2 (Fitness) = highest of 2d20 + 4.</p>
-    <p>On a hit, the attack deals 1 hit of damage. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) assumes that better weapons improve the chance to do damage (to hit), while spells generally increase the number of hits dealt and/or apply additional effects.</p>
+    <p>On a hit, the attack inflicts 1 Wound. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) assumes that better weapons improve the chance to hit, while spells generally increase the number of Wounds inflicted and/or apply additional effects.</p>
     <hr>
-    <h2 id="converting-damage">Converting Damage (Spells and Effects)</h2>
-    <p>Damage and healing expressed in dice are converted into hits for <strong>You-Meet-In-A-Tavern</strong> (YMIAT). To convert dice-based values from fifth edition:</p>
+    <h2 id="converting-wounds">Converting Wounds (Spells and Effects)</h2>
+    <p>Harm and healing expressed in dice are converted into Wounds for <strong>You-Meet-In-A-Tavern</strong> (YMIAT). To convert dice-based values from fifth edition:</p>
     <ol>
       <li>Take the maximum total of the dice expression.</li>
       <li>Divide by 6.</li>
@@ -140,16 +140,16 @@
     </ol>
     <p><strong>Examples:</strong></p>
     <ul>
-      <li>3d4 → maximum 12 → 12 / 6 = 2 hits</li>
-      <li>1d8 → maximum 8 → 8 / 6 ≈ 1 hit</li>
-      <li>2d8 → maximum 16 → 16 / 6 ≈ 3 hits</li>
+      <li>3d4 → maximum 12 → 12 / 6 = 2 Wounds</li>
+      <li>1d8 → maximum 8 → 8 / 6 ≈ 1 Wound</li>
+      <li>2d8 → maximum 16 → 16 / 6 ≈ 3 Wounds</li>
     </ul>
     <p>For mixed expressions, convert dice and flat bonuses separately, then add the results.</p>
     <p><strong>Example: 2d4 + 5</strong></p>
     <ul>
-      <li>Dice: maximum 8 → 8 / 6 ≈ 1 hit</li>
-      <li>Static bonus: 5 / 6 ≈ 1 hit</li>
-      <li>Total: 2 hits.</li>
+      <li>Dice: maximum 8 → 8 / 6 ≈ 1 Wound</li>
+      <li>Static bonus: 5 / 6 ≈ 1 Wound</li>
+      <li>Total: 2 Wounds.</li>
     </ul>
     <hr>
     <h2 id="converting-armor-class">Converting Armor Class</h2>
@@ -161,7 +161,7 @@
     <p>As an option, a group can instead retain the standard fifth edition Armor Class rules for resolving attacks against player characters.</p>
     <hr>
     <h2 id="converting-recovery">Converting Hit Dice and Recovery</h2>
-    <p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character's level. The player can spend Recovery Points to restore hit points and/or Spell Power in any combination.</p>
+    <p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character's level. The player can spend Recovery Points to heal Wounds and/or regain Spell Power in any combination.</p>
     <p>A character's maximum Recovery Points equal the character's level. During a long rest, a character regains half of their total Recovery Points (rounded up), similar to the way hit dice are recovered in the core fifth edition rules.</p>
   </div>
 </div></main>

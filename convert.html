@@ -18,7 +18,7 @@
 <main>
   <h1>Character Converter</h1>
   <div class="content">
-    <p class="lede">Convert your D&D 5e character to <strong>You-Meet-In-A-Tavern</strong> (YMIAT). Enter your ability scores, class, and level to automatically calculate <strong>You-Meet-In-A-Tavern</strong> (YMIAT) modifiers and hit points.</p>
+    <p class="lede">Convert your D&D 5e character to <strong>You-Meet-In-A-Tavern</strong> (YMIAT). Enter your ability scores, class, and level to automatically calculate <strong>You-Meet-In-A-Tavern</strong> (YMIAT) modifiers and Max Wounds.</p>
     
     <div class="converter-form">
       <h2>Character Information</h2>
@@ -175,9 +175,9 @@ function formatModifier(mod){
   return mod >= 0 ? `+${mod}` : `${mod}`;
 }
 
-// Get class HP base
-function getClassHPBase(className){
-  const classHP = {
+// Get class Max Wounds base
+function getClassMaxWoundsBase(className){
+  const classMaxWounds = {
     'Artificer': 8,
     'Barbarian': 12,
     'Bard': 8,
@@ -192,7 +192,7 @@ function getClassHPBase(className){
     'Warlock': 8,
     'Wizard': 6
   };
-  return classHP[className] || 8;
+  return classMaxWounds[className] || 8;
 }
 
 // Generate character sheet dynamically
@@ -230,9 +230,9 @@ function generateCharacterSheet(){
   const easyLevel = convertLevel(dndLevel);
   const proficiencyLevel = calculateProficiencyLevel(dndLevel);
   
-  // Calculate HP
-  const classHPBase = getClassHPBase(className);
-  const maxHP = classHPBase + fitnessMod + (easyLevel - 1);
+  // Calculate Max Wounds
+  const classMaxWoundsBase = getClassMaxWoundsBase(className);
+  const maxWounds = classMaxWoundsBase + fitnessMod + (easyLevel - 1);
   
   // Calculate Defense Bonus (AC - 10)
   const defenseBonus = ac - 10;
@@ -259,11 +259,11 @@ function generateCharacterSheet(){
       insight: insightScore,
       willpower: willpowerScore
     },
-    hitPoints: {
-      maximum: maxHP,
-      current: maxHP
+    wounds: {
+      current: 0,
+      maximum: maxWounds
     },
-    classHPBase: classHPBase
+    classMaxWoundsBase: classMaxWoundsBase
   });
 }
 
@@ -304,8 +304,9 @@ function displayCharacterSheet(character){
         <h3>Combat</h3>
         <div class="combat-stats">
           <div class="hp-display">
-            <div class="hp-name">Hit Points</div>
-            <div class="hp-value"><span class="hp-number">${character.hitPoints.maximum}</span><span class="hp-slash">/</span></div>
+            <div class="hp-name">Wounds</div>
+            <div class="hp-value"><span class="hp-number">${character.wounds.current}</span><span class="hp-slash">/</span><span class="hp-number">${character.wounds.maximum}</span></div>
+            <div class="hp-sub">WD / Max WD</div>
           </div>
           <div class="defense-display">
             <div class="defense-name">Defense Bonus</div>

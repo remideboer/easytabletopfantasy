@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classes | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Character classes for You-Meet-In-A-Tavern (YMIAT), adapted from Black Flag for 10-level play." />
+<link rel="canonical" href="rules/classes.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+<meta property="og:title" content="Classes | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Character classes for You-Meet-In-A-Tavern (YMIAT)." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/classes.html" />
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Character Classes</h1>
+  <div class="content">
+    <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) compresses the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
+    <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots.</p>
+
+    <h2 id="classes-at-a-glance">Classes at a Glance</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Class</th><th>Max WD</th><th>Key Ability</th><th>Saves</th><th>Spell Source</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#barbarian">Barbarian</a></td><td>12</td><td>FIT</td><td>FIT</td><td>Martial</td></tr>
+        <tr><td><a href="#bard">Bard</a></td><td>8</td><td>WIL</td><td>FIT, WIL</td><td>Arcane</td></tr>
+        <tr><td><a href="#cleric">Cleric</a></td><td>8</td><td>INS</td><td>INS, WIL</td><td>Divine</td></tr>
+        <tr><td><a href="#druid">Druid</a></td><td>8</td><td>INS</td><td>INS, WIL</td><td>Primordial</td></tr>
+        <tr><td><a href="#fighter">Fighter</a></td><td>10</td><td>FIT/DEX</td><td>FIT, WIL</td><td>Martial</td></tr>
+        <tr><td><a href="#artificer">Artificer</a></td><td>8</td><td>INS</td><td>FIT, INS</td><td>Martial/Tech</td></tr>
+        <tr><td><a href="#monk">Monk</a></td><td>8</td><td>DEX</td><td>FIT, DEX</td><td>Martial</td></tr>
+        <tr><td><a href="#paladin">Paladin</a></td><td>10</td><td>FIT</td><td>INS, WIL</td><td>Divine/Martial</td></tr>
+        <tr><td><a href="#ranger">Ranger</a></td><td>10</td><td>FIT/DEX</td><td>FIT, DEX</td><td>Primordial/Martial</td></tr>
+        <tr><td><a href="#rogue">Rogue</a></td><td>8</td><td>DEX</td><td>DEX, INS</td><td>Martial</td></tr>
+        <tr><td><a href="#sorcerer">Sorcerer</a></td><td>6</td><td>WIL</td><td>FIT, WIL</td><td>Arcane</td></tr>
+        <tr><td><a href="#warlock">Warlock</a></td><td>8</td><td>WIL</td><td>INS, WIL</td><td>Arcane</td></tr>
+        <tr><td><a href="#wizard">Wizard</a></td><td>6</td><td>INS</td><td>INS, WIL</td><td>Arcane</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="lineages-controls">
+      <button id="expand-all-classes" class="lineage-control-btn" onclick="expandAllClasses()">Expand All</button>
+      <button id="collapse-all-classes" class="lineage-control-btn" onclick="collapseAllClasses()">Collapse All</button>
+    </div>
+
+    <div class="lineages-container">
+<div class="lineage-item" id="barbarian">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Barbarian</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A primal warrior who channels fury in battle. High Max Wounds, melee dominance, and resistance while raging.</p>
+<p><strong>Max Wounds (start):</strong> 12 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
+<p><strong>Proficiencies:</strong> Light and medium armor, shields, simple and martial weapons, herbalism tools. Skills: choose two from Animal Handling, Athletics, Intimidation, Nature, Perception, Survival.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Rages</th><th>Rage +</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>2</td><td>+2</td><td>Rage, Unarmored Defense, Danger Sense, Reckless Attack</td></tr>
+<tr><td>2</td><td>2</td><td>+2</td><td>Barbarian Subclass</td></tr>
+<tr><td>3</td><td>3</td><td>+2</td><td>Improvement; Fast Movement, Multiattack, Feral Instinct</td></tr>
+<tr><td>4</td><td>3</td><td>+2</td><td>Subclass Feature; Improvement</td></tr>
+<tr><td>5</td><td>4</td><td>+3</td><td>Brutal Critical (1 die); Heroic Boon</td></tr>
+<tr><td>6</td><td>4</td><td>+3</td><td>Subclass Feature</td></tr>
+<tr><td>7</td><td>5</td><td>+3</td><td>Brutal Critical (2 dice); Relentless Rage; Improvement</td></tr>
+<tr><td>8</td><td>5</td><td>+3</td><td>Subclass Feature</td></tr>
+<tr><td>9</td><td>6</td><td>+4</td><td>Brutal Critical (3 dice); Unyielding Might; Improvement</td></tr>
+<tr><td>10</td><td>Unlimited</td><td>+5</td><td>Epic Boon; Improvement</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Unarmored Defense</h4>
+<p><em>1st-level feature</em></p>
+<p>While you aren't wearing armor, your base AC equals 10 + 2× your Fitness modifier. You can use a shield and still gain this benefit.</p>
+<h4>Rage</h4>
+<p><em>1st-level feature (free action)</em></p>
+<p>On your turn, you can rage as a free action. While raging (and not wearing heavy armor): advantage on FIT checks and saves; bonus melee damage per Rage + column; resistance to bludgeoning, piercing, and slashing (attackers have disadvantage). You can't cast or concentrate on spells while raging. Rage lasts 1 minute or ends early as in BFRD. Uses per long rest per progression table.</p>
+<h4>Danger Sense</h4>
+<p><em>1st-level feature</em></p>
+<p>You have advantage on Fitness saving throws unless you have the Incapacitated condition.</p>
+<h4>Reckless Attack</h4>
+<p><em>1st-level feature</em></p>
+<p>When you attack on your turn, you can attack recklessly: advantage on melee FIT attacks this turn, but disadvantage on your Defense roll until the start of your next turn.</p>
+<h4>Improvement</h4>
+<p><em>3rd, 5th, 7th, 9th, and 10th level</em></p>
+<p>Increase one ability by 2, two abilities by 1 each, or one ability by 1 and choose a martial talent.</p>
+<h4>Heroic Boon</h4>
+<p><em>5th-level feature</em></p>
+<p>Choose one: <strong>Instant Rage</strong> (rage without a free action when you roll initiative and use Fast Movement); <strong>Stubborn Rage</strong> (rage ends only when duration expires, you fall unconscious, or you choose to end it); <strong>Bloody Rage</strong> (while raging, slashing damage you deal with weapon attacks ignores resistance); <strong>Vengeful Rage</strong> (when damaged while raging, stacking advantage on your first attack against that creature next turn).</p>
+<h4>Relentless Rage</h4>
+<p><em>7th-level feature</em></p>
+<p>While raging, if reduced to Max Wounds, make a DC 10 FIT save to avoid falling unconscious until rage ends. DC increases by 5 each use; resets on rest.</p>
+<h4>Epic Boon: Primal Champion</h4>
+<p><em>10th-level feature</em></p>
+<p>Your Fitness modifier increases by 2 (maximum modifier now +7).</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Berserker</strong></li>
+<li><strong>Wild Fury</strong></li>
+<li><strong>Chaos</strong></li>
+<li><strong>Four Winds</strong></li>
+<li><strong>Kraken</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/barbarian/" rel="noopener">BFRD Barbarian</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="bard">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Bard</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A versatile performer whose magic and inspiration support allies and confound foes.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> FIT, WIL.</p>
+<p><strong>Proficiencies:</strong> Light armor; simple weapons and martial finesse weapons; three musical instruments or tools; any three skills.</p>
+<p><strong>Spellcasting:</strong> Arcane spells. Spells known (no preparation). Rituals known per level.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>2</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>4</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>5</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>Bardic Inspiration (d6), Spellcasting, Expertise (2)</td></tr>
+<tr><td>2</td><td>Bard Subclass; Bardic Performance (Celebrate Life, Cutting Words)</td></tr>
+<tr><td>3</td><td>Improvement; Font of Inspiration</td></tr>
+<tr><td>4</td><td>Subclass Feature; Improvement; Bardic Inspiration (d8)</td></tr>
+<tr><td>5</td><td>Bardic Performance: Clarity of Thought; Expertise (4); Heroic Boon</td></tr>
+<tr><td>6</td><td>Subclass Feature; Magical Secrets</td></tr>
+<tr><td>7</td><td>Improvement; Bardic Inspiration (d10)</td></tr>
+<tr><td>8</td><td>Subclass Feature; Grand Performance</td></tr>
+<tr><td>9</td><td>Improvement; Magical Secrets</td></tr>
+<tr><td>10</td><td>Epic Boon: Curtain Call; Improvement</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Bardic Inspiration</h4>
+<p><em>1st-level feature (action)</em></p>
+<p>Grant a d6 inspiration die to a creature within 60 feet (not yourself). Uses equal to WIL modifier per long rest. Die becomes d8 at 4th, d10 at 7th. Font of Inspiration (3rd): regain uses on short or long rest; reaction to add die to failed roll.</p>
+<h4>Bardic Performance</h4>
+<p><em>2nd-level feature</em></p>
+<p>Performance effects as action; maintain with action each turn. Uses per PB per long rest. Celebrate Life heals allies; Cutting Words subtracts inspiration die from enemy rolls; Clarity of Thought (5th) grants charm/frighten protection.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Lore</strong></li>
+<li><strong>Victory</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/bard/" rel="noopener">BFRD Bard</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="cleric">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Cleric</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A divine champion who channels deity power through spells and channel divinity.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Proficiencies:</strong> Light and medium armor, shields, simple weapons. Skills: History, Insight, Medicine, Persuasion, Religion (choose two).</p>
+<p><strong>Spellcasting:</strong> Divine spells (prepared). Domain spells always prepared.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>2</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>4</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>5</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>Manifestation of Faith, Spellcasting</td></tr>
+<tr><td>2</td><td>Cleric Subclass; Channel Divinity: Turn the Profane</td></tr>
+<tr><td>3</td><td>Improvement</td></tr>
+<tr><td>4</td><td>Subclass Feature; Improvement; Destroy the Profane (CR ½)</td></tr>
+<tr><td>5</td><td>Channel Divinity (2/rest); Heroic Boon</td></tr>
+<tr><td>6</td><td>Subclass Feature; Destroy the Profane (CR 1)</td></tr>
+<tr><td>7</td><td>Improvement; Divine Intervention</td></tr>
+<tr><td>8</td><td>Subclass Feature; Destroy the Profane (CR 2)</td></tr>
+<tr><td>9</td><td>Improvement; Channel Divinity (3/rest)</td></tr>
+<tr><td>10</td><td>Epic Boon: Divine Herald; Destroy the Profane (CR 4)</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Channel Divinity</h4>
+<p><em>2nd-level feature (free action)</em></p>
+<p>Turn the Profane: Fiends and Undead within 30 feet make INS save or are turned. Uses increase at 5th and 9th. Destroy the Profane destroys turned creatures at or below listed CR.</p>
+<h4>Manifestation of Faith</h4>
+<p><em>1st-level feature</em></p>
+<p>Manifest Might (heavy armor, martial weapon, +PB radiant/necrotic once per turn) or Manifest Miracles (extra cantrip, +PB to cantrip damage).</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Life</strong></li>
+<li><strong>Light</strong></li>
+<li><strong>War</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/cleric/" rel="noopener">BFRD Cleric</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="druid">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Druid</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A guardian of nature wielding primordial magic and wild shape.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Proficiencies:</strong> Light and medium armor, shields, simple weapons, herbalist tools.</p>
+<p><strong>Spellcasting:</strong> Primordial spells (prepared). Ring spells always prepared.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>2</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>4</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>5</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Wild Shape</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>—</td><td>Druidic, Nature's Gift, Spellcasting</td></tr>
+<tr><td>2</td><td>1/rest</td><td>Druid Subclass; Wild Shape (Beast Form, Draw Power)</td></tr>
+<tr><td>3</td><td>1/rest</td><td>Improvement; Improved Beast Form (CR ¼)</td></tr>
+<tr><td>4</td><td>2/rest</td><td>Subclass Feature; Improvement</td></tr>
+<tr><td>5</td><td>2/rest</td><td>Improved Beast Form (CR ½); Heroic Boon</td></tr>
+<tr><td>6</td><td>2/rest</td><td>Subclass Feature</td></tr>
+<tr><td>7</td><td>3/rest</td><td>Improved Beast Form (CR 1); Improvement</td></tr>
+<tr><td>8</td><td>3/rest</td><td>Subclass Feature; Nature's Grace</td></tr>
+<tr><td>9</td><td>4/rest</td><td>Improved Beast Form (CR 2); Improvement</td></tr>
+<tr><td>10</td><td>4/rest</td><td>Epic Boon: Archdruid</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Wild Shape</h4>
+<p><em>2nd-level feature (free action for Beast Form)</em></p>
+<p>Beast Form: assume a known beast form. Draw Power: recover an expended spell circle ≤ PB. Uses per rest per table.</p>
+<h4>Nature's Gift</h4>
+<p><em>1st-level feature (action)</em></p>
+<p>Heal a creature within 5 feet for PB d4s (minimum 2d4). Uses per PB per long rest. No effect on Constructs or Undead.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Leaf</strong></li>
+<li><strong>Shifter</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/druid/" rel="noopener">BFRD Druid</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="fighter">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Fighter</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A master of weapons and battlefield tactics with action surge and martial actions.</p>
+<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT) or Agility. <strong>Saves:</strong> FIT, WIL.</p>
+<p><strong>Proficiencies:</strong> All armor and shields; simple and martial weapons.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>Last Stand, Martial Action</td></tr>
+<tr><td>2</td><td>Fighter Subclass; Action Surge</td></tr>
+<tr><td>3</td><td>Improvement; Multiattack (2)</td></tr>
+<tr><td>4</td><td>Subclass Feature; Improvement</td></tr>
+<tr><td>5</td><td>Heroic Boon</td></tr>
+<tr><td>6</td><td>Subclass Feature; Multiattack (3)</td></tr>
+<tr><td>7</td><td>Improvement; Action Surge (2/rest)</td></tr>
+<tr><td>8</td><td>Subclass Feature</td></tr>
+<tr><td>9</td><td>Improvement; Multiattack (4)</td></tr>
+<tr><td>10</td><td>Epic Boon: Turn the Tide; Action Surge (3/rest)</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Martial Action</h4>
+<p><em>1st-level feature (second action if no movement used)</em></p>
+<p>Choose Aim, Guard, Quick Strike, or Wind Up. In YMIAT, use as your second action when you have not moved this turn (attacks at disadvantage if second action is an attack).</p>
+<h4>Action Surge</h4>
+<p><em>2nd-level feature</em></p>
+<p>Gain another action on your turn once per short rest (twice at 7th, thrice at 10th; once per turn max).</p>
+<h4>Last Stand</h4>
+<p><em>1st-level feature (reaction)</em></p>
+<p>When damage would bring you below half Max Wounds, spend hit dice (up to PB) to heal.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Spell Blade</strong></li>
+<li><strong>Weapon Master</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/fighter/" rel="noopener">BFRD Fighter</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="artificer">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Artificer</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">An inventor who augments gear and crafts magical items. (BFRD Mechanist.)</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> FIT, INS.</p>
+<p><strong>Proficiencies:</strong> Light and medium armor, shields, all weapons, tinker tools + two tools.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Augments</th><th>Items</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>—</td><td>—</td><td>Eyes of the Maker, Shard of Creation</td></tr>
+<tr><td>2</td><td>2</td><td>3</td><td>Artificer Subclass; Augment, Efficient Action</td></tr>
+<tr><td>3</td><td>3</td><td>3</td><td>Improvement; Multiattack (2)</td></tr>
+<tr><td>4</td><td>4</td><td>4</td><td>Subclass Feature; Improvement; Rapid Augment</td></tr>
+<tr><td>5</td><td>5</td><td>4</td><td>Greater Creation; Heroic Boon</td></tr>
+<tr><td>6</td><td>6</td><td>5</td><td>Subclass Feature; Engineer's Insight</td></tr>
+<tr><td>7</td><td>7</td><td>5</td><td>Improvement; Ranged Augment</td></tr>
+<tr><td>8</td><td>8</td><td>6</td><td>Subclass Feature; Always Prepared</td></tr>
+<tr><td>9</td><td>8</td><td>7</td><td>Improvement; Perfect Creation</td></tr>
+<tr><td>10</td><td>9</td><td>7</td><td>Epic Boon</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Augment</h4>
+<p><em>2nd-level feature</em></p>
+<p>Apply augment effects to items you carry. Know augment effects and maintain augmented items per progression table.</p>
+<h4>Shard of Creation</h4>
+<p><em>1st-level feature</em></p>
+<p>Tiny magical shard with charges equal to INS modifier (min 1), regained on long rest. Inspire, Mend, and other properties per BFRD.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Alchemist</strong></li>
+<li><strong>Armorer</strong></li>
+<li><strong>Artillerist</strong></li>
+<li><strong>Battle Smith</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/mechanist/" rel="noopener">BFRD Artificer</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="monk">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Monk</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A martial artist channeling technique points for supernatural strikes and mobility.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Fitness (Agility). <strong>Saves:</strong> FIT, Agility.</p>
+<p><strong>Proficiencies:</strong> Simple weapons, shortswords; no armor.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Martial Arts</th><th>Technique Pts</th><th>Movement</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>1d4</td><td>—</td><td>—</td><td>Martial Arts, Unarmored Defense</td></tr>
+<tr><td>2</td><td>1d4</td><td>3</td><td>+10 ft</td><td>Monk Subclass; Techniques, Unarmored Movement</td></tr>
+<tr><td>3</td><td>1d6</td><td>5</td><td>+10 ft</td><td>Improvement; Multiattack (2), Stunning Strike</td></tr>
+<tr><td>4</td><td>1d6</td><td>7</td><td>+15 ft</td><td>Subclass Feature; Improvement; Empowered Strikes, Evasion</td></tr>
+<tr><td>5</td><td>1d6</td><td>9</td><td>+15 ft</td><td>Perfect Motion; Heroic Boon</td></tr>
+<tr><td>6</td><td>1d8</td><td>11</td><td>+20 ft</td><td>Subclass Feature</td></tr>
+<tr><td>7</td><td>1d8</td><td>13</td><td>+20 ft</td><td>Improvement; Astral Teachings, Diamond Soul</td></tr>
+<tr><td>8</td><td>1d8</td><td>15</td><td>+25 ft</td><td>Subclass Feature; Timeless Self</td></tr>
+<tr><td>9</td><td>1d10</td><td>17</td><td>+25 ft</td><td>Improvement; Empty Body</td></tr>
+<tr><td>10</td><td>1d10</td><td>20</td><td>+30 ft</td><td>Epic Boon: Boundless Technique</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Techniques</h4>
+<p><em>2nd-level feature</em></p>
+<p>Spend technique points on Flurry of Blows, Patient Defense, Step of the Wind, and more. Regain points on short or long rest (30 min meditation).</p>
+<h4>Unarmored Defense</h4>
+<p><em>1st-level feature</em></p>
+<p>AC = 10 + Agility modifier + INS modifier while unarmored and without shield.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Flickering Dark</strong></li>
+<li><strong>Open Hand</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/monk/" rel="noopener">BFRD Monk</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="paladin">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Paladin</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A holy warrior combining martial prowess with divine spells and smites.</p>
+<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Proficiencies:</strong> All armor, shields, simple and martial weapons.</p>
+<p><strong>Spellcasting:</strong> Divine spells known (half caster). Oath spells always known.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>—</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>1</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>2</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>3</td></tr>
+<tr><td>8</td><td>3</td></tr>
+<tr><td>9</td><td>4</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>Divine Sense, Lay on Hands</td></tr>
+<tr><td>2</td><td>Paladin Subclass; Divine Smite, Martial Action, Spellcasting</td></tr>
+<tr><td>3</td><td>Improvement; Multiattack (2)</td></tr>
+<tr><td>4</td><td>Subclass Feature; Improvement; Aura of Protection</td></tr>
+<tr><td>5</td><td>Heroic Boon; Aura of Courage</td></tr>
+<tr><td>6</td><td>Subclass Feature; Channel Divinity (2/rest)</td></tr>
+<tr><td>7</td><td>Improvement; Cleansing Touch</td></tr>
+<tr><td>8</td><td>Subclass Feature; Aura Improvements (30 ft)</td></tr>
+<tr><td>9</td><td>Improvement; Channel Divinity (3/rest)</td></tr>
+<tr><td>10</td><td>Epic Boon: Aura of Salvation</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Lay on Hands</h4>
+<p><em>1st-level feature (action)</em></p>
+<p>Pool of healing equal to 5 × paladin level, restored on long rest. Restore Wounds to a willing creature you touch.</p>
+<h4>Divine Smite</h4>
+<p><em>2nd-level feature</em></p>
+<p>Once per turn on hit, spend Spell Power to deal extra radiant damage (2d8 + 1d8 per circle above 1st, max 5d8; +1d8 vs Fiend/Undead).</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Devotion</strong></li>
+<li><strong>Justice</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/paladin/" rel="noopener">BFRD Paladin</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="ranger">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Ranger</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A wilderness hunter marked by mystic quarry and primordial magic.</p>
+<p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT) or Agility. <strong>Saves:</strong> FIT, Agility.</p>
+<p><strong>Proficiencies:</strong> Light and medium armor, shields, all weapons; herbalist, navigator, or trapper tools.</p>
+<p><strong>Spellcasting:</strong> Primordial spells known (half caster).</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>—</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>1</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>2</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>3</td></tr>
+<tr><td>8</td><td>3</td></tr>
+<tr><td>9</td><td>4</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>Explorer, Mystic Mark</td></tr>
+<tr><td>2</td><td>Ranger Subclass; Martial Action, Spellcasting</td></tr>
+<tr><td>3</td><td>Improvement; Multiattack (2); Mystic Mark (d6)</td></tr>
+<tr><td>4</td><td>Subclass Feature; Improvement; Empowered Mark</td></tr>
+<tr><td>5</td><td>Stalker's Step; Heroic Boon</td></tr>
+<tr><td>6</td><td>Subclass Feature; Mystic Mark (d8)</td></tr>
+<tr><td>7</td><td>Improvement; Keensense</td></tr>
+<tr><td>8</td><td>Subclass Feature; Strider</td></tr>
+<tr><td>9</td><td>Improvement; Mystic Mark (d10)</td></tr>
+<tr><td>10</td><td>Epic Boon: Foe Slayer</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Mystic Mark</h4>
+<p><em>1st-level feature</em></p>
+<p>Mark quarry on hit for extra damage (d4→d6→d8→d10). Uses per PB per long rest.</p>
+<h4>Explorer</h4>
+<p><em>1st-level feature</em></p>
+<p>Climbing or swimming speed; advantage tracking; ignore difficult terrain movement penalty.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Hunter</strong></li>
+<li><strong>Pack Master</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/ranger/" rel="noopener">BFRD Ranger</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="rogue">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Rogue</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A skilled infiltrator delivering precision Sneak Attack damage.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Agility. <strong>Saves:</strong> Agility, INS.</p>
+<p><strong>Proficiencies:</strong> Light armor; simple and martial finesse weapons; thieves' tools; four skills.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Sneak Attack</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>1d6</td><td>Expertise (2), Sneak Attack, Thieves' Cant</td></tr>
+<tr><td>2</td><td>1d6</td><td>Rogue Subclass; Cunning Action (free action)</td></tr>
+<tr><td>3</td><td>2d6</td><td>Improvement; Uncanny Dodge</td></tr>
+<tr><td>4</td><td>3d6</td><td>Subclass Feature; Improvement; Evasion, Expertise (4)</td></tr>
+<tr><td>5</td><td>4d6</td><td>Reliable Talent; Heroic Boon</td></tr>
+<tr><td>6</td><td>5d6</td><td>Subclass Feature; Precise Critical (1 die)</td></tr>
+<tr><td>7</td><td>6d6</td><td>Improvement; Keensense</td></tr>
+<tr><td>8</td><td>7d6</td><td>Subclass Feature; Precise Critical (2 dice)</td></tr>
+<tr><td>9</td><td>8d6</td><td>Improvement; Elusive</td></tr>
+<tr><td>10</td><td>10d6</td><td>Epic Boon: Stroke of Luck</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Sneak Attack</h4>
+<p><em>1st-level feature</em></p>
+<p>Once per turn, extra damage when you have advantage or an ally is within 5 feet of target. Finesse or ranged weapons only.</p>
+<h4>Cunning Action</h4>
+<p><em>2nd-level feature (free action)</em></p>
+<p>Dash, Disengage, or Hide as a free action on your turn.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Enforcer</strong></li>
+<li><strong>Thief</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/rogue/" rel="noopener">BFRD Rogue</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="sorcerer">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Sorcerer</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">An innate spellcaster shaping arcane magic with metamagic and sorcery points.</p>
+<p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> FIT, WIL.</p>
+<p><strong>Proficiencies:</strong> Simple weapons.</p>
+<p><strong>Spellcasting:</strong> Arcane spells known. Sorcery points for metamagic and flexible casting.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>2</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>4</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>5</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Sorcery Pts</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>2</td><td>Font of Magic, Spellcasting</td></tr>
+<tr><td>2</td><td>3</td><td>Sorcerer Subclass; Metamagic (2)</td></tr>
+<tr><td>3</td><td>5</td><td>Improvement; Sorcerous Renewal</td></tr>
+<tr><td>4</td><td>7</td><td>Subclass Feature; Improvement; Metamagic (3)</td></tr>
+<tr><td>5</td><td>9</td><td>Heroic Boon</td></tr>
+<tr><td>6</td><td>11</td><td>Subclass Feature; Sorcerous Renewal (2 dice)</td></tr>
+<tr><td>7</td><td>13</td><td>Improvement; Devour Spell</td></tr>
+<tr><td>8</td><td>15</td><td>Subclass Feature; Metamagic (4)</td></tr>
+<tr><td>9</td><td>17</td><td>Improvement; Sorcerous Renewal (3 dice)</td></tr>
+<tr><td>10</td><td>21</td><td>Epic Boon: Arcane Conjunction; Metamagic (5)</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Metamagic</h4>
+<p><em>2nd-level feature</em></p>
+<p>Twist spells with sorcery points. Options include Careful, Quickened, Twinned, Heightened, and more per BFRD.</p>
+<h4>Font of Magic</h4>
+<p><em>1st-level feature</em></p>
+<p>Sorcery points per table; convert points and spell circles per BFRD flexible casting.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Chaos</strong></li>
+<li><strong>Draconic</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/sorcerer/" rel="noopener">BFRD Sorcerer</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="warlock">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Warlock</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A pact-bound spellcaster with eldritch invocations and short-rest recovery.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Proficiencies:</strong> Light and medium armor, shields, simple weapons.</p>
+<p><strong>Spellcasting:</strong> Arcane spells (pact magic). Few slots, short-rest recovery. Invocations at 2nd level.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>2</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>4</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>5</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Slots</th><th>Slot Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>1st</td><td>Pact Magic, Eldritch Invocations (2)</td></tr>
+<tr><td>2</td><td>2</td><td>1st</td><td>Warlock Subclass</td></tr>
+<tr><td>3</td><td>2</td><td>2nd</td><td>Improvement; Eldritch Invocations (3)</td></tr>
+<tr><td>4</td><td>2</td><td>2nd</td><td>Subclass Feature; Improvement</td></tr>
+<tr><td>5</td><td>2</td><td>3rd</td><td>Heroic Boon; Eldritch Invocations (4)</td></tr>
+<tr><td>6</td><td>2</td><td>3rd</td><td>Subclass Feature</td></tr>
+<tr><td>7</td><td>2</td><td>4th</td><td>Improvement; Eldritch Invocations (5)</td></tr>
+<tr><td>8</td><td>2</td><td>4th</td><td>Subclass Feature</td></tr>
+<tr><td>9</td><td>2</td><td>5th</td><td>Improvement; Eldritch Invocations (6)</td></tr>
+<tr><td>10</td><td>2</td><td>5th</td><td>Epic Boon</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Pact Magic</h4>
+<p><em>1st-level feature</em></p>
+<p>Few spell slots of your slot level, all slots recovered on short rest. Spells known per BFRD. Also use Spell Power for additional casting per YMIAT magic rules.</p>
+<h4>Eldritch Invocations</h4>
+<p><em>1st-level feature</em></p>
+<p>Choose invocations to customize your pact. Gain more at listed levels.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Archfey</strong></li>
+<li><strong>Fiend</strong></li>
+<li><strong>Great Old One</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/warlock/" rel="noopener">BFRD Warlock</a> for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="wizard">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Wizard</span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A scholarly arcane caster with a spellbook and ritual mastery.</p>
+<p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS, WIL.</p>
+<p><strong>Proficiencies:</strong> Simple weapons.</p>
+<p><strong>Spellcasting:</strong> Arcane spells (prepared from spellbook). Rituals and rote spells.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>2</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>4</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>5</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3>Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>Arcane Recovery, Spellcasting</td></tr>
+<tr><td>2</td><td>Wizard Subclass; Magic Sense</td></tr>
+<tr><td>3</td><td>Improvement; Rote Spell (1st)</td></tr>
+<tr><td>4</td><td>Subclass Feature; Improvement; Superior Recovery</td></tr>
+<tr><td>5</td><td>Rote Spell (2nd); Heroic Boon</td></tr>
+<tr><td>6</td><td>Subclass Feature</td></tr>
+<tr><td>7</td><td>Improvement; Rote Spell (3rd); Spellguard</td></tr>
+<tr><td>8</td><td>Subclass Feature</td></tr>
+<tr><td>9</td><td>Improvement; Rote Spell (4th); Spell Mastery</td></tr>
+<tr><td>10</td><td>Epic Boon: Archmage</td></tr>
+</tbody></table></div>
+<h3>Class Features</h3>
+<h4>Spellbook</h4>
+<p><em>1st-level feature</em></p>
+<p>Prepare INS modifier + wizard level spells from spellbook. Add two spells per level. Arcane Recovery on short rest once per day.</p>
+<h4>Rote Spell</h4>
+<p><em>3rd-level feature</em></p>
+<p>Always-prepared spells at 1st (3rd), 2nd (5th), 3rd (7th), and 4th (9th) circle.</p>
+<h3>Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong>Battle Mage</strong></li>
+<li><strong>Cantrip Adept</strong></li>
+</ul>
+<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/wizard/" rel="noopener">BFRD Wizard</a> for YMIAT 10-level play.</p>
+</div></div>
+    </div>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script>
+function toggleClass(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  if(isExpanded){
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+function expandAllClasses(){
+  document.querySelectorAll('.lineage-content').forEach(c => { c.style.display = 'block'; c.classList.add('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => { i.textContent = '▲'; });
+  document.querySelectorAll('.lineage-header').forEach(b => { b.setAttribute('aria-expanded', 'true'); });
+}
+function collapseAllClasses(){
+  document.querySelectorAll('.lineage-content').forEach(c => { c.style.display = 'none'; c.classList.remove('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => { i.textContent = '▼'; });
+  document.querySelectorAll('.lineage-header').forEach(b => { b.setAttribute('aria-expanded', 'false'); });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lineage-content').forEach(c => { c.style.display = 'none'; });
+  document.querySelectorAll('.lineage-header').forEach(b => { b.setAttribute('aria-expanded', 'false'); });
+  if(window.location.hash){
+    const target = document.querySelector(window.location.hash);
+    if(target && target.classList.contains('lineage-item')){
+      const btn = target.querySelector('.lineage-header');
+      if(btn) toggleClass(btn);
+    }
+  }
+});
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

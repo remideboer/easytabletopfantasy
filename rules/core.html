@@ -42,12 +42,12 @@
 <h4>Exploration Mode</h4>
 <p>Exploration mode covers travel, investigation, and discovery. Characters move through environments, interact with the world, and make decisions about where to go and what to investigate. Time passes in minutes or hours. The Game Master describes locations and situations, and players decide how their characters explore, search, and interact with the environment.</p>
 <h4>Encounter Mode</h4>
-<p>Encounter mode handles structured, time-sensitive situations such as combat, chases, or other scenarios requiring precise timing. Time passes in rounds, with each character taking turns. On your turn, you can move up to your speed and take one action. Encounter mode provides clear rules for initiative, turn order, and action resolution. (An optional 3 Moments variant system is available for groups wanting more tactical granularity—see the <a href="combat.html#variant-3-moments-system">Combat</a> rules.)</p>
+<p>Encounter mode handles structured, time-sensitive situations such as combat, chases, or other scenarios requiring precise timing. Time passes in rounds, with each character taking turns. On your turn, you can move up to your speed and take one action—or two actions if you use none of your movement (see <a href="#actions-and-time-encounter-mode">Actions and Time</a>). Encounter mode provides clear rules for combat order and action resolution. (An optional 3 Moments variant system is available for groups wanting more tactical granularity—see the <a href="combat.html#variant-3-moments-system">Combat</a> rules.)</p>
 <p>The Game Master determines which mode applies at any given time, and the game can shift between modes as the situation changes. For example, exploration might transition to encounter mode when combat begins, then return to exploration or downtime afterward.</p>
 <hr>
 <h2 id="dice-and-tests">Dice and Tests</h2>
 <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses the d20 for nearly all resolution.</p>
-<p>All actions, attacks, saving throws, and ability checks are d20 tests. Some spells grant advantage (roll 2d20, take highest) or disadvantage (roll 2d20, take lowest) to d20 rolls. Damage is resolved as <strong>hits</strong>.</p>
+<p>All actions, attacks, saving throws, and ability checks are d20 tests. Some spells grant advantage (roll 2d20, take highest) or disadvantage (roll 2d20, take lowest) to d20 rolls. Harm is resolved as <strong>Wounds</strong>.</p>
 <hr>
 <h3 id="ability-scores">Abilities and Properties</h3>
 <p>In <strong>You-Meet-In-A-Tavern</strong> (YMIAT), each character has three core abilities:</p>
@@ -59,9 +59,10 @@
 <p>The value recorded for each ability is the modifier applied to all related tests, attacks, and defenses.</p>
 <p>In addition to abilities, characters track three core properties:</p>
 <ul>
-<li><strong>Hit Points (HP):</strong> Represents a character's physical health and resilience. HP is calculated as: class start Hit Points + Fitness modifier + (level - 1). Damage reduces HP, and when HP reaches 0, the character must make Death Saves. See <a href="#hit-points-and-scale">Hit Points and Scale</a> for details.</li>
+<li><strong>Wounds (WD):</strong> Current injury track. Characters start at 0 Wounds. Taking harm adds Wounds until Max Wounds is reached. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
+<li><strong>Max Wounds:</strong> Capacity before the Life rule applies. Max Wounds = class start Max Wounds + Fitness modifier + (level − 1). When Wounds reach Max Wounds, the Life rule triggers. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Spell Power (SP):</strong> Represents a spellcaster's magical capacity. SP equals 3 × spellcasting ability modifier. Spellcasters spend SP to cast spells and regain it through rest and Recovery Points. See <a href="#magic-and-spell-resources">Magic and Spell Resources</a> for details.</li>
-<li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character reaches 0 HP, they must make Death Saves; failing a Death Save costs one heart. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life and Death Saves</a> for details.</li>
+<li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character's Wounds reach Max Wounds, they must make Death Saves; failing a Death Save costs one heart. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life and Death Saves</a> for details.</li>
 </ul>
 <hr>
 <h3>Determining Ability Modifiers</h3>
@@ -109,14 +110,14 @@
 <p>Technical talents affect a character's noncombat abilities, granting utility-based improvements to social encounters, exploration, and object interactions.</p>
 <p><em>Note: <strong>You-Meet-In-A-Tavern</strong> (YMIAT)'s talent system is based on the talent system found in Tales of the Valiant and the Black Flag Reference Document. For detailed talent descriptions and complete talent lists, refer to those sources or consult with your Game Master.</em></p>
 <hr>
-<h3>Hit Points and Scale</h3>
-<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a compressed hit point scale. Player characters track hit points using the following expression:</p>
+<h3 id="wounds-and-scale">Wounds and Scale</h3>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a compressed Wounds scale. Characters start at <strong>0 Wounds (WD)</strong> and accumulate Wounds when harmed. Player characters calculate their <strong>Max Wounds</strong> using the following expression:</p>
 <div class="formula-box">
-  <span class="formula-label">Hit Points</span>
+  <span class="formula-label">Max Wounds</span>
   <span class="formula-equation">
-    <span class="variable">HP</span>
+    <span class="variable">Max Wounds</span>
     <span class="operator">=</span>
-    <span class="variable">class start Hit Points</span>
+    <span class="variable">class start Max Wounds</span>
     <span class="operator">+</span>
     <span class="variable">Fitness modifier</span>
     <span class="operator">+</span>
@@ -127,9 +128,9 @@
     <span>)</span>
   </span>
 </div>
-<p>Damage and healing are expressed in <strong>hits</strong> (or <strong>wounds</strong>) rather than raw numbers.</p>
+<p>Harm adds Wounds; healing removes Wounds. A successful weapon attack typically inflicts <strong>1 Wound</strong>; a critical hit inflicts <strong>2 Wounds</strong>.</p>
 <div class="table-wrap"><table>
-<thead><tr><th>Class</th><th>HP</th><th>Class</th><th>HP</th></tr></thead>
+<thead><tr><th>Class</th><th>Max WD</th><th>Class</th><th>Max WD</th></tr></thead>
 <tbody>
 <tr><td>Artificer</td><td>8</td><td>Paladin</td><td>10</td></tr>
 <tr><td>Barbarian</td><td>12</td><td>Ranger</td><td>10</td></tr>
@@ -144,11 +145,11 @@
 <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) characters advance from level 1 to level 10. Each level provides a noticeable increase in power and ensures that class progression, including spellcasting progression, remains coherent and easy to track.</p>
 <hr>
 <h3>Attacks and Defense</h3>
-<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) resolves combat with a single attack roll and fixed damage in hits. On a successful attack roll with a weapon, the target takes 1 hit. A critical hit deals 2 hits. Weapons provide bonuses to hit, not to damage.</p>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) resolves combat with a single attack roll and fixed Wounds. On a successful attack roll with a weapon, the target takes 1 Wound. A critical hit inflicts 2 Wounds. Weapons provide bonuses to hit, not to the number of Wounds dealt.</p>
 <ul>
-<li>On a failed attack roll: The attack deals no damage.</li>
+<li>On a failed attack roll: The attack inflicts no Wounds.</li>
 <li>On a natural 1: The attacker suffers a critical failure, and the target immediately makes a reaction counter‑attack.</li>
-<li>On a natural 20: The attack deals 2 hits and triggers exploding dice—roll again. If you roll another natural 20, you deal 2 hits again and roll again. This effect stacks, allowing multiple critical hits in a single attack.</li>
+<li>On a natural 20: The attack inflicts 2 Wounds and triggers exploding dice—roll again. If you roll another natural 20, you inflict 2 Wounds again and roll again. This effect stacks, allowing multiple critical hits in a single attack.</li>
 </ul>
 <p>When a creature attacks a player character, the character makes a Defense roll:</p>
 <div class="formula-box">
@@ -159,11 +160,11 @@
     <span class="variable">Defense bonus</span>
   </span>
 </div>
-<p>The Defense roll is made against a target number determined by the Game Master. For a creature that would normally attack at +X to hit, the target number is 11 + X. Your Defense roll total must meet or beat the attack's target number to avoid damage.</p>
+<p>The Defense roll is made against a target number determined by the Game Master. For a creature that would normally attack at +X to hit, the target number is 11 + X. Your Defense roll total must meet or beat the attack's target number to avoid Wounds.</p>
 <ul>
-<li>On a failed Defense roll (roll total below target number): The character takes 1 hit.</li>
-<li>On a natural 1: The attack becomes a critical hit, and the character takes 2 hits.</li>
-<li>On a natural 20: The character takes no damage and can immediately make a reaction counter‑attack.</li>
+<li>On a failed Defense roll (roll total below target number): The character takes 1 Wound.</li>
+<li>On a natural 1: The attack becomes a critical hit, and the character takes 2 Wounds.</li>
+<li>On a natural 20: The character takes no Wounds and can immediately make a reaction counter‑attack.</li>
 </ul>
 <hr>
 <h3 id="weapon-proficiency">Weapon Proficiency</h3>
@@ -186,10 +187,10 @@
 </div>
 <p><strong>Example: Weapon Attack Roll</strong></p>
 <p>A fighter with Fitness +2 and a shortsword (attack bonus +2) who is proficient with martial weapons makes an attack roll with advantage (roll 2d20, take highest) + 2 (weapon) + 2 (Fitness) = highest of 2d20 + 4.</p>
-<p>On a hit, the attack deals 1 hit of damage. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) assumes that better weapons improve the chance to hit, while spells generally increase the number of hits dealt and/or apply additional effects.</p>
+<p>On a hit, the attack inflicts 1 Wound. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) assumes that better weapons improve the chance to hit, while spells generally increase the number of Wounds inflicted and/or apply additional effects.</p>
 
 <h3 id="armor-and-defense">Armor and Defense</h3>
-<p>Wearing armor increases your Defense bonus, which improves your Defense roll when you are attacked. When a creature attacks you, you make a Defense roll (d20 + Defense bonus). Your Defense roll total must meet or beat the attack's target number to avoid damage.</p>
+<p>Wearing armor increases your Defense bonus, which improves your Defense roll when you are attacked. When a creature attacks you, you make a Defense roll (d20 + Defense bonus). Your Defense roll total must meet or beat the attack's target number to avoid Wounds.</p>
 
 <h4>Base Defense</h4>
 <p>If you aren't wearing armor, your Defense bonus equals your <strong>Fitness modifier</strong>.</p>
@@ -241,7 +242,7 @@
       </tr>
       <tr>
         <td><strong>Graze</strong></td>
-        <td>When you miss with an attack, you still deal a small amount of damage (typically 1 hit on a near miss).</td>
+        <td>When you miss with an attack, you still inflict a small number of Wounds (typically 1 Wound on a near miss).</td>
       </tr>
       <tr>
         <td><strong>Nick</strong></td>
@@ -272,17 +273,32 @@
 </div>
 <p>Remember: these are examples for inspiration. Players should describe what they want to accomplish, and the Game Master determines the appropriate test, difficulty, and outcome based on the situation and the rules for improvised actions.</p>
 <hr>
-<h3>Actions and Time (Encounter Mode)</h3>
+<h3 id="actions-and-time-encounter-mode">Actions and Time (Encounter Mode)</h3>
 <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a straightforward action economy during encounters. On your turn, you can:</p>
 <ul>
 <li><strong>Move</strong> up to your speed</li>
 <li>Take <strong>one action</strong> (Attack, Cast a Spell, Dash, Dodge, Help, Hide, Ready, Search, Use an Object, etc.)</li>
 <li><strong>Interact with one object</strong> for free (draw a weapon, open a door, pick up an item, etc.)</li>
-<li>Activate one <strong>class feature free action</strong> if you have an ability that grants it (such as Rage or Circle of the Moon's Wild Shape)</li>
+<li>Activate one <strong>class feature free action</strong> if you have an ability that grants it (see below)</li>
 </ul>
 <p>You can move before, after, or during your action, and you can split your movement. For example, you can move 10 feet, take your action, then move another 20 feet.</p>
+
+<h4>Trading Movement for a Second Action</h4>
+<p>Movement represents time spent repositioning. If you use <strong>none</strong> of your movement on your turn (you move 0 feet), you may take a <strong>second action</strong> on that turn. If you move even 5 feet, you cannot take a second action.</p>
+<p>The second action follows the same options as your first. It is rushed, so it suffers penalties when used to harm or hinder others:</p>
+<ul>
+<li>If the second action is the <strong>Attack</strong> action or includes an attack, those attack rolls are made with <strong>disadvantage</strong> (roll 2d20, take lowest).</li>
+<li>If the second action is <strong>Cast a Spell</strong> and the spell requires an attack roll, that roll is made with disadvantage. If the spell forces a saving throw, targets have <strong>advantage</strong> on that save (roll 2d20, take highest).</li>
+<li>Other second actions (Dash, Dodge, Help, Hide, Ready, Search, Use an Object, etc.) have no penalty.</li>
+</ul>
+<p>You still have only <strong>one reaction per round</strong>, regardless of how many actions you take on your turn.</p>
+
 <p><strong>Reactions:</strong> In addition to your action and movement, you have <strong>one reaction per round</strong>. A reaction is a special response to a trigger, such as casting <em>shield</em> when you're hit by an attack, using <em>counterspell</em> to interrupt an enemy's spell, or using a readied action when its trigger occurs. Your reaction refreshes at the start of your turn. Reactions can be used on your turn or anyone else's turn, whenever the triggering event occurs. See the <a href="combat.html#reactions">Reactions</a> section in the Combat rules for details.</p>
-<p><strong>Spellcasting:</strong> Casting a cantrip or leveled spell typically uses your action. Some spells can be cast as reactions (such as <em>shield</em> or <em>counterspell</em>) and don't use your action—they use your reaction instead.</p>
+
+<p><strong>Free actions:</strong> <strong>You-Meet-In-A-Tavern</strong> (YMIAT) does not use bonus actions. Quick activities that do not cost your action are <strong>free actions</strong>: your one object interaction per turn, plus at most one class feature free action when you have one (such as Rage, Second Wind, or Cunning Action). See the <a href="combat.html#free-actions">Free Actions</a> section in the Combat rules for examples.</p>
+
+<p><strong>Spellcasting:</strong> Cantrips and leveled spells cast on your turn use your <strong>action</strong> unless their description says otherwise. Spells cast as a <strong>reaction</strong> (such as <em>shield</em> or <em>counterspell</em>) use your reaction, not your action. Spellcasting is not a free action unless an ability or spell description explicitly says so.</p>
+
 <p><strong>Variant:</strong> For groups that want more tactical flexibility, an optional <a href="combat.html#variant-3-moments-system">3 Moments System</a> is available. In that variant, each turn consists of 3 Moments that can be spent more granularly on movement, attacks, and spellcasting.</p>
 <hr>
 <h3>Magic and Spell Resources</h3>
@@ -299,7 +315,7 @@
 </div>
 <p>The Spell Power cost of a spell equals its spell level. A spellcaster spends Spell Power to cast spells and regains it through rest and Recovery Points.</p>
 <p><strong>Example: Magic Missile</strong></p>
-<p>Magic Missile costs 1 Spell Power to cast and creates three missiles. Each missile deals 1 hit of damage, automatically hits, and ignores defenses. Each additional Spell Power spent when casting Magic Missile creates one extra missile.</p>
+<p>Magic Missile costs 1 Spell Power to cast and creates three missiles. Each missile inflicts 1 Wound, automatically hits, and ignores defenses. Each additional Spell Power spent when casting Magic Missile creates one extra missile.</p>
 <p>Spells can also apply additional effects, such as fire, frost, control, or movement, as described in their individual entries.</p>
 <hr>
 <h3>Resolve</h3>
@@ -307,9 +323,9 @@
 <p>When a character with 4 Resolve fails a d20 test, roll a d4. The result becomes the character’s new Resolve value, replacing the previous total. Resolve is then available as a resource to interact with advanced rules, features, or optional systems defined elsewhere in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) (for example, to boost rolls or activate special abilities).</p>
 <hr>
 <h3>Recovery Points and Rest</h3>
-<p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character’s level. The player can spend Recovery Points to restore hit points and/or Spell Power in any combination. Unspent Recovery Points remain available for later short rests until they are used.</p>
+<p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character’s level. The player can spend Recovery Points to heal Wounds and/or regain Spell Power in any combination. Unspent Recovery Points remain available for later short rests until they are used.</p>
 <p>A character’s maximum Recovery Points equal the character’s level. During a long rest, a character regains half of their total Recovery Points (rounded up), </p>
-<p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. During this rest, however, no HP is restored; HP must be regained separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also restore HP again. The order of recovery during a long rest is always: first hearts, then HP. See the <a href="combat.html#life-and-death-saves">Life and Death Saves</a> section for more details on hearts and death saves.</p>
+<p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. During this rest, however, no Wounds are healed; Wounds must be healed separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also heal Wounds again. The order of recovery during a long rest is always: first hearts, then Wounds. See the <a href="combat.html#life-and-death-saves">Life and Death Saves</a> section for more details on hearts and death saves.</p>
 <hr>
 <h3>Spell School Expertise</h3>
 <p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school gains double advantage (roll 3d20, take highest) on spell attack rolls for spells of that school, and targets of those spells have disadvantage (roll 2d20, take lowest) on saving throws against them.</p>

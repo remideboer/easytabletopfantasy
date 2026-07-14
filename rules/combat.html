@@ -31,9 +31,9 @@
 
       <ul>
         <li><strong>Fighter:</strong> Move up to your speed, then take the Attack action (with Extra Attack, you make multiple attacks as part of this single action).</li>
-        <li><strong>Wizard:</strong> Move into position, then cast <em>fireball</em> (1 action).</li>
-        <li><strong>Cleric:</strong> Move to an injured ally, then cast <em>healing word</em> (1 action) to restore their hit points.</li>
-        <li><strong>Rogue:</strong> Take the Dash action to move up to double your speed, positioning yourself for a surprise attack next turn.</li>
+        <li><strong>Wizard (stationary):</strong> Stay in place (0 movement), cast <em>fireball</em> (first action), then cast <em>fire bolt</em> (second action—attack roll at disadvantage).</li>
+        <li><strong>Cleric:</strong> Move to an injured ally, then cast <em>healing word</em> (1 action) to heal their Wounds.</li>
+        <li><strong>Rogue:</strong> Use Cunning Action to Disengage (free action), move up to your speed, then take the Attack action.</li>
         <li><strong>Barbarian:</strong> Enter rage (free action), move to an enemy, then take the Attack action.</li>
       </ul>
       
@@ -57,11 +57,11 @@
       <p><strong>Initiative (variant):</strong> Roll initiative using a Fitness check. The highest roll acts first. After the highest roll is determined, the players determine the order among themselves for their turns.</p>
       
       <h2 id="your-turn">Your Turn</h2>
-      <p>On your turn, you can <strong>move up to your speed</strong> and take <strong>one action</strong>. You decide whether to move first or take your action first, and you can split your movement, using some before and some after your action.</p>
+      <p>On your turn, you can <strong>move up to your speed</strong> and take <strong>one action</strong>. If you use <strong>none</strong> of your movement (0 feet), you may take a <strong>second action</strong>—see <a href="#trading-movement-for-action">Trading Movement for a Second Action</a> below. You decide whether to move first or take your action first, and you can split your movement, using some before and some after your action.</p>
       <p>The basic action options are described below. Many class features and spells provide additional options for what you can do with your action.</p>
 
       <h3 id="free-actions">Free Actions</h3>
-      <p>In addition to your action and movement, you can perform minor activities that don't require significant time or effort. These are called <strong>free actions</strong>.</p>
+      <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) does not use bonus actions. In addition to your action and movement, you can perform minor activities that don't require your action. These are called <strong>free actions</strong>.</p>
 
       <h4>Object Interaction (Everyone)</h4>
       <p>Every character can interact with one object or feature of the environment for free during their turn, either during their movement or as part of their action. This represents simple, quick interactions that don't require focused effort. Examples include:</p>
@@ -75,14 +75,18 @@
       <p>If you want to interact with a second object on your turn, you'll need to use the Use an Object action. Some objects, like magic items or complex mechanisms, always require an action to use, as stated in their descriptions.</p>
 
       <h4>Class Feature Free Actions (When You Have Them)</h4>
-      <p>Some class features and abilities can be activated as free actions, meaning they don't use your action for the turn. These are typically quick-activation abilities that enhance your combat effectiveness. Examples include:</p>
+      <p>Some class features and abilities can be activated as free actions, meaning they don't use your action for the turn. These are typically quick activations that fit alongside your main action. Confirmed examples include:</p>
       <ul>
-        <li><strong>Rage</strong> (Barbarian feature)</li>
-        <li><strong>Wild Shape</strong> (Circle of the Moon Druid only - the enhanced, instant transformation)</li>
-        <li><strong>Channel Divinity</strong> (certain quick-activation effects)</li>
+        <li><strong>Rage</strong> (Barbarian)</li>
+        <li><strong>Second Wind</strong> (Fighter)</li>
+        <li><strong>Cunning Action</strong> (Rogue)—Dash, Disengage, or Hide as a free action</li>
+        <li><strong>Bardic Inspiration</strong> (Bard)—granting inspiration to an ally</li>
+        <li><strong>Wild Shape</strong> (Circle of the Moon Druid—the enhanced, instant transformation)</li>
+        <li><strong>Channel Divinity</strong> (Cleric/Paladin—quick-activation effects only, as stated in the feature)</li>
         <li>Other abilities specifically marked as free actions in their description</li>
       </ul>
-      <p>You can generally only activate one class feature free action per turn unless an ability says otherwise. You can still use your object interaction in addition to a class feature free action.</p>
+      <p><strong>Spellcasting is not a free action</strong> unless a spell or ability explicitly says so. Cantrips and leveled spells normally use your action. Reaction spells use your reaction.</p>
+      <p>You can generally activate only one class feature free action per turn unless an ability says otherwise. You can still use your object interaction in addition to a class feature free action.</p>
       
       <h3 id="movement">Movement</h3>
       <p>On your turn, you can move a distance up to your speed. You can use as much or as little of your speed as you like on your turn, following the rules here.</p>
@@ -94,9 +98,19 @@
       <h4>Moving Around Other Creatures</h4>
       <p>You can move through a nonhostile creature's space. In contrast, you can move through a hostile creature's space only if the creature is at least two sizes larger or smaller than you. Remember that another creature's space is difficult terrain for you.</p>
       <p>Whether a creature is a friend or an enemy, you can't willingly end your move in its space.</p>
+
+      <h4 id="trading-movement-for-action">Trading Movement for a Second Action</h4>
+      <p>Movement represents time spent getting into position. If you use <strong>none</strong> of your movement on your turn (you move 0 feet), you may take a <strong>second action</strong> on that turn. Moving even a short distance forfeits this benefit.</p>
+      <p>The second action uses the same options as your first (Attack, Cast a Spell, Dash, Dodge, Help, Hide, Ready, Search, Use an Object, etc.). Because it is rushed, harmful second actions suffer penalties:</p>
+      <ul>
+        <li><strong>Attacks:</strong> If the second action is the Attack action or includes an attack, those attack rolls are made with <strong>disadvantage</strong> (roll 2d20, take lowest).</li>
+        <li><strong>Spells:</strong> If the second action is Cast a Spell and the spell requires an attack roll, that roll is made with disadvantage. If the spell forces a saving throw, targets have <strong>advantage</strong> on that save (roll 2d20, take highest).</li>
+        <li><strong>Other actions:</strong> Dash, Dodge, Help, Hide, Ready, Search, and Use an Object have no penalty when taken as a second action.</li>
+      </ul>
+      <p>This rule bridges the standard action economy and the optional <a href="#variant-3-moments-system">3 Moments System</a>: standing still buys you time for another deed, but repositioning costs that opportunity.</p>
       
       <h3 id="actions">Actions</h3>
-      <p>On your turn, you can take one action. The most common actions you can take are described here. Many class features and other abilities provide additional options for your action.</p>
+      <p>On your turn, you can take one action—or two if you traded your movement for a second action. The most common actions you can take are described here. Many class features and other abilities provide additional options for your action.</p>
 
       <h4>Attack</h4>
       <p>The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.</p>
@@ -104,14 +118,14 @@
       <p>Certain class features, such as the Fighter's Extra Attack, allow you to make more than one attack when you take the Attack action. These extra attacks are all part of the same action. See the <a href="#multiple-attacks">Multiple Attacks</a> section below for details.</p>
       
       <h4>Cast a Spell</h4>
-      <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether you can cast it as an action, a reaction, or with some other timing.</p>
-      <p>Most combat spells can be cast using your action:</p>
+      <p>Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether you cast it as an action, a reaction, or with some other timing.</p>
+      <p>Most combat spells use your <strong>action</strong> on your turn:</p>
       <ul>
-        <li><strong>Cantrips:</strong> Use your action to cast a cantrip (e.g., <em>fire bolt</em>, <em>sacred flame</em>)</li>
-        <li><strong>Leveled Spells:</strong> Use your action to cast a leveled spell (e.g., <em>fireball</em>, <em>healing word</em>, <em>cure wounds</em>)</li>
-        <li><strong>Reaction Spells:</strong> Some spells can be cast as a reaction outside your turn when triggered (e.g., <em>shield</em>, <em>counterspell</em>)</li>
+        <li><strong>Cantrips:</strong> Use your action (e.g., <em>fire bolt</em>, <em>sacred flame</em>)</li>
+        <li><strong>Leveled Spells:</strong> Use your action (e.g., <em>fireball</em>, <em>healing word</em>, <em>cure wounds</em>)</li>
+        <li><strong>Reaction Spells:</strong> Use your reaction when triggered (e.g., <em>shield</em>, <em>counterspell</em>)—not your action, not a free action</li>
       </ul>
-      <p>When you cast a spell that requires an action, it uses your action for the turn. You can still move on the same turn.</p>
+      <p>When you cast a spell that uses your action, it consumes that action for the turn. You can still move on the same turn unless you are using the second-action rule (0 movement). A spell cast as your <strong>second action</strong> imposes disadvantage on spell attack rolls, and targets have advantage on saving throws against it.</p>
       
       <h4>Dash</h4>
       <p>When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.</p>
@@ -139,7 +153,7 @@
       <p>Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn, which lets you act using your reaction before the start of your next turn.</p>
       <p>First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include "If the cultist steps on the trapdoor, I'll pull the lever that opens it," and "If the goblin steps next to me, I move away."</p>
       <p>When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.</p>
-      <p>When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration. If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the <em>web</em> spell and ready <em>magic missile</em>, your <em>web</em> spell ends, and if you take damage before you release <em>magic missile</em> with your reaction, your concentration might be broken.</p>
+      <p>When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration. If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the <em>web</em> spell and ready <em>magic missile</em>, your <em>web</em> spell ends, and if you take Wounds before you release <em>magic missile</em> with your reaction, your concentration might be broken.</p>
       <p>Taking the Ready action uses your action for the turn.</p>
       
       <h4>Search</h4>
@@ -176,16 +190,17 @@
       <p>For example, a 5th-level Fighter with Extra Attack takes the Attack action and makes two attacks. Both attacks are part of a single Attack action, and the Fighter can still move before, after, or between these attacks.</p>
 
       <h3>Two-Weapon Fighting</h3>
-      <p>When you take the Attack action and are wielding a light melee weapon in each hand, you can make an additional attack with your off-hand weapon as part of the same Attack action. This doesn't require a separate action or bonus action - it's all part of your Attack action.</p>
-      <p>You don't add your ability modifier to the damage of the off-hand attack unless the modifier is negative, or unless you have a feature that specifically allows you to add it.</p>
+      <p>When you take the Attack action and are wielding a light melee weapon in each hand, you can make an additional attack with your off-hand weapon as part of the same Attack action. This does not require a separate action—it is all part of your Attack action.</p>
+      <p>You don't add your ability modifier to off-hand Wounds unless the modifier is negative, or unless you have a feature that specifically allows you to add it.</p>
 
       <h3>Class Features and Abilities</h3>
-      <p>Many D&D 5e abilities that originally granted bonus action attacks (such as Polearm Master, Crossbow Expert, or Martial Arts) now allow an additional attack as part of your Attack action in <strong>You-Meet-In-A-Tavern</strong> (YMIAT).</p>
+      <p>Many D&D 5e abilities that originally used a bonus action for an extra attack (such as Polearm Master, Crossbow Expert, or Martial Arts) now allow an additional attack as part of your Attack action in <strong>You-Meet-In-A-Tavern</strong> (YMIAT).</p>
       <p>When converting from D&D 5e, follow these guidelines:</p>
       <ul>
         <li><strong>Bonus action attacks:</strong> Most become additional attacks as part of the Attack action (like Two-Weapon Fighting above)</li>
         <li><strong>Features that enhance attacks:</strong> These work as part of the Attack action (e.g., Sneak Attack, Divine Smite)</li>
-        <li><strong>Quick activations:</strong> Abilities like Rage, Channel Divinity, or Circle of the Moon's Wild Shape become free actions</li>
+        <li><strong>Quick activations:</strong> Abilities such as Rage, Second Wind, Cunning Action, Bardic Inspiration, Channel Divinity (quick effects), or Circle of the Moon's Wild Shape become <strong>free actions</strong></li>
+        <li><strong>Bonus action spells:</strong> Most become <strong>actions</strong> in YMIAT (e.g., <em>healing word</em>). Only mark a spell as a free action if you deliberately want that exception.</li>
       </ul>
       
       <h3>Distributing Attacks</h3>
@@ -253,46 +268,46 @@
       <h3>Total Cover</h3>
       <p>A target with total cover can't be targeted directly by an attack or a spell, although some spells can reach such a target by including it in an area of effect. A target has total cover if it is completely concealed by an obstacle.</p>
       
-      <h2 id="damage-and-healing">Damage and Healing</h2>
-      <p>Injury and the risk of death are constant companions of those who explore fantasy gaming worlds. The thrust of a sword, a well-placed arrow, or a blast of felfire magic all have the potential to damage, or even kill, the hardiest of creatures.</p>
-      <p>In <strong>You-Meet-In-A-Tavern</strong> (YMIAT), damage is expressed in <strong>hits</strong> rather than hit points. A successful attack deals 1 hit. A critical hit deals 2 hits. See the <a href="core.html#attacks-and-defense">Attacks and Defense</a> section for more details.</p>
+      <h2 id="wounds-and-healing">Wounds and Healing</h2>
+      <p>Injury and the risk of death are constant companions of those who explore fantasy gaming worlds. The thrust of a sword, a well-placed arrow, or a blast of felfire magic all have the potential to harm, or even kill, the hardiest of creatures.</p>
+      <p>In <strong>You-Meet-In-A-Tavern</strong> (YMIAT), harm is expressed in <strong>Wounds</strong>. Characters start at 0 Wounds (WD) and accumulate Wounds when harmed, up to their Max Wounds. A successful attack inflicts 1 Wound. A critical hit inflicts 2 Wounds. See the <a href="core.html#attacks-and-defense">Attacks and Defense</a> section for more details.</p>
       
-      <h3>Damage Types</h3>
-      <p>Different attacks, damaging spells, and other harmful effects deal different types of damage. Damage types have no rules of their own, but other rules, such as damage resistance, rely on the types.</p>
-      <p>The damage types follow, with examples to help a Game Master assign a damage type to a new effect.</p>
+      <h3>Wound Types</h3>
+      <p>Different attacks, harmful spells, and other injurious effects inflict different types of Wounds. Wound types have no rules of their own, but other rules, such as resistance, rely on the types.</p>
+      <p>The wound types follow, with examples to help a Game Master assign a wound type to a new effect.</p>
       <ul>
-        <li><strong>Acid.</strong> The corrosive spray of a black dragon's breath and the dissolving enzymes secreted by a black pudding deal acid damage.</li>
-        <li><strong>Bludgeoning.</strong> Blunt force attacks—hammers, falling, constriction, and the like—deal bludgeoning damage.</li>
-        <li><strong>Cold.</strong> The infernal chill radiating from an ice devil's spear and the frigid blast of a white dragon's breath deal cold damage.</li>
-        <li><strong>Fire.</strong> Red dragons breathe fire, and many spells conjure flames to deal fire damage.</li>
-        <li><strong>Force.</strong> Force is pure magical energy focused into a damaging form. Most effects that deal force damage are spells, including <em>magic missile</em> and <em>spiritual weapon</em>.</li>
-        <li><strong>Lightning.</strong> A lightning bolt spell and a blue dragon's breath deal lightning damage.</li>
-        <li><strong>Necrotic.</strong> Necrotic damage, dealt by certain undead and some spells, withers matter and even the soul.</li>
-        <li><strong>Piercing.</strong> Puncturing and impaling attacks, including spears and monsters' bites, deal piercing damage.</li>
-        <li><strong>Poison.</strong> Venomous stings and the toxic gas of a green dragon's breath deal poison damage.</li>
-        <li><strong>Psychic.</strong> Mental abilities such as a psionic blast deal psychic damage.</li>
-        <li><strong>Radiant.</strong> Radiant damage, dealt by a cleric's flame strike spell or an angel's smiting weapon, sears the flesh like fire and overloads the spirit with power.</li>
-        <li><strong>Slashing.</strong> Swords, axes, and monsters' claws deal slashing damage.</li>
-        <li><strong>Thunder.</strong> A concussive burst of sound, such as the effect of the <em>thunderwave</em> spell, deals thunder damage.</li>
+        <li><strong>Acid.</strong> The corrosive spray of a black dragon's breath and the dissolving enzymes secreted by a black pudding inflict Acid Wounds.</li>
+        <li><strong>Bludgeoning.</strong> Blunt force attacks—hammers, falling, constriction, and the like—inflict Bludgeoning Wounds.</li>
+        <li><strong>Cold.</strong> The infernal chill radiating from an ice devil's spear and the frigid blast of a white dragon's breath inflict Cold Wounds.</li>
+        <li><strong>Fire.</strong> Red dragons breathe fire, and many spells conjure flames to inflict Fire Wounds.</li>
+        <li><strong>Force.</strong> Force is pure magical energy focused into a harmful form. Most effects that inflict Force Wounds are spells, including <em>magic missile</em> and <em>spiritual weapon</em>.</li>
+        <li><strong>Lightning.</strong> A lightning bolt spell and a blue dragon's breath inflict Lightning Wounds.</li>
+        <li><strong>Necrotic.</strong> Necrotic Wounds, dealt by certain undead and some spells, wither matter and even the soul.</li>
+        <li><strong>Piercing.</strong> Puncturing and impaling attacks, including spears and monsters' bites, inflict Piercing Wounds.</li>
+        <li><strong>Poison.</strong> Venomous stings and the toxic gas of a green dragon's breath inflict Poison Wounds.</li>
+        <li><strong>Psychic.</strong> Mental abilities such as a psionic blast inflict Psychic Wounds.</li>
+        <li><strong>Radiant.</strong> Radiant Wounds, dealt by a cleric's flame strike spell or an angel's smiting weapon, sear the flesh like fire and overload the spirit with power.</li>
+        <li><strong>Slashing.</strong> Swords, axes, and monsters' claws inflict Slashing Wounds.</li>
+        <li><strong>Thunder.</strong> A concussive burst of sound, such as the effect of the <em>thunderwave</em> spell, inflicts Thunder Wounds.</li>
       </ul>
       
-      <h3>Damage Resistance and Vulnerability</h3>
-      <p>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</p>
-      <p>If a creature or an object has <strong>resistance</strong> to a damage type, attacks that deal damage of that type are made with <strong>disadvantage</strong> against it. If a creature or an object has <strong>vulnerability</strong> to a damage type, attacks that deal damage of that type are made with <strong>advantage</strong> against it.</p>
-      <p>Resistance and vulnerability affect the attack roll only; they do not change the number of hits dealt on a successful hit. For example, a creature with resistance to bludgeoning is attacked with a bludgeoning weapon: the attacker rolls the attack with disadvantage. If the attack hits, it still deals its normal hits (e.g. 1 hit, or 2 on a critical).</p>
-      <p>Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance. A creature with several sources of resistance to fire still imposes disadvantage only once on fire attacks; a creature with several sources of vulnerability to fire still grants advantage only once.</p>
+      <h3>Resistance and Vulnerability</h3>
+      <p>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of Wounds.</p>
+      <p>If a creature or an object has <strong>resistance</strong> to a wound type, attacks that inflict Wounds of that type are made with <strong>disadvantage</strong> against it. If a creature or an object has <strong>vulnerability</strong> to a wound type, attacks that inflict Wounds of that type are made with <strong>advantage</strong> against it.</p>
+      <p>Resistance and vulnerability affect the attack roll only; they do not change the number of Wounds inflicted on a successful hit. For example, a creature with resistance to bludgeoning is attacked with a bludgeoning weapon: the attacker rolls the attack with disadvantage. If the attack hits, it still inflicts its normal Wounds (e.g. 1 Wound, or 2 on a critical).</p>
+      <p>Multiple instances of resistance or vulnerability that affect the same wound type count as only one instance. A creature with several sources of resistance to fire still imposes disadvantage only once on fire attacks; a creature with several sources of vulnerability to fire still grants advantage only once.</p>
       
       <h3>Healing</h3>
-      <p>Unless it results from death, damage isn't permanent. Even death is reversible through powerful magic. Rest can restore a creature's hit points (as explained in the <a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a> section), and magical methods such as a <em>cure wounds</em> spell or a <em>potion of healing</em> can remove damage in an instant.</p>
-      <p>When a creature receives healing of any kind, hit points regained are added to its current hit points. A creature's hit points can't exceed its hit point maximum, so any hit points regained in excess of this number are lost. For example, a druid grants a ranger 3 hit points of healing. If the ranger has 14 current hit points and has a hit point maximum of 20, the ranger regains 3 hit points, increasing their current hit points to 17, not 20.</p>
-      <p>A creature that has died can't regain hit points until magic such as the <em>revivify</em> spell has restored it to life.</p>
+      <p>Unless it results from death, Wounds aren't permanent. Even death is reversible through powerful magic. Rest can heal Wounds (as explained in the <a href="core.html#recovery-points-and-rest">Recovery Points and Rest</a> section), and magical methods such as a <em>cure wounds</em> spell or a <em>potion of healing</em> can remove Wounds in an instant.</p>
+      <p>When a creature receives healing of any kind, Wounds healed are subtracted from its current Wounds. A creature's Wounds can't go below 0, so any healing beyond that is lost. For example, a druid heals a ranger for 3 Wounds. If the ranger has 14 current Wounds and has Max Wounds of 20, the ranger heals 3 Wounds, reducing current Wounds to 11.</p>
+      <p>A creature that has died can't heal Wounds until magic such as the <em>revivify</em> spell has restored it to life.</p>
       
       <h3 id="life-and-death-saves">Life and Death Saves</h3>
-      <p>A character has 3 hearts (lives). When a character reaches 0 HP, they must make a Death Save to stay alive. This is a Willpower saving throw.</p>
+      <p>A character has 3 hearts (lives). When a character's Wounds reach Max Wounds, the Life rule triggers: they must make a Death Save to stay alive. This is a Willpower saving throw.</p>
       <p>On a failed save, the character loses one heart and becomes weakened by 1 level. Each level of weakening applies stacking Disadvantage to all rolls (first weakening: Disadvantage; second weakening: Disadvantage on Disadvantage, and so on) and reduces the number of available Moments per turn by 1.</p>
-      <p>As long as the character remains at 0 HP, they must make a new Death Save each time they take damage. This process repeats until all hearts are lost; upon losing the last heart, the character dies.</p>
-      <p>Restoring a lost heart requires one long rest. During this rest, however, no HP is restored; HP must be regained separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also restore HP again.</p>
-      <p>The order of recovery during a long rest is always: first hearts, then HP.</p>
+      <p>As long as the character remains at Max Wounds, they must make a new Death Save each time they take Wounds. This process repeats until all hearts are lost; upon losing the last heart, the character dies.</p>
+      <p>Restoring a lost heart requires one long rest. During this rest, however, no Wounds are healed; Wounds must be healed separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also heal Wounds again.</p>
+      <p>The order of recovery during a long rest is always: first hearts, then Wounds.</p>
       
     </div>
   </div>

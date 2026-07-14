@@ -41,7 +41,7 @@
           <button class="filter-btn" data-filter-type="ability-type" data-ability-type="Legendary Action" onclick="toggleAbilityTypeFilter('Legendary Action')">Legendary Action</button>
         </div>
         <div class="filter-row">
-          <span class="filter-label">Filter by damage type:</span>
+          <span class="filter-label">Filter by wound type:</span>
           <button class="filter-btn filter-all active" data-filter-type="damage" data-damage="all" onclick="toggleDamageFilter('all')">All</button>
           <button class="filter-btn" data-filter-type="damage" data-damage="Acid" onclick="toggleDamageFilter('Acid')">Acid</button>
           <button class="filter-btn" data-filter-type="damage" data-damage="Cold" onclick="toggleDamageFilter('Cold')">Cold</button>
@@ -106,7 +106,7 @@
             <p><strong>CR:</strong> 0</p>
             <p>Original D&D 5e text here</p>
           </div>
-          <div class="scaling-info" data-base-dc="0" data-base-damage="0" data-base-save-dc="0" data-base-cr="0" style="display:none;"></div>
+          <div class="scaling-info" data-base-dc="0" data-base-wounds="0" data-base-save-dc="0" data-base-cr="0" style="display:none;"></div>
         </div>
       </div>
       -->
@@ -207,7 +207,7 @@ function updateSingleAbilityScaling(selectElement, baseCR) {
   if (!scalingInfo) return;
   
   const baseDC = parseInt(scalingInfo.getAttribute('data-base-dc')) || 0;
-  const baseDamage = parseInt(scalingInfo.getAttribute('data-base-damage')) || 0;
+  const baseDamage = parseInt(scalingInfo.getAttribute('data-base-wounds')) || 0;
   const baseSaveDC = parseInt(scalingInfo.getAttribute('data-base-save-dc')) || 0;
   
   const scaling = calculateScaling(baseCR, selectedLevel);
@@ -238,7 +238,7 @@ function updateSingleAbilityScaling(selectElement, baseCR) {
   
   // Replace damage
   if (baseDamage > 0) {
-    updatedETF = updatedETF.replace(new RegExp(`${baseDamage} hits`, 'g'), `${newDamage} hits`);
+    updatedETF = updatedETF.replace(new RegExp(`${baseDamage} Wounds`, 'g'), `${newDamage} Wounds`);
   }
   
   // Update You-Meet-In-A-Tavern (YMIAT) version content
@@ -368,7 +368,7 @@ function applyFilters() {
       showAbility = false;
     }
     
-    // Check damage type filter
+    // Check wound type filter
     if (showAbility && !activeDamageTypes.has('all')) {
       if (damageType === '' && !activeDamageTypes.has('None')) {
         // Check if ability has any damage mentioned in content
