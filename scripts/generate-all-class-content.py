@@ -9,6 +9,7 @@ scripts = [
     ROOT / "generate-class-abilities.py",
     ROOT / "generate-classes-html.py",
     ROOT / "generate-character-options-html.py",
+    ROOT / "generate-nav-includes.py",
 ]
 
 for script in scripts:

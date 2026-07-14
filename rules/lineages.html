@@ -21,7 +21,7 @@
       <button id="collapse-all-lineages" class="lineage-control-btn" onclick="collapseAllLineages()">Collapse All</button>
     </div>
     <div class="lineages-container">
-      <div class="lineage-item">
+      <div class="lineage-item" id="beastkin">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Beastkin</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -36,7 +36,7 @@
 <p><em>PG2 expansion:</em> Fossorial (burrow 20 ft through soft earth) or Quillback (reaction quill strike when hit in melee).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="dhampir">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Dhampir <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -51,7 +51,7 @@
 <p><strong>Hybrid Humanoid.</strong> Advantage vs. poisoned and exhaustion checks.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="dragonborn">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Dragonborn <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -67,7 +67,7 @@
 <p><strong>Dragon Sight.</strong> Darkvision 60 ft and keensense 10 ft.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="drow">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Drow <span class="text-muted">(PG2 variant)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -82,7 +82,7 @@
 <p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="duergar">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Duergar <span class="text-muted">(PG2 variant)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -97,7 +97,7 @@
 <p><strong>Superior Darkvision.</strong> 120 feet.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="dwarf">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Dwarf</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -111,7 +111,7 @@
 <p><strong>Dwarven Toughness.</strong> Max Wounds +1, and +1 Max Wounds each level.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="elemental-scion">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Elemental Scion <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -126,7 +126,7 @@
 <p><strong>Natural Adaptation.</strong> Earthborn (tremorsense 10 ft, ignore difficult terrain), Fireborn (emit light; +proficiency fire on melee hit), Waterborn (swim speed, squeeze through 1-inch gaps), or Windborn (fly 10 ft hover; hold breath for proficiency bonus hours).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="elf">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Elf</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -140,7 +140,7 @@
 <p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="gearforged">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Gearforged <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -156,7 +156,7 @@
 <p><strong>Upgrade.</strong> Always Armed (integrated weapons), Bulk Up (Large temporarily), or Quick Fix (temp Wounds when below half Max Wounds).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="goblin">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Goblin <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -171,7 +171,7 @@
 <p><strong>Strength in Numbers.</strong> Extra damage equal to proficiency bonus when an ally is within 5 feet of your target.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="gnoll">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Gnoll</span></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -186,7 +186,7 @@
 <p><strong>Sprinter.</strong> When you Dash, move triple speed (uses per day = proficiency bonus).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="human">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Human</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -198,7 +198,7 @@
 <p><strong>Ambitious.</strong> One skill proficiency and one talent (any list, meeting prerequisites).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="kobold">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Kobold</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -213,7 +213,7 @@
 <p><strong>Natural Adaptation.</strong> Fierce (Small: react attack when Large+ hits you) or Truescale (Medium: AC 13 + Fitness; one elemental resistance).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="orc">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Orc</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -228,7 +228,7 @@
 <p><strong>Stalwart.</strong> Make end-of-turn saves at the start of your turn instead.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="rachisan">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Rachisan <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -243,7 +243,7 @@
 <p><strong>Natural Adaptation.</strong> Alliumite (blinding spore reaction), Cruciferan (rest meal heals allies), or Tuberkith (immune blinded; hear while unconscious).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="sapopova">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Sapopova <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -258,7 +258,7 @@
 <p><strong>Natural Adaptation.</strong> Frogkin (Athletics proficiency; standing long/high jump) or Toadfolk (cheek storage; spit improvised ranged attacks 30 ft).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="sea-elf">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Sea Elf <span class="text-muted">(PG2 variant)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -273,7 +273,7 @@
 <p><strong>Trance.</strong> 4 hours.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="shade">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Shade <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -288,7 +288,7 @@
 <p><strong>Spectral Sight.</strong> Darkvision 60 ft; see into Ethereal Plane 30 ft (uses = proficiency bonus per long rest).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="smallfolk">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Smallfolk</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -302,7 +302,7 @@
 <p><strong>Natural Adaptation.</strong> Gnomish (darkvision 60 ft, <em>minor illusion</em>) or Halfling (advantage vs. charmed/frightened).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="syderean">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Syderean</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -317,7 +317,7 @@
 <p><strong>Natural Adaptation.</strong> Celestial (Blessed Guise), Fiendish (Dreadful Guise), Aberrant, or Spellborn (see PG2 expansion).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="tiefling">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Tiefling</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -331,7 +331,7 @@
 <p><strong>Fiendish Legacy.</strong> Abyssal, Chthonic, or Infernal: resistance, cantrip, and leveled spells at 3rd and 5th (Willpower as spellcasting ability).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="tosculi">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Tosculi <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -346,7 +346,7 @@
 <p><strong>Hiveborn Duty.</strong> Detached Drone (Golden Song charm/deafen) or Roving Trooper (stinger unarmed + poison).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="eonic-human">
         <button class="lineage-header" onclick="toggleLineages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Eonic Human</span></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -408,6 +408,23 @@ function collapseAllLineages(){
     button.setAttribute('aria-expanded', 'false');
   });
 }
+function expandLineagesFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item')) return;
+  const content = target.querySelector('.lineage-content');
+  const button = target.querySelector('.lineage-header');
+  if(!content || !button) return;
+  content.style.display = 'block';
+  content.classList.add('expanded');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  if(icon) icon.textContent = '▲';
+  button.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'none';
@@ -415,7 +432,9 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'false');
   });
+  expandLineagesFromHash();
 });
+window.addEventListener('hashchange', expandLineagesFromHash);
 </script>
 <script src="../assets/site.js"></script>
 </body>

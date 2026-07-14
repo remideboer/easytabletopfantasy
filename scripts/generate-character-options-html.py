@@ -7,7 +7,7 @@ import sys
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from ability_utils import TOV_URL, render_tov_pill
+from ability_utils import TOV_URL, render_tov_pill, slugify
 from character_options_data import BACKGROUNDS, HERITAGES, LINEAGE_HERITAGE_RECOMMENDATIONS, LINEAGES, TALENTS
 
 ROOT = SCRIPT_DIR.parent
@@ -83,6 +83,23 @@ function collapseAll{js_key}(){{
     button.setAttribute('aria-expanded', 'false');
   }});
 }}
+function expand{js_key}FromHash(){{
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item')) return;
+  const content = target.querySelector('.lineage-content');
+  const button = target.querySelector('.lineage-header');
+  if(!content || !button) return;
+  content.style.display = 'block';
+  content.classList.add('expanded');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  if(icon) icon.textContent = '▲';
+  button.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(function(){{
+    target.scrollIntoView({{behavior:'smooth', block:'start'}});
+  }});
+}}
 document.addEventListener('DOMContentLoaded', function(){{
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {{
     content.style.display = 'none';
@@ -90,7 +107,9 @@ document.addEventListener('DOMContentLoaded', function(){{
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {{
     button.setAttribute('aria-expanded', 'false');
   }});
+  expand{js_key}FromHash();
 }});
+window.addEventListener('hashchange', expand{js_key}FromHash);
 </script>
 <script src="../assets/site.js"></script>
 </body>
@@ -113,7 +132,8 @@ def js_toggle(js_key: str) -> str:
 
 def render_item(name: str, body: str, js_key: str, tov: bool = True, tag: str | None = None) -> str:
     toggle = js_toggle(js_key)
-    return f"""      <div class="lineage-item">
+    item_id = slugify(name)
+    return f"""      <div class="lineage-item" id="{item_id}">
         <button class="lineage-header" onclick="{toggle}(this)">
           {render_title(name, tov, tag)}
           <span class="lineage-toggle-icon">▼</span>
@@ -153,7 +173,7 @@ def write_talents():
             continue
         if sections:
             sections.append("    <hr>")
-        sections.append(f"    <h2>{heading}</h2>")
+        sections.append(f"    <h2 id=\"{cat}-talents\">{heading}</h2>")
         blocks = []
         for t in group:
             body = ""
@@ -237,7 +257,31 @@ function collapseAllTalents(){{
   document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▼');
   document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','false'));
 }}
-document.addEventListener('DOMContentLoaded',()=>collapseAllTalents());
+function expandTalentsFromHash(){{
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target) return;
+  if(target.classList.contains('lineage-item')){{
+    const content = target.querySelector('.lineage-content');
+    const button = target.querySelector('.lineage-header');
+    if(content && button){{
+      content.style.display = 'block';
+      content.classList.add('expanded');
+      const icon = button.querySelector('.lineage-toggle-icon');
+      if(icon) icon.textContent = '▲';
+      button.setAttribute('aria-expanded', 'true');
+    }}
+  }}
+  requestAnimationFrame(function(){{
+    target.scrollIntoView({{behavior:'smooth', block:'start'}});
+  }});
+}}
+document.addEventListener('DOMContentLoaded', function(){{
+  collapseAllTalents();
+  expandTalentsFromHash();
+}});
+window.addEventListener('hashchange', expandTalentsFromHash);
 </script>
 <script src="../assets/site.js"></script>
 </body>

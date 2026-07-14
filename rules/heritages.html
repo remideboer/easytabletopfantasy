@@ -21,7 +21,7 @@
       <button id="collapse-all-heritages" class="lineage-control-btn" onclick="collapseAllHeritages()">Collapse All</button>
     </div>
     <div class="lineages-container">
-      <div class="lineage-item">
+      <div class="lineage-item" id="anointed">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Anointed</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -34,7 +34,7 @@
 <p><strong>Languages.</strong> Common plus two additional (typical: Abyssal, Celestial, or Infernal).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="cloud">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Cloud</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -47,7 +47,7 @@
 <p><strong>Languages.</strong> Common plus two additional (typical: Elvish and Draconic).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="cosmopolitan">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Cosmopolitan</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -60,7 +60,7 @@
 <p><strong>Languages.</strong> Common plus three additional (typical: Dwarvish and Elvish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="cottage">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Cottage</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -73,7 +73,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="diaspora">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Diaspora</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -86,7 +86,7 @@
 <p><strong>Languages.</strong> Common plus one additional (often Orcish or Dwarvish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="fireforge">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Fireforge</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -99,7 +99,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="grove">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Grove</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -112,7 +112,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Elvish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="nomadic">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Nomadic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -125,7 +125,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="salvager">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Salvager</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -138,7 +138,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Draconic or Gnomish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="slayer">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Slayer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -151,7 +151,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="stone">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Stone</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -164,7 +164,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="supplicant">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Supplicant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -177,7 +177,7 @@
 <p><strong>Languages.</strong> Common plus one additional (overlord's tongue: Draconic, Giant, or Undercommon).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="vexed">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Vexed</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -190,7 +190,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical esoteric: Abyssal, Celestial, or Infernal).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="wildlands">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Wildlands</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -203,7 +203,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="conflicted">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Conflicted <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -216,7 +216,7 @@
 <p><strong>Languages.</strong> Common plus one additional (language of the conflict zone).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="coterminous">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Coterminous <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -230,7 +230,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Primordial).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="covenant">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Covenant <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -243,7 +243,7 @@
 <p><strong>Languages.</strong> Common plus two additional (typical: Draconic, Infernal, or Sylvan).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="feysworn">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Feysworn <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -256,7 +256,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="hivebound">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Hivebound <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -269,7 +269,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="ironwrought">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Ironwrought <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -282,7 +282,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Draconic).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="islander">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Islander <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -295,7 +295,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Sylvan).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="joymonger">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Joymonger <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -307,7 +307,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="kithren">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Kithren <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -319,7 +319,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Goblin or Gnomish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="seafarer">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Seafarer <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -332,7 +332,7 @@
 <p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="waterside">
         <button class="lineage-header" onclick="toggleHeritages(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Waterside <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -418,6 +418,23 @@ function collapseAllHeritages(){
     button.setAttribute('aria-expanded', 'false');
   });
 }
+function expandHeritagesFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item')) return;
+  const content = target.querySelector('.lineage-content');
+  const button = target.querySelector('.lineage-header');
+  if(!content || !button) return;
+  content.style.display = 'block';
+  content.classList.add('expanded');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  if(icon) icon.textContent = '▲';
+  button.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'none';
@@ -425,7 +442,9 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'false');
   });
+  expandHeritagesFromHash();
 });
+window.addEventListener('hashchange', expandHeritagesFromHash);
 </script>
 <script src="../assets/site.js"></script>
 </body>

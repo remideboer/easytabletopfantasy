@@ -21,7 +21,7 @@
       <button id="collapse-all-backgrounds" class="lineage-control-btn" onclick="collapseAllBackgrounds()">Collapse All</button>
     </div>
     <div class="lineages-container">
-      <div class="lineage-item">
+      <div class="lineage-item" id="adherent">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Adherent</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -34,7 +34,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="alchemist">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Alchemist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -47,7 +47,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Alchemy Adept</em>, <em>Elemental Savant</em>, or <em>Learned Researcher</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="artist">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Artist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -60,7 +60,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Quick</em>, <em>Scrutinous</em>, or <em>Trade Skills</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="chronicler">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Chronicler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -73,7 +73,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Learned Researcher</em>, <em>Polyglot</em>, or <em>Spell Recall</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="courtier">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Courtier</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -86,7 +86,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Combat Conditioning</em>, <em>Mental Fortitude</em>, or <em>Polyglot</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="criminal">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Criminal</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -99,7 +99,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Scrutinous</em>, or <em>Touch of Resolve</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="gravedigger">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Gravedigger</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -112,7 +112,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Hardy</em>, or <em>Mental Fortitude</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="healer">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Healer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -125,7 +125,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Field Medic</em>, or <em>Ritualist</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="homesteader">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Homesteader</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -138,7 +138,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Dungeoneer</em>, or <em>Far Traveler</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="investigator">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Investigator</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -151,7 +151,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Scrutinous</em>, <em>Situational Awareness</em>, or <em>Sleuth</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="maker">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Maker</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -164,7 +164,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Artillerist</em>, <em>School Specialization</em>, or <em>Trade Skills</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="outcast">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Outcast</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -177,7 +177,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Opportunist</em>, or <em>Quick</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="rebel">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Rebel</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -190,7 +190,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Brave</em>, <em>Comrade</em>, or <em>Hard to Kill</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="rustic">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Rustic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -203,7 +203,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Comrade</em>, <em>Hand to Hand</em>, or <em>Physical Fortitude</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="scholar">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Scholar</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -216,7 +216,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Polyglot</em>, <em>Ritualist</em>, or <em>School Specialization</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="servant">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Servant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -229,7 +229,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Hardy</em>, <em>Quick</em>, or <em>Tag Team</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="smuggler">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Smuggler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -242,7 +242,7 @@
 <p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Escamotage</em>, or <em>Slippery</em>.</p>
         </div>
       </div>
-      <div class="lineage-item">
+      <div class="lineage-item" id="soldier">
         <button class="lineage-header" onclick="toggleBackgrounds(this)">
           <span class="lineage-title-wrap"><span class="lineage-title">Soldier</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
@@ -302,6 +302,23 @@ function collapseAllBackgrounds(){
     button.setAttribute('aria-expanded', 'false');
   });
 }
+function expandBackgroundsFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item')) return;
+  const content = target.querySelector('.lineage-content');
+  const button = target.querySelector('.lineage-header');
+  if(!content || !button) return;
+  content.style.display = 'block';
+  content.classList.add('expanded');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  if(icon) icon.textContent = '▲';
+  button.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'none';
@@ -309,7 +326,9 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'false');
   });
+  expandBackgroundsFromHash();
 });
+window.addEventListener('hashchange', expandBackgroundsFromHash);
 </script>
 <script src="../assets/site.js"></script>
 </body>
