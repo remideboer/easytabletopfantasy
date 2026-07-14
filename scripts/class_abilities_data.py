@@ -77,14 +77,16 @@ def all_abilities():
            "Trade defense for ferocious accuracy.",
            """<p>When you make an attack on your turn, you can attack <strong>recklessly</strong>. You have advantage on melee weapon attack rolls using Fitness during this turn, but you have <strong>disadvantage on your Defense roll</strong> until the start of your next turn.</p>"""),
         _a(cid, cname, ["Fast Movement"], "3rd-level feature",
-           "Extra speed and initiative movement.",
-           """<p>Your speed increases by <strong>10 feet</strong> while you are not wearing heavy armor. When you roll initiative, you can immediately move up to half your speed.</p>"""),
+           "Extra speed and opening repositioning.",
+           """<p>Your speed increases by <strong>10 feet</strong> while you are not wearing heavy armor. When combat begins and you are not surprised, you can move up to half your speed before any turns are taken. This movement does not use your movement on your turn.</p>"""),
         _a(cid, cname, ["Multiattack"], "3rd-level feature",
            "Two attacks with the Attack action.",
            multiattack_body("two")),
         _a(cid, cname, ["Feral Instinct"], "3rd-level feature",
-           "Superior initiative and surprise immunity when raging.",
-           """<p>You have advantage on initiative rolls. If you are surprised at the start of combat and are not incapacitated, you can act normally on your first turn if you enter a rage before doing anything else on that turn.</p>"""),
+           "First-turn ferocity and surprise immunity when raging.",
+           """<p>On the first turn of each combat, you have <strong>advantage on melee weapon attack rolls</strong> (this stacks with weapon proficiency as normal).</p>
+<p>If you are surprised at the start of combat and are not incapacitated, you can act normally on your first turn if you enter a rage before doing anything else on that turn.</p>
+<p>When using the <a href="../combat.html#combat-order">initiative variant</a>, you have advantage on initiative rolls.</p>"""),
         _a(cid, cname, ["Brutal Critical", "Brutal Critical (1 die)", "Brutal Critical (2 dice)", "Brutal Critical (3 dice)"],
            "5th, 7th, and 9th level",
            "Expanded critical range and extra critical damage dice.",
@@ -100,7 +102,7 @@ def all_abilities():
            "Choose a powerful rage-enhancing boon.",
            """<p>Choose one heroic boon:</p>
 <ul>
-<li><strong>Instant Rage.</strong> You can rage without spending a free action when you roll initiative and use Fast Movement, if you have a use of Rage remaining.</li>
+<li><strong>Instant Rage.</strong> When combat begins and you use Fast Movement's opening move, you can enter a rage without spending a free action if you have a use of Rage remaining.</li>
 <li><strong>Stubborn Rage.</strong> Your rage ends only when its duration expires, you fall unconscious, or you choose to end it.</li>
 <li><strong>Bloody Rage.</strong> While raging, slashing damage from your weapon attacks ignores resistance.</li>
 <li><strong>Vengeful Rage.</strong> When a hostile creature damages you while you are raging, you have stacking advantage on the first attack you make against that creature on your next turn.</li>
@@ -287,7 +289,7 @@ def _register_druid():
            """<p>Choose one:</p>
 <ul>
 <li><strong>Rite of the Kingdom.</strong> Communicate basic ideas with Beasts; advantage on checks to influence them.</li>
-<li><strong>Rite of the Shaper.</strong> When you roll initiative with no Wild Shape uses left, regain one use (once per long rest).</li>
+<li><strong>Rite of the Shaper.</strong> When combat begins with no Wild Shape uses left, regain one use (once per long rest).</li>
 </ul>"""),
         _a(cid, cname, ["Epic Boon", "Epic Boon: Archdruid", "Archdruid"], "10th-level feature",
            "Unlimited wild shape; effortless spellcasting.",
@@ -432,8 +434,8 @@ def _register_monk():
            "Purity of Body or Mind.",
            """<p>Choose <strong>Purity of Body</strong> (immune to disease/poison) or <strong>Purity of Mind</strong> (advantage on Insight saves; end charm/fear as free action).</p>"""),
         _a(cid, cname, ["Epic Boon", "Epic Boon: Boundless Technique", "Boundless Technique"], "10th-level feature",
-           "Technique points refill in battle.",
-           """<p>When you roll initiative, regain up to 4 technique points. If you start a turn with 0 points, regain 2.</p>"""),
+           "Technique points refill when combat begins.",
+           """<p>When combat begins, regain up to 4 technique points. If you start a turn with 0 points, regain 2.</p>"""),
         _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
            "Ability increases or a martial talent.",
            improvement_body("martial talents")),
@@ -521,7 +523,7 @@ def _register_ranger():
            """<p>Your movement does not provoke opportunity attacks. Advantage on saves vs grapple, restraint, paralysis, and speed reduction.</p>"""),
         _a(cid, cname, ["Heroic Boon"], "5th-level feature",
            "Path of the Predator or Sage.",
-           """<p><strong>Predator:</strong> Mark on initiative without hitting; transfer mark when quarry dies. <strong>Sage:</strong> Learn two extra cantrips and two Primordial rituals.</p>"""),
+           """<p><strong>Predator:</strong> Mark your quarry when combat begins without needing to hit first; transfer mark when quarry dies. <strong>Sage:</strong> Learn two extra cantrips and two Primordial rituals.</p>"""),
         _a(cid, cname, ["Epic Boon", "Epic Boon: Foe Slayer", "Foe Slayer"], "10th-level feature",
            "Wisdom guides every blow against your mark.",
            """<p>Add your Insight modifier to the attack or damage roll of each attack against a mystic-marked creature on your turn.</p>"""),

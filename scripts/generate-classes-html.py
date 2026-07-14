@@ -169,7 +169,7 @@ CLASSES = [
             {
                 "name": "Heroic Boon",
                 "level": "5th-level feature",
-                "text": "Choose one: <strong>Instant Rage</strong> (rage without a free action when you roll initiative and use Fast Movement); <strong>Stubborn Rage</strong> (rage ends only when duration expires, you fall unconscious, or you choose to end it); <strong>Bloody Rage</strong> (while raging, slashing damage you deal with weapon attacks ignores resistance); <strong>Vengeful Rage</strong> (when damaged while raging, stacking advantage on your first attack against that creature next turn).",
+                "text": "Choose one: <strong>Instant Rage</strong> (rage without a free action when combat begins and you use Fast Movement's opening move); <strong>Stubborn Rage</strong> (rage ends only when duration expires, you fall unconscious, or you choose to end it); <strong>Bloody Rage</strong> (while raging, slashing damage you deal with weapon attacks ignores resistance); <strong>Vengeful Rage</strong> (when damaged while raging, stacking advantage on your first attack against that creature next turn).",
             },
             {
                 "name": "Relentless Rage",
