@@ -14,7 +14,7 @@
 <main>
   <h1>Fighter Abilities</h1>
   <div class="content">
-    <p class="lede">Full rules for every Fighter feature and subclass, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p class="lede">Full rules for every Fighter feature and subclass, adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
     <p><a href="../classes.html#fighter">← Back to Fighter</a> · <a href="index.html#fighter">All classes</a></p>
     <nav class="ability-toc toc" aria-label="Fighter abilities">
       <h2 id="contents">On this page</h2>
@@ -28,7 +28,11 @@
 <li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
 <li><a href="#subclasses">Subclass Features</a></li>
 <li class="toc-sub"><a href="#spell-blade">Spell Blade</a></li>
-<li class="toc-sub toc-feature"><a href="#spell-blade-spell-blade-subclass">Spell Blade Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-arcane-spellcasting">Arcane Spellcasting</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-enchant-weapon">Enchant Weapon</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-spell-multiattack">Spell Multiattack</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-follow-through">Follow Through</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-charged-strike">Charged Strike</a> <span class="text-muted">(8th-level subclass feature)</span></li>
 <li class="toc-sub"><a href="#weapon-master">Weapon Master</a></li>
 <li class="toc-sub toc-feature"><a href="#weapon-master-mastery">Mastery</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
 <li class="toc-sub toc-feature"><a href="#weapon-master-stunts">Stunts</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
@@ -134,15 +138,61 @@
   <h3 class="subclass-name">Spell Blade</h3>
   <p class="subclass-summary">Blend arcane magic with weapon mastery.</p>
   <div class="spells-container">
-<div class="spell-card ability-feature-card" id="spell-blade-spell-blade-subclass">
+<div class="spell-card ability-feature-card" id="spell-blade-arcane-spellcasting">
   <div class="spell-card-header">
-    <h4 class="spell-card-name">Spell Blade Subclass</h4>
-    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+    <h4 class="spell-card-name">Arcane Spellcasting</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
   </div>
   <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
   <div class="spell-card-description">
-    <p><em>Spell Blade subclass features.</em></p>
-    <p>Spell Blade grants partial spellcasting (see multiclass rules). Full YMIAT Spell Blade features are being drafted.</p>
+    <p><em>Partial Arcane spellcasting (abjuration/evocation focus).</em></p>
+    <p>You cast Arcane spells using <strong>Insight</strong> as your spellcasting ability (save DC 8 + PB + Insight; attack + PB + Insight).</p>
+<p>At 2nd level: learn <strong>2 cantrips</strong> and <strong>3 first-circle</strong> abjuration or evocation spells (one may be from any school). You have <strong>2 first-circle slots</strong>, regained on a long rest. Learn additional cantrips and spells at 4th, 6th, and 8th level per the Spell Blade table in the Player's Guide (adapted to YMIAT circles).</p>
+<p>When Improvement grants a talent, choose from magic or martial lists.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-enchant-weapon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enchant Weapon</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span><span><strong>Action:</strong> bonus action</span></div>
+  <div class="spell-card-description">
+    <p><em>Imbue a weapon (+1, scaling to +3); bonus action summon.</em></p>
+    <p>After 1 hour of focus on a weapon (during a rest), imbue it as a magic weapon: <strong>bonus action</strong> to summon to your hand if on the same plane; <strong>+1</strong> to attack and damage (stacks with existing magic bonuses). Bonus becomes <strong>+2</strong> at 6th level and <strong>+3</strong> at 8th. Only one enchanted weapon at a time.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-spell-multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Multiattack</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
+  <div class="spell-card-description">
+    <p><em>Replace one Multiattack swing with a cantrip.</em></p>
+    <p>When you use Multiattack, you can replace one attack with casting a cantrip you know (casting time 1 action). Only one cantrip per Attack action.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-follow-through">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Follow Through</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
+  <div class="spell-card-description">
+    <p><em>Weapon attack after casting a spell.</em></p>
+    <p>When you take the Cast a Spell action, you can make one weapon attack as part of that same action if a target is in range.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-charged-strike">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Charged Strike</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
+  <div class="spell-card-description">
+    <p><em>Add Insight to melee damage; weapon damage counts as magical.</em></p>
+    <p>Add your <strong>Insight modifier</strong> (minimum +1) to melee weapon damage in addition to Fitness or Dexterity. All weapon damage you deal is magical.</p>
   </div>
 </div>
 

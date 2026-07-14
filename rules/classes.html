@@ -18,7 +18,7 @@
 <main>
   <h1>Character Classes</h1>
   <div class="content">
-    <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) compresses the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
+    <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) adapts classes from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a>, compressing 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
     <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots. Each class lists <strong>one</strong> save with advantage—the class's primary saving throw. Progression features link to the <a href="class-abilities/index.html">class ability pages</a> (one page per class).</p>
 
     <h2 id="classes-at-a-glance">Classes at a Glance</h2>
@@ -30,13 +30,16 @@
         <tr><td><a href="#cleric">Cleric</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Divine</td></tr>
         <tr><td><a href="#druid">Druid</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Primordial</td></tr>
         <tr><td><a href="#fighter">Fighter</a></td><td>10</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
-        <tr><td><a href="#artificer">Artificer</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Martial/Tech</td></tr>
+        <tr><td><a href="#artificer">Artificer</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Martial/Utility</td></tr>
         <tr><td><a href="#monk">Monk</a></td><td>8</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
         <tr><td><a href="#paladin">Paladin</a></td><td>10</td><td>FIT</td><td>INS (advantage)</td><td>Divine/Martial</td></tr>
         <tr><td><a href="#ranger">Ranger</a></td><td>10</td><td>FIT</td><td>FIT (advantage)</td><td>Primordial/Martial</td></tr>
         <tr><td><a href="#rogue">Rogue</a></td><td>8</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
         <tr><td><a href="#sorcerer">Sorcerer</a></td><td>6</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
         <tr><td><a href="#warlock">Warlock</a></td><td>8</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
+        <tr><td><a href="#theurge">Theurge</a></td><td>6</td><td>INS</td><td>INS (advantage)</td><td>Arcane/Divine</td></tr>
+        <tr><td><a href="#vanguard">Vanguard</a></td><td>12</td><td>WIL</td><td>WIL (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#witch">Witch</a></td><td>8</td><td>WIL</td><td>WIL (advantage)</td><td>Wyrd</td></tr>
         <tr><td><a href="#wizard">Wizard</a></td><td>6</td><td>INS</td><td>INS (advantage)</td><td>Arcane</td></tr>
       </tbody>
     </table></div>
@@ -48,7 +51,7 @@
 
     <div class="lineages-container">
 <div class="lineage-item" id="barbarian">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Barbarian</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Barbarian</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A primal warrior who channels fury in battle. High Max Wounds, melee dominance, and resistance while raging.</p>
 <p><strong>Max Wounds (start):</strong> 12 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
@@ -77,10 +80,10 @@
 <li><strong><a href="class-abilities/barbarian.html#four-winds" class="ability-tip" data-tip="Elemental winds empower your movement and strikes.">Four Winds</a></strong></li>
 <li><strong><a href="class-abilities/barbarian.html#kraken" class="ability-tip" data-tip="Crushing tentacle-like force and abyssal resilience.">Kraken</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/barbarian/" rel="noopener">BFRD Barbarian</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/barbarian/" rel="noopener">BFRD Barbarian</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="bard">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Bard</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Bard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A versatile performer whose magic and inspiration support allies and confound foes.</p>
 <p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
@@ -88,28 +91,28 @@
 <p><strong>Spellcasting:</strong> Arcane spells. Spells known (no preparation). Rituals known per level.</p>
 <p><strong>Max spell circle by level:</strong></p>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
-<tr><td>2</td><td>1</td></tr>
-<tr><td>3</td><td>2</td></tr>
-<tr><td>4</td><td>2</td></tr>
-<tr><td>5</td><td>3</td></tr>
-<tr><td>6</td><td>3</td></tr>
-<tr><td>7</td><td>4</td></tr>
-<tr><td>8</td><td>4</td></tr>
-<tr><td>9</td><td>5</td></tr>
-<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
 <p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
 <h3 id="bard-progression">Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
 <tr><td>1</td><td><a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Grant an inspiration die to bolster an ally's roll. — Action: action — 1st, 4th, and 7th level">Bardic Inspiration (d6)</a>, <a href="class-abilities/bard.html#spellcasting" class="ability-tip" data-tip="Arcane spells known; uses Spell Power. — 1st-level feature">Spellcasting</a>, <a href="class-abilities/bard.html#expertise" class="ability-tip" data-tip="Double proficiency on chosen skills or tools. — 1st and 5th level">Expertise (2)</a></td></tr>
 <tr><td>2</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th.">Bard Subclass</a>; Bardic Performance (Celebrate Life, Cutting Words)</td></tr>
-<tr><td>3</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#font-of-inspiration" class="ability-tip" data-tip="Regain inspiration on short rest; bolster failed rolls. — 3rd-level feature">Font of Inspiration</a></td></tr>
-<tr><td>4</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Grant an inspiration die to bolster an ally's roll. — Action: action — 1st, 4th, and 7th level">Bardic Inspiration (d8)</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#font-of-inspiration" class="ability-tip" data-tip="Regain inspiration on short rest; bolster failed rolls. — 3rd-level feature">Font of Inspiration</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Grant an inspiration die to bolster an ally's roll. — Action: action — 1st, 4th, and 7th level">Bardic Inspiration (d8)</a></td></tr>
 <tr><td>5</td><td><a href="class-abilities/bard.html#bardic-performance" class="ability-tip" data-tip="Weave magic into ongoing performances. — 2nd and 5th level">Bardic Performance: Clarity of Thought</a>; <a href="class-abilities/bard.html#expertise" class="ability-tip" data-tip="Double proficiency on chosen skills or tools. — 1st and 5th level">Expertise (4)</a>; <a href="class-abilities/bard.html#heroic-boon" class="ability-tip" data-tip="Persistent or valiant inspiration options. — 5th-level feature">Heroic Boon</a></td></tr>
 <tr><td>6</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/bard.html#magical-secrets" class="ability-tip" data-tip="Learn spells from any source. — 6th and 9th level">Magical Secrets</a></td></tr>
-<tr><td>7</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Grant an inspiration die to bolster an ally's roll. — Action: action — 1st, 4th, and 7th level">Bardic Inspiration (d10)</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Grant an inspiration die to bolster an ally's roll. — Action: action — 1st, 4th, and 7th level">Bardic Inspiration (d10)</a></td></tr>
 <tr><td>8</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/bard.html#grand-performance" class="ability-tip" data-tip="Performance range increases to 60 feet. — 8th-level feature">Grand Performance</a></td></tr>
-<tr><td>9</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#magical-secrets" class="ability-tip" data-tip="Learn spells from any source. — 6th and 9th level">Magical Secrets</a></td></tr>
-<tr><td>10</td><td><a href="class-abilities/bard.html#epic-boon" class="ability-tip" data-tip="Recover inspiration during performance. — 10th-level feature">Epic Boon: Curtain Call</a>; <a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/bard.html#magical-secrets" class="ability-tip" data-tip="Learn spells from any source. — 6th and 9th level">Magical Secrets</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/bard.html#epic-boon" class="ability-tip" data-tip="Recover inspiration during performance. — 10th-level feature">Epic Boon: Curtain Call</a>; <a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
 </tbody></table></div>
 <h3 id="bard-features">Class Features</h3>
 <p>Full rules: <a href="class-abilities/bard.html">All Bard abilities →</a> (<a href="class-abilities/index.html#bard">index</a>) · <a href="class-abilities/bard.html#subclasses">subclasses</a></p>
@@ -119,10 +122,10 @@
 <li><strong><a href="class-abilities/bard.html#lore" class="ability-tip" data-tip="A collector of knowledge who weaves magic and talents from every tradition.">Lore</a></strong></li>
 <li><strong><a href="class-abilities/bard.html#victory" class="ability-tip" data-tip="Inspire allies to triumph through martial cadence.">Victory</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/bard/" rel="noopener">BFRD Bard</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/bard/" rel="noopener">BFRD Bard</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="cleric">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Cleric</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Cleric</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A divine champion who channels deity power through spells and channel divinity.</p>
 <p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
@@ -130,15 +133,15 @@
 <p><strong>Spellcasting:</strong> Divine spells (prepared). Domain spells always prepared.</p>
 <p><strong>Max spell circle by level:</strong></p>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
-<tr><td>2</td><td>1</td></tr>
-<tr><td>3</td><td>2</td></tr>
-<tr><td>4</td><td>2</td></tr>
-<tr><td>5</td><td>3</td></tr>
-<tr><td>6</td><td>3</td></tr>
-<tr><td>7</td><td>4</td></tr>
-<tr><td>8</td><td>4</td></tr>
-<tr><td>9</td><td>5</td></tr>
-<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
 <p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
 <h3 id="cleric-progression">Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
@@ -162,10 +165,10 @@
 <li><strong><a href="class-abilities/cleric.html#light" class="ability-tip" data-tip="Wield radiant fire and searing truth against darkness.">Light</a></strong></li>
 <li><strong><a href="class-abilities/cleric.html#war" class="ability-tip" data-tip="Champion courage and decisive victory in battle.">War</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/cleric/" rel="noopener">BFRD Cleric</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/cleric/" rel="noopener">BFRD Cleric</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="druid">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Druid</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Druid</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A guardian of nature wielding primordial magic and wild shape.</p>
 <p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
@@ -173,15 +176,15 @@
 <p><strong>Spellcasting:</strong> Primordial spells (prepared). Ring spells always prepared.</p>
 <p><strong>Max spell circle by level:</strong></p>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
-<tr><td>2</td><td>1</td></tr>
-<tr><td>3</td><td>2</td></tr>
-<tr><td>4</td><td>2</td></tr>
-<tr><td>5</td><td>3</td></tr>
-<tr><td>6</td><td>3</td></tr>
-<tr><td>7</td><td>4</td></tr>
-<tr><td>8</td><td>4</td></tr>
-<tr><td>9</td><td>5</td></tr>
-<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
 <p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
 <h3 id="druid-progression">Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Wild Shape</th><th>Features</th></tr></thead><tbody>
@@ -204,10 +207,10 @@
 <li><strong><a href="class-abilities/druid.html#leaf" class="ability-tip" data-tip="Guardian of growing things and peaceful wild places.">Leaf</a></strong></li>
 <li><strong><a href="class-abilities/druid.html#shifter" class="ability-tip" data-tip="Master of beast forms and primal transformation.">Shifter</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/druid/" rel="noopener">BFRD Druid</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/druid/" rel="noopener">BFRD Druid</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="fighter">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Fighter</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Fighter</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A master of weapons and battlefield tactics with action surge and martial actions.</p>
 <p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
@@ -233,10 +236,10 @@
 <li><strong><a href="class-abilities/fighter.html#spell-blade" class="ability-tip" data-tip="Blend arcane magic with weapon mastery.">Spell Blade</a></strong></li>
 <li><strong><a href="class-abilities/fighter.html#weapon-master" class="ability-tip" data-tip="Mastery of chosen weapons and tactical stunts.">Weapon Master</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/fighter/" rel="noopener">BFRD Fighter</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/fighter/" rel="noopener">BFRD Fighter</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="artificer">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Artificer</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Artificer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">An inventor who augments gear and crafts magical items. (BFRD Mechanist.)</p>
 <p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
@@ -245,13 +248,13 @@
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Augments</th><th>Items</th><th>Features</th></tr></thead><tbody>
 <tr><td>1</td><td>—</td><td>—</td><td><a href="class-abilities/artificer.html#eyes-of-the-maker" class="ability-tip" data-tip="Identify magic items by touch. — 1st-level feature">Eyes of the Maker</a>, <a href="class-abilities/artificer.html#shard-of-creation" class="ability-tip" data-tip="Magical tool with versatile charges. — 1st-level feature">Shard of Creation</a></td></tr>
 <tr><td>2</td><td>2</td><td>3</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th.">Artificer Subclass</a>; <a href="class-abilities/artificer.html#augment" class="ability-tip" data-tip="Apply augment effects to carried items. — 2nd-level feature">Augment</a>, <a href="class-abilities/artificer.html#efficient-action" class="ability-tip" data-tip="Augment without wasting effort. — 2nd-level feature">Efficient Action</a></td></tr>
-<tr><td>3</td><td>3</td><td>3</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or technical/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#multiattack" class="ability-tip" data-tip="Two attacks per Attack action. — 3rd-level feature">Multiattack (2)</a></td></tr>
-<tr><td>4</td><td>4</td><td>4</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or technical/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#rapid-augment" class="ability-tip" data-tip="Augment as a free action. — Action: free action — 4th-level feature">Rapid Augment</a></td></tr>
+<tr><td>3</td><td>3</td><td>3</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or utility/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#multiattack" class="ability-tip" data-tip="Two attacks per Attack action. — 3rd-level feature">Multiattack (2)</a></td></tr>
+<tr><td>4</td><td>4</td><td>4</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or utility/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#rapid-augment" class="ability-tip" data-tip="Augment as a free action. — Action: free action — 4th-level feature">Rapid Augment</a></td></tr>
 <tr><td>5</td><td>5</td><td>4</td><td><a href="class-abilities/artificer.html#greater-creation" class="ability-tip" data-tip="Craft more potent items. — 5th-level feature">Greater Creation</a>; <a href="class-abilities/artificer.html#heroic-boon" class="ability-tip" data-tip="Artificer heroic options per BFRD. — 5th-level feature">Heroic Boon</a></td></tr>
 <tr><td>6</td><td>6</td><td>5</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/artificer.html#engineers-insight" class="ability-tip" data-tip="Flash of mechanical genius. — 6th-level feature">Engineer's Insight</a></td></tr>
-<tr><td>7</td><td>7</td><td>5</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or technical/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#ranged-augment" class="ability-tip" data-tip="Apply augments at range. — 7th-level feature">Ranged Augment</a></td></tr>
+<tr><td>7</td><td>7</td><td>5</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or utility/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#ranged-augment" class="ability-tip" data-tip="Apply augments at range. — 7th-level feature">Ranged Augment</a></td></tr>
 <tr><td>8</td><td>8</td><td>6</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/artificer.html#always-prepared" class="ability-tip" data-tip="Augments persist through rest. — 8th-level feature">Always Prepared</a></td></tr>
-<tr><td>9</td><td>8</td><td>7</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or technical/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#perfect-creation" class="ability-tip" data-tip="Master-crafted magical items. — 9th-level feature">Perfect Creation</a></td></tr>
+<tr><td>9</td><td>8</td><td>7</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Ability increases or utility/martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/artificer.html#perfect-creation" class="ability-tip" data-tip="Master-crafted magical items. — 9th-level feature">Perfect Creation</a></td></tr>
 <tr><td>10</td><td>9</td><td>7</td><td><a href="class-abilities/artificer.html#epic-boon" class="ability-tip" data-tip="Capstone invention. — 10th-level feature">Epic Boon</a></td></tr>
 </tbody></table></div>
 <h3 id="artificer-features">Class Features</h3>
@@ -264,10 +267,10 @@
 <li><strong><a href="class-abilities/artificer.html#artillerist" class="ability-tip" data-tip="Deploy ranged magical ordnance.">Artillerist</a></strong></li>
 <li><strong><a href="class-abilities/artificer.html#battle-smith" class="ability-tip" data-tip="Field a steel defender companion.">Battle Smith</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/mechanist/" rel="noopener">BFRD Artificer</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/mechanist/" rel="noopener">BFRD Artificer</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="monk">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Monk</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Monk</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A martial artist channeling technique points for supernatural strikes and mobility.</p>
 <p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
@@ -293,10 +296,10 @@
 <li><strong><a href="class-abilities/monk.html#flickering-dark" class="ability-tip" data-tip="Harness shadow energy between strikes.">Flickering Dark</a></strong></li>
 <li><strong><a href="class-abilities/monk.html#open-hand" class="ability-tip" data-tip="Push, trip, and shatter foes with perfected technique.">Open Hand</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/monk/" rel="noopener">BFRD Monk</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/monk/" rel="noopener">BFRD Monk</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="paladin">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Paladin</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Paladin</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A holy warrior combining martial prowess with divine spells and smites.</p>
 <p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> INS (advantage on save).</p>
@@ -310,7 +313,7 @@
 <tr><td>5</td><td>2</td></tr>
 <tr><td>6</td><td>3</td></tr>
 <tr><td>7</td><td>3</td></tr>
-<tr><td>8</td><td>3</td></tr>
+<tr><td>8</td><td>4</td></tr>
 <tr><td>9</td><td>4</td></tr>
 <tr><td>10</td><td>5</td></tr></tbody></table></div>
 <p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
@@ -335,10 +338,10 @@
 <li><strong><a href="class-abilities/paladin.html#devotion" class="ability-tip" data-tip="Oath-bound knight of duty, honor, and righteous order.">Devotion</a></strong></li>
 <li><strong><a href="class-abilities/paladin.html#justice" class="ability-tip" data-tip="Paladin of law who punishes the guilty without mercy.">Justice</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/paladin/" rel="noopener">BFRD Paladin</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/paladin/" rel="noopener">BFRD Paladin</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="ranger">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Ranger</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Ranger</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A wilderness hunter marked by mystic quarry and primordial magic.</p>
 <p><strong>Max Wounds (start):</strong> 10 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
@@ -352,7 +355,7 @@
 <tr><td>5</td><td>2</td></tr>
 <tr><td>6</td><td>3</td></tr>
 <tr><td>7</td><td>3</td></tr>
-<tr><td>8</td><td>3</td></tr>
+<tr><td>8</td><td>4</td></tr>
 <tr><td>9</td><td>4</td></tr>
 <tr><td>10</td><td>5</td></tr></tbody></table></div>
 <p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
@@ -360,13 +363,13 @@
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
 <tr><td>1</td><td><a href="class-abilities/ranger.html#explorer" class="ability-tip" data-tip="Unmatched wilderness mobility. — 1st-level feature">Explorer</a>, <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Mark quarry for extra damage. — 1st level and higher">Mystic Mark</a></td></tr>
 <tr><td>2</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th.">Ranger Subclass</a>; <a href="class-abilities/ranger.html#martial-action" class="ability-tip" data-tip="Aim or Quick Strike as second action. — 2nd-level feature">Martial Action</a>, <a href="class-abilities/ranger.html#spellcasting" class="ability-tip" data-tip="Primordial spells known. — 2nd-level feature">Spellcasting</a></td></tr>
-<tr><td>3</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#multiattack" class="ability-tip" data-tip="Two attacks per Attack action. — 3rd-level feature">Multiattack (2)</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Mark quarry for extra damage. — 1st level and higher">Mystic Mark (d6)</a></td></tr>
-<tr><td>4</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#empowered-mark" class="ability-tip" data-tip="Sense and strike your quarry. — 4th-level feature">Empowered Mark</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#multiattack" class="ability-tip" data-tip="Two attacks per Attack action. — 3rd-level feature">Multiattack (2)</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Mark quarry for extra damage. — 1st level and higher">Mystic Mark (d6)</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#empowered-mark" class="ability-tip" data-tip="Sense and strike your quarry. — 4th-level feature">Empowered Mark</a></td></tr>
 <tr><td>5</td><td><a href="class-abilities/ranger.html#stalkers-step" class="ability-tip" data-tip="Vanish in natural cover. — 5th-level feature">Stalker's Step</a>; <a href="class-abilities/ranger.html#heroic-boon" class="ability-tip" data-tip="Path of the Predator or Sage. — 5th-level feature">Heroic Boon</a></td></tr>
 <tr><td>6</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Mark quarry for extra damage. — 1st level and higher">Mystic Mark (d8)</a></td></tr>
-<tr><td>7</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#keensense" class="ability-tip" data-tip="Hearing-based blindsight. — 7th-level feature">Keensense</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#keensense" class="ability-tip" data-tip="Hearing-based blindsight. — 7th-level feature">Keensense</a></td></tr>
 <tr><td>8</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/ranger.html#strider" class="ability-tip" data-tip="Move without provoking opportunity attacks. — 8th-level feature">Strider</a></td></tr>
-<tr><td>9</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Mark quarry for extra damage. — 1st level and higher">Mystic Mark (d10)</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Ability increases or martial/utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Mark quarry for extra damage. — 1st level and higher">Mystic Mark (d10)</a></td></tr>
 <tr><td>10</td><td><a href="class-abilities/ranger.html#epic-boon" class="ability-tip" data-tip="Wisdom guides every blow against your mark. — 10th-level feature">Epic Boon: Foe Slayer</a></td></tr>
 </tbody></table></div>
 <h3 id="ranger-features">Class Features</h3>
@@ -377,10 +380,10 @@
 <li><strong><a href="class-abilities/ranger.html#hunter" class="ability-tip" data-tip="Slayer of supernatural predators threatening the wilds.">Hunter</a></strong></li>
 <li><strong><a href="class-abilities/ranger.html#pack-master" class="ability-tip" data-tip="Lead beast companions and coordinated pack tactics.">Pack Master</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/ranger/" rel="noopener">BFRD Ranger</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/ranger/" rel="noopener">BFRD Ranger</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="rogue">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Rogue</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Rogue</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A skilled infiltrator delivering precision Sneak Attack damage.</p>
 <p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (advantage on save).</p>
@@ -389,13 +392,13 @@
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Sneak Attack</th><th>Features</th></tr></thead><tbody>
 <tr><td>1</td><td>1d6</td><td><a href="class-abilities/rogue.html#expertise" class="ability-tip" data-tip="Advantage on chosen skill checks. — 1st and 4th level">Expertise (2)</a>, <a href="class-abilities/rogue.html#sneak-attack" class="ability-tip" data-tip="Extra precision damage once per turn. — 1st-level feature">Sneak Attack</a>, <a href="class-abilities/rogue.html#thieves-cant" class="ability-tip" data-tip="Secret criminal dialect. — 1st-level feature">Thieves' Cant</a></td></tr>
 <tr><td>2</td><td>1d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th.">Rogue Subclass</a>; <a href="class-abilities/rogue.html#cunning-action" class="ability-tip" data-tip="Dash, Disengage, or Hide as a free action. — Action: free action — 2nd-level feature">Cunning Action (free action)</a></td></tr>
-<tr><td>3</td><td>2d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#uncanny-dodge" class="ability-tip" data-tip="Halve damage from one attack. — 3rd-level feature">Uncanny Dodge</a></td></tr>
-<tr><td>4</td><td>3d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#evasion" class="ability-tip" data-tip="Negate area damage on successful saves. — 4th-level feature">Evasion</a>, <a href="class-abilities/rogue.html#expertise" class="ability-tip" data-tip="Advantage on chosen skill checks. — 1st and 4th level">Expertise (4)</a></td></tr>
+<tr><td>3</td><td>2d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#uncanny-dodge" class="ability-tip" data-tip="Halve damage from one attack. — 3rd-level feature">Uncanny Dodge</a></td></tr>
+<tr><td>4</td><td>3d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#evasion" class="ability-tip" data-tip="Negate area damage on successful saves. — 4th-level feature">Evasion</a>, <a href="class-abilities/rogue.html#expertise" class="ability-tip" data-tip="Advantage on chosen skill checks. — 1st and 4th level">Expertise (4)</a></td></tr>
 <tr><td>5</td><td>4d6</td><td><a href="class-abilities/rogue.html#reliable-talent" class="ability-tip" data-tip="Treat low rolls as 10 on proficient checks. — 5th-level feature">Reliable Talent</a>; <a href="class-abilities/rogue.html#heroic-boon" class="ability-tip" data-tip="Escape Artist or Jack of All Trades. — 5th-level feature">Heroic Boon</a></td></tr>
 <tr><td>6</td><td>5d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/rogue.html#precise-critical" class="ability-tip" data-tip="Critical hits on 19–20 with finesse/ranged. — 6th and 8th level">Precise Critical (1 die)</a></td></tr>
-<tr><td>7</td><td>6d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#keensense" class="ability-tip" data-tip="Hearing-based blindsight 10 feet. — 7th-level feature">Keensense</a></td></tr>
+<tr><td>7</td><td>6d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#keensense" class="ability-tip" data-tip="Hearing-based blindsight 10 feet. — 7th-level feature">Keensense</a></td></tr>
 <tr><td>8</td><td>7d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/rogue.html#precise-critical" class="ability-tip" data-tip="Critical hits on 19–20 with finesse/ranged. — 6th and 8th level">Precise Critical (2 dice)</a></td></tr>
-<tr><td>9</td><td>8d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a technical talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#elusive" class="ability-tip" data-tip="Attackers rarely have advantage against you. — 9th-level feature">Elusive</a></td></tr>
+<tr><td>9</td><td>8d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Ability increases or a utility talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/rogue.html#elusive" class="ability-tip" data-tip="Attackers rarely have advantage against you. — 9th-level feature">Elusive</a></td></tr>
 <tr><td>10</td><td>10d6</td><td><a href="class-abilities/rogue.html#epic-boon" class="ability-tip" data-tip="Turn failure into success. — 10th-level feature">Epic Boon: Stroke of Luck</a></td></tr>
 </tbody></table></div>
 <h3 id="rogue-features">Class Features</h3>
@@ -406,10 +409,10 @@
 <li><strong><a href="class-abilities/rogue.html#enforcer" class="ability-tip" data-tip="Intimidation, control, and ruthless precision.">Enforcer</a></strong></li>
 <li><strong><a href="class-abilities/rogue.html#thief" class="ability-tip" data-tip="Climb, appraise, and strike before foes react.">Thief</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/rogue/" rel="noopener">BFRD Rogue</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/rogue/" rel="noopener">BFRD Rogue</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="sorcerer">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Sorcerer</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Sorcerer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">An innate spellcaster shaping arcane magic with metamagic and sorcery points.</p>
 <p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
@@ -417,15 +420,15 @@
 <p><strong>Spellcasting:</strong> Arcane spells known. Sorcery points for metamagic and flexible casting.</p>
 <p><strong>Max spell circle by level:</strong></p>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
-<tr><td>2</td><td>1</td></tr>
-<tr><td>3</td><td>2</td></tr>
-<tr><td>4</td><td>2</td></tr>
-<tr><td>5</td><td>3</td></tr>
-<tr><td>6</td><td>3</td></tr>
-<tr><td>7</td><td>4</td></tr>
-<tr><td>8</td><td>4</td></tr>
-<tr><td>9</td><td>5</td></tr>
-<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
 <p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
 <h3 id="sorcerer-progression">Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Sorcery Pts</th><th>Features</th></tr></thead><tbody>
@@ -448,10 +451,10 @@
 <li><strong><a href="class-abilities/sorcerer.html#chaos" class="ability-tip" data-tip="Wild surges of uncontrolled arcane power.">Chaos</a></strong></li>
 <li><strong><a href="class-abilities/sorcerer.html#draconic" class="ability-tip" data-tip="Innate power from draconic ancestry.">Draconic</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/sorcerer/" rel="noopener">BFRD Sorcerer</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/sorcerer/" rel="noopener">BFRD Sorcerer</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="warlock">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Warlock</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Warlock</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A pact-bound spellcaster with eldritch invocations and short-rest recovery.</p>
 <p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
@@ -491,10 +494,10 @@
 <li><strong><a href="class-abilities/warlock.html#fiend" class="ability-tip" data-tip="Power from a greater fiend patron.">Fiend</a></strong></li>
 <li><strong><a href="class-abilities/warlock.html#great-old-one" class="ability-tip" data-tip="Whispers from beyond the stars.">Great Old One</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/warlock/" rel="noopener">BFRD Warlock</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/warlock/" rel="noopener">BFRD Warlock</a>) for YMIAT 10-level play.</p>
 </div></div>
 <div class="lineage-item" id="wizard">
-<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title">Wizard</span><span class="lineage-toggle-icon">▼</span></button>
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Wizard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
 <div class="lineage-content">
 <p class="class-summary">A scholarly arcane caster with a spellbook and ritual mastery.</p>
 <p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
@@ -502,15 +505,15 @@
 <p><strong>Spellcasting:</strong> Arcane spells (prepared from spellbook). Rituals and rote spells.</p>
 <p><strong>Max spell circle by level:</strong></p>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
-<tr><td>2</td><td>1</td></tr>
-<tr><td>3</td><td>2</td></tr>
-<tr><td>4</td><td>2</td></tr>
-<tr><td>5</td><td>3</td></tr>
-<tr><td>6</td><td>3</td></tr>
-<tr><td>7</td><td>4</td></tr>
-<tr><td>8</td><td>4</td></tr>
-<tr><td>9</td><td>5</td></tr>
-<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
 <p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
 <h3 id="wizard-progression">Progression</h3>
 <div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
@@ -533,7 +536,123 @@
 <li><strong><a href="class-abilities/wizard.html#battle-mage" class="ability-tip" data-tip="Arcane offense with martial discipline.">Battle Mage</a></strong></li>
 <li><strong><a href="class-abilities/wizard.html#cantrip-adept" class="ability-tip" data-tip="Cantrip mastery and ritual ingenuity.">Cantrip Adept</a></strong></li>
 </ul>
-<p class="source-note">Adapted from the <a href="https://bfrd.net/classes/wizard/" rel="noopener">BFRD Wizard</a> for YMIAT 10-level play.</p>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/wizard/" rel="noopener">BFRD Wizard</a>) for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="theurge">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Theurge</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A dual-source caster who prepares Arcane and Divine spells from a mystic libram and manipulates magic with Spellcraft.</p>
+<p><strong>Max Wounds (start):</strong> 6 + Fitness modifier. <strong>Key ability:</strong> Insight (INS). <strong>Saves:</strong> INS (advantage on save).</p>
+<p><strong>Proficiencies:</strong> Simple weapons. Skills: choose two from Arcana, History, Insight, Investigation, Medicine, and Religion.</p>
+<p><strong>Spellcasting:</strong> Arcane and Divine spells (prepared from libram). Rituals known per level. Must include spells from both lists when learning.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3 id="theurge-progression">Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/theurge.html#spell-nexus" class="ability-tip" data-tip="Swap prepared spells through your libram. — Action: bonus action — 1st-level feature">Spell Nexus</a>, <a href="class-abilities/theurge.html#spellcasting" class="ability-tip" data-tip="Prepared Arcane and Divine spells from your libram. — 1st-level feature">Spellcasting (Libram)</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th.">Theurge Subclass</a>; <a href="class-abilities/theurge.html#spellcraft" class="ability-tip" data-tip="Insight dice to manipulate spell outcomes. — 2nd-level feature">Spellcraft</a>, <a href="class-abilities/theurge.html#summon-libram" class="ability-tip" data-tip="Sense and recall your libram across planes. — Action: bonus action — 2nd-level feature">Summon Libram</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/theurge.html#spell-synthesis" class="ability-tip" data-tip="Cast Arcane and Divine spells in one turn. — 5th-level feature">Spell Synthesis</a>; <a href="class-abilities/theurge.html#heroic-boon" class="ability-tip" data-tip="Careful Craft, Persistent Craft, or Precise Craft. — 5th-level feature">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/theurge.html#superior-focus" class="ability-tip" data-tip="Dual concentration on Arcane and Divine spells. — 6th-level feature">Superior Focus</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/theurge.html#spellcraft" class="ability-tip" data-tip="Insight dice to manipulate spell outcomes. — 2nd-level feature">Spellcraft (d8)</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/theurge.html#epic-boon" class="ability-tip" data-tip="Epic theurge boon from ToV Player's Guide 2. — 10th-level feature">Epic Boon</a>; <a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="theurge-features">Class Features</h3>
+<p>Full rules: <a href="class-abilities/theurge.html">All Theurge abilities →</a> (<a href="class-abilities/index.html#theurge">index</a>) · <a href="class-abilities/theurge.html#subclasses">subclasses</a></p>
+<h3 id="theurge-subclasses">Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong><a href="class-abilities/theurge.html#conduit" class="ability-tip" data-tip="Exchange vitality for spell power and disrupt enemy magic.">Conduit</a></strong></li>
+<li><strong><a href="class-abilities/theurge.html#illuminary" class="ability-tip" data-tip="Inscribe sacred signs and sigils to extend your magic.">Illuminary</a></strong></li>
+<li><strong><a href="class-abilities/theurge.html#source-spinner" class="ability-tip" data-tip="Unravel and realign the weave of magic.">Source Spinner</a></strong></li>
+</ul>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Theurge</a>) for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="vanguard">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Vanguard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A battlefield commander who plants war banners, issues stratagems, and shields allies through tactical leadership.</p>
+<p><strong>Max Wounds (start):</strong> 12 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
+<p><strong>Proficiencies:</strong> All armor, shields, simple and martial weapons. Skills: choose two from Animal Handling, Athletics, History, Insight, Intimidation, Medicine, and Persuasion.</p>
+<h3 id="vanguard-progression">Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/vanguard.html#born-leader" class="ability-tip" data-tip="Authority or Community leadership aura. — 1st-level feature">Born Leader</a>, <a href="class-abilities/vanguard.html#war-banner" class="ability-tip" data-tip="Mystical battle standard in combat. — Action: action — 1st-level feature">War Banner</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th.">Vanguard Subclass</a>; <a href="class-abilities/vanguard.html#stratagems" class="ability-tip" data-tip="Tactical commands on the battlefield. — 2nd-level feature">Stratagems</a>, <a href="class-abilities/vanguard.html#support-action" class="ability-tip" data-tip="Stabilize and rally fallen allies. — 2nd-level feature">Support Action</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Ability increases or a martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/vanguard.html#multiattack" class="ability-tip" data-tip="Two attacks with the Attack action. — 3rd-level feature">Multiattack (2)</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Ability increases or a martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/vanguard.html#stratagems" class="ability-tip" data-tip="Tactical commands on the battlefield. — 2nd-level feature">Superior Stratagems</a>; <a href="class-abilities/vanguard.html#heroic-boon" class="ability-tip" data-tip="Vanguard heroic boon from ToV PG2. — 5th-level feature">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/vanguard.html#war-banner-lucky-colors" class="ability-tip" data-tip="Third war banner option. — 6th-level feature">War Banner: Lucky Colors</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Ability increases or a martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/vanguard.html#manifold-tactic" class="ability-tip" data-tip="Combine two stratagems. — 7th-level feature">Manifold Tactic</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Ability increases or a martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/vanguard.html#valiant-commander" class="ability-tip" data-tip="Extend banner and stratagem range. — 9th-level feature">Valiant Commander</a>, <a href="class-abilities/vanguard.html#battlefield-resolve" class="ability-tip" data-tip="Push through pain on the front line. — 9th-level feature">Battlefield Resolve</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/vanguard.html#epic-boon" class="ability-tip" data-tip="Vanguard epic boon from ToV PG2. — 10th-level feature">Epic Boon</a>; <a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Ability increases or a martial talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="vanguard-features">Class Features</h3>
+<p>Full rules: <a href="class-abilities/vanguard.html">All Vanguard abilities →</a> (<a href="class-abilities/index.html#vanguard">index</a>) · <a href="class-abilities/vanguard.html#subclasses">subclasses</a></p>
+<h3 id="vanguard-subclasses">Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong><a href="class-abilities/vanguard.html#bulwark" class="ability-tip" data-tip="Battlefield healer and protector with the Surgeon's Standard banner.">Bulwark</a></strong></li>
+<li><strong><a href="class-abilities/vanguard.html#herald" class="ability-tip" data-tip="Living standard-bearer who teleports allies through battle.">Herald</a></strong></li>
+<li><strong><a href="class-abilities/vanguard.html#marshal" class="ability-tip" data-tip="Inspiring commander who coordinates allied strikes.">Marshal</a></strong></li>
+</ul>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Vanguard</a>) for YMIAT 10-level play.</p>
+</div></div>
+<div class="lineage-item" id="witch">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Witch</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">A Wyrd caster who hexes foes, binds spirits, and draws power from otherworldly covens.</p>
+<p><strong>Max Wounds (start):</strong> 8 + Fitness modifier. <strong>Key ability:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (advantage on save).</p>
+<p><strong>Proficiencies:</strong> Light armor, simple weapons. Skills: choose two from Arcana, Animal Handling, Insight, Intimidation, Nature, and Religion.</p>
+<p><strong>Spellcasting:</strong> Wyrd spells (known, not prepared). Rituals known per level. Coven spells from subclass.</p>
+<p><strong>Max spell circle by level:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> instead of spell slots. Spell cost equals spell circle.</p>
+<h3 id="witch-progression">Progression</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/witch.html#hex" class="ability-tip" data-tip="Curse foes with a Hex die. — Action: bonus action — 1st-level feature">Hex (d6)</a>, <a href="class-abilities/witch.html#spellcasting" class="ability-tip" data-tip="Known Wyrd spells. — 1st-level feature">Spellcasting</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th.">Witch Subclass</a>; <a href="class-abilities/witch.html#shadow-craft" class="ability-tip" data-tip="Minor illusions and witch-light craft. — 2nd-level feature">Shadow Craft</a>, <a href="class-abilities/witch.html#spirit-binding" class="ability-tip" data-tip="Bind helpful spirits. — 2nd-level feature">Spirit Binding</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a>; <a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/witch.html#greater-hex" class="ability-tip" data-tip="Hexed foes struggle to hit you. — 5th-level feature">Greater Hex</a>; <a href="class-abilities/witch.html#heroic-boon" class="ability-tip" data-tip="Witch heroic boon from ToV PG2. — 5th-level feature">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Subclass feature at this level. See subclass rules on the class ability page.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a>; <a href="class-abilities/witch.html#otherworldly-form" class="ability-tip" data-tip="Brief spirit transformation. — Action: action — 9th-level feature">Otherworldly Form</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/witch.html#epic-boon" class="ability-tip" data-tip="Witch epic boon from ToV PG2. — 10th-level feature">Epic Boon</a>; <a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Ability increases or a magic talent. — 3rd, 5th, 7th, 9th, and 10th level">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="witch-features">Class Features</h3>
+<p>Full rules: <a href="class-abilities/witch.html">All Witch abilities →</a> (<a href="class-abilities/index.html#witch">index</a>) · <a href="class-abilities/witch.html#subclasses">subclasses</a></p>
+<h3 id="witch-subclasses">Subclasses</h3>
+<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>
+<ul>
+<li><strong><a href="class-abilities/witch.html#crimson-cord" class="ability-tip" data-tip="Vitality witch who heals allies and wastes foes with blood magic.">Crimson Cord</a></strong></li>
+<li><strong><a href="class-abilities/witch.html#night-song" class="ability-tip" data-tip="Predator witch empowered by darkness and night blessings.">Night Song</a></strong></li>
+<li><strong><a href="class-abilities/witch.html#twilight-soul" class="ability-tip" data-tip="Spirit diplomat with a sentinel companion.">Twilight Soul</a></strong></li>
+</ul>
+<p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Witch</a>) for YMIAT 10-level play.</p>
 </div></div>
     </div>
   </div>

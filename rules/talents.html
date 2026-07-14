@@ -4,265 +4,573 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Talents | You-Meet-In-A-Tavern (YMIAT)</title>
-<meta name="description" content="Character talents for You-Meet-In-A-Tavern (YMIAT)." />
-<link rel="canonical" href="rules/talents.html" />
 <link rel="stylesheet" href="../assets/styles.css" />
 <script src="../assets/includes.js"></script>
-<meta property="og:title" content="Talents | You-Meet-In-A-Tavern (YMIAT)" />
-<meta property="og:description" content="Character talents for You-Meet-In-A-Tavern (YMIAT)." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="rules/talents.html" />
 </head>
 <body>
 <header data-include="nav"></header>
 <main>
   <h1>Talents</h1>
   <div class="content">
-    <p class="lede">Talents represent the specific ways an adventurer has improved over the course of their adventures. Talents are divided into three categories: magic talents, martial talents, and technical talents. Your class typically determines which talent lists you have access to.</p>
-    
-    <p>Talents are gained in two main ways:</p>
-    <ul>
-      <li>When a character chooses their background during character creation, they select one talent from a list of options provided in the background.</li>
-      <li>When a character class grants an Improvement, they choose a talent from the list specified by their class features—assuming the character meets any necessary prerequisites.</li>
-    </ul>
-    
+    <p class="lede">Talents from the <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide, adapted for YMIAT (Resolve, Wounds, utility talents).</p>
+    <p>Talents are gained from backgrounds at 1st level and from class Improvement features.</p>
     <div class="lineages-controls">
-      <button id="expand-all-talents" class="lineage-control-btn" onclick="expandAllTalents()">Expand All</button>
-      <button id="collapse-all-talents" class="lineage-control-btn" onclick="collapseAllTalents()">Collapse All</button>
+      <button class="lineage-control-btn" onclick="expandAllTalents()">Expand All</button>
+      <button class="lineage-control-btn" onclick="collapseAllTalents()">Collapse All</button>
     </div>
-    
     <h2>Magic Talents</h2>
-    <p>Most magic talents affect a character's spellcasting abilities, but they also include features that strengthen the mind and defend against harmful magic effects.</p>
-    
     <div class="lineages-container">
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Combat Casting</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Arcanist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>Experience on the battlefield has given you superior focus to cast your spells. You gain these benefits:</p>
-          <ul>
-            <li>When you make a Fitness save to maintain concentration on a spell, treat any d20 roll of 7 or less as though you rolled an 8.</li>
-            <li>When a creature provokes an opportunity attack from you, you can use your reaction to cast a cantrip instead of making a melee attack.</li>
-            <li>You can use a shield or weapon you wield as a spellcasting focus. As normal, you can use the same hand or hands holding this focus to perform somatic spell components.</li>
-          </ul>
+          <p><strong>Prerequisite:</strong> Spellcasting class feature</p><ul>
+<li>Double proficiency bonus on Arcana checks.</li>
+<li>Once per rest, replace one known cantrip or spell (not from a spellbook) with another of the same circle from your source list.</li>
+<li>Learn one additional cantrip from your spellcasting source.</li></ul>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Mental Fortitude</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Combat Casting</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>Through rigid mental exercise, you have fortified yourself against mind-altering effects. You gain these benefits:</p>
           <ul>
-            <li>Once per short rest, when you fail an Insight or Willpower save, you can choose to reroll the save and take the new result.</li>
-            <li>When you start your turn charmed, frightened, paralyzed, or stunned, you gain 1 Resolve.</li>
-          </ul>
+<li>On Fitness saves to maintain concentration, treat d20 rolls of 7 or less as 8.</li>
+<li>When a creature provokes an opportunity attack, cast a cantrip with your reaction instead of a melee attack.</li>
+<li>Use a shield or weapon as a spellcasting focus.</li></ul>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Ritualist</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Elemental Savant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Prerequisite:</strong> Spellcasting Class Feature</p>
-          <p>Your study of magic has unlocked the mysteries of ritual spells. When you gain this talent, you also gain a ritual book, which contains the rituals you know. To cast a ritual spell, you must have your ritual book in hand.</p>
-          <p>Choose a spell source: Arcane, Divine, Primordial, or Wyrd. You must choose your rituals from that source's spell list. Regardless of which source you choose, you use your normal spellcasting ability for these spells.</p>
-          <p>When you gain your ritual book, add one ritual of each spell circle you have already unlocked via your spellcasting class. For example, a cleric who selects this talent at 4th level has spell slots for 1st and 2nd circles, so they would add one 1st-circle ritual and one 2nd-circle ritual to their book.</p>
-          <p>Each time you gain access to a new circle of spell slots by gaining a level in your spellcasting class, add one new ritual spell to your book. This new ritual must be from the same circle of magic you originally chose, and it must be of a circle for which you have spell slots.</p>
+          <p><strong>Prerequisite:</strong> Ability to cast at least one damaging spell</p><p>Choose acid, cold, fire, lightning, or thunder. When you cast a spell that deals damage, you may convert its damage type to your chosen type. When rolling damage for spells that naturally use that type, reroll 1s on damage dice. Selectable multiple times for different types.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">School Specialization</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mental Fortitude</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>Choose one of the eight schools of magic: abjuration, conjuration, divination, enchantment, evocation, illusion, necromancy, or transmutation. You gain these benefits:</p>
           <ul>
-            <li>When you cast spells of your chosen school, your spell attack bonus and spell save DC are both increased by 1.</li>
-            <li>If you use a spellbook to cast your spells, the gold and time you must spend copying a spell of that school into your spellbook is halved.</li>
-            <li>When you spend two or more sorcery points while casting a spell of that school, you regain 1 sorcery point at the end of your turn.</li>
-          </ul>
-          <p>You can select this talent multiple times, selecting a different school of magic each time.</p>
+<li>Once per short rest, reroll a failed Insight or Willpower save.</li>
+<li>When you start your turn charmed, frightened, paralyzed, or stunned, gain 1 Resolve.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Ritualist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Spellcasting class feature</p><p>Gain a ritual book. Choose Arcane, Divine, Primordial, or Wyrd as your ritual source. Add one ritual per spell circle you have unlocked; add another when you gain access to a new circle.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">School Specialization</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>+1 to spell attack and save DC for your chosen school.</li>
+<li>Halve gold and time to copy spells of that school into a spellbook.</li>
+<li>When spending 2+ sorcery points on a spell of that school, regain 1 sorcery point at end of turn.</li></ul>
+<p>Selectable multiple times for different schools.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Spell Duelist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Ability to cast one or more cantrips</p><ul>
+<li>When damaged by a spell, react to cast a cantrip at the attacker.</li>
+<li>Spell attacks ignore half/three-quarters cover; touch range becomes 15 feet; double spell range otherwise.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Chaos Caster</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Spellcasting class feature</p><p>When casting with a spell circle slot, attempt to cast as one circle higher (ability check vs DC 11 + base circle). On success, roll on the Volatile Spell Effect table. Uses per long rest equal to proficiency bonus.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Spell Recall</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Prepared spellcaster (Cleric, Druid, Theurge, or Wizard)</p><ul>
+<li>Prepare additional spells equal to half proficiency bonus (rounded down).</li>
+<li>As a bonus action, swap one prepared spell for another (ability check DC 10 + circle or lose the attempt).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Magical Trickster</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Learn <em>minor illusion</em> and <em>prestidigitation</em> or <em>thaumaturgy</em> (no components; double range).</li>
+<li>As a bonus action, impose disadvantage on one creature's next attack (Willpower save); uses per day equal to proficiency bonus.</li></ul>
         </div>
       </div>
     </div>
-    
     <hr>
-    
     <h2>Martial Talents</h2>
-    <p>Martial talents affect a character's combat abilities, including enhancements to overall fitness and the ability to wield weaponry.</p>
-    
     <div class="lineages-container">
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Armor Expert</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Armor Expert</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Prerequisite:</strong> Fitness +1 or higher</p>
-          <p>Your experience with armor allows you to weather mighty onslaughts. While you are wearing medium or heavy armor with which you are proficient, you gain these benefits:</p>
-          <ul>
-            <li>Your Defense bonus increases by 1.</li>
-            <li>You have advantage on Fitness saves to avoid being pulled, shoved, or knocked prone.</li>
-          </ul>
+          <p><strong>Prerequisite:</strong> Fitness +1 or higher</p><ul>
+<li>While wearing medium or heavy armor you're proficient with: +1 Defense, advantage on Fitness saves vs. pull/shove/prone.</li></ul>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Combat Conditioning</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Armor Training</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>You've endured extensive training to withstand the rigors of combat. You gain these benefits:</p>
+          <p><strong>Prerequisite:</strong> Proficiency with light or medium armor</p><ul>
+<li>Gain next armor proficiency step (light→medium→heavy and shields).</li>
+<li>No disadvantage on Stealth in medium armor; add up to +3 Fitness to Defense in medium armor.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Athletic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
           <ul>
-            <li>Your Max Wounds increases by 2 for each character level you have. Each time you gain a level after taking this talent, your Max Wounds increases by 2.</li>
-            <li>You have 1 extra Recovery Point. Your maximum Recovery Points equals your character level + 1.</li>
-            <li>During a long rest, you regain all of your Recovery Points instead of half.</li>
-          </ul>
+<li>Double proficiency on Athletics checks.</li>
+<li>Increased carry/push/lift capacity; stand from prone for 5 ft movement; +10 ft running long jump, +3 ft high jump.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Artillerist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Fitness +1 or higher</p><ul>
+<li>Ignore Loading on proficient ranged weapons.</li>
+<li>Advantage on siege weapon attacks.</li>
+<li>With advantage on a ranged attack, reroll one d20.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Brave</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Advantage on saves vs. fear; inspire ally within 5× proficiency bonus feet with advantage on one fear save.</li>
+<li>Once per long rest, end frightened on yourself or an ally within 5 feet as a bonus action.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Combat Conditioning</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Max Wounds +2 per character level (retroactive and on future levels).</li>
+<li>+1 maximum Recovery Point; regain all Recovery Points on a long rest.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Critical Training</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Critical hit on 19–20 with weapons.</li>
+<li>On weapon crits, add the attack ability modifier to damage an extra time.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hand to Hand</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Unarmed strikes deal 1d6 + Fitness modifier.</li>
+<li>Proficiency with improvised weapons (1d8 one-hand, 1d10 two-hand minimum).</li>
+<li>Advantage on grapple checks; grappled foes take Fitness modifier bludgeoning at start of your turn.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Opportunist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Advantage on opportunity attacks.</li>
+<li>Opportunity attacks when foes stand from prone or Use an Object.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Physical Fortitude</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Once per turn, reroll a failed Fitness save by spending a Recovery Point.</li>
+<li>Gain 1 Resolve when you start blinded, deafened, restrained, or poisoned.</li>
+<li>Advantage vs. prone, pull, or push.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Return Fire</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>When a visible attacker hits or misses you with a ranged attack, react with a ranged or thrown weapon attack if in range.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Spell Hunter</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>React with melee attack when a reachable foe casts; extra damage equal to spell circle (crit interrupts spell).</li>
+<li>Advantage on saves vs. their spells within 5 feet; they have disadvantage on concentration.</li>
+<li>Grappled creatures can't cast spells requiring somatic components.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Vanguard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>React with melee attack when a foe in reach attacks someone else.</li>
+<li>Opportunity attacks when creatures leave reach even without provoking.</li>
+<li>Readied melee attacks gain +proficiency bonus; on hit, target's speed becomes 0 until end of its next turn.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Weapon Discipline</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Proficiency with at least one martial weapon</p><p>Choose one proficient simple or martial weapon: +1 attack and damage; extra weapon die on crit; temp Wounds equal to proficiency bonus when you drop a foe with that weapon.</p>
         </div>
       </div>
     </div>
-    
     <hr>
-    
-    <h2>Technical Talents</h2>
-    <p>Technical talents affect a character's noncombat abilities, granting utility-based improvements to social encounters, exploration, and object interactions.</p>
-    
+    <h2>Utility Talents</h2>
     <div class="lineages-container">
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Covert</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Alchemy Adept</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Prerequisite:</strong> Proficiency with the Stealth skill, Fitness +1 or higher</p>
-          <p>You trained in the art of espionage. You gain these benefits:</p>
-          <ul>
-            <li>You can attempt to hide while in three-quarters cover or while lightly obscured.</li>
-            <li>Creatures that rely on darkvision can't see you while you remain motionless in dim light or darkness. This effect ends if you move, take an action or bonus action, or use a reaction while in the creature's line of sight.</li>
-            <li>You don't have disadvantage on attack rolls and Insight (Perception) checks against targets in dim light.</li>
-            <li>If you make a ranged attack against a creature or if a creature spots you while you are hidden, you can use your reaction to make a Fitness (Stealth) check at disadvantage opposed by the creature's Perception. On a success, you remain hidden and the creature is unaware of your position. Once used on a creature, the target can't be affected by this feature again for 24 hours.</li>
-          </ul>
+          <p><strong>Prerequisite:</strong> Proficiency with alchemist's tools</p><ul>
+<li>Double proficiency on alchemist's tool checks.</li>
+<li>Craft alchemical items faster during downtime; proficient with alchemical ranged attacks using Fitness or Insight.</li>
+<li>+proficiency bonus to concoction save DC; range 30/60 ft.</li></ul>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Field Medic</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Aware</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>You trained to provide emergency medical assistance. When you select this talent, you gain these benefits:</p>
           <ul>
-            <li>When you make an Insight (Medicine) check, treat any d20 roll of 9 or lower as though you rolled a 10.</li>
-            <li>As an action, you can tend to the wounds of a creature you can see and touch. When you do, the creature heals a number of Wounds equal to your proficiency level + their Fitness modifier. A creature healed in this way can't receive the benefits of this feature again until it finishes a short or long rest.</li>
-            <li>When you spend hit dice to heal Wounds during a short rest, you can reroll a number of dice equal to your proficiency level and must take the new result.</li>
-          </ul>
+<li>On initiative, treat d20 rolls of 9 or less as 10.</li>
+<li>Can't be surprised while conscious.</li>
+<li>Hidden attackers don't gain advantage against you.</li></ul>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Polyglot</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Bottomless Luck</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>You have studied language extensively. You can communicate in multiple languages and puzzle out critical information from languages you don't know. When you select this talent, you gain these benefits:</p>
           <ul>
-            <li>Learn three languages of your choice.</li>
-            <li>When you converse with a creature in a language you both know (other than Common) you have advantage on a single Willpower ability check made to influence or interact with that creature. Once you use this feature, you can't do so again until you finish a long rest.</li>
-            <li>When you make an ability check related to understanding the meaning of a verbal or written language you don't know, you can add your proficiency level to the result. If you have proficiency in a relevant skill or tool, double your proficiency level for the roll.</li>
-          </ul>
+<li>When you roll 20 on a d20, one ally who can see or hear you gains 1 Resolve.</li>
+<li>When resetting Resolve, roll d20 in four bands (see core rules) and keep the better of two rolls if you roll twice.</li>
+<li>When spending Resolve to reroll, roll twice and keep the better result.</li></ul>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleTalent(this)">
-          <span class="lineage-title">Scrutinous</span>
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Comrade</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>You have a keen eye for detail. You gain these benefits:</p>
           <ul>
-            <li>When a creature you can see speaks in a language that you know, you can discern what they are saying even if you can't hear them.</li>
-            <li>You gain a +5 bonus to your passive Perception and passive Investigation.</li>
-            <li>When you spend 1 minute or longer examining an object for fine or hidden details, you can ask your GM one question about it, and they must answer truthfully.</li>
-            <li>If you hear a creature speak for 1 minute or longer, you can mimic its voice. A creature familiar with your target can succeed on an Insight check opposed by your Willpower (Deception) to understand the ruse.</li>
-          </ul>
+<li>Help as a bonus action.</li>
+<li>Spend Resolve to boost an ally's roll within 30 feet.</li>
+<li>When an ally within 30 feet fails a death save or reaches Max Wounds, gain 2 Resolve.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Covert</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Stealth proficiency, Fitness +1</p><ul>
+<li>Hide in three-quarters cover or while lightly obscured.</li>
+<li>Darkvision users can't see you while motionless in dim light or darkness.</li>
+<li>No disadvantage attacking or perceiving in dim light.</li>
+<li>Reaction Stealth vs. Perception to stay hidden after being spotted (once per creature per 24 hours).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dungeoneer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Add proficiency bonus to disarm traps/open doors even without tools; first failure on traps doesn't trigger them.</li>
+<li>Advantage finding secrets, traps, and illusions; advantage vs. traps and hazards; resistance to trap/hazard damage.</li>
+<li>At combat start, you and allies within 5 feet may roll Stealth for surprise.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Empathetic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Discern simple intent from body language in unknown languages.</li>
+<li>+5 passive Insight; proficiency in Persuasion (or double proficiency).</li>
+<li>After 10 minutes of friendly conversation, advantage on Willpower (Persuasion) checks.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Escamotage</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Proficiency in Sleight of Hand (or double proficiency).</li>
+<li>Spend 2 Resolve to reroll Sleight of Hand checks.</li>
+<li>Action to pick a visible worn nonmagical item (DC 10 + target's Fitness bonus + CR).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Far Traveler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Travel 10 hours/day before forced march saves; fast pace doesn't reduce passive Perception.</li>
+<li>Advantage on Survival checks to avoid getting lost.</li>
+<li>Ignore one level of exhaustion.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Field Medic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>On Medicine checks, treat d20 rolls of 9 or less as 10.</li>
+<li>Action: heal Wounds equal to proficiency bonus + Fitness modifier (once per target per rest).</li>
+<li>When spending Recovery Points on a short rest, reroll up to proficiency bonus dice.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hardy</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Fitness +1 or higher</p><ul>
+<li>Once per long rest, drop to 1 Wound instead of 0 when reduced to 0 Wounds.</li>
+<li>Advantage on checks to avoid or reduce exhaustion; once per long rest ignore gaining a level of exhaustion.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Learned Researcher</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Choose two of Arcana, History, Nature, or Religion: treat d20 rolls of 9 or less as 10 (uses per day = proficiency bonus). Downtime research costs and time divided by proficiency bonus; advantage on research resolution rolls.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Polyglot</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Learn three languages.</li>
+<li>Once per long rest, advantage on one Willpower check to influence a creature you share a non-Common language with.</li>
+<li>Add proficiency bonus when deciphering unknown languages (double if also proficient in relevant skill/tool).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Quick</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>+10 ft speed without medium/heavy armor.</li>
+<li>Dash along vertical surfaces; reduce fall distance by 5× proficiency bonus as a reaction.</li>
+<li>Bonus action: move 5 feet without provoking opportunity attacks.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Scrutinous</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Read lips in languages you know.</li>
+<li>+5 passive Perception and Investigation.</li>
+<li>After 1 minute examining an object, ask the GM one truthful question about it.</li>
+<li>Mimic voices after hearing speech for 1 minute.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Situational Awareness</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Advantage on checks to avoid surprise.</li>
+<li>After melee damage, react to move 10 feet without provoking opportunity attacks.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sleuth</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Insight +1 or Willpower +1</p><p>Choose two of Insight, Investigation, Perception, or Survival: treat 9 or less as 10. After 1 minute talking with a creature, produce a <em>zone of truth</em> effect (uses per day = proficiency bonus).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Slippery</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>First 5× proficiency bonus feet of difficult terrain each move costs normal movement.</li>
+<li>Advantage to avoid and end grappled.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Tag Team</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Mark an enemy within 30 feet for 1 minute. If you miss a melee attack against the mark without disadvantage, the next ally to attack it has advantage. Once per short or long rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Touch of Luck</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>When you would gain 1 Resolve from a failed save or attack, gain 2 instead.</li>
+<li>At 4 Resolve, when you would gain more, reset Resolve using the d20 band table in core rules.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Trade Skills</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Gain proficiency in one skill and related tool/vehicle (or two tools/vehicles).</li>
+<li>Double proficiency on one chosen skill.</li>
+<li>Advantage when both a proficient tool and skill apply.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Trailblazer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Climb and swim speeds equal to walking speed.</li>
+<li>Advantage on exhaustion checks while climbing or swimming.</li>
+<li>Hold breath for 1 + twice Fitness modifier minutes.</li></ul>
         </div>
       </div>
     </div>
-    
     <hr>
-    
-    <p><em>Note: <strong>You-Meet-In-A-Tavern</strong> (YMIAT)'s talent system is based on the talent system found in Tales of the Valiant and the Black Flag Reference Document. For detailed talent descriptions and complete talent lists, refer to those sources or consult with your Game Master.</em></p>
+    <p><em>Additional talents appear in the ToV Player's Guide and Player's Guide 2. Only talents listed here are summarized for YMIAT play.</em></p>
   </div>
 </main>
 <footer class="legal" data-include="footer"></footer>
 <script>
-function toggleTalent(button){
+function toggleTalents(button){
   const item = button.closest('.lineage-item');
   const content = item.querySelector('.lineage-content');
   const icon = button.querySelector('.lineage-toggle-icon');
-  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
-  
-  if(isExpanded){
-    content.style.display = 'none';
-    content.classList.remove('expanded');
-    icon.textContent = '▼';
-    button.setAttribute('aria-expanded', 'false');
-  } else {
-    content.style.display = 'block';
-    content.classList.add('expanded');
-    icon.textContent = '▲';
-    button.setAttribute('aria-expanded', 'true');
-  }
+  const open = content.style.display === 'block' || content.classList.contains('expanded');
+  content.style.display = open ? 'none' : 'block';
+  content.classList.toggle('expanded', !open);
+  icon.textContent = open ? '▼' : '▲';
+  button.setAttribute('aria-expanded', open ? 'false' : 'true');
 }
-
 function expandAllTalents(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
-    content.style.display = 'block';
-    content.classList.add('expanded');
-  });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
-    icon.textContent = '▲';
-  });
-  document.querySelectorAll('.lineage-header').forEach(button => {
-    button.setAttribute('aria-expanded', 'true');
-  });
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='block'; c.classList.add('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▲');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','true'));
 }
-
 function collapseAllTalents(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
-    content.style.display = 'none';
-    content.classList.remove('expanded');
-  });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
-    icon.textContent = '▼';
-  });
-  document.querySelectorAll('.lineage-header').forEach(button => {
-    button.setAttribute('aria-expanded', 'false');
-  });
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='none'; c.classList.remove('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▼');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','false'));
 }
-
-// Initialize: all collapsed by default
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
-    content.style.display = 'none';
-  });
-  document.querySelectorAll('.lineage-header').forEach(button => {
-    button.setAttribute('aria-expanded', 'false');
-  });
-});
+document.addEventListener('DOMContentLoaded',()=>collapseAllTalents());
 </script>
 <script src="../assets/site.js"></script>
 </body>

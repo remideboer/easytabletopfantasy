@@ -172,8 +172,8 @@ def all_abilities():
            "Recover inspiration during performance.",
            """<p><strong>Curtain Call.</strong> If you start your turn with no Bardic Inspiration uses remaining, you can recover uses equal to your Willpower modifier (minimum 1) as part of the action that maintains your performance. Once per long rest.</p>"""),
         _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
-           "Ability increases or a technical talent.",
-           improvement_body("technical talents")),
+           "Ability increases or a utility talent.",
+           improvement_body("utility talents")),
     ]
 
     # ── CLERIC ─────────────────────────────────────────────────────────────
@@ -242,6 +242,9 @@ def all_abilities():
     abilities += _register_sorcerer()
     abilities += _register_warlock()
     abilities += _register_wizard()
+    abilities += _register_theurge()
+    abilities += _register_vanguard()
+    abilities += _register_witch()
 
     return abilities
 
@@ -379,8 +382,8 @@ def _register_artificer():
            "Capstone invention.",
            """<p>Gain the Mechanist Epic Boon from BFRD, adapted for YMIAT.</p>"""),
         _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
-           "Ability increases or technical/martial talent.",
-           improvement_body("technical or martial talents")),
+           "Ability increases or utility/martial talent.",
+           improvement_body("utility or martial talents")),
     ]
 
 
@@ -528,8 +531,8 @@ def _register_ranger():
            "Wisdom guides every blow against your mark.",
            """<p>Add your Insight modifier to the attack or damage roll of each attack against a mystic-marked creature on your turn.</p>"""),
         _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
-           "Ability increases or martial/technical talent.",
-           improvement_body("martial or technical talents")),
+           "Ability increases or martial/utility talent.",
+           improvement_body("martial or utility talents")),
     ]
 
 
@@ -575,8 +578,8 @@ def _register_rogue():
            "Turn failure into success.",
            """<p>Turn a missed attack into a hit, or treat a failed ability check d20 as 20. Once per short or long rest.</p>"""),
         _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
-           "Ability increases or a technical talent.",
-           improvement_body("technical talents")),
+           "Ability increases or a utility talent.",
+           improvement_body("utility talents")),
     ]
 
 
@@ -667,6 +670,137 @@ def _register_wizard():
         _a(cid, cname, ["Epic Boon", "Epic Boon: Archmage", "Archmage"], "10th-level feature",
            "Chance to recover spent spell power.",
            """<p>When you cast a spell of 1st circle or higher using Spell Power, roll d10. If the result exceeds the circle spent, recover that Spell Power. Once per short rest.</p>"""),
+        _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
+           "Ability increases or a magic talent.",
+           improvement_body("magic talents")),
+    ]
+
+
+def _register_theurge():
+    cid, cname = "theurge", "Theurge"
+    return [
+        _a(cid, cname, ["Spell Nexus"], "1st-level feature",
+           "Swap prepared spells through your libram.",
+           """<p>As a <strong>bonus action</strong> while your libram is within 100 feet, open a conduit to instantly replace one prepared spell with another of the <strong>same circle and source</strong> (Arcane or Divine) transcribed in your libram.</p>
+<p>Uses per long rest equal to your proficiency bonus.</p>""",
+           action="bonus action"),
+        _a(cid, cname, ["Spellcasting", "Libram"], "1st-level feature",
+           "Prepared Arcane and Divine spells from your libram.",
+           spellcasting_body("Theurge", "Arcane and Divine", "prepared", "Insight (INS)") + """
+<p><strong>Libram:</strong> Your Tiny magical libram holds all spells you know except cantrips. At 1st level it contains six 1st-circle spells (at least two Arcane and two Divine). Only you can read it. Replace a lost libram with a 1-hour ceremony.</p>
+<p>When you gain a theurge level, add one Arcane and one Divine spell to your libram. You may swap one spell in your libram for another of the same source when you level.</p>"""),
+        _a(cid, cname, ["Spellcraft"], "2nd-level feature",
+           "Insight dice to manipulate spell outcomes.",
+           """<p>You have Spellcraft dice equal to your <strong>Insight modifier</strong> (minimum 1). They are d6s (d8 at 9th level). Regain expended dice on a short or long rest.</p>
+<p>Spend one die (roll immediately) to:</p>
+<ul>
+<li>Add the result to damage or healing from a spell you cast.</li>
+<li>Add the result to a Fitness save to maintain concentration.</li>
+<li>Add the result to a check to learn, decipher, or recall magical information.</li>
+</ul>"""),
+        _a(cid, cname, ["Summon Libram"], "2nd-level feature",
+           "Sense and recall your libram across planes.",
+           """<p>While your libram is on the same plane, you know its distance and direction. As a <strong>bonus action</strong> on the same plane, summon it to your hand or an adjacent space.</p>""",
+           action="bonus action"),
+        _a(cid, cname, ["Spell Synthesis"], "5th-level feature",
+           "Cast Arcane and Divine spells in one turn.",
+           """<p>Once per short or long rest, cast two prepared spells of 4th circle or lower on your turn: one Arcane and one Divine. Use action + bonus action, or cast two action spells with one Cast a Spell action. Each spell costs Spell Power normally.</p>
+<p>You cannot take reactions until the start of your next turn.</p>"""),
+        _a(cid, cname, ["Superior Focus"], "6th-level feature",
+           "Dual concentration on Arcane and Divine spells.",
+           """<p>Concentrate on one Arcane and one Divine spell at once. At the start of each turn, make a Fitness save (DC 10 + highest circle) or both spells end. You have disadvantage on concentration saves from damage while holding both.</p>"""),
+        _a(cid, cname, ["Heroic Boon"], "5th-level feature",
+           "Careful Craft, Persistent Craft, or Precise Craft.",
+           """<p>Choose one ToV theurge heroic boon: <strong>Careful Craft</strong> (Spellcraft die not expended on failed boost), <strong>Persistent Craft</strong> (force reroll on successful save vs. your spell), or <strong>Precise Craft</strong> (reroll 1s on Spellcraft dice).</p>"""),
+        _a(cid, cname, ["Epic Boon"], "10th-level feature",
+           "Epic theurge boon from ToV Player's Guide 2.",
+           """<p>Choose an epic boon from the ToV theurge list (adapted for YMIAT), such as expanded Spell Synthesis uses or enhanced libram range.</p>"""),
+        _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
+           "Ability increases or a magic talent.",
+           improvement_body("magic talents")),
+    ]
+
+
+def _register_vanguard():
+    cid, cname = "vanguard", "Vanguard"
+    return [
+        _a(cid, cname, ["Born Leader"], "1st-level feature",
+           "Authority or Community leadership aura.",
+           """<p>Choose a leadership quality at 1st level:</p>
+<ul>
+<li><strong>Authority.</strong> A friendly creature starting its turn within 5 feet adds your PB to weapon damage on hits until end of turn. Gain Intimidation proficiency (double PB if already proficient).</li>
+<li><strong>Community.</strong> A friendly creature ending its turn within 5 feet gains PB on its first save before your next turn. Gain Persuasion proficiency (double PB if already proficient).</li>
+</ul>
+<p>Allies benefit only while you are conscious.</p>"""),
+        _a(cid, cname, ["War Banner"], "1st-level feature",
+           "Mystical battle standard in combat.",
+           """<p>As an <strong>action</strong> during encounter play, plant a war banner in an adjacent space. It lasts 1 minute (or until you end it, plant another, move 120+ feet away, or become incapacitated).</p>
+<p>Creatures within 15 feet who can see the banner are affected. Start with <strong>Banner of Mercy</strong> (banner absorbs ally damage up to 10 × vanguard level Wounds) and <strong>Black Flag</strong> (foes have disadvantage on first attack each turn).</p>
+<p>PB uses per long rest; only one banner at a time.</p>""",
+           action="action"),
+        _a(cid, cname, ["Stratagems", "Superior Stratagems"], "2nd-level feature",
+           "Tactical commands on the battlefield.",
+           """<p>You learn stratagems—commands that reposition allies, grant advantage, or disrupt enemies. At 2nd level you know two; learn more as you level. <strong>Superior Stratagems</strong> (5th) unlocks advanced options from the ToV vanguard list.</p>"""),
+        _a(cid, cname, ["Support Action"], "2nd-level feature",
+           "Stabilize and rally fallen allies.",
+           """<p>You gain a <strong>Support Action</strong> each turn in combat. Use it to stabilize a dying ally (they regain Wounds equal to vanguard level + Willpower modifier and become conscious), grant temporary Wounds, or execute other support options from the ToV vanguard rules.</p>"""),
+        _a(cid, cname, ["Multiattack", "Multiattack (2)"], "3rd-level feature",
+           "Two attacks with the Attack action.",
+           multiattack_body("two")),
+        _a(cid, cname, ["War Banner: Lucky Colors"], "6th-level feature",
+           "Third war banner option.",
+           """<p>Gain the <strong>Lucky Colors</strong> war banner: allies within range gain a bonus to Defense or saves (per ToV vanguard rules).</p>"""),
+        _a(cid, cname, ["Manifold Tactic"], "7th-level feature",
+           "Combine two stratagems.",
+           """<p>When you use a stratagem, you can apply a second stratagem effect on the same turn once per short or long rest.</p>"""),
+        _a(cid, cname, ["Valiant Commander"], "9th-level feature",
+           "Extend banner and stratagem range.",
+           """<p>Your war banner range increases to 30 feet. Once per turn when you use a stratagem, you can affect one additional valid target.</p>"""),
+        _a(cid, cname, ["Battlefield Resolve"], "9th-level feature",
+           "Push through pain on the front line.",
+           """<p>When you fail a save, you can expend a Recovery Point to reroll. You must use the new result.</p>"""),
+        _a(cid, cname, ["Heroic Boon"], "5th-level feature",
+           "Vanguard heroic boon from ToV PG2.",
+           """<p>Choose a vanguard heroic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>"""),
+        _a(cid, cname, ["Epic Boon"], "10th-level feature",
+           "Vanguard epic boon from ToV PG2.",
+           """<p>Choose a vanguard epic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>"""),
+        _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
+           "Ability increases or a martial talent.",
+           improvement_body("martial talents")),
+    ]
+
+
+def _register_witch():
+    cid, cname = "witch", "Witch"
+    return [
+        _a(cid, cname, ["Hex", "Hex (d6)", "Hex (d8)", "Hex (d10)"], "1st-level feature",
+           "Curse foes with a Hex die.",
+           """<p>As a <strong>bonus action</strong>, give a creature within 60 feet a Hex die (d6; d8 at 5th, d10 at 9th). When the target makes an attack, check, or save, you can roll and subtract the die (expending it). Only one Hex die per creature.</p>
+<p>Uses per long rest equal to your <strong>Willpower modifier</strong> (minimum 1).</p>""",
+           action="bonus action"),
+        _a(cid, cname, ["Spellcasting"], "1st-level feature",
+           "Known Wyrd spells.",
+           spellcasting_body("Witch", "Wyrd", "known", "Willpower (WIL)")),
+        _a(cid, cname, ["Shadow Craft"], "2nd-level feature",
+           "Minor illusions and witch-light craft.",
+           """<p>You weave shadow and wyrd into minor effects—hidden messages, obscuring mists, and coven fetishes. Options expand at 6th and 9th level per the ToV witch rules.</p>"""),
+        _a(cid, cname, ["Spirit Binding"], "2nd-level feature",
+           "Bind helpful spirits.",
+           """<p>Over 10 minutes, bind a spirit companion for scouting and spell delivery. At 2nd level you maintain one binding; additional bindings at higher levels per ToV witch progression (adapted to YMIAT 10 levels).</p>"""),
+        _a(cid, cname, ["Greater Hex"], "5th-level feature",
+           "Hexed foes struggle to hit you.",
+           """<p>When you give a creature a Hex die, it has <strong>disadvantage</strong> on the first attack roll against you before the die is spent.</p>"""),
+        _a(cid, cname, ["Otherworldly Form"], "9th-level feature",
+           "Brief spirit transformation.",
+           """<p>As an action, assume an otherworldly form for 1 minute: resistance to nonmagical B/P/S, advantage on Willpower saves, and one coven benefit from your subclass. Once per long rest.</p>""",
+           action="action"),
+        _a(cid, cname, ["Heroic Boon"], "5th-level feature",
+           "Witch heroic boon from ToV PG2.",
+           """<p>Choose a witch heroic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>"""),
+        _a(cid, cname, ["Epic Boon"], "10th-level feature",
+           "Witch epic boon from ToV PG2.",
+           """<p>Choose a witch epic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>"""),
         _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
            "Ability increases or a magic talent.",
            improvement_body("magic talents")),

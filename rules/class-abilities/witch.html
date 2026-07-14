@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Witch Abilities | YMIAT</title>
+<meta name="description" content="Full rules for every Witch class and subclass feature in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/witch.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Witch Abilities</h1>
+  <div class="content">
+    <p class="lede">Full rules for every Witch feature and subclass, adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p><a href="../classes.html#witch">← Back to Witch</a> · <a href="index.html#witch">All classes</a></p>
+    <nav class="ability-toc toc" aria-label="Witch abilities">
+      <h2 id="contents">On this page</h2>
+      <ul>
+<li><a href="#hex">Hex</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#shadow-craft">Shadow Craft</a> <span class="text-muted">(2nd-level feature)</span></li>
+<li><a href="#spirit-binding">Spirit Binding</a> <span class="text-muted">(2nd-level feature)</span></li>
+<li><a href="#greater-hex">Greater Hex</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#otherworldly-form">Otherworldly Form</a> <span class="text-muted">(9th-level feature)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10th-level feature)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
+<li><a href="#subclasses">Subclass Features</a></li>
+<li class="toc-sub"><a href="#crimson-cord">Crimson Cord</a></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-crimson-cord-coven-spells">Crimson Cord Coven Spells</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-life-transfer">Life Transfer</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-wasting-hex">Wasting Hex</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-sanguine-link">Sanguine Link</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-scarlet-web">Scarlet Web</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+<li class="toc-sub"><a href="#night-song">Night Song</a></li>
+<li class="toc-sub toc-feature"><a href="#night-song-night-blessing">Night Blessing</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-rending-hex">Rending Hex</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-draining-curse">Draining Curse</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-enhanced-blessing">Enhanced Blessing</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-apex-predator">Apex Predator</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+<li class="toc-sub"><a href="#twilight-soul">Twilight Soul</a></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-obscuring-hex">Obscuring Hex</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-spirit-sentinel">Spirit Sentinel</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-ephemeral-shroud">Ephemeral Shroud</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-welcomed-spirits">Welcomed Spirits</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-soul-sanctum">Soul Sanctum</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class Features</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Hex</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Action:</strong> bonus action</span></div>
+  <div class="spell-card-description">
+    <p><em>Curse foes with a Hex die.</em></p>
+    <p>As a <strong>bonus action</strong>, give a creature within 60 feet a Hex die (d6; d8 at 5th, d10 at 9th). When the target makes an attack, check, or save, you can roll and subtract the die (expending it). Only one Hex die per creature.</p>
+<p>Uses per long rest equal to your <strong>Willpower modifier</strong> (minimum 1).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Known Wyrd spells.</em></p>
+    <p>As a conduit for <strong>Wyrd</strong> magic, you cast spells using <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spell cost equals spell circle. Your max spell circle by level is shown on the <a href="../classes.html#witch">Witch</a> progression table.</p>
+<p>You know a fixed list of spells and do not prepare them daily. Learn additional spells at the levels shown on your class progression table.</p>
+<p><strong>Spellcasting ability:</strong> Willpower (WIL). Spell save DC and spell attack modifier use your proficiency bonus + Willpower (WIL) modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> As shown on your progression table. Rituals do not cost Spell Power when cast using the ritual rules in <a href="../magic.html">Magic</a>.</p>
+<p><strong>Second action casting:</strong> If you cast a spell as your second action (because you did not move this turn), spell attacks are at disadvantage and targets have advantage on saves against that spell.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="shadow-craft">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Shadow Craft</h4>
+    <span class="spell-card-level">2nd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Minor illusions and witch-light craft.</em></p>
+    <p>You weave shadow and wyrd into minor effects—hidden messages, obscuring mists, and coven fetishes. Options expand at 6th and 9th level per the ToV witch rules.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spirit-binding">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spirit Binding</h4>
+    <span class="spell-card-level">2nd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Bind helpful spirits.</em></p>
+    <p>Over 10 minutes, bind a spirit companion for scouting and spell delivery. At 2nd level you maintain one binding; additional bindings at higher levels per ToV witch progression (adapted to YMIAT 10 levels).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="greater-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Greater Hex</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Hexed foes struggle to hit you.</em></p>
+    <p>When you give a creature a Hex die, it has <strong>disadvantage</strong> on the first attack roll against you before the die is spent.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="otherworldly-form">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Otherworldly Form</h4>
+    <span class="spell-card-level">9th-level feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Brief spirit transformation.</em></p>
+    <p>As an action, assume an otherworldly form for 1 minute: resistance to nonmagical B/P/S, advantage on Willpower saves, and one coven benefit from your subclass. Once per long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Witch heroic boon from ToV PG2.</em></p>
+    <p>Choose a witch heroic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Witch epic boon from ToV PG2.</em></p>
+    <p>Choose a witch epic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3rd, 5th, 7th, 9th, and 10th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Ability increases or a magic talent.</em></p>
+    <p>At 3rd, 5th, 7th, 9th, and 10th level, choose one improvement (ability modifiers cannot exceed +7 with this feature):</p>
+<ul>
+<li>Increase a single ability modifier by 2.</li>
+<li>Increase two different ability modifiers by 1 each.</li>
+<li>Increase one ability modifier by 1 and select a talent from the <a href="../talents.html">magic talents</a> list.</li>
+</ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass Features</h2>
+<p class="subclasses-intro">Choose your subclass at <strong>2nd level</strong>. Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level.</p>
+<div class="subclass-group" id="crimson-cord">
+  <h3 class="subclass-name">Crimson Cord</h3>
+  <p class="subclass-summary">Vitality witch who heals allies and wastes foes with blood magic.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="crimson-cord-crimson-cord-coven-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Crimson Cord Coven Spells</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span></div>
+  <div class="spell-card-description">
+    <p><em>Always-prepared coven spells.</em></p>
+    <p>Gain coven spells at 2nd, 4th, 6th, and 8th level: <em>cure wounds</em>, <em>inflict wounds</em>, <em>restoration</em>, and higher-circle healing and necrotic spells per ToV Crimson Cord table.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-life-transfer">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Life Transfer</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Sacrifice Wounds to heal or harm.</em></p>
+    <p>Action: sacrifice up to 4 × witch level Wounds to heal one creature within 30 feet or force a Fitness save for necrotic damage. PB uses per short or long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-wasting-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wasting Hex</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span></div>
+  <div class="spell-card-description">
+    <p><em>Hexes sap vitality.</em></p>
+    <p>When you Hex a creature, it may take 2 × PB Wounds at turn start (Fitness save for half) and can't regain Wounds until next turn.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-sanguine-link">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Sanguine Link</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Mystical blood bond.</em></p>
+    <p>Action: link with a willing creature (reduce Max Wounds by 10). Linked targets can receive Life Transfer and <em>cure wounds</em> at range. Half PB links active.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-scarlet-web">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Scarlet Web</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Area life-drain and healing aura.</em></p>
+    <p>Action: for 1 minute, hostiles in 30 feet take Wounds on entry/start of turn; allies ending turn nearby heal. Advantage on Fitness saves; resistance to nonmagical B/P/S. Once per long rest.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Crimson Cord</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="night-song">
+  <h3 class="subclass-name">Night Song</h3>
+  <p class="subclass-summary">Predator witch empowered by darkness and night blessings.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="night-song-night-blessing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Night Blessing</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+    <p><em>Darkvision and nightly predator gifts.</em></p>
+    <p>Advantage on Stealth in dim light/darkness; darkvision 60 feet (+30 if you already have it). After each long rest, choose Night Children, Night Crawler, or Night Creature blessing.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-rending-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Rending Hex</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+    <p><em>Hexed prey takes extra weapon damage.</em></p>
+    <p>When a hexed creature takes weapon damage, add Hex die + Willpower to damage without expending the die. Below half Wounds, Fitness save or allies gain advantage vs. target.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-draining-curse">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Draining Curse</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+    <p><em>Curse prey and drain their life.</em></p>
+    <p>Action or with Hex: sacrifice a Recovery Point to curse a creature for 1 hour; damage to cursed targets heals you up to witch level. PB uses per long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-enhanced-blessing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enhanced Blessing</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+    <p><em>Switch blessings on rest; stronger gifts.</em></p>
+    <p>Change Night Blessing on short or long rest. Each blessing gains an additional benefit (charm beasts, B/P/S resistance, or fly speed).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-apex-predator">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Apex Predator</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Full night transformation.</em></p>
+    <p>Action: for 1 minute, gain two blessings, advantage vs. cursed targets, and regain 20 Wounds each turn outside sunlight. Once per long rest.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Night Song</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="twilight-soul">
+  <h3 class="subclass-name">Twilight Soul</h3>
+  <p class="subclass-summary">Spirit diplomat with a sentinel companion.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="twilight-soul-obscuring-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Obscuring Hex</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span></div>
+  <div class="spell-card-description">
+    <p><em>Invisible to hexed targets.</em></p>
+    <p>When you Hex a creature, you are invisible to it for up to 1 minute until you attack, damage, or target it with a spell.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-spirit-sentinel">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spirit Sentinel</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span></div>
+  <div class="spell-card-description">
+    <p><em>Tiny spirit scout and spell origin.</em></p>
+    <p>10-minute ritual summons a Tiny spirit (bat, raven, cat, etc.). Cast spells from its space; telepathic senses; command Move, Hinder, or Invisible tasks.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-ephemeral-shroud">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ephemeral Shroud</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span><span><strong>Action:</strong> reaction</span></div>
+  <div class="spell-card-description">
+    <p><em>Teleport away from attacks.</em></p>
+    <p>Reaction when hit by a single-target attack: teleport up to 60 feet; attack misses. PB uses per long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-welcomed-spirits">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Welcomed Spirits</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span></div>
+  <div class="spell-card-description">
+    <p><em>Ritual communion with spirits.</em></p>
+    <p>10-minute ceremony: expend Recovery Points to cast <em>augury</em>, <em>speak with dead</em>, or <em>commune with nature</em> without Spell Power.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-soul-sanctum">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Soul Sanctum</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Spirits shield you and punish foes.</em></p>
+    <p>Action: for 1 minute, hostiles near you or your sentinel take force damage at turn start; attackers have disadvantage vs. you; hostiles have disadvantage on saves vs. your spells. Once per long rest.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Twilight Soul</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#witch">← Back to Witch</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

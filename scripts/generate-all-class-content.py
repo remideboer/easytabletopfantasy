@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent
 scripts = [
     ROOT / "generate-class-abilities.py",
     ROOT / "generate-classes-html.py",
+    ROOT / "generate-character-options-html.py",
 ]
 
 for script in scripts:

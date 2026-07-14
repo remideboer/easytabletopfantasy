@@ -8,311 +8,370 @@
 <link rel="canonical" href="rules/lineages.html" />
 <link rel="stylesheet" href="../assets/styles.css" />
 <script src="../assets/includes.js"></script>
-<meta property="og:title" content="Lineages | You-Meet-In-A-Tavern (YMIAT)" />
-<meta property="og:description" content="Character lineages for You-Meet-In-A-Tavern (YMIAT)." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="rules/lineages.html" />
 </head>
 <body>
 <header data-include="nav"></header>
 <main>
   <h1>Lineages</h1>
   <div class="content">
-    <p class="lede">Lineage represents the blood ties and hereditary traits of a creature. It's what you're born to, no matter where you were born.</p>
-    
-    <p>In <strong>You-Meet-In-A-Tavern</strong> (YMIAT), <strong>lineage</strong> is the concept that replaces the traditional "species" or "race" system from D&amp;D. Lineages provide fundamental traits that shape who your character is, representing their ancestry and hereditary characteristics.</p>
-    
-    <p>Each lineage provides specific traits, ability score increases (which you'll adapt to the <strong>You-Meet-In-A-Tavern</strong> (YMIAT) three-ability system), and other features. When applying lineage ability score increases to <strong>You-Meet-In-A-Tavern</strong> (YMIAT), work with your Game Master to determine how traditional ability score bonuses translate to Fitness, Insight, or Willpower modifiers.</p>
-    
+    <p class="lede">Lineage represents blood ties and hereditary traits—YMIAT's replacement for traditional species/race.</p>
+    <p>Lineages and variants from the <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide (2024) and Player's Guide 2 (2026), adapted to Fitness, Insight, and Willpower. Pair with a cultural <a href="heritages.html">heritage</a> at character creation.</p>
     <div class="lineages-controls">
       <button id="expand-all-lineages" class="lineage-control-btn" onclick="expandAllLineages()">Expand All</button>
       <button id="collapse-all-lineages" class="lineage-control-btn" onclick="collapseAllLineages()">Collapse All</button>
     </div>
-    
     <div class="lineages-container">
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Beastkin</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Beastkin</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Your beastkin character has the following hereditary traits.</strong></p>
-          <p><strong>Age.</strong> Beastkin mature far more quickly than most Humanoids, reaching adulthood within 5 years. Though they may live nearly a century, some beastkin live only 20 or 30 years.</p>
-          <p><strong>Size.</strong> Your size is Medium or Small. Beastkin vary in weight and height, depending on their Beast characteristics. Most are between 4 and 8 feet tall, but if you choose to play a beastkin shorter than 4 feet, you can choose your size to be Small. Your weight varies depending on your Beast characteristics. For example, a Medium beastkin descended from bears likely weighs upward of 350 pounds, while an avian beastkin of the same size is likely to weigh around 100 pounds.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Animal Instinct.</strong> You have proficiency in either the Perception or Survival skill (your choice).</p>
-          <p><strong>Natural Weapons.</strong> You have claws, horns, hooves, fangs, spines, or a similar adaptation that serves as a natural weapon. Work with your GM to determine what type of natural weapon you possess and decide whether it does bludgeoning, piercing, or Slashing Wounds. You can use your natural weapon to make unarmed strikes. When you hit with it, the strike deals 1 Wound + your Fitness modifier, instead of the 1 Wound normal for an unarmed strike.</p>
-          <p><strong>Natural Adaptation.</strong> You inherit one of the following traits determined by what kind of animal characteristics you want your character to have:</p>
-          <ul>
-            <li><strong>Avian.</strong> Leathery, feathery, or gossamer wings sprout from your back or connect to your outstretched arms. You have a flying speed equal to your walking speed. You can't fly while wearing medium or heavy armor. Carrying a heavy load or a creature of your size or larger while flying reduces your speed by half.</li>
-            <li><strong>Agile.</strong> Sharp claws, cloven hooves, robust limbs, reversed joints, or suction pads on your hands and feet allow you to scrabble up trees, rock faces, and uneven surfaces with ease. You have a climbing speed equal to your walking speed. In addition, you have advantage on saves made to avoid being knocked prone.</li>
-            <li><strong>Aquatic.</strong> Oily fur, scales, fins, webbed hands and feet, or long, gangly limbs are common for your people. You have a swimming speed equal to your walking speed. You can hold your breath for up to 20 minutes.</li>
-            <li><strong>Sturdy.</strong> Powerful limbs, fat reserves, or a thick hide allow you to endure harm and accomplish feats of remarkable athleticism. When you aren't wearing armor, you have a natural AC of 13 + your Fitness modifier. In addition, you count as one size larger when determining your carrying capacity and the weight you can push or drag.</li>
-          </ul>
+          <p><strong>Age.</strong> Adulthood within 5 years; lifespan up to a century (some only 20–30 years).</p>
+<p><strong>Size.</strong> Medium or Small (under 4 feet tall → Small).</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Animal Instinct.</strong> Proficiency in Perception or Survival.</p>
+<p><strong>Natural Weapons.</strong> Unarmed strikes deal 1 Wound + Fitness modifier (work with your GM on damage type).</p>
+<p><strong>Natural Adaptation.</strong> Choose one: Avian (fly speed = walk), Agile (climb speed = walk; advantage vs. prone), Aquatic (swim speed = walk; hold breath 20 min), or Sturdy (AC 13 + Fitness without armor; count as one size larger for carry capacity).</p>
+<p><em>PG2 expansion:</em> Fossorial (burrow 20 ft through soft earth) or Quillback (reaction quill strike when hit in melee).</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Dwarf</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dhampir <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Your dwarf character has the following hereditary traits.</strong></p>
-          <p><strong>Age.</strong> Dwarves are physically mature around age 20, but most consider themselves young until they reach age 50. On average, they live about 350 years.</p>
-          <p><strong>Size.</strong> Your size is Medium. Dwarves vary little in height or size, with most standing between 4 and 5 feet tall. Even the smallest dwarves possess broad frames and rarely weigh less than 150 pounds.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Darkvision.</strong> You have darkvision to a range of 60 feet.</p>
-          <p><strong>Dwarven Resilience.</strong> You have advantage on saves against becoming poisoned, and you are resistant to Poison Wounds.</p>
-          <p><strong>Dwarven Toughness.</strong> Your Max Wounds increases by 1, and it increases by 1 every time you gain a level.</p>
+          <p>Children of vampires and mortals—compelling or repulsive to those they meet.</p>
+<p><strong>Age.</strong> Mature in late teens; can live up to 750 years.</p>
+<p><strong>Size.</strong> Medium or Small.</p>
+<p><strong>Speed.</strong> 30 feet walk, 30 feet climb (hands free).</p>
+<p><strong>Dark Thirst.</strong> Bite: 1 Wound piercing; optional feed for +1 Wound necrotic, temp Wounds, and advantage on your next attack.</p>
+<p><strong>Darkvision.</strong> 60 feet; disadvantage on Insight (Perception) by sight in sunlight.</p>
+<p><strong>Hybrid Humanoid.</strong> Advantage vs. poisoned and exhaustion checks.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Elf</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dragonborn <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Your elf character has the following hereditary traits.</strong></p>
-          <p><strong>Age.</strong> Although elves reach physical maturity around age 20, mental and emotional faculties reach full maturity around the age of 100. Elves can live to be 750 years old.</p>
-          <p><strong>Size.</strong> Your size is Medium. Elves range from under 5 feet to over 6 feet tall and tend toward slender builds, averaging around 110 pounds.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Heightened Senses.</strong> You have advantage on Perception checks that rely on sight or hearing. You can see through lightly obscured areas normally and areas of dim light as if it were bright light.</p>
-          <p><strong>Magic Ancestry.</strong> You have advantage on saves against being charmed, and magic can't put you to sleep.</p>
-          <p><strong>Trance.</strong> Elves don't need to sleep. Instead, they enter a meditative trance state, remaining semiconscious for 4 hours a day. You choose whether or not you can dream while meditating. After resting in this way, you gain the same benefit that other creatures do from 8 hours of sleep.</p>
+          <p>Draconic humanoids with breath weapons and scaled hides.</p>
+<p><strong>Age.</strong> Adult by 15; ~80 years.</p>
+<p><strong>Size.</strong> Medium (~6–7 ft, ~300 lb).</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Breath Weapon.</strong> Bonus action: 30×5 ft line or 15-ft cone (Fitness save); 1 Wound on fail, none on success; damage type by ancestry; scales at higher levels. Uses = proficiency bonus per long rest.</p>
+<p><strong>Draconic Ancestry.</strong> Black/Copper acid, Blue/Bronze lightning, Brass/Gold/Red fire, Green poison, Silver/White cold, Void necrotic, Yellow radiant.</p>
+<p><strong>Dragon Hide.</strong> Resistance to your ancestry damage type.</p>
+<p><strong>Dragon Sight.</strong> Darkvision 60 ft and keensense 10 ft.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Gnoll</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Drow <span class="text-muted">(PG2 variant)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>Gnolls look like hyenas given humanoid bearing. Their powerfully built bodies are covered with short brown or dull yellow fur spotted in darker brown. The claws on their hands and feet, while often painted or decorated with whorls, are brittle and ill-suited as weapons. Gnolls find most clothing restrictive and uncomfortable and favor short kilts or skirts with hardened leather mail or a leather apron to protect the torso. They like to adorn their leather with metal links and spikes.</p>
-          <p>Though they are viewed as lazy and vicious by their detractors, gnolls are no more likely to be indolent or violent than the members of any other lineage. They once lived in familial packs like the hyenas they resemble but are increasingly becoming citizens of the world and can be found in most desert and port cities. Non-adventurous gnolls gravitate toward physical occupations, such as tanning and trapping. Gnolls evidence some amount of wanderlust, and they are often found among traveling caravans or as the crew of merchant vessels.</p>
-          <p>Gnolls once favored the worship of archfiends, and while some pay reverence to one demon lord or another, they are more likely to adhere to the religious mores of their chosen community, though many gnolls eschew religion entirely.</p>
-          <p><strong>Gnoll Lineage Traits</strong></p>
-          <p>Your gnoll character has certain hereditary traits dictated by their lineage.</p>
-          <p><strong>Age.</strong> Gnolls tend to live hard lives. They reach adulthood around 12 and few see more than 70 summers.</p>
-          <p><strong>Size.</strong> Gnolls are Medium size, and they range from 7 to 8 feet tall and average around 250 pounds. Females tend to be taller and more powerfully built than males.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Darkvision.</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</p>
-          <p><strong>Scent Prey.</strong> You have advantage on INS (Survival) checks that rely on smell.</p>
-          <p><strong>Sprinter.</strong> Your powerful legs allow you to overrun your prey. When you use your action to Dash, you move triple your speed. You can use this feature a number of times per day equal to your proficiency level (1 at level 1-2, 2 at level 3-4, 3 at level 5-6, etc.). You regain all uses when you finish a long rest.</p>
+          <p>Variant elf lineage adapted to the underworld.</p>
+<p><strong>Age.</strong> Physical maturity ~20; full maturity ~100; lifespan to 750.</p>
+<p><strong>Size.</strong> Medium.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Arachnid Kismet.</strong> Advantage interacting with spiders and scorpions; when a d20 result includes 8, gain 1 Resolve.</p>
+<p><strong>Superior Darkvision.</strong> 120 feet; disadvantage on Perception by sight in sunlight.</p>
+<p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Human</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Duergar <span class="text-muted">(PG2 variant)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Your human character has the following hereditary traits.</strong></p>
-          <p><strong>Age.</strong> Humans reach adulthood in their late teenage years and rarely live to be more than 100 years old.</p>
-          <p><strong>Size.</strong> Your size is Medium or Small. Humans vary in height and weight, but most adults range between 5 feet and 6 feet tall and average around 150 pounds. If you choose to play a human shorter than 4 feet however, you can choose your size to be Small.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Ambitious.</strong> You gain proficiency in one skill of your choice, and you gain one talent of your choice. This talent can be from any of the talent lists, but you must meet the talent's prerequisites if any are required.</p>
+          <p>Variant dwarf lineage from the deep underworld.</p>
+<p><strong>Age.</strong> Mature by 20; ~350 years (often shorter in the depths).</p>
+<p><strong>Size.</strong> Medium, 4–5 ft, dense build.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Duergar Resilience.</strong> Advantage vs. charmed or paralyzed; advantage vs. illusions.</p>
+<p><strong>Enlarge.</strong> Bonus action: Large for 1 minute, double weapon damage dice, advantage on Fitness checks/saves (once per long rest).</p>
+<p><strong>Superior Darkvision.</strong> 120 feet.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Smallfolk</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dwarf</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Your smallfolk character has the following hereditary traits.</strong></p>
-          <p><strong>Age.</strong> Smallfolk reach adulthood around 20 and typically live to be around 150 years old, though gnomes sometimes live twice as long.</p>
-          <p><strong>Size.</strong> Your size is Small. Smallfolk are rarely more than 3 feet tall and average about 40 pounds.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Grounded.</strong> Once per day, when you fail a save, you can reroll the die and use the new roll. Regardless of whether the new roll is a success or failure, you generate 1 Resolve.</p>
-          <p><strong>Small Stature.</strong> You can move through the space of any creature that is Medium or larger size. You can also attempt to hide when you are obscured by a creature of Medium or larger size.</p>
-          <p><strong>Natural Adaptation.</strong> You inherited one of the following unique traits, determined by whether your characteristics are gnomish or halfling:</p>
-          <ul>
-            <li><strong>Gnomish.</strong> Your ancestors made their homes underground or in dark woodlands, providing you with darkvision to a range of 60 feet. In addition, you learn the <em>minor illusion</em> cantrip. Choose whether Insight or Willpower is your spellcasting ability for this spell during character creation.</li>
-            <li><strong>Halfling.</strong> Your ancestors made their homes on the surface, displaying outsized pluck to drive back hostile wildlife and monsters. You have advantage on saves against being charmed or frightened.</li>
-          </ul>
+          <p><strong>Age.</strong> Mature ~20; young until 50; ~350 years.</p>
+<p><strong>Size.</strong> Medium, 4–5 ft, broad frame.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Darkvision.</strong> 60 feet.</p>
+<p><strong>Dwarven Resilience.</strong> Advantage vs. poisoned; resistance to poison Wounds.</p>
+<p><strong>Dwarven Toughness.</strong> Max Wounds +1, and +1 Max Wounds each level.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Tiefling</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Elemental Scion <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>Tieflings are offspring of humans and fiends. No two tieflings look alike—their fiendish traits manifest inconsistently, with variations like horns, tails, wings, fangs, or claws depending on their infernal bloodline.</p>
-          <p><strong>Your tiefling character has the following hereditary traits.</strong></p>
-          <p><strong>Age.</strong> Tieflings mature at the same rate as humans but live a few years longer.</p>
-          <p><strong>Size.</strong> Your size is Medium. Tieflings are similar in size and build to humans.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Darkvision.</strong> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</p>
-          <p><strong>Fiendish Legacy.</strong> You have a fiendish legacy. Choose one legacy from the Fiendish Legacy table. This determines your resistance, cantrip, and spells.</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Legacy</th>
-                  <th>Resistance</th>
-                  <th>Cantrip</th>
-                  <th>Level 3 Spell</th>
-                  <th>Level 5 Spell</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Abyssal</td>
-                  <td>Poison</td>
-                  <td><em>poison spray</em></td>
-                  <td><em>ray of sickness</em></td>
-                  <td><em>hold person</em></td>
-                </tr>
-                <tr>
-                  <td>Chthonic</td>
-                  <td>Necrotic</td>
-                  <td><em>chill touch</em></td>
-                  <td><em>false life</em></td>
-                  <td><em>ray of enfeeblement</em></td>
-                </tr>
-                <tr>
-                  <td>Infernal</td>
-                  <td>Fire</td>
-                  <td><em>fire bolt</em></td>
-                  <td><em>hellish rebuke</em></td>
-                  <td><em>darkness</em></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p><strong>Resistance.</strong> You have resistance to the wound type associated with your fiendish legacy.</p>
-          <p><strong>Legacy Spells.</strong> You know the cantrip associated with your fiendish legacy. When you reach 3rd level, you can cast the 1st-level spell associated with your legacy once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the 2nd-level spell associated with your legacy once with this trait and regain the ability to do so when you finish a long rest. Willpower is your spellcasting ability for these spells.</p>
-          <p><strong>Languages.</strong> You can speak, read, and write Common and Infernal.</p>
+          <p>Mortals infused with elemental power (sometimes called jinnborn).</p>
+<p><strong>Age.</strong> Adult ~15; ~75 years (up to 150).</p>
+<p><strong>Size.</strong> Medium, 5–7 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Darkvision.</strong> 60 feet.</p>
+<p><strong>Hybrid Humanoid.</strong> Poison resistance; resistance by adaptation; advantage vs. paralyzed, petrified, poisoned.</p>
+<p><strong>Natural Adaptation.</strong> Earthborn (tremorsense 10 ft, ignore difficult terrain), Fireborn (emit light; +proficiency fire on melee hit), Waterborn (swim speed, squeeze through 1-inch gaps), or Windborn (fly 10 ft hover; hold breath for proficiency bonus hours).</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Dragonborn</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Elf</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>Dragonborn are humanoids with draconic ancestry. They stand well over 6 feet tall and average around 250 pounds. Their small scales, talonlike claws, and draconic features reflect their heritage, though they lack wings or tails.</p>
-          <p><strong>Your dragonborn character has the following hereditary traits.</strong></p>
-          <p><strong>Age.</strong> Dragonborn reach adulthood by age 15 and live to around 80 years old.</p>
-          <p><strong>Size.</strong> Your size is Medium. Dragonborn stand well over 6 feet tall and average around 250 pounds.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Draconic Ancestry.</strong> You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. This determines the wound type of your breath weapon and your resistance.</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Dragon</th>
-                  <th>Damage Type</th>
-                  <th>Breath Weapon (Fitness save)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Black</td>
-                  <td>Acid</td>
-                  <td>5 by 30 ft. line</td>
-                </tr>
-                <tr>
-                  <td>Blue</td>
-                  <td>Lightning</td>
-                  <td>5 by 30 ft. line</td>
-                </tr>
-                <tr>
-                  <td>Brass</td>
-                  <td>Fire</td>
-                  <td>5 by 30 ft. line</td>
-                </tr>
-                <tr>
-                  <td>Bronze</td>
-                  <td>Lightning</td>
-                  <td>5 by 30 ft. line</td>
-                </tr>
-                <tr>
-                  <td>Copper</td>
-                  <td>Acid</td>
-                  <td>5 by 30 ft. line</td>
-                </tr>
-                <tr>
-                  <td>Gold</td>
-                  <td>Fire</td>
-                  <td>15 ft. cone</td>
-                </tr>
-                <tr>
-                  <td>Green</td>
-                  <td>Poison</td>
-                  <td>15 ft. cone</td>
-                </tr>
-                <tr>
-                  <td>Red</td>
-                  <td>Fire</td>
-                  <td>15 ft. cone</td>
-                </tr>
-                <tr>
-                  <td>Silver</td>
-                  <td>Cold</td>
-                  <td>15 ft. cone</td>
-                </tr>
-                <tr>
-                  <td>White</td>
-                  <td>Cold</td>
-                  <td>15 ft. cone</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p><strong>Breath Weapon.</strong> You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and wound type of the exhalation. When you use your breath weapon, each creature in the area of the exhalation must make a Fitness saving throw. The target number for this saving throw equals 8 + your Fitness modifier + your proficiency level. Creatures have disadvantage on this save (roll 2d20, take lowest). A creature takes 1 Wound on a failed save, and no Wounds on a successful one. The Wounds increase by 1 when you reach 6th level (2 Wounds), 11th level (3 Wounds), and 16th level (4 Wounds). You can't use your breath weapon again until you complete a short or long rest.</p>
-          <p><strong>Resistance.</strong> You have resistance to the wound type associated with your draconic ancestry.</p>
-          <p><strong>Languages.</strong> You can speak, read, and write Common and Draconic.</p>
+          <p><strong>Age.</strong> Physical maturity ~20; emotional maturity ~100; up to 750 years.</p>
+<p><strong>Size.</strong> Medium, slender builds.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Heightened Senses.</strong> Advantage on Perception (sight/hearing); see through light obscurement.</p>
+<p><strong>Magic Ancestry.</strong> Advantage vs. charmed; magic can't put you to sleep.</p>
+<p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleLineage(this)">
-          <span class="lineage-title">Eonic Human</span>
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Gearforged <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p>Eonics hail from a dying civilization in the far future. To save their people, a small number took to the timestream to get help from ages before and after their own. Their crystal belts allow them to travel through time, but a flaw in the belts' construction prevents them from returning to their own time and place. They have become a displaced, desperate people.</p>
-          <p>Little is known for certain about the eonic civilization. Their people had apparently eradicated disease, overcome the limits of mortality, and conquered socio-economic-political ills such as war and oppression.</p>
-          <p>The nature of the disaster that befell their civilization is likewise unknown, though some speak of nova-portal reality destabilization, post-harmonic gravitic collapse, sunward drift, and other ominous sounding but inscrutable things.</p>
-          <p>Relatively few eonics left their civilization during the first search for assistance. However, increasing numbers of them appear outside of their own time, suggesting that their civilization experienced further collapse.</p>
-          <p>Eonics look like mummified humans. Although sometimes referred to as "eonic humans," the rigors of their travel has made them a different kind of creature. They speak in a stilted, formal-sounding fashion, and many of them punctuate conversations with long pauses, as though deeply considering what to say next.</p>
-          <p><strong>Eonic Lineage Traits</strong></p>
-          <p>Your eonic character has certain hereditary traits dictated by their lineage.</p>
-          <p><strong>Age.</strong> Eonics have endured time dilation of varying degrees. The effect this has on their lifespans is unknown, but it is assumed eonics are effectively immortal and cannot die of old age.</p>
-          <p><strong>Size.</strong> Your size is Medium. On average, eonics stand between 5 and 6 feet tall.</p>
-          <p><strong>Speed.</strong> Your base walking speed is 30 feet.</p>
-          <p><strong>Jittery.</strong> You are always on edge and prepared for the worst. You can't be surprised while you are conscious. On the first turn of each combat, attacks against you don't gain advantage from the attacker being unseen.</p>
-          <p><strong>Practiced and Prepared.</strong> Before you set off through time, you learned as much as you could about the past. When you take part in events the GM determines will become part of the historical record, such as overthrowing a tyrannical ruler, you can leverage your knowledge of the past. Roll a d6 and add the result of the roll to one of your ability checks. Once you've leveraged your knowledge, you cannot do so again until you finish a short or long rest.</p>
-          <p><strong>Wizened Flesh.</strong> Time dilation has caused your skin and tissue to age at different rates. Your skin appears mummified. You have disadvantage on Willpower (Persuasion) checks, but you add your proficiency level to your Defense bonus.</p>
-          <p>In addition, wearing armor burdens you. While you wear armor, you gain a number of levels of exhaustion based on the weight of armor worn:</p>
-          <ul>
-            <li>Light armor (one level of exhaustion)</li>
-            <li>Medium armor (two levels of exhaustion)</li>
-            <li>Heavy armor (three levels of exhaustion)</li>
-          </ul>
-          <p>You recover these levels of exhaustion immediately after doffing your armor.</p>
+          <p>Living minds in mechanical bodies of metal and wood.</p>
+<p><strong>Age.</strong> Soul age varies; body lasts indefinitely with maintenance.</p>
+<p><strong>Size.</strong> Medium or Small (pick a chassis lineage such as human or kobold).</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Constructed Vitality.</strong> No eat/drink/breathe; 6-hour dormant rest.</p>
+<p><strong>Hybrid Humanoid.</strong> Disease immune; poison resistance; advantage vs. paralyzed, petrified, poisoned.</p>
+<p><strong>Machine Speech.</strong> Speak and understand Machine Speech.</p>
+<p><strong>Upgrade.</strong> Always Armed (integrated weapons), Bulk Up (Large temporarily), or Quick Fix (temp Wounds when below half Max Wounds).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Goblin <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Adaptable humanoids found in vast numbers across harsh environments.</p>
+<p><strong>Age.</strong> Adult 14–16; rarely past 100.</p>
+<p><strong>Size.</strong> Small, 3–4 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Darkvision.</strong> 60 feet.</p>
+<p><strong>Nimble Escape.</strong> Bonus action Disengage or Hide.</p>
+<p><strong>Strength in Numbers.</strong> Extra damage equal to proficiency bonus when an ally is within 5 feet of your target.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Gnoll</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Hyena-like humanoids; often found in deserts and port cities.</p>
+<p><strong>Age.</strong> Adult ~12; rarely past 70.</p>
+<p><strong>Size.</strong> Medium, 7–8 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Darkvision.</strong> 60 feet.</p>
+<p><strong>Scent Prey.</strong> Advantage on Survival checks relying on smell.</p>
+<p><strong>Sprinter.</strong> When you Dash, move triple speed (uses per day = proficiency bonus).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Human</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Age.</strong> Adult late teens; rarely past 100.</p>
+<p><strong>Size.</strong> Medium or Small.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Ambitious.</strong> One skill proficiency and one talent (any list, meeting prerequisites).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Kobold</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Small draconic humanoids with mechanical aptitude.</p>
+<p><strong>Age.</strong> Teen adulthood; elderly ~80; rarely 100.</p>
+<p><strong>Size.</strong> Small, or Medium if truescale (~5 ft).</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Darkvision.</strong> 60 feet.</p>
+<p><strong>Tinker's Fascination.</strong> Add 1d8 to tool ability checks.</p>
+<p><strong>Natural Adaptation.</strong> Fierce (Small: react attack when Large+ hits you) or Truescale (Medium: AC 13 + Fitness; one elemental resistance).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Orc</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Resilient explorers driven to travel and survive extremes.</p>
+<p><strong>Age.</strong> Adult within two decades; seldom past 60.</p>
+<p><strong>Size.</strong> Medium, 6–8 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Heightened Senses.</strong> As elf (sight/hearing).</p>
+<p><strong>Orcish Perseverance.</strong> Instead of dying from suffocation or exhaustion levels, enter death-like stasis until healed or destroyed.</p>
+<p><strong>Stalwart.</strong> Make end-of-turn saves at the start of your turn instead.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rachisan <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Plant-featured humanoids resembling ground-grown vegetables.</p>
+<p><strong>Age.</strong> Adult ~5; typically ~50 (up to 100).</p>
+<p><strong>Size.</strong> Small, 3–4 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Hybrid Humanoid.</strong> Advantage vs. paralyzed, petrified, and exhaustion effects.</p>
+<p><strong>Green Thumb.</strong> +1d8 on plant-related checks; ignore difficult terrain from plant growth.</p>
+<p><strong>Natural Adaptation.</strong> Alliumite (blinding spore reaction), Cruciferan (rest meal heals allies), or Tuberkith (immune blinded; hear while unconscious).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sapopova <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Amphibious folk with frog or toad traits.</p>
+<p><strong>Age.</strong> Mature ~8; rarely past 50.</p>
+<p><strong>Size.</strong> Small, 2–4 ft.</p>
+<p><strong>Speed.</strong> 30 feet walk, 30 feet swim.</p>
+<p><strong>Amphibian.</strong> Breathe air and water.</p>
+<p><strong>Superior Vision.</strong> Darkvision 60 ft; color in dim light/darkness; advantage locating moving targets.</p>
+<p><strong>Natural Adaptation.</strong> Frogkin (Athletics proficiency; standing long/high jump) or Toadfolk (cheek storage; spit improvised ranged attacks 30 ft).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sea Elf <span class="text-muted">(PG2 variant)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Variant elf lineage from undersea realms.</p>
+<p><strong>Age.</strong> As elf.</p>
+<p><strong>Size.</strong> Medium, sleek swimmer's build.</p>
+<p><strong>Speed.</strong> 30 feet walk, swim speed equal to walk; Dash as bonus action while submerged.</p>
+<p><strong>Darkvision.</strong> 60 feet.</p>
+<p><strong>Seaborn.</strong> Breathe air and water; comfortable to 0°F; ignore extreme cold hazard.</p>
+<p><strong>Trance.</strong> 4 hours.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Shade <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Beings caught between life and undeath, formed from memory.</p>
+<p><strong>Age.</strong> Appear as at death; potentially centuries.</p>
+<p><strong>Size.</strong> Medium or Small (living form lineage).</p>
+<p><strong>Speed.</strong> As living form.</p>
+<p><strong>Hybrid Humanoid.</strong> Poison resistance; advantage vs. poisoned and exhaustion.</p>
+<p><strong>Phantasmal Form.</strong> Action: ghostly form 1 minute (resistance to nonmagical B/P/S, pass through creatures/objects, fly 30 ft hover) once per long rest.</p>
+<p><strong>Spectral Sight.</strong> Darkvision 60 ft; see into Ethereal Plane 30 ft (uses = proficiency bonus per long rest).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Smallfolk</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Age.</strong> Adult ~20; ~150 years (gnomes sometimes twice).</p>
+<p><strong>Size.</strong> Small.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Grounded.</strong> Once per day reroll a failed save and gain 1 Resolve.</p>
+<p><strong>Small Stature.</strong> Move through Medium+ spaces; hide behind Medium+ creatures.</p>
+<p><strong>Natural Adaptation.</strong> Gnomish (darkvision 60 ft, <em>minor illusion</em>) or Halfling (advantage vs. charmed/frightened).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Syderean</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Plane-touched mortals (starborn) tied to cosmic forces.</p>
+<p><strong>Age.</strong> Adult ~20; ~150 years.</p>
+<p><strong>Size.</strong> Medium, 5–7 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Far Sight.</strong> Darkvision 60 ft; see in magical darkness 30 ft.</p>
+<p><strong>Otherworldly Form.</strong> Necrotic resistance; double time without air, food, water, or sleep.</p>
+<p><strong>Natural Adaptation.</strong> Celestial (Blessed Guise), Fiendish (Dreadful Guise), Aberrant, or Spellborn (see PG2 expansion).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Tiefling</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Offspring of humans and fiends with varied infernal traits.</p>
+<p><strong>Age.</strong> As human, slightly longer.</p>
+<p><strong>Size.</strong> Medium.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Darkvision.</strong> 60 feet.</p>
+<p><strong>Fiendish Legacy.</strong> Abyssal, Chthonic, or Infernal: resistance, cantrip, and leveled spells at 3rd and 5th (Willpower as spellcasting ability).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Tosculi <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Insectoid wasp-folk, often hive-born.</p>
+<p><strong>Age.</strong> Mature ~13; rarely past 40.</p>
+<p><strong>Size.</strong> Small, 3–4 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Glide.</strong> Reaction when falling 10+ ft: glide 30 ft horizontally.</p>
+<p><strong>Hive Mind.</strong> Bonus action telepathic link 30 ft (uses = proficiency bonus).</p>
+<p><strong>Hiveborn Duty.</strong> Detached Drone (Golden Song charm/deafen) or Roving Trooper (stinger unarmed + poison).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Eonic Human</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Displaced time travelers from a dying far-future civilization.</p>
+<p><strong>Age.</strong> Effectively immortal from time dilation.</p>
+<p><strong>Size.</strong> Medium, 5–6 ft.</p>
+<p><strong>Speed.</strong> 30 feet.</p>
+<p><strong>Jittery.</strong> Can't be surprised while conscious; unseen attackers don't gain advantage on your first combat turn.</p>
+<p><strong>Practiced and Prepared.</strong> Once per rest, add 1d6 to an ability check when shaping recorded history.</p>
+<p><strong>Wizened Flesh.</strong> Disadvantage on Willpower (Persuasion); +proficiency bonus to Defense; exhaustion from wearing armor (light 1, medium 2, heavy 3 levels, recovered when doffed).</p>
         </div>
       </div>
     </div>
+
   </div>
 </main>
 <footer class="legal" data-include="footer"></footer>
 <script>
-function toggleLineage(button){
+function toggleLineages(button){
   const item = button.closest('.lineage-item');
   const content = item.querySelector('.lineage-content');
   const icon = button.querySelector('.lineage-toggle-icon');
   const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
-  
   if(isExpanded){
     content.style.display = 'none';
     content.classList.remove('expanded');
@@ -325,39 +384,35 @@ function toggleLineage(button){
     button.setAttribute('aria-expanded', 'true');
   }
 }
-
 function expandAllLineages(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'block';
     content.classList.add('expanded');
   });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
     icon.textContent = '▲';
   });
-  document.querySelectorAll('.lineage-header').forEach(button => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'true');
   });
 }
-
 function collapseAllLineages(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'none';
     content.classList.remove('expanded');
   });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
     icon.textContent = '▼';
   });
-  document.querySelectorAll('.lineage-header').forEach(button => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'false');
   });
 }
-
-// Initialize: all collapsed by default
 document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'none';
   });
-  document.querySelectorAll('.lineage-header').forEach(button => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'false');
   });
 });

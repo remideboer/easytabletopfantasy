@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vanguard Abilities | YMIAT</title>
+<meta name="description" content="Full rules for every Vanguard class and subclass feature in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/vanguard.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Vanguard Abilities</h1>
+  <div class="content">
+    <p class="lede">Full rules for every Vanguard feature and subclass, adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p><a href="../classes.html#vanguard">← Back to Vanguard</a> · <a href="index.html#vanguard">All classes</a></p>
+    <nav class="ability-toc toc" aria-label="Vanguard abilities">
+      <h2 id="contents">On this page</h2>
+      <ul>
+<li><a href="#born-leader">Born Leader</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#war-banner">War Banner</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#stratagems">Stratagems</a> <span class="text-muted">(2nd-level feature)</span></li>
+<li><a href="#support-action">Support Action</a> <span class="text-muted">(2nd-level feature)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3rd-level feature)</span></li>
+<li><a href="#war-banner-lucky-colors">War Banner: Lucky Colors</a> <span class="text-muted">(6th-level feature)</span></li>
+<li><a href="#manifold-tactic">Manifold Tactic</a> <span class="text-muted">(7th-level feature)</span></li>
+<li><a href="#valiant-commander">Valiant Commander</a> <span class="text-muted">(9th-level feature)</span></li>
+<li><a href="#battlefield-resolve">Battlefield Resolve</a> <span class="text-muted">(9th-level feature)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10th-level feature)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
+<li><a href="#subclasses">Subclass Features</a></li>
+<li class="toc-sub"><a href="#bulwark">Bulwark</a></li>
+<li class="toc-sub toc-feature"><a href="#bulwark-battlefield-healer">Battlefield Healer</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#bulwark-war-banner-surgeons-standard">War Banner: Surgeon's Standard</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#bulwark-safeguard">Safeguard</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#bulwark-turn-the-tide">Turn the Tide</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#bulwark-bastion-of-defense">Bastion of Defense</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+<li class="toc-sub"><a href="#herald">Herald</a></li>
+<li class="toc-sub toc-feature"><a href="#herald-color-guard">Color Guard</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#herald-war-banner-stirring-sign">War Banner: Stirring Sign</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#herald-regroup">Regroup</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#herald-double-standard">Double Standard</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#herald-flag-bearer">Flag Bearer</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+<li class="toc-sub"><a href="#marshal">Marshal</a></li>
+<li class="toc-sub toc-feature"><a href="#marshal-inspiring-leadership">Inspiring Leadership</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#marshal-war-banner-banner-of-coordination">War Banner: Banner of Coordination</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#marshal-generals-gambit">General's Gambit</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#marshal-comrade-in-arms">Comrade in Arms</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#marshal-battlefield-vigor">Battlefield Vigor</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class Features</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="born-leader">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Born Leader</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Authority or Community leadership aura.</em></p>
+    <p>Choose a leadership quality at 1st level:</p>
+<ul>
+<li><strong>Authority.</strong> A friendly creature starting its turn within 5 feet adds your PB to weapon damage on hits until end of turn. Gain Intimidation proficiency (double PB if already proficient).</li>
+<li><strong>Community.</strong> A friendly creature ending its turn within 5 feet gains PB on its first save before your next turn. Gain Persuasion proficiency (double PB if already proficient).</li>
+</ul>
+<p>Allies benefit only while you are conscious.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="war-banner">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">War Banner</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Mystical battle standard in combat.</em></p>
+    <p>As an <strong>action</strong> during encounter play, plant a war banner in an adjacent space. It lasts 1 minute (or until you end it, plant another, move 120+ feet away, or become incapacitated).</p>
+<p>Creatures within 15 feet who can see the banner are affected. Start with <strong>Banner of Mercy</strong> (banner absorbs ally damage up to 10 × vanguard level Wounds) and <strong>Black Flag</strong> (foes have disadvantage on first attack each turn).</p>
+<p>PB uses per long rest; only one banner at a time.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="stratagems">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stratagems</h4>
+    <span class="spell-card-level">2nd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Tactical commands on the battlefield.</em></p>
+    <p>You learn stratagems—commands that reposition allies, grant advantage, or disrupt enemies. At 2nd level you know two; learn more as you level. <strong>Superior Stratagems</strong> (5th) unlocks advanced options from the ToV vanguard list.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="support-action">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Support Action</h4>
+    <span class="spell-card-level">2nd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Stabilize and rally fallen allies.</em></p>
+    <p>You gain a <strong>Support Action</strong> each turn in combat. Use it to stabilize a dying ally (they regain Wounds equal to vanguard level + Willpower modifier and become conscious), grant temporary Wounds, or execute other support options from the ToV vanguard rules.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3rd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Two attacks with the Attack action.</em></p>
+    <p>Your physical prowess has grown. On your turn, you can make up to <strong>two</strong> attacks when you take the Attack action.</p>
+<p>In YMIAT, each successful weapon attack typically inflicts <strong>1 Wound</strong> (2 on a critical hit). Weapon bonuses apply to hit, not to the number of Wounds dealt.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="war-banner-lucky-colors">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">War Banner: Lucky Colors</h4>
+    <span class="spell-card-level">6th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Third war banner option.</em></p>
+    <p>Gain the <strong>Lucky Colors</strong> war banner: allies within range gain a bonus to Defense or saves (per ToV vanguard rules).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="manifold-tactic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Manifold Tactic</h4>
+    <span class="spell-card-level">7th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Combine two stratagems.</em></p>
+    <p>When you use a stratagem, you can apply a second stratagem effect on the same turn once per short or long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="valiant-commander">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Valiant Commander</h4>
+    <span class="spell-card-level">9th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Extend banner and stratagem range.</em></p>
+    <p>Your war banner range increases to 30 feet. Once per turn when you use a stratagem, you can affect one additional valid target.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="battlefield-resolve">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Battlefield Resolve</h4>
+    <span class="spell-card-level">9th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Push through pain on the front line.</em></p>
+    <p>When you fail a save, you can expend a Recovery Point to reroll. You must use the new result.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Vanguard heroic boon from ToV PG2.</em></p>
+    <p>Choose a vanguard heroic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Vanguard epic boon from ToV PG2.</em></p>
+    <p>Choose a vanguard epic boon from the ToV Player's Guide 2 list, adapted for YMIAT.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3rd, 5th, 7th, 9th, and 10th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Ability increases or a martial talent.</em></p>
+    <p>At 3rd, 5th, 7th, 9th, and 10th level, choose one improvement (ability modifiers cannot exceed +7 with this feature):</p>
+<ul>
+<li>Increase a single ability modifier by 2.</li>
+<li>Increase two different ability modifiers by 1 each.</li>
+<li>Increase one ability modifier by 1 and select a talent from the <a href="../talents.html">martial talents</a> list.</li>
+</ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass Features</h2>
+<p class="subclasses-intro">Choose your subclass at <strong>2nd level</strong>. Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level.</p>
+<div class="subclass-group" id="bulwark">
+  <h3 class="subclass-name">Bulwark</h3>
+  <p class="subclass-summary">Battlefield healer and protector with the Surgeon's Standard banner.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="bulwark-battlefield-healer">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Battlefield Healer</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Bulwark</span><span><strong>Action:</strong> bonus action</span></div>
+  <div class="spell-card-description">
+    <p><em>Fast stabilization and Medicine mastery.</em></p>
+    <p>Medicine proficiency (double PB if proficient). Stabilize dying creatures as a bonus action; they regain Wounds equal to vanguard level + Willpower modifier.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="bulwark-war-banner-surgeons-standard">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">War Banner: Surgeon's Standard</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Bulwark</span></div>
+  <div class="spell-card-description">
+    <p><em>Healing war banner.</em></p>
+    <p>War banner option: at start of your turns, heal PB allies within range for 1d4 + Willpower (scales to 4d4 at 8th level).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="bulwark-safeguard">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Safeguard</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Bulwark</span></div>
+  <div class="spell-card-description">
+    <p><em>Protect nearby allies.</em></p>
+    <p>Bonus action: +2 AC for you and allies within 5 feet until next turn; reaction to redirect single-target attacks/spells to you. PB uses per rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="bulwark-turn-the-tide">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Turn the Tide</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Bulwark</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Mass healing rally.</em></p>
+    <p>Action: expend vanguard Recovery Points; you and allies within 30 feet regain Wounds equal to total + Willpower modifier.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="bulwark-bastion-of-defense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bastion of Defense</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Bulwark</span></div>
+  <div class="spell-card-description">
+    <p><em>Enhanced safeguard stance.</em></p>
+    <p>While Safeguard is active: temp Wounds when activating; advantage and resistance vs. area damage for nearby allies.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Bulwark</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="herald">
+  <h3 class="subclass-name">Herald</h3>
+  <p class="subclass-summary">Living standard-bearer who teleports allies through battle.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="herald-color-guard">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Color Guard</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Herald</span></div>
+  <div class="spell-card-description">
+    <p><em>Move banners and extend stratagem range.</em></p>
+    <p>Start of turn: move an active banner up to 30 feet. Allies need not see the banner; stratagems need not be seen or heard.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="herald-war-banner-stirring-sign">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">War Banner: Stirring Sign</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Herald</span></div>
+  <div class="spell-card-description">
+    <p><em>Speed and extra attack banner.</em></p>
+    <p>Allies starting turn in banner range double speed, gain advantage on Fitness saves, and can make one extra weapon attack when they Attack.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="herald-regroup">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Regroup</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Herald</span></div>
+  <div class="spell-card-description">
+    <p><em>Teleport allies within banner range.</em></p>
+    <p>Bonus action: teleport yourself or a willing ally within banner radius. Reaction: teleport a damaged ally into the radius.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="herald-double-standard">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Double Standard</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Herald</span></div>
+  <div class="spell-card-description">
+    <p><em>Two banner effects at once.</em></p>
+    <p>When you plant a war banner, choose two active effects instead of one.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="herald-flag-bearer">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Flag Bearer</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Herald</span></div>
+  <div class="spell-card-description">
+    <p><em>Unlimited banners and emergency recovery.</em></p>
+    <p>War Banner unlimited uses; banners persist if you are incapacitated. End a banner to regain Wounds (level × Willpower) when below half Max Wounds. Once per long rest.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Herald</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="marshal">
+  <h3 class="subclass-name">Marshal</h3>
+  <p class="subclass-summary">Inspiring commander who coordinates allied strikes.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="marshal-inspiring-leadership">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Inspiring Leadership</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Marshal</span></div>
+  <div class="spell-card-description">
+    <p><em>Grant advantage via stratagems.</em></p>
+    <p>When you use Stratagems, grant advantage on the next attack to 1 ally (2 at 4th, 3 at 6th, 4 at 8th) who can see and hear you.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="marshal-war-banner-banner-of-coordination">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">War Banner: Banner of Coordination</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Marshal</span></div>
+  <div class="spell-card-description">
+    <p><em>Coordinated attack banner.</em></p>
+    <p>Allies in banner range gain +1 attack per other ally in range (max PB) until start of next turn.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="marshal-generals-gambit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">General's Gambit</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Marshal</span></div>
+  <div class="spell-card-description">
+    <p><em>Spend Recovery Points to fix failed rolls.</em></p>
+    <p>When you or an ally within 30 feet fails a check or save, expend a Recovery Point and add the roll to the result.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="marshal-comrade-in-arms">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Comrade in Arms</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Marshal</span></div>
+  <div class="spell-card-description">
+    <p><em>Share advantage and bonus damage.</em></p>
+    <p>When Inspiring Leadership grants advantage, you also gain advantage on your next attack. Hits with that advantage deal extra damage equal to PB + Willpower.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="marshal-battlefield-vigor">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Battlefield Vigor</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Marshal</span></div>
+  <div class="spell-card-description">
+    <p><em>Regain Wounds when bloodied.</em></p>
+    <p>Start of turn below half Max Wounds (but above 0): regain Wounds equal to PB + Fitness modifier.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Marshal</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#vanguard">← Back to Vanguard</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

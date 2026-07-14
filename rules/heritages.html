@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Heritages | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Character heritages for You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/heritages.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Heritages</h1>
+  <div class="content">
+    <p class="lede">Heritage represents upbringing and culture—what your community taught you, separate from bloodline <a href="lineages.html">lineage</a> traits.</p>
+    <p>Heritage options from the <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide (2024) and Player's Guide 2 (2026). You may choose <strong>any</strong> heritage with any lineage (e.g. human lineage with elven grove heritage).</p>
+    <div class="lineages-controls">
+      <button id="expand-all-heritages" class="lineage-control-btn" onclick="expandAllHeritages()">Expand All</button>
+      <button id="collapse-all-heritages" class="lineage-control-btn" onclick="collapseAllHeritages()">Collapse All</button>
+    </div>
+    <div class="lineages-container">
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Anointed</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Syderean</p>
+<p>You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden.</p>
+<p><strong>Favored Disciple.</strong> You know the <em>thaumaturgy</em> cantrip and have advantage on death saves.</p>
+<p><strong>Occult Studies.</strong> Proficiency in History or Religion. Advantage on checks to recall information about Celestials, Fiends, or Outsiders.</p>
+<p><strong>Languages.</strong> Common plus two additional (typical: Abyssal, Celestial, or Infernal).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cloud</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Elf</p>
+<p>You were raised among arcane towers and academies where magic is the center of civic life.</p>
+<p><strong>Touch of Magic.</strong> Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from that school—cast once per long rest without Spell Power. Spellcasting ability: Insight or Willpower (choose at creation).</p>
+<p><strong>World of Wonders.</strong> Proficiency in Arcana.</p>
+<p><strong>Languages.</strong> Common plus two additional (typical: Elvish and Draconic).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cosmopolitan</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Human, Gearforged</p>
+<p>Raised in a major city or nomadic between cultures—you are a citizen of the wider world.</p>
+<p><strong>Street Smarts.</strong> In urban environments: advantage on checks to avoid getting lost or find public destinations; can't be surprised unless asleep or incapacitated.</p>
+<p><strong>Worldly Wisdom.</strong> Proficiency in History. Add PB to checks about unfamiliar cultures' buildings, rites, or objects (double PB if proficient in a relevant skill or tool).</p>
+<p><strong>Languages.</strong> Common plus three additional (typical: Dwarvish and Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cottage</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Smallfolk, Rachisan</p>
+<p>You grew up in a tight agricultural community—hardworking, practical, and hearth-focused.</p>
+<p><strong>Comforts of Home.</strong> During a long rest, cook or comfort up to PB allies (including you); each gains temp Wounds equal to twice PB until your next long rest.</p>
+<p><strong>Homesteader.</strong> Proficiency in Animal Handling or Nature.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Diaspora</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Orc, Duergar, Shade</p>
+<p>Your displaced community preserves the legacy of a lost homeland through guilds, mercenary companies, or faith.</p>
+<p><strong>Preserved Traditions.</strong> Proficiency in History and one martial weapon of your choice.</p>
+<p><strong>Timeless Resolve.</strong> You and allies within 5 feet have advantage on saves vs. frightened.</p>
+<p><strong>Languages.</strong> Common plus one additional (often Orcish or Dwarvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Fireforge</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Dwarf</p>
+<p>Raised in volcanic forge-clans where dwarves craft amid magma and ally with elementals.</p>
+<p><strong>Forgecraft.</strong> Smithing tools proficiency; double PB on checks with them. You know <em>mending</em>.</p>
+<p><strong>Heat Resilience.</strong> Fire damage resistance.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Grove</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Elf</p>
+<p>Forest communities living in harmony with nature—sacred groves, canopy paths, and guardians of the wild.</p>
+<p><strong>Canopy Walker.</strong> Climb speed equal to walking speed.</p>
+<p><strong>Nature's Camouflage.</strong> Advantage on Stealth while lightly obscured by natural phenomena; you can Hide when lightly obscured by nature even if normally you couldn't.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Nomadic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Human</p>
+<p>Your people migrate with seasons, trade routes, or tradition—you know the rigors of the road.</p>
+<p><strong>Resilient.</strong> Advantage vs. extreme weather effects. Once per long rest, reduce exhaustion by one when you finish a short rest.</p>
+<p><strong>Traveler.</strong> Proficiency in Survival.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Salvager</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Kobold, Smallfolk, Goblin</p>
+<p>Raised to build, repair, and survive with whatever materials are at hand—patient, resourceful, and inventive.</p>
+<p><strong>Repurpose.</strong> In 1 minute, create a Tiny nonmagical item (≤25 gp adventuring gear) from surroundings; lasts one use then breaks.</p>
+<p><strong>Tinkerer.</strong> Tinker's tools or other tool proficiency; double PB on checks to create, identify, or disarm objects/traps with relevant proficiency.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Draconic or Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Slayer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Beastkin, Orc, Dragonborn</p>
+<p>Monster-hunting packs trained from youth to track and kill dangerous predators.</p>
+<p><strong>Natural Predator.</strong> Proficiency in Intimidation; advantage on Intimidation vs. Beasts and Animals.</p>
+<p><strong>Tracker.</strong> Add PB to locate/spot/track checks (double PB if proficient in the skill or tool used).</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Stone</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Dwarf</p>
+<p>Subterranean miners and masons who defend ancestral delves beneath the world.</p>
+<p><strong>Ancestral Arts.</strong> Construction tools proficiency (double PB); proficiency with one martial weapon.</p>
+<p><strong>Eye for Quality.</strong> Add PB to checks about metal/stone objects or structures (double PB if proficient in a relevant skill or tool).</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Supplicant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Kobold, Dhampir</p>
+<p>A community bound to serve a monstrous overlord—often dragons—building traps and hazards around their lair.</p>
+<p><strong>Scurry.</strong> Bonus action: move 10 feet without opportunity attacks; doesn't trigger traps you know about.</p>
+<p><strong>Supplicant.</strong> Proficiency in Insight or Persuasion. When a creature within 30 feet spends Resolve, you have advantage on checks and saves until your next turn.</p>
+<p><strong>Languages.</strong> Common plus one additional (overlord's tongue: Draconic, Giant, or Undercommon).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Vexed</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Syderean, Shade</p>
+<p>Your life is defined by defying a supernatural bond—claimed at birth, haunted by dreams, or inheriting a blood debt.</p>
+<p><strong>Prodigal Disciple.</strong> Treat d20 rolls of 9 or lower as 10 on saves vs. charmed or possessed.</p>
+<p><strong>Quarry's Cunning.</strong> Proficiency in Deception or Insight.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical esoteric: Abyssal, Celestial, or Infernal).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Wildlands</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Beastkin, Tosculi</p>
+<p>Primordial-magic communities where beasts and humanoids live as equals in unspoiled territory.</p>
+<p><strong>Beast Affinity.</strong> Communicate simple ideas with Beasts/Animals; advantage interacting with them.</p>
+<p><strong>Shepherd's Gift.</strong> Animal Handling proficiency. Beasts/Animals with CR ≤ PB must pass a Willpower (Animal Handling) contest to attack you or choose a new target.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Conflicted <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Dhampir, Drow, Duergar, Goblin, Gearforged, Shade</p>
+<p>Raised in a society torn by factional violence, revolution, or rebellion—survival means reading danger early.</p>
+<p><strong>Prepared for Trouble.</strong> Proficiency with improvised weapons. Disarm traps without thieves' tools.</p>
+<p><strong>Talk Your Way Out.</strong> Proficiency in Deception or Persuasion.</p>
+<p><strong>Languages.</strong> Common plus one additional (language of the conflict zone).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Coterminous <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Dragonborn, Elemental Scion</p>
+<p>From a border community where the Material Plane meets an Elemental Plane—trade hub, genie dominion, and elemental hazard.</p>
+<p><strong>Elemental Community.</strong> Choose Air (lightning), Earth (acid), Fire (fire), or Water (cold).</p>
+<p><strong>Ambient Absorption.</strong> When you take your element's damage type, roll d8s equal to half PB (min 1) and reduce damage by the total.</p>
+<p><strong>Environmental Acclimatization.</strong> Proficiency on checks/saves vs. hazards of your element (double PB if already proficient).</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Primordial).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Covenant <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Drow</p>
+<p>A magic-obsessed community hoarding arcane power near raw magical nodes—spellcraft above all else.</p>
+<p><strong>Expert Caster.</strong> Arcana proficiency; learn one cantrip from any source (Insight or Willpower as casting ability).</p>
+<p><strong>Spell Inoculation.</strong> Advantage on saves vs. spells that target you specifically (not area effects).</p>
+<p><strong>Languages.</strong> Common plus two additional (typical: Draconic, Infernal, or Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Feysworn <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Rachisan</p>
+<p>Raised under fey dominion, bound by oaths to archfey and their alien goals.</p>
+<p><strong>Accustomed to Trickery.</strong> You know <em>prestidigitation</em> (Insight or Willpower). Advantage vs. charmed; on failed charm save, gain 2 Resolve instead of 1.</p>
+<p><strong>Enchanting Call.</strong> Action: one creature makes Willpower save (DC 10 + PB) or is charmed until end of your next turn. Or spend 2 Resolve to attempt frighten (Resolve lost only if successful). Once per short or long rest.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hivebound <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Tosculi</p>
+<p>A telepathically linked community functioning as a collective—unity over individuality.</p>
+<p><strong>Open Mind.</strong> Insight proficiency. Bonus action: temporary telepathic link with one willing creature you touch until you stop touching or link someone else.</p>
+<p><strong>Unity.</strong> When you Help on a check, target gains +PB; when helped, you gain +PB from the helper.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Ironwrought <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Gearforged</p>
+<p>Raised among gearforged and artificers who treat born and made people as equals.</p>
+<p><strong>Construct Affinity.</strong> Communicate simple ideas with Constructs; advantage interacting with them.</p>
+<p><strong>Mechanic.</strong> Tinker's or smithing tools proficiency; double PB on checks to create, repair, or upgrade metal-bodied creatures with relevant proficiency.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Draconic).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Islander <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Sapopova</p>
+<p>From an archipelago chain trading specialty goods between islands—hardy, personable, and resilient.</p>
+<p><strong>Like Water off Your Back.</strong> Advantage on saves vs. frightened.</p>
+<p><strong>Tiderider.</strong> Vehicles (water) proficiency; swim speed equal to walking speed.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Joymonger <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Raised in a community that sells happiness—performers, artisans, and laborers keeping attractions running.</p>
+<p><strong>Joyful Endurance.</strong> Advantage on Fitness checks for weariness/survival outside combat. Once per long rest, negate gaining an exhaustion level.</p>
+<p><strong>Welcome to the Show.</strong> Proficiency in Persuasion or Performance.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Kithren <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Nomadic rebuilders who travel to devastated settlements and help survivors recover.</p>
+<p><strong>Helping Hands.</strong> Medicine or Survival proficiency; proficiency with one melee weapon of your choice.</p>
+<p><strong>Search and Rescue.</strong> Network of kithren contacts can point toward a Humanoid's last known location (GM discretion). Cast <em>mending</em> once per long rest even if not a spellcaster.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Goblin or Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Seafarer <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Sea Elf, Elemental Scion</p>
+<p>Raised on a traveling flotilla—scout ships, farms, trawlers, and cruisers crossing open water together.</p>
+<p><strong>Jack of all Trades.</strong> Once per long rest, add PB to a tool or ability check without proficiency.</p>
+<p><strong>Sea Legs.</strong> Vehicles (water) proficiency; advantage on Fitness checks aboard floating vessels.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleHeritages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Waterside <span class="text-muted">(PG2)</span></span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Common for lineages:</strong> Sapopova, Sea Elf</p>
+<p>Edge-of-water communities splitting life between land and water—fishing, boating, and aquaculture.</p>
+<p><strong>Knowledgeable.</strong> History or Nature proficiency; double PB on that skill for waterside areas.</p>
+<p><strong>Water Legs.</strong> Vehicles (water) proficiency; advantage on Fitness (Athletics) and Fitness (Acrobatics) balance checks near water; water up to waist isn't difficult terrain.</p>
+<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan, Dwarvish, or Elvish).</p>
+        </div>
+      </div>
+    </div>
+    <h2 id="heritages-by-lineage">Common Heritages by Lineage</h2>
+    <p>Typical pairings for classic fantasy archetypes. These are suggestions, not requirements.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Lineage</th><th>Recommended Heritages</th></tr></thead>
+      <tbody>
+        <tr><td>Beastkin</td><td>Slayer, Wildlands</td></tr>
+        <tr><td>Dhampir</td><td>Conflicted, Supplicant</td></tr>
+        <tr><td>Dragonborn</td><td>Coterminous, Slayer</td></tr>
+        <tr><td>Drow (Elf variant)</td><td>Conflicted, Covenant</td></tr>
+        <tr><td>Duergar (Dwarf variant)</td><td>Conflicted, Diaspora</td></tr>
+        <tr><td>Dwarf</td><td>Fireforge, Stone</td></tr>
+        <tr><td>Elemental Scion</td><td>Coterminous, Seafarer</td></tr>
+        <tr><td>Elf</td><td>Cloud, Grove</td></tr>
+        <tr><td>Gearforged</td><td>Cosmopolitan, Ironwrought</td></tr>
+        <tr><td>Goblin</td><td>Conflicted, Salvager</td></tr>
+        <tr><td>Human</td><td>Cosmopolitan, Nomadic</td></tr>
+        <tr><td>Kobold</td><td>Supplicant, Salvager</td></tr>
+        <tr><td>Orc</td><td>Diaspora, Slayer</td></tr>
+        <tr><td>Rachisan</td><td>Cottage, Feysworn</td></tr>
+        <tr><td>Sapopova</td><td>Islander, Waterside</td></tr>
+        <tr><td>Sea Elf (Elf variant)</td><td>Seafarer, Waterside</td></tr>
+        <tr><td>Shade</td><td>Diaspora, Vexed</td></tr>
+        <tr><td>Smallfolk</td><td>Cottage, Salvager</td></tr>
+        <tr><td>Syderean</td><td>Anointed, Vexed</td></tr>
+        <tr><td>Tosculi</td><td>Hivebound, Wildlands</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script>
+function toggleHeritages(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  if(isExpanded){
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+function expandAllHeritages(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+function collapseAllHeritages(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

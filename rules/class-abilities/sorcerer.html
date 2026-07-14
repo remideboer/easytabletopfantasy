@@ -14,7 +14,7 @@
 <main>
   <h1>Sorcerer Abilities</h1>
   <div class="content">
-    <p class="lede">Full rules for every Sorcerer feature and subclass, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p class="lede">Full rules for every Sorcerer feature and subclass, adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
     <p><a href="../classes.html#sorcerer">← Back to Sorcerer</a> · <a href="index.html#sorcerer">All classes</a></p>
     <nav class="ability-toc toc" aria-label="Sorcerer abilities">
       <h2 id="contents">On this page</h2>
@@ -29,7 +29,12 @@
 <li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
 <li><a href="#subclasses">Subclass Features</a></li>
 <li class="toc-sub"><a href="#chaos">Chaos</a></li>
-<li class="toc-sub toc-feature"><a href="#chaos-chaos-subclass">Chaos Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-chaos-manifestation">Chaos Manifestation</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-chaos-origin-spells">Chaos Origin Spells</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-volatile-magic">Volatile Magic</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-embrace-chaos">Embrace Chaos</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-inflict-disorder">Inflict Disorder</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-apotheosis-of-discord">Apotheosis of Discord</a> <span class="text-muted">(8th-level subclass feature)</span></li>
 <li class="toc-sub"><a href="#draconic">Draconic</a></li>
 <li class="toc-sub toc-feature"><a href="#draconic-draconic-resilience">Draconic Resilience</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
 <li class="toc-sub toc-feature"><a href="#draconic-dragon-ancestor">Dragon Ancestor</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
@@ -143,15 +148,70 @@
   <h3 class="subclass-name">Chaos</h3>
   <p class="subclass-summary">Wild surges of uncontrolled arcane power.</p>
   <div class="spells-container">
-<div class="spell-card ability-feature-card" id="chaos-chaos-subclass">
+<div class="spell-card ability-feature-card" id="chaos-chaos-manifestation">
   <div class="spell-card-header">
-    <h4 class="spell-card-name">Chaos Subclass</h4>
-    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+    <h4 class="spell-card-name">Chaos Manifestation</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
   </div>
   <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
   <div class="spell-card-description">
-    <p><em>Chaos subclass features.</em></p>
-    <p>YMIAT Chaos sorcerer features are being drafted.</p>
+    <p><em>Random surge on crit or dropping foes with spell attacks.</em></p>
+    <p>When you reduce creatures to 0 Wounds or score a critical hit with a spell attack, roll d6 on the Chaos Manifestation table (invisibility, force burst, AC bonus, phasing, magical darkness, or teleport-with-risk). Once per turn.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-chaos-origin-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Chaos Origin Spells</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+    <p><em>Always-known chaos origin spells.</em></p>
+    <p>These domain spells are always prepared:</p><ul><li><strong>Level 2:</strong> misty step, shatter</li><li><strong>Level 5:</strong> blink, hypnotic pattern</li><li><strong>Level 7:</strong> compulsion, polymorph</li><li><strong>Level 9:</strong> seeming, telekinesis</li><li><strong>Level 10:</strong> eyebite, irresistible dance</li></ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-volatile-magic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Volatile Magic</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+    <p><em>Leveled spells may trigger extra volatile effects.</em></p>
+    <p>When you cast a spell of 1st circle or higher, roll d20 vs volatile DC (<strong>20 − sorcerer level + spell circle</strong>). On a failure the spell still resolves but you also roll on the Volatile Spell Effect table (see Player's Guide). At 0 Luck, roll twice and take the higher result.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-embrace-chaos">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Embrace Chaos</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span><span><strong>Action:</strong> free action</span></div>
+  <div class="spell-card-description">
+    <p><em>Bonus action: suffer a volatile effect for sorcery points or temp Wounds.</em></p>
+    <p>As a <strong>free action</strong>, roll on the Volatile Spell Effect table and suffer it as if targeted. Even result = gain PB sorcery points; odd result = gain temp Wounds = Fitness score for 1 hour. Once per short or long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-inflict-disorder">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Inflict Disorder</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span><span><strong>Action:</strong> reaction</span></div>
+  <div class="spell-card-description">
+    <p><em>Redirect volatile effects onto attackers.</em></p>
+    <p>When targeted by a spell or attack, use your <strong>reaction</strong> to roll on the Volatile Spell Effect table; spend 1 sorcery point to force the attacker to suffer the effect instead. Once per long rest, or spend 2 sorcery points to reuse.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-apotheosis-of-discord">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Apotheosis of Discord</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+    <p><em>6th-circle+ spells trigger a minute of chaotic mastery.</em></p>
+    <p>When you cast a spell of 6th circle or higher, become a conduit for 1 minute (until unconscious): metamagic costs −1 (min 0); resistance to all damage until end of next turn after casting a leveled spell; cast any known Arcane or origin spell (≤1 minute casting, circle ≤ half PB) without slots or components. Once per long rest, or spend 15 sorcery points.</p>
   </div>
 </div>
 

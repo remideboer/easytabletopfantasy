@@ -62,7 +62,7 @@
 <li><strong>Wounds (WD):</strong> Current injury track. Characters start at 0 Wounds. Taking harm adds Wounds until Max Wounds is reached. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Max Wounds:</strong> Capacity before the Life rule applies. Max Wounds = class start Max Wounds + Fitness modifier + (level − 1). When Wounds reach Max Wounds, the Life rule triggers. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Spell Power (SP):</strong> Represents a spellcaster's magical capacity. SP equals 3 × spellcasting ability modifier. Spellcasters spend SP to cast spells and regain it through rest and Recovery Points. See <a href="#magic-and-spell-resources">Magic and Spell Resources</a> for details.</li>
-<li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character's Wounds reach Max Wounds, they must make Death Saves; failing a Death Save costs one heart. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life and Death Saves</a> for details.</li>
+<li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character's Wounds reach Max Wounds, they must make Death Saves; failing a Death Save costs one heart. For each heart lost, every ability modifier (Fitness, Insight, and Willpower) is reduced by 1, maximum speed is reduced by 5 feet (one step), and Max Wounds is reduced by 2 until that heart is restored. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life and Death Saves</a> for details.</li>
 </ul>
 <hr>
 <h3>Determining Ability Modifiers</h3>
@@ -96,7 +96,7 @@
 <p>New or setting-specific skills can be attached to classes, backgrounds, or talents, making <strong>You-Meet-In-A-Tavern</strong> (YMIAT) flexible and easy to expand.</p>
 <hr>
 <h3 id="talents">Talents</h3>
-<p>Talents represent the specific ways an adventurer has improved over the course of their adventures. Talents are divided into three categories: magic talents, martial talents, and technical talents. Your class typically determines which talent lists you have access to.</p>
+<p>Talents represent the specific ways an adventurer has improved over the course of their adventures. Talents are divided into three categories: magic talents, martial talents, and utility talents. Your class typically determines which talent lists you have access to.</p>
 <p>Talents are gained in two main ways:</p>
 <ul>
 <li>When a character chooses their background during character creation, they select one talent from a list of options provided in the background.</li>
@@ -106,8 +106,8 @@
 <p>Most magic talents affect a character's spellcasting abilities, but they also include features that strengthen the mind and defend against harmful magic effects.</p>
 <h4>Martial Talents</h4>
 <p>Martial talents affect a character's combat abilities, including enhancements to overall fitness and the ability to wield weaponry.</p>
-<h4>Technical Talents</h4>
-<p>Technical talents affect a character's noncombat abilities, granting utility-based improvements to social encounters, exploration, and object interactions.</p>
+<h4>Utility Talents</h4>
+<p>Utility talents affect a character's noncombat abilities, granting utility-based improvements to social encounters, exploration, and object interactions.</p>
 <p><em>Note: <strong>You-Meet-In-A-Tavern</strong> (YMIAT)'s talent system is based on the talent system found in Tales of the Valiant and the Black Flag Reference Document. For detailed talent descriptions and complete talent lists, refer to those sources or consult with your Game Master.</em></p>
 <hr>
 <h3 id="wounds-and-scale">Wounds and Scale</h3>
@@ -318,14 +318,21 @@
 <p>Magic Missile costs 1 Spell Power to cast and creates three missiles. Each missile inflicts 1 Wound, automatically hits, and ignores defenses. Each additional Spell Power spent when casting Magic Missile creates one extra missile.</p>
 <p>Spells can also apply additional effects, such as fire, frost, control, or movement, as described in their individual entries.</p>
 <hr>
-<h3>Resolve</h3>
-<p>Resolve represents a character’s growing determination and focus after setbacks. Each time a character fails a d20 test—no matter the type of roll—the character gains 1 Resolve. Resolve can accumulate, up to a maximum of 4.</p>
-<p>When a character with 4 Resolve fails a d20 test, roll a d4. The result becomes the character’s new Resolve value, replacing the previous total. Resolve is then available as a resource to interact with advanced rules, features, or optional systems defined elsewhere in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) (for example, to boost rolls or activate special abilities).</p>
+<h3 id="resolve">Luck and Resolve</h3>
+<p>Resolve (also called <strong>Luck</strong> in some class features) represents a character’s growing determination and focus after setbacks. Each time a character fails a d20 test—no matter the type of roll—the character gains 1 Resolve. Resolve can accumulate, up to a maximum of 4.</p>
+<p>When a character with 4 Resolve fails a d20 test, roll a d20 to set their new Resolve value (replacing the previous total):</p>
+<ul>
+<li><strong>1–5:</strong> Resolve becomes 1</li>
+<li><strong>6–10:</strong> Resolve becomes 2</li>
+<li><strong>11–15:</strong> Resolve becomes 3</li>
+<li><strong>16–20:</strong> Resolve becomes 4</li>
+</ul>
+<p>Resolve is then available as a resource to interact with advanced rules, features, or optional systems defined elsewhere in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) (for example, to boost rolls or activate special abilities).</p>
 <hr>
 <h3>Recovery Points and Rest</h3>
 <p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character’s level. The player can spend Recovery Points to heal Wounds and/or regain Spell Power in any combination. Unspent Recovery Points remain available for later short rests until they are used.</p>
 <p>A character’s maximum Recovery Points equal the character’s level. During a long rest, a character regains half of their total Recovery Points (rounded up), </p>
-<p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. During this rest, however, no Wounds are healed; Wounds must be healed separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also heal Wounds again. The order of recovery during a long rest is always: first hearts, then Wounds. See the <a href="combat.html#life-and-death-saves">Life and Death Saves</a> section for more details on hearts and death saves.</p>
+<p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. When a heart is restored, the −1 penalty to each ability modifier, the −5 ft speed penalty, and the −2 Max Wounds penalty from that lost heart are removed as well. During this rest, however, no Wounds are healed; Wounds must be healed separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also heal Wounds again. The order of recovery during a long rest is always: first hearts, then Wounds. See the <a href="combat.html#life-and-death-saves">Life and Death Saves</a> section for more details on hearts and death saves.</p>
 <hr>
 <h3>Spell School Expertise</h3>
 <p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school gains double advantage (roll 3d20, take highest) on spell attack rolls for spells of that school, and targets of those spells have disadvantage (roll 2d20, take lowest) on saving throws against them.</p>

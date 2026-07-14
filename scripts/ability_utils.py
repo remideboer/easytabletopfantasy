@@ -1,6 +1,25 @@
 """Shared helpers for class ability pages and linking."""
 import re
 
+TOV_URL = "https://www.talesofthevaliant.com/"
+
+
+def render_tov_pill() -> str:
+    """Small source tag linking to Tales of the Valiant."""
+    return (
+        f'<a href="{TOV_URL}" class="source-pill source-pill-tov" rel="noopener" '
+        f'title="Tales of the Valiant Player\'s Guide" onclick="event.stopPropagation()">ToV</a>'
+    )
+
+
+def render_title_with_tov(title: str) -> str:
+    return (
+        f'<span class="lineage-title-wrap">'
+        f'<span class="lineage-title">{title}</span>'
+        f"{render_tov_pill()}"
+        f"</span>"
+    )
+
 
 def slugify(text: str) -> str:
     text = text.lower().strip()

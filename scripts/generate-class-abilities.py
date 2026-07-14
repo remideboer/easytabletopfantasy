@@ -15,7 +15,8 @@ OUT_DIR = ROOT / "rules" / "class-abilities"
 
 CLASS_ORDER = [
     "artificer", "barbarian", "bard", "cleric", "druid", "fighter",
-    "monk", "paladin", "ranger", "rogue", "sorcerer", "warlock", "wizard",
+    "monk", "paladin", "ranger", "rogue", "sorcerer", "theurge",
+    "vanguard", "warlock", "witch", "wizard",
 ]
 
 
@@ -135,7 +136,7 @@ def render_class_page(class_id: str, class_name: str, abilities: list, subclasse
 <main>
   <h1>{class_name} Abilities</h1>
   <div class="content">
-    <p class="lede">Full rules for every {class_name} feature and subclass, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p class="lede">Full rules for every {class_name} feature and subclass, adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
     <p><a href="../classes.html#{class_id}">← Back to {class_name}</a> · <a href="index.html#{class_id}">All classes</a></p>
     <nav class="ability-toc toc" aria-label="{class_name} abilities">
       <h2 id="contents">On this page</h2>
@@ -211,7 +212,7 @@ def render_index(by_class: dict, subclasses_by_class: dict) -> str:
 <main>
   <h1>Class Abilities</h1>
   <div class="content">
-    <p class="lede">Full rules for every class and subclass feature, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play. One page per class.</p>
+    <p class="lede">Full rules for every class and subclass feature, adapted from <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play. One page per class.</p>
     <p><a href="../classes.html">← Back to Classes</a></p>
     {body}
   </div>

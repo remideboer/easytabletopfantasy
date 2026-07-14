@@ -8,88 +8,264 @@
 <link rel="canonical" href="rules/backgrounds.html" />
 <link rel="stylesheet" href="../assets/styles.css" />
 <script src="../assets/includes.js"></script>
-<meta property="og:title" content="Backgrounds | You-Meet-In-A-Tavern (YMIAT)" />
-<meta property="og:description" content="Character backgrounds for You-Meet-In-A-Tavern (YMIAT)." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="rules/backgrounds.html" />
 </head>
 <body>
 <header data-include="nav"></header>
 <main>
   <h1>Backgrounds</h1>
   <div class="content">
-    <p class="lede">Background helps define your character's personal history (also called backstory) before taking up the mantle of an adventurer. When choosing a background, consider how it plays into your character's heritage and class.</p>
-    
-    <p>Your choice of background gives you access to additional proficiencies, talents, equipment, and other benefits like additional languages. In <strong>You-Meet-In-A-Tavern</strong> (YMIAT), backgrounds work similarly to Tales of the Valiant, but remember that skills are optional additions to your core abilities (Fitness, Insight, Willpower). Only skills explicitly granted by your background, class, or talents benefit from proficiency advantage (granting advantage on ability checks made with that skill).</p>
-    
+    <p class="lede">Background helps define your character's personal history before taking up the mantle of an adventurer.</p>
+    <p>Backgrounds from the <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide (2024 core and 2026 options). In YMIAT, only skills explicitly granted benefit from proficiency advantage.</p>
     <div class="lineages-controls">
       <button id="expand-all-backgrounds" class="lineage-control-btn" onclick="expandAllBackgrounds()">Expand All</button>
       <button id="collapse-all-backgrounds" class="lineage-control-btn" onclick="collapseAllBackgrounds()">Collapse All</button>
     </div>
-    
     <div class="lineages-container">
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleBackground(this)">
-          <span class="lineage-title">Acolyte</span>
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Adherent</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Skill Proficiencies:</strong> Investigation and Religion.</p>
-          <p><strong>Additional Proficiencies:</strong> You know two additional languages of your choice.</p>
-          <p><strong>Equipment:</strong> A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a pouch containing 15 gp.</p>
-          <p><strong>Talent:</strong> You have spent your life in service to a temple, learning the rites and rituals of your faith. Choose a talent from this list to represent your experience: <em>Ritualist</em>, <em>School Specialization</em>, or <em>Healer</em>.</p>
+          <p>Before you began adventuring, you committed yourself to a faith, belief, or cause. Skill, equipment, and devotion from that life still shape you.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from History, Investigation, Religion, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> Artist's tools and one additional tool of your choice.</p>
+<p><strong>Equipment:</strong> A prayer book or ceremonial dagger, a holy symbol, fragrant incense, vestments, common clothes, and a pouch containing 10 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleBackground(this)">
-          <span class="lineage-title">Criminal</span>
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Alchemist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Skill Proficiencies:</strong> Choose two from Stealth, Investigation, or Deception.</p>
-          <p><strong>Additional Proficiencies:</strong> You know Thieves' Cant. If you already know this language, you learn a different language of your choice. Gain proficiency with a tool and a vehicle.</p>
-          <p><strong>Equipment:</strong> Five pieces of chalk, a grappling hook, a set of dark traveler's clothes or a costume, and a pouch containing 10 gp.</p>
-          <p><strong>Talent:</strong> You have eked out a living on the fringes of lawful society. Choose a talent from this list to represent your experience: <em>Covert</em>, <em>Scrutinous</em>, or <em>Touch of Luck</em>.</p>
+          <p>You combine natural and alchemical components to create wonders—potions, poisons, and transformative substances.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, Investigation, Nature, or Perception.</p>
+<p><strong>Additional Proficiencies:</strong> Alchemist's tools and one of charlatan's tools, herbalism tools, or provisioner's tools.</p>
+<p><strong>Equipment:</strong> Common clothes, alchemist's tools, stained gloves, a flask of alchemist's fire, glass vials, and a coin purse with 5 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Alchemy Adept</em>, <em>Elemental Savant</em>, or <em>Learned Researcher</em>.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleBackground(this)">
-          <span class="lineage-title">Scholar</span>
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Artist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Skill Proficiencies:</strong> Choose two from Arcana, History, Nature, or Religion.</p>
-          <p><strong>Additional Proficiencies:</strong> Learn two additional languages of your choice or gain proficiency with a tool or vehicle relevant to your field of study.</p>
-          <p><strong>Equipment:</strong> A bottle of ink, a quill, a small knife, a reference book on a highly specific subject, a set of common clothes, and a pouch containing 10 gp.</p>
-          <p><strong>Talent:</strong> You have spent time researching particular academic subjects at an institute of learning or under a knowledgeable teacher. Choose a talent from this list to represent your experience: <em>Polyglot</em>, <em>Ritualist</em>, or <em>School Specialization</em>.</p>
+          <p>You doggedly practiced an artistic pursuit before adventuring—acrobat, puppeteer, thespian, singer, or similar.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Acrobatics, Insight, Performance, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> One additional language and one tool representing your art.</p>
+<p><strong>Equipment:</strong> A musical instrument or artisan tool, steel mirror, fine clothes, ink and quill, and 4 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Quick</em>, <em>Scrutinous</em>, or <em>Trade Skills</em>.</p>
         </div>
       </div>
-      
       <div class="lineage-item">
-        <button class="lineage-header" onclick="toggleBackground(this)">
-          <span class="lineage-title">Soldier</span>
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Chronicler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
-          <p><strong>Skill Proficiencies:</strong> Choose two from Animal Handling, Athletics, Medicine, or Survival.</p>
-          <p><strong>Additional Proficiencies:</strong> Gain proficiency with a tool and a vehicle of your choice.</p>
-          <p><strong>Equipment:</strong> A symbol of rank (like a letter, badge, or identification tags), a mess kit, a pack of playing cards or a set of dice, a set of common clothes, and a pouch containing 10 gp.</p>
-          <p><strong>Talent:</strong> You have received special training or honed natural capabilities that kept you safe during your service. Choose a talent from this list to represent your experience: <em>Combat Casting</em>, <em>Combat Conditioning</em>, or <em>Field Medic</em>.</p>
+          <p>You documented the world—records, investigations, or daily life preserved for posterity.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from History, Investigation, Perception, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> One additional language and artist's, navigator's, or provisioner's tools.</p>
+<p><strong>Equipment:</strong> Proficient tools from above, ink and 25 sheets of paper, bedroll, common clothes, and 3 gp in small coin.</p>
+<p><strong>Talent:</strong> Choose one: <em>Learned Researcher</em>, <em>Polyglot</em>, or <em>Spell Recall</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Courtier</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You spent years in royal or noble courts, learning decorum, duty, and the station of others.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from History, Religion, Insight, or Deception.</p>
+<p><strong>Additional Proficiencies:</strong> One additional language, artist's or navigator's tools, and a musical instrument.</p>
+<p><strong>Equipment:</strong> A writ of nobility or patronage, signet ring, fine clothes, and 12 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Combat Conditioning</em>, <em>Mental Fortitude</em>, or <em>Polyglot</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Criminal</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You survived the criminal underworld as cutpurse, grifter, thief, or assassin.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Stealth, Investigation, Insight, or Deception.</p>
+<p><strong>Additional Proficiencies:</strong> Thieves' Cant (or another language if you already know it), plus one tool and one vehicle.</p>
+<p><strong>Equipment:</strong> Five pieces of chalk, grappling hook, dark traveler's clothes or costume, and 10 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Scrutinous</em>, or <em>Touch of Resolve</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Gravedigger</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You put the dead to rest—city graveyards, crypts, or lonely burial grounds.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Athletics, Insight, Nature, or Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Construction tools and either scythes or thieves' tools.</p>
+<p><strong>Equipment:</strong> Common clothes, construction tools, holy water, small shovel, a burial keepsake, and 2 gp in copper and silver.</p>
+<p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Hardy</em>, or <em>Mental Fortitude</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Healer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You cared for your community with herbal remedies, charms, and practical lore.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, Insight, Medicine, or Survival.</p>
+<p><strong>Additional Proficiencies:</strong> Herbalism tools and one additional tool.</p>
+<p><strong>Equipment:</strong> Herbalism tools, healer's kit, candle, potion bottles, common clothes, and 5 days of rations.</p>
+<p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Field Medic</em>, or <em>Ritualist</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Homesteader</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You forged a livelihood between civilization and the wild hinterlands.</p>
+<p><strong>Skill Proficiencies:</strong> Survival and one of Athletics, Animal Handling, or Intimidation.</p>
+<p><strong>Additional Proficiencies:</strong> Herbalism or navigator's tools.</p>
+<p><strong>Equipment:</strong> Hunting trap, fishing tackle, skinning knife, canvas hammock, heavy traveler's clothes, and 8 gp of gold-crusted quartz.</p>
+<p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Dungeoneer</em>, or <em>Far Traveler</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Investigator</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You solved problems for pay—authority, clients, or yourself.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Insight, Investigation, or Perception.</p>
+<p><strong>Additional Proficiencies:</strong> Charlatan's and thieves' tools.</p>
+<p><strong>Equipment:</strong> Common and fine clothes, charlatan's or thieves' tools, letter of reference, magnifying glass, notebook, case memento, and two purses of 5 gp each.</p>
+<p><strong>Talent:</strong> Choose one: <em>Scrutinous</em>, <em>Situational Awareness</em>, or <em>Sleuth</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Maker</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You pursued a craft until expert quality defined your reputation.</p>
+<p><strong>Skill Proficiencies:</strong> Investigation and one of History, Performance, or Sleight of Hand.</p>
+<p><strong>Additional Proficiencies:</strong> One tool; double proficiency bonus on checks with that tool.</p>
+<p><strong>Equipment:</strong> That tool, personal emblem stamp or chisel, traveler's clothes, and 10 gp in shavings or dust.</p>
+<p><strong>Talent:</strong> Choose one: <em>Artillerist</em>, <em>School Specialization</em>, or <em>Trade Skills</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Outcast</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You survived on scraps and street skills, sometimes on the wrong side of the law.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Insight, Sleight of Hand, or Stealth.</p>
+<p><strong>Additional Proficiencies:</strong> One gaming set and charlatan's, herbalism, or thieves' tools.</p>
+<p><strong>Equipment:</strong> Dark cloak and clothes, a silver coin from a stranger, and 10 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Opportunist</em>, or <em>Quick</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rebel</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You fought for your beliefs against the status quo—openly or from the shadows.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from History, Insight, Performance, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> Artist's or alchemist's tools and provisioner's tools, a musical instrument, or Thieves' Cant.</p>
+<p><strong>Equipment:</strong> Common clothes, artist's or alchemist's tools, flag or banner, pamphlets, alchemist's fire, and 3 gp in small coin.</p>
+<p><strong>Talent:</strong> Choose one: <em>Brave</em>, <em>Comrade</em>, or <em>Hard to Kill</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rustic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Years of hard work gave you unshakeable resolve, but no grand mysteries in your past.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Athletics, Acrobatics, Investigation, or Medicine.</p>
+<p><strong>Additional Proficiencies:</strong> Land vehicles and one martial weapon, instrument, tool, or armor type.</p>
+<p><strong>Equipment:</strong> Backpack, bedroll, woven blanket, three candles, traveler's clothes, and 20 sp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Comrade</em>, <em>Hand to Hand</em>, or <em>Physical Fortitude</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Scholar</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Years in academic pursuits honed your mind and intellectual lens on the world.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, History, Nature, or Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Two languages or one tool or vehicle relevant to your field.</p>
+<p><strong>Equipment:</strong> Ink, quill, knife, reference book, common clothes, and 10 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Polyglot</em>, <em>Ritualist</em>, or <em>School Specialization</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Servant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You anticipated others' needs while working behind the scenes for employers.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Insight, Perception, Sleight of Hand, or Stealth.</p>
+<p><strong>Additional Proficiencies:</strong> Two of clothier's, provisioner's, thieves', tinkerer's tools, or a musical instrument.</p>
+<p><strong>Equipment:</strong> Common clothes, sturdy shoes, proficient tools, notebook, employer's essential item, and 3 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Hardy</em>, <em>Quick</em>, or <em>Tag Team</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Smuggler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You moved contraband where it was forbidden, by wit and careful planning.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Persuasion, Sleight of Hand, or Stealth.</p>
+<p><strong>Additional Proficiencies:</strong> Thieves' Cant (or another language), navigator's tools, and one vehicle.</p>
+<p><strong>Equipment:</strong> Navigator's tools, magnifying glass, merchant's scale, common and fine clothes, hooded cloak, lantern, empty pouches, and 10 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Escamotage</em>, or <em>Slippery</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item">
+        <button class="lineage-header" onclick="toggleBackgrounds(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Soldier</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Rigorous training and discipline defined your time in military service.</p>
+<p><strong>Skill Proficiencies:</strong> Choose two from Animal Handling, Athletics, Medicine, or Survival.</p>
+<p><strong>Additional Proficiencies:</strong> One tool and one vehicle.</p>
+<p><strong>Equipment:</strong> Symbol of rank, mess kit, playing cards or dice, common clothes, and 10 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Combat Casting</em>, <em>Combat Conditioning</em>, or <em>Field Medic</em>.</p>
         </div>
       </div>
     </div>
+
   </div>
 </main>
 <footer class="legal" data-include="footer"></footer>
 <script>
-function toggleBackground(button){
+function toggleBackgrounds(button){
   const item = button.closest('.lineage-item');
   const content = item.querySelector('.lineage-content');
   const icon = button.querySelector('.lineage-toggle-icon');
   const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
-  
   if(isExpanded){
     content.style.display = 'none';
     content.classList.remove('expanded');
@@ -102,39 +278,35 @@ function toggleBackground(button){
     button.setAttribute('aria-expanded', 'true');
   }
 }
-
 function expandAllBackgrounds(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'block';
     content.classList.add('expanded');
   });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
     icon.textContent = '▲';
   });
-  document.querySelectorAll('.lineage-header').forEach(button => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'true');
   });
 }
-
 function collapseAllBackgrounds(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'none';
     content.classList.remove('expanded');
   });
-  document.querySelectorAll('.lineage-toggle-icon').forEach(icon => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
     icon.textContent = '▼';
   });
-  document.querySelectorAll('.lineage-header').forEach(button => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'false');
   });
 }
-
-// Initialize: all collapsed by default
 document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.lineage-content').forEach(content => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
     content.style.display = 'none';
   });
-  document.querySelectorAll('.lineage-header').forEach(button => {
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
     button.setAttribute('aria-expanded', 'false');
   });
 });

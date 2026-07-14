@@ -12,7 +12,13 @@ sys.path.insert(0, str(SCRIPT_DIR))
 
 from class_abilities_data import all_abilities, build_registry
 from class_subclasses_data import all_subclass_features, build_subclass_registry, get_subclasses_by_class
-from ability_utils import build_tooltip_registry, linkify_feature_text, render_tip_link
+from ability_utils import (
+    TOV_URL,
+    build_tooltip_registry,
+    linkify_feature_text,
+    render_tip_link,
+    render_title_with_tov,
+)
 
 ROOT = SCRIPT_DIR.parent
 OUT = ROOT / "rules" / "classes.html"
@@ -23,9 +29,35 @@ ABILITY_REGISTRY = {**build_registry(ABILITIES), **build_subclass_registry(SUBCL
 ABILITY_TOOLTIPS = build_tooltip_registry(ABILITIES + SUBCLASS_FEATURES)
 SUBCLASSES_BY_CLASS = get_subclasses_by_class()
 
-# Max spell circle by YMIAT level (full casters)
-FULL_CASTER_CIRCLE = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3, 7: 4, 8: 4, 9: 5, 10: 5}
-HALF_CASTER_CIRCLE = {2: 1, 3: 1, 4: 2, 5: 2, 6: 3, 7: 3, 8: 3, 9: 4, 10: 5}
+# Max spell circle by YMIAT level
+MAX_LEVEL = 10
+MAX_SPELL_CIRCLE = 9
+
+
+def full_caster_circles(max_level=MAX_LEVEL, max_circle=MAX_SPELL_CIRCLE):
+    """Full casters: +1 max circle per class level, capped at 9 (level 9–10 → circle 9)."""
+    return {lvl: min(lvl, max_circle) for lvl in range(1, max_level + 1)}
+
+
+def half_caster_circles(spell_start=2, max_level=MAX_LEVEL):
+    """Half casters: max circle increases every 2 class levels from spellcasting start."""
+    circles = {}
+    for lvl in range(1, max_level + 1):
+        if lvl < spell_start:
+            circles[lvl] = None  # no spellcasting yet
+        else:
+            circles[lvl] = (lvl - spell_start) // 2 + 1
+    return circles
+
+
+def pact_caster_circles(max_level=MAX_LEVEL):
+    """Warlock pact magic: +1 max circle every 2 levels from 1st (caps at 5 on level 9–10)."""
+    return half_caster_circles(spell_start=1, max_level=max_level)
+
+
+FULL_CASTER_CIRCLE = full_caster_circles()
+HALF_CASTER_CIRCLE = half_caster_circles(spell_start=2)
+PACT_CASTER_CIRCLE = pact_caster_circles()
 
 
 def spell_circle_rows(circles, start=1):
@@ -34,7 +66,8 @@ def spell_circle_rows(circles, start=1):
         if lvl < start:
             rows.append(f"<tr><td>{lvl}</td><td>—</td></tr>")
         else:
-            rows.append(f"<tr><td>{lvl}</td><td>{circles.get(lvl, '—')}</td></tr>")
+            val = circles.get(lvl)
+            rows.append(f"<tr><td>{lvl}</td><td>{val if val is not None else '—'}</td></tr>")
     return "\n".join(rows)
 
 
@@ -59,7 +92,7 @@ def render_class(cls):
     blocks.append(f'<div class="lineage-item" id="{pid}">')
     blocks.append(
         f'<button class="lineage-header" onclick="toggleClass(this)">'
-        f'<span class="lineage-title">{cls["name"]}</span>'
+        f'{render_title_with_tov(cls["name"])}'
         f'<span class="lineage-toggle-icon">▼</span></button>'
     )
     blocks.append('<div class="lineage-content">')
@@ -109,8 +142,9 @@ def render_class(cls):
                 blocks.append(f"<li><strong>{sub_name}</strong></li>")
         blocks.append("</ul>")
     blocks.append(
-        f'<p class="source-note">Adapted from the '
-        f'<a href="{cls["bfrd_url"]}" rel="noopener">BFRD {cls["name"]}</a> '
+        f'<p class="source-note">Adapted from '
+        f'<a href="{TOV_URL}" rel="noopener">Tales of the Valiant</a> '
+        f'(<a href="{cls["bfrd_url"]}" rel="noopener">BFRD {cls["name"]}</a>) '
         f"for YMIAT 10-level play.</p>"
     )
     blocks.append("</div></div>")
@@ -572,7 +606,7 @@ CLASSES = [
         "saves": "WIL (advantage on save)",
         "proficiencies": "Light and medium armor, shields, simple weapons.",
         "spellcasting": "Arcane spells (pact magic). Few slots, short-rest recovery. Invocations at 2nd level.",
-        "spell_circles": {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3, 7: 4, 8: 4, 9: 5, 10: 5},
+        "spell_circles": PACT_CASTER_CIRCLE,
         "bfrd_url": "https://bfrd.net/classes/warlock/",
         "table_headers": ["Level", "Slots", "Slot Level", "Features"],
         "table_rows": [
@@ -639,6 +673,173 @@ CLASSES = [
         ],
         "subclasses": ["Battle Mage", "Cantrip Adept"],
     },
+    {
+        "id": "theurge",
+        "name": "Theurge",
+        "summary": "A dual-source caster who prepares Arcane and Divine spells from a mystic libram and manipulates magic with Spellcraft.",
+        "max_wd": 6,
+        "key_ability": "Insight (INS)",
+        "saves": "INS (advantage on save)",
+        "proficiencies": "Simple weapons. Skills: choose two from Arcana, History, Insight, Investigation, Medicine, and Religion.",
+        "spellcasting": "Arcane and Divine spells (prepared from libram). Rituals known per level. Must include spells from both lists when learning.",
+        "spell_circles": FULL_CASTER_CIRCLE,
+        "bfrd_url": TOV_URL,
+        "table_headers": ["Level", "Features"],
+        "table_rows": [
+            [1, "Spell Nexus, Spellcasting (Libram)"],
+            [2, "Theurge Subclass; Spellcraft, Summon Libram"],
+            [3, "Improvement"],
+            [4, "Subclass Feature; Improvement"],
+            [5, "Spell Synthesis; Heroic Boon"],
+            [6, "Subclass Feature; Superior Focus"],
+            [7, "Improvement"],
+            [8, "Subclass Feature"],
+            [9, "Improvement; Spellcraft (d8)"],
+            [10, "Epic Boon; Improvement"],
+        ],
+        "features": [
+            {
+                "name": "Spell Nexus",
+                "level": "1st-level feature",
+                "text": "Bonus action while your libram is within 100 feet: swap one prepared spell for another of the same circle and source in your libram. PB uses per long rest.",
+            },
+            {
+                "name": "Libram",
+                "level": "1st-level feature (Spellcasting)",
+                "text": "Your libram holds Arcane and Divine spells (at least two of each at 1st level). Prepare INS modifier + theurge level spells. Add two spells per level (one Arcane, one Divine). Cantrips from both lists.",
+            },
+            {
+                "name": "Spellcraft",
+                "level": "2nd-level feature",
+                "text": "Spellcraft dice (d6, d8 at 9th) equal to INS modifier. Spend to boost spell damage/healing, concentration saves, or Arcana checks. Short or long rest recovery.",
+            },
+            {
+                "name": "Spell Synthesis",
+                "level": "5th-level feature",
+                "text": "Once per rest, cast one Arcane and one Divine prepared spell on the same turn (action + bonus action, or two action spells together). Can't take reactions until your next turn.",
+            },
+            {
+                "name": "Superior Focus",
+                "level": "6th-level feature",
+                "text": "Maintain concentration on one Arcane and one Divine spell simultaneously. CON save each turn to hold both (disadvantage when damaged).",
+            },
+            {
+                "name": "Improvement",
+                "level": "3rd, 5th, 7th, 9th, and 10th level",
+                "text": "Increase one ability by 2, two abilities by 1 each, or one ability by 1 and choose a magic talent.",
+            },
+        ],
+        "subclasses": ["Conduit", "Illuminary", "Source Spinner"],
+    },
+    {
+        "id": "vanguard",
+        "name": "Vanguard",
+        "summary": "A battlefield commander who plants war banners, issues stratagems, and shields allies through tactical leadership.",
+        "max_wd": 12,
+        "key_ability": "Willpower (WIL)",
+        "saves": "WIL (advantage on save)",
+        "proficiencies": "All armor, shields, simple and martial weapons. Skills: choose two from Animal Handling, Athletics, History, Insight, Intimidation, Medicine, and Persuasion.",
+        "bfrd_url": TOV_URL,
+        "table_headers": ["Level", "Features"],
+        "table_rows": [
+            [1, "Born Leader, War Banner"],
+            [2, "Vanguard Subclass; Stratagems, Support Action"],
+            [3, "Improvement; Multiattack (2)"],
+            [4, "Subclass Feature; Improvement"],
+            [5, "Superior Stratagems; Heroic Boon"],
+            [6, "Subclass Feature; War Banner: Lucky Colors"],
+            [7, "Improvement; Manifold Tactic"],
+            [8, "Subclass Feature"],
+            [9, "Improvement; Valiant Commander, Battlefield Resolve"],
+            [10, "Epic Boon; Improvement"],
+        ],
+        "features": [
+            {
+                "name": "Born Leader",
+                "level": "1st-level feature",
+                "text": "Choose Authority (allies within 5 feet add PB damage on weapon hits) or Community (allies within 5 feet gain PB on first save each turn). Gain Intimidation or Persuasion proficiency (double PB if already proficient).",
+            },
+            {
+                "name": "War Banner",
+                "level": "1st-level feature (action, in combat)",
+                "text": "Plant a mystical banner within 5 feet during encounter play. Choose Banner of Mercy (absorb ally damage) or Black Flag (hinder foes). PB uses per long rest; 15-foot range. Subclasses add banner options.",
+            },
+            {
+                "name": "Stratagems",
+                "level": "2nd-level feature",
+                "text": "Tactical commands that reposition allies, grant advantage, or disrupt enemies. Known stratagems increase with level; Superior Stratagems (5th) unlocks advanced options.",
+            },
+            {
+                "name": "Support Action",
+                "level": "2nd-level feature",
+                "text": "Use your Support Action to stabilize dying allies, grant temporary Wounds, or rally companions (see class ability page).",
+            },
+            {
+                "name": "Improvement",
+                "level": "3rd, 5th, 7th, 9th, and 10th level",
+                "text": "Increase one ability by 2, two abilities by 1 each, or one ability by 1 and choose a martial talent.",
+            },
+        ],
+        "subclasses": ["Bulwark", "Herald", "Marshal"],
+    },
+    {
+        "id": "witch",
+        "name": "Witch",
+        "summary": "A Wyrd caster who hexes foes, binds spirits, and draws power from otherworldly covens.",
+        "max_wd": 8,
+        "key_ability": "Willpower (WIL)",
+        "saves": "WIL (advantage on save)",
+        "proficiencies": "Light armor, simple weapons. Skills: choose two from Arcana, Animal Handling, Insight, Intimidation, Nature, and Religion.",
+        "spellcasting": "Wyrd spells (known, not prepared). Rituals known per level. Coven spells from subclass.",
+        "spell_circles": FULL_CASTER_CIRCLE,
+        "bfrd_url": TOV_URL,
+        "table_headers": ["Level", "Features"],
+        "table_rows": [
+            [1, "Hex (d6), Spellcasting"],
+            [2, "Witch Subclass; Shadow Craft, Spirit Binding"],
+            [3, "Improvement"],
+            [4, "Subclass Feature; Improvement"],
+            [5, "Greater Hex; Heroic Boon"],
+            [6, "Subclass Feature"],
+            [7, "Improvement"],
+            [8, "Subclass Feature"],
+            [9, "Improvement; Otherworldly Form"],
+            [10, "Epic Boon; Improvement"],
+        ],
+        "features": [
+            {
+                "name": "Hex",
+                "level": "1st-level feature",
+                "text": "Bonus action: mark a creature with a Hex die (d6, d8 at 5th, d10 at 9th). Spend the die to reduce attack rolls, ability checks, or saves. WIL modifier uses per long rest.",
+            },
+            {
+                "name": "Spellcasting",
+                "level": "1st-level feature",
+                "text": "Wyrd spells known (no preparation). Willpower is your spellcasting ability. Cantrips and rituals per progression table.",
+            },
+            {
+                "name": "Shadow Craft",
+                "level": "2nd-level feature",
+                "text": "Weave minor illusions and obscuring magic tied to your coven. Options expand at 6th and 9th level.",
+            },
+            {
+                "name": "Spirit Binding",
+                "level": "2nd-level feature",
+                "text": "Bind helpful spirits for scouting, spell delivery, and coven rites. Number of bound spirits increases at 6th and 13th (9th in YMIAT).",
+            },
+            {
+                "name": "Greater Hex",
+                "level": "5th-level feature",
+                "text": "When you give a creature a Hex die, it also has disadvantage on the first attack roll against you before the die is spent.",
+            },
+            {
+                "name": "Improvement",
+                "level": "3rd, 5th, 7th, 9th, and 10th level",
+                "text": "Increase one ability by 2, two abilities by 1 each, or one ability by 1 and choose a magic talent.",
+            },
+        ],
+        "subclasses": ["Crimson Cord", "Night Song", "Twilight Soul"],
+    },
 ]
 
 GLANCE_ROWS = [
@@ -647,17 +848,20 @@ GLANCE_ROWS = [
     ["Cleric", "8", "INS", "INS (advantage)", "Divine"],
     ["Druid", "8", "INS", "INS (advantage)", "Primordial"],
     ["Fighter", "10", "FIT", "FIT (advantage)", "Martial"],
-    ["Artificer", "8", "INS", "INS (advantage)", "Martial/Tech"],
+    ["Artificer", "8", "INS", "INS (advantage)", "Martial/Utility"],
     ["Monk", "8", "FIT", "FIT (advantage)", "Martial"],
     ["Paladin", "10", "FIT", "INS (advantage)", "Divine/Martial"],
     ["Ranger", "10", "FIT", "FIT (advantage)", "Primordial/Martial"],
     ["Rogue", "8", "FIT", "FIT (advantage)", "Martial"],
     ["Sorcerer", "6", "WIL", "WIL (advantage)", "Arcane"],
     ["Warlock", "8", "WIL", "WIL (advantage)", "Arcane"],
+    ["Theurge", "6", "INS", "INS (advantage)", "Arcane/Divine"],
+    ["Vanguard", "12", "WIL", "WIL (advantage)", "Martial"],
+    ["Witch", "8", "WIL", "WIL (advantage)", "Wyrd"],
     ["Wizard", "6", "INS", "INS (advantage)", "Arcane"],
 ]
 
-HTML_HEAD = """<!doctype html>
+HTML_HEAD = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -677,7 +881,7 @@ HTML_HEAD = """<!doctype html>
 <main>
   <h1>Character Classes</h1>
   <div class="content">
-    <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) compresses the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
+    <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) adapts classes from <a href="{TOV_URL}" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a>, compressing 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
     <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots. Each class lists <strong>one</strong> save with advantage—the class's primary saving throw. Progression features link to the <a href="class-abilities/index.html">class ability pages</a> (one page per class).</p>
 
     <h2 id="classes-at-a-glance">Classes at a Glance</h2>

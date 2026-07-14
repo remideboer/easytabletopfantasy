@@ -546,8 +546,48 @@
     outline:2px solid var(--brand-focus);
     outline-offset:-2px;
   }
-  .lineage-title{
+  .lineage-title-wrap{
     flex:1;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    min-width:0;
+  }
+  .lineage-title{
+    flex:0 1 auto;
+  }
+  .source-pill{
+    display:inline-block;
+    flex-shrink:0;
+    font-size:0.62rem;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:3px 9px;
+    border-radius:999px;
+    line-height:1.3;
+    vertical-align:middle;
+    transition:opacity 0.15s ease, transform 0.15s ease;
+  }
+  .source-pill:hover,
+  .source-pill:focus{
+    text-decoration:none;
+    opacity:0.92;
+    transform:translateY(-1px);
+  }
+  .source-pill-tov{
+    background:var(--brand-primary);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    .source-pill-tov{
+      background:var(--brand-secondary);
+      color:var(--bg-page);
+      border-color:rgba(0,0,0,.2);
+    }
   }
   .lineage-toggle-icon{
     font-size:0.8em;
