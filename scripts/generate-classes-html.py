@@ -12,7 +12,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 
 from class_abilities_data import all_abilities, build_registry
 from class_subclasses_data import all_subclass_features, build_subclass_registry, get_subclasses_by_class
-from ability_utils import linkify_feature_text
+from ability_utils import build_tooltip_registry, linkify_feature_text, render_tip_link
 
 ROOT = SCRIPT_DIR.parent
 OUT = ROOT / "rules" / "classes.html"
@@ -20,6 +20,7 @@ OUT = ROOT / "rules" / "classes.html"
 ABILITIES = all_abilities()
 SUBCLASS_FEATURES = all_subclass_features()
 ABILITY_REGISTRY = {**build_registry(ABILITIES), **build_subclass_registry(SUBCLASS_FEATURES)}
+ABILITY_TOOLTIPS = build_tooltip_registry(ABILITIES + SUBCLASS_FEATURES)
 SUBCLASSES_BY_CLASS = get_subclasses_by_class()
 
 # Max spell circle by YMIAT level (full casters)
@@ -46,7 +47,7 @@ def render_progression(headers, rows, class_id):
         for i, c in enumerate(row):
             text = str(c)
             if i == feat_idx:
-                text = linkify_feature_text(class_id, text, ABILITY_REGISTRY)
+                text = linkify_feature_text(class_id, text, ABILITY_REGISTRY, ABILITY_TOOLTIPS)
             cells.append(text)
         body += "<tr>" + "".join(f"<td>{c}</td>" for c in cells) + "</tr>\n"
     return f'<div class="table-wrap"><table><thead><tr>{th}</tr></thead><tbody>\n{body}</tbody></table></div>'
@@ -100,9 +101,9 @@ def render_class(cls):
                 None,
             )
             if sub_entry:
+                sub_href = f"class-abilities/{pid}.html#{sub_entry['subclass_id']}"
                 blocks.append(
-                    f'<li><strong><a href="class-abilities/{pid}.html#{sub_entry["subclass_id"]}">'
-                    f'{sub_name}</a></strong></li>'
+                    f"<li><strong>{render_tip_link(sub_href, sub_name, sub_entry['summary'])}</strong></li>"
                 )
             else:
                 blocks.append(f"<li><strong>{sub_name}</strong></li>")
@@ -738,7 +739,55 @@ document.addEventListener('DOMContentLoaded', function(){
       if(btn) toggleClass(btn);
     }
   }
+  initAbilityTooltips();
 });
+function initAbilityTooltips(){
+  let tipEl = document.getElementById('ability-hover-tip');
+  if(!tipEl){
+    tipEl = document.createElement('div');
+    tipEl.id = 'ability-hover-tip';
+    tipEl.setAttribute('role', 'tooltip');
+    tipEl.hidden = true;
+    document.body.appendChild(tipEl);
+  }
+  let active = null;
+  function position(link){
+    const rect = link.getBoundingClientRect();
+    const margin = 8;
+    let left = rect.left;
+    let top = rect.bottom + margin;
+    tipEl.style.left = left + 'px';
+    tipEl.style.top = top + 'px';
+    const box = tipEl.getBoundingClientRect();
+    if(box.right > window.innerWidth - margin){
+      left -= box.right - window.innerWidth + margin;
+      tipEl.style.left = Math.max(margin, left) + 'px';
+    }
+    if(box.bottom > window.innerHeight - margin){
+      tipEl.style.top = Math.max(margin, rect.top - box.height - margin) + 'px';
+    }
+  }
+  function show(link){
+    const text = link.getAttribute('data-tip');
+    if(!text) return;
+    active = link;
+    tipEl.textContent = text;
+    tipEl.hidden = false;
+    position(link);
+  }
+  function hide(){
+    active = null;
+    tipEl.hidden = true;
+  }
+  document.querySelectorAll('.ability-tip[data-tip]').forEach(function(link){
+    link.removeAttribute('title');
+    link.addEventListener('mouseenter', function(){ show(link); });
+    link.addEventListener('focus', function(){ show(link); });
+    link.addEventListener('mouseleave', hide);
+    link.addEventListener('blur', hide);
+    link.addEventListener('mousemove', function(){ if(active === link) position(link); });
+  });
+}
 </script>
 <script src="../assets/site.js"></script>
 </body>

@@ -26,12 +26,59 @@ def ability_href(class_id: str, anchor: str) -> str:
     return f"class-abilities/{class_id}.html#{anchor}"
 
 
-def linkify_feature_text(class_id: str, text: str, registry: dict) -> str:
-    """Turn feature names in progression cells into links."""
+def escape_html_attr(text: str) -> str:
+    return (
+        text.replace("&", "&amp;")
+        .replace('"', "&quot;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+    )
+
+
+def format_ability_tooltip(ability: dict) -> str:
+    parts = [ability["summary"]]
+    if ability.get("action"):
+        parts.append(f"Action: {ability['action']}")
+    parts.append(ability["level"])
+    return " — ".join(parts)
+
+
+def build_tooltip_registry(abilities) -> dict:
+    registry = {}
+    for ability in abilities:
+        tip = format_ability_tooltip(ability)
+        for name in ability["names"]:
+            registry[(ability["class_id"], normalize_feature_name(name))] = tip
+            registry[(ability["class_id"], name.lower())] = tip
+    return registry
+
+
+def render_tip_link(href: str, text: str, tip: str | None = None) -> str:
+    if not tip:
+        return f'<a href="{href}">{text}</a>'
+    attr = escape_html_attr(tip)
+    return f'<a href="{href}" class="ability-tip" data-tip="{attr}">{text}</a>'
+
+
+SUBCLASS_CHOICE_TIP = (
+    "Choose your subclass at 2nd level. Subclass features arrive at 2nd, 4th, 6th, and 8th."
+)
+SUBCLASS_FEATURE_TIP = "Subclass feature at this level. See subclass rules on the class ability page."
+
+
+def linkify_feature_text(class_id: str, text: str, registry: dict, tooltips: dict | None = None) -> str:
+    """Turn feature names in progression cells into links with hover tooltips."""
+    tooltips = tooltips or {}
     if not text or text == "—":
         return text
-    if text == "Subclass Feature" or text.endswith(" Subclass"):
-        return f'<a href="class-abilities/{class_id}.html#subclasses">{text}</a>'
+    if text == "Subclass Feature":
+        return render_tip_link(
+            ability_href(class_id, "subclasses"), text, SUBCLASS_FEATURE_TIP
+        )
+    if text.endswith(" Subclass"):
+        return render_tip_link(
+            ability_href(class_id, "subclasses"), text, SUBCLASS_CHOICE_TIP
+        )
 
     parts = re.split(r"(\s*;\s*|\s*,\s*)", text)
     out = []
@@ -42,11 +89,23 @@ def linkify_feature_text(class_id: str, text: str, registry: dict) -> str:
         key = normalize_feature_name(part)
         anchor = registry.get((class_id, key))
         stripped = part.strip()
-        if stripped == "Subclass Feature" or stripped.endswith(" Subclass"):
-            out.append(f'<a href="{ability_href(class_id, "subclasses")}">{stripped}</a>')
+        if stripped == "Subclass Feature":
+            out.append(
+                render_tip_link(
+                    ability_href(class_id, "subclasses"), stripped, SUBCLASS_FEATURE_TIP
+                )
+            )
+        elif stripped.endswith(" Subclass"):
+            out.append(
+                render_tip_link(
+                    ability_href(class_id, "subclasses"), stripped, SUBCLASS_CHOICE_TIP
+                )
+            )
         elif anchor:
-            display = stripped
-            out.append(f'<a href="{ability_href(class_id, anchor)}">{display}</a>')
+            tip = tooltips.get((class_id, key)) or tooltips.get((class_id, stripped.lower()))
+            out.append(
+                render_tip_link(ability_href(class_id, anchor), stripped, tip)
+            )
         else:
             out.append(part)
     return "".join(out)
