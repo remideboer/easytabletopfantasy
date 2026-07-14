@@ -85,15 +85,58 @@ const HTML_INCLUDES = {
     });
     document.querySelectorAll('.nav-submenu--branch.is-open').forEach(branch => {
       branch.classList.remove('is-open');
-      clearBranchFlyoutPanel(branch);
+      const trigger = branch.querySelector(':scope > .nav-submenu-label, :scope > .nav-submenu-link');
+      if(trigger && trigger.getAttribute('role') === 'button'){
+        trigger.setAttribute('aria-expanded', 'false');
+      }
     });
+    restoreAllFlyoutPanels();
     document.body.classList.remove('nav-menu-open');
     const backdrop = document.querySelector('.nav-dropdown-backdrop');
     if(backdrop) backdrop.hidden = true;
   }
 
+  function getBranchPanel(branch){
+    return branch._flyoutPanel || branch.querySelector(':scope > .nav-submenu-panel');
+  }
+
+  function storePanelHome(panel){
+    if(panel._flyoutHome) return;
+    panel._flyoutHome = {
+      parent: panel.parentElement,
+      next: panel.nextSibling,
+    };
+  }
+
+  function restorePanelHome(panel){
+    if(!panel || !panel._flyoutHome) return;
+    const {parent, next} = panel._flyoutHome;
+    if(!parent) return;
+    if(next && next.parentElement === parent){
+      parent.insertBefore(panel, next);
+    } else {
+      parent.appendChild(panel);
+    }
+    delete panel._flyoutHome;
+  }
+
+  function restoreAllFlyoutPanels(){
+    document.querySelectorAll('.nav-submenu-panel.is-placed').forEach(panel => {
+      restorePanelHome(panel);
+      panel.classList.remove('is-placed');
+      panel.style.position = '';
+      panel.style.marginLeft = '';
+      panel.style.left = '';
+      panel.style.top = '';
+      panel.style.zIndex = '';
+    });
+    document.querySelectorAll('.nav-submenu--branch').forEach(branch => {
+      branch._flyoutPanel = null;
+    });
+  }
+
   function clearBranchFlyoutPanel(branch){
-    const panel = branch.querySelector(':scope > .nav-submenu-panel');
+    const panel = getBranchPanel(branch);
     if(!panel) return;
     panel.classList.remove('is-placed');
     panel.style.position = '';
@@ -101,6 +144,10 @@ const HTML_INCLUDES = {
     panel.style.left = '';
     panel.style.top = '';
     panel.style.zIndex = '';
+    panel.style.visibility = '';
+    panel.style.pointerEvents = '';
+    restorePanelHome(panel);
+    branch._flyoutPanel = null;
   }
 
   function initNavDropdowns(){
@@ -210,59 +257,87 @@ const HTML_INCLUDES = {
   function initBranchListFlyouts(){
     const OVERLAP = 8;
 
-    /** backdrop-filter / transform on header makes fixed position relative to that ancestor */
-    function fixedOrigin(el){
-      let node = el.parentElement;
-      while(node){
-        const s = getComputedStyle(node);
-        if(
-          s.transform !== 'none' ||
-          s.filter !== 'none' ||
-          (s.backdropFilter && s.backdropFilter !== 'none') ||
-          s.perspective !== 'none'
-        ){
-          const r = node.getBoundingClientRect();
-          return {left: r.left, top: r.top};
+    function closeSiblingFlyouts(branch){
+      const list = branch.closest('.nav-submenu-panel-inner--branch-list');
+      if(!list) return;
+      list.querySelectorAll(':scope > .nav-submenu--branch').forEach(sibling => {
+        if(sibling !== branch && getBranchPanel(sibling)?.classList.contains('is-placed')){
+          clearBranchFlyoutPanel(sibling);
         }
-        node = node.parentElement;
-      }
-      return {left: 0, top: 0};
+      });
     }
 
-    function placeBranchFlyout(branch){
-      const panel = branch.querySelector(':scope > .nav-submenu-panel');
-      const trigger = branch.querySelector(':scope > .nav-submenu-link');
-      if(!panel || !trigger) return;
-
-      const origin = fixedOrigin(panel);
+    function positionFlyoutPanel(panel, trigger){
       const rect = trigger.getBoundingClientRect();
 
       panel.style.position = 'fixed';
       panel.style.marginLeft = '0';
-      panel.style.zIndex = '130';
-      panel.classList.add('is-placed');
+      panel.style.zIndex = '1300';
 
-      let left = Math.round(rect.right - origin.left - OVERLAP);
-      let top = Math.round(rect.top - origin.top);
+      let left = Math.round(rect.right - OVERLAP);
+      let top = Math.round(rect.top);
       panel.style.left = left + 'px';
       panel.style.top = top + 'px';
 
       const panelRect = panel.getBoundingClientRect();
       if(panelRect.right > window.innerWidth - 8){
-        left = Math.round(rect.left - origin.left - panelRect.width + OVERLAP);
-        panel.style.left = left + 'px';
+        left = Math.round(rect.left - panelRect.width + OVERLAP);
+        panel.style.left = Math.max(8, left) + 'px';
       }
       const adjusted = panel.getBoundingClientRect();
       if(adjusted.bottom > window.innerHeight - 8){
-        top = Math.max(8 - origin.top, Math.round(window.innerHeight - adjusted.height - 8 - origin.top));
+        top = Math.max(8, Math.round(window.innerHeight - adjusted.height - 8));
         panel.style.top = top + 'px';
       }
     }
 
+    function placeBranchFlyout(branch){
+      const panel = branch._flyoutPanel || branch.querySelector(':scope > .nav-submenu-panel');
+      const trigger = branch.querySelector(':scope > .nav-submenu-link');
+      if(!panel || !trigger) return;
+
+      closeSiblingFlyouts(branch);
+
+      branch._flyoutPanel = panel;
+      storePanelHome(panel);
+      if(panel.parentElement !== document.body){
+        document.body.appendChild(panel);
+      }
+      bindPanelFlyoutEvents(panel, branch);
+
+      panel.style.visibility = 'hidden';
+      panel.style.pointerEvents = 'none';
+      panel.classList.add('is-placed');
+      positionFlyoutPanel(panel, trigger);
+      panel.style.visibility = '';
+      panel.style.pointerEvents = '';
+    }
+
     function clearBranchFlyout(branch){
-      const panel = branch.querySelector(':scope > .nav-submenu-panel');
-      if(!panel || branch.matches(':hover') || branch.classList.contains('is-open')) return;
+      const panel = getBranchPanel(branch);
+      if(!panel || branch.classList.contains('is-open')) return;
+      if(branch.matches(':hover')) return;
       clearBranchFlyoutPanel(branch);
+    }
+
+    function branchFocusTarget(branch, related){
+      const panel = getBranchPanel(branch);
+      return branch.contains(related) || (panel && panel.contains(related));
+    }
+
+    function bindPanelFlyoutEvents(panel, branch){
+      if(panel._flyoutEventsBound) return;
+      panel._flyoutEventsBound = true;
+      panel.addEventListener('mouseleave', e => {
+        if(!branchFocusTarget(branch, e.relatedTarget)){
+          clearBranchFlyoutPanel(branch);
+        }
+      });
+      panel.addEventListener('focusout', e => {
+        if(!branchFocusTarget(branch, e.relatedTarget)){
+          requestAnimationFrame(() => clearBranchFlyout(branch));
+        }
+      });
     }
 
     document.querySelectorAll('.nav-submenu-panel-inner--branch-list').forEach(list => {
@@ -270,19 +345,36 @@ const HTML_INCLUDES = {
         branch.addEventListener('mouseenter', () => placeBranchFlyout(branch));
         branch.addEventListener('focusin', () => placeBranchFlyout(branch));
         branch.addEventListener('mouseleave', e => {
-          if(!branch.contains(e.relatedTarget)){
-            requestAnimationFrame(() => clearBranchFlyout(branch));
+          if(!branchFocusTarget(branch, e.relatedTarget)){
+            clearBranchFlyoutPanel(branch);
           }
         });
         branch.addEventListener('focusout', e => {
-          if(!branch.contains(e.relatedTarget)){
+          if(!branchFocusTarget(branch, e.relatedTarget)){
             requestAnimationFrame(() => clearBranchFlyout(branch));
           }
         });
       });
 
       list.addEventListener('scroll', () => {
-        list.querySelectorAll('.nav-submenu--branch:hover, .nav-submenu--branch.is-open').forEach(placeBranchFlyout);
+        list.querySelectorAll('.nav-submenu--branch.is-open, .nav-submenu--branch:hover').forEach(branch => {
+          const panel = getBranchPanel(branch);
+          const trigger = branch.querySelector(':scope > .nav-submenu-link');
+          if(panel?.classList.contains('is-placed') && trigger){
+            positionFlyoutPanel(panel, trigger);
+          }
+        });
+      }, {passive: true});
+    });
+
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.nav-submenu--branch.is-open, .nav-submenu--branch:hover').forEach(branch => {
+        if(!branch.closest('.nav-submenu-panel-inner--branch-list')) return;
+        const panel = getBranchPanel(branch);
+        const trigger = branch.querySelector(':scope > .nav-submenu-link');
+        if(panel?.classList.contains('is-placed') && trigger){
+          positionFlyoutPanel(panel, trigger);
+        }
       });
     });
 

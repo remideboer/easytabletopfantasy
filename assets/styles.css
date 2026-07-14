@@ -418,6 +418,12 @@
   .nav-submenu--branch.is-open > .nav-submenu-panel{
     display:block;
   }
+  /* Scroll-list flyouts are portaled — never flash in-place beside the trigger */
+  .nav-submenu-panel-inner--branch-list > .nav-submenu--branch:hover > .nav-submenu-panel,
+  .nav-submenu-panel-inner--branch-list > .nav-submenu--branch:focus-within > .nav-submenu-panel,
+  .nav-submenu-panel-inner--branch-list > .nav-submenu--branch.is-open > .nav-submenu-panel{
+    display:none;
+  }
   .nav-submenu-label[role="button"]{
     cursor:pointer;
     -webkit-tap-highlight-color:transparent;
@@ -461,12 +467,45 @@
     scrollbar-width:thin;
     scrollbar-color:var(--accent-gold-soft) transparent;
   }
-  /* Nested flyouts in scroll lists: hidden until JS anchors them (avoids gap flash) */
+  /* Nested flyouts in scroll lists: portaled to body via JS — only visible when placed */
   .nav-submenu-panel-inner--branch-list .nav-submenu--branch > .nav-submenu-panel{
+    display:none;
     visibility:hidden;
   }
-  .nav-submenu-panel-inner--branch-list .nav-submenu--branch > .nav-submenu-panel.is-placed{
+  .nav-submenu-panel.is-placed{
+    display:block;
     visibility:visible;
+    pointer-events:auto;
+    min-width:180px;
+    background:var(--bg-card);
+    border:2px solid var(--accent-gold-soft);
+    border-radius:var(--r);
+    box-shadow:var(--shadow-strong);
+    padding:0;
+    color:var(--text-primary);
+    overflow:visible;
+  }
+  .nav-submenu-panel.is-placed a{
+    display:block;
+    padding:8px 16px;
+    color:var(--muted);
+    text-decoration:none;
+    border-radius:0;
+    border:none;
+    border-left:3px solid transparent;
+    transition:all .2s ease;
+  }
+  .nav-submenu-panel.is-placed a:hover{
+    background:rgba(184,134,11,.08);
+    color:var(--brand-primary);
+    border-left-color:var(--accent-gold-soft);
+  }
+  .nav-submenu-panel.is-placed a[aria-current="page"]{
+    background:linear-gradient(135deg, rgba(184,134,11,.12), rgba(212,175,55,.08));
+    color:var(--brand-primary);
+    font-weight:600;
+    border-left-color:var(--accent-gold-soft);
+    box-shadow:none;
   }
   .nav-submenu-panel-inner--branch-list .nav-submenu-link{
     white-space:nowrap;
@@ -494,10 +533,13 @@
     }
   }
   @media (prefers-color-scheme: dark){
-    .nav-submenu--branch > .nav-submenu-panel{
+    .nav-submenu--branch > .nav-submenu-panel,
+    .nav-submenu-panel.is-placed{
       border-color:var(--accent-gold);
     }
-    .nav-submenu-link:hover{
+    .nav-submenu-link:hover,
+    .nav-submenu-panel.is-placed a:hover,
+    .nav-submenu-panel.is-placed a[aria-current="page"]{
       color:var(--accent-gold);
     }
   }
