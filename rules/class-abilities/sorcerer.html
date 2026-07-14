@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sorcerer Abilities | YMIAT</title>
+<meta name="description" content="Full rules for every Sorcerer class and subclass feature in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/sorcerer.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Sorcerer Abilities</h1>
+  <div class="content">
+    <p class="lede">Full rules for every Sorcerer feature and subclass, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p><a href="../classes.html#sorcerer">← Back to Sorcerer</a> · <a href="index.html#sorcerer">All classes</a></p>
+    <nav class="ability-toc toc" aria-label="Sorcerer abilities">
+      <h2 id="contents">On this page</h2>
+      <ul>
+<li><a href="#font-of-magic">Font of Magic</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#metamagic">Metamagic</a> <span class="text-muted">(2nd level and higher)</span></li>
+<li><a href="#sorcerous-renewal">Sorcerous Renewal</a> <span class="text-muted">(3rd level and higher)</span></li>
+<li><a href="#devour-spell">Devour Spell</a> <span class="text-muted">(7th-level feature)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10th-level feature)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
+<li><a href="#subclasses">Subclass Features</a></li>
+<li class="toc-sub"><a href="#chaos">Chaos</a></li>
+<li class="toc-sub toc-feature"><a href="#chaos-chaos-subclass">Chaos Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+<li class="toc-sub"><a href="#draconic">Draconic</a></li>
+<li class="toc-sub toc-feature"><a href="#draconic-draconic-resilience">Draconic Resilience</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-dragon-ancestor">Dragon Ancestor</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-elemental-affinity">Elemental Affinity</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-imperious-wings">Imperious Wings</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-draconic-vengeance">Draconic Vengeance</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class Features</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="font-of-magic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Font of Magic</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Internal wellspring of sorcery points.</em></p>
+    <p>Sorcery points per progression table. Regain on long rest. Convert points ↔ spell circles per BFRD flexible casting (also use Spell Power in YMIAT).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Arcane spells known.</em></p>
+    <p>As a conduit for <strong>Arcane</strong> magic, you cast spells using <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spell cost equals spell circle. Your max spell circle by level is shown on the <a href="../classes.html#sorcerer">Sorcerer</a> progression table.</p>
+<p>You know a fixed list of spells and do not prepare them daily. Learn additional spells at the levels shown on your class progression table.</p>
+<p><strong>Spellcasting ability:</strong> Willpower (WIL). Spell save DC and spell attack modifier use your proficiency bonus + Willpower (WIL) modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> As shown on your progression table. Rituals do not cost Spell Power when cast using the ritual rules in <a href="../magic.html">Magic</a>.</p>
+<p><strong>Second action casting:</strong> If you cast a spell as your second action (because you did not move this turn), spell attacks are at disadvantage and targets have advantage on saves against that spell.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="metamagic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Metamagic</h4>
+    <span class="spell-card-level">2nd level and higher</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Twist spells with sorcery points.</em></p>
+    <p>Choose Metamagic options (Careful, Quickened, Twinned, Heightened, etc.). Gain more options at 4th, 8th, and 10th level. One option per spell unless noted.</p>
+<p><strong>Quickened Spell</strong> still costs 2 points; the spell uses your action (not a separate bonus action in YMIAT).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="sorcerous-renewal">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Sorcerous Renewal</h4>
+    <span class="spell-card-level">3rd level and higher</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Recover sorcery points on short rest.</em></p>
+    <p>After a short rest, roll 1d4+1 sorcery points (2d4+1 at 6th, 3d4+1 at 9th).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="devour-spell">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Devour Spell</h4>
+    <span class="spell-card-level">7th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Absorb hostile spell energy.</em></p>
+    <p>Reaction when targeted by a spell: Willpower check DC 10 + circle. On success, targets have advantage on saves and half damage; you gain sorcery points equal to the circle. Once per long rest (or spend 4 points to reuse).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Arcane Instruction or Innate Spell.</em></p>
+    <p><strong>Arcane Instruction:</strong> spend 1 point to add Willpower to failed check. <strong>Innate Spell:</strong> learn a 1st–2nd circle spell castable with sorcery points.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Share spell effects with another target.</em></p>
+    <p>Reaction when a spell affects you: a creature you see within 120 feet is also affected. Once per rest (or spend 10 sorcery points).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3rd, 5th, 7th, 9th, and 10th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Ability increases or a magic talent.</em></p>
+    <p>At 3rd, 5th, 7th, 9th, and 10th level, choose one improvement (ability modifiers cannot exceed +7 with this feature):</p>
+<ul>
+<li>Increase a single ability modifier by 2.</li>
+<li>Increase two different ability modifiers by 1 each.</li>
+<li>Increase one ability modifier by 1 and select a talent from the <a href="../talents.html">magic talents</a> list.</li>
+</ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass Features</h2>
+<p class="subclasses-intro">Choose your subclass at <strong>2nd level</strong>. Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level.</p>
+<div class="subclass-group" id="chaos">
+  <h3 class="subclass-name">Chaos</h3>
+  <p class="subclass-summary">Wild surges of uncontrolled arcane power.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="chaos-chaos-subclass">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Chaos Subclass</h4>
+    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+    <p><em>Chaos subclass features.</em></p>
+    <p>YMIAT Chaos sorcerer features are being drafted.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="draconic">
+  <h3 class="subclass-name">Draconic</h3>
+  <p class="subclass-summary">Innate power from draconic ancestry.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="draconic-draconic-resilience">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Draconic Resilience</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span></div>
+  <div class="spell-card-description">
+    <p><em>Natural AC and extra Max Wounds.</em></p>
+    <p>While not wearing armor: AC = 10 + Fitness modifier + Willpower modifier. Max Wounds increase by 1 per sorcerer level.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-dragon-ancestor">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Dragon Ancestor</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span></div>
+  <div class="spell-card-description">
+    <p><em>Draconic language and affinity; origin spells by dragon type.</em></p>
+    <p>Choose a dragon type (sets damage type for later features). Speak, read, and write Draconic. On dragon-related ability checks, treat d20 rolls below your sorcerer level as equal to your sorcerer level.</p>
+<p>You learn additional origin spells at 2nd, 5th, 7th, and 9th level per BFRD Draconic Origin table (adapted to YMIAT circles).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-elemental-affinity">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Affinity</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span></div>
+  <div class="spell-card-description">
+    <p><em>Add Willpower modifier to one damage roll of your ancestry type per cast.</em></p>
+    <p>When you cast a spell that deals damage of your ancestry type, add your <strong>Willpower modifier</strong> to one damage roll of that spell.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-imperious-wings">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Imperious Wings</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span><span><strong>Action:</strong> free action</span></div>
+  <div class="spell-card-description">
+    <p><em>Sprout wings for fly speed.</em></p>
+    <p>As a free action, sprout wings for fly speed equal to walking speed until dismissed. Creatures that see you have disadvantage avoiding frighten/intimidate. Can't use while wearing armor.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-draconic-vengeance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Draconic Vengeance</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Brand a foe vulnerable to your element.</em></p>
+    <p>Action: target within 60 feet makes Willpower save or becomes vulnerable to your ancestry damage type until end of your next turn (immunity unchanged). Once per long rest, or spend 4 sorcery points to reuse.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#sorcerer">← Back to Sorcerer</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

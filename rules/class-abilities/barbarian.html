@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Barbarian Abilities | YMIAT</title>
+<meta name="description" content="Full rules for every Barbarian class and subclass feature in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/barbarian.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Barbarian Abilities</h1>
+  <div class="content">
+    <p class="lede">Full rules for every Barbarian feature and subclass, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p><a href="../classes.html#barbarian">← Back to Barbarian</a> · <a href="index.html#barbarian">All classes</a></p>
+    <nav class="ability-toc toc" aria-label="Barbarian abilities">
+      <h2 id="contents">On this page</h2>
+      <ul>
+<li><a href="#rage">Rage</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#unarmored-defense">Unarmored Defense</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#danger-sense">Danger Sense</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#reckless-attack">Reckless Attack</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#fast-movement">Fast Movement</a> <span class="text-muted">(3rd-level feature)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3rd-level feature)</span></li>
+<li><a href="#feral-instinct">Feral Instinct</a> <span class="text-muted">(3rd-level feature)</span></li>
+<li><a href="#brutal-critical">Brutal Critical</a> <span class="text-muted">(5th, 7th, and 9th level)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#relentless-rage">Relentless Rage</a> <span class="text-muted">(7th-level feature)</span></li>
+<li><a href="#unyielding-might">Unyielding Might</a> <span class="text-muted">(9th-level feature)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10th-level feature)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
+<li><a href="#subclasses">Subclass Features</a></li>
+<li class="toc-sub"><a href="#berserker">Berserker</a></li>
+<li class="toc-sub toc-feature"><a href="#berserker-frenzy">Frenzy</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-ruthless-bearing">Ruthless Bearing</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-mindless-rage">Mindless Rage</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-intimidating-presence">Intimidating Presence</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-retaliation">Retaliation</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+<li class="toc-sub"><a href="#wild-fury">Wild Fury</a></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-animal-focus">Animal Focus</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-deepening-focus">Deepening Focus</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-primal-synthesis">Primal Synthesis</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-apex-predator">Apex Predator</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+<li class="toc-sub"><a href="#chaos">Chaos</a></li>
+<li class="toc-sub toc-feature"><a href="#chaos-chaos-subclass">Chaos Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+<li class="toc-sub"><a href="#four-winds">Four Winds</a></li>
+<li class="toc-sub toc-feature"><a href="#four-winds-four-winds-subclass">Four Winds Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+<li class="toc-sub"><a href="#kraken">Kraken</a></li>
+<li class="toc-sub toc-feature"><a href="#kraken-kraken-subclass">Kraken Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class Features</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="rage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Rage</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Action:</strong> free action</span></div>
+  <div class="spell-card-description">
+    <p><em>Primal fury as a free action; bonus damage and physical resilience.</em></p>
+    <p>In battle, you fight with primal ferocity. On your turn, you can <strong>rage as a free action</strong>.</p>
+<p>While raging (and not wearing heavy armor):</p>
+<ul>
+<li>You have advantage on <strong>Fitness</strong> ability checks and saves.</li>
+<li>When you make a melee weapon attack using Fitness, you gain a bonus to damage per the <strong>Rage +</strong> column on your progression table.</li>
+<li>You have resistance to bludgeoning, piercing, and slashing damage—attackers have <strong>disadvantage</strong> on those damage rolls against you.</li>
+</ul>
+<p>You cannot cast spells or concentrate on them while raging.</p>
+<p>Your rage lasts 1 minute. It ends early if you are knocked unconscious, or if your turn ends and you have not attacked a hostile creature or taken damage from one since the start of your last turn. You can end rage early as a free action.</p>
+<p>Uses per long rest: see the <strong>Rages</strong> column on your progression table.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="unarmored-defense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unarmored Defense</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>High AC without armor when relying on raw toughness.</em></p>
+    <p>While you are not wearing armor, your base Armor Class equals <strong>10 + 2 × your Fitness modifier</strong>. You can use a shield and still gain this benefit.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="danger-sense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Danger Sense</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Advantage on Fitness saves against unseen peril.</em></p>
+    <p>You gain an uncanny sense of when things are not as they should be. You have <strong>advantage on Fitness saving throws</strong> unless you have the Incapacitated condition.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="reckless-attack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Reckless Attack</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Trade defense for ferocious accuracy.</em></p>
+    <p>When you make an attack on your turn, you can attack <strong>recklessly</strong>. You have advantage on melee weapon attack rolls using Fitness during this turn, but you have <strong>disadvantage on your Defense roll</strong> until the start of your next turn.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="fast-movement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fast Movement</h4>
+    <span class="spell-card-level">3rd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Extra speed and initiative movement.</em></p>
+    <p>Your speed increases by <strong>10 feet</strong> while you are not wearing heavy armor. When you roll initiative, you can immediately move up to half your speed.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3rd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Two attacks with the Attack action.</em></p>
+    <p>Your physical prowess has grown. On your turn, you can make up to <strong>two</strong> attacks when you take the Attack action.</p>
+<p>In YMIAT, each successful weapon attack typically inflicts <strong>1 Wound</strong> (2 on a critical hit). Weapon bonuses apply to hit, not to the number of Wounds dealt.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="feral-instinct">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Feral Instinct</h4>
+    <span class="spell-card-level">3rd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Superior initiative and surprise immunity when raging.</em></p>
+    <p>You have advantage on initiative rolls. If you are surprised at the start of combat and are not incapacitated, you can act normally on your first turn if you enter a rage before doing anything else on that turn.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="brutal-critical">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Brutal Critical</h4>
+    <span class="spell-card-level">5th, 7th, and 9th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Expanded critical range and extra critical damage dice.</em></p>
+    <p>You score a critical hit on a d20 roll of <strong>19 or 20</strong> with melee weapons and unarmed strikes.</p>
+<p>You also roll additional weapon damage dice on melee critical hits:</p>
+<ul>
+<li><strong>5th level:</strong> 1 extra die</li>
+<li><strong>7th level:</strong> 2 extra dice</li>
+<li><strong>9th level:</strong> 3 extra dice</li>
+</ul>
+<p>On a critical hit in YMIAT, the attack inflicts <strong>2 Wounds</strong> before applying extra dice (exploding 20s still apply).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Choose a powerful rage-enhancing boon.</em></p>
+    <p>Choose one heroic boon:</p>
+<ul>
+<li><strong>Instant Rage.</strong> You can rage without spending a free action when you roll initiative and use Fast Movement, if you have a use of Rage remaining.</li>
+<li><strong>Stubborn Rage.</strong> Your rage ends only when its duration expires, you fall unconscious, or you choose to end it.</li>
+<li><strong>Bloody Rage.</strong> While raging, slashing damage from your weapon attacks ignores resistance.</li>
+<li><strong>Vengeful Rage.</strong> When a hostile creature damages you while you are raging, you have stacking advantage on the first attack you make against that creature on your next turn.</li>
+</ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="relentless-rage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Relentless Rage</h4>
+    <span class="spell-card-level">7th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Cling to consciousness while raging at Max Wounds.</em></p>
+    <p>While raging, if your Wounds reach your Max Wounds, you can make a <strong>DC 10 Fitness save</strong>. On a success, you do not fall unconscious until your rage ends. You still make <a href="../combat.html#life-and-death-saves">death saves</a> as normal.</p>
+<p>Each time you use this feature after the first, the DC increases by 5. The DC resets when you finish a short or long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="unyielding-might">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unyielding Might</h4>
+    <span class="spell-card-level">9th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Reliable Fitness and devastating blows against objects.</em></p>
+    <p>When you make an ability check or save using Fitness, treat any d20 roll of 9 or lower as a 10.</p>
+<p>Your melee weapon attacks deal additional damage equal to your <strong>Fitness score</strong> (not modifier) against objects and structures.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Embody untamed power.</em></p>
+    <p><strong>Primal Champion.</strong> Your Fitness modifier increases by <strong>2</strong>. Your maximum Fitness modifier is now <strong>+7</strong>.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3rd, 5th, 7th, 9th, and 10th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Ability increases or a martial talent.</em></p>
+    <p>At 3rd, 5th, 7th, 9th, and 10th level, choose one improvement (ability modifiers cannot exceed +7 with this feature):</p>
+<ul>
+<li>Increase a single ability modifier by 2.</li>
+<li>Increase two different ability modifiers by 1 each.</li>
+<li>Increase one ability modifier by 1 and select a talent from the <a href="../talents.html">martial talents</a> list.</li>
+</ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass Features</h2>
+<p class="subclasses-intro">Choose your subclass at <strong>2nd level</strong>. Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level.</p>
+<div class="subclass-group" id="berserker">
+  <h3 class="subclass-name">Berserker</h3>
+  <p class="subclass-summary">Primal bloodlust pushes your rage into a devastating frenzy.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="berserker-frenzy">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Frenzy</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span><span><strong>Action:</strong> free action (with Rage)</span></div>
+  <div class="spell-card-description">
+    <p><em>Optional frenzy with rage; extra melee attack while frenzied.</em></p>
+    <p>When you rage, you can choose to enter a <strong>frenzy</strong> as part of the same free action.</p>
+<p>While frenzied, once per turn you can make <strong>one extra melee weapon attack as your second action</strong> (you must not have moved this turn, per YMIAT second-action rules).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-ruthless-bearing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ruthless Bearing</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span></div>
+  <div class="spell-card-description">
+    <p><em>Intimidation proficiency; double advantage if already proficient.</em></p>
+    <p>You gain proficiency in the <strong>Intimidation</strong> skill. If you are already proficient, you have <strong>double advantage</strong> on Intimidation checks.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-mindless-rage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mindless Rage</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span></div>
+  <div class="spell-card-description">
+    <p><em>Ignore exhaustion while raging; immune to charm and frighten; temp HP on crit or kill during frenzy.</em></p>
+    <p>While raging, you gain the following benefits:</p>
+<ul>
+<li>You ignore any levels of exhaustion for the duration of your rage.</li>
+<li>You can't be charmed or frightened while raging. If you are already charmed or frightened when you enter a rage, the effect is suspended for the duration.</li>
+<li>During a frenzy, if you score a critical hit or reduce a creature to 0 Wounds, you gain temporary Wounds equal to your <strong>PB + your Fitness modifier</strong>. These last until expended or until you finish a short or long rest.</li>
+</ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-intimidating-presence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Intimidating Presence</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span><span><strong>Action:</strong> free action</span></div>
+  <div class="spell-card-description">
+    <p><em>Bonus damage vs. frightened foes; free action to frighten nearby creatures.</em></p>
+    <p>Your weapon attacks deal extra damage equal to your <strong>PB</strong> (same damage type as the weapon) to frightened creatures.</p>
+<p>As a <strong>free action</strong>, you can attempt to frighten up to <strong>PB</strong> creatures within 30 feet that can see or hear you. Each target makes an <strong>Insight save</strong> (DC 8 + PB + Willpower modifier + temporary Wounds from Mindless Rage). On a failure, a creature is frightened of you until the end of your next turn.</p>
+<p>On subsequent turns, you can use a free action to extend the effect on each frightened creature until the end of your next turn. The effect ends if the creature ends its turn more than 60 feet away or can no longer see or hear you. On a successful save, you can't use this feature on that creature again for 24 hours.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-retaliation">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Retaliation</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span><span><strong>Action:</strong> reaction</span></div>
+  <div class="spell-card-description">
+    <p><em>Reaction: close on attacker and strike back.</em></p>
+    <p>When a creature hits or misses you with an attack, you can use your <strong>reaction</strong> to move up to half your speed toward that creature and make a single melee attack against it. If the creature is Large or larger, you have advantage on the attack roll.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://bfrd.net/classes/barbarian/barbarian-subclasses/" rel="noopener">BFRD Berserker</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="wild-fury">
+  <h3 class="subclass-name">Wild Fury</h3>
+  <p class="subclass-summary">Animal spirits guide your rage—choose a beast focus at each subclass level.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="wild-fury-animal-focus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Animal Focus</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+    <p><em>Choose your first animal focus (2nd level in YMIAT).</em></p>
+    <p>At <strong>2nd level</strong>, choose an <strong>animal focus</strong> that shapes how your rage manifests. You choose another focus at 4th, 6th, and 8th level.</p>
+<p>Options include: Alligator, Bear, Tiger, Toad, Hawk, Lizard, Turtle, Wolf, Crane, Ram, Shark, and Snake. Each focus grants a thematic benefit while you rage (movement, senses, damage type, or defense). Work with your GM to apply the BFRD Wild Fury focus rules adapted to YMIAT.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-fury-deepening-focus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Deepening Focus</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+    <p><em>Second animal focus (4th level in YMIAT).</em></p>
+    <p>Choose a second animal focus. Its benefits stack with your first while you rage.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-fury-primal-synthesis">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Primal Synthesis</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+    <p><em>Third animal focus (6th level in YMIAT).</em></p>
+    <p>Choose a third animal focus. When you rage, you can blend two active focuses for one enhanced effect once per rage.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-fury-apex-predator">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Apex Predator</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+    <p><em>Fourth animal focus (8th level in YMIAT).</em></p>
+    <p>Choose a fourth animal focus. While raging, you have advantage on initiative and can move up to half your speed when you enter a rage.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="chaos">
+  <h3 class="subclass-name">Chaos</h3>
+  <p class="subclass-summary">Entropic fury warps the battlefield around your rage.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="chaos-chaos-subclass">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Chaos Subclass</h4>
+    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+    <p><em>Chaos subclass features.</em></p>
+    <p>YMIAT Chaos barbarian features are being drafted. Ask your GM for the current playtest packet.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="four-winds">
+  <h3 class="subclass-name">Four Winds</h3>
+  <p class="subclass-summary">Elemental winds empower your movement and strikes.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="four-winds-four-winds-subclass">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Four Winds Subclass</h4>
+    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Four Winds</span></div>
+  <div class="spell-card-description">
+    <p><em>Four Winds subclass features.</em></p>
+    <p>YMIAT Four Winds barbarian features are being drafted. Ask your GM for the current playtest packet.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="kraken">
+  <h3 class="subclass-name">Kraken</h3>
+  <p class="subclass-summary">Crushing tentacle-like force and abyssal resilience.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="kraken-kraken-subclass">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Kraken Subclass</h4>
+    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Kraken</span></div>
+  <div class="spell-card-description">
+    <p><em>Kraken subclass features.</em></p>
+    <p>YMIAT Kraken barbarian features are being drafted. Ask your GM for the current playtest packet.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#barbarian">← Back to Barbarian</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

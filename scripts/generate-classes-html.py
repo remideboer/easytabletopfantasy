@@ -4,10 +4,23 @@ Generate rules/classes.html from YMIAT class data.
 Source: Black Flag Reference Document (BFRD) compressed to 10 levels.
 """
 
+import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+SCRIPT_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPT_DIR))
+
+from class_abilities_data import all_abilities, build_registry
+from class_subclasses_data import all_subclass_features, build_subclass_registry, get_subclasses_by_class
+from ability_utils import linkify_feature_text
+
+ROOT = SCRIPT_DIR.parent
 OUT = ROOT / "rules" / "classes.html"
+
+ABILITIES = all_abilities()
+SUBCLASS_FEATURES = all_subclass_features()
+ABILITY_REGISTRY = {**build_registry(ABILITIES), **build_subclass_registry(SUBCLASS_FEATURES)}
+SUBCLASSES_BY_CLASS = get_subclasses_by_class()
 
 # Max spell circle by YMIAT level (full casters)
 FULL_CASTER_CIRCLE = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3, 7: 4, 8: 4, 9: 5, 10: 5}
@@ -24,11 +37,18 @@ def spell_circle_rows(circles, start=1):
     return "\n".join(rows)
 
 
-def render_progression(headers, rows):
+def render_progression(headers, rows, class_id):
     th = "".join(f"<th>{h}</th>" for h in headers)
+    feat_idx = next((i for i, h in enumerate(headers) if h.lower() == "features"), None)
     body = ""
     for row in rows:
-        body += "<tr>" + "".join(f"<td>{c}</td>" for c in row) + "</tr>\n"
+        cells = []
+        for i, c in enumerate(row):
+            text = str(c)
+            if i == feat_idx:
+                text = linkify_feature_text(class_id, text, ABILITY_REGISTRY)
+            cells.append(text)
+        body += "<tr>" + "".join(f"<td>{c}</td>" for c in cells) + "</tr>\n"
     return f'<div class="table-wrap"><table><thead><tr>{th}</tr></thead><tbody>\n{body}</tbody></table></div>'
 
 
@@ -63,18 +83,29 @@ def render_class(cls):
             "instead of spell slots. Spell cost equals spell circle.</p>"
         )
     blocks.append("<h3>Progression</h3>")
-    blocks.append(render_progression(cls["table_headers"], cls["table_rows"]))
+    blocks.append(render_progression(cls["table_headers"], cls["table_rows"], pid))
     blocks.append("<h3>Class Features</h3>")
-    for feat in cls["features"]:
-        blocks.append(f"<h4>{feat['name']}</h4>")
-        blocks.append(f"<p><em>{feat['level']}</em></p>")
-        blocks.append(f"<p>{feat['text']}</p>")
+    blocks.append(
+        f'<p>Full rules: <a href="class-abilities/{pid}.html">All {cls["name"]} abilities →</a> '
+        f'(<a href="class-abilities/index.html#{pid}">index</a>) · '
+        f'<a href="class-abilities/{pid}.html#subclasses">subclasses</a></p>'
+    )
     if cls.get("subclasses"):
         blocks.append("<h3>Subclasses</h3>")
         blocks.append("<p>Choose at 2nd level; features at 2nd, 4th, 6th, and 8th.</p>")
         blocks.append("<ul>")
-        for sub in cls["subclasses"]:
-            blocks.append(f"<li><strong>{sub}</strong></li>")
+        for sub_name in cls["subclasses"]:
+            sub_entry = next(
+                (s for s in SUBCLASSES_BY_CLASS.get(pid, []) if s["subclass_name"] == sub_name),
+                None,
+            )
+            if sub_entry:
+                blocks.append(
+                    f'<li><strong><a href="class-abilities/{pid}.html#{sub_entry["subclass_id"]}">'
+                    f'{sub_name}</a></strong></li>'
+                )
+            else:
+                blocks.append(f"<li><strong>{sub_name}</strong></li>")
         blocks.append("</ul>")
     blocks.append(
         f'<p class="source-note">Adapted from the '
@@ -646,7 +677,7 @@ HTML_HEAD = """<!doctype html>
   <h1>Character Classes</h1>
   <div class="content">
     <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) compresses the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
-    <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots. Each class lists <strong>one</strong> save with advantage—the class's primary saving throw.</p>
+    <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots. Each class lists <strong>one</strong> save with advantage—the class's primary saving throw. Progression features link to the <a href="class-abilities/index.html">class ability pages</a> (one page per class).</p>
 
     <h2 id="classes-at-a-glance">Classes at a Glance</h2>
     <div class="table-wrap"><table>

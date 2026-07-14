@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Druid Abilities | YMIAT</title>
+<meta name="description" content="Full rules for every Druid class and subclass feature in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/druid.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Druid Abilities</h1>
+  <div class="content">
+    <p class="lede">Full rules for every Druid feature and subclass, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p><a href="../classes.html#druid">← Back to Druid</a> · <a href="index.html#druid">All classes</a></p>
+    <nav class="ability-toc toc" aria-label="Druid abilities">
+      <h2 id="contents">On this page</h2>
+      <ul>
+<li><a href="#druidic">Druidic</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#natures-gift">Nature's Gift</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#wild-shape">Wild Shape</a> <span class="text-muted">(2nd level and higher)</span></li>
+<li><a href="#improved-beast-form">Improved Beast Form</a> <span class="text-muted">(3rd level and higher)</span></li>
+<li><a href="#natures-grace">Nature's Grace</a> <span class="text-muted">(8th-level feature)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10th-level feature)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
+<li><a href="#subclasses">Subclass Features</a></li>
+<li class="toc-sub"><a href="#leaf">Leaf</a></li>
+<li class="toc-sub toc-feature"><a href="#leaf-leaf-subclass">Leaf Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+<li class="toc-sub"><a href="#shifter">Shifter</a></li>
+<li class="toc-sub toc-feature"><a href="#shifter-potent-forms">Potent Forms</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-quick-shift">Quick Shift</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-shifter-ring-spells">Shifter Ring Spells</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-beasts-fury">Beast's Fury</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-elemental-infusion">Elemental Infusion</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-manifold-mind">Manifold Mind</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class Features</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="druidic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Druidic</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Secret language of druids.</em></p>
+    <p>You know Druidic. You can leave hidden messages in natural elements that only druids understand. Others spot the message with a successful Insight (Perception) check but cannot decipher it without magic.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="natures-gift">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Nature's Gift</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Channel ambient energy to heal.</em></p>
+    <p>As an <strong>action</strong>, choose one creature within 5 feet (can be yourself). Roll a number of d4s equal to your proficiency bonus (minimum 2d4). That creature heals Wounds equal to the total. No effect on Constructs or Undead.</p>
+<p>Uses per long rest equal to your proficiency bonus.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Prepared Primordial spells.</em></p>
+    <p>As a conduit for <strong>Primordial</strong> magic, you cast spells using <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spell cost equals spell circle. Your max spell circle by level is shown on the <a href="../classes.html#druid">Druid</a> progression table.</p>
+<p>You prepare spells in advance. You can prepare a number of spells equal to your Insight (INS) modifier + your druid level (minimum one). Change your prepared list during a long rest.</p>
+<p><strong>Spellcasting ability:</strong> Insight (INS). Spell save DC and spell attack modifier use your proficiency bonus + Insight (INS) modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> As shown on your progression table. Rituals do not cost Spell Power when cast using the ritual rules in <a href="../magic.html">Magic</a>.</p>
+<p><strong>Second action casting:</strong> If you cast a spell as your second action (because you did not move this turn), spell attacks are at disadvantage and targets have advantage on saves against that spell.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-shape">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wild Shape</h4>
+    <span class="spell-card-level">2nd level and higher</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Action:</strong> free action</span></div>
+  <div class="spell-card-description">
+    <p><em>Channel nature for beast forms and spell recovery.</em></p>
+    <p>You channel nature as a <strong>free action</strong> (Beast Form) or action (Draw Power). Uses per rest on your progression table.</p>
+<ul>
+<li><strong>Beast Form.</strong> Assume a known beast form. See <a href="druid.html#improved-beast-form">Improved Beast Form</a> for CR limits by level.</li>
+<li><strong>Draw Power.</strong> Recover one expended spell circle up to your proficiency bonus. Cannot use while transformed.</li>
+</ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="improved-beast-form">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improved Beast Form</h4>
+    <span class="spell-card-level">3rd level and higher</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Assume more powerful beast forms.</em></p>
+    <p>When you learn beast forms, maximum CR by level:</p>
+<ul>
+<li><strong>3rd:</strong> CR ¼</li>
+<li><strong>5th:</strong> CR ½</li>
+<li><strong>7th:</strong> CR 1</li>
+<li><strong>9th:</strong> CR 2</li>
+</ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="natures-grace">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Nature's Grace</h4>
+    <span class="spell-card-level">8th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Attunement sustains and protects you.</em></p>
+    <p>You cannot be magically aged. You do not need food or water. Your ability modifiers and Max Wounds cannot be lowered except by a <em>wish</em>.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Rite of the Kingdom or Shaper.</em></p>
+    <p>Choose one:</p>
+<ul>
+<li><strong>Rite of the Kingdom.</strong> Communicate basic ideas with Beasts; advantage on checks to influence them.</li>
+<li><strong>Rite of the Shaper.</strong> When you roll initiative with no Wild Shape uses left, regain one use (once per long rest).</li>
+</ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Unlimited wild shape; effortless spellcasting.</em></p>
+    <p><strong>Archdruid.</strong> Wild Shape (Beast Form) has unlimited uses. You can ignore verbal and somatic components of Primordial spells, and material components without a listed cost.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3rd, 5th, 7th, 9th, and 10th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Ability increases or a magic talent.</em></p>
+    <p>At 3rd, 5th, 7th, 9th, and 10th level, choose one improvement (ability modifiers cannot exceed +7 with this feature):</p>
+<ul>
+<li>Increase a single ability modifier by 2.</li>
+<li>Increase two different ability modifiers by 1 each.</li>
+<li>Increase one ability modifier by 1 and select a talent from the <a href="../talents.html">magic talents</a> list.</li>
+</ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass Features</h2>
+<p class="subclasses-intro">Choose your subclass at <strong>2nd level</strong>. Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level.</p>
+<div class="subclass-group" id="leaf">
+  <h3 class="subclass-name">Leaf</h3>
+  <p class="subclass-summary">Guardian of growing things and peaceful wild places.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="leaf-leaf-subclass">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Leaf Subclass</h4>
+    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Leaf</span></div>
+  <div class="spell-card-description">
+    <p><em>Leaf subclass features.</em></p>
+    <p>YMIAT Leaf druid features are being drafted. See BFRD Leaf ring for reference.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="shifter">
+  <h3 class="subclass-name">Shifter</h3>
+  <p class="subclass-summary">Master of beast forms and primal transformation.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="shifter-potent-forms">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Potent Forms</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+    <p><em>Higher-CR beast forms; speak while transformed.</em></p>
+    <p>Choose beast forms with CR up to 1 (scaling with level per Improved Beast Form). You use the creature's Max Wounds when you transform. You can speak languages you know in beast form but still can't cast spells.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-quick-shift">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Quick Shift</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span><span><strong>Action:</strong> free action</span></div>
+  <div class="spell-card-description">
+    <p><em>Beast Form as a free action.</em></p>
+    <p>When you use Beast Form, you can transform as a <strong>free action</strong> instead of an action.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-shifter-ring-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Shifter Ring Spells</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+    <p><em>Always-prepared shifter ring spells.</em></p>
+    <p>These domain spells are always prepared:</p><ul><li><strong>Level 2:</strong> alter self, animal friendship, speak with animals</li><li><strong>Level 5:</strong> conjure animals, water breathing</li><li><strong>Level 7:</strong> giant insect, polymorph</li><li><strong>Level 9:</strong> dominate, insect plague</li></ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-beasts-fury">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Beast's Fury</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+    <p><em>Bonus natural attack after Attack action in beast form.</em></p>
+    <p>After you take the Attack action in beast form, you can use your <strong>second action</strong> (if you haven't moved) to make one natural weapon attack for <strong>1d6 + PB</strong> damage. Melee damage in beast form counts as magical.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-elemental-infusion">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Infusion</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+    <p><em>Infuse beast form with air, earth, fire, or water power.</em></p>
+    <p>Expend two Wild Shape uses to infuse your beast form with an elemental power (Air, Earth, Fire, or Water), gaining movement, resistance, and a rechargeable action per BFRD Shifter. Alternatively, spend one use as a reaction to switch infusion while transformed.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-manifold-mind">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Manifold Mind</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+    <p><em>Cast spells in beast form.</em></p>
+    <p>You can cast Primordial spells while in beast form, performing verbal and somatic components normally. Material components still apply.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Adapted from <a href="https://bfrd.net/classes/druid/druid-subclasses/shifter" rel="noopener">BFRD Shifter</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#druid">← Back to Druid</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

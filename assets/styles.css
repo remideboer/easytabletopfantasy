@@ -1323,6 +1323,94 @@
     transform:translateY(-2px);
     transition:all 0.3s ease;
   }
+
+  /* Class ability pages — spell-card grid, section dividers */
+  .ability-features-section{
+    margin:28px 0 0;
+  }
+
+  .ability-features-section > h2{
+    margin:0 0 16px;
+    font-family:var(--serif);
+    color:var(--brand-primary);
+    border-bottom:2px solid var(--fantasy-gold);
+    padding-bottom:8px;
+  }
+
+  .ability-features-section .spells-container,
+  .subclass-group .spells-container{
+    grid-template-columns:1fr;
+  }
+
+  .ability-section-divider{
+    border:none;
+    border-top:2px solid var(--fantasy-gold);
+    margin:40px 0 32px;
+  }
+
+  .subclass-divider{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:28px 0;
+  }
+
+  .subclasses-intro{
+    margin:0 0 20px;
+    color:var(--text-secondary);
+  }
+
+  .subclass-group{
+    scroll-margin-top:80px;
+  }
+
+  .subclass-name{
+    margin:0 0 6px;
+    font-family:var(--serif);
+    color:var(--fantasy-burgundy);
+  }
+
+  .subclass-summary{
+    margin:0 0 16px;
+    color:var(--text-secondary);
+  }
+
+  .ability-feature-card{
+    scroll-margin-top:80px;
+  }
+
+  .ability-toc.toc{
+    margin:20px 0 28px;
+    padding:16px 20px;
+    border:1px solid var(--line);
+    border-radius:var(--r);
+    background:var(--bg-page);
+  }
+
+  .ability-toc .toc-sub{
+    margin-left:0.75rem;
+    list-style:circle;
+  }
+
+  .ability-toc .toc-feature{
+    margin-left:0.5rem;
+    font-size:.95em;
+  }
+
+  @media (prefers-color-scheme: dark){
+    .ability-features-section > h2{
+      border-bottom-color:var(--accent-gold-soft);
+    }
+    .ability-section-divider{
+      border-top-color:var(--accent-gold-soft);
+    }
+    .subclass-divider{
+      border-top-color:rgba(255,255,255,.15);
+    }
+    .ability-toc.toc{
+      background:rgba(27,15,36,.5);
+      border-color:var(--accent-gold-soft);
+    }
+  }
   
   /* Spell Cards */
   .spells-container{

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paladin Abilities | YMIAT</title>
+<meta name="description" content="Full rules for every Paladin class and subclass feature in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/paladin.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Paladin Abilities</h1>
+  <div class="content">
+    <p class="lede">Full rules for every Paladin feature and subclass, adapted from the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> for YMIAT 10-level play.</p>
+    <p><a href="../classes.html#paladin">← Back to Paladin</a> · <a href="index.html#paladin">All classes</a></p>
+    <nav class="ability-toc toc" aria-label="Paladin abilities">
+      <h2 id="contents">On this page</h2>
+      <ul>
+<li><a href="#divine-sense">Divine Sense</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#lay-on-hands">Lay on Hands</a> <span class="text-muted">(1st-level feature)</span></li>
+<li><a href="#divine-smite">Divine Smite</a> <span class="text-muted">(2nd-level feature)</span></li>
+<li><a href="#martial-action">Martial Action</a> <span class="text-muted">(2nd-level feature)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(2nd-level feature)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3rd-level feature)</span></li>
+<li><a href="#aura-of-protection">Aura of Protection</a> <span class="text-muted">(4th-level feature)</span></li>
+<li><a href="#aura-of-courage">Aura of Courage</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#channel-divinity">Channel Divinity</a> <span class="text-muted">(6th and 9th level)</span></li>
+<li><a href="#cleansing-touch">Cleansing Touch</a> <span class="text-muted">(7th-level feature)</span></li>
+<li><a href="#aura-improvements">Aura Improvements</a> <span class="text-muted">(8th-level feature)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5th-level feature)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10th-level feature)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3rd, 5th, 7th, 9th, and 10th level)</span></li>
+<li><a href="#subclasses">Subclass Features</a></li>
+<li class="toc-sub"><a href="#devotion">Devotion</a></li>
+<li class="toc-sub toc-feature"><a href="#devotion-sacred-weapon">Channel Divinity: Sacred Weapon</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-sanctifying-light">Channel Divinity: Sanctifying Light</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-devotion-oath-spells">Devotion Oath Spells</a> <span class="text-muted">(2nd-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-aura-of-devotion">Aura of Devotion</a> <span class="text-muted">(4th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-purity-of-spirit">Purity of Spirit</a> <span class="text-muted">(6th-level subclass feature)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-holy-nimbus">Holy Nimbus</a> <span class="text-muted">(8th-level subclass feature)</span></li>
+<li class="toc-sub"><a href="#justice">Justice</a></li>
+<li class="toc-sub toc-feature"><a href="#justice-justice-subclass">Justice Subclass</a> <span class="text-muted">(2nd, 4th, 6th, and 8th level)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class Features</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="divine-sense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Divine Sense</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Detect celestials, fiends, and undead.</em></p>
+    <p>On your turn, detect Celestials, Fiends, and Undead within 60 feet (not behind total cover) and consecrated/desecrated sites. Uses = proficiency bonus + 1 per long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="lay-on-hands">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Lay on Hands</h4>
+    <span class="spell-card-level">1st-level feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Pool of healing touch.</em></p>
+    <p>Pool = 5 × paladin level, restored on long rest. As an <strong>action</strong>, touch a creature and heal Wounds from the pool. Spend 5 healing to cure one disease or poison.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="divine-smite">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Divine Smite</h4>
+    <span class="spell-card-level">2nd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Spend Spell Power for radiant burst on hit.</em></p>
+    <p>Once per turn when you hit with a melee weapon attack, spend Spell Power to deal extra <strong>radiant</strong> damage: 2d8 for 1st circle + 1d8 per higher circle (max 5d8). +1d8 vs Fiends and Undead.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="martial-action">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Martial Action</h4>
+    <span class="spell-card-level">2nd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Guard or Wind Up as second action.</em></p>
+    <p>Choose <strong>Guard</strong> or <strong>Wind Up</strong>. Use as your second action when you have not moved this turn (see <a href="paladin.html#martial-action">Martial Action</a>).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">2nd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Divine spells known (half caster).</em></p>
+    <p>As a conduit for <strong>Divine</strong> magic, you cast spells using <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spell cost equals spell circle. Your max spell circle by level is shown on the <a href="../classes.html#paladin">Paladin</a> progression table.</p>
+<p>You know a fixed list of spells and do not prepare them daily. Learn additional spells at the levels shown on your class progression table.</p>
+<p><strong>Spellcasting ability:</strong> Willpower (WIL). Spell save DC and spell attack modifier use your proficiency bonus + Willpower (WIL) modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> As shown on your progression table. Rituals do not cost Spell Power when cast using the ritual rules in <a href="../magic.html">Magic</a>.</p>
+<p><strong>Second action casting:</strong> If you cast a spell as your second action (because you did not move this turn), spell attacks are at disadvantage and targets have advantage on saves against that spell.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3rd-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Two attacks per Attack action.</em></p>
+    <p>Your physical prowess has grown. On your turn, you can make up to <strong>two</strong> attacks when you take the Attack action.</p>
+<p>In YMIAT, each successful weapon attack typically inflicts <strong>1 Wound</strong> (2 on a critical hit). Weapon bonuses apply to hit, not to the number of Wounds dealt.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="aura-of-protection">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura of Protection</h4>
+    <span class="spell-card-level">4th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Bolster allies' saves.</em></p>
+    <p>When you or a friendly creature within 10 feet makes a save, they add your <strong>Willpower modifier</strong> (minimum +1). You must be conscious.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="aura-of-courage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura of Courage</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Allies cannot be frightened.</em></p>
+    <p>You and friendly creatures within 10 feet cannot be frightened while you are conscious.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="channel-divinity">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity</h4>
+    <span class="spell-card-level">6th and 9th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Oath-specific channel divinity.</em></p>
+    <p>Your oath grants Channel Divinity options. Uses: 1/rest until 6th level, then 2/rest, then 3/rest at 9th. Regain on short or long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="cleansing-touch">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cleansing Touch</h4>
+    <span class="spell-card-level">7th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>End spells on yourself or allies.</em></p>
+    <p>Action to end one spell on yourself or a willing creature you touch. Uses = Willpower modifier per long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="aura-improvements">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura Improvements</h4>
+    <span class="spell-card-level">8th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Aura range increases to 30 feet.</em></p>
+    <p>Aura of Protection, Aura of Courage, and oath auras extend to 30 feet.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Divine Recovery or Radiant Strikes.</em></p>
+    <p><strong>Divine Recovery</strong> (Lay on Hands lets target expend a Recovery die) or <strong>Radiant Strikes</strong> (+1d8 radiant on weapon hits, 2d8 vs Fiends/Undead).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10th-level feature</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Calming aura of salvation.</em></p>
+    <p>Action: 1-hour aura (30 ft). Allies resist nonmagical damage, auto-succeed death saves, and regain Willpower modifier Wounds at start of turn if they have any Wounds remaining. Once per long rest.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3rd, 5th, 7th, 9th, and 10th level</span>
+  </div>
+    <div class="spell-card-description">
+    <p><em>Ability increases or a martial talent.</em></p>
+    <p>At 3rd, 5th, 7th, 9th, and 10th level, choose one improvement (ability modifiers cannot exceed +7 with this feature):</p>
+<ul>
+<li>Increase a single ability modifier by 2.</li>
+<li>Increase two different ability modifiers by 1 each.</li>
+<li>Increase one ability modifier by 1 and select a talent from the <a href="../talents.html">martial talents</a> list.</li>
+</ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass Features</h2>
+<p class="subclasses-intro">Choose your subclass at <strong>2nd level</strong>. Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level.</p>
+<div class="subclass-group" id="devotion">
+  <h3 class="subclass-name">Devotion</h3>
+  <p class="subclass-summary">Oath-bound knight of duty, honor, and righteous order.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="devotion-sacred-weapon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Sacred Weapon</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Empower a held weapon with radiant light.</em></p>
+    <p>As an action, imbue a held weapon for 1 minute: add Willpower modifier to attack rolls (min +1); bright light 20 ft. Weapon becomes magical for the duration.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-sanctifying-light">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Sanctifying Light</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Blind aberrations, fey, fiends, and undead.</em></p>
+    <p>As an action, each Aberration, Fey, Fiend, or Undead within 30 feet that can see you makes a Willpower save or is blinded for 1 minute (Fitness save ends on self each turn).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-devotion-oath-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Devotion Oath Spells</h4>
+    <span class="spell-card-level">2nd-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span></div>
+  <div class="spell-card-description">
+    <p><em>Always-known oath spells.</em></p>
+    <p>These domain spells are always prepared:</p><ul><li><strong>Level 2:</strong> sanctuary</li><li><strong>Level 5:</strong> warding bond</li><li><strong>Level 7:</strong> protection from energy</li><li><strong>Level 9:</strong> stoneskin</li><li><strong>Level 10:</strong> mass cure wounds</li></ul>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-aura-of-devotion">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura of Devotion</h4>
+    <span class="spell-card-level">4th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span></div>
+  <div class="spell-card-description">
+    <p><em>Allies near you can't be charmed.</em></p>
+    <p>You and friendly creatures within 10 feet can't be charmed while you are conscious (30 feet at 8th paladin level via Aura Improvements).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-purity-of-spirit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Purity of Spirit</h4>
+    <span class="spell-card-level">6th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span></div>
+  <div class="spell-card-description">
+    <p><em>Protection from supernatural creatures.</em></p>
+    <p>Against Aberrations, Celestials, Elementals, Fey, Fiends, Undead, and Outsiders: they have disadvantage attacking you; you can't be charmed, frightened, or possessed; Divine Sense detects all listed types.</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-holy-nimbus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Holy Nimbus</h4>
+    <span class="spell-card-level">8th-level subclass feature</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span><span><strong>Action:</strong> action</span></div>
+  <div class="spell-card-description">
+    <p><em>Radiant sunlight aura damages enemies.</em></p>
+    <p>As an action, emit sunlight (30 ft bright / 30 ft dim) for 1 minute. Enemies starting turn in bright light take radiant damage equal to paladin level. You have advantage on saves. Once per long rest.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="justice">
+  <h3 class="subclass-name">Justice</h3>
+  <p class="subclass-summary">Paladin of law who punishes the guilty without mercy.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="justice-justice-subclass">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Justice Subclass</h4>
+    <span class="spell-card-level">2nd, 4th, 6th, and 8th level</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Justice</span></div>
+  <div class="spell-card-description">
+    <p><em>Justice subclass features.</em></p>
+    <p>YMIAT Justice paladin features are being drafted. See BFRD Justice oath for reference.</p>
+  </div>
+</div>
+
+  </div>
+  
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#paladin">← Back to Paladin</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>
