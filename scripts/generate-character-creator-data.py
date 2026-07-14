@@ -18,7 +18,8 @@ from character_options_data import (  # noqa: E402
     LINEAGE_HERITAGE_RECOMMENDATIONS,
     LINEAGES,
 )
-from class_subclasses_data import get_subclasses_by_class  # noqa: E402
+from class_abilities_data import all_abilities  # noqa: E402
+from class_subclasses_data import all_subclasses, get_subclasses_by_class  # noqa: E402
 
 _spec = importlib.util.spec_from_file_location(
     "generate_classes_html", SCRIPT_DIR / "generate-classes-html.py"
@@ -51,6 +52,78 @@ def teaser(html: str, max_len: int = 220) -> str:
     return plain[: max_len - 1].rsplit(" ", 1)[0] + "…"
 
 
+LEVEL_NUM_RE = re.compile(r"(\d+)(?:st|nd|rd|th)", re.I)
+SKIP_TRAIT_LABELS = frozenset({"age", "size", "speed", "languages"})
+
+
+def min_level_from_label(label: str) -> int:
+    nums = [int(m.group(1)) for m in LEVEL_NUM_RE.finditer(label or "")]
+    return min(nums) if nums else 99
+
+
+def export_ability_entry(ability: dict) -> dict:
+    return {
+        "name": ability["name"],
+        "minLevel": min_level_from_label(ability["level"]),
+        "summary": ability.get("summary", ""),
+    }
+
+
+def build_class_abilities_index() -> dict[str, list[dict]]:
+    by_class: dict[str, list[dict]] = {}
+    seen: dict[str, set[str]] = {}
+    for ability in all_abilities():
+        cid = ability["class_id"]
+        anchor = ability["anchor"]
+        seen.setdefault(cid, set())
+        if anchor in seen[cid]:
+            continue
+        seen[cid].add(anchor)
+        by_class.setdefault(cid, []).append(export_ability_entry(ability))
+    for cid in by_class:
+        by_class[cid].sort(key=lambda item: (item["minLevel"], item["name"]))
+    return by_class
+
+
+def build_subclass_features_index() -> dict[str, list[dict]]:
+    by_subclass: dict[str, list[dict]] = {}
+    for subclass in all_subclasses():
+        feats: list[dict] = []
+        seen: set[str] = set()
+        for feature in subclass["features"]:
+            if feature["anchor"] in seen:
+                continue
+            seen.add(feature["anchor"])
+            feats.append(export_ability_entry(feature))
+        feats.sort(key=lambda item: (item["minLevel"], item["name"]))
+        by_subclass[subclass["subclass_id"]] = feats
+    return by_subclass
+
+
+def extract_trait_features(body: str) -> list[dict]:
+    features: list[dict] = []
+    for match in re.finditer(
+        r"<p>\s*<strong>([^<]+?)\.</strong>\s*(.*?)</p>", body or "", re.S | re.I
+    ):
+        name = match.group(1).strip()
+        if name.lower() in SKIP_TRAIT_LABELS:
+            continue
+        features.append(
+            {
+                "name": name,
+                "summary": teaser(match.group(2), 160),
+            }
+        )
+    return features
+
+
+def extract_talent_choices(body: str) -> list[str]:
+    match = re.search(r"<strong>Talent:</strong>\s*(.+?)</p>", body or "", re.S | re.I)
+    if not match:
+        return []
+    return [name.strip() for name in re.findall(r"<em>([^<]+)</em>", match.group(1))]
+
+
 def key_ability_code(key_ability: str) -> str:
     upper = key_ability.upper()
     if "FIT" in upper:
@@ -78,6 +151,8 @@ def build_heritage_recommendations() -> dict[str, list[str]]:
 
 def export_classes() -> list[dict]:
     subs_by_class = get_subclasses_by_class()
+    class_abilities = build_class_abilities_index()
+    subclass_features = build_subclass_features_index()
     result = []
     for cls in CLASSES:
         cid = cls["id"]
@@ -95,12 +170,14 @@ def export_classes() -> list[dict]:
                 "spellcasting": cls.get("spellcasting"),
                 "rulesUrl": f"rules/classes.html#{cid}",
                 "abilitiesUrl": f"rules/class-abilities/{cid}.html",
+                "abilities": class_abilities.get(cid, []),
                 "subclasses": [
                     {
                         "id": sub["subclass_id"],
                         "name": sub["subclass_name"],
                         "summary": sub.get("summary", ""),
                         "rulesUrl": f"rules/class-abilities/{cid}.html#{sub['subclass_id']}",
+                        "features": subclass_features.get(sub["subclass_id"], []),
                     }
                     for sub in subclasses
                 ],
@@ -109,22 +186,27 @@ def export_classes() -> list[dict]:
     return result
 
 
-def export_named_options(items: list[dict], *, rules_page: str) -> list[dict]:
+def export_named_options(
+    items: list[dict], *, rules_page: str, include_talents: bool = False
+) -> list[dict]:
     exported = []
     for item in items:
         name = item["name"]
         sid = slugify(name)
-        exported.append(
-            {
-                "id": sid,
-                "name": name,
-                "teaser": teaser(item.get("body", "")),
-                "body": item.get("body", ""),
-                "tag": item.get("tag"),
-                "recommendedFor": item.get("recommended"),
-                "rulesUrl": f"rules/{rules_page}.html#{sid}",
-            }
-        )
+        body = item.get("body", "")
+        entry = {
+            "id": sid,
+            "name": name,
+            "teaser": teaser(body),
+            "body": body,
+            "tag": item.get("tag"),
+            "recommendedFor": item.get("recommended"),
+            "rulesUrl": f"rules/{rules_page}.html#{sid}",
+            "features": extract_trait_features(body),
+        }
+        if include_talents:
+            entry["talentChoices"] = extract_talent_choices(body)
+        exported.append(entry)
     return exported
 
 
@@ -150,9 +232,10 @@ STEPS = [
         "title": "Choose a Subclass",
         "shortTitle": "Subclass",
         "overviewAnchor": "choose-a-class",
-        "description": "At 2nd level in YMIAT you take a subclass—choose yours now so your build stays cohesive.",
+        "description": "At 2nd level in YMIAT you take a subclass—choose yours when building a level 2+ character.",
         "type": "subclass",
         "requires": ["class"],
+        "minLevel": 2,
     },
     {
         "id": "abilities",
@@ -297,10 +380,11 @@ def main() -> None:
         "conceptArchetypes": CONCEPT_ARCHETYPES,
         "abilityMethods": ABILITY_METHODS,
         "equipmentMethods": EQUIPMENT_METHODS,
+        "levelRange": {"min": 1, "max": 10, "subclassMin": 2},
         "classes": export_classes(),
         "lineages": export_named_options(LINEAGES, rules_page="lineages"),
         "heritages": export_named_options(HERITAGES, rules_page="heritages"),
-        "backgrounds": export_named_options(BACKGROUNDS, rules_page="backgrounds"),
+        "backgrounds": export_named_options(BACKGROUNDS, rules_page="backgrounds", include_talents=True),
         "heritageRecommendations": build_heritage_recommendations(),
     }
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

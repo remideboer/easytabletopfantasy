@@ -12,6 +12,7 @@
 
   const defaultState = () => ({
     name: "",
+    level: 1,
     conceptArchetype: "",
     conceptNotes: "",
     classId: "",
@@ -37,6 +38,7 @@
     rulesLink: document.getElementById("cc-rules-link"),
     body: document.getElementById("cc-step-body"),
     summary: document.getElementById("cc-summary-list"),
+    summaryFeatures: document.getElementById("cc-summary-features"),
     detailPanel: document.getElementById("cc-detail-panel"),
     detailPlaceholder: document.getElementById("cc-detail-placeholder"),
     detailTitle: document.getElementById("cc-detail-title"),
@@ -49,7 +51,11 @@
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) return { ...defaultState(), ...JSON.parse(raw) };
+      if (raw) {
+        const parsed = { ...defaultState(), ...JSON.parse(raw) };
+        parsed.level = Number(parsed.level) || 1;
+        return parsed;
+      }
     } catch (_) { /* ignore */ }
     return defaultState();
   }
@@ -77,6 +83,7 @@
 
   function activeSteps() {
     return data.steps.filter((step) => {
+      if (step.minLevel && state.level < step.minLevel) return false;
       if (!step.requires) return true;
       return step.requires.every((key) => {
         if (key === "class") return Boolean(state.classId);
@@ -85,6 +92,44 @@
         return Boolean(state[key]);
       });
     });
+  }
+
+  function levelRange() {
+    const range = data.levelRange || { min: 1, max: 10, subclassMin: 2 };
+    return range;
+  }
+
+  function setLevel(nextLevel) {
+    const range = levelRange();
+    const level = Math.min(range.max, Math.max(range.min, nextLevel));
+    state.level = level;
+    if (level < range.subclassMin) {
+      state.subclassId = "";
+    }
+    saveState();
+    render();
+  }
+
+  function featuresAtLevel(items, level) {
+    if (!items || !items.length) return [];
+    return items.filter((item) => (item.minLevel || 1) <= level);
+  }
+
+  function renderFeatureList(items) {
+    return `<ul class="cc-summary-feats">${items
+      .map(
+        (item) =>
+          `<li><strong>${escapeHtml(item.name)}</strong>${item.summary ? ` — ${escapeHtml(item.summary)}` : ""}</li>`
+      )
+      .join("")}</ul>`;
+  }
+
+  function renderFeatureBlock(title, subtitle, items) {
+    if (!items.length) return "";
+    return `<div class="cc-summary-block">
+      <h3 class="cc-summary-block-title">${escapeHtml(title)}${subtitle ? ` <span class="cc-summary-block-sub">${escapeHtml(subtitle)}</span>` : ""}</h3>
+      ${renderFeatureList(items)}
+    </div>`;
   }
 
   function currentStep() {
@@ -239,12 +284,18 @@
     const bg = byId(data.backgrounds, state.backgroundId);
     const arch = data.conceptArchetypes.find((a) => a.id === state.conceptArchetype);
     const maxWd = computeMaxWd();
+    const range = levelRange();
+    const subclassMin = range.subclassMin || 2;
 
     const rows = [
       ["Name", state.name || "—"],
+      ["Level", String(state.level)],
       ["Concept", arch ? arch.label : "—"],
       ["Class", cls ? cls.name : "—"],
-      ["Subclass", sub ? sub.name : "—"],
+      [
+        "Subclass",
+        state.level < subclassMin ? `— (level ${subclassMin}+)` : sub ? sub.name : "—",
+      ],
       [
         "Abilities",
         ABILITIES.every((k) => state.abilities[k] !== null)
@@ -267,6 +318,49 @@
           `<div class="cc-summary-row"><dt>${label}</dt><dd>${escapeHtml(String(value))}</dd></div>`
       )
       .join("");
+
+    const blocks = [];
+    if (cls) {
+      const classFeats = featuresAtLevel(cls.abilities, state.level);
+      if (classFeats.length) {
+        blocks.push(renderFeatureBlock("Class features", cls.name, classFeats));
+      }
+    }
+    if (state.level >= subclassMin && sub) {
+      const subFeats = featuresAtLevel(sub.features, state.level);
+      if (subFeats.length) {
+        blocks.push(renderFeatureBlock("Subclass features", sub.name, subFeats));
+      }
+    }
+    if (lineage?.features?.length) {
+      blocks.push(renderFeatureBlock("Lineage traits", lineage.name, lineage.features));
+    }
+    if (heritage?.features?.length) {
+      blocks.push(renderFeatureBlock("Heritage traits", heritage.name, heritage.features));
+    }
+    if (bg) {
+      let bgHtml = "";
+      if (bg.features?.length) {
+        bgHtml += renderFeatureBlock("Background traits", bg.name, bg.features);
+      }
+      if (bg.talentChoices?.length) {
+        bgHtml += `<div class="cc-summary-block">
+          <h3 class="cc-summary-block-title">Background talent <span class="cc-summary-block-sub">${escapeHtml(bg.name)}</span></h3>
+          <p class="cc-summary-talents">Choose one: ${bg.talentChoices.map((t) => `<em>${escapeHtml(t)}</em>`).join(", ")}</p>
+        </div>`;
+      }
+      if (bgHtml) blocks.push(bgHtml);
+    }
+
+    if (el.summaryFeatures) {
+      if (blocks.length) {
+        el.summaryFeatures.hidden = false;
+        el.summaryFeatures.innerHTML = blocks.join("");
+      } else {
+        el.summaryFeatures.hidden = true;
+        el.summaryFeatures.innerHTML = "";
+      }
+    }
   }
 
   function fmtMod(n) {
@@ -364,11 +458,21 @@
   /* ── Step renderers ── */
 
   function renderConcept() {
+    const range = levelRange();
     el.body.innerHTML = `
       <div class="form-group">
         <label for="cc-name">Character name <span class="cc-optional">(optional)</span></label>
         <input type="text" id="cc-name" class="cc-input" placeholder="Name your hero" value="${escapeHtml(state.name)}" maxlength="80" />
       </div>
+      <fieldset class="cc-fieldset">
+        <legend>Starting level</legend>
+        <div class="cc-level-row">
+          <button type="button" class="cc-stepper-btn" id="cc-level-down" aria-label="Lower level" ${state.level <= range.min ? "disabled" : ""}>−</button>
+          <span class="cc-stepper-val" id="cc-level-val" aria-live="polite">${state.level}</span>
+          <button type="button" class="cc-stepper-btn" id="cc-level-up" aria-label="Raise level" ${state.level >= range.max ? "disabled" : ""}>+</button>
+        </div>
+        <p class="cc-hint">Subclass choice unlocks at level ${range.subclassMin || 2}. Features in the summary update with level.</p>
+      </fieldset>
       <fieldset class="cc-fieldset">
         <legend>Character archetype</legend>
         <div class="cc-chip-grid">
@@ -396,6 +500,8 @@
       state.conceptNotes = e.target.value;
       saveState();
     });
+    el.body.querySelector("#cc-level-down").addEventListener("click", () => setLevel(state.level - 1));
+    el.body.querySelector("#cc-level-up").addEventListener("click", () => setLevel(state.level + 1));
     el.body.querySelectorAll(".cc-chip").forEach((chip) => {
       const arch = () => data.conceptArchetypes.find((a) => a.id === chip.dataset.id);
       chip.addEventListener("mouseenter", () => {
@@ -440,7 +546,7 @@
       clearDetailPanel();
       return;
     }
-    el.body.innerHTML = `<p class="cc-hint">Subclass for <strong>${escapeHtml(cls.name)}</strong> — taken at 2nd level in YMIAT.</p>` + cardGrid(cls.subclasses);
+    el.body.innerHTML = `<p class="cc-hint">Subclass for <strong>${escapeHtml(cls.name)}</strong> — taken at level ${levelRange().subclassMin || 2} in YMIAT.</p>` + cardGrid(cls.subclasses);
     bindCardGrid(el.body, cls.subclasses, state.subclassId, (id) => {
       state.subclassId = id;
     }, "summary");
@@ -621,7 +727,8 @@
       <div class="cc-review-card">
         <h3>Character summary</h3>
         <dl class="cc-review-list">${el.summary.innerHTML}</dl>
-        ${maxWd !== null ? `<p class="cc-review-wd">Level 1 Max Wounds: <strong>${maxWd}</strong></p>` : ""}
+        ${el.summaryFeatures && !el.summaryFeatures.hidden ? `<div class="cc-review-features">${el.summaryFeatures.innerHTML}</div>` : ""}
+        ${maxWd !== null ? `<p class="cc-review-wd">Level ${state.level} Max Wounds: <strong>${maxWd}</strong></p>` : ""}
         ${state.conceptNotes ? `<p><strong>Notes:</strong> ${escapeHtml(state.conceptNotes)}</p>` : ""}
       </div>
       <div class="cc-review-actions">
@@ -662,21 +769,52 @@
     const heritage = byId(data.heritages, state.heritageId);
     const bg = byId(data.backgrounds, state.backgroundId);
     const arch = data.conceptArchetypes.find((a) => a.id === state.conceptArchetype);
+    const range = levelRange();
     const lines = [
-      "YMIAT Character (level 1 draft)",
+      `YMIAT Character (level ${state.level} draft)`,
       "==============================",
       state.name ? `Name: ${state.name}` : null,
+      `Level: ${state.level}`,
       arch ? `Concept: ${arch.label}` : null,
       state.conceptNotes ? `Notes: ${state.conceptNotes}` : null,
       cls ? `Class: ${cls.name}` : null,
-      sub ? `Subclass: ${sub.name}` : null,
+      state.level >= (range.subclassMin || 2) && sub ? `Subclass: ${sub.name}` : null,
       `Fitness ${fmtMod(state.abilities.fit)} · Insight ${fmtMod(state.abilities.ins)} · Willpower ${fmtMod(state.abilities.wil)}`,
       computeMaxWd() !== null ? `Max Wounds: ${computeMaxWd()}` : null,
       lineage ? `Lineage: ${lineage.name}` : null,
       heritage ? `Heritage: ${heritage.name}` : null,
       bg ? `Background: ${bg.name}` : null,
+      bg?.talentChoices?.length ? `Background talent (choose one): ${bg.talentChoices.join(", ")}` : null,
       `Equipment: ${data.equipmentMethods.find((m) => m.id === state.equipmentMethod)?.label || ""}`,
     ].filter(Boolean);
+
+    if (cls) {
+      const classFeats = featuresAtLevel(cls.abilities, state.level);
+      if (classFeats.length) {
+        lines.push("", "Class features:");
+        classFeats.forEach((feat) => lines.push(`- ${feat.name}: ${feat.summary}`));
+      }
+    }
+    if (state.level >= (range.subclassMin || 2) && sub) {
+      const subFeats = featuresAtLevel(sub.features, state.level);
+      if (subFeats.length) {
+        lines.push("", "Subclass features:");
+        subFeats.forEach((feat) => lines.push(`- ${feat.name}: ${feat.summary}`));
+      }
+    }
+    if (lineage?.features?.length) {
+      lines.push("", "Lineage traits:");
+      lineage.features.forEach((feat) => lines.push(`- ${feat.name}: ${feat.summary}`));
+    }
+    if (heritage?.features?.length) {
+      lines.push("", "Heritage traits:");
+      heritage.features.forEach((feat) => lines.push(`- ${feat.name}: ${feat.summary}`));
+    }
+    if (bg?.features?.length) {
+      lines.push("", "Background traits:");
+      bg.features.forEach((feat) => lines.push(`- ${feat.name}: ${feat.summary}`));
+    }
+
     return lines.join("\n");
   }
 
@@ -806,6 +944,9 @@
       const res = await fetch(rp("assets/character-creator-data.json"));
       if (!res.ok) throw new Error("fetch failed");
       data = await res.json();
+      const range = data.levelRange || { min: 1, max: 10, subclassMin: 2 };
+      state.level = Math.min(range.max, Math.max(range.min, Number(state.level) || 1));
+      if (state.level < range.subclassMin) state.subclassId = "";
       el.loading.hidden = true;
       el.app.hidden = false;
       scheduleNavOffsetUpdate();

@@ -28,11 +28,12 @@
       "title": "Choose a Subclass",
       "shortTitle": "Subclass",
       "overviewAnchor": "choose-a-class",
-      "description": "At 2nd level in YMIAT you take a subclass—choose yours now so your build stays cohesive.",
+      "description": "At 2nd level in YMIAT you take a subclass—choose yours when building a level 2+ character.",
       "type": "subclass",
       "requires": [
         "class"
-      ]
+      ],
+      "minLevel": 2
     },
     {
       "id": "abilities",
@@ -198,6 +199,11 @@
       "description": "Receive starting gold from your class and buy gear from the equipment lists."
     }
   ],
+  "levelRange": {
+    "min": 1,
+    "max": 10,
+    "subclassMin": 2
+  },
   "classes": [
     {
       "id": "barbarian",
@@ -211,36 +217,243 @@
       "spellcasting": null,
       "rulesUrl": "rules/classes.html#barbarian",
       "abilitiesUrl": "rules/class-abilities/barbarian.html",
+      "abilities": [
+        {
+          "name": "Danger Sense",
+          "minLevel": 1,
+          "summary": "Advantage on Fitness saves against unseen peril."
+        },
+        {
+          "name": "Rage",
+          "minLevel": 1,
+          "summary": "Primal fury as a free action; bonus damage and physical resilience."
+        },
+        {
+          "name": "Reckless Attack",
+          "minLevel": 1,
+          "summary": "Trade defense for ferocious accuracy."
+        },
+        {
+          "name": "Unarmored Defense",
+          "minLevel": 1,
+          "summary": "High AC without armor when relying on raw toughness."
+        },
+        {
+          "name": "Fast Movement",
+          "minLevel": 3,
+          "summary": "Extra speed and opening repositioning."
+        },
+        {
+          "name": "Feral Instinct",
+          "minLevel": 3,
+          "summary": "First-turn ferocity and surprise immunity when raging."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a martial talent."
+        },
+        {
+          "name": "Multiattack",
+          "minLevel": 3,
+          "summary": "Two attacks with the Attack action."
+        },
+        {
+          "name": "Brutal Critical",
+          "minLevel": 5,
+          "summary": "Expanded critical range and extra critical damage dice."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Choose a powerful rage-enhancing boon."
+        },
+        {
+          "name": "Relentless Rage",
+          "minLevel": 7,
+          "summary": "Cling to consciousness while raging at Max Wounds."
+        },
+        {
+          "name": "Unyielding Might",
+          "minLevel": 9,
+          "summary": "Reliable Fitness and devastating blows against objects."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Embody untamed power."
+        }
+      ],
       "subclasses": [
         {
           "id": "berserker",
           "name": "Berserker",
           "summary": "Primal bloodlust pushes your rage into a devastating frenzy.",
-          "rulesUrl": "rules/class-abilities/barbarian.html#berserker"
+          "rulesUrl": "rules/class-abilities/barbarian.html#berserker",
+          "features": [
+            {
+              "name": "Frenzy",
+              "minLevel": 2,
+              "summary": "Optional frenzy with rage; extra melee attack while frenzied."
+            },
+            {
+              "name": "Ruthless Bearing",
+              "minLevel": 2,
+              "summary": "Intimidation proficiency; double advantage if already proficient."
+            },
+            {
+              "name": "Mindless Rage",
+              "minLevel": 4,
+              "summary": "Ignore exhaustion while raging; immune to charm and frighten; temp HP on crit or kill during frenzy."
+            },
+            {
+              "name": "Intimidating Presence",
+              "minLevel": 6,
+              "summary": "Bonus damage vs. frightened foes; free action to frighten nearby creatures."
+            },
+            {
+              "name": "Retaliation",
+              "minLevel": 8,
+              "summary": "Reaction: close on attacker and strike back."
+            }
+          ]
         },
         {
           "id": "wild-fury",
           "name": "Wild Fury",
           "summary": "Animal spirits guide your rage—choose a beast focus at each subclass level.",
-          "rulesUrl": "rules/class-abilities/barbarian.html#wild-fury"
+          "rulesUrl": "rules/class-abilities/barbarian.html#wild-fury",
+          "features": [
+            {
+              "name": "Animal Focus",
+              "minLevel": 2,
+              "summary": "Choose your first animal focus (2nd level in YMIAT)."
+            },
+            {
+              "name": "Deepening Focus",
+              "minLevel": 4,
+              "summary": "Second animal focus (4th level in YMIAT)."
+            },
+            {
+              "name": "Primal Synthesis",
+              "minLevel": 6,
+              "summary": "Third animal focus (6th level in YMIAT)."
+            },
+            {
+              "name": "Apex Predator",
+              "minLevel": 8,
+              "summary": "Fourth animal focus (8th level in YMIAT)."
+            }
+          ]
         },
         {
           "id": "chaos",
           "name": "Chaos",
           "summary": "Entropic fury warps the battlefield around your rage.",
-          "rulesUrl": "rules/class-abilities/barbarian.html#chaos"
+          "rulesUrl": "rules/class-abilities/barbarian.html#chaos",
+          "features": [
+            {
+              "name": "Chaos Manifestation",
+              "minLevel": 2,
+              "summary": "Random surge on crit or dropping foes with spell attacks."
+            },
+            {
+              "name": "Chaos Origin Spells",
+              "minLevel": 2,
+              "summary": "Always-known chaos origin spells."
+            },
+            {
+              "name": "Volatile Magic",
+              "minLevel": 2,
+              "summary": "Leveled spells may trigger extra volatile effects."
+            },
+            {
+              "name": "Embrace Chaos",
+              "minLevel": 4,
+              "summary": "Bonus action: suffer a volatile effect for sorcery points or temp Wounds."
+            },
+            {
+              "name": "Inflict Disorder",
+              "minLevel": 6,
+              "summary": "Redirect volatile effects onto attackers."
+            },
+            {
+              "name": "Apotheosis of Discord",
+              "minLevel": 8,
+              "summary": "6th-circle+ spells trigger a minute of chaotic mastery."
+            }
+          ]
         },
         {
           "id": "four-winds",
           "name": "Four Winds",
           "summary": "Elemental winds empower your movement and strikes.",
-          "rulesUrl": "rules/class-abilities/barbarian.html#four-winds"
+          "rulesUrl": "rules/class-abilities/barbarian.html#four-winds",
+          "features": [
+            {
+              "name": "Implacable Presence",
+              "minLevel": 2,
+              "summary": "Acrobatics proficiency or double PB on Acrobatics checks."
+            },
+            {
+              "name": "Winds of Wrath",
+              "minLevel": 2,
+              "summary": "Rage grants wind protection, thunder leaps, or thrown-weapon recklessness."
+            },
+            {
+              "name": "Cyclonic Ward",
+              "minLevel": 4,
+              "summary": "Reduce falling damage; reaction to shield allies and reposition them."
+            },
+            {
+              "name": "Howling Charge",
+              "minLevel": 6,
+              "summary": "Free action Dash; ignore difficult terrain and paralysis/restraint until next turn."
+            },
+            {
+              "name": "Raging Storm",
+              "minLevel": 8,
+              "summary": "Thunder aura on hits; cyclonic retaliation and lightning throws."
+            }
+          ]
         },
         {
           "id": "kraken",
           "name": "Kraken",
           "summary": "Crushing tentacle-like force and abyssal resilience.",
-          "rulesUrl": "rules/class-abilities/barbarian.html#kraken"
+          "rulesUrl": "rules/class-abilities/barbarian.html#kraken",
+          "features": [
+            {
+              "name": "Deep Vision",
+              "minLevel": 2,
+              "summary": "Swim speed, water breathing, enhanced darkvision underwater."
+            },
+            {
+              "name": "Kraken's Grasp",
+              "minLevel": 2,
+              "summary": "Spectral tentacles while raging: grapple, damage scaling d4→d10."
+            },
+            {
+              "name": "Ink Cloud",
+              "minLevel": 4,
+              "summary": "Free action inky obscurement you can see through."
+            },
+            {
+              "name": "Titan Grip",
+              "minLevel": 4,
+              "summary": "Grappled foes restrained; tentacles can replace Attack action attacks."
+            },
+            {
+              "name": "Tentacle Fling",
+              "minLevel": 6,
+              "summary": "Hurl grappled foes up to 30 feet for falling damage."
+            },
+            {
+              "name": "Leviathan Wakes",
+              "minLevel": 8,
+              "summary": "+10 ft tentacle reach; one extra tentacle attack per free action."
+            }
+          ]
         }
       ]
     },
@@ -256,36 +469,188 @@
       "spellcasting": "Arcane spells. Spells known (no preparation). Rituals known per level.",
       "rulesUrl": "rules/classes.html#bard",
       "abilitiesUrl": "rules/class-abilities/bard.html",
+      "abilities": [
+        {
+          "name": "Bardic Inspiration",
+          "minLevel": 1,
+          "summary": "Grant an inspiration die to bolster an ally's roll."
+        },
+        {
+          "name": "Expertise",
+          "minLevel": 1,
+          "summary": "Double proficiency on chosen skills or tools."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 1,
+          "summary": "Arcane spells known; uses Spell Power."
+        },
+        {
+          "name": "Bardic Performance",
+          "minLevel": 2,
+          "summary": "Weave magic into ongoing performances."
+        },
+        {
+          "name": "Font of Inspiration",
+          "minLevel": 3,
+          "summary": "Regain inspiration on short rest; bolster failed rolls."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a utility talent."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Persistent or valiant inspiration options."
+        },
+        {
+          "name": "Magical Secrets",
+          "minLevel": 6,
+          "summary": "Learn spells from any source."
+        },
+        {
+          "name": "Grand Performance",
+          "minLevel": 8,
+          "summary": "Performance range increases to 60 feet."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Recover inspiration during performance."
+        }
+      ],
       "subclasses": [
         {
           "id": "lore",
           "name": "Lore",
           "summary": "A collector of knowledge who weaves magic and talents from every tradition.",
-          "rulesUrl": "rules/class-abilities/bard.html#lore"
+          "rulesUrl": "rules/class-abilities/bard.html#lore",
+          "features": [
+            {
+              "name": "Bardic Performance: Ode to Heroes",
+              "minLevel": 2,
+              "summary": "Performance that helps allies and hinders foes on ability checks."
+            },
+            {
+              "name": "Expanded Talent List",
+              "minLevel": 2,
+              "summary": "Choose talents from magic or utility lists."
+            },
+            {
+              "name": "Jack of All Trades",
+              "minLevel": 2,
+              "summary": "Half PB on ability checks that don't already include PB."
+            },
+            {
+              "name": "Swift Ritual",
+              "minLevel": 4,
+              "summary": "Cast a known ritual as an action once per long rest."
+            },
+            {
+              "name": "Magical Rites",
+              "minLevel": 6,
+              "summary": "Learn two extra ritual spells from any source."
+            },
+            {
+              "name": "Peerless Skill",
+              "minLevel": 8,
+              "summary": "Spend Bardic Inspiration on ability checks; keep the die on success."
+            }
+          ]
         },
         {
           "id": "victory",
           "name": "Victory",
           "summary": "Inspire allies to triumph through martial cadence.",
-          "rulesUrl": "rules/class-abilities/bard.html#victory"
+          "rulesUrl": "rules/class-abilities/bard.html#victory",
+          "features": [
+            {
+              "name": "Bardic Performance: Battle March",
+              "minLevel": 2,
+              "summary": "Performance lets allies react-move; medium armor and martial weapon."
+            },
+            {
+              "name": "Multiattack",
+              "minLevel": 4,
+              "summary": "Two attacks when you take the Attack action."
+            },
+            {
+              "name": "Unified Front",
+              "minLevel": 6,
+              "summary": "Reaction: boost your save and allies auto-succeed on area effects."
+            },
+            {
+              "name": "Inspired Strike",
+              "minLevel": 8,
+              "summary": "Spend Bardic Inspiration on attacks; keep the die on a hit."
+            }
+          ]
         },
         {
           "id": "allure",
           "name": "Allure",
           "summary": "Bards who align with the college of Allure understand the power of the mind and how the smallest nudge can bend that power in their favor. These bards are masters of subtle",
-          "rulesUrl": "rules/class-abilities/bard.html#allure"
+          "rulesUrl": "rules/class-abilities/bard.html#allure",
+          "features": [
+            {
+              "name": "Bardic Performance: Mirror Mirror",
+              "minLevel": 2,
+              "summary": "You weave illusions to protect your companions. When "
+            }
+          ]
         },
         {
           "id": "mockery",
           "name": "Mockery",
           "summary": "Bards aligned with the college of Mockery have devoted their lives to perfecting their mordant repartee—both to entertain audiences and to use as a devastating weapon",
-          "rulesUrl": "rules/class-abilities/bard.html#mockery"
+          "rulesUrl": "rules/class-abilities/bard.html#mockery",
+          "features": [
+            {
+              "name": "Bardic Performance: Playful Banter",
+              "minLevel": 2,
+              "summary": "Your jests and banter bolster your allies’ defenses against "
+            },
+            {
+              "name": "Razor Wit",
+              "minLevel": 2,
+              "summary": "You learn the vicious mockery cantrip and the hideous laughter "
+            },
+            {
+              "name": "Infectious Laughter",
+              "minLevel": 4,
+              "summary": "When you cast vicious mockery, you can target a number "
+            },
+            {
+              "name": "Crushing Jest",
+              "minLevel": 6,
+              "summary": "Your insults are so crushing that even creatures with "
+            },
+            {
+              "name": "Mocking Rage",
+              "minLevel": 8,
+              "summary": "Your banter and mockery can enrage creatures. As an "
+            }
+          ]
         },
         {
           "id": "sound",
           "name": "Sound",
           "summary": "Bards aligned with the college of Sound are often drawn to it out of a desire to master their musical talents. Those with perfect pitch or who are virtuosos with the lute are",
-          "rulesUrl": "rules/class-abilities/bard.html#sound"
+          "rulesUrl": "rules/class-abilities/bard.html#sound",
+          "features": [
+            {
+              "name": "Amplify/Dampen",
+              "minLevel": 2,
+              "summary": "You learn the message and thaumaturgy cantrips and the "
+            },
+            {
+              "name": "Bardic Performance: Spell",
+              "minLevel": 2,
+              "summary": "The bard class receives new features and subclasses in this "
+            }
+          ]
         }
       ]
     },
@@ -301,42 +666,221 @@
       "spellcasting": "Divine spells (prepared). Domain spells always prepared.",
       "rulesUrl": "rules/classes.html#cleric",
       "abilitiesUrl": "rules/class-abilities/cleric.html",
+      "abilities": [
+        {
+          "name": "Manifestation of Faith",
+          "minLevel": 1,
+          "summary": "Holy warrior or miracle worker path."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 1,
+          "summary": "Prepared Divine spells using Spell Power."
+        },
+        {
+          "name": "Channel Divinity",
+          "minLevel": 2,
+          "summary": "Channel divine energy beyond spells."
+        },
+        {
+          "name": "Turn the Profane",
+          "minLevel": 2,
+          "summary": "Turn fiends and undead."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a magic talent."
+        },
+        {
+          "name": "Destroy the Profane",
+          "minLevel": 4,
+          "summary": "Destroy turned creatures below a CR threshold."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Consecration or wrath gifts."
+        },
+        {
+          "name": "Divine Intervention",
+          "minLevel": 7,
+          "summary": "Call on your deity in dire need."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Automatic divine intervention."
+        }
+      ],
       "subclasses": [
         {
           "id": "life",
           "name": "Life",
           "summary": "Celebrate vitality and oppose the perversion of undeath.",
-          "rulesUrl": "rules/class-abilities/cleric.html#life"
+          "rulesUrl": "rules/class-abilities/cleric.html#life",
+          "features": [
+            {
+              "name": "Channel Divinity: Preserve Life",
+              "minLevel": 2,
+              "summary": "Channel divinity to distribute healing among nearby allies."
+            },
+            {
+              "name": "Disciple of Life",
+              "minLevel": 2,
+              "summary": "Healing spells restore extra Wounds."
+            },
+            {
+              "name": "Life Domain Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared life domain spells."
+            },
+            {
+              "name": "Blessed Healer",
+              "minLevel": 4,
+              "summary": "Healing others heals you."
+            },
+            {
+              "name": "Greater Preservation",
+              "minLevel": 6,
+              "summary": "Expanded Preserve Life with condition cleansing."
+            },
+            {
+              "name": "Perfect Healing",
+              "minLevel": 8,
+              "summary": "Healing spells restore maximum Wounds."
+            }
+          ]
         },
         {
           "id": "light",
           "name": "Light",
           "summary": "Wield radiant fire and searing truth against darkness.",
-          "rulesUrl": "rules/class-abilities/cleric.html#light"
+          "rulesUrl": "rules/class-abilities/cleric.html#light",
+          "features": [
+            {
+              "name": "Channel Divinity: Searing Radiance",
+              "minLevel": 2,
+              "summary": "Channel radiance through your magical lights."
+            },
+            {
+              "name": "Imbue Light",
+              "minLevel": 2,
+              "summary": "Learn light and dancing lights; dancing lights needs no concentration."
+            },
+            {
+              "name": "Light Domain Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared light domain spells."
+            },
+            {
+              "name": "Overwhelming Flash",
+              "minLevel": 2,
+              "summary": "Reaction penalizes nearby attack rolls with blinding light."
+            },
+            {
+              "name": "Radiant Spellcasting",
+              "minLevel": 4,
+              "summary": "Cantrips and lit weapons deal extra radiant damage."
+            },
+            {
+              "name": "Lux Malediction",
+              "minLevel": 6,
+              "summary": "Searing Radiance becomes sunlight; Overwhelming Flash curses foes."
+            },
+            {
+              "name": "Luminous Shroud",
+              "minLevel": 8,
+              "summary": "Advantage on saves in bright light; charm/frighten immunity; damage choice."
+            }
+          ]
         },
         {
           "id": "war",
           "name": "War",
           "summary": "Champion courage and decisive victory in battle.",
-          "rulesUrl": "rules/class-abilities/cleric.html#war"
+          "rulesUrl": "rules/class-abilities/cleric.html#war",
+          "features": [
+            {
+              "name": "Channel Divinity: Mark of Triumph",
+              "minLevel": 2,
+              "summary": "Mark a foe so allies gain advantage on the first attack against it."
+            },
+            {
+              "name": "Disciple of War",
+              "minLevel": 2,
+              "summary": "Extra weapon attack when you hit with the Attack action."
+            },
+            {
+              "name": "Expanded Talent List",
+              "minLevel": 2,
+              "summary": "Martial or magic talents on Improvement."
+            },
+            {
+              "name": "War Domain Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared war domain spells."
+            },
+            {
+              "name": "Blessed Warrior",
+              "minLevel": 4,
+              "summary": "Martial weapon proficiency and Fitness-based attacks."
+            },
+            {
+              "name": "Greater Triumph",
+              "minLevel": 6,
+              "summary": "Marked creatures have disadvantage on saves against your spells."
+            },
+            {
+              "name": "Holy Strike",
+              "minLevel": 8,
+              "summary": "Weapon attacks deal extra radiant damage once per turn."
+            }
+          ]
         },
         {
           "id": "death",
           "name": "Death",
           "summary": "Gods of the Death domain govern death and the afterlife, exemplifying the inevitability and mystery of the beyond. Devotees of this domain bring peace to the bereaved,",
-          "rulesUrl": "rules/class-abilities/cleric.html#death"
+          "rulesUrl": "rules/class-abilities/cleric.html#death",
+          "features": [
+            {
+              "name": "Channel Divinity: Forsee Doom",
+              "minLevel": 2,
+              "summary": "Death Domain Spells, Death’s Sentinel"
+            }
+          ]
         },
         {
           "id": "nature",
           "name": "Nature",
           "summary": "Gods of the Nature domain protect and govern the overgrown wilds and fertile lands. Dogmatic followers of this domain are entrusted with the safety and prosperity",
-          "rulesUrl": "rules/class-abilities/cleric.html#nature"
+          "rulesUrl": "rules/class-abilities/cleric.html#nature",
+          "features": [
+            {
+              "name": "Apostle of Nature",
+              "minLevel": 2,
+              "summary": "You gain proficiency in any two of the following skills or "
+            }
+          ]
         },
         {
           "id": "tempest",
           "name": "Tempest",
           "summary": "Gods of the Tempest domain embody the awesome destructive power of storms, earthquakes, wildfires, and similar natural disasters. Clerics of this domain are often as",
-          "rulesUrl": "rules/class-abilities/cleric.html#tempest"
+          "rulesUrl": "rules/class-abilities/cleric.html#tempest",
+          "features": [
+            {
+              "name": "Channel Divinity: Storm’s Fury",
+              "minLevel": 2,
+              "summary": "You can use your Channel Divinity feature to invoke the "
+            },
+            {
+              "name": "Tempest",
+              "minLevel": 2,
+              "summary": "You gain domain spells at the cleric levels listed in the"
+            }
+          ]
         }
       ]
     },
@@ -352,36 +896,243 @@
       "spellcasting": "Primordial spells (prepared). Ring spells always prepared.",
       "rulesUrl": "rules/classes.html#druid",
       "abilitiesUrl": "rules/class-abilities/druid.html",
+      "abilities": [
+        {
+          "name": "Druidic",
+          "minLevel": 1,
+          "summary": "Secret language of druids."
+        },
+        {
+          "name": "Nature's Gift",
+          "minLevel": 1,
+          "summary": "Channel ambient energy to heal."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 1,
+          "summary": "Prepared Primordial spells."
+        },
+        {
+          "name": "Wild Shape",
+          "minLevel": 2,
+          "summary": "Channel nature for beast forms and spell recovery."
+        },
+        {
+          "name": "Improved Beast Form",
+          "minLevel": 3,
+          "summary": "Assume more powerful beast forms."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a magic talent."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Rite of the Kingdom or Shaper."
+        },
+        {
+          "name": "Nature's Grace",
+          "minLevel": 8,
+          "summary": "Attunement sustains and protects you."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Unlimited wild shape; effortless spellcasting."
+        }
+      ],
       "subclasses": [
         {
           "id": "leaf",
           "name": "Leaf",
           "summary": "Guardian of growing things and peaceful wild places.",
-          "rulesUrl": "rules/class-abilities/druid.html#leaf"
+          "rulesUrl": "rules/class-abilities/druid.html#leaf",
+          "features": [
+            {
+              "name": "Green Song",
+              "minLevel": 2,
+              "summary": "Speak with plants; inspect flora with an action."
+            },
+            {
+              "name": "Leaf Ring Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared leaf ring spells."
+            },
+            {
+              "name": "Wild Shape: Sacred Grove",
+              "minLevel": 2,
+              "summary": "Wild Shape creates a magical pocket grove."
+            },
+            {
+              "name": "Take Root",
+              "minLevel": 4,
+              "summary": "Bonus action root yourself; spend hit dice for healing while rooted."
+            },
+            {
+              "name": "Grove Warden",
+              "minLevel": 6,
+              "summary": "Sacred grove expands to 30 feet; choose who is immune to its effects."
+            },
+            {
+              "name": "Heart of the Forest",
+              "minLevel": 8,
+              "summary": "Grove saves you at 0 Wounds; acorn resurrection if destroyed."
+            }
+          ]
         },
         {
           "id": "shifter",
           "name": "Shifter",
           "summary": "Master of beast forms and primal transformation.",
-          "rulesUrl": "rules/class-abilities/druid.html#shifter"
+          "rulesUrl": "rules/class-abilities/druid.html#shifter",
+          "features": [
+            {
+              "name": "Potent Forms",
+              "minLevel": 2,
+              "summary": "Higher-CR beast forms; speak while transformed."
+            },
+            {
+              "name": "Quick Shift",
+              "minLevel": 2,
+              "summary": "Beast Form as a free action."
+            },
+            {
+              "name": "Shifter Ring Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared shifter ring spells."
+            },
+            {
+              "name": "Beast's Fury",
+              "minLevel": 4,
+              "summary": "Bonus natural attack after Attack action in beast form."
+            },
+            {
+              "name": "Elemental Infusion",
+              "minLevel": 6,
+              "summary": "Infuse beast form with air, earth, fire, or water power."
+            },
+            {
+              "name": "Manifold Mind",
+              "minLevel": 8,
+              "summary": "Cast spells in beast form."
+            }
+          ]
         },
         {
           "id": "elementalist",
           "name": "Elementalist",
           "summary": "Command acid, cold, fire, lightning, and thunder to protect nature.",
-          "rulesUrl": "rules/class-abilities/druid.html#elementalist"
+          "rulesUrl": "rules/class-abilities/druid.html#elementalist",
+          "features": [
+            {
+              "name": "Elemental Convergence",
+              "minLevel": 2,
+              "summary": "Bonus elemental cantrip; convert damage dice between elemental types."
+            },
+            {
+              "name": "Elementalist Ring Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared elementalist ring spells."
+            },
+            {
+              "name": "Wild Shape: Elemental Conduit",
+              "minLevel": 2,
+              "summary": "Wild Shape becomes an elemental conduit with reactive powers."
+            },
+            {
+              "name": "Elemental Deflection",
+              "minLevel": 4,
+              "summary": "Reaction: grant an ally resistance to incoming elemental damage."
+            },
+            {
+              "name": "Elemental Bulwark",
+              "minLevel": 6,
+              "summary": "Elemental conduit grants broad resistances and condition immunity."
+            },
+            {
+              "name": "Elemental Flare",
+              "minLevel": 8,
+              "summary": "Retaliate with elemental damage; extended conduit with movement modes."
+            }
+          ]
         },
         {
           "id": "fey",
           "name": "Fey",
           "summary": "Summon seelie spirits and wield mercurial fey magic.",
-          "rulesUrl": "rules/class-abilities/druid.html#fey"
+          "rulesUrl": "rules/class-abilities/druid.html#fey",
+          "features": [
+            {
+              "name": "Enchanting Presence",
+              "minLevel": 2,
+              "summary": "Speak Sylvan; use Willpower for social checks vs. fey."
+            },
+            {
+              "name": "Fey Ring Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared fey ring spells."
+            },
+            {
+              "name": "Wild Shape: Seelie Spirit",
+              "minLevel": 2,
+              "summary": "Wild Shape summons a seasonal fey spirit with spectral effects."
+            },
+            {
+              "name": "Mercurial Magic",
+              "minLevel": 4,
+              "summary": "Resist charm/unconscious; reaction to aid allies' saves vs. fey effects."
+            },
+            {
+              "name": "Superior Seelie",
+              "minLevel": 6,
+              "summary": "Season spirits gain stronger seasonal effects and longer duration."
+            },
+            {
+              "name": "Archfey's Blessing",
+              "minLevel": 8,
+              "summary": "Ageless fey resilience; twin spirits with extended range."
+            }
+          ]
         },
         {
           "id": "stoneheart",
           "name": "Stoneheart",
           "summary": "Wrap yourself in earthen armor and stand as nature's sentinel.",
-          "rulesUrl": "rules/class-abilities/druid.html#stoneheart"
+          "rulesUrl": "rules/class-abilities/druid.html#stoneheart",
+          "features": [
+            {
+              "name": "Stone Intuition",
+              "minLevel": 2,
+              "summary": "Enhanced shillelagh; advantage identifying stone and metal work."
+            },
+            {
+              "name": "Stoneheart Ring Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared stoneheart ring spells."
+            },
+            {
+              "name": "Wild Shape: Earthen Armor",
+              "minLevel": 2,
+              "summary": "Wild Shape wraps you in protective earth armor."
+            },
+            {
+              "name": "Stone's Vengeance",
+              "minLevel": 4,
+              "summary": "Two attacks; earth pillars impose disadvantage on ally attacks."
+            },
+            {
+              "name": "Stone Sentinel",
+              "minLevel": 6,
+              "summary": "Improved earthen armor: d12 shillelagh, AC 15 + WIL, silent burrowing."
+            },
+            {
+              "name": "Stone Heart",
+              "minLevel": 8,
+              "summary": "Resist acid and bludgeoning; immune while armored with temp Wounds each turn."
+            }
+          ]
         }
       ]
     },
@@ -397,36 +1148,208 @@
       "spellcasting": null,
       "rulesUrl": "rules/classes.html#fighter",
       "abilitiesUrl": "rules/class-abilities/fighter.html",
+      "abilities": [
+        {
+          "name": "Last Stand",
+          "minLevel": 1,
+          "summary": "Emergency healing when badly wounded."
+        },
+        {
+          "name": "Martial Action",
+          "minLevel": 1,
+          "summary": "Tactical second action when you hold your ground."
+        },
+        {
+          "name": "Action Surge",
+          "minLevel": 2,
+          "summary": "Gain an additional action on your turn."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a martial talent."
+        },
+        {
+          "name": "Multiattack",
+          "minLevel": 3,
+          "summary": "Multiple attacks per Attack action."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Defiant saves or unstoppable recovery."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Devastating blows that ignore defenses."
+        }
+      ],
       "subclasses": [
         {
           "id": "spell-blade",
           "name": "Spell Blade",
           "summary": "Blend arcane magic with weapon mastery.",
-          "rulesUrl": "rules/class-abilities/fighter.html#spell-blade"
+          "rulesUrl": "rules/class-abilities/fighter.html#spell-blade",
+          "features": [
+            {
+              "name": "Arcane Spellcasting",
+              "minLevel": 2,
+              "summary": "Partial Arcane spellcasting (abjuration/evocation focus)."
+            },
+            {
+              "name": "Enchant Weapon",
+              "minLevel": 2,
+              "summary": "Imbue a weapon (+1, scaling to +3); bonus action summon."
+            },
+            {
+              "name": "Spell Multiattack",
+              "minLevel": 4,
+              "summary": "Replace one Multiattack swing with a cantrip."
+            },
+            {
+              "name": "Follow Through",
+              "minLevel": 6,
+              "summary": "Weapon attack after casting a spell."
+            },
+            {
+              "name": "Charged Strike",
+              "minLevel": 8,
+              "summary": "Add Insight to melee damage; weapon damage counts as magical."
+            }
+          ]
         },
         {
           "id": "weapon-master",
           "name": "Weapon Master",
           "summary": "Mastery of chosen weapons and tactical stunts.",
-          "rulesUrl": "rules/class-abilities/fighter.html#weapon-master"
+          "rulesUrl": "rules/class-abilities/fighter.html#weapon-master",
+          "features": [
+            {
+              "name": "Mastery",
+              "minLevel": 2,
+              "summary": "Master three weapon types; reroll damage or weapon-option damage."
+            },
+            {
+              "name": "Stunts",
+              "minLevel": 2,
+              "summary": "Tactical maneuvers with weapon-specific requirements."
+            },
+            {
+              "name": "Deadly Flourish",
+              "minLevel": 4,
+              "summary": "19–20 crits with mastered weapons; reaction attacks on crit."
+            },
+            {
+              "name": "Advanced Stunts",
+              "minLevel": 6,
+              "summary": "Powerful stunts available whenever you could use a stunt."
+            },
+            {
+              "name": "Grand Finale",
+              "minLevel": 8,
+              "summary": "Regain stunt uses when combat begins with none left."
+            }
+          ]
         },
         {
           "id": "scrapper",
           "name": "Scrapper",
           "summary": "Fighters typically engage with their opponents with manufactured weapons. However, some of them enjoy the physicality of using their bodies as weapons and become",
-          "rulesUrl": "rules/class-abilities/fighter.html#scrapper"
+          "rulesUrl": "rules/class-abilities/fighter.html#scrapper",
+          "features": [
+            {
+              "name": "Grappling Superiority",
+              "minLevel": 2,
+              "summary": "You gain proficiency in the Athletics skill. If you are already "
+            },
+            {
+              "name": "Mighty Fists",
+              "minLevel": 2,
+              "summary": "Your unarmed attacks become more powerful. When "
+            },
+            {
+              "name": "Grappling Maneuvers",
+              "minLevel": 4,
+              "summary": "As a bonus action while grappling a creature, you can "
+            },
+            {
+              "name": "Expert Grappler",
+              "minLevel": 6,
+              "summary": "You are an expert at holding onto and locking down foes."
+            },
+            {
+              "name": "Knockout Punch",
+              "minLevel": 8,
+              "summary": "When you hit a creature with two unarmed strikes in "
+            }
+          ]
         },
         {
           "id": "stunt-archer",
           "name": "Stunt Archer",
           "summary": "Some fighters eschew melee weapons completely, choosing the greater range afforded by bows and crossbows. They become so comfortable with these weapons that they can",
-          "rulesUrl": "rules/class-abilities/fighter.html#stunt-archer"
+          "rulesUrl": "rules/class-abilities/fighter.html#stunt-archer",
+          "features": [
+            {
+              "name": "Bow Mastery",
+              "minLevel": 2,
+              "summary": "You have focused your training on ranged weapons, "
+            },
+            {
+              "name": "Stunt Shots",
+              "minLevel": 2,
+              "summary": "You have developed such familiarity with bows and "
+            },
+            {
+              "name": "Keen Eye",
+              "minLevel": 4,
+              "summary": "You increase the normal range for any bow or crossbow "
+            },
+            {
+              "name": "Advanced Stunt Shots",
+              "minLevel": 6,
+              "summary": "The following powerful stunt shots are available to you "
+            },
+            {
+              "name": "Absolute Mastery",
+              "minLevel": 8,
+              "summary": "You treat all bows and crossbows as if they had the"
+            }
+          ]
         },
         {
           "id": "twinblade",
           "name": "Twinblade",
           "summary": "Fighters that choose the Twinblade discipline are master dual-wielders, forgoing cumbersome armaments to become a whirling death that moves through battles with",
-          "rulesUrl": "rules/class-abilities/fighter.html#twinblade"
+          "rulesUrl": "rules/class-abilities/fighter.html#twinblade",
+          "features": [
+            {
+              "name": "Blade Dance",
+              "minLevel": 2,
+              "summary": "As a bonus action, you can begin a blade dance as long "
+            },
+            {
+              "name": "Deadly Grace",
+              "minLevel": 2,
+              "summary": "You gain proficiency in either the Acrobatics or Performance "
+            },
+            {
+              "name": "Double Edged",
+              "minLevel": 4,
+              "summary": "When you take the Attack action on your turn and then use "
+            },
+            {
+              "name": "One Thousand Cuts",
+              "minLevel": 6,
+              "summary": "When you take the Attack action on your turn while your "
+            },
+            {
+              "name": "Moving Target",
+              "minLevel": 8,
+              "summary": "As long as you aren’t incapacitated, you can’t be grappled or "
+            }
+          ]
         }
       ]
     },
@@ -442,48 +1365,274 @@
       "spellcasting": null,
       "rulesUrl": "rules/classes.html#artificer",
       "abilitiesUrl": "rules/class-abilities/artificer.html",
+      "abilities": [
+        {
+          "name": "Eyes of the Maker",
+          "minLevel": 1,
+          "summary": "Identify magic items by touch."
+        },
+        {
+          "name": "Shard of Creation",
+          "minLevel": 1,
+          "summary": "Magical tool with versatile charges."
+        },
+        {
+          "name": "Augment",
+          "minLevel": 2,
+          "summary": "Apply augment effects to carried items."
+        },
+        {
+          "name": "Efficient Action",
+          "minLevel": 2,
+          "summary": "Augment without wasting effort."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or utility/martial talent."
+        },
+        {
+          "name": "Multiattack",
+          "minLevel": 3,
+          "summary": "Two attacks per Attack action."
+        },
+        {
+          "name": "Rapid Augment",
+          "minLevel": 4,
+          "summary": "Augment as a free action."
+        },
+        {
+          "name": "Greater Creation",
+          "minLevel": 5,
+          "summary": "Craft more potent items."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Artificer heroic options per BFRD."
+        },
+        {
+          "name": "Engineer's Insight",
+          "minLevel": 6,
+          "summary": "Flash of mechanical genius."
+        },
+        {
+          "name": "Ranged Augment",
+          "minLevel": 7,
+          "summary": "Apply augments at range."
+        },
+        {
+          "name": "Always Prepared",
+          "minLevel": 8,
+          "summary": "Augments persist through rest."
+        },
+        {
+          "name": "Perfect Creation",
+          "minLevel": 9,
+          "summary": "Master-crafted magical items."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Capstone invention."
+        }
+      ],
       "subclasses": [
         {
           "id": "armorer",
           "name": "Armorer",
           "summary": "Mystic metal armor and absorbing augments (BFRD Metallurgist).",
-          "rulesUrl": "rules/class-abilities/artificer.html#armorer"
+          "rulesUrl": "rules/class-abilities/artificer.html#armorer",
+          "features": [
+            {
+              "name": "Augment: Absorbing",
+              "minLevel": 2,
+              "summary": "Armor/shield absorbs elemental damage and grants resistance."
+            },
+            {
+              "name": "Mystic Metal",
+              "minLevel": 2,
+              "summary": "Transmute armor into wearable mystic metal suit."
+            },
+            {
+              "name": "Heavy Hitter",
+              "minLevel": 4,
+              "summary": "Extra force damage and improved crit range in mystic metal."
+            },
+            {
+              "name": "Juggernaut",
+              "minLevel": 6,
+              "summary": "Athletics advantage; charge grants attack advantage."
+            },
+            {
+              "name": "Full Metal",
+              "minLevel": 8,
+              "summary": "Brief immunity to physical damage."
+            }
+          ]
         },
         {
           "id": "alchemist",
           "name": "Alchemist",
           "summary": "Brew volatile concoctions and supportive elixirs.",
-          "rulesUrl": "rules/class-abilities/artificer.html#alchemist"
+          "rulesUrl": "rules/class-abilities/artificer.html#alchemist",
+          "features": [
+            {
+              "name": "Alchemical Savant",
+              "minLevel": 2,
+              "summary": "Add Insight to alchemist-spell damage and healing."
+            },
+            {
+              "name": "Experimental Elixir",
+              "minLevel": 2,
+              "summary": "Long-rest elixir for yourself or an ally."
+            },
+            {
+              "name": "Restorative Reagents",
+              "minLevel": 4,
+              "summary": "Free healing when casting certain spells."
+            },
+            {
+              "name": "Chemical Mastery",
+              "minLevel": 6,
+              "summary": "Resistance to acid/poison; greater restoration on demand."
+            }
+          ]
         },
         {
           "id": "artillerist",
           "name": "Artillerist",
           "summary": "Deploy ranged magical ordnance.",
-          "rulesUrl": "rules/class-abilities/artificer.html#artillerist"
+          "rulesUrl": "rules/class-abilities/artificer.html#artillerist",
+          "features": [
+            {
+              "name": "Arcane Grenades",
+              "minLevel": 2,
+              "summary": "Throw force grenades; damage scales 1d8→4d8."
+            },
+            {
+              "name": "Augment: Explosive",
+              "minLevel": 2,
+              "summary": "Unique augment: trap objects with force bursts."
+            },
+            {
+              "name": "Controlled Blasts",
+              "minLevel": 4,
+              "summary": "No close-range disadvantage; protect allies from your ordnance."
+            },
+            {
+              "name": "Superior Firepower",
+              "minLevel": 8,
+              "summary": "Turn misses into hits; extended range; disintegrating crits."
+            }
+          ]
         },
         {
           "id": "battle-smith",
           "name": "Battle Smith",
           "summary": "Field a steel defender companion.",
-          "rulesUrl": "rules/class-abilities/artificer.html#battle-smith"
+          "rulesUrl": "rules/class-abilities/artificer.html#battle-smith",
+          "features": [
+            {
+              "name": "Augment: Messenger",
+              "minLevel": 2,
+              "summary": "Augment items with disruptive noise or remote voice."
+            },
+            {
+              "name": "Battle Ready",
+              "minLevel": 2,
+              "summary": "Insight for magic weapons; steel defender companion."
+            },
+            {
+              "name": "Arcane Jolt",
+              "minLevel": 4,
+              "summary": "Defender or you jolt a hit for extra force and advantage."
+            },
+            {
+              "name": "Improved Defender",
+              "minLevel": 8,
+              "summary": "Defender gains Multiattack; jolt heals you."
+            }
+          ]
         },
         {
           "id": "cog-augur",
           "name": "Cog Augur",
           "summary": "Some mechanists see the universe and its workings as mathematical calculations. They turn their expertise toward crafting baroque devices to help them read these",
-          "rulesUrl": "rules/class-abilities/artificer.html#cog-augur"
+          "rulesUrl": "rules/class-abilities/artificer.html#cog-augur",
+          "features": [
+            {
+              "name": "Augment: Clairvoyant",
+              "minLevel": 2,
+              "summary": "Item Requirement: Equipment or Object that Can Fit in One Hand"
+            },
+            {
+              "name": "Auguring Device",
+              "minLevel": 2,
+              "summary": "You learn to transmute a small device into an augury tool "
+            },
+            {
+              "name": "Intricate Predictions",
+              "minLevel": 4,
+              "summary": "You learn to upgrade your Auguring Device feature, which "
+            },
+            {
+              "name": "Improved Divining",
+              "minLevel": 6,
+              "summary": "You learn to adjust your Auguring Device feature’s "
+            },
+            {
+              "name": "Clarity of Vision",
+              "minLevel": 8,
+              "summary": "You can spend 1 minute communing with the device of your"
+            }
+          ]
         },
         {
           "id": "grenadier",
           "name": "Grenadier",
           "summary": "Mechanists who pursue the Grenadier’s craft are disciples of entropy, more interested in how things come apart than how they come together. Grenadiers expertly manipulate",
-          "rulesUrl": "rules/class-abilities/artificer.html#grenadier"
+          "rulesUrl": "rules/class-abilities/artificer.html#grenadier",
+          "features": [
+            {
+              "name": "Arcane Grenades (1d8, 1/turn)",
+              "minLevel": 2,
+              "summary": "You have learned to construct potent magical devices "
+            }
+          ]
         },
         {
           "id": "toymaker",
           "name": "Toymaker",
           "summary": "Toymakers are mechanists who revel in creating miniature replicas of animals and humans for their own entertainment, to help with various tasks, and to inflict a",
-          "rulesUrl": "rules/class-abilities/artificer.html#toymaker"
+          "rulesUrl": "rules/class-abilities/artificer.html#toymaker",
+          "features": [
+            {
+              "name": "Augment: Messenger",
+              "minLevel": 2,
+              "summary": "You gain the following unique effect for your Augment "
+            },
+            {
+              "name": "Autonomous Toys",
+              "minLevel": 2,
+              "summary": "You design and animate intricate Tiny objects that follow "
+            },
+            {
+              "name": "Automated Power",
+              "minLevel": 4,
+              "summary": "The toys from your Autonomous Toys feature gain a bonus "
+            },
+            {
+              "name": "Eyes Everywhere",
+              "minLevel": 6,
+              "summary": "While you are within 10 feet of at least two of the toys from "
+            },
+            {
+              "name": "Ultimate Toymaker",
+              "minLevel": 8,
+              "summary": "Your maximum number of augmented items (see Augment "
+            }
+          ]
         }
       ]
     },
@@ -499,36 +1648,213 @@
       "spellcasting": null,
       "rulesUrl": "rules/classes.html#monk",
       "abilitiesUrl": "rules/class-abilities/monk.html",
+      "abilities": [
+        {
+          "name": "Martial Arts",
+          "minLevel": 1,
+          "summary": "Unarmed strikes and monk weapons."
+        },
+        {
+          "name": "Unarmored Defense",
+          "minLevel": 1,
+          "summary": "AC from agility and insight."
+        },
+        {
+          "name": "Techniques",
+          "minLevel": 2,
+          "summary": "Spend technique points on supernatural maneuvers."
+        },
+        {
+          "name": "Unarmored Movement",
+          "minLevel": 2,
+          "summary": "Supernatural speed without armor."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a martial talent."
+        },
+        {
+          "name": "Multiattack",
+          "minLevel": 3,
+          "summary": "Two attacks per Attack action."
+        },
+        {
+          "name": "Stunning Strike",
+          "minLevel": 3,
+          "summary": "Stun foes with ki-infused blows."
+        },
+        {
+          "name": "Empowered Strikes",
+          "minLevel": 4,
+          "summary": "Unarmed strikes count as magical."
+        },
+        {
+          "name": "Evasion",
+          "minLevel": 4,
+          "summary": "Dodge area effects."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Purity of Body or Mind."
+        },
+        {
+          "name": "Perfect Motion",
+          "minLevel": 5,
+          "summary": "Run on walls and fall safely."
+        },
+        {
+          "name": "Astral Teachings",
+          "minLevel": 7,
+          "summary": "Temporarily master any skill."
+        },
+        {
+          "name": "Diamond Soul",
+          "minLevel": 7,
+          "summary": "Proficiency in all saves; reroll failures."
+        },
+        {
+          "name": "Timeless Self",
+          "minLevel": 8,
+          "summary": "Sustained by inner energy."
+        },
+        {
+          "name": "Empty Body",
+          "minLevel": 9,
+          "summary": "Invisibility and astral travel."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Technique points refill when combat begins."
+        }
+      ],
       "subclasses": [
         {
           "id": "flickering-dark",
           "name": "Flickering Dark",
           "summary": "Harness shadow energy between strikes.",
-          "rulesUrl": "rules/class-abilities/monk.html#flickering-dark"
+          "rulesUrl": "rules/class-abilities/monk.html#flickering-dark",
+          "features": [
+            {
+              "name": "Dark Flame",
+              "minLevel": 2,
+              "summary": "Bonus action shadow aura: clawing, grasp, or spreading darkness."
+            },
+            {
+              "name": "Obsidian Eyes",
+              "minLevel": 2,
+              "summary": "Grant darkvision through magical darkness; upgrades at 4th/6th."
+            },
+            {
+              "name": "Grace of Umbra",
+              "minLevel": 4,
+              "summary": "Step of the Wind grants intangibility and shadow teleport."
+            },
+            {
+              "name": "Feeding Dark",
+              "minLevel": 6,
+              "summary": "Weaken attackers in your magical darkness; long-range shadow step."
+            },
+            {
+              "name": "Strike of Searing Shadow",
+              "minLevel": 8,
+              "summary": "Reaction finisher that pulls foes toward a dying enemy."
+            }
+          ]
         },
         {
           "id": "open-hand",
           "name": "Open Hand",
           "summary": "Push, trip, and shatter foes with perfected technique.",
-          "rulesUrl": "rules/class-abilities/monk.html#open-hand"
+          "rulesUrl": "rules/class-abilities/monk.html#open-hand",
+          "features": [
+            {
+              "name": "Focus Intent",
+              "minLevel": 2,
+              "summary": "Reaction: add martial arts die to ally or enemy roll."
+            },
+            {
+              "name": "Open Hand Technique",
+              "minLevel": 2,
+              "summary": "Flurry of Blows imposes knockdown, push, or no reactions."
+            },
+            {
+              "name": "Wholeness of Body",
+              "minLevel": 4,
+              "summary": "Heal when combat begins."
+            },
+            {
+              "name": "Tranquil Soul",
+              "minLevel": 6,
+              "summary": "Long-duration sanctuary via technique points."
+            },
+            {
+              "name": "Quivering Palm",
+              "minLevel": 8,
+              "summary": "Store lethal vibrations in a struck foe."
+            }
+          ]
         },
         {
           "id": "affliction-eater",
           "name": "Affliction Eater",
           "summary": "Some monks realize the careful balance between life and death, and they’ve honed their bodies and minds to ensure the balance tips in their favor. However, they",
-          "rulesUrl": "rules/class-abilities/monk.html#affliction-eater"
+          "rulesUrl": "rules/class-abilities/monk.html#affliction-eater",
+          "features": [
+            {
+              "name": "Absorb Affliction",
+              "minLevel": 2,
+              "summary": "As a bonus action, you can touch a creature within 5 feet of "
+            },
+            {
+              "name": "Stay Execution",
+              "minLevel": 2,
+              "summary": "When a creature within 30 feet of you is reduced to 0 HP, "
+            },
+            {
+              "name": "Intercedence",
+              "minLevel": 4,
+              "summary": "You grant good fortune to your ally at the cost of your own."
+            },
+            {
+              "name": "Shield from Harm",
+              "minLevel": 6,
+              "summary": "You link yourself to another creature, reducing harm to "
+            },
+            {
+              "name": "Merciful Burst",
+              "minLevel": 8,
+              "summary": "As a bonus action, you can reduce your current hit points "
+            }
+          ]
         },
         {
           "id": "elemental-voice",
           "name": "Elemental Voice",
           "summary": "Monks that pursue the way of the Elemental Voice seek to reshape the primordial world around them with their will. These monks often share similarities in manner or dress",
-          "rulesUrl": "rules/class-abilities/monk.html#elemental-voice"
+          "rulesUrl": "rules/class-abilities/monk.html#elemental-voice",
+          "features": [
+            {
+              "name": "Elemental Voice Feature",
+              "minLevel": 2,
+              "summary": "Elemental Voice subclass feature from ToV Player's Guide 2."
+            }
+          ]
         },
         {
           "id": "seal-guardian",
           "name": "Seal Guardian",
           "summary": "Seal Guardian monks apply the knowledge they gain from transcribing written works to the creation of magical seals, which they can offer to others for protection or to drive out",
-          "rulesUrl": "rules/class-abilities/monk.html#seal-guardian"
+          "rulesUrl": "rules/class-abilities/monk.html#seal-guardian",
+          "features": [
+            {
+              "name": "Seal Guardian Feature",
+              "minLevel": 2,
+              "summary": "Seal Guardian subclass feature from ToV Player's Guide 2."
+            }
+          ]
         }
       ]
     },
@@ -544,36 +1870,198 @@
       "spellcasting": "Divine spells known (half caster). Oath spells always known.",
       "rulesUrl": "rules/classes.html#paladin",
       "abilitiesUrl": "rules/class-abilities/paladin.html",
+      "abilities": [
+        {
+          "name": "Divine Sense",
+          "minLevel": 1,
+          "summary": "Detect celestials, fiends, and undead."
+        },
+        {
+          "name": "Lay on Hands",
+          "minLevel": 1,
+          "summary": "Pool of healing touch."
+        },
+        {
+          "name": "Divine Smite",
+          "minLevel": 2,
+          "summary": "Spend Spell Power for radiant burst on hit."
+        },
+        {
+          "name": "Martial Action",
+          "minLevel": 2,
+          "summary": "Guard or Wind Up as second action."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 2,
+          "summary": "Divine spells known (half caster)."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a martial talent."
+        },
+        {
+          "name": "Multiattack",
+          "minLevel": 3,
+          "summary": "Two attacks per Attack action."
+        },
+        {
+          "name": "Aura of Protection",
+          "minLevel": 4,
+          "summary": "Bolster allies' saves."
+        },
+        {
+          "name": "Aura of Courage",
+          "minLevel": 5,
+          "summary": "Allies cannot be frightened."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Divine Recovery or Radiant Strikes."
+        },
+        {
+          "name": "Channel Divinity",
+          "minLevel": 6,
+          "summary": "Oath-specific channel divinity."
+        },
+        {
+          "name": "Cleansing Touch",
+          "minLevel": 7,
+          "summary": "End spells on yourself or allies."
+        },
+        {
+          "name": "Aura Improvements",
+          "minLevel": 8,
+          "summary": "Aura range increases to 30 feet."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Calming aura of salvation."
+        }
+      ],
       "subclasses": [
         {
           "id": "devotion",
           "name": "Devotion",
           "summary": "Oath-bound knight of duty, honor, and righteous order.",
-          "rulesUrl": "rules/class-abilities/paladin.html#devotion"
+          "rulesUrl": "rules/class-abilities/paladin.html#devotion",
+          "features": [
+            {
+              "name": "Channel Divinity: Sacred Weapon",
+              "minLevel": 2,
+              "summary": "Empower a held weapon with radiant light."
+            },
+            {
+              "name": "Channel Divinity: Sanctifying Light",
+              "minLevel": 2,
+              "summary": "Blind aberrations, fey, fiends, and undead."
+            },
+            {
+              "name": "Devotion Oath Spells",
+              "minLevel": 2,
+              "summary": "Always-known oath spells."
+            },
+            {
+              "name": "Aura of Devotion",
+              "minLevel": 4,
+              "summary": "Allies near you can't be charmed."
+            },
+            {
+              "name": "Purity of Spirit",
+              "minLevel": 6,
+              "summary": "Protection from supernatural creatures."
+            },
+            {
+              "name": "Holy Nimbus",
+              "minLevel": 8,
+              "summary": "Radiant sunlight aura damages enemies."
+            }
+          ]
         },
         {
           "id": "justice",
           "name": "Justice",
           "summary": "Paladin of law who punishes the guilty without mercy.",
-          "rulesUrl": "rules/class-abilities/paladin.html#justice"
+          "rulesUrl": "rules/class-abilities/paladin.html#justice",
+          "features": [
+            {
+              "name": "Channel Divinity: Burden of Guilt",
+              "minLevel": 2,
+              "summary": "Curse a foe with halved speed and grounded flight."
+            },
+            {
+              "name": "Channel Divinity: Judgement",
+              "minLevel": 2,
+              "summary": "Mark a quarry for advantage and radiant damage."
+            },
+            {
+              "name": "Justice Oath Spells",
+              "minLevel": 2,
+              "summary": "Always-known justice oath spells."
+            },
+            {
+              "name": "Aura of Vigilance",
+              "minLevel": 4,
+              "summary": "Allies near you reposition when combat begins."
+            },
+            {
+              "name": "Unworthy Adversary",
+              "minLevel": 6,
+              "summary": "Reaction intercept: move toward attacker and strike judged quarry."
+            },
+            {
+              "name": "Divine Executioner",
+              "minLevel": 8,
+              "summary": "Hour-long avatar of decisive justice."
+            }
+          ]
         },
         {
           "id": "anathema",
           "name": "Anathema",
           "summary": "Paladins wishing to end immediate threats posed by evil creatures and who don’t mind the stains of close dealings with such creatures swear an oath of Anathema. These",
-          "rulesUrl": "rules/class-abilities/paladin.html#anathema"
+          "rulesUrl": "rules/class-abilities/paladin.html#anathema",
+          "features": [
+            {
+              "name": "Anathema Oath Spells",
+              "minLevel": 2,
+              "summary": "You gain oath spells at the paladin levels listed in the"
+            }
+          ]
         },
         {
           "id": "safekeeping",
           "name": "Safekeeping",
           "summary": "Swearing an oath of Safekeeping binds a paladin to a person, place, or object, which they steadfastly guard. These paladins might change the subjects of their protection, but",
-          "rulesUrl": "rules/class-abilities/paladin.html#safekeeping"
+          "rulesUrl": "rules/class-abilities/paladin.html#safekeeping",
+          "features": [
+            {
+              "name": "Channel",
+              "minLevel": 2,
+              "summary": "Death Domain Spells, Death’s Sentinel"
+            },
+            {
+              "name": "Channel Divinity: Divine Blockade",
+              "minLevel": 2,
+              "summary": "As a bonus action, you can ward an object or space, no "
+            }
+          ]
         },
         {
           "id": "unbound",
           "name": "Unbound",
           "summary": "Paladins who have witnessed duplicity in their leaders or that feel taken advantage of often swear an oath of the Unbound. They saw their leaders’ corruption and blasé",
-          "rulesUrl": "rules/class-abilities/paladin.html#unbound"
+          "rulesUrl": "rules/class-abilities/paladin.html#unbound",
+          "features": [
+            {
+              "name": "Channel Divinity: Forceful Unyoking",
+              "minLevel": 2,
+              "summary": "As an action, you can present your holy symbol and utter "
+            }
+          ]
         }
       ]
     },
@@ -589,36 +2077,203 @@
       "spellcasting": "Primordial spells known (half caster).",
       "rulesUrl": "rules/classes.html#ranger",
       "abilitiesUrl": "rules/class-abilities/ranger.html",
+      "abilities": [
+        {
+          "name": "Explorer",
+          "minLevel": 1,
+          "summary": "Unmatched wilderness mobility."
+        },
+        {
+          "name": "Mystic Mark",
+          "minLevel": 1,
+          "summary": "Mark quarry for extra damage."
+        },
+        {
+          "name": "Martial Action",
+          "minLevel": 2,
+          "summary": "Aim or Quick Strike as second action."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 2,
+          "summary": "Primordial spells known."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or martial/utility talent."
+        },
+        {
+          "name": "Multiattack",
+          "minLevel": 3,
+          "summary": "Two attacks per Attack action."
+        },
+        {
+          "name": "Empowered Mark",
+          "minLevel": 4,
+          "summary": "Sense and strike your quarry."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Path of the Predator or Sage."
+        },
+        {
+          "name": "Stalker's Step",
+          "minLevel": 5,
+          "summary": "Vanish in natural cover."
+        },
+        {
+          "name": "Keensense",
+          "minLevel": 7,
+          "summary": "Hearing-based blindsight."
+        },
+        {
+          "name": "Strider",
+          "minLevel": 8,
+          "summary": "Move without provoking opportunity attacks."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Wisdom guides every blow against your mark."
+        }
+      ],
       "subclasses": [
         {
           "id": "hunter",
           "name": "Hunter",
           "summary": "Slayer of supernatural predators threatening the wilds.",
-          "rulesUrl": "rules/class-abilities/ranger.html#hunter"
+          "rulesUrl": "rules/class-abilities/ranger.html#hunter",
+          "features": [
+            {
+              "name": "Hunter Calling Spells",
+              "minLevel": 2,
+              "summary": "Always-known hunter spells."
+            },
+            {
+              "name": "Killer Instinct",
+              "minLevel": 2,
+              "summary": "Learn target resistances and vulnerabilities."
+            },
+            {
+              "name": "Relentless Pursuit",
+              "minLevel": 2,
+              "summary": "Extra damage vs. wounded quarry."
+            },
+            {
+              "name": "Favored Foe",
+              "minLevel": 4,
+              "summary": "Prepare against a creature type after research."
+            },
+            {
+              "name": "No Escape",
+              "minLevel": 6,
+              "summary": "Teleport to marked prey that tries to flee."
+            },
+            {
+              "name": "Predator's Shield",
+              "minLevel": 8,
+              "summary": "Resistance to damage from a seen attacker."
+            }
+          ]
         },
         {
           "id": "pack-master",
           "name": "Pack Master",
           "summary": "Lead beast companions and coordinated pack tactics.",
-          "rulesUrl": "rules/class-abilities/ranger.html#pack-master"
+          "rulesUrl": "rules/class-abilities/ranger.html#pack-master",
+          "features": [
+            {
+              "name": "Beast Spirit",
+              "minLevel": 2,
+              "summary": "Ritual-bound beast spirit companion (avian, agile, aquatic, or sturdy)."
+            },
+            {
+              "name": "Life Link",
+              "minLevel": 2,
+              "summary": "Reaction: take your companion's damage."
+            },
+            {
+              "name": "Pack Master Calling Spells",
+              "minLevel": 2,
+              "summary": "Always-known pack master calling spells."
+            },
+            {
+              "name": "Shared Mark",
+              "minLevel": 4,
+              "summary": "Companion attacks are magical; extra damage vs Mystic Mark."
+            },
+            {
+              "name": "Soul Bond",
+              "minLevel": 6,
+              "summary": "Share spell targeting and delivery with your spirit."
+            },
+            {
+              "name": "Undying Friendship",
+              "minLevel": 8,
+              "summary": "Spirit sacrifice restores you at 0 Wounds."
+            }
+          ]
         },
         {
           "id": "arrow-binder",
           "name": "Arrow Binder",
           "summary": "Arrow binders are rangers who have melded their mastery of the wilds with their mastery of the bow. They channel primordial magic into their ammunition, unleashing spell",
-          "rulesUrl": "rules/class-abilities/ranger.html#arrow-binder"
+          "rulesUrl": "rules/class-abilities/ranger.html#arrow-binder",
+          "features": [
+            {
+              "name": "Arrow Binder Calling Spells",
+              "minLevel": 2,
+              "summary": "You gain calling spells at the ranger levels listed in the"
+            },
+            {
+              "name": "Bind Spell",
+              "minLevel": 2,
+              "summary": "As an action, you can expend a spell slot to cast a"
+            }
+          ]
         },
         {
           "id": "shadow",
           "name": "Shadow",
           "summary": "The Shadow’s calling is a rare one, often drawing in rangers who have lost much to the world’s monsters. Such rangers draw on the gloom of night and the dark of sunless caves",
-          "rulesUrl": "rules/class-abilities/ranger.html#shadow"
+          "rulesUrl": "rules/class-abilities/ranger.html#shadow",
+          "features": [
+            {
+              "name": "Night’s Gaze",
+              "minLevel": 2,
+              "summary": "Your attunement to the dark corners of the world sharpens "
+            },
+            {
+              "name": "Predator’s Strike",
+              "minLevel": 2,
+              "summary": "You have advantage on attack rolls against surprised "
+            }
+          ]
         },
         {
           "id": "trailblazer",
           "name": "Trailblazer",
           "summary": "Trailblazers lead expeditions into the unknown and guard travelers through the most dangerous wilds. They are unparalleled experts of the natural world, navigating",
-          "rulesUrl": "rules/class-abilities/ranger.html#trailblazer"
+          "rulesUrl": "rules/class-abilities/ranger.html#trailblazer",
+          "features": [
+            {
+              "name": "Expert Guide",
+              "minLevel": 2,
+              "summary": "You gain proficiency in the Nature and Survival skills. If "
+            },
+            {
+              "name": "Focus Fire",
+              "minLevel": 2,
+              "summary": "When you mark a creature with your Mystic Mark feature "
+            },
+            {
+              "name": "Trailblazer",
+              "minLevel": 2,
+              "summary": "You gain calling spells at the ranger levels listed in the"
+            }
+          ]
         }
       ]
     },
@@ -634,36 +2289,218 @@
       "spellcasting": null,
       "rulesUrl": "rules/classes.html#rogue",
       "abilitiesUrl": "rules/class-abilities/rogue.html",
+      "abilities": [
+        {
+          "name": "Expertise",
+          "minLevel": 1,
+          "summary": "Advantage on chosen skill checks."
+        },
+        {
+          "name": "Sneak Attack",
+          "minLevel": 1,
+          "summary": "Extra precision damage once per turn."
+        },
+        {
+          "name": "Thieves' Cant",
+          "minLevel": 1,
+          "summary": "Secret criminal dialect."
+        },
+        {
+          "name": "Cunning Action",
+          "minLevel": 2,
+          "summary": "Dash, Disengage, or Hide as a free action."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a utility talent."
+        },
+        {
+          "name": "Uncanny Dodge",
+          "minLevel": 3,
+          "summary": "Halve damage from one attack."
+        },
+        {
+          "name": "Evasion",
+          "minLevel": 4,
+          "summary": "Negate area damage on successful saves."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Escape Artist or Jack of All Trades."
+        },
+        {
+          "name": "Reliable Talent",
+          "minLevel": 5,
+          "summary": "Treat low rolls as 10 on proficient checks."
+        },
+        {
+          "name": "Precise Critical",
+          "minLevel": 6,
+          "summary": "Critical hits on 19–20 with finesse/ranged."
+        },
+        {
+          "name": "Keensense",
+          "minLevel": 7,
+          "summary": "Hearing-based blindsight 10 feet."
+        },
+        {
+          "name": "Elusive",
+          "minLevel": 9,
+          "summary": "Attackers rarely have advantage against you."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Turn failure into success."
+        }
+      ],
       "subclasses": [
         {
           "id": "enforcer",
           "name": "Enforcer",
           "summary": "Intimidation, control, and ruthless precision.",
-          "rulesUrl": "rules/class-abilities/rogue.html#enforcer"
+          "rulesUrl": "rules/class-abilities/rogue.html#enforcer",
+          "features": [
+            {
+              "name": "Ambush",
+              "minLevel": 2,
+              "summary": "First-round advantage; auto-crit vs surprised foes."
+            },
+            {
+              "name": "Cold-Blooded",
+              "minLevel": 2,
+              "summary": "Bonus attack when you drop a foe."
+            },
+            {
+              "name": "Expanded Talent List",
+              "minLevel": 2,
+              "summary": "Martial or utility talents on Improvement."
+            },
+            {
+              "name": "Brawler",
+              "minLevel": 4,
+              "summary": "Sneak Attack in melee without ally adjacency; unarmed eligible."
+            },
+            {
+              "name": "Ready to Rumble",
+              "minLevel": 6,
+              "summary": "Can't be surprised; first-turn edge when combat begins."
+            },
+            {
+              "name": "Kill Shot",
+              "minLevel": 8,
+              "summary": "Reroll Sneak Attack dice; Sneak Attack on opportunity attacks."
+            }
+          ]
         },
         {
           "id": "thief",
           "name": "Thief",
           "summary": "Climb, appraise, and strike before foes react.",
-          "rulesUrl": "rules/class-abilities/rogue.html#thief"
+          "rulesUrl": "rules/class-abilities/rogue.html#thief",
+          "features": [
+            {
+              "name": "Fast Hands",
+              "minLevel": 2,
+              "summary": "Cunning Action can sleight of hand, use object, or pick locks."
+            },
+            {
+              "name": "Second-Story Work",
+              "minLevel": 2,
+              "summary": "Climbing speed and improved jumps."
+            },
+            {
+              "name": "Appraising Eye",
+              "minLevel": 4,
+              "summary": "Identify value and magic of objects."
+            },
+            {
+              "name": "Trap Specialist",
+              "minLevel": 6,
+              "summary": "Reaction disarm traps including magical ones."
+            },
+            {
+              "name": "Thief's Reflexes",
+              "minLevel": 8,
+              "summary": "Two turns in the first round of combat."
+            }
+          ]
         },
         {
           "id": "con-arcanist",
           "name": "Con Arcanist",
           "summary": "You add magic to your bag of tricks to confound your foes or relieve others of their possessions. Your spellcasting allows you to perform more dangerous stunts from a distance.",
-          "rulesUrl": "rules/class-abilities/rogue.html#con-arcanist"
+          "rulesUrl": "rules/class-abilities/rogue.html#con-arcanist",
+          "features": [
+            {
+              "name": "Con Arcanist Feature",
+              "minLevel": 2,
+              "summary": "Con Arcanist subclass feature from ToV Player's Guide 2."
+            }
+          ]
         },
         {
           "id": "nightblade",
           "name": "Nightblade",
           "summary": "Instead of relying on physical weapons, you draw from your inner resolve to manifest soul-bound knives. As you progress in power, you can use these knives to impose your",
-          "rulesUrl": "rules/class-abilities/rogue.html#nightblade"
+          "rulesUrl": "rules/class-abilities/rogue.html#nightblade",
+          "features": [
+            {
+              "name": "Psychic Blade",
+              "minLevel": 2,
+              "summary": "You manifest a portion of your soul into psychic blades."
+            },
+            {
+              "name": "Psychic Bulwark",
+              "minLevel": 2,
+              "summary": "You have spent time honing the power of your mind. You "
+            },
+            {
+              "name": "Enhanced Blades (+1)",
+              "minLevel": 4,
+              "summary": "Your psychic blade becomes magical, and you gain a +1 "
+            },
+            {
+              "name": "Home In",
+              "minLevel": 6,
+              "summary": "Your psychic blades now act as beacons. The range of your"
+            }
+          ]
         },
         {
           "id": "trapsmith",
           "name": "Trapsmith",
           "summary": "Some rogues focus all their attention on understanding traps. This fixation makes them better at avoiding dangers and keeping their companions safe. Trapsmith rogues also",
-          "rulesUrl": "rules/class-abilities/rogue.html#trapsmith"
+          "rulesUrl": "rules/class-abilities/rogue.html#trapsmith",
+          "features": [
+            {
+              "name": "Makeshift Trap",
+              "minLevel": 2,
+              "summary": "You can spend 1 minute crafting a simple, makeshift trap, "
+            },
+            {
+              "name": "Trap Expertise",
+              "minLevel": 2,
+              "summary": "You have advantage on checks to find or notice traps, "
+            },
+            {
+              "name": "Rework Trap",
+              "minLevel": 4,
+              "summary": "When you disarm a trap you didn’t make or set, you can "
+            },
+            {
+              "name": "Improved Traps",
+              "minLevel": 6,
+              "summary": "You can now create a trap as an action and set it as a bonus "
+            },
+            {
+              "name": "Trap Mastery",
+              "minLevel": 8,
+              "summary": "When you fail to disarm a trap that automatically triggers "
+            }
+          ]
         }
       ]
     },
@@ -679,36 +2516,173 @@
       "spellcasting": "Arcane spells known. Sorcery points for metamagic and flexible casting.",
       "rulesUrl": "rules/classes.html#sorcerer",
       "abilitiesUrl": "rules/class-abilities/sorcerer.html",
+      "abilities": [
+        {
+          "name": "Font of Magic",
+          "minLevel": 1,
+          "summary": "Internal wellspring of sorcery points."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 1,
+          "summary": "Arcane spells known."
+        },
+        {
+          "name": "Metamagic",
+          "minLevel": 2,
+          "summary": "Twist spells with sorcery points."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a magic talent."
+        },
+        {
+          "name": "Sorcerous Renewal",
+          "minLevel": 3,
+          "summary": "Recover sorcery points on short rest."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Arcane Instruction or Innate Spell."
+        },
+        {
+          "name": "Devour Spell",
+          "minLevel": 7,
+          "summary": "Absorb hostile spell energy."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Share spell effects with another target."
+        }
+      ],
       "subclasses": [
         {
           "id": "chaos",
           "name": "Chaos",
           "summary": "Wild surges of uncontrolled arcane power.",
-          "rulesUrl": "rules/class-abilities/sorcerer.html#chaos"
+          "rulesUrl": "rules/class-abilities/sorcerer.html#chaos",
+          "features": [
+            {
+              "name": "Chaos Manifestation",
+              "minLevel": 2,
+              "summary": "Random surge on crit or dropping foes with spell attacks."
+            },
+            {
+              "name": "Chaos Origin Spells",
+              "minLevel": 2,
+              "summary": "Always-known chaos origin spells."
+            },
+            {
+              "name": "Volatile Magic",
+              "minLevel": 2,
+              "summary": "Leveled spells may trigger extra volatile effects."
+            },
+            {
+              "name": "Embrace Chaos",
+              "minLevel": 4,
+              "summary": "Bonus action: suffer a volatile effect for sorcery points or temp Wounds."
+            },
+            {
+              "name": "Inflict Disorder",
+              "minLevel": 6,
+              "summary": "Redirect volatile effects onto attackers."
+            },
+            {
+              "name": "Apotheosis of Discord",
+              "minLevel": 8,
+              "summary": "6th-circle+ spells trigger a minute of chaotic mastery."
+            }
+          ]
         },
         {
           "id": "draconic",
           "name": "Draconic",
           "summary": "Innate power from draconic ancestry.",
-          "rulesUrl": "rules/class-abilities/sorcerer.html#draconic"
+          "rulesUrl": "rules/class-abilities/sorcerer.html#draconic",
+          "features": [
+            {
+              "name": "Draconic Resilience",
+              "minLevel": 2,
+              "summary": "Natural AC and extra Max Wounds."
+            },
+            {
+              "name": "Dragon Ancestor",
+              "minLevel": 2,
+              "summary": "Draconic language and affinity; origin spells by dragon type."
+            },
+            {
+              "name": "Elemental Affinity",
+              "minLevel": 4,
+              "summary": "Add Willpower modifier to one damage roll of your ancestry type per cast."
+            },
+            {
+              "name": "Imperious Wings",
+              "minLevel": 6,
+              "summary": "Sprout wings for fly speed."
+            },
+            {
+              "name": "Draconic Vengeance",
+              "minLevel": 8,
+              "summary": "Brand a foe vulnerable to your element."
+            }
+          ]
         },
         {
           "id": "abominable",
           "name": "Abominable",
           "summary": "You receive your magic from the primordial beings who existed before the creation of reality and that remain uncaring about its existence or their horrific",
-          "rulesUrl": "rules/class-abilities/sorcerer.html#abominable"
+          "rulesUrl": "rules/class-abilities/sorcerer.html#abominable",
+          "features": [
+            {
+              "name": "Abominable Origin Spells",
+              "minLevel": 2,
+              "summary": "You gain origin spells at the sorcerer levels listed in "
+            },
+            {
+              "name": "Physical",
+              "minLevel": 2,
+              "summary": "Your body undergoes subtle transformations as you "
+            }
+          ]
         },
         {
           "id": "cyclonic",
           "name": "Cyclonic",
           "summary": "The power of the storm thunders within you. The magic that courses through you is as inescapable as a blizzard, as undeniable as a hurricane. Highly prized as sailors",
-          "rulesUrl": "rules/class-abilities/sorcerer.html#cyclonic"
+          "rulesUrl": "rules/class-abilities/sorcerer.html#cyclonic",
+          "features": [
+            {
+              "name": "Cyclonic Origin Spells",
+              "minLevel": 2,
+              "summary": "You gain origin spells at the sorcerer levels listed in the"
+            },
+            {
+              "name": "Stormborn",
+              "minLevel": 2,
+              "summary": "The storm magic within you is tied forever to the elemental "
+            }
+          ]
         },
         {
           "id": "sacred",
           "name": "Sacred",
           "summary": "Your magical power derives from a deity. An avatar or a powerful celestial or fiendish proxy might feature in your distant ancestry, or you might be linked to a major",
-          "rulesUrl": "rules/class-abilities/sorcerer.html#sacred"
+          "rulesUrl": "rules/class-abilities/sorcerer.html#sacred",
+          "features": [
+            {
+              "name": "Divine Providence",
+              "minLevel": 2,
+              "summary": "Your divine nature grants you a minor amount of grace."
+            },
+            {
+              "name": "Metamagic: Divine",
+              "minLevel": 2,
+              "summary": "You gain the following unique option for your Metamagic "
+            }
+          ]
         }
       ]
     },
@@ -724,42 +2698,216 @@
       "spellcasting": "Arcane spells (pact magic). Few slots, short-rest recovery. Invocations at 2nd level.",
       "rulesUrl": "rules/classes.html#warlock",
       "abilitiesUrl": "rules/class-abilities/warlock.html",
+      "abilities": [
+        {
+          "name": "Eldritch Invocations",
+          "minLevel": 1,
+          "summary": "Customize your pact with invocations."
+        },
+        {
+          "name": "Pact Magic",
+          "minLevel": 1,
+          "summary": "Few slots, short-rest recovery."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a magic talent."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Warlock heroic boon per BFRD."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Warlock epic boon per BFRD."
+        }
+      ],
       "subclasses": [
         {
           "id": "archfey",
           "name": "Archfey",
           "summary": "Bargains with capricious fey lords.",
-          "rulesUrl": "rules/class-abilities/warlock.html#archfey"
+          "rulesUrl": "rules/class-abilities/warlock.html#archfey",
+          "features": [
+            {
+              "name": "Archfey Pact Spells",
+              "minLevel": 2,
+              "summary": "Always-known archfey pact spells."
+            },
+            {
+              "name": "Fey Presence",
+              "minLevel": 2,
+              "summary": "Action: charm or frighten creatures near you."
+            },
+            {
+              "name": "Misty Escape",
+              "minLevel": 4,
+              "summary": "Turn invisible and teleport when hit."
+            },
+            {
+              "name": "Beguiling Defenses",
+              "minLevel": 6,
+              "summary": "Immune to charm; charmer must save or be charmed by you."
+            },
+            {
+              "name": "Dark Delirium",
+              "minLevel": 8,
+              "summary": "Trap a foe in a fey illusion."
+            }
+          ]
         },
         {
           "id": "fiend",
           "name": "Fiend",
           "summary": "Power from a greater fiend patron.",
-          "rulesUrl": "rules/class-abilities/warlock.html#fiend"
+          "rulesUrl": "rules/class-abilities/warlock.html#fiend",
+          "features": [
+            {
+              "name": "Dark One's Blessing",
+              "minLevel": 2,
+              "summary": "Temp HP when foes fall nearby."
+            },
+            {
+              "name": "Fiend Pact Spells",
+              "minLevel": 2,
+              "summary": "Always-known fiend pact spells."
+            },
+            {
+              "name": "Dark One's Own Luck",
+              "minLevel": 4,
+              "summary": "Add 1d10 to a failed check or save."
+            },
+            {
+              "name": "Fiendish Resilience",
+              "minLevel": 6,
+              "summary": "Resistance to a chosen damage type."
+            },
+            {
+              "name": "Hurl Through Hell",
+              "minLevel": 8,
+              "summary": "Banish attacker through a nightmare."
+            }
+          ]
         },
         {
           "id": "great-old-one",
           "name": "Great Old One",
           "summary": "Whispers from beyond the stars.",
-          "rulesUrl": "rules/class-abilities/warlock.html#great-old-one"
+          "rulesUrl": "rules/class-abilities/warlock.html#great-old-one",
+          "features": [
+            {
+              "name": "Awakened Mind",
+              "minLevel": 2,
+              "summary": "Telepathy with creatures you can see."
+            },
+            {
+              "name": "Great Old One Pact Spells",
+              "minLevel": 2,
+              "summary": "Always-known GOO pact spells."
+            },
+            {
+              "name": "Entropic Ward",
+              "minLevel": 4,
+              "summary": "Impose disadvantage on an attack against you."
+            },
+            {
+              "name": "Thought Shield",
+              "minLevel": 6,
+              "summary": "Psychic resistance; reflect psychic damage to attackers."
+            },
+            {
+              "name": "Create Thrall",
+              "minLevel": 8,
+              "summary": "Permanently charm a humanoid (until broken)."
+            }
+          ]
         },
         {
           "id": "archon",
           "name": "Archon",
           "summary": "Your patron is an otherworldly being bound to the forces of law and order. Archon patrons relentlessly pursue whichever cosmic plan guides their path, eliminating anything that",
-          "rulesUrl": "rules/class-abilities/warlock.html#archon"
+          "rulesUrl": "rules/class-abilities/warlock.html#archon",
+          "features": [
+            {
+              "name": "Archon Pact Spells",
+              "minLevel": 2,
+              "summary": "You gain pact spells at the warlock levels listed in the"
+            },
+            {
+              "name": "Equalize",
+              "minLevel": 2,
+              "summary": "As a reaction when you or a creature you can see would "
+            },
+            {
+              "name": "Restore Efficiency",
+              "minLevel": 4,
+              "summary": "As a bonus action, you can expend a Wyrd spell slot of "
+            },
+            {
+              "name": "Entropic Dispersal",
+              "minLevel": 6,
+              "summary": "As a reaction when you take damage, you can disperse "
+            },
+            {
+              "name": "Invoke Order",
+              "minLevel": 8,
+              "summary": "You can call upon your patron to correct imbalances that "
+            }
+          ]
         },
         {
           "id": "elemental-regent",
           "name": "Elemental Regent",
           "summary": "Your patron is an elemental entity with dominion over a sizeable territory within its elemental plane. You are one of its elemental representatives on the Material Plane, and",
-          "rulesUrl": "rules/class-abilities/warlock.html#elemental-regent"
+          "rulesUrl": "rules/class-abilities/warlock.html#elemental-regent",
+          "features": [
+            {
+              "name": "Elemental Blast",
+              "minLevel": 2,
+              "summary": "Whenever you use your Eldritch Blast feature (see Player’s"
+            },
+            {
+              "name": "Elemental Regent Pact",
+              "minLevel": 2,
+              "summary": "You gain pact spells at the warlock levels listed in the"
+            }
+          ]
         },
         {
           "id": "fey-noble",
           "name": "Fey Noble",
           "summary": "Your patron is an immortal fey, one whose existence predates the advent of mortals. The patron’s intentions remain unknown to you, or it might deceive you about",
-          "rulesUrl": "rules/class-abilities/warlock.html#fey-noble"
+          "rulesUrl": "rules/class-abilities/warlock.html#fey-noble",
+          "features": [
+            {
+              "name": "Fey Noble Pact Spells",
+              "minLevel": 2,
+              "summary": "You gain pact spells at the warlock levels listed in the Fey"
+            },
+            {
+              "name": "Fey Presence",
+              "minLevel": 2,
+              "summary": "Your patron’s power inures you to fey trickery and allows "
+            },
+            {
+              "name": "Death Ruse",
+              "minLevel": 4,
+              "summary": "As a reaction when you take damage, you can fall prone "
+            },
+            {
+              "name": "Emotional Redirection",
+              "minLevel": 6,
+              "summary": "The emotional frivolity of the fey has steeled you against "
+            },
+            {
+              "name": "Induce Fugue State",
+              "minLevel": 8,
+              "summary": "As an action, you can create an illusory scenario that "
+            }
+          ]
         }
       ]
     },
@@ -775,36 +2923,228 @@
       "spellcasting": "Arcane spells (prepared from spellbook). Rituals and rote spells.",
       "rulesUrl": "rules/classes.html#wizard",
       "abilitiesUrl": "rules/class-abilities/wizard.html",
+      "abilities": [
+        {
+          "name": "Arcane Recovery",
+          "minLevel": 1,
+          "summary": "Recover Spell Power on a short rest."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 1,
+          "summary": "Prepared Arcane spells from spellbook."
+        },
+        {
+          "name": "Magic Sense",
+          "minLevel": 2,
+          "summary": "Detect magic within 30 feet."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a magic talent."
+        },
+        {
+          "name": "Rote Spell",
+          "minLevel": 3,
+          "summary": "Always-prepared signature spells."
+        },
+        {
+          "name": "Superior Recovery",
+          "minLevel": 4,
+          "summary": "Swap prepared spells during Arcane Recovery."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Rite of the Ritualist or Source Master."
+        },
+        {
+          "name": "Spellguard",
+          "minLevel": 7,
+          "summary": "Resist hostile magic."
+        },
+        {
+          "name": "Spell Mastery",
+          "minLevel": 9,
+          "summary": "Cast rote spells without spending slots."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Chance to recover spent spell power."
+        }
+      ],
       "subclasses": [
         {
           "id": "battle-mage",
           "name": "Battle Mage",
           "summary": "Arcane offense with martial discipline.",
-          "rulesUrl": "rules/class-abilities/wizard.html#battle-mage"
+          "rulesUrl": "rules/class-abilities/wizard.html#battle-mage",
+          "features": [
+            {
+              "name": "Expanded Talent List",
+              "minLevel": 2,
+              "summary": "Magic or martial talents on Improvement."
+            },
+            {
+              "name": "Spell Ward",
+              "minLevel": 2,
+              "summary": "AC and physical resistance after casting."
+            },
+            {
+              "name": "Tactical Caster",
+              "minLevel": 2,
+              "summary": "Allies immune to your damaging spells."
+            },
+            {
+              "name": "Contingency Plan",
+              "minLevel": 4,
+              "summary": "Redirect missed spell attack to another target."
+            },
+            {
+              "name": "Blasting Power",
+              "minLevel": 6,
+              "summary": "Empowered spell damage after successful saves."
+            },
+            {
+              "name": "Counterstrike",
+              "minLevel": 8,
+              "summary": "Punish creatures that save against your spells."
+            }
+          ]
         },
         {
           "id": "cantrip-adept",
           "name": "Cantrip Adept",
           "summary": "Cantrip mastery and ritual ingenuity.",
-          "rulesUrl": "rules/class-abilities/wizard.html#cantrip-adept"
+          "rulesUrl": "rules/class-abilities/wizard.html#cantrip-adept",
+          "features": [
+            {
+              "name": "Arcane Alacrity",
+              "minLevel": 2,
+              "summary": "Cast action cantrips as bonus actions."
+            },
+            {
+              "name": "Cantrip Polymath",
+              "minLevel": 2,
+              "summary": "Learn cantrips from any magic source."
+            },
+            {
+              "name": "Versatile Cantrips",
+              "minLevel": 4,
+              "summary": "Swap one cantrip after each rest."
+            },
+            {
+              "name": "Potent Cantrip",
+              "minLevel": 6,
+              "summary": "Add Insight to one cantrip damage roll."
+            },
+            {
+              "name": "Empowered Cantrips",
+              "minLevel": 8,
+              "summary": "Maximum damage on cantrips."
+            }
+          ]
         },
         {
           "id": "arcanist",
           "name": "Arcanist",
           "summary": "Among wizards, who might mollify their curiosity with any manner of research, the Arcanist is often considered the most preoccupied with the empirical and esoteric",
-          "rulesUrl": "rules/class-abilities/wizard.html#arcanist"
+          "rulesUrl": "rules/class-abilities/wizard.html#arcanist",
+          "features": [
+            {
+              "name": "Economical Transcription",
+              "minLevel": 2,
+              "summary": "Your ability to collect, decipher, and recall spells is "
+            },
+            {
+              "name": "Swift Ritual",
+              "minLevel": 2,
+              "summary": "As an action, you can cast an Arcane ritual that you have "
+            },
+            {
+              "name": "Arcane Conflux",
+              "minLevel": 4,
+              "summary": "Each time you miss a spell attack roll and for each creature "
+            },
+            {
+              "name": "Eidetic Scribe",
+              "minLevel": 6,
+              "summary": "As a reaction when a creature that you can see and hear "
+            },
+            {
+              "name": "Mastered Spell",
+              "minLevel": 8,
+              "summary": "As part of a long rest, you can select one non‑ritual "
+            }
+          ]
         },
         {
           "id": "necromancer",
           "name": "Necromancer",
           "summary": "Some wizards are naturally drawn to necromancy, and others are turned to it by trauma—learning the incredible power of using the dead to do their bidding as they attempt",
-          "rulesUrl": "rules/class-abilities/wizard.html#necromancer"
+          "rulesUrl": "rules/class-abilities/wizard.html#necromancer",
+          "features": [
+            {
+              "name": "Reanimation Rites",
+              "minLevel": 2,
+              "summary": "Your study of death and the Undead has made you adept at "
+            },
+            {
+              "name": "Undead Thrall",
+              "minLevel": 2,
+              "summary": "You can spend 1 minute touching a pile of bones or the "
+            },
+            {
+              "name": "Enhanced Undead",
+              "minLevel": 4,
+              "summary": "You can cast the animate dead ritual spell as an action instead "
+            },
+            {
+              "name": "Necromantic Reversal",
+              "minLevel": 6,
+              "summary": "Necromantic Reversal — Necromancer subclass feature."
+            },
+            {
+              "name": "Monstrous Creations",
+              "minLevel": 8,
+              "summary": "When you cast the animate dead ritual spell, you can now "
+            }
+          ]
         },
         {
           "id": "summoner",
           "name": "Summoner",
           "summary": "Every good adventurer knows that surrounding yourself with quality companions is a must. Summoners know that quantity is just as important. Why put yourself in jeopardy",
-          "rulesUrl": "rules/class-abilities/wizard.html#summoner"
+          "rulesUrl": "rules/class-abilities/wizard.html#summoner",
+          "features": [
+            {
+              "name": "Conjuration Specialist",
+              "minLevel": 2,
+              "summary": "You are adept at using magic that creates or summons "
+            },
+            {
+              "name": "Unbreakable Focus",
+              "minLevel": 2,
+              "summary": "You have advantage on CON saves to maintain "
+            },
+            {
+              "name": "Master Summoner",
+              "minLevel": 4,
+              "summary": "You can have one additional spell from your Rote Spell "
+            },
+            {
+              "name": "Synchronized Companions",
+              "minLevel": 6,
+              "summary": "A friendly creature that isn’t a creature you created or "
+            },
+            {
+              "name": "Twinned Conjuration",
+              "minLevel": 8,
+              "summary": "When you cast a spell from the conjuration school that "
+            }
+          ]
         }
       ]
     },
@@ -820,24 +3160,152 @@
       "spellcasting": "Arcane and Divine spells (prepared from libram). Rituals known per level. Must include spells from both lists when learning.",
       "rulesUrl": "rules/classes.html#theurge",
       "abilitiesUrl": "rules/class-abilities/theurge.html",
+      "abilities": [
+        {
+          "name": "Spell Nexus",
+          "minLevel": 1,
+          "summary": "Swap prepared spells through your libram."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 1,
+          "summary": "Prepared Arcane and Divine spells from your libram."
+        },
+        {
+          "name": "Spellcraft",
+          "minLevel": 2,
+          "summary": "Insight dice to manipulate spell outcomes."
+        },
+        {
+          "name": "Summon Libram",
+          "minLevel": 2,
+          "summary": "Sense and recall your libram across planes."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a magic talent."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Careful Craft, Persistent Craft, or Precise Craft."
+        },
+        {
+          "name": "Spell Synthesis",
+          "minLevel": 5,
+          "summary": "Cast Arcane and Divine spells in one turn."
+        },
+        {
+          "name": "Superior Focus",
+          "minLevel": 6,
+          "summary": "Dual concentration on Arcane and Divine spells."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Epic theurge boon from ToV Player's Guide 2."
+        }
+      ],
       "subclasses": [
         {
           "id": "conduit",
           "name": "Conduit",
           "summary": "Exchange vitality for spell power and disrupt enemy magic.",
-          "rulesUrl": "rules/class-abilities/theurge.html#conduit"
+          "rulesUrl": "rules/class-abilities/theurge.html#conduit",
+          "features": [
+            {
+              "name": "Energy Exchange",
+              "minLevel": 2,
+              "summary": "Trade Recovery Points or spell circles for spell recovery or item charges."
+            },
+            {
+              "name": "Mystic Vitality",
+              "minLevel": 2,
+              "summary": "Unspent spell circles become Recovery Points on rest."
+            },
+            {
+              "name": "Metabolize",
+              "minLevel": 4,
+              "summary": "Store incoming energy to upcast a spell."
+            },
+            {
+              "name": "Spell Surge",
+              "minLevel": 6,
+              "summary": "Expend Recovery Points to add spell damage."
+            },
+            {
+              "name": "Nullify",
+              "minLevel": 8,
+              "summary": "Suppress a creature's or item's magic."
+            }
+          ]
         },
         {
           "id": "illuminary",
           "name": "Illuminary",
           "summary": "Inscribe sacred signs and sigils to extend your magic.",
-          "rulesUrl": "rules/class-abilities/theurge.html#illuminary"
+          "rulesUrl": "rules/class-abilities/theurge.html#illuminary",
+          "features": [
+            {
+              "name": "Mystic Scribe",
+              "minLevel": 2,
+              "summary": "Learn languages and artist tools mastery."
+            },
+            {
+              "name": "Sacred Sign",
+              "minLevel": 2,
+              "summary": "Mark allies to cast touch spells at range."
+            },
+            {
+              "name": "Spell Sigil",
+              "minLevel": 4,
+              "summary": "Store spells in inscribed items."
+            },
+            {
+              "name": "Guarding Glyph",
+              "minLevel": 6,
+              "summary": "Marked allies share defensive bonuses."
+            },
+            {
+              "name": "Potent Symbol",
+              "minLevel": 8,
+              "summary": "Cast symbol without cost."
+            }
+          ]
         },
         {
           "id": "source-spinner",
           "name": "Source Spinner",
           "summary": "Unravel and realign the weave of magic.",
-          "rulesUrl": "rules/class-abilities/theurge.html#source-spinner"
+          "rulesUrl": "rules/class-abilities/theurge.html#source-spinner",
+          "features": [
+            {
+              "name": "Magic Theory",
+              "minLevel": 2,
+              "summary": "Bonus Spellcraft on magic knowledge; extra prepared spells."
+            },
+            {
+              "name": "Overwrite",
+              "minLevel": 2,
+              "summary": "End a spell when you cast on the same target."
+            },
+            {
+              "name": "Mystic Realignment",
+              "minLevel": 4,
+              "summary": "Trade spell circles for recovered circles."
+            },
+            {
+              "name": "Unravel",
+              "minLevel": 6,
+              "summary": "Turn failed saves into successes."
+            },
+            {
+              "name": "Spell Loom",
+              "minLevel": 8,
+              "summary": "Manipulate magic in a small area."
+            }
+          ]
         }
       ]
     },
@@ -853,24 +3321,167 @@
       "spellcasting": null,
       "rulesUrl": "rules/classes.html#vanguard",
       "abilitiesUrl": "rules/class-abilities/vanguard.html",
+      "abilities": [
+        {
+          "name": "Born Leader",
+          "minLevel": 1,
+          "summary": "Authority or Community leadership aura."
+        },
+        {
+          "name": "War Banner",
+          "minLevel": 1,
+          "summary": "Mystical battle standard in combat."
+        },
+        {
+          "name": "Stratagems",
+          "minLevel": 2,
+          "summary": "Tactical commands on the battlefield."
+        },
+        {
+          "name": "Support Action",
+          "minLevel": 2,
+          "summary": "Stabilize and rally fallen allies."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a martial talent."
+        },
+        {
+          "name": "Multiattack",
+          "minLevel": 3,
+          "summary": "Two attacks with the Attack action."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Vanguard heroic boon from ToV PG2."
+        },
+        {
+          "name": "War Banner: Lucky Colors",
+          "minLevel": 6,
+          "summary": "Third war banner option."
+        },
+        {
+          "name": "Manifold Tactic",
+          "minLevel": 7,
+          "summary": "Combine two stratagems."
+        },
+        {
+          "name": "Battlefield Resolve",
+          "minLevel": 9,
+          "summary": "Push through pain on the front line."
+        },
+        {
+          "name": "Valiant Commander",
+          "minLevel": 9,
+          "summary": "Extend banner and stratagem range."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Vanguard epic boon from ToV PG2."
+        }
+      ],
       "subclasses": [
         {
           "id": "bulwark",
           "name": "Bulwark",
           "summary": "Battlefield healer and protector with the Surgeon's Standard banner.",
-          "rulesUrl": "rules/class-abilities/vanguard.html#bulwark"
+          "rulesUrl": "rules/class-abilities/vanguard.html#bulwark",
+          "features": [
+            {
+              "name": "Battlefield Healer",
+              "minLevel": 2,
+              "summary": "Fast stabilization and Medicine mastery."
+            },
+            {
+              "name": "War Banner: Surgeon's Standard",
+              "minLevel": 2,
+              "summary": "Healing war banner."
+            },
+            {
+              "name": "Safeguard",
+              "minLevel": 4,
+              "summary": "Protect nearby allies."
+            },
+            {
+              "name": "Turn the Tide",
+              "minLevel": 6,
+              "summary": "Mass healing rally."
+            },
+            {
+              "name": "Bastion of Defense",
+              "minLevel": 8,
+              "summary": "Enhanced safeguard stance."
+            }
+          ]
         },
         {
           "id": "herald",
           "name": "Herald",
           "summary": "Living standard-bearer who teleports allies through battle.",
-          "rulesUrl": "rules/class-abilities/vanguard.html#herald"
+          "rulesUrl": "rules/class-abilities/vanguard.html#herald",
+          "features": [
+            {
+              "name": "Color Guard",
+              "minLevel": 2,
+              "summary": "Move banners and extend stratagem range."
+            },
+            {
+              "name": "War Banner: Stirring Sign",
+              "minLevel": 2,
+              "summary": "Speed and extra attack banner."
+            },
+            {
+              "name": "Regroup",
+              "minLevel": 4,
+              "summary": "Teleport allies within banner range."
+            },
+            {
+              "name": "Double Standard",
+              "minLevel": 6,
+              "summary": "Two banner effects at once."
+            },
+            {
+              "name": "Flag Bearer",
+              "minLevel": 8,
+              "summary": "Unlimited banners and emergency recovery."
+            }
+          ]
         },
         {
           "id": "marshal",
           "name": "Marshal",
           "summary": "Inspiring commander who coordinates allied strikes.",
-          "rulesUrl": "rules/class-abilities/vanguard.html#marshal"
+          "rulesUrl": "rules/class-abilities/vanguard.html#marshal",
+          "features": [
+            {
+              "name": "Inspiring Leadership",
+              "minLevel": 2,
+              "summary": "Grant advantage via stratagems."
+            },
+            {
+              "name": "War Banner: Banner of Coordination",
+              "minLevel": 2,
+              "summary": "Coordinated attack banner."
+            },
+            {
+              "name": "General's Gambit",
+              "minLevel": 4,
+              "summary": "Spend Recovery Points to fix failed rolls."
+            },
+            {
+              "name": "Comrade in Arms",
+              "minLevel": 6,
+              "summary": "Share advantage and bonus damage."
+            },
+            {
+              "name": "Battlefield Vigor",
+              "minLevel": 8,
+              "summary": "Regain Wounds when bloodied."
+            }
+          ]
         }
       ]
     },
@@ -886,24 +3497,152 @@
       "spellcasting": "Wyrd spells (known, not prepared). Rituals known per level. Coven spells from subclass.",
       "rulesUrl": "rules/classes.html#witch",
       "abilitiesUrl": "rules/class-abilities/witch.html",
+      "abilities": [
+        {
+          "name": "Hex",
+          "minLevel": 1,
+          "summary": "Curse foes with a Hex die."
+        },
+        {
+          "name": "Spellcasting",
+          "minLevel": 1,
+          "summary": "Known Wyrd spells."
+        },
+        {
+          "name": "Shadow Craft",
+          "minLevel": 2,
+          "summary": "Minor illusions and witch-light craft."
+        },
+        {
+          "name": "Spirit Binding",
+          "minLevel": 2,
+          "summary": "Bind helpful spirits."
+        },
+        {
+          "name": "Improvement",
+          "minLevel": 3,
+          "summary": "Ability increases or a magic talent."
+        },
+        {
+          "name": "Greater Hex",
+          "minLevel": 5,
+          "summary": "Hexed foes struggle to hit you."
+        },
+        {
+          "name": "Heroic Boon",
+          "minLevel": 5,
+          "summary": "Witch heroic boon from ToV PG2."
+        },
+        {
+          "name": "Otherworldly Form",
+          "minLevel": 9,
+          "summary": "Brief spirit transformation."
+        },
+        {
+          "name": "Epic Boon",
+          "minLevel": 10,
+          "summary": "Witch epic boon from ToV PG2."
+        }
+      ],
       "subclasses": [
         {
           "id": "crimson-cord",
           "name": "Crimson Cord",
           "summary": "Vitality witch who heals allies and wastes foes with blood magic.",
-          "rulesUrl": "rules/class-abilities/witch.html#crimson-cord"
+          "rulesUrl": "rules/class-abilities/witch.html#crimson-cord",
+          "features": [
+            {
+              "name": "Crimson Cord Coven Spells",
+              "minLevel": 2,
+              "summary": "Always-prepared coven spells."
+            },
+            {
+              "name": "Life Transfer",
+              "minLevel": 2,
+              "summary": "Sacrifice Wounds to heal or harm."
+            },
+            {
+              "name": "Wasting Hex",
+              "minLevel": 2,
+              "summary": "Hexes sap vitality."
+            },
+            {
+              "name": "Sanguine Link",
+              "minLevel": 4,
+              "summary": "Mystical blood bond."
+            },
+            {
+              "name": "Scarlet Web",
+              "minLevel": 8,
+              "summary": "Area life-drain and healing aura."
+            }
+          ]
         },
         {
           "id": "night-song",
           "name": "Night Song",
           "summary": "Predator witch empowered by darkness and night blessings.",
-          "rulesUrl": "rules/class-abilities/witch.html#night-song"
+          "rulesUrl": "rules/class-abilities/witch.html#night-song",
+          "features": [
+            {
+              "name": "Night Blessing",
+              "minLevel": 2,
+              "summary": "Darkvision and nightly predator gifts."
+            },
+            {
+              "name": "Rending Hex",
+              "minLevel": 2,
+              "summary": "Hexed prey takes extra weapon damage."
+            },
+            {
+              "name": "Draining Curse",
+              "minLevel": 4,
+              "summary": "Curse prey and drain their life."
+            },
+            {
+              "name": "Enhanced Blessing",
+              "minLevel": 6,
+              "summary": "Switch blessings on rest; stronger gifts."
+            },
+            {
+              "name": "Apex Predator",
+              "minLevel": 8,
+              "summary": "Full night transformation."
+            }
+          ]
         },
         {
           "id": "twilight-soul",
           "name": "Twilight Soul",
           "summary": "Spirit diplomat with a sentinel companion.",
-          "rulesUrl": "rules/class-abilities/witch.html#twilight-soul"
+          "rulesUrl": "rules/class-abilities/witch.html#twilight-soul",
+          "features": [
+            {
+              "name": "Obscuring Hex",
+              "minLevel": 2,
+              "summary": "Invisible to hexed targets."
+            },
+            {
+              "name": "Spirit Sentinel",
+              "minLevel": 2,
+              "summary": "Tiny spirit scout and spell origin."
+            },
+            {
+              "name": "Ephemeral Shroud",
+              "minLevel": 4,
+              "summary": "Teleport away from attacks."
+            },
+            {
+              "name": "Welcomed Spirits",
+              "minLevel": 6,
+              "summary": "Ritual communion with spirits."
+            },
+            {
+              "name": "Soul Sanctum",
+              "minLevel": 8,
+              "summary": "Spirits shield you and punish foes."
+            }
+          ]
         }
       ]
     }
@@ -916,7 +3655,21 @@
       "body": "<p><strong>Age.</strong> Adulthood within 5 years; lifespan up to a century (some only 20–30 years).</p>\n<p><strong>Size.</strong> Medium or Small (under 4 feet tall → Small).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Animal Instinct.</strong> Proficiency in Perception or Survival.</p>\n<p><strong>Natural Weapons.</strong> Unarmed strikes deal 1 Wound + Fitness modifier (work with your GM on damage type).</p>\n<p><strong>Natural Adaptation.</strong> Choose one: Avian (fly speed = walk), Agile (climb speed = walk; advantage vs. prone), Aquatic (swim speed = walk; hold breath 20 min), or Sturdy (AC 13 + Fitness without armor; count as one size larger for carry capacity).</p>\n<p><em>PG2 expansion:</em> Fossorial (burrow 20 ft through soft earth) or Quillback (reaction quill strike when hit in melee).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#beastkin"
+      "rulesUrl": "rules/lineages.html#beastkin",
+      "features": [
+        {
+          "name": "Animal Instinct",
+          "summary": "Proficiency in Perception or Survival."
+        },
+        {
+          "name": "Natural Weapons",
+          "summary": "Unarmed strikes deal 1 Wound + Fitness modifier (work with your GM on damage type)."
+        },
+        {
+          "name": "Natural Adaptation",
+          "summary": "Choose one: Avian (fly speed = walk), Agile (climb speed = walk; advantage vs. prone), Aquatic (swim speed = walk; hold breath 20 min), or Sturdy (AC 13 +…"
+        }
+      ]
     },
     {
       "id": "dhampir",
@@ -925,7 +3678,21 @@
       "body": "<p>Children of vampires and mortals—compelling or repulsive to those they meet.</p>\n<p><strong>Age.</strong> Mature in late teens; can live up to 750 years.</p>\n<p><strong>Size.</strong> Medium or Small.</p>\n<p><strong>Speed.</strong> 30 feet walk, 30 feet climb (hands free).</p>\n<p><strong>Dark Thirst.</strong> Bite: 1 Wound piercing; optional feed for +1 Wound necrotic, temp Wounds, and advantage on your next attack.</p>\n<p><strong>Darkvision.</strong> 60 feet; disadvantage on Insight (Perception) by sight in sunlight.</p>\n<p><strong>Hybrid Humanoid.</strong> Advantage vs. poisoned and exhaustion checks.</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#dhampir"
+      "rulesUrl": "rules/lineages.html#dhampir",
+      "features": [
+        {
+          "name": "Dark Thirst",
+          "summary": "Bite: 1 Wound piercing; optional feed for +1 Wound necrotic, temp Wounds, and advantage on your next attack."
+        },
+        {
+          "name": "Darkvision",
+          "summary": "60 feet; disadvantage on Insight (Perception) by sight in sunlight."
+        },
+        {
+          "name": "Hybrid Humanoid",
+          "summary": "Advantage vs. poisoned and exhaustion checks."
+        }
+      ]
     },
     {
       "id": "dragonborn",
@@ -934,7 +3701,25 @@
       "body": "<p>Draconic humanoids with breath weapons and scaled hides.</p>\n<p><strong>Age.</strong> Adult by 15; ~80 years.</p>\n<p><strong>Size.</strong> Medium (~6–7 ft, ~300 lb).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Breath Weapon.</strong> Bonus action: 30×5 ft line or 15-ft cone (Fitness save); 1 Wound on fail, none on success; damage type by ancestry; scales at higher levels. Uses = proficiency bonus per long rest.</p>\n<p><strong>Draconic Ancestry.</strong> Black/Copper acid, Blue/Bronze lightning, Brass/Gold/Red fire, Green poison, Silver/White cold, Void necrotic, Yellow radiant.</p>\n<p><strong>Dragon Hide.</strong> Resistance to your ancestry damage type.</p>\n<p><strong>Dragon Sight.</strong> Darkvision 60 ft and keensense 10 ft.</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#dragonborn"
+      "rulesUrl": "rules/lineages.html#dragonborn",
+      "features": [
+        {
+          "name": "Breath Weapon",
+          "summary": "Bonus action: 30×5 ft line or 15-ft cone (Fitness save); 1 Wound on fail, none on success; damage type by ancestry; scales at higher levels. Uses =…"
+        },
+        {
+          "name": "Draconic Ancestry",
+          "summary": "Black/Copper acid, Blue/Bronze lightning, Brass/Gold/Red fire, Green poison, Silver/White cold, Void necrotic, Yellow radiant."
+        },
+        {
+          "name": "Dragon Hide",
+          "summary": "Resistance to your ancestry damage type."
+        },
+        {
+          "name": "Dragon Sight",
+          "summary": "Darkvision 60 ft and keensense 10 ft."
+        }
+      ]
     },
     {
       "id": "drow",
@@ -943,7 +3728,21 @@
       "body": "<p>Variant elf lineage adapted to the underworld.</p>\n<p><strong>Age.</strong> Physical maturity ~20; full maturity ~100; lifespan to 750.</p>\n<p><strong>Size.</strong> Medium.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Arachnid Kismet.</strong> Advantage interacting with spiders and scorpions; when a d20 result includes 8, gain 1 Resolve.</p>\n<p><strong>Superior Darkvision.</strong> 120 feet; disadvantage on Perception by sight in sunlight.</p>\n<p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>",
       "tag": "PG2 variant",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#drow"
+      "rulesUrl": "rules/lineages.html#drow",
+      "features": [
+        {
+          "name": "Arachnid Kismet",
+          "summary": "Advantage interacting with spiders and scorpions; when a d20 result includes 8, gain 1 Resolve."
+        },
+        {
+          "name": "Superior Darkvision",
+          "summary": "120 feet; disadvantage on Perception by sight in sunlight."
+        },
+        {
+          "name": "Trance",
+          "summary": "4 hours of trance replaces sleep."
+        }
+      ]
     },
     {
       "id": "duergar",
@@ -952,7 +3751,21 @@
       "body": "<p>Variant dwarf lineage from the deep underworld.</p>\n<p><strong>Age.</strong> Mature by 20; ~350 years (often shorter in the depths).</p>\n<p><strong>Size.</strong> Medium, 4–5 ft, dense build.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Duergar Resilience.</strong> Advantage vs. charmed or paralyzed; advantage vs. illusions.</p>\n<p><strong>Enlarge.</strong> Bonus action: Large for 1 minute, double weapon damage dice, advantage on Fitness checks/saves (once per long rest).</p>\n<p><strong>Superior Darkvision.</strong> 120 feet.</p>",
       "tag": "PG2 variant",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#duergar"
+      "rulesUrl": "rules/lineages.html#duergar",
+      "features": [
+        {
+          "name": "Duergar Resilience",
+          "summary": "Advantage vs. charmed or paralyzed; advantage vs. illusions."
+        },
+        {
+          "name": "Enlarge",
+          "summary": "Bonus action: Large for 1 minute, double weapon damage dice, advantage on Fitness checks/saves (once per long rest)."
+        },
+        {
+          "name": "Superior Darkvision",
+          "summary": "120 feet."
+        }
+      ]
     },
     {
       "id": "dwarf",
@@ -961,7 +3774,21 @@
       "body": "<p><strong>Age.</strong> Mature ~20; young until 50; ~350 years.</p>\n<p><strong>Size.</strong> Medium, 4–5 ft, broad frame.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Dwarven Resilience.</strong> Advantage vs. poisoned; resistance to poison Wounds.</p>\n<p><strong>Dwarven Toughness.</strong> Max Wounds +1, and +1 Max Wounds each level.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#dwarf"
+      "rulesUrl": "rules/lineages.html#dwarf",
+      "features": [
+        {
+          "name": "Darkvision",
+          "summary": "60 feet."
+        },
+        {
+          "name": "Dwarven Resilience",
+          "summary": "Advantage vs. poisoned; resistance to poison Wounds."
+        },
+        {
+          "name": "Dwarven Toughness",
+          "summary": "Max Wounds +1, and +1 Max Wounds each level."
+        }
+      ]
     },
     {
       "id": "elemental-scion",
@@ -970,7 +3797,21 @@
       "body": "<p>Mortals infused with elemental power (sometimes called jinnborn).</p>\n<p><strong>Age.</strong> Adult ~15; ~75 years (up to 150).</p>\n<p><strong>Size.</strong> Medium, 5–7 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Hybrid Humanoid.</strong> Poison resistance; resistance by adaptation; advantage vs. paralyzed, petrified, poisoned.</p>\n<p><strong>Natural Adaptation.</strong> Earthborn (tremorsense 10 ft, ignore difficult terrain), Fireborn (emit light; +proficiency fire on melee hit), Waterborn (swim speed, squeeze through 1-inch gaps), or Windborn (fly 10 ft hover; hold breath for proficiency bonus hours).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#elemental-scion"
+      "rulesUrl": "rules/lineages.html#elemental-scion",
+      "features": [
+        {
+          "name": "Darkvision",
+          "summary": "60 feet."
+        },
+        {
+          "name": "Hybrid Humanoid",
+          "summary": "Poison resistance; resistance by adaptation; advantage vs. paralyzed, petrified, poisoned."
+        },
+        {
+          "name": "Natural Adaptation",
+          "summary": "Earthborn (tremorsense 10 ft, ignore difficult terrain), Fireborn (emit light; +proficiency fire on melee hit), Waterborn (swim speed, squeeze through 1-inch…"
+        }
+      ]
     },
     {
       "id": "elf",
@@ -979,7 +3820,21 @@
       "body": "<p><strong>Age.</strong> Physical maturity ~20; emotional maturity ~100; up to 750 years.</p>\n<p><strong>Size.</strong> Medium, slender builds.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Heightened Senses.</strong> Advantage on Perception (sight/hearing); see through light obscurement.</p>\n<p><strong>Magic Ancestry.</strong> Advantage vs. charmed; magic can't put you to sleep.</p>\n<p><strong>Trance.</strong> 4 hours of trance replaces sleep.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#elf"
+      "rulesUrl": "rules/lineages.html#elf",
+      "features": [
+        {
+          "name": "Heightened Senses",
+          "summary": "Advantage on Perception (sight/hearing); see through light obscurement."
+        },
+        {
+          "name": "Magic Ancestry",
+          "summary": "Advantage vs. charmed; magic can't put you to sleep."
+        },
+        {
+          "name": "Trance",
+          "summary": "4 hours of trance replaces sleep."
+        }
+      ]
     },
     {
       "id": "gearforged",
@@ -988,7 +3843,25 @@
       "body": "<p>Living minds in mechanical bodies of metal and wood.</p>\n<p><strong>Age.</strong> Soul age varies; body lasts indefinitely with maintenance.</p>\n<p><strong>Size.</strong> Medium or Small (pick a chassis lineage such as human or kobold).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Constructed Vitality.</strong> No eat/drink/breathe; 6-hour dormant rest.</p>\n<p><strong>Hybrid Humanoid.</strong> Disease immune; poison resistance; advantage vs. paralyzed, petrified, poisoned.</p>\n<p><strong>Machine Speech.</strong> Speak and understand Machine Speech.</p>\n<p><strong>Upgrade.</strong> Always Armed (integrated weapons), Bulk Up (Large temporarily), or Quick Fix (temp Wounds when below half Max Wounds).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#gearforged"
+      "rulesUrl": "rules/lineages.html#gearforged",
+      "features": [
+        {
+          "name": "Constructed Vitality",
+          "summary": "No eat/drink/breathe; 6-hour dormant rest."
+        },
+        {
+          "name": "Hybrid Humanoid",
+          "summary": "Disease immune; poison resistance; advantage vs. paralyzed, petrified, poisoned."
+        },
+        {
+          "name": "Machine Speech",
+          "summary": "Speak and understand Machine Speech."
+        },
+        {
+          "name": "Upgrade",
+          "summary": "Always Armed (integrated weapons), Bulk Up (Large temporarily), or Quick Fix (temp Wounds when below half Max Wounds)."
+        }
+      ]
     },
     {
       "id": "goblin",
@@ -997,7 +3870,21 @@
       "body": "<p>Adaptable humanoids found in vast numbers across harsh environments.</p>\n<p><strong>Age.</strong> Adult 14–16; rarely past 100.</p>\n<p><strong>Size.</strong> Small, 3–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Nimble Escape.</strong> Bonus action Disengage or Hide.</p>\n<p><strong>Strength in Numbers.</strong> Extra damage equal to proficiency bonus when an ally is within 5 feet of your target.</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#goblin"
+      "rulesUrl": "rules/lineages.html#goblin",
+      "features": [
+        {
+          "name": "Darkvision",
+          "summary": "60 feet."
+        },
+        {
+          "name": "Nimble Escape",
+          "summary": "Bonus action Disengage or Hide."
+        },
+        {
+          "name": "Strength in Numbers",
+          "summary": "Extra damage equal to proficiency bonus when an ally is within 5 feet of your target."
+        }
+      ]
     },
     {
       "id": "gnoll",
@@ -1006,7 +3893,21 @@
       "body": "<p>Hyena-like humanoids; often found in deserts and port cities.</p>\n<p><strong>Age.</strong> Adult ~12; rarely past 70.</p>\n<p><strong>Size.</strong> Medium, 7–8 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Scent Prey.</strong> Advantage on Survival checks relying on smell.</p>\n<p><strong>Sprinter.</strong> When you Dash, move triple speed (uses per day = proficiency bonus).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#gnoll"
+      "rulesUrl": "rules/lineages.html#gnoll",
+      "features": [
+        {
+          "name": "Darkvision",
+          "summary": "60 feet."
+        },
+        {
+          "name": "Scent Prey",
+          "summary": "Advantage on Survival checks relying on smell."
+        },
+        {
+          "name": "Sprinter",
+          "summary": "When you Dash, move triple speed (uses per day = proficiency bonus)."
+        }
+      ]
     },
     {
       "id": "human",
@@ -1015,7 +3916,13 @@
       "body": "<p><strong>Age.</strong> Adult late teens; rarely past 100.</p>\n<p><strong>Size.</strong> Medium or Small.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Ambitious.</strong> One skill proficiency and one talent (any list, meeting prerequisites).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#human"
+      "rulesUrl": "rules/lineages.html#human",
+      "features": [
+        {
+          "name": "Ambitious",
+          "summary": "One skill proficiency and one talent (any list, meeting prerequisites)."
+        }
+      ]
     },
     {
       "id": "kobold",
@@ -1024,7 +3931,21 @@
       "body": "<p>Small draconic humanoids with mechanical aptitude.</p>\n<p><strong>Age.</strong> Teen adulthood; elderly ~80; rarely 100.</p>\n<p><strong>Size.</strong> Small, or Medium if truescale (~5 ft).</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Tinker's Fascination.</strong> Add 1d8 to tool ability checks.</p>\n<p><strong>Natural Adaptation.</strong> Fierce (Small: react attack when Large+ hits you) or Truescale (Medium: AC 13 + Fitness; one elemental resistance).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#kobold"
+      "rulesUrl": "rules/lineages.html#kobold",
+      "features": [
+        {
+          "name": "Darkvision",
+          "summary": "60 feet."
+        },
+        {
+          "name": "Tinker's Fascination",
+          "summary": "Add 1d8 to tool ability checks."
+        },
+        {
+          "name": "Natural Adaptation",
+          "summary": "Fierce (Small: react attack when Large+ hits you) or Truescale (Medium: AC 13 + Fitness; one elemental resistance)."
+        }
+      ]
     },
     {
       "id": "orc",
@@ -1033,7 +3954,21 @@
       "body": "<p>Resilient explorers driven to travel and survive extremes.</p>\n<p><strong>Age.</strong> Adult within two decades; seldom past 60.</p>\n<p><strong>Size.</strong> Medium, 6–8 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Heightened Senses.</strong> As elf (sight/hearing).</p>\n<p><strong>Orcish Perseverance.</strong> Instead of dying from suffocation or exhaustion levels, enter death-like stasis until healed or destroyed.</p>\n<p><strong>Stalwart.</strong> Make end-of-turn saves at the start of your turn instead.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#orc"
+      "rulesUrl": "rules/lineages.html#orc",
+      "features": [
+        {
+          "name": "Heightened Senses",
+          "summary": "As elf (sight/hearing)."
+        },
+        {
+          "name": "Orcish Perseverance",
+          "summary": "Instead of dying from suffocation or exhaustion levels, enter death-like stasis until healed or destroyed."
+        },
+        {
+          "name": "Stalwart",
+          "summary": "Make end-of-turn saves at the start of your turn instead."
+        }
+      ]
     },
     {
       "id": "rachisan",
@@ -1042,7 +3977,21 @@
       "body": "<p>Plant-featured humanoids resembling ground-grown vegetables.</p>\n<p><strong>Age.</strong> Adult ~5; typically ~50 (up to 100).</p>\n<p><strong>Size.</strong> Small, 3–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Hybrid Humanoid.</strong> Advantage vs. paralyzed, petrified, and exhaustion effects.</p>\n<p><strong>Green Thumb.</strong> +1d8 on plant-related checks; ignore difficult terrain from plant growth.</p>\n<p><strong>Natural Adaptation.</strong> Alliumite (blinding spore reaction), Cruciferan (rest meal heals allies), or Tuberkith (immune blinded; hear while unconscious).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#rachisan"
+      "rulesUrl": "rules/lineages.html#rachisan",
+      "features": [
+        {
+          "name": "Hybrid Humanoid",
+          "summary": "Advantage vs. paralyzed, petrified, and exhaustion effects."
+        },
+        {
+          "name": "Green Thumb",
+          "summary": "+1d8 on plant-related checks; ignore difficult terrain from plant growth."
+        },
+        {
+          "name": "Natural Adaptation",
+          "summary": "Alliumite (blinding spore reaction), Cruciferan (rest meal heals allies), or Tuberkith (immune blinded; hear while unconscious)."
+        }
+      ]
     },
     {
       "id": "sapopova",
@@ -1051,7 +4000,21 @@
       "body": "<p>Amphibious folk with frog or toad traits.</p>\n<p><strong>Age.</strong> Mature ~8; rarely past 50.</p>\n<p><strong>Size.</strong> Small, 2–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet walk, 30 feet swim.</p>\n<p><strong>Amphibian.</strong> Breathe air and water.</p>\n<p><strong>Superior Vision.</strong> Darkvision 60 ft; color in dim light/darkness; advantage locating moving targets.</p>\n<p><strong>Natural Adaptation.</strong> Frogkin (Athletics proficiency; standing long/high jump) or Toadfolk (cheek storage; spit improvised ranged attacks 30 ft).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#sapopova"
+      "rulesUrl": "rules/lineages.html#sapopova",
+      "features": [
+        {
+          "name": "Amphibian",
+          "summary": "Breathe air and water."
+        },
+        {
+          "name": "Superior Vision",
+          "summary": "Darkvision 60 ft; color in dim light/darkness; advantage locating moving targets."
+        },
+        {
+          "name": "Natural Adaptation",
+          "summary": "Frogkin (Athletics proficiency; standing long/high jump) or Toadfolk (cheek storage; spit improvised ranged attacks 30 ft)."
+        }
+      ]
     },
     {
       "id": "sea-elf",
@@ -1060,7 +4023,21 @@
       "body": "<p>Variant elf lineage from undersea realms.</p>\n<p><strong>Age.</strong> As elf.</p>\n<p><strong>Size.</strong> Medium, sleek swimmer's build.</p>\n<p><strong>Speed.</strong> 30 feet walk, swim speed equal to walk; Dash as bonus action while submerged.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Seaborn.</strong> Breathe air and water; comfortable to 0°F; ignore extreme cold hazard.</p>\n<p><strong>Trance.</strong> 4 hours.</p>",
       "tag": "PG2 variant",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#sea-elf"
+      "rulesUrl": "rules/lineages.html#sea-elf",
+      "features": [
+        {
+          "name": "Darkvision",
+          "summary": "60 feet."
+        },
+        {
+          "name": "Seaborn",
+          "summary": "Breathe air and water; comfortable to 0°F; ignore extreme cold hazard."
+        },
+        {
+          "name": "Trance",
+          "summary": "4 hours."
+        }
+      ]
     },
     {
       "id": "shade",
@@ -1069,7 +4046,21 @@
       "body": "<p>Beings caught between life and undeath, formed from memory.</p>\n<p><strong>Age.</strong> Appear as at death; potentially centuries.</p>\n<p><strong>Size.</strong> Medium or Small (living form lineage).</p>\n<p><strong>Speed.</strong> As living form.</p>\n<p><strong>Hybrid Humanoid.</strong> Poison resistance; advantage vs. poisoned and exhaustion.</p>\n<p><strong>Phantasmal Form.</strong> Action: ghostly form 1 minute (resistance to nonmagical B/P/S, pass through creatures/objects, fly 30 ft hover) once per long rest.</p>\n<p><strong>Spectral Sight.</strong> Darkvision 60 ft; see into Ethereal Plane 30 ft (uses = proficiency bonus per long rest).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#shade"
+      "rulesUrl": "rules/lineages.html#shade",
+      "features": [
+        {
+          "name": "Hybrid Humanoid",
+          "summary": "Poison resistance; advantage vs. poisoned and exhaustion."
+        },
+        {
+          "name": "Phantasmal Form",
+          "summary": "Action: ghostly form 1 minute (resistance to nonmagical B/P/S, pass through creatures/objects, fly 30 ft hover) once per long rest."
+        },
+        {
+          "name": "Spectral Sight",
+          "summary": "Darkvision 60 ft; see into Ethereal Plane 30 ft (uses = proficiency bonus per long rest)."
+        }
+      ]
     },
     {
       "id": "smallfolk",
@@ -1078,7 +4069,21 @@
       "body": "<p><strong>Age.</strong> Adult ~20; ~150 years (gnomes sometimes twice).</p>\n<p><strong>Size.</strong> Small.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Grounded.</strong> Once per day reroll a failed save and gain 1 Resolve.</p>\n<p><strong>Small Stature.</strong> Move through Medium+ spaces; hide behind Medium+ creatures.</p>\n<p><strong>Natural Adaptation.</strong> Gnomish (darkvision 60 ft, <em>minor illusion</em>) or Halfling (advantage vs. charmed/frightened).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#smallfolk"
+      "rulesUrl": "rules/lineages.html#smallfolk",
+      "features": [
+        {
+          "name": "Grounded",
+          "summary": "Once per day reroll a failed save and gain 1 Resolve."
+        },
+        {
+          "name": "Small Stature",
+          "summary": "Move through Medium+ spaces; hide behind Medium+ creatures."
+        },
+        {
+          "name": "Natural Adaptation",
+          "summary": "Gnomish (darkvision 60 ft, minor illusion ) or Halfling (advantage vs. charmed/frightened)."
+        }
+      ]
     },
     {
       "id": "syderean",
@@ -1087,7 +4092,21 @@
       "body": "<p>Plane-touched mortals (starborn) tied to cosmic forces.</p>\n<p><strong>Age.</strong> Adult ~20; ~150 years.</p>\n<p><strong>Size.</strong> Medium, 5–7 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Far Sight.</strong> Darkvision 60 ft; see in magical darkness 30 ft.</p>\n<p><strong>Otherworldly Form.</strong> Necrotic resistance; double time without air, food, water, or sleep.</p>\n<p><strong>Natural Adaptation.</strong> Celestial (Blessed Guise), Fiendish (Dreadful Guise), Aberrant, or Spellborn (see PG2 expansion).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#syderean"
+      "rulesUrl": "rules/lineages.html#syderean",
+      "features": [
+        {
+          "name": "Far Sight",
+          "summary": "Darkvision 60 ft; see in magical darkness 30 ft."
+        },
+        {
+          "name": "Otherworldly Form",
+          "summary": "Necrotic resistance; double time without air, food, water, or sleep."
+        },
+        {
+          "name": "Natural Adaptation",
+          "summary": "Celestial (Blessed Guise), Fiendish (Dreadful Guise), Aberrant, or Spellborn (see PG2 expansion)."
+        }
+      ]
     },
     {
       "id": "tiefling",
@@ -1096,7 +4115,17 @@
       "body": "<p>Offspring of humans and fiends with varied infernal traits.</p>\n<p><strong>Age.</strong> As human, slightly longer.</p>\n<p><strong>Size.</strong> Medium.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Darkvision.</strong> 60 feet.</p>\n<p><strong>Fiendish Legacy.</strong> Abyssal, Chthonic, or Infernal: resistance, cantrip, and leveled spells at 3rd and 5th (Willpower as spellcasting ability).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#tiefling"
+      "rulesUrl": "rules/lineages.html#tiefling",
+      "features": [
+        {
+          "name": "Darkvision",
+          "summary": "60 feet."
+        },
+        {
+          "name": "Fiendish Legacy",
+          "summary": "Abyssal, Chthonic, or Infernal: resistance, cantrip, and leveled spells at 3rd and 5th (Willpower as spellcasting ability)."
+        }
+      ]
     },
     {
       "id": "tosculi",
@@ -1105,7 +4134,21 @@
       "body": "<p>Insectoid wasp-folk, often hive-born.</p>\n<p><strong>Age.</strong> Mature ~13; rarely past 40.</p>\n<p><strong>Size.</strong> Small, 3–4 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Glide.</strong> Reaction when falling 10+ ft: glide 30 ft horizontally.</p>\n<p><strong>Hive Mind.</strong> Bonus action telepathic link 30 ft (uses = proficiency bonus).</p>\n<p><strong>Hiveborn Duty.</strong> Detached Drone (Golden Song charm/deafen) or Roving Trooper (stinger unarmed + poison).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#tosculi"
+      "rulesUrl": "rules/lineages.html#tosculi",
+      "features": [
+        {
+          "name": "Glide",
+          "summary": "Reaction when falling 10+ ft: glide 30 ft horizontally."
+        },
+        {
+          "name": "Hive Mind",
+          "summary": "Bonus action telepathic link 30 ft (uses = proficiency bonus)."
+        },
+        {
+          "name": "Hiveborn Duty",
+          "summary": "Detached Drone (Golden Song charm/deafen) or Roving Trooper (stinger unarmed + poison)."
+        }
+      ]
     },
     {
       "id": "eonic-human",
@@ -1114,7 +4157,21 @@
       "body": "<p>Displaced time travelers from a dying far-future civilization.</p>\n<p><strong>Age.</strong> Effectively immortal from time dilation.</p>\n<p><strong>Size.</strong> Medium, 5–6 ft.</p>\n<p><strong>Speed.</strong> 30 feet.</p>\n<p><strong>Jittery.</strong> Can't be surprised while conscious; unseen attackers don't gain advantage on your first combat turn.</p>\n<p><strong>Practiced and Prepared.</strong> Once per rest, add 1d6 to an ability check when shaping recorded history.</p>\n<p><strong>Wizened Flesh.</strong> Disadvantage on Willpower (Persuasion); +proficiency bonus to Defense; exhaustion from wearing armor (light 1, medium 2, heavy 3 levels, recovered when doffed).</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/lineages.html#eonic-human"
+      "rulesUrl": "rules/lineages.html#eonic-human",
+      "features": [
+        {
+          "name": "Jittery",
+          "summary": "Can't be surprised while conscious; unseen attackers don't gain advantage on your first combat turn."
+        },
+        {
+          "name": "Practiced and Prepared",
+          "summary": "Once per rest, add 1d6 to an ability check when shaping recorded history."
+        },
+        {
+          "name": "Wizened Flesh",
+          "summary": "Disadvantage on Willpower (Persuasion); +proficiency bonus to Defense; exhaustion from wearing armor (light 1, medium 2, heavy 3 levels, recovered when doffed)."
+        }
+      ]
     }
   ],
   "heritages": [
@@ -1125,7 +4182,17 @@
       "body": "<p>You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden.</p>\n<p><strong>Favored Disciple.</strong> You know the <em>thaumaturgy</em> cantrip and have advantage on death saves.</p>\n<p><strong>Occult Studies.</strong> Proficiency in History or Religion. Advantage on checks to recall information about Celestials, Fiends, or Outsiders.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Abyssal, Celestial, or Infernal).</p>",
       "tag": null,
       "recommendedFor": "Syderean",
-      "rulesUrl": "rules/heritages.html#anointed"
+      "rulesUrl": "rules/heritages.html#anointed",
+      "features": [
+        {
+          "name": "Favored Disciple",
+          "summary": "You know the thaumaturgy cantrip and have advantage on death saves."
+        },
+        {
+          "name": "Occult Studies",
+          "summary": "Proficiency in History or Religion. Advantage on checks to recall information about Celestials, Fiends, or Outsiders."
+        }
+      ]
     },
     {
       "id": "cloud",
@@ -1134,7 +4201,17 @@
       "body": "<p>You were raised among arcane towers and academies where magic is the center of civic life.</p>\n<p><strong>Touch of Magic.</strong> Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from that school—cast once per long rest without Spell Power. Spellcasting ability: Insight or Willpower (choose at creation).</p>\n<p><strong>World of Wonders.</strong> Proficiency in Arcana.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Elvish and Draconic).</p>",
       "tag": null,
       "recommendedFor": "Elf",
-      "rulesUrl": "rules/heritages.html#cloud"
+      "rulesUrl": "rules/heritages.html#cloud",
+      "features": [
+        {
+          "name": "Touch of Magic",
+          "summary": "Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from that school—cast once per long rest without Spell…"
+        },
+        {
+          "name": "World of Wonders",
+          "summary": "Proficiency in Arcana."
+        }
+      ]
     },
     {
       "id": "cosmopolitan",
@@ -1143,7 +4220,17 @@
       "body": "<p>Raised in a major city or nomadic between cultures—you are a citizen of the wider world.</p>\n<p><strong>Street Smarts.</strong> In urban environments: advantage on checks to avoid getting lost or find public destinations; can't be surprised unless asleep or incapacitated.</p>\n<p><strong>Worldly Wisdom.</strong> Proficiency in History. Add PB to checks about unfamiliar cultures' buildings, rites, or objects (double PB if proficient in a relevant skill or tool).</p>\n<p><strong>Languages.</strong> Common plus three additional (typical: Dwarvish and Elvish).</p>",
       "tag": null,
       "recommendedFor": "Human, Gearforged",
-      "rulesUrl": "rules/heritages.html#cosmopolitan"
+      "rulesUrl": "rules/heritages.html#cosmopolitan",
+      "features": [
+        {
+          "name": "Street Smarts",
+          "summary": "In urban environments: advantage on checks to avoid getting lost or find public destinations; can't be surprised unless asleep or incapacitated."
+        },
+        {
+          "name": "Worldly Wisdom",
+          "summary": "Proficiency in History. Add PB to checks about unfamiliar cultures' buildings, rites, or objects (double PB if proficient in a relevant skill or tool)."
+        }
+      ]
     },
     {
       "id": "cottage",
@@ -1152,7 +4239,17 @@
       "body": "<p>You grew up in a tight agricultural community—hardworking, practical, and hearth-focused.</p>\n<p><strong>Comforts of Home.</strong> During a long rest, cook or comfort up to PB allies (including you); each gains temp Wounds equal to twice PB until your next long rest.</p>\n<p><strong>Homesteader.</strong> Proficiency in Animal Handling or Nature.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>",
       "tag": null,
       "recommendedFor": "Smallfolk, Rachisan",
-      "rulesUrl": "rules/heritages.html#cottage"
+      "rulesUrl": "rules/heritages.html#cottage",
+      "features": [
+        {
+          "name": "Comforts of Home",
+          "summary": "During a long rest, cook or comfort up to PB allies (including you); each gains temp Wounds equal to twice PB until your next long rest."
+        },
+        {
+          "name": "Homesteader",
+          "summary": "Proficiency in Animal Handling or Nature."
+        }
+      ]
     },
     {
       "id": "diaspora",
@@ -1161,7 +4258,17 @@
       "body": "<p>Your displaced community preserves the legacy of a lost homeland through guilds, mercenary companies, or faith.</p>\n<p><strong>Preserved Traditions.</strong> Proficiency in History and one martial weapon of your choice.</p>\n<p><strong>Timeless Resolve.</strong> You and allies within 5 feet have advantage on saves vs. frightened.</p>\n<p><strong>Languages.</strong> Common plus one additional (often Orcish or Dwarvish).</p>",
       "tag": null,
       "recommendedFor": "Orc, Duergar, Shade",
-      "rulesUrl": "rules/heritages.html#diaspora"
+      "rulesUrl": "rules/heritages.html#diaspora",
+      "features": [
+        {
+          "name": "Preserved Traditions",
+          "summary": "Proficiency in History and one martial weapon of your choice."
+        },
+        {
+          "name": "Timeless Resolve",
+          "summary": "You and allies within 5 feet have advantage on saves vs. frightened."
+        }
+      ]
     },
     {
       "id": "fireforge",
@@ -1170,7 +4277,17 @@
       "body": "<p>Raised in volcanic forge-clans where dwarves craft amid magma and ally with elementals.</p>\n<p><strong>Forgecraft.</strong> Smithing tools proficiency; double PB on checks with them. You know <em>mending</em>.</p>\n<p><strong>Heat Resilience.</strong> Fire damage resistance.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>",
       "tag": null,
       "recommendedFor": "Dwarf",
-      "rulesUrl": "rules/heritages.html#fireforge"
+      "rulesUrl": "rules/heritages.html#fireforge",
+      "features": [
+        {
+          "name": "Forgecraft",
+          "summary": "Smithing tools proficiency; double PB on checks with them. You know mending ."
+        },
+        {
+          "name": "Heat Resilience",
+          "summary": "Fire damage resistance."
+        }
+      ]
     },
     {
       "id": "grove",
@@ -1179,7 +4296,17 @@
       "body": "<p>Forest communities living in harmony with nature—sacred groves, canopy paths, and guardians of the wild.</p>\n<p><strong>Canopy Walker.</strong> Climb speed equal to walking speed.</p>\n<p><strong>Nature's Camouflage.</strong> Advantage on Stealth while lightly obscured by natural phenomena; you can Hide when lightly obscured by nature even if normally you couldn't.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Elvish).</p>",
       "tag": null,
       "recommendedFor": "Elf",
-      "rulesUrl": "rules/heritages.html#grove"
+      "rulesUrl": "rules/heritages.html#grove",
+      "features": [
+        {
+          "name": "Canopy Walker",
+          "summary": "Climb speed equal to walking speed."
+        },
+        {
+          "name": "Nature's Camouflage",
+          "summary": "Advantage on Stealth while lightly obscured by natural phenomena; you can Hide when lightly obscured by nature even if normally you couldn't."
+        }
+      ]
     },
     {
       "id": "nomadic",
@@ -1188,7 +4315,17 @@
       "body": "<p>Your people migrate with seasons, trade routes, or tradition—you know the rigors of the road.</p>\n<p><strong>Resilient.</strong> Advantage vs. extreme weather effects. Once per long rest, reduce exhaustion by one when you finish a short rest.</p>\n<p><strong>Traveler.</strong> Proficiency in Survival.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>",
       "tag": null,
       "recommendedFor": "Human",
-      "rulesUrl": "rules/heritages.html#nomadic"
+      "rulesUrl": "rules/heritages.html#nomadic",
+      "features": [
+        {
+          "name": "Resilient",
+          "summary": "Advantage vs. extreme weather effects. Once per long rest, reduce exhaustion by one when you finish a short rest."
+        },
+        {
+          "name": "Traveler",
+          "summary": "Proficiency in Survival."
+        }
+      ]
     },
     {
       "id": "salvager",
@@ -1197,7 +4334,17 @@
       "body": "<p>Raised to build, repair, and survive with whatever materials are at hand—patient, resourceful, and inventive.</p>\n<p><strong>Repurpose.</strong> In 1 minute, create a Tiny nonmagical item (≤25 gp adventuring gear) from surroundings; lasts one use then breaks.</p>\n<p><strong>Tinkerer.</strong> Tinker's tools or other tool proficiency; double PB on checks to create, identify, or disarm objects/traps with relevant proficiency.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Draconic or Gnomish).</p>",
       "tag": null,
       "recommendedFor": "Kobold, Smallfolk, Goblin",
-      "rulesUrl": "rules/heritages.html#salvager"
+      "rulesUrl": "rules/heritages.html#salvager",
+      "features": [
+        {
+          "name": "Repurpose",
+          "summary": "In 1 minute, create a Tiny nonmagical item (≤25 gp adventuring gear) from surroundings; lasts one use then breaks."
+        },
+        {
+          "name": "Tinkerer",
+          "summary": "Tinker's tools or other tool proficiency; double PB on checks to create, identify, or disarm objects/traps with relevant proficiency."
+        }
+      ]
     },
     {
       "id": "slayer",
@@ -1206,7 +4353,17 @@
       "body": "<p>Monster-hunting packs trained from youth to track and kill dangerous predators.</p>\n<p><strong>Natural Predator.</strong> Proficiency in Intimidation; advantage on Intimidation vs. Beasts and Animals.</p>\n<p><strong>Tracker.</strong> Add PB to locate/spot/track checks (double PB if proficient in the skill or tool used).</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>",
       "tag": null,
       "recommendedFor": "Beastkin, Orc, Dragonborn",
-      "rulesUrl": "rules/heritages.html#slayer"
+      "rulesUrl": "rules/heritages.html#slayer",
+      "features": [
+        {
+          "name": "Natural Predator",
+          "summary": "Proficiency in Intimidation; advantage on Intimidation vs. Beasts and Animals."
+        },
+        {
+          "name": "Tracker",
+          "summary": "Add PB to locate/spot/track checks (double PB if proficient in the skill or tool used)."
+        }
+      ]
     },
     {
       "id": "stone",
@@ -1215,7 +4372,17 @@
       "body": "<p>Subterranean miners and masons who defend ancestral delves beneath the world.</p>\n<p><strong>Ancestral Arts.</strong> Construction tools proficiency (double PB); proficiency with one martial weapon.</p>\n<p><strong>Eye for Quality.</strong> Add PB to checks about metal/stone objects or structures (double PB if proficient in a relevant skill or tool).</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish).</p>",
       "tag": null,
       "recommendedFor": "Dwarf",
-      "rulesUrl": "rules/heritages.html#stone"
+      "rulesUrl": "rules/heritages.html#stone",
+      "features": [
+        {
+          "name": "Ancestral Arts",
+          "summary": "Construction tools proficiency (double PB); proficiency with one martial weapon."
+        },
+        {
+          "name": "Eye for Quality",
+          "summary": "Add PB to checks about metal/stone objects or structures (double PB if proficient in a relevant skill or tool)."
+        }
+      ]
     },
     {
       "id": "supplicant",
@@ -1224,7 +4391,17 @@
       "body": "<p>A community bound to serve a monstrous overlord—often dragons—building traps and hazards around their lair.</p>\n<p><strong>Scurry.</strong> Bonus action: move 10 feet without opportunity attacks; doesn't trigger traps you know about.</p>\n<p><strong>Supplicant.</strong> Proficiency in Insight or Persuasion. When a creature within 30 feet spends Resolve, you have advantage on checks and saves until your next turn.</p>\n<p><strong>Languages.</strong> Common plus one additional (overlord's tongue: Draconic, Giant, or Undercommon).</p>",
       "tag": null,
       "recommendedFor": "Kobold, Dhampir",
-      "rulesUrl": "rules/heritages.html#supplicant"
+      "rulesUrl": "rules/heritages.html#supplicant",
+      "features": [
+        {
+          "name": "Scurry",
+          "summary": "Bonus action: move 10 feet without opportunity attacks; doesn't trigger traps you know about."
+        },
+        {
+          "name": "Supplicant",
+          "summary": "Proficiency in Insight or Persuasion. When a creature within 30 feet spends Resolve, you have advantage on checks and saves until your next turn."
+        }
+      ]
     },
     {
       "id": "vexed",
@@ -1233,7 +4410,17 @@
       "body": "<p>Your life is defined by defying a supernatural bond—claimed at birth, haunted by dreams, or inheriting a blood debt.</p>\n<p><strong>Prodigal Disciple.</strong> Treat d20 rolls of 9 or lower as 10 on saves vs. charmed or possessed.</p>\n<p><strong>Quarry's Cunning.</strong> Proficiency in Deception or Insight.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical esoteric: Abyssal, Celestial, or Infernal).</p>",
       "tag": null,
       "recommendedFor": "Syderean, Shade",
-      "rulesUrl": "rules/heritages.html#vexed"
+      "rulesUrl": "rules/heritages.html#vexed",
+      "features": [
+        {
+          "name": "Prodigal Disciple",
+          "summary": "Treat d20 rolls of 9 or lower as 10 on saves vs. charmed or possessed."
+        },
+        {
+          "name": "Quarry's Cunning",
+          "summary": "Proficiency in Deception or Insight."
+        }
+      ]
     },
     {
       "id": "wildlands",
@@ -1242,7 +4429,17 @@
       "body": "<p>Primordial-magic communities where beasts and humanoids live as equals in unspoiled territory.</p>\n<p><strong>Beast Affinity.</strong> Communicate simple ideas with Beasts/Animals; advantage interacting with them.</p>\n<p><strong>Shepherd's Gift.</strong> Animal Handling proficiency. Beasts/Animals with CR ≤ PB must pass a Willpower (Animal Handling) contest to attack you or choose a new target.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>",
       "tag": null,
       "recommendedFor": "Beastkin, Tosculi",
-      "rulesUrl": "rules/heritages.html#wildlands"
+      "rulesUrl": "rules/heritages.html#wildlands",
+      "features": [
+        {
+          "name": "Beast Affinity",
+          "summary": "Communicate simple ideas with Beasts/Animals; advantage interacting with them."
+        },
+        {
+          "name": "Shepherd's Gift",
+          "summary": "Animal Handling proficiency. Beasts/Animals with CR ≤ PB must pass a Willpower (Animal Handling) contest to attack you or choose a new target."
+        }
+      ]
     },
     {
       "id": "conflicted",
@@ -1251,7 +4448,17 @@
       "body": "<p>Raised in a society torn by factional violence, revolution, or rebellion—survival means reading danger early.</p>\n<p><strong>Prepared for Trouble.</strong> Proficiency with improvised weapons. Disarm traps without thieves' tools.</p>\n<p><strong>Talk Your Way Out.</strong> Proficiency in Deception or Persuasion.</p>\n<p><strong>Languages.</strong> Common plus one additional (language of the conflict zone).</p>",
       "tag": "PG2",
       "recommendedFor": "Dhampir, Drow, Duergar, Goblin, Gearforged, Shade",
-      "rulesUrl": "rules/heritages.html#conflicted"
+      "rulesUrl": "rules/heritages.html#conflicted",
+      "features": [
+        {
+          "name": "Prepared for Trouble",
+          "summary": "Proficiency with improvised weapons. Disarm traps without thieves' tools."
+        },
+        {
+          "name": "Talk Your Way Out",
+          "summary": "Proficiency in Deception or Persuasion."
+        }
+      ]
     },
     {
       "id": "coterminous",
@@ -1260,7 +4467,21 @@
       "body": "<p>From a border community where the Material Plane meets an Elemental Plane—trade hub, genie dominion, and elemental hazard.</p>\n<p><strong>Elemental Community.</strong> Choose Air (lightning), Earth (acid), Fire (fire), or Water (cold).</p>\n<p><strong>Ambient Absorption.</strong> When you take your element's damage type, roll d8s equal to half PB (min 1) and reduce damage by the total.</p>\n<p><strong>Environmental Acclimatization.</strong> Proficiency on checks/saves vs. hazards of your element (double PB if already proficient).</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Primordial).</p>",
       "tag": "PG2",
       "recommendedFor": "Dragonborn, Elemental Scion",
-      "rulesUrl": "rules/heritages.html#coterminous"
+      "rulesUrl": "rules/heritages.html#coterminous",
+      "features": [
+        {
+          "name": "Elemental Community",
+          "summary": "Choose Air (lightning), Earth (acid), Fire (fire), or Water (cold)."
+        },
+        {
+          "name": "Ambient Absorption",
+          "summary": "When you take your element's damage type, roll d8s equal to half PB (min 1) and reduce damage by the total."
+        },
+        {
+          "name": "Environmental Acclimatization",
+          "summary": "Proficiency on checks/saves vs. hazards of your element (double PB if already proficient)."
+        }
+      ]
     },
     {
       "id": "covenant",
@@ -1269,7 +4490,17 @@
       "body": "<p>A magic-obsessed community hoarding arcane power near raw magical nodes—spellcraft above all else.</p>\n<p><strong>Expert Caster.</strong> Arcana proficiency; learn one cantrip from any source (Insight or Willpower as casting ability).</p>\n<p><strong>Spell Inoculation.</strong> Advantage on saves vs. spells that target you specifically (not area effects).</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Draconic, Infernal, or Sylvan).</p>",
       "tag": "PG2",
       "recommendedFor": "Drow",
-      "rulesUrl": "rules/heritages.html#covenant"
+      "rulesUrl": "rules/heritages.html#covenant",
+      "features": [
+        {
+          "name": "Expert Caster",
+          "summary": "Arcana proficiency; learn one cantrip from any source (Insight or Willpower as casting ability)."
+        },
+        {
+          "name": "Spell Inoculation",
+          "summary": "Advantage on saves vs. spells that target you specifically (not area effects)."
+        }
+      ]
     },
     {
       "id": "feysworn",
@@ -1278,7 +4509,17 @@
       "body": "<p>Raised under fey dominion, bound by oaths to archfey and their alien goals.</p>\n<p><strong>Accustomed to Trickery.</strong> You know <em>prestidigitation</em> (Insight or Willpower). Advantage vs. charmed; on failed charm save, gain 2 Resolve instead of 1.</p>\n<p><strong>Enchanting Call.</strong> Action: one creature makes Willpower save (DC 10 + PB) or is charmed until end of your next turn. Or spend 2 Resolve to attempt frighten (Resolve lost only if successful). Once per short or long rest.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan).</p>",
       "tag": "PG2",
       "recommendedFor": "Rachisan",
-      "rulesUrl": "rules/heritages.html#feysworn"
+      "rulesUrl": "rules/heritages.html#feysworn",
+      "features": [
+        {
+          "name": "Accustomed to Trickery",
+          "summary": "You know prestidigitation (Insight or Willpower). Advantage vs. charmed; on failed charm save, gain 2 Resolve instead of 1."
+        },
+        {
+          "name": "Enchanting Call",
+          "summary": "Action: one creature makes Willpower save (DC 10 + PB) or is charmed until end of your next turn. Or spend 2 Resolve to attempt frighten (Resolve lost only if…"
+        }
+      ]
     },
     {
       "id": "hivebound",
@@ -1287,7 +4528,17 @@
       "body": "<p>A telepathically linked community functioning as a collective—unity over individuality.</p>\n<p><strong>Open Mind.</strong> Insight proficiency. Bonus action: temporary telepathic link with one willing creature you touch until you stop touching or link someone else.</p>\n<p><strong>Unity.</strong> When you Help on a check, target gains +PB; when helped, you gain +PB from the helper.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Primordial or Sylvan).</p>",
       "tag": "PG2",
       "recommendedFor": "Tosculi",
-      "rulesUrl": "rules/heritages.html#hivebound"
+      "rulesUrl": "rules/heritages.html#hivebound",
+      "features": [
+        {
+          "name": "Open Mind",
+          "summary": "Insight proficiency. Bonus action: temporary telepathic link with one willing creature you touch until you stop touching or link someone else."
+        },
+        {
+          "name": "Unity",
+          "summary": "When you Help on a check, target gains +PB; when helped, you gain +PB from the helper."
+        }
+      ]
     },
     {
       "id": "ironwrought",
@@ -1296,7 +4547,17 @@
       "body": "<p>Raised among gearforged and artificers who treat born and made people as equals.</p>\n<p><strong>Construct Affinity.</strong> Communicate simple ideas with Constructs; advantage interacting with them.</p>\n<p><strong>Mechanic.</strong> Tinker's or smithing tools proficiency; double PB on checks to create, repair, or upgrade metal-bodied creatures with relevant proficiency.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Draconic).</p>",
       "tag": "PG2",
       "recommendedFor": "Gearforged",
-      "rulesUrl": "rules/heritages.html#ironwrought"
+      "rulesUrl": "rules/heritages.html#ironwrought",
+      "features": [
+        {
+          "name": "Construct Affinity",
+          "summary": "Communicate simple ideas with Constructs; advantage interacting with them."
+        },
+        {
+          "name": "Mechanic",
+          "summary": "Tinker's or smithing tools proficiency; double PB on checks to create, repair, or upgrade metal-bodied creatures with relevant proficiency."
+        }
+      ]
     },
     {
       "id": "islander",
@@ -1305,7 +4566,17 @@
       "body": "<p>From an archipelago chain trading specialty goods between islands—hardy, personable, and resilient.</p>\n<p><strong>Like Water off Your Back.</strong> Advantage on saves vs. frightened.</p>\n<p><strong>Tiderider.</strong> Vehicles (water) proficiency; swim speed equal to walking speed.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Sylvan).</p>",
       "tag": "PG2",
       "recommendedFor": "Sapopova",
-      "rulesUrl": "rules/heritages.html#islander"
+      "rulesUrl": "rules/heritages.html#islander",
+      "features": [
+        {
+          "name": "Like Water off Your Back",
+          "summary": "Advantage on saves vs. frightened."
+        },
+        {
+          "name": "Tiderider",
+          "summary": "Vehicles (water) proficiency; swim speed equal to walking speed."
+        }
+      ]
     },
     {
       "id": "joymonger",
@@ -1314,7 +4585,17 @@
       "body": "<p>Raised in a community that sells happiness—performers, artisans, and laborers keeping attractions running.</p>\n<p><strong>Joyful Endurance.</strong> Advantage on Fitness checks for weariness/survival outside combat. Once per long rest, negate gaining an exhaustion level.</p>\n<p><strong>Welcome to the Show.</strong> Proficiency in Persuasion or Performance.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Halfling or Gnomish).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/heritages.html#joymonger"
+      "rulesUrl": "rules/heritages.html#joymonger",
+      "features": [
+        {
+          "name": "Joyful Endurance",
+          "summary": "Advantage on Fitness checks for weariness/survival outside combat. Once per long rest, negate gaining an exhaustion level."
+        },
+        {
+          "name": "Welcome to the Show",
+          "summary": "Proficiency in Persuasion or Performance."
+        }
+      ]
     },
     {
       "id": "kithren",
@@ -1323,7 +4604,17 @@
       "body": "<p>Nomadic rebuilders who travel to devastated settlements and help survivors recover.</p>\n<p><strong>Helping Hands.</strong> Medicine or Survival proficiency; proficiency with one melee weapon of your choice.</p>\n<p><strong>Search and Rescue.</strong> Network of kithren contacts can point toward a Humanoid's last known location (GM discretion). Cast <em>mending</em> once per long rest even if not a spellcaster.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Goblin or Gnomish).</p>",
       "tag": "PG2",
       "recommendedFor": null,
-      "rulesUrl": "rules/heritages.html#kithren"
+      "rulesUrl": "rules/heritages.html#kithren",
+      "features": [
+        {
+          "name": "Helping Hands",
+          "summary": "Medicine or Survival proficiency; proficiency with one melee weapon of your choice."
+        },
+        {
+          "name": "Search and Rescue",
+          "summary": "Network of kithren contacts can point toward a Humanoid's last known location (GM discretion). Cast mending once per long rest even if not a spellcaster."
+        }
+      ]
     },
     {
       "id": "seafarer",
@@ -1332,7 +4623,17 @@
       "body": "<p>Raised on a traveling flotilla—scout ships, farms, trawlers, and cruisers crossing open water together.</p>\n<p><strong>Jack of all Trades.</strong> Once per long rest, add PB to a tool or ability check without proficiency.</p>\n<p><strong>Sea Legs.</strong> Vehicles (water) proficiency; advantage on Fitness checks aboard floating vessels.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Dwarvish or Elvish).</p>",
       "tag": "PG2",
       "recommendedFor": "Sea Elf, Elemental Scion",
-      "rulesUrl": "rules/heritages.html#seafarer"
+      "rulesUrl": "rules/heritages.html#seafarer",
+      "features": [
+        {
+          "name": "Jack of all Trades",
+          "summary": "Once per long rest, add PB to a tool or ability check without proficiency."
+        },
+        {
+          "name": "Sea Legs",
+          "summary": "Vehicles (water) proficiency; advantage on Fitness checks aboard floating vessels."
+        }
+      ]
     },
     {
       "id": "waterside",
@@ -1341,7 +4642,17 @@
       "body": "<p>Edge-of-water communities splitting life between land and water—fishing, boating, and aquaculture.</p>\n<p><strong>Knowledgeable.</strong> History or Nature proficiency; double PB on that skill for waterside areas.</p>\n<p><strong>Water Legs.</strong> Vehicles (water) proficiency; advantage on Fitness (Athletics) and Fitness (Acrobatics) balance checks near water; water up to waist isn't difficult terrain.</p>\n<p><strong>Languages.</strong> Common plus one additional (typical: Sylvan, Dwarvish, or Elvish).</p>",
       "tag": "PG2",
       "recommendedFor": "Sapopova, Sea Elf",
-      "rulesUrl": "rules/heritages.html#waterside"
+      "rulesUrl": "rules/heritages.html#waterside",
+      "features": [
+        {
+          "name": "Knowledgeable",
+          "summary": "History or Nature proficiency; double PB on that skill for waterside areas."
+        },
+        {
+          "name": "Water Legs",
+          "summary": "Vehicles (water) proficiency; advantage on Fitness (Athletics) and Fitness (Acrobatics) balance checks near water; water up to waist isn't difficult terrain."
+        }
+      ]
     }
   ],
   "backgrounds": [
@@ -1352,7 +4663,13 @@
       "body": "<p>Before you began adventuring, you committed yourself to a faith, belief, or cause. Skill, equipment, and devotion from that life still shape you.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Investigation, Religion, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> Artist's tools and one additional tool of your choice.</p>\n<p><strong>Equipment:</strong> A prayer book or ceremonial dagger, a holy symbol, fragrant incense, vestments, common clothes, and a pouch containing 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#adherent"
+      "rulesUrl": "rules/backgrounds.html#adherent",
+      "features": [],
+      "talentChoices": [
+        "Field Medic",
+        "Mental Fortitude",
+        "Ritualist"
+      ]
     },
     {
       "id": "alchemist",
@@ -1361,7 +4678,13 @@
       "body": "<p>You combine natural and alchemical components to create wonders—potions, poisons, and transformative substances.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, Investigation, Nature, or Perception.</p>\n<p><strong>Additional Proficiencies:</strong> Alchemist's tools and one of charlatan's tools, herbalism tools, or provisioner's tools.</p>\n<p><strong>Equipment:</strong> Common clothes, alchemist's tools, stained gloves, a flask of alchemist's fire, glass vials, and a coin purse with 5 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Alchemy Adept</em>, <em>Elemental Savant</em>, or <em>Learned Researcher</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#alchemist"
+      "rulesUrl": "rules/backgrounds.html#alchemist",
+      "features": [],
+      "talentChoices": [
+        "Alchemy Adept",
+        "Elemental Savant",
+        "Learned Researcher"
+      ]
     },
     {
       "id": "artist",
@@ -1370,7 +4693,13 @@
       "body": "<p>You doggedly practiced an artistic pursuit before adventuring—acrobat, puppeteer, thespian, singer, or similar.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Acrobatics, Insight, Performance, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> One additional language and one tool representing your art.</p>\n<p><strong>Equipment:</strong> A musical instrument or artisan tool, steel mirror, fine clothes, ink and quill, and 4 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Quick</em>, <em>Scrutinous</em>, or <em>Trade Skills</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#artist"
+      "rulesUrl": "rules/backgrounds.html#artist",
+      "features": [],
+      "talentChoices": [
+        "Quick",
+        "Scrutinous",
+        "Trade Skills"
+      ]
     },
     {
       "id": "chronicler",
@@ -1379,7 +4708,13 @@
       "body": "<p>You documented the world—records, investigations, or daily life preserved for posterity.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Investigation, Perception, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> One additional language and artist's, navigator's, or provisioner's tools.</p>\n<p><strong>Equipment:</strong> Proficient tools from above, ink and 25 sheets of paper, bedroll, common clothes, and 3 gp in small coin.</p>\n<p><strong>Talent:</strong> Choose one: <em>Learned Researcher</em>, <em>Polyglot</em>, or <em>Spell Recall</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#chronicler"
+      "rulesUrl": "rules/backgrounds.html#chronicler",
+      "features": [],
+      "talentChoices": [
+        "Learned Researcher",
+        "Polyglot",
+        "Spell Recall"
+      ]
     },
     {
       "id": "courtier",
@@ -1388,7 +4723,13 @@
       "body": "<p>You spent years in royal or noble courts, learning decorum, duty, and the station of others.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Religion, Insight, or Deception.</p>\n<p><strong>Additional Proficiencies:</strong> One additional language, artist's or navigator's tools, and a musical instrument.</p>\n<p><strong>Equipment:</strong> A writ of nobility or patronage, signet ring, fine clothes, and 12 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Combat Conditioning</em>, <em>Mental Fortitude</em>, or <em>Polyglot</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#courtier"
+      "rulesUrl": "rules/backgrounds.html#courtier",
+      "features": [],
+      "talentChoices": [
+        "Combat Conditioning",
+        "Mental Fortitude",
+        "Polyglot"
+      ]
     },
     {
       "id": "criminal",
@@ -1397,7 +4738,13 @@
       "body": "<p>You survived the criminal underworld as cutpurse, grifter, thief, or assassin.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Stealth, Investigation, Insight, or Deception.</p>\n<p><strong>Additional Proficiencies:</strong> Thieves' Cant (or another language if you already know it), plus one tool and one vehicle.</p>\n<p><strong>Equipment:</strong> Five pieces of chalk, grappling hook, dark traveler's clothes or costume, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Scrutinous</em>, or <em>Touch of Resolve</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#criminal"
+      "rulesUrl": "rules/backgrounds.html#criminal",
+      "features": [],
+      "talentChoices": [
+        "Covert",
+        "Scrutinous",
+        "Touch of Resolve"
+      ]
     },
     {
       "id": "gravedigger",
@@ -1406,7 +4753,13 @@
       "body": "<p>You put the dead to rest—city graveyards, crypts, or lonely burial grounds.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Athletics, Insight, Nature, or Religion.</p>\n<p><strong>Additional Proficiencies:</strong> Construction tools and either scythes or thieves' tools.</p>\n<p><strong>Equipment:</strong> Common clothes, construction tools, holy water, small shovel, a burial keepsake, and 2 gp in copper and silver.</p>\n<p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Hardy</em>, or <em>Mental Fortitude</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#gravedigger"
+      "rulesUrl": "rules/backgrounds.html#gravedigger",
+      "features": [],
+      "talentChoices": [
+        "Empathetic",
+        "Hardy",
+        "Mental Fortitude"
+      ]
     },
     {
       "id": "healer",
@@ -1415,7 +4768,13 @@
       "body": "<p>You cared for your community with herbal remedies, charms, and practical lore.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, Insight, Medicine, or Survival.</p>\n<p><strong>Additional Proficiencies:</strong> Herbalism tools and one additional tool.</p>\n<p><strong>Equipment:</strong> Herbalism tools, healer's kit, candle, potion bottles, common clothes, and 5 days of rations.</p>\n<p><strong>Talent:</strong> Choose one: <em>Empathetic</em>, <em>Field Medic</em>, or <em>Ritualist</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#healer"
+      "rulesUrl": "rules/backgrounds.html#healer",
+      "features": [],
+      "talentChoices": [
+        "Empathetic",
+        "Field Medic",
+        "Ritualist"
+      ]
     },
     {
       "id": "homesteader",
@@ -1424,7 +4783,13 @@
       "body": "<p>You forged a livelihood between civilization and the wild hinterlands.</p>\n<p><strong>Skill Proficiencies:</strong> Survival and one of Athletics, Animal Handling, or Intimidation.</p>\n<p><strong>Additional Proficiencies:</strong> Herbalism or navigator's tools.</p>\n<p><strong>Equipment:</strong> Hunting trap, fishing tackle, skinning knife, canvas hammock, heavy traveler's clothes, and 8 gp of gold-crusted quartz.</p>\n<p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Dungeoneer</em>, or <em>Far Traveler</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#homesteader"
+      "rulesUrl": "rules/backgrounds.html#homesteader",
+      "features": [],
+      "talentChoices": [
+        "Aware",
+        "Dungeoneer",
+        "Far Traveler"
+      ]
     },
     {
       "id": "investigator",
@@ -1433,7 +4798,13 @@
       "body": "<p>You solved problems for pay—authority, clients, or yourself.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Insight, Investigation, or Perception.</p>\n<p><strong>Additional Proficiencies:</strong> Charlatan's and thieves' tools.</p>\n<p><strong>Equipment:</strong> Common and fine clothes, charlatan's or thieves' tools, letter of reference, magnifying glass, notebook, case memento, and two purses of 5 gp each.</p>\n<p><strong>Talent:</strong> Choose one: <em>Scrutinous</em>, <em>Situational Awareness</em>, or <em>Sleuth</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#investigator"
+      "rulesUrl": "rules/backgrounds.html#investigator",
+      "features": [],
+      "talentChoices": [
+        "Scrutinous",
+        "Situational Awareness",
+        "Sleuth"
+      ]
     },
     {
       "id": "maker",
@@ -1442,7 +4813,13 @@
       "body": "<p>You pursued a craft until expert quality defined your reputation.</p>\n<p><strong>Skill Proficiencies:</strong> Investigation and one of History, Performance, or Sleight of Hand.</p>\n<p><strong>Additional Proficiencies:</strong> One tool; double proficiency bonus on checks with that tool.</p>\n<p><strong>Equipment:</strong> That tool, personal emblem stamp or chisel, traveler's clothes, and 10 gp in shavings or dust.</p>\n<p><strong>Talent:</strong> Choose one: <em>Artillerist</em>, <em>School Specialization</em>, or <em>Trade Skills</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#maker"
+      "rulesUrl": "rules/backgrounds.html#maker",
+      "features": [],
+      "talentChoices": [
+        "Artillerist",
+        "School Specialization",
+        "Trade Skills"
+      ]
     },
     {
       "id": "outcast",
@@ -1451,7 +4828,13 @@
       "body": "<p>You survived on scraps and street skills, sometimes on the wrong side of the law.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Insight, Sleight of Hand, or Stealth.</p>\n<p><strong>Additional Proficiencies:</strong> One gaming set and charlatan's, herbalism, or thieves' tools.</p>\n<p><strong>Equipment:</strong> Dark cloak and clothes, a silver coin from a stranger, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Aware</em>, <em>Opportunist</em>, or <em>Quick</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#outcast"
+      "rulesUrl": "rules/backgrounds.html#outcast",
+      "features": [],
+      "talentChoices": [
+        "Aware",
+        "Opportunist",
+        "Quick"
+      ]
     },
     {
       "id": "rebel",
@@ -1460,7 +4843,13 @@
       "body": "<p>You fought for your beliefs against the status quo—openly or from the shadows.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from History, Insight, Performance, or Persuasion.</p>\n<p><strong>Additional Proficiencies:</strong> Artist's or alchemist's tools and provisioner's tools, a musical instrument, or Thieves' Cant.</p>\n<p><strong>Equipment:</strong> Common clothes, artist's or alchemist's tools, flag or banner, pamphlets, alchemist's fire, and 3 gp in small coin.</p>\n<p><strong>Talent:</strong> Choose one: <em>Brave</em>, <em>Comrade</em>, or <em>Hard to Kill</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#rebel"
+      "rulesUrl": "rules/backgrounds.html#rebel",
+      "features": [],
+      "talentChoices": [
+        "Brave",
+        "Comrade",
+        "Hard to Kill"
+      ]
     },
     {
       "id": "rustic",
@@ -1469,7 +4858,13 @@
       "body": "<p>Years of hard work gave you unshakeable resolve, but no grand mysteries in your past.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Athletics, Acrobatics, Investigation, or Medicine.</p>\n<p><strong>Additional Proficiencies:</strong> Land vehicles and one martial weapon, instrument, tool, or armor type.</p>\n<p><strong>Equipment:</strong> Backpack, bedroll, woven blanket, three candles, traveler's clothes, and 20 sp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Comrade</em>, <em>Hand to Hand</em>, or <em>Physical Fortitude</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#rustic"
+      "rulesUrl": "rules/backgrounds.html#rustic",
+      "features": [],
+      "talentChoices": [
+        "Comrade",
+        "Hand to Hand",
+        "Physical Fortitude"
+      ]
     },
     {
       "id": "scholar",
@@ -1478,7 +4873,13 @@
       "body": "<p>Years in academic pursuits honed your mind and intellectual lens on the world.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Arcana, History, Nature, or Religion.</p>\n<p><strong>Additional Proficiencies:</strong> Two languages or one tool or vehicle relevant to your field.</p>\n<p><strong>Equipment:</strong> Ink, quill, knife, reference book, common clothes, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Polyglot</em>, <em>Ritualist</em>, or <em>School Specialization</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#scholar"
+      "rulesUrl": "rules/backgrounds.html#scholar",
+      "features": [],
+      "talentChoices": [
+        "Polyglot",
+        "Ritualist",
+        "School Specialization"
+      ]
     },
     {
       "id": "servant",
@@ -1487,7 +4888,13 @@
       "body": "<p>You anticipated others' needs while working behind the scenes for employers.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Insight, Perception, Sleight of Hand, or Stealth.</p>\n<p><strong>Additional Proficiencies:</strong> Two of clothier's, provisioner's, thieves', tinkerer's tools, or a musical instrument.</p>\n<p><strong>Equipment:</strong> Common clothes, sturdy shoes, proficient tools, notebook, employer's essential item, and 3 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Hardy</em>, <em>Quick</em>, or <em>Tag Team</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#servant"
+      "rulesUrl": "rules/backgrounds.html#servant",
+      "features": [],
+      "talentChoices": [
+        "Hardy",
+        "Quick",
+        "Tag Team"
+      ]
     },
     {
       "id": "smuggler",
@@ -1496,7 +4903,13 @@
       "body": "<p>You moved contraband where it was forbidden, by wit and careful planning.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Deception, Persuasion, Sleight of Hand, or Stealth.</p>\n<p><strong>Additional Proficiencies:</strong> Thieves' Cant (or another language), navigator's tools, and one vehicle.</p>\n<p><strong>Equipment:</strong> Navigator's tools, magnifying glass, merchant's scale, common and fine clothes, hooded cloak, lantern, empty pouches, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Covert</em>, <em>Escamotage</em>, or <em>Slippery</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#smuggler"
+      "rulesUrl": "rules/backgrounds.html#smuggler",
+      "features": [],
+      "talentChoices": [
+        "Covert",
+        "Escamotage",
+        "Slippery"
+      ]
     },
     {
       "id": "soldier",
@@ -1505,7 +4918,13 @@
       "body": "<p>Rigorous training and discipline defined your time in military service.</p>\n<p><strong>Skill Proficiencies:</strong> Choose two from Animal Handling, Athletics, Medicine, or Survival.</p>\n<p><strong>Additional Proficiencies:</strong> One tool and one vehicle.</p>\n<p><strong>Equipment:</strong> Symbol of rank, mess kit, playing cards or dice, common clothes, and 10 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Combat Casting</em>, <em>Combat Conditioning</em>, or <em>Field Medic</em>.</p>",
       "tag": null,
       "recommendedFor": null,
-      "rulesUrl": "rules/backgrounds.html#soldier"
+      "rulesUrl": "rules/backgrounds.html#soldier",
+      "features": [],
+      "talentChoices": [
+        "Combat Casting",
+        "Combat Conditioning",
+        "Field Medic"
+      ]
     }
   ],
   "heritageRecommendations": {
