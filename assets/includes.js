@@ -61,6 +61,152 @@ const HTML_INCLUDES = {
     return '../'.repeat(depth);
   }
 
+  function needsTouchNav(){
+    return window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  }
+
+  function ensureNavBackdrop(){
+    let backdrop = document.querySelector('.nav-dropdown-backdrop');
+    if(!backdrop){
+      backdrop = document.createElement('div');
+      backdrop.className = 'nav-dropdown-backdrop';
+      backdrop.hidden = true;
+      backdrop.addEventListener('click', closeAllNavDropdowns);
+      document.body.appendChild(backdrop);
+    }
+    return backdrop;
+  }
+
+  function closeAllNavDropdowns(){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(dropdown => {
+      dropdown.classList.remove('is-open');
+      const trigger = dropdown.querySelector(':scope > a');
+      if(trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+    document.querySelectorAll('.nav-submenu--branch.is-open').forEach(branch => {
+      branch.classList.remove('is-open');
+      clearBranchFlyoutPanel(branch);
+    });
+    document.body.classList.remove('nav-menu-open');
+    const backdrop = document.querySelector('.nav-dropdown-backdrop');
+    if(backdrop) backdrop.hidden = true;
+  }
+
+  function clearBranchFlyoutPanel(branch){
+    const panel = branch.querySelector(':scope > .nav-submenu-panel');
+    if(!panel) return;
+    panel.classList.remove('is-placed');
+    panel.style.position = '';
+    panel.style.marginLeft = '';
+    panel.style.left = '';
+    panel.style.top = '';
+    panel.style.zIndex = '';
+  }
+
+  function initNavDropdowns(){
+    const backdrop = ensureNavBackdrop();
+
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+      const trigger = dropdown.querySelector(':scope > a');
+      const menu = dropdown.querySelector(':scope > .nav-dropdown-menu');
+      if(!trigger || !menu) return;
+
+      trigger.setAttribute('aria-haspopup', 'true');
+      trigger.setAttribute('aria-expanded', 'false');
+
+      trigger.addEventListener('click', e => {
+        if(!needsTouchNav()) return;
+
+        const isOpen = dropdown.classList.contains('is-open');
+        closeAllNavDropdowns();
+
+        if(!isOpen){
+          e.preventDefault();
+          dropdown.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+          document.body.classList.add('nav-menu-open');
+          backdrop.hidden = false;
+          requestAnimationFrame(() => {
+            const first = menu.querySelector('a, [tabindex="0"]');
+            if(first) first.focus({preventScroll: true});
+          });
+        }
+      });
+
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if(needsTouchNav()) closeAllNavDropdowns();
+        });
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape') closeAllNavDropdowns();
+    });
+  }
+
+  function initSubmenuTouchToggle(placeBranchFlyout){
+    document.querySelectorAll('.nav-submenu--branch').forEach(branch => {
+      const trigger = branch.querySelector(':scope > .nav-submenu-label, :scope > .nav-submenu-link');
+      const panel = branch.querySelector(':scope > .nav-submenu-panel');
+      if(!trigger || !panel) return;
+
+      if(trigger.classList.contains('nav-submenu-label')){
+        trigger.setAttribute('tabindex', '0');
+        trigger.setAttribute('role', 'button');
+        trigger.setAttribute('aria-haspopup', 'true');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      const inScrollList = Boolean(branch.closest('.nav-submenu-panel-inner--branch-list'));
+
+      function setBranchOpen(open){
+        branch.classList.toggle('is-open', open);
+        if(trigger.getAttribute('role') === 'button'){
+          trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        if(open && inScrollList){
+          placeBranchFlyout(branch);
+        } else if(!open){
+          clearBranchFlyoutPanel(branch);
+        }
+      }
+
+      function toggleBranch(e){
+        if(!needsTouchNav()) return;
+
+        const hasFlyout = Boolean(panel.querySelector('a'));
+        if(!hasFlyout) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isOpen = branch.classList.contains('is-open');
+        branch.parentElement.querySelectorAll(':scope > .nav-submenu--branch.is-open').forEach(sibling => {
+          if(sibling !== branch){
+            sibling.classList.remove('is-open');
+            const sTrigger = sibling.querySelector(':scope > .nav-submenu-label, :scope > .nav-submenu-link');
+            if(sTrigger && sTrigger.getAttribute('role') === 'button'){
+              sTrigger.setAttribute('aria-expanded', 'false');
+            }
+            clearBranchFlyoutPanel(sibling);
+          }
+        });
+        setBranchOpen(!isOpen);
+      }
+
+      trigger.addEventListener('click', toggleBranch);
+      if(trigger.classList.contains('nav-submenu-label')){
+        trigger.addEventListener('keydown', e => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            toggleBranch(e);
+          }
+        });
+      }
+    });
+  }
+
   function initBranchListFlyouts(){
     const OVERLAP = 8;
 
@@ -115,13 +261,8 @@ const HTML_INCLUDES = {
 
     function clearBranchFlyout(branch){
       const panel = branch.querySelector(':scope > .nav-submenu-panel');
-      if(!panel || branch.matches(':hover')) return;
-      panel.classList.remove('is-placed');
-      panel.style.position = '';
-      panel.style.marginLeft = '';
-      panel.style.left = '';
-      panel.style.top = '';
-      panel.style.zIndex = '';
+      if(!panel || branch.matches(':hover') || branch.classList.contains('is-open')) return;
+      clearBranchFlyoutPanel(branch);
     }
 
     document.querySelectorAll('.nav-submenu-panel-inner--branch-list').forEach(list => {
@@ -141,9 +282,11 @@ const HTML_INCLUDES = {
       });
 
       list.addEventListener('scroll', () => {
-        list.querySelectorAll('.nav-submenu--branch:hover').forEach(placeBranchFlyout);
+        list.querySelectorAll('.nav-submenu--branch:hover, .nav-submenu--branch.is-open').forEach(placeBranchFlyout);
       });
     });
+
+    initSubmenuTouchToggle(placeBranchFlyout);
   }
 
   function loadIncludes(){
@@ -155,6 +298,7 @@ const HTML_INCLUDES = {
       navPlaceholder.innerHTML = HTML_INCLUDES.nav.replace(/\{\{ROOT\}\}/g, rootPath);
       updateActiveNav();
       initBranchListFlyouts();
+      initNavDropdowns();
     }
 
     // Load footer

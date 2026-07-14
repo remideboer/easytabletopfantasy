@@ -261,9 +261,10 @@
     box-shadow:var(--shadow-strong);
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
     transform:translateY(-8px);
     transition:opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
-    z-index:100;
+    z-index:1001;
     padding:8px 0;
     color:var(--text-primary);
     overflow:visible;
@@ -275,10 +276,38 @@
       background:var(--bg-card);
     }
   }
-  .nav-dropdown:hover .nav-dropdown-menu{
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown.is-open .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu{
     opacity:1;
     visibility:visible;
+    pointer-events:auto;
     transform:translateY(0);
+  }
+  .nav-dropdown.is-open > a,
+  .nav-dropdown:focus-within > a{
+    border-color:var(--line);
+    background:rgba(255,255,255,.8);
+    color:var(--fg-on-light);
+  }
+  .nav-dropdown.is-open > a::after,
+  .nav-dropdown:focus-within > a::after{
+    transform:translateY(-50%) rotate(180deg);
+  }
+  /* Block taps reaching page content while a dropdown is open (touch/tablet) */
+  .nav-dropdown-backdrop{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999;
+    background:rgba(0,0,0,.12);
+    -webkit-tap-highlight-color:transparent;
+  }
+  body.nav-menu-open .nav-dropdown-backdrop{
+    display:block;
+  }
+  body.nav-menu-open{
+    overflow:hidden;
   }
   /* Rules dropdown: two columns + scroll when viewport is short */
   .nav-dropdown-menu-wide{
@@ -321,6 +350,7 @@
     font-size:.95rem;
     cursor:default;
     user-select:none;
+    border-left:3px solid transparent;
   }
   .nav-submenu--branch > .nav-submenu-label,
   .nav-submenu--branch > .nav-submenu-link{
@@ -384,8 +414,26 @@
     z-index:130;
   }
   .nav-submenu--branch:hover > .nav-submenu-panel,
-  .nav-submenu--branch:focus-within > .nav-submenu-panel{
+  .nav-submenu--branch:focus-within > .nav-submenu-panel,
+  .nav-submenu--branch.is-open > .nav-submenu-panel{
     display:block;
+  }
+  .nav-submenu-label[role="button"]{
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .nav-submenu-label[role="button"]:focus-visible,
+  .nav-submenu-link:focus-visible,
+  .nav-dropdown-menu a:focus-visible,
+  .nav-dropdown > a:focus-visible{
+    outline:2px solid var(--accent-gold-soft);
+    outline-offset:2px;
+  }
+  .nav-submenu--branch.is-open > .nav-submenu-label,
+  .nav-submenu--branch.is-open > .nav-submenu-link{
+    background:rgba(184,134,11,.08);
+    color:var(--brand-primary);
+    border-left-color:var(--accent-gold-soft);
   }
   .nav-submenu-panel-inner{
     padding:8px 0;
@@ -420,7 +468,16 @@
   .nav-submenu-panel-inner--branch-list .nav-submenu--branch > .nav-submenu-panel.is-placed{
     visibility:visible;
   }
+  .nav-submenu-panel-inner--branch-list .nav-submenu-link{
     white-space:nowrap;
+  }
+  @media (hover: none), (pointer: coarse){
+    /* Touch devices: open state is driven by .is-open (JS), not sticky :hover */
+    .nav-dropdown:not(.is-open):not(:focus-within):hover .nav-dropdown-menu{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
   }
   .nav-submenu-panel--columns{
     columns:2;
