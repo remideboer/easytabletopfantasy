@@ -466,6 +466,138 @@ def druid_subclasses():
             ],
             "https://bfrd.net/classes/druid/druid-subclasses/shifter",
         ),
+        _sub(
+            cid, cname, "elementalist", "Elementalist",
+            "Command acid, cold, fire, lightning, and thunder to protect nature.",
+            [
+                _sf(cid, cname, "elementalist", "Elementalist", ["Elemental Convergence"], _ymiat_level_label("3rd"),
+                    "Bonus elemental cantrip; convert damage dice between elemental types.",
+                    """<p>Learn one cantrip from: <em>acid splash</em>, <em>electric jolt</em>, <em>firebolt</em>, <em>hoarfrost</em>, <em>ray of frost</em>, or <em>shocking grasp</em>. It counts as Primordial and doesn't count against cantrips known. Switch it when you finish a long rest. When you deal damage with one of these cantrips, add extra damage of its type equal to your <strong>PB</strong>.</p>
+<p>When you deal acid, cold, fire, lightning, or thunder damage, you can change any number of damage dice to one of the other listed types.</p>"""),
+                _sf(cid, cname, "elementalist", "Elementalist", ["Elementalist Ring Spells"], _ymiat_level_label("3rd"),
+                    "Always-prepared elementalist ring spells.",
+                    _domain_spells_body({
+                        2: ["acid arrow", "burning hands", "shatter", "thunderwave"],
+                        5: ["call lightning", "fireball"],
+                        7: ["conjure minor elementals", "elemental shield"],
+                        9: ["cone of cold", "conjure elemental"],
+                    })),
+                _sf(cid, cname, "elementalist", "Elementalist", ["Wild Shape: Elemental Conduit"], _ymiat_level_label("3rd"),
+                    "Wild Shape becomes an elemental conduit with reactive powers.",
+                    """<p>As a <strong>free action</strong>, expend Wild Shape to become a living elemental conduit for 10 minutes (or until dismissed, incapacitated, or dead).</p>
+<p>As a <strong>reaction</strong> while active, choose one:</p>
+<ul>
+<li><strong>Elemental Absorption:</strong> When you take acid, cold, fire, lightning, or thunder damage, become resistant to that type until your next turn (immune if already resistant).</li>
+<li><strong>Elemental Empowerment:</strong> When you deal elemental damage, reroll damage dice up to your <strong>Willpower modifier</strong> (minimum 1).</li>
+<li><strong>Elemental Enervation:</strong> When a creature within 30 feet succeeds on a save vs. elemental damage, force it to reroll.</li>
+</ul>""",
+                    action="free action / reaction"),
+                _sf(cid, cname, "elementalist", "Elementalist", ["Elemental Deflection"], _ymiat_level_label("7th"),
+                    "Reaction: grant an ally resistance to incoming elemental damage.",
+                    """<p>As a <strong>reaction</strong> when a friendly creature within 30 feet takes acid, cold, fire, lightning, or thunder damage, that creature becomes resistant to that type (including the triggering effect) until the start of its next turn. PB uses per long rest.</p>""",
+                    action="reaction"),
+                _sf(cid, cname, "elementalist", "Elementalist", ["Elemental Bulwark"], _ymiat_level_label("11th"),
+                    "Elemental conduit grants broad resistances and condition immunity.",
+                    """<p>While using Elemental Conduit, you are resistant to acid, cold, fire, lightning, and thunder damage and immune to paralyzed, petrified, poisoned, and unconscious.</p>"""),
+                _sf(cid, cname, "elementalist", "Elementalist", ["Elemental Flare"], _ymiat_level_label("15th"),
+                    "Retaliate with elemental damage; extended conduit with movement modes.",
+                    """<p>As a <strong>reaction</strong> when a creature within 5 feet hits you, it takes acid, cold, fire, lightning, or thunder damage (your choice) equal to half your druid level (rounded down).</p>
+<p>Elemental Conduit now lasts 1 hour. While active, you gain burrowing, flying (hover), and swimming speeds equal to your walking speed.</p>""",
+                    action="reaction"),
+            ],
+            "https://www.talesofthevaliant.com/",
+        ),
+        _sub(
+            cid, cname, "fey", "Fey",
+            "Summon seelie spirits and wield mercurial fey magic.",
+            [
+                _sf(cid, cname, "fey", "Fey", ["Enchanting Presence"], _ymiat_level_label("3rd"),
+                    "Speak Sylvan; use Willpower for social checks vs. fey.",
+                    """<p>You know Sylvan. Use your <strong>Willpower modifier</strong> instead of another ability on Willpower checks, and have advantage on Willpower checks when interacting with Fey.</p>"""),
+                _sf(cid, cname, "fey", "Fey", ["Fey Ring Spells"], _ymiat_level_label("3rd"),
+                    "Always-prepared fey ring spells.",
+                    _domain_spells_body({
+                        2: ["charm", "disguise self", "misty step", "suggestion"],
+                        5: ["conjure animals", "major image"],
+                        7: ["conjure woodland beings", "dimension door"],
+                        9: ["seeming", "tree stride"],
+                    })),
+                _sf(cid, cname, "fey", "Fey", ["Wild Shape: Seelie Spirit"], _ymiat_level_label("3rd"),
+                    "Wild Shape summons a seasonal fey spirit with spectral effects.",
+                    """<p>As a <strong>free action</strong>, expend Wild Shape to summon a spectral fey spirit within 60 feet (not a creature; doesn't occupy space). Choose a season (spring, summer, autumn, winter) per the Seelie Seasons table. Move it up to 30 feet and trigger its effect as a free action on your turn. Lasts 1 minute or until dismissed, incapacitated, or you end your turn more than 120 feet away.</p>
+<ul>
+<li><strong>Spring — Euphoric Perfume:</strong> One ally within 5 feet has advantage on its next save before your next turn.</li>
+<li><strong>Summer — Fey Ferocity:</strong> One ally within 5 feet has advantage on its next attack before your next turn.</li>
+<li><strong>Autumn — Enchanting Distraction:</strong> One hostile within 5 feet has disadvantage on its next attack before your next turn.</li>
+<li><strong>Winter — Sorrowful Rebuke:</strong> When a chosen ally within 5 feet takes damage from a creature within 10 feet, that attacker makes a Fitness save vs. your spell DC or takes cold damage equal to your PB.</li>
+</ul>""",
+                    action="free action"),
+                _sf(cid, cname, "fey", "Fey", ["Mercurial Magic"], _ymiat_level_label("7th"),
+                    "Resist charm/unconscious; reaction to aid allies' saves vs. fey effects.",
+                    """<p>You are resistant to charmed and unconscious. As a <strong>reaction</strong> when a friendly creature within 60 feet (including you) makes a save vs. charmed, frightened, poisoned, unconscious, or a Fey effect, grant advantage on that save. PB uses per long rest.</p>""",
+                    action="reaction"),
+                _sf(cid, cname, "fey", "Fey", ["Superior Seelie"], _ymiat_level_label("11th"),
+                    "Season spirits gain stronger seasonal effects and longer duration.",
+                    """<p>Seelie Spirit effects range increases to 15 feet (20 for Sorrowful Rebuke). Spirit lasts up to 10 minutes. Each season gains a second effect:</p>
+<ul>
+<li><strong>Spring's Vigor:</strong> Next hit by target grants temp Wounds = PB.</li>
+<li><strong>Summer's Exuberance:</strong> +10 ft speed until your next turn.</li>
+<li><strong>Autumn's Charm:</strong> Hostile creature makes WIL save or is charmed until your next turn.</li>
+<li><strong>Winter's Grasp:</strong> Hostile creature makes FIT save or is restrained until your next turn.</li>
+</ul>"""),
+                _sf(cid, cname, "fey", "Fey", ["Archfey's Blessing"], _ymiat_level_label("15th"),
+                    "Ageless fey resilience; twin spirits with extended range.",
+                    """<p>You can't die of old age. Immune to charmed and unconscious; resistant to frightened and poisoned.</p>
+<p>Seelie Spirit range becomes 30 feet (40 for Sorrowful Rebuke), move 60 feet, and you can summon <strong>two spirits</strong> of different seasons per use, controlling both with one free action.</p>"""),
+            ],
+            "https://www.talesofthevaliant.com/",
+        ),
+        _sub(
+            cid, cname, "stoneheart", "Stoneheart",
+            "Wrap yourself in earthen armor and stand as nature's sentinel.",
+            [
+                _sf(cid, cname, "stoneheart", "Stoneheart", ["Stone Intuition"], _ymiat_level_label("3rd"),
+                    "Enhanced shillelagh; advantage identifying stone and metal work.",
+                    """<p>Learn <em>shillelagh</em> if you don't know it. Your <em>shillelagh</em> club or quarterstaff becomes stone (non-flammable, light as wood). You can shape a 1-foot cube of stone or earth into a club or quarterstaff.</p>
+<p>Advantage on checks to determine the origin or purpose of metal or stone objects and structures.</p>"""),
+                _sf(cid, cname, "stoneheart", "Stoneheart", ["Stoneheart Ring Spells"], _ymiat_level_label("3rd"),
+                    "Always-prepared stoneheart ring spells.",
+                    _domain_spells_body({
+                        2: ["boulder toss", "circle of stones", "entangle", "shield of faith"],
+                        5: ["elemental fusion (earth only)", "meld into stone"],
+                        7: ["stone shape", "stoneskin"],
+                        9: ["conjure elemental (earth only)", "wall of stone"],
+                    })),
+                _sf(cid, cname, "stoneheart", "Stoneheart", ["Wild Shape: Earthen Armor"], _ymiat_level_label("3rd"),
+                    "Wild Shape wraps you in protective earth armor.",
+                    """<p>As a <strong>free action</strong> while not wearing armor, expend Wild Shape to don earthen armor for hours equal to your PB (or until you expend another use).</p>
+<ul>
+<li><em>Shillelagh</em> damage die becomes <strong>d10</strong>.</li>
+<li>Burrowing speed equal to walking speed.</li>
+<li>Tremorsense 10 feet.</li>
+<li>AC = 13 + Willpower modifier.</li>
+</ul>""",
+                    action="free action"),
+                _sf(cid, cname, "stoneheart", "Stoneheart", ["Stone's Vengeance"], _ymiat_level_label("7th"),
+                    "Two attacks; earth pillars impose disadvantage on ally attacks.",
+                    """<p>When you take the Attack action, make <strong>two attacks</strong>.</p>
+<p>When a friendly creature within 30 feet on the ground is attacked, summon a pillar to impose disadvantage on the attack. If it still hits, the attacker takes bludgeoning damage equal to your druid level. PB uses per long rest.</p>"""),
+                _sf(cid, cname, "stoneheart", "Stoneheart", ["Stone Sentinel"], _ymiat_level_label("11th"),
+                    "Improved earthen armor: d12 shillelagh, AC 15 + WIL, silent burrowing.",
+                    """<p>While Earthen Armor is active:</p>
+<ul>
+<li><em>Shillelagh</em> damage die becomes <strong>d12</strong>.</li>
+<li>Double damage to objects/structures with metal or stone weapons.</li>
+<li>Burrowing doesn't disturb material.</li>
+<li>AC = 15 + Willpower modifier.</li>
+<li>Tremorsense 20 feet.</li>
+</ul>"""),
+                _sf(cid, cname, "stoneheart", "Stoneheart", ["Stone Heart"], _ymiat_level_label("15th"),
+                    "Resist acid and bludgeoning; immune while armored with temp Wounds each turn.",
+                    """<p>Resistant to acid and bludgeoning. While Earthen Armor is active, immune to those types instead and gain temp Wounds equal to your PB at the start of each of your turns.</p>"""),
+            ],
+            "https://www.talesofthevaliant.com/",
+        ),
     ]
 
 
@@ -1364,6 +1496,8 @@ def witch_subclasses():
 
 
 def all_subclasses():
+    from pg2_subclasses_data import pg2_only_subclasses
+
     groups = [
         barbarian_subclasses,
         bard_subclasses,
@@ -1385,6 +1519,7 @@ def all_subclasses():
     result = []
     for fn in groups:
         result.extend(fn())
+    result.extend(pg2_only_subclasses())
     return result
 
 

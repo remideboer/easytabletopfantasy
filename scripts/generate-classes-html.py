@@ -254,7 +254,7 @@ CLASSES = [
                 "text": "Performance effects as action; maintain with action each turn. Uses per PB per long rest. Celebrate Life heals allies; Cutting Words subtracts inspiration die from enemy rolls; Clarity of Thought (5th) grants charm/frighten protection.",
             },
         ],
-        "subclasses": ["Lore", "Victory"],
+        "subclasses": ["Lore", "Victory", "Allure", "Mockery", "Sound"],
     },
     {
         "id": "cleric",
@@ -292,7 +292,7 @@ CLASSES = [
                 "text": "Manifest Might (heavy armor, martial weapon, +PB radiant/necrotic once per turn) or Manifest Miracles (extra cantrip, +PB to cantrip damage).",
             },
         ],
-        "subclasses": ["Life", "Light", "War"],
+        "subclasses": ["Life", "Light", "War", "Death", "Nature", "Tempest"],
     },
     {
         "id": "druid",
@@ -330,7 +330,7 @@ CLASSES = [
                 "text": "Heal a creature within 5 feet for PB d4s (minimum 2d4). Uses per PB per long rest. No effect on Constructs or Undead.",
             },
         ],
-        "subclasses": ["Leaf", "Shifter"],
+        "subclasses": ["Leaf", "Shifter", "Elementalist", "Fey", "Stoneheart"],
     },
     {
         "id": "fighter",
@@ -371,7 +371,7 @@ CLASSES = [
                 "text": "When damage would bring you below half Max Wounds, spend hit dice (up to PB) to heal.",
             },
         ],
-        "subclasses": ["Spell Blade", "Weapon Master"],
+        "subclasses": ["Spell Blade", "Weapon Master", "Scrapper", "Stunt Archer", "Twinblade"],
     },
     {
         "id": "artificer",
@@ -407,7 +407,7 @@ CLASSES = [
                 "text": "Tiny magical shard with charges equal to INS modifier (min 1), regained on long rest. Inspire, Mend, and other properties per BFRD.",
             },
         ],
-        "subclasses": ["Alchemist", "Armorer", "Artillerist", "Battle Smith"],
+        "subclasses": ["Alchemist", "Armorer", "Artillerist", "Battle Smith", "Cog Augur", "Grenadier", "Toymaker"],
     },
     {
         "id": "monk",
@@ -443,7 +443,7 @@ CLASSES = [
                 "text": "AC = 10 + Fitness modifier + INS modifier while unarmored and without shield.",
             },
         ],
-        "subclasses": ["Flickering Dark", "Open Hand"],
+        "subclasses": ["Flickering Dark", "Open Hand", "Affliction Eater", "Elemental Voice", "Seal Guardian"],
     },
     {
         "id": "paladin",
@@ -482,7 +482,7 @@ CLASSES = [
                 "text": "Once per turn on hit, spend Spell Power to deal extra radiant damage (2d8 + 1d8 per circle above 1st, max 5d8; +1d8 vs Fiend/Undead).",
             },
         ],
-        "subclasses": ["Devotion", "Justice"],
+        "subclasses": ["Devotion", "Justice", "Anathema", "Safekeeping", "Unbound"],
     },
     {
         "id": "ranger",
@@ -521,7 +521,7 @@ CLASSES = [
                 "text": "Climbing or swimming speed; advantage tracking; ignore difficult terrain movement penalty.",
             },
         ],
-        "subclasses": ["Hunter", "Pack Master"],
+        "subclasses": ["Hunter", "Pack Master", "Arrow Binder", "Shadow", "Trailblazer"],
     },
     {
         "id": "rogue",
@@ -557,7 +557,7 @@ CLASSES = [
                 "text": "Dash, Disengage, or Hide as a free action on your turn.",
             },
         ],
-        "subclasses": ["Enforcer", "Thief"],
+        "subclasses": ["Enforcer", "Thief", "Con Arcanist", "Nightblade", "Trapsmith"],
     },
     {
         "id": "sorcerer",
@@ -595,7 +595,7 @@ CLASSES = [
                 "text": "Sorcery points per table; convert points and spell circles per BFRD flexible casting.",
             },
         ],
-        "subclasses": ["Chaos", "Draconic"],
+        "subclasses": ["Chaos", "Draconic", "Abominable", "Cyclonic", "Sacred"],
     },
     {
         "id": "warlock",
@@ -633,7 +633,7 @@ CLASSES = [
                 "text": "Choose invocations to customize your pact. Gain more at listed levels.",
             },
         ],
-        "subclasses": ["Archfey", "Fiend", "Great Old One"],
+        "subclasses": ["Archfey", "Fiend", "Great Old One", "Archon", "Elemental Regent", "Fey Noble"],
     },
     {
         "id": "wizard",
@@ -671,7 +671,7 @@ CLASSES = [
                 "text": "Always-prepared spells at 1st (3rd), 2nd (5th), 3rd (7th), and 4th (9th) circle.",
             },
         ],
-        "subclasses": ["Battle Mage", "Cantrip Adept"],
+        "subclasses": ["Battle Mage", "Cantrip Adept", "Arcanist", "Necromancer", "Summoner"],
     },
     {
         "id": "theurge",
