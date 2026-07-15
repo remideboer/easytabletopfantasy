@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Character Sheet | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Manage YMIAT characters—track wounds, abilities, inventory, and progression. Saved locally in your browser." />
+<link rel="canonical" href="character-sheet.html" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script src="assets/includes.js"></script>
+<meta property="og:title" content="Character Sheet | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Create and manage YMIAT characters with automatic Max Wounds, Spell Power, and inventory calculations." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="character-sheet.html" />
+</head>
+<body class="cs-page">
+<header data-include="nav"></header>
+<main class="cs-main">
+  <div class="cs-hero">
+    <h1>Character Sheet</h1>
+    <p class="lede">Create and manage characters on a digital sheet—Max Wounds, Spell Power, and inventory slots update from your choices. Saved in this browser (no account needed).</p>
+  </div>
+
+  <div id="cs-loading" class="cs-loading" aria-live="polite">
+    <span class="cs-loading-spinner" aria-hidden="true"></span>
+    Loading character data…
+  </div>
+
+  <div id="cs-error" class="cs-error" hidden role="alert">
+    <p>Could not load character options. Try refreshing, or run <code>python scripts/generate-character-creator-data.py</code> if you're developing locally.</p>
+  </div>
+
+  <div id="cs-app" class="cs-app" hidden>
+    <div class="cs-toolbar">
+      <div class="cs-toolbar-group">
+        <label class="cs-toolbar-label" for="cs-char-select">Character</label>
+        <select id="cs-char-select" class="cs-select cs-select--char"></select>
+      </div>
+      <div class="cs-toolbar-actions">
+        <button type="button" class="btn cs-btn-secondary" id="cs-btn-new">New character</button>
+        <button type="button" class="btn cs-btn-secondary" id="cs-btn-import">Import creator draft</button>
+        <button type="button" class="btn cs-btn-danger" id="cs-btn-delete">Delete</button>
+      </div>
+    </div>
+
+    <div class="cs-sheet" id="cs-sheet" aria-label="Character sheet"></div>
+    <p class="cs-hint">Changes save automatically. Max Wounds = class + FIT mod + (level − 1) − 2 per lost heart. Spell Power = 3 × spellcasting ability mod.</p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="assets/character-sheet.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

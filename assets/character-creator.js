@@ -26,27 +26,46 @@
   });
 
   let state = loadState();
+  let eventsBound = false;
 
-  const el = {
-    loading: document.getElementById("cc-loading"),
-    app: document.getElementById("cc-app"),
-    error: document.getElementById("cc-error"),
-    progress: document.getElementById("cc-progress"),
-    kicker: document.getElementById("cc-step-kicker"),
-    title: document.getElementById("cc-step-title"),
-    desc: document.getElementById("cc-step-desc"),
-    rulesLink: document.getElementById("cc-rules-link"),
-    body: document.getElementById("cc-step-body"),
-    summary: document.getElementById("cc-summary-list"),
-    summaryFeatures: document.getElementById("cc-summary-features"),
-    detailPanel: document.getElementById("cc-detail-panel"),
-    detailPlaceholder: document.getElementById("cc-detail-placeholder"),
-    detailTitle: document.getElementById("cc-detail-title"),
-    detailBody: document.getElementById("cc-detail-body"),
-    detailLink: document.getElementById("cc-detail-link"),
-    btnBack: document.getElementById("cc-btn-back"),
-    btnNext: document.getElementById("cc-btn-next"),
-  };
+  const el = {};
+
+  function cacheElements() {
+    el.loading = document.getElementById("cc-loading");
+    el.app = document.getElementById("cc-app");
+    el.error = document.getElementById("cc-error");
+    el.progress = document.getElementById("cc-progress");
+    el.kicker = document.getElementById("cc-step-kicker");
+    el.title = document.getElementById("cc-step-title");
+    el.desc = document.getElementById("cc-step-desc");
+    el.rulesLink = document.getElementById("cc-rules-link");
+    el.body = document.getElementById("cc-step-body");
+    el.summary = document.getElementById("cc-summary-list");
+    el.summaryFeatures = document.getElementById("cc-summary-features");
+    el.detailPanel = document.getElementById("cc-detail-panel");
+    el.detailPlaceholder = document.getElementById("cc-detail-placeholder");
+    el.detailTitle = document.getElementById("cc-detail-title");
+    el.detailBody = document.getElementById("cc-detail-body");
+    el.detailLink = document.getElementById("cc-detail-link");
+    el.btnBack = document.getElementById("cc-btn-back");
+    el.btnNext = document.getElementById("cc-btn-next");
+  }
+
+  function showLoadError(message) {
+    if (el.loading) el.loading.hidden = true;
+    if (el.app) el.app.hidden = true;
+    if (el.error) {
+      el.error.hidden = false;
+      const p = el.error.querySelector("p");
+      if (p && message) p.textContent = message;
+    }
+  }
+
+  function showApp() {
+    if (el.loading) el.loading.hidden = true;
+    if (el.error) el.error.hidden = true;
+    if (el.app) el.app.hidden = false;
+  }
 
   function loadState() {
     try {
@@ -62,7 +81,7 @@
 
   function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    renderSummary();
+    if (data) renderSummary();
   }
 
   function rootPath() {
@@ -864,6 +883,7 @@
   }
 
   function render() {
+    if (!data || !el.kicker || !el.title) return;
     const steps = activeSteps();
     if (stepIndex >= steps.length) stepIndex = steps.length - 1;
 
@@ -913,8 +933,12 @@
     }
   }
 
-  el.btnNext.addEventListener("click", goNext);
-  el.btnBack.addEventListener("click", goBack);
+  function bindEvents() {
+    if (eventsBound || !el.btnNext || !el.btnBack) return;
+    eventsBound = true;
+    el.btnNext.addEventListener("click", goNext);
+    el.btnBack.addEventListener("click", goBack);
+  }
 
   function updateNavOffset(){
     const header = document.querySelector("header");
@@ -932,30 +956,46 @@
   }
 
   async function init() {
+    cacheElements();
+    if (!el.loading || !el.app || !el.progress) {
+      showLoadError("Character creator UI failed to load. Try refreshing the page.");
+      return;
+    }
+
     scheduleNavOffsetUpdate();
     window.addEventListener("resize", scheduleNavOffsetUpdate);
-    if(window.ResizeObserver){
+    if (window.ResizeObserver) {
       const header = document.querySelector("header");
-      if(header){
+      if (header) {
         new ResizeObserver(scheduleNavOffsetUpdate).observe(header);
       }
     }
     try {
       const res = await fetch(rp("assets/character-creator-data.json"));
-      if (!res.ok) throw new Error("fetch failed");
+      if (!res.ok) throw new Error("Could not load character options (HTTP " + res.status + ").");
       data = await res.json();
+      if (!data || !Array.isArray(data.steps) || !Array.isArray(data.classes)) {
+        throw new Error("Character options file is invalid. Regenerate it with generate-character-creator-data.py.");
+      }
       const range = data.levelRange || { min: 1, max: 10, subclassMin: 2 };
       state.level = Math.min(range.max, Math.max(range.min, Number(state.level) || 1));
       if (state.level < range.subclassMin) state.subclassId = "";
-      el.loading.hidden = true;
-      el.app.hidden = false;
+      showApp();
+      bindEvents();
       scheduleNavOffsetUpdate();
-      render();
+      try {
+        render();
+      } catch (renderErr) {
+        console.error(renderErr);
+        throw new Error("Character creator failed to render. Try clearing saved data or refreshing.");
+      }
       scheduleNavOffsetUpdate();
     } catch (err) {
       console.error(err);
-      el.loading.hidden = true;
-      el.error.hidden = false;
+      const hint = window.location.protocol === "file:"
+        ? " Open this site through a local web server (for example: python -m http.server) instead of the file:// URL."
+        : "";
+      showLoadError((err && err.message ? err.message : "Could not load character data.") + hint);
     }
   }
 
