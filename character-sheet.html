@@ -39,12 +39,14 @@
       <div class="cs-toolbar-actions">
         <button type="button" class="btn cs-btn-secondary" id="cs-btn-new">New character</button>
         <button type="button" class="btn cs-btn-secondary" id="cs-btn-import">Import creator draft</button>
-        <button type="button" class="btn cs-btn-danger" id="cs-btn-delete">Delete</button>
+        <button type="button" class="btn cs-btn-danger" id="cs-btn-delete" disabled>Delete</button>
       </div>
     </div>
 
-    <div class="cs-sheet" id="cs-sheet" aria-label="Character sheet"></div>
-    <p class="cs-hint">Changes save automatically. Max Wounds = class + FIT mod + (level − 1) − 2 per lost heart. Spell Power = 3 × spellcasting ability mod.</p>
+    <p id="cs-empty" class="cs-empty">Select a character from the list, or create a new one to open the sheet.</p>
+
+    <div class="cs-sheet" id="cs-sheet" aria-label="Character sheet" hidden></div>
+    <p class="cs-hint" id="cs-hint" hidden>Changes save automatically. Max Wounds = class + FIT mod + (level − 1) − 2 per lost heart. Spell Power = 3 × spellcasting ability mod.</p>
   </div>
 </main>
 <footer class="legal" data-include="footer"></footer>

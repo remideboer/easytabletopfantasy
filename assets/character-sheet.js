@@ -23,12 +23,17 @@
     el.app = document.getElementById("cs-app");
     el.charSelect = document.getElementById("cs-char-select");
     el.sheet = document.getElementById("cs-sheet");
+    el.empty = document.getElementById("cs-empty");
+    el.hint = document.getElementById("cs-hint");
     el.btnNew = document.getElementById("cs-btn-new");
     el.btnImport = document.getElementById("cs-btn-import");
     el.btnDelete = document.getElementById("cs-btn-delete");
   }
 
   function rootPath() {
+    if (typeof window.ymiatGetRootPath === "function") {
+      return window.ymiatGetRootPath();
+    }
     const path = window.location.pathname;
     const depth = path.replace(/^\//, "").split("/").filter(Boolean).length - 1;
     if (depth <= 0) return "";
@@ -88,8 +93,7 @@
   }
 
   function defaultStore() {
-    const first = defaultCharacter();
-    return { version: 1, activeId: first.id, characters: [first] };
+    return { version: 1, activeId: null, characters: [] };
   }
 
   function loadStore() {
@@ -97,16 +101,18 @@
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
-        if (parsed.characters && parsed.characters.length) {
-          parsed.characters = parsed.characters.filter(Boolean).map((c) => {
-            try {
-              return normalizeCharacter(c);
-            } catch (_) {
-              return normalizeCharacter(defaultCharacter());
-            }
-          });
+        if (Array.isArray(parsed.characters)) {
+          if (parsed.characters.length) {
+            parsed.characters = parsed.characters.filter(Boolean).map((c) => {
+              try {
+                return normalizeCharacter(c);
+              } catch (_) {
+                return normalizeCharacter(defaultCharacter());
+              }
+            });
+          }
           if (!parsed.activeId || !parsed.characters.some((c) => c.id === parsed.activeId)) {
-            parsed.activeId = parsed.characters[0].id;
+            parsed.activeId = parsed.characters.length ? parsed.characters[0].id : null;
           }
           return parsed;
         }
@@ -141,8 +147,15 @@
   }
 
   function activeCharacter() {
-    char = store.characters.find((c) => c.id === store.activeId) || store.characters[0];
-    store.activeId = char.id;
+    if (!store.activeId) {
+      char = null;
+      return null;
+    }
+    char = store.characters.find((c) => c.id === store.activeId) || null;
+    if (!char) {
+      store.activeId = null;
+      return null;
+    }
     return char;
   }
 
@@ -313,15 +326,30 @@
     const display = opts?.display ?? formatMod(value);
     const hint = opts?.hint ? `<span class="cs-stepper-hint">${opts.hint}</span>` : "";
     return `<div class="cs-stepper" data-stepper="${id}" data-min="${min}" data-max="${max}">
-      <button type="button" class="cs-stepper-btn" data-delta="-1" aria-label="Decrease ${label}">▼</button>
       <span class="cs-stepper-val" aria-live="polite">${escapeHtml(display)}</span>
-      <button type="button" class="cs-stepper-btn" data-delta="1" aria-label="Increase ${label}">▲</button>
+      <div class="cs-stepper-btns">
+        <button type="button" class="cs-stepper-btn" data-delta="-1" aria-label="Decrease ${label}">▼</button>
+        <button type="button" class="cs-stepper-btn" data-delta="1" aria-label="Increase ${label}">▲</button>
+      </div>
       ${hint}
     </div>`;
   }
 
+  function levelControl(c, range) {
+    return `<div class="cs-level-control">
+      <span class="cs-label">LVL</span>
+      <div class="cs-stepper cs-stepper--level" data-stepper="level" data-min="${range.min}" data-max="${range.max}">
+        <div class="cs-level-circle" aria-live="polite">${c.level}</div>
+        <div class="cs-stepper-btns">
+          <button type="button" class="cs-stepper-btn" data-delta="-1" aria-label="Decrease level">▼</button>
+          <button type="button" class="cs-stepper-btn" data-delta="1" aria-label="Increase level">▲</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
   function renderSheet() {
-    if (!el.sheet || !data) return;
+    if (!el.sheet || !data || !char) return;
     const c = char;
     const cls = findClass(c);
     const sub = findSubclass(c);
@@ -410,11 +438,7 @@
             ${stepper("hearts", c.hearts, "Hearts", { min: 0, max: 3, display: String(c.hearts) })}
             ${lost ? `<p class="cs-penalty-note">−${lost} to each ability mod, −${5 * lost} ft speed, −${2 * lost} Max WD</p>` : ""}
           </div>
-          <div class="cs-level">
-            <span class="cs-label">LVL</span>
-            <div class="cs-level-circle">${c.level}</div>
-            ${stepper("level", c.level, "Level", { min: range.min, max: range.max, display: String(c.level) })}
-          </div>
+          ${levelControl(c, range)}
         </div>
 
         <div class="cs-abilities-row">${abilityBoxes}</div>
@@ -515,19 +539,39 @@
   }
 
   function renderCharSelect() {
-    el.charSelect.innerHTML = store.characters
-      .map((c) => `<option value="${c.id}"${c.id === store.activeId ? " selected" : ""}>${escapeHtml(c.name || "Unnamed")}</option>`)
-      .join("");
+    if (!el.charSelect) return;
+    const options = ['<option value="">— Select a character —</option>'];
+    options.push(
+      ...store.characters.map(
+        (c) => `<option value="${c.id}"${c.id === store.activeId ? " selected" : ""}>${escapeHtml(c.name || "Unnamed")}</option>`
+      )
+    );
+    el.charSelect.innerHTML = options.join("");
+    el.charSelect.value = store.activeId || "";
+  }
+
+  function updateSheetVisibility() {
+    const hasChar = Boolean(char);
+    if (el.sheet) el.sheet.hidden = !hasChar;
+    if (el.empty) el.empty.hidden = hasChar;
+    if (el.hint) el.hint.hidden = !hasChar;
+    if (el.btnDelete) el.btnDelete.disabled = !hasChar;
   }
 
   function render() {
     activeCharacter();
     renderCharSelect();
+    updateSheetVisibility();
+    if (!char) {
+      if (el.sheet) el.sheet.innerHTML = "";
+      return;
+    }
     renderSheet();
     clampWoundsAndSp();
   }
 
   function persistAndRender() {
+    if (!char) return;
     normalizeCharacter(char);
     saveStore();
     render();
@@ -541,6 +585,12 @@
   }
 
   function setActive(id) {
+    if (!id) {
+      store.activeId = null;
+      saveStore();
+      render();
+      return;
+    }
     if (store.characters.some((c) => c.id === id)) {
       store.activeId = id;
       saveStore();
@@ -557,14 +607,11 @@
   }
 
   function deleteCharacter() {
-    if (store.characters.length <= 1) {
-      alert("You need at least one character. Create another before deleting this one.");
-      return;
-    }
+    if (!char) return;
     const name = char.name || "Unnamed";
     if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
-    store.activeId = store.characters[0].id;
+    store.activeId = store.characters.length ? store.characters[0].id : null;
     saveStore();
     render();
   }
@@ -594,6 +641,8 @@
         const lin = byId(data.lineages, c.lineageId);
         if (lin) Object.assign(c, parseLineageDefaults(lin));
       }
+      const spMax = computeSpellPowerMax(c);
+      c.spellPowerNow = spMax !== null ? spMax : 0;
       store.characters.push(c);
       store.activeId = c.id;
       saveStore();
@@ -604,6 +653,7 @@
   }
 
   function handleStepper(id, delta) {
+    if (!char) return;
     if (id.startsWith("ability-")) {
       const ab = id.slice(8);
       char.abilities[ab] = clampAbility(char.abilities[ab] + delta);
@@ -645,7 +695,7 @@
         return;
       }
       const heart = e.target.closest(".cs-heart");
-      if (heart) {
+      if (heart && char) {
         const idx = parseInt(heart.dataset.heart, 10);
         char.hearts = idx + 1;
         persistAndRender();
@@ -653,6 +703,7 @@
     });
 
     el.sheet.addEventListener("input", (e) => {
+      if (!char) return;
       const t = e.target;
       if (t.id === "cs-name") {
         char.name = t.value;
@@ -680,6 +731,7 @@
     });
 
     el.sheet.addEventListener("change", (e) => {
+      if (!char) return;
       const t = e.target;
       if (t.id === "cs-class") {
         char.classId = t.value;

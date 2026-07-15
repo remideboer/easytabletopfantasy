@@ -85,6 +85,9 @@
   }
 
   function rootPath() {
+    if (typeof window.ymiatGetRootPath === "function") {
+      return window.ymiatGetRootPath();
+    }
     const path = window.location.pathname;
     const depth = path.replace(/^\//, "").split("/").filter(Boolean).length - 1;
     if (depth <= 0) return "";

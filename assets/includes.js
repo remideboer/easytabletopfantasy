@@ -425,4 +425,7 @@ const HTML_INCLUDES = {
   } else {
     loadIncludes();
   }
+
+  // Shared asset/root path for character tools (GitHub Pages BASE_PATH aware)
+  window.ymiatGetRootPath = getRootPath;
 })();
