@@ -780,7 +780,7 @@
     "range": "Self",
     "duration": "Instantaneous",
     "components": "V, S, M (a drop of alcohol)",
-    "description": "You gain 1 + 4 temporary Max Wounds.\n\nUsing a Higher-Level Spell Slot. You gain 5 additional temporary Max Wounds for each spell slot level above 1."
+    "description": "You gain 1 + Spell Modifier temporary Max Wounds.\n\nCasting at Higher-Level. You gain an additional Spell Modifier temporary Max Wounds for each circle above 1st."
   },
   {
     "id": "feather-fall",
