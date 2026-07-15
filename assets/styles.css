@@ -3954,6 +3954,20 @@
   }
   .cs-btn-small{padding:4px 10px;font-size:.72rem;border-radius:6px}
   .cs-spell-chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+  .cs-spell-group-sheet{
+    padding-top:8px;
+    margin-top:8px;
+    border-top:1px solid var(--line);
+  }
+  .cs-spell-group-sheet:first-child{padding-top:0;margin-top:0;border-top:none}
+  .cs-spell-group-sheet-title{
+    font-size:.68rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--muted);
+    margin:0 0 4px;
+  }
   .cs-spell-chip{
     display:inline-block;
     padding:3px 8px;

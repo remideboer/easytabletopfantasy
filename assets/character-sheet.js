@@ -614,6 +614,13 @@
     </div>`;
   }
 
+  function renderSpellChipGroup(title, chipsHtml) {
+    return `<div class="cs-spell-group-sheet">
+      <h3 class="cs-spell-group-sheet-title">${escapeHtml(title)}</h3>
+      <div class="cs-spell-chips">${chipsHtml}</div>
+    </div>`;
+  }
+
   function renderSpellsPane(c, cls) {
     const mode = spellMode(cls);
     const tiered = usesLearnedTier(mode);
@@ -625,33 +632,41 @@
     const cantrips = learned.filter((s) => s.circle === 0).sort((a, b) => a.name.localeCompare(b.name));
     const leveled = learned.filter((s) => s.circle > 0).sort((a, b) => a.circle - b.circle || a.name.localeCompare(b.name));
 
-    let leveledChips, counterText;
+    let counterText;
     if (tiered) {
       const learnedCap = computeLearnedCap(c);
       const activeCount = leveled.filter((s) => c.preparedSpellIds.includes(s.id)).length;
-      leveledChips = leveled
-        .map((s) => {
-          const active = c.preparedSpellIds.includes(s.id);
-          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" title="${escapeHtml(s.school)} · Circle ${s.circle} · ${active ? "Prepared" : "Learned"}">${escapeHtml(s.name)}</span>`;
-        })
-        .join("");
       counterText = `Learned ${leveled.length}/${learnedCap} · Prepared ${activeCount}/${activeCap}`;
     } else {
-      leveledChips = leveled
-        .map((s) => `<span class="cs-spell-chip is-active" title="${escapeHtml(s.school)} · Circle ${s.circle} · ${label}">${escapeHtml(s.name)}</span>`)
-        .join("");
       counterText = `${label} ${leveled.length}/${activeCap}`;
     }
 
-    const cantripChips = cantrips
-      .map((s) => `<span class="cs-spell-chip is-active" title="${escapeHtml(s.school)} · Cantrip">${escapeHtml(s.name)}</span>`)
-      .join("");
+    const groups = [];
+    if (cantrips.length) {
+      const chips = cantrips
+        .map((s) => `<span class="cs-spell-chip is-active" title="${escapeHtml(s.school)} · Cantrip">${escapeHtml(s.name)}</span>`)
+        .join("");
+      groups.push(renderSpellChipGroup("Cantrips", chips));
+    }
+
+    const maxCircle = leveled.length ? leveled[leveled.length - 1].circle : 0;
+    for (let circle = 1; circle <= maxCircle; circle++) {
+      const spells = leveled.filter((s) => s.circle === circle);
+      if (!spells.length) continue;
+      const chips = spells
+        .map((s) => {
+          const active = tiered ? c.preparedSpellIds.includes(s.id) : true;
+          const stateLabel = tiered ? (active ? "Prepared" : "Learned") : label;
+          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" title="${escapeHtml(s.school)} · Circle ${circle} · ${stateLabel}">${escapeHtml(s.name)}</span>`;
+        })
+        .join("");
+      groups.push(renderSpellChipGroup(`Circle ${circle}`, chips));
+    }
 
     return `<div class="cs-pane cs-pane--spells">
       <h2 class="cs-pane-title cs-pane-title--with-action">Spells <button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-manage-spells">Manage Spells</button></h2>
       <p class="cs-muted">Cantrips ${cantrips.length}/${cCap} · ${counterText}</p>
-      ${cantrips.length ? `<div class="cs-spell-chips">${cantripChips}</div>` : ""}
-      ${leveled.length ? `<div class="cs-spell-chips">${leveledChips}</div>` : '<p class="cs-muted">No spells learned yet.</p>'}
+      ${groups.length ? groups.join("") : '<p class="cs-muted">No spells learned yet.</p>'}
     </div>`;
   }
 
