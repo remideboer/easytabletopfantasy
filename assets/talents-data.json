@@ -1,0 +1,278 @@
+[
+  {
+    "id": "arcanist",
+    "name": "Arcanist",
+    "prerequisite": "Spellcasting class feature",
+    "description": "• Double proficiency bonus on Arcana checks.\n• Once per rest, replace one known cantrip or spell (not from a spellbook) with another of the same circle from your source list.\n• Learn one additional cantrip from your spellcasting source."
+  },
+  {
+    "id": "combat-casting",
+    "name": "Combat Casting",
+    "prerequisite": "",
+    "description": "• On Fitness saves to maintain concentration, treat d20 rolls of 7 or less as 8.\n• When a creature provokes an opportunity attack, cast a cantrip with your reaction instead of a melee attack.\n• Use a shield or weapon as a spellcasting focus."
+  },
+  {
+    "id": "elemental-savant",
+    "name": "Elemental Savant",
+    "prerequisite": "Ability to cast at least one damaging spell",
+    "description": "Choose acid, cold, fire, lightning, or thunder. When you cast a spell that deals damage, you may convert its damage type to your chosen type. When rolling damage for spells that naturally use that type, reroll 1s on damage dice. Selectable multiple times for different types."
+  },
+  {
+    "id": "mental-fortitude",
+    "name": "Mental Fortitude",
+    "prerequisite": "",
+    "description": "• Once per short rest, reroll a failed Insight or Willpower save.\n• When you start your turn charmed, frightened, paralyzed, or stunned, gain 1 Resolve."
+  },
+  {
+    "id": "ritualist",
+    "name": "Ritualist",
+    "prerequisite": "Spellcasting class feature",
+    "description": "Gain a ritual book. Choose Arcane, Divine, Primordial, or Wyrd as your ritual source. Add one ritual per spell circle you have unlocked; add another when you gain access to a new circle."
+  },
+  {
+    "id": "school-specialization",
+    "name": "School Specialization",
+    "prerequisite": "",
+    "description": "• +1 to spell attack and save DC for your chosen school.\n• Halve gold and time to copy spells of that school into a spellbook.\n• When spending 2+ sorcery points on a spell of that school, regain 1 sorcery point at end of turn.\n\nSelectable multiple times for different schools."
+  },
+  {
+    "id": "spell-duelist",
+    "name": "Spell Duelist",
+    "prerequisite": "Ability to cast one or more cantrips",
+    "description": "• When damaged by a spell, react to cast a cantrip at the attacker.\n• Spell attacks ignore half/three-quarters cover; touch range becomes 15 feet; double spell range otherwise."
+  },
+  {
+    "id": "chaos-caster",
+    "name": "Chaos Caster",
+    "prerequisite": "Spellcasting class feature",
+    "description": "When casting with a spell circle slot, attempt to cast as one circle higher (ability check vs DC 11 + base circle). On success, roll on the Volatile Spell Effect table. Uses per long rest equal to proficiency bonus."
+  },
+  {
+    "id": "spell-recall",
+    "name": "Spell Recall",
+    "prerequisite": "Prepared spellcaster (Cleric, Druid, Theurge, or Wizard)",
+    "description": "• Prepare additional spells equal to half proficiency bonus (rounded down).\n• As a bonus action, swap one prepared spell for another (ability check DC 10 + circle or lose the attempt)."
+  },
+  {
+    "id": "magical-trickster",
+    "name": "Magical Trickster",
+    "prerequisite": "",
+    "description": "• Learn minor illusion and prestidigitation or thaumaturgy (no components; double range).\n• As a bonus action, impose disadvantage on one creature's next attack (Willpower save); uses per day equal to proficiency bonus."
+  },
+  {
+    "id": "armor-expert",
+    "name": "Armor Expert",
+    "prerequisite": "Fitness +1 or higher",
+    "description": "• While wearing medium or heavy armor you're proficient with: +1 Defense, advantage on Fitness saves vs. pull/shove/prone."
+  },
+  {
+    "id": "armor-training",
+    "name": "Armor Training",
+    "prerequisite": "Proficiency with light or medium armor",
+    "description": "• Gain next armor proficiency step (light→medium→heavy and shields).\n• No disadvantage on Stealth in medium armor; add up to +3 Fitness to Defense in medium armor."
+  },
+  {
+    "id": "athletic",
+    "name": "Athletic",
+    "prerequisite": "",
+    "description": "• Double proficiency on Athletics checks.\n• Increased carry/push/lift capacity; stand from prone for 5 ft movement; +10 ft running long jump, +3 ft high jump."
+  },
+  {
+    "id": "artillerist",
+    "name": "Artillerist",
+    "prerequisite": "Fitness +1 or higher",
+    "description": "• Ignore Loading on proficient ranged weapons.\n• Advantage on siege weapon attacks.\n• With advantage on a ranged attack, reroll one d20."
+  },
+  {
+    "id": "brave",
+    "name": "Brave",
+    "prerequisite": "",
+    "description": "• Advantage on saves vs. fear; inspire ally within 5× proficiency bonus feet with advantage on one fear save.\n• Once per long rest, end frightened on yourself or an ally within 5 feet as a bonus action."
+  },
+  {
+    "id": "combat-conditioning",
+    "name": "Combat Conditioning",
+    "prerequisite": "",
+    "description": "• Max Wounds +2 per character level (retroactive and on future levels).\n• +1 maximum Recovery Point; regain all Recovery Points on a long rest."
+  },
+  {
+    "id": "critical-training",
+    "name": "Critical Training",
+    "prerequisite": "",
+    "description": "• Critical hit on 19–20 with weapons.\n• On weapon crits, add the attack ability modifier to damage an extra time."
+  },
+  {
+    "id": "hand-to-hand",
+    "name": "Hand to Hand",
+    "prerequisite": "",
+    "description": "• Unarmed strikes deal 1d6 + Fitness modifier.\n• Proficiency with improvised weapons (1d8 one-hand, 1d10 two-hand minimum).\n• Advantage on grapple checks; grappled foes take Fitness modifier bludgeoning at start of your turn."
+  },
+  {
+    "id": "opportunist",
+    "name": "Opportunist",
+    "prerequisite": "",
+    "description": "• Advantage on opportunity attacks.\n• Opportunity attacks when foes stand from prone or Use an Object."
+  },
+  {
+    "id": "physical-fortitude",
+    "name": "Physical Fortitude",
+    "prerequisite": "",
+    "description": "• Once per turn, reroll a failed Fitness save by spending a Recovery Point.\n• Gain 1 Resolve when you start blinded, deafened, restrained, or poisoned.\n• Advantage vs. prone, pull, or push."
+  },
+  {
+    "id": "return-fire",
+    "name": "Return Fire",
+    "prerequisite": "",
+    "description": "When a visible attacker hits or misses you with a ranged attack, react with a ranged or thrown weapon attack if in range."
+  },
+  {
+    "id": "spell-hunter",
+    "name": "Spell Hunter",
+    "prerequisite": "",
+    "description": "• React with melee attack when a reachable foe casts; extra damage equal to spell circle (crit interrupts spell).\n• Advantage on saves vs. their spells within 5 feet; they have disadvantage on concentration.\n• Grappled creatures can't cast spells requiring somatic components."
+  },
+  {
+    "id": "vanguard",
+    "name": "Vanguard",
+    "prerequisite": "",
+    "description": "• React with melee attack when a foe in reach attacks someone else.\n• Opportunity attacks when creatures leave reach even without provoking.\n• Readied melee attacks gain +proficiency bonus; on hit, target's speed becomes 0 until end of its next turn."
+  },
+  {
+    "id": "weapon-discipline",
+    "name": "Weapon Discipline",
+    "prerequisite": "Proficiency with at least one martial weapon",
+    "description": "Choose one proficient simple or martial weapon: +1 attack and damage; extra weapon die on crit; temp Wounds equal to proficiency bonus when you drop a foe with that weapon."
+  },
+  {
+    "id": "alchemy-adept",
+    "name": "Alchemy Adept",
+    "prerequisite": "Proficiency with alchemist's tools",
+    "description": "• Double proficiency on alchemist's tool checks.\n• Craft alchemical items faster during downtime; proficient with alchemical ranged attacks using Fitness or Insight.\n• +proficiency bonus to concoction save DC; range 30/60 ft."
+  },
+  {
+    "id": "aware",
+    "name": "Aware",
+    "prerequisite": "",
+    "description": "• On initiative, treat d20 rolls of 9 or less as 10.\n• Can't be surprised while conscious.\n• Hidden attackers don't gain advantage against you."
+  },
+  {
+    "id": "bottomless-luck",
+    "name": "Bottomless Luck",
+    "prerequisite": "",
+    "description": "• When you roll 20 on a d20, one ally who can see or hear you gains 1 Resolve.\n• When resetting Resolve, roll d20 in four bands (see core rules) and keep the better of two rolls if you roll twice.\n• When spending Resolve to reroll, roll twice and keep the better result."
+  },
+  {
+    "id": "comrade",
+    "name": "Comrade",
+    "prerequisite": "",
+    "description": "• Help as a bonus action.\n• Spend Resolve to boost an ally's roll within 30 feet.\n• When an ally within 30 feet fails a death save or reaches Max Wounds, gain 2 Resolve."
+  },
+  {
+    "id": "covert",
+    "name": "Covert",
+    "prerequisite": "Stealth proficiency, Fitness +1",
+    "description": "• Hide in three-quarters cover or while lightly obscured.\n• Darkvision users can't see you while motionless in dim light or darkness.\n• No disadvantage attacking or perceiving in dim light.\n• Reaction Stealth vs. Perception to stay hidden after being spotted (once per creature per 24 hours)."
+  },
+  {
+    "id": "dungeoneer",
+    "name": "Dungeoneer",
+    "prerequisite": "",
+    "description": "• Add proficiency bonus to disarm traps/open doors even without tools; first failure on traps doesn't trigger them.\n• Advantage finding secrets, traps, and illusions; advantage vs. traps and hazards; resistance to trap/hazard damage.\n• At combat start, you and allies within 5 feet may roll Stealth for surprise."
+  },
+  {
+    "id": "empathetic",
+    "name": "Empathetic",
+    "prerequisite": "",
+    "description": "• Discern simple intent from body language in unknown languages.\n• +5 passive Insight; proficiency in Persuasion (or double proficiency).\n• After 10 minutes of friendly conversation, advantage on Willpower (Persuasion) checks."
+  },
+  {
+    "id": "escamotage",
+    "name": "Escamotage",
+    "prerequisite": "",
+    "description": "• Proficiency in Sleight of Hand (or double proficiency).\n• Spend 2 Resolve to reroll Sleight of Hand checks.\n• Action to pick a visible worn nonmagical item (DC 10 + target's Fitness bonus + CR)."
+  },
+  {
+    "id": "far-traveler",
+    "name": "Far Traveler",
+    "prerequisite": "",
+    "description": "• Travel 10 hours/day before forced march saves; fast pace doesn't reduce passive Perception.\n• Advantage on Survival checks to avoid getting lost.\n• Ignore one level of exhaustion."
+  },
+  {
+    "id": "field-medic",
+    "name": "Field Medic",
+    "prerequisite": "",
+    "description": "• On Medicine checks, treat d20 rolls of 9 or less as 10.\n• Action: heal Wounds equal to proficiency bonus + Fitness modifier (once per target per rest).\n• When spending Recovery Points on a short rest, reroll up to proficiency bonus dice."
+  },
+  {
+    "id": "hardy",
+    "name": "Hardy",
+    "prerequisite": "Fitness +1 or higher",
+    "description": "• Once per long rest, drop to 1 Wound instead of 0 when reduced to 0 Wounds.\n• Advantage on checks to avoid or reduce exhaustion; once per long rest ignore gaining a level of exhaustion."
+  },
+  {
+    "id": "learned-researcher",
+    "name": "Learned Researcher",
+    "prerequisite": "",
+    "description": "Choose two of Arcana, History, Nature, or Religion: treat d20 rolls of 9 or less as 10 (uses per day = proficiency bonus). Downtime research costs and time divided by proficiency bonus; advantage on research resolution rolls."
+  },
+  {
+    "id": "polyglot",
+    "name": "Polyglot",
+    "prerequisite": "",
+    "description": "• Learn three languages.\n• Once per long rest, advantage on one Willpower check to influence a creature you share a non-Common language with.\n• Add proficiency bonus when deciphering unknown languages (double if also proficient in relevant skill/tool)."
+  },
+  {
+    "id": "quick",
+    "name": "Quick",
+    "prerequisite": "",
+    "description": "• +10 ft speed without medium/heavy armor.\n• Dash along vertical surfaces; reduce fall distance by 5× proficiency bonus as a reaction.\n• Bonus action: move 5 feet without provoking opportunity attacks."
+  },
+  {
+    "id": "scrutinous",
+    "name": "Scrutinous",
+    "prerequisite": "",
+    "description": "• Read lips in languages you know.\n• +5 passive Perception and Investigation.\n• After 1 minute examining an object, ask the GM one truthful question about it.\n• Mimic voices after hearing speech for 1 minute."
+  },
+  {
+    "id": "situational-awareness",
+    "name": "Situational Awareness",
+    "prerequisite": "",
+    "description": "• Advantage on checks to avoid surprise.\n• After melee damage, react to move 10 feet without provoking opportunity attacks."
+  },
+  {
+    "id": "sleuth",
+    "name": "Sleuth",
+    "prerequisite": "Insight +1 or Willpower +1",
+    "description": "Choose two of Insight, Investigation, Perception, or Survival: treat 9 or less as 10. After 1 minute talking with a creature, produce a zone of truth effect (uses per day = proficiency bonus)."
+  },
+  {
+    "id": "slippery",
+    "name": "Slippery",
+    "prerequisite": "",
+    "description": "• First 5× proficiency bonus feet of difficult terrain each move costs normal movement.\n• Advantage to avoid and end grappled."
+  },
+  {
+    "id": "tag-team",
+    "name": "Tag Team",
+    "prerequisite": "",
+    "description": "Mark an enemy within 30 feet for 1 minute. If you miss a melee attack against the mark without disadvantage, the next ally to attack it has advantage. Once per short or long rest."
+  },
+  {
+    "id": "touch-of-luck",
+    "name": "Touch of Luck",
+    "prerequisite": "",
+    "description": "• When you would gain 1 Resolve from a failed save or attack, gain 2 instead.\n• At 4 Resolve, when you would gain more, reset Resolve using the d20 band table in core rules."
+  },
+  {
+    "id": "trade-skills",
+    "name": "Trade Skills",
+    "prerequisite": "",
+    "description": "• Gain proficiency in one skill and related tool/vehicle (or two tools/vehicles).\n• Double proficiency on one chosen skill.\n• Advantage when both a proficient tool and skill apply."
+  },
+  {
+    "id": "trailblazer",
+    "name": "Trailblazer",
+    "prerequisite": "",
+    "description": "• Climb and swim speeds equal to walking speed.\n• Advantage on exhaustion checks while climbing or swimming.\n• Hold breath for 1 + twice Fitness modifier minutes."
+  }
+]

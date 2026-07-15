@@ -72,12 +72,14 @@
 
   let data = null;
   let SPELLS = [];
+  let TALENTS = [];
   let store = loadStore();
   let char = null;
   let eventsBound = false;
   let spellModalOpen = false;
   let spellModalFilter = "";
   let spellViewId = null;
+  let talentViewName = null;
   let skillModalOpen = false;
   let languageModalOpen = false;
   let talentModalOpen = false;
@@ -530,6 +532,10 @@
     return SPELLS.find((s) => s.id === id) || null;
   }
 
+  function talentByName(name) {
+    return TALENTS.find((t) => t.name === name) || null;
+  }
+
   function eligibleSpells(c) {
     const cls = findClass(c);
     if (!cls) return [];
@@ -710,7 +716,9 @@
     let talentBlock = "";
     if (talentChoice) {
       const chosen = c.chosenTalents[0];
-      const pill = chosen ? `<span class="cs-spell-chip is-active">${escapeHtml(chosen)}</span>` : '<span class="cs-muted">None chosen yet</span>';
+      const pill = chosen
+        ? `<span class="cs-spell-chip is-active" data-talent-view="${escapeHtml(chosen)}" title="Click for details">${escapeHtml(chosen)}</span>`
+        : '<span class="cs-muted">None chosen yet</span>';
       talentBlock = `<div class="cs-choice-section">
         <h3 class="cs-spell-group-sheet-title">Talent <button type="button" class="cs-btn-link" id="cs-choose-talent">Choose (${c.chosenTalents.length}/${talentChoice.count})</button></h3>
         <div class="cs-spell-chips">${pill}</div>
@@ -798,6 +806,8 @@
       renderManageSpellsModal();
     } else if (spellViewId && char) {
       renderSpellViewModal();
+    } else if (talentViewName && char) {
+      renderTalentViewModal();
     } else if (skillModalOpen && char) {
       renderSkillModal();
     } else if (languageModalOpen && char) {
@@ -961,6 +971,26 @@
           <p class="cs-spell-view-meta">${escapeHtml(spell.school)} · ${escapeHtml(circleLabel)} · ${escapeHtml(spell.castingTime)}</p>
           <p class="cs-spell-view-meta">Range: ${escapeHtml(spell.range)} · Duration: ${escapeHtml(spell.duration)} · Components: ${escapeHtml(spell.components)}</p>
           <p class="cs-spell-view-desc">${escapeHtml(spell.description)}</p>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderTalentViewModal() {
+    const talent = talentByName(talentViewName);
+    if (!talent) {
+      el.modalRoot.innerHTML = "";
+      return;
+    }
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-talent-view-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="${escapeHtml(talent.name)}">
+        <div class="cs-modal-header">
+          <h2>${escapeHtml(talent.name)}</h2>
+          <button type="button" class="cs-modal-close" id="cs-talent-view-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-body">
+          ${talent.prerequisite ? `<p class="cs-spell-view-meta">Prerequisite: ${escapeHtml(talent.prerequisite)}</p>` : ""}
+          <p class="cs-spell-view-desc">${escapeHtml(talent.description)}</p>
         </div>
       </div>
     </div>`;
@@ -1415,6 +1445,7 @@
   function setActive(id) {
     spellModalOpen = false;
     spellViewId = null;
+    talentViewName = null;
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
@@ -1434,6 +1465,7 @@
   function newCharacter() {
     spellModalOpen = false;
     spellViewId = null;
+    talentViewName = null;
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
@@ -1448,6 +1480,7 @@
     if (!char) return;
     spellModalOpen = false;
     spellViewId = null;
+    talentViewName = null;
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
@@ -1574,6 +1607,12 @@
       if (chip) {
         spellViewId = chip.dataset.spellView;
         renderModals();
+        return;
+      }
+      const talentChip = e.target.closest(".cs-spell-chip[data-talent-view]");
+      if (talentChip) {
+        talentViewName = talentChip.dataset.talentView;
+        renderModals();
       }
     });
 
@@ -1657,6 +1696,9 @@
         } else if (e.target.id === "cs-spell-view-overlay" || e.target.id === "cs-spell-view-close") {
           spellViewId = null;
           renderModals();
+        } else if (e.target.id === "cs-talent-view-overlay" || e.target.id === "cs-talent-view-close") {
+          talentViewName = null;
+          renderModals();
         } else if (e.target.id === "cs-choice-modal-overlay" || e.target.id === "cs-choice-modal-close") {
           skillModalOpen = false;
           languageModalOpen = false;
@@ -1733,9 +1775,10 @@
       });
 
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && (spellModalOpen || spellViewId || skillModalOpen || languageModalOpen || talentModalOpen)) {
+        if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || skillModalOpen || languageModalOpen || talentModalOpen)) {
           spellModalOpen = false;
           spellViewId = null;
+          talentViewName = null;
           skillModalOpen = false;
           languageModalOpen = false;
           talentModalOpen = false;
@@ -1764,6 +1807,12 @@
         SPELLS = spellsRes.ok ? await spellsRes.json() : [];
       } catch (_) {
         SPELLS = [];
+      }
+      try {
+        const talentsRes = await fetch(rp("assets/talents-data.json"));
+        TALENTS = talentsRes.ok ? await talentsRes.json() : [];
+      } catch (_) {
+        TALENTS = [];
       }
       showApp();
       bindEvents();
