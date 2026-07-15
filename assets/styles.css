@@ -3976,7 +3976,9 @@
     border:1px solid var(--line);
     background:var(--bg);
     color:var(--muted);
+    cursor:pointer;
   }
+  .cs-spell-chip:hover{border-color:var(--brand-primary)}
   .cs-spell-chip.is-active{
     border-color:var(--brand-primary);
     color:var(--brand-primary);
@@ -4055,6 +4057,9 @@
   .cs-spell-name{font-weight:600}
   .cs-spell-tag{font-size:.72rem;color:var(--muted);margin-left:auto}
   .cs-spell-meta{font-size:.72rem;color:var(--muted);flex-basis:100%}
+  .cs-modal--view{max-width:480px}
+  .cs-spell-view-meta{font-size:.82rem;color:var(--muted);margin:0 0 6px}
+  .cs-spell-view-desc{font-size:.92rem;line-height:1.5;margin:10px 0 0;white-space:pre-line}
   .cs-lineage-stats{
     display:flex;
     gap:10px;

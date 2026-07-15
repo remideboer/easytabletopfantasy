@@ -77,6 +77,7 @@
   let eventsBound = false;
   let spellModalOpen = false;
   let spellModalFilter = "";
+  let spellViewId = null;
 
   const el = {};
 
@@ -644,7 +645,7 @@
     const groups = [];
     if (cantrips.length) {
       const chips = cantrips
-        .map((s) => `<span class="cs-spell-chip is-active" title="${escapeHtml(s.school)} · Cantrip">${escapeHtml(s.name)}</span>`)
+        .map((s) => `<span class="cs-spell-chip is-active" data-spell-view="${s.id}" title="${escapeHtml(s.school)} · Cantrip · Click for details">${escapeHtml(s.name)}</span>`)
         .join("");
       groups.push(renderSpellChipGroup("Cantrips", chips));
     }
@@ -657,7 +658,7 @@
         .map((s) => {
           const active = tiered ? c.preparedSpellIds.includes(s.id) : true;
           const stateLabel = tiered ? (active ? "Prepared" : "Learned") : label;
-          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" title="${escapeHtml(s.school)} · Circle ${circle} · ${stateLabel}">${escapeHtml(s.name)}</span>`;
+          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" data-spell-view="${s.id}" title="${escapeHtml(s.school)} · Circle ${circle} · ${stateLabel} · Click for details">${escapeHtml(s.name)}</span>`;
         })
         .join("");
       groups.push(renderSpellChipGroup(`Circle ${circle}`, chips));
@@ -670,12 +671,40 @@
     </div>`;
   }
 
-  function renderSpellModal() {
+  function renderModals() {
     if (!el.modalRoot) return;
-    if (!spellModalOpen || !char) {
+    if (spellModalOpen && char) {
+      renderManageSpellsModal();
+    } else if (spellViewId && char) {
+      renderSpellViewModal();
+    } else {
+      el.modalRoot.innerHTML = "";
+    }
+  }
+
+  function renderSpellViewModal() {
+    const spell = spellById(spellViewId);
+    if (!spell) {
       el.modalRoot.innerHTML = "";
       return;
     }
+    const circleLabel = spell.circle === 0 ? "Cantrip" : `Circle ${spell.circle}`;
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-spell-view-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="${escapeHtml(spell.name)}">
+        <div class="cs-modal-header">
+          <h2>${escapeHtml(spell.name)}</h2>
+          <button type="button" class="cs-modal-close" id="cs-spell-view-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-body">
+          <p class="cs-spell-view-meta">${escapeHtml(spell.school)} · ${escapeHtml(circleLabel)} · ${escapeHtml(spell.castingTime)}</p>
+          <p class="cs-spell-view-meta">Range: ${escapeHtml(spell.range)} · Duration: ${escapeHtml(spell.duration)} · Components: ${escapeHtml(spell.components)}</p>
+          <p class="cs-spell-view-desc">${escapeHtml(spell.description)}</p>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderManageSpellsModal() {
     const cls = findClass(char);
     const mode = spellMode(cls);
     const tiered = usesLearnedTier(mode);
@@ -1040,7 +1069,7 @@
     activeCharacter();
     renderCharSelect();
     updateSheetVisibility();
-    renderSpellModal();
+    renderModals();
     if (!char) {
       if (el.sheet) el.sheet.innerHTML = "";
       return;
@@ -1122,6 +1151,7 @@
 
   function setActive(id) {
     spellModalOpen = false;
+    spellViewId = null;
     if (!id) {
       store.activeId = null;
       saveStore();
@@ -1137,6 +1167,7 @@
 
   function newCharacter() {
     spellModalOpen = false;
+    spellViewId = null;
     const c = defaultCharacter();
     store.characters.push(c);
     store.activeId = c.id;
@@ -1147,6 +1178,7 @@
   function deleteCharacter() {
     if (!char) return;
     spellModalOpen = false;
+    spellViewId = null;
     const name = char.name || "Unnamed";
     if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
@@ -1247,7 +1279,14 @@
       if (e.target.closest("#cs-manage-spells")) {
         spellModalOpen = true;
         spellModalFilter = "";
-        renderSpellModal();
+        spellViewId = null;
+        renderModals();
+        return;
+      }
+      const chip = e.target.closest(".cs-spell-chip[data-spell-view]");
+      if (chip) {
+        spellViewId = chip.dataset.spellView;
+        renderModals();
       }
     });
 
@@ -1324,14 +1363,17 @@
       el.modalRoot.addEventListener("click", (e) => {
         if (e.target.id === "cs-spell-modal-overlay" || e.target.id === "cs-spell-modal-close") {
           spellModalOpen = false;
-          renderSpellModal();
+          renderModals();
+        } else if (e.target.id === "cs-spell-view-overlay" || e.target.id === "cs-spell-view-close") {
+          spellViewId = null;
+          renderModals();
         }
       });
 
       el.modalRoot.addEventListener("input", (e) => {
         if (e.target.id === "cs-spell-search") {
           spellModalFilter = e.target.value;
-          renderSpellModal();
+          renderModals();
           const input = document.getElementById("cs-spell-search");
           if (input) {
             input.focus();
@@ -1365,9 +1407,10 @@
       });
 
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && spellModalOpen) {
+        if (e.key === "Escape" && (spellModalOpen || spellViewId)) {
           spellModalOpen = false;
-          renderSpellModal();
+          spellViewId = null;
+          renderModals();
         }
       });
     }
