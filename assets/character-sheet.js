@@ -81,7 +81,6 @@
   let skillModalOpen = false;
   let languageModalOpen = false;
   let talentModalOpen = false;
-  let languageCustomDraft = "";
 
   const el = {};
 
@@ -300,8 +299,14 @@
   // Heritages state their language grant as "Common plus N additional
   // (<lead-in>: A, B, or C)." The lead-in wording varies (typical, often,
   // "overlord's tongue", etc.) and a few omit a pick-list entirely in favor
-  // of a descriptive hint - those just get an empty option list and the
-  // character sheet's free-text "add custom language" input covers it.
+  // of a descriptive hint - those just leave options empty; the language
+  // dropdown (built from ALL_LANGUAGES) still covers picking a real one.
+  // Standard set per 5e SRD (Common is granted separately, not listed here).
+  const ALL_LANGUAGES = [
+    "Dwarvish", "Elvish", "Giant", "Gnomish", "Goblin", "Halfling", "Orcish",
+    "Abyssal", "Celestial", "Deep Speech", "Draconic", "Infernal", "Primordial", "Sylvan", "Undercommon",
+  ];
+
   function parseHeritageLanguageChoice(heritage) {
     if (!heritage || !heritage.body) return null;
     const m = heritage.body.match(/Languages?\.?<\/strong>\s*([^<]+)/i);
@@ -887,6 +892,9 @@
     const suggestedChosen = char.chosenLanguages.filter((l) => choice.options.includes(l));
     const customChosen = char.chosenLanguages.filter((l) => !choice.options.includes(l));
     const atCap = char.chosenLanguages.length >= choice.count;
+    const otherLanguages = ALL_LANGUAGES.filter(
+      (l) => !choice.options.includes(l) && !char.chosenLanguages.includes(l)
+    );
 
     const suggestedRows = choice.options
       .map((opt) => {
@@ -925,10 +933,12 @@
           ${choice.fixed.length ? `<p class="cs-muted">Granted automatically:</p><div class="cs-spell-chips">${fixedPills}</div>` : ""}
           ${choice.options.length ? `<p class="cs-muted">Suggested:</p><ul class="cs-spell-list">${suggestedRows}</ul>` : '<p class="cs-muted">No suggested list for this heritage - add languages below.</p>'}
           ${customChosen.length ? `<p class="cs-muted">Added:</p><ul class="cs-spell-list">${customRows}</ul>` : ""}
-          <div class="cs-choice-add-row">
-            <input type="text" id="cs-language-custom" class="cs-input" placeholder="Add another language…" value="${escapeHtml(languageCustomDraft)}"${atCap ? " disabled" : ""} />
-            <button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-language-add"${atCap ? " disabled" : ""}>Add</button>
-          </div>
+          ${otherLanguages.length ? `<div class="cs-choice-add-row">
+            <select id="cs-language-dropdown" class="cs-select"${atCap ? " disabled" : ""}>
+              <option value="">— Add another language —</option>
+              ${otherLanguages.map((l) => `<option value="${escapeHtml(l)}">${escapeHtml(l)}</option>`).join("")}
+            </select>
+          </div>` : ""}
         </div>
       </div>
     </div>`;
@@ -1552,7 +1562,6 @@
       }
       if (e.target.closest("#cs-choose-languages")) {
         languageModalOpen = true;
-        languageCustomDraft = "";
         renderModals();
         return;
       }
@@ -1657,15 +1666,6 @@
           const lang = e.target.dataset.languageRemove;
           char.chosenLanguages = char.chosenLanguages.filter((l) => l !== lang);
           persistAndRender();
-        } else if (e.target.id === "cs-language-add") {
-          const heritage = byId(data.heritages, char.heritageId);
-          const choice = parseHeritageLanguageChoice(heritage);
-          const name = languageCustomDraft.trim();
-          if (name && choice && char.chosenLanguages.length < choice.count && !char.chosenLanguages.includes(name)) {
-            char.chosenLanguages.push(name);
-            languageCustomDraft = "";
-            persistAndRender();
-          }
         }
       });
 
@@ -1679,8 +1679,6 @@
             const pos = spellModalFilter.length;
             input.setSelectionRange(pos, pos);
           }
-        } else if (e.target.id === "cs-language-custom") {
-          languageCustomDraft = e.target.value;
         }
       });
 
@@ -1723,6 +1721,14 @@
         } else if (t.dataset.talentOption) {
           char.chosenTalents = [t.dataset.talentOption];
           persistAndRender();
+        } else if (t.id === "cs-language-dropdown") {
+          const lang = t.value;
+          const heritage = byId(data.heritages, char.heritageId);
+          const choice = parseHeritageLanguageChoice(heritage);
+          if (lang && choice && char.chosenLanguages.length < choice.count && !char.chosenLanguages.includes(lang)) {
+            char.chosenLanguages.push(lang);
+            persistAndRender();
+          }
         }
       });
 
