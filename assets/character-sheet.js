@@ -12,62 +12,62 @@
 
   // Defense bonus per gear.html Armor table: base + FIT mod (capped where noted; heavy excludes FIT).
   const ARMOR = [
-    { id: "padded", name: "Padded", category: "Light Armor", base: 1, addFit: true, fitCap: null },
-    { id: "leather", name: "Leather", category: "Light Armor", base: 1, addFit: true, fitCap: null },
-    { id: "studded-leather", name: "Studded Leather", category: "Light Armor", base: 2, addFit: true, fitCap: null },
-    { id: "brigandine", name: "Brigandine", category: "Light Armor", base: 2, addFit: true, fitCap: null },
-    { id: "hide", name: "Hide", category: "Medium Armor", base: 2, addFit: true, fitCap: 2 },
-    { id: "chain-shirt", name: "Chain Shirt", category: "Medium Armor", base: 3, addFit: true, fitCap: 2 },
-    { id: "scale-mail", name: "Scale Mail", category: "Medium Armor", base: 4, addFit: true, fitCap: 2 },
-    { id: "breastplate", name: "Breastplate", category: "Medium Armor", base: 4, addFit: true, fitCap: 2 },
-    { id: "half-plate", name: "Half Plate", category: "Medium Armor", base: 5, addFit: true, fitCap: 2 },
-    { id: "ring-mail", name: "Ring Mail", category: "Heavy Armor", base: 4, addFit: false, fitCap: null },
-    { id: "chain-mail", name: "Chain Mail", category: "Heavy Armor", base: 6, addFit: false, fitCap: null },
-    { id: "splint", name: "Splint", category: "Heavy Armor", base: 7, addFit: false, fitCap: null },
-    { id: "plate", name: "Plate", category: "Heavy Armor", base: 8, addFit: false, fitCap: null },
+    { id: "padded", name: "Padded", category: "Light Armor", base: 1, addFit: true, fitCap: null, props: "Natural Materials" },
+    { id: "leather", name: "Leather", category: "Light Armor", base: 1, addFit: true, fitCap: null, props: "Natural Materials" },
+    { id: "studded-leather", name: "Studded Leather", category: "Light Armor", base: 2, addFit: true, fitCap: null, props: "" },
+    { id: "brigandine", name: "Brigandine", category: "Light Armor", base: 2, addFit: true, fitCap: null, props: "" },
+    { id: "hide", name: "Hide", category: "Medium Armor", base: 2, addFit: true, fitCap: 2, props: "Natural Materials" },
+    { id: "chain-shirt", name: "Chain Shirt", category: "Medium Armor", base: 3, addFit: true, fitCap: 2, props: "" },
+    { id: "scale-mail", name: "Scale Mail", category: "Medium Armor", base: 4, addFit: true, fitCap: 2, props: "Noisy" },
+    { id: "breastplate", name: "Breastplate", category: "Medium Armor", base: 4, addFit: true, fitCap: 2, props: "" },
+    { id: "half-plate", name: "Half Plate", category: "Medium Armor", base: 5, addFit: true, fitCap: 2, props: "Noisy" },
+    { id: "ring-mail", name: "Ring Mail", category: "Heavy Armor", base: 4, addFit: false, fitCap: null, props: "Noisy" },
+    { id: "chain-mail", name: "Chain Mail", category: "Heavy Armor", base: 6, addFit: false, fitCap: null, props: "Cumbersome (Fitness +1), Noisy" },
+    { id: "splint", name: "Splint", category: "Heavy Armor", base: 7, addFit: false, fitCap: null, props: "Cumbersome (Fitness +2), Noisy" },
+    { id: "plate", name: "Plate", category: "Heavy Armor", base: 8, addFit: false, fitCap: null, props: "Cumbersome (Fitness +2), Noisy" },
   ];
   const SHIELD_BONUS = 2;
 
   // Attack bonus per gear.html weapon tables: weapon bonus + FIT mod.
   const WEAPONS = [
-    { id: "club", name: "Club", category: "Simple Melee", bonus: 1 },
-    { id: "dagger", name: "Dagger", category: "Simple Melee", bonus: 1 },
-    { id: "greatclub", name: "Greatclub", category: "Simple Melee", bonus: 3 },
-    { id: "handaxe", name: "Handaxe", category: "Simple Melee", bonus: 2 },
-    { id: "javelin", name: "Javelin", category: "Simple Melee", bonus: 2 },
-    { id: "light-hammer", name: "Light Hammer", category: "Simple Melee", bonus: 1 },
-    { id: "mace", name: "Mace", category: "Simple Melee", bonus: 2 },
-    { id: "quarterstaff", name: "Quarterstaff", category: "Simple Melee", bonus: 2 },
-    { id: "sickle", name: "Sickle", category: "Simple Melee", bonus: 1 },
-    { id: "spear", name: "Spear", category: "Simple Melee", bonus: 2 },
-    { id: "dart", name: "Dart", category: "Simple Ranged", bonus: 1 },
-    { id: "light-crossbow", name: "Light Crossbow", category: "Simple Ranged", bonus: 3 },
-    { id: "shortbow", name: "Shortbow", category: "Simple Ranged", bonus: 2 },
-    { id: "sling", name: "Sling", category: "Simple Ranged", bonus: 1 },
-    { id: "battleaxe", name: "Battleaxe", category: "Martial Melee", bonus: 3 },
-    { id: "flail", name: "Flail", category: "Martial Melee", bonus: 3 },
-    { id: "glaive", name: "Glaive", category: "Martial Melee", bonus: 4 },
-    { id: "greataxe", name: "Greataxe", category: "Martial Melee", bonus: 5 },
-    { id: "greatsword", name: "Greatsword", category: "Martial Melee", bonus: 6 },
-    { id: "halberd", name: "Halberd", category: "Martial Melee", bonus: 4 },
-    { id: "lance", name: "Lance", category: "Martial Melee", bonus: 4 },
-    { id: "longsword", name: "Longsword", category: "Martial Melee", bonus: 3 },
-    { id: "maul", name: "Maul", category: "Martial Melee", bonus: 6 },
-    { id: "morningstar", name: "Morningstar", category: "Martial Melee", bonus: 3 },
-    { id: "pike", name: "Pike", category: "Martial Melee", bonus: 4 },
-    { id: "rapier", name: "Rapier", category: "Martial Melee", bonus: 3 },
-    { id: "scimitar", name: "Scimitar", category: "Martial Melee", bonus: 2 },
-    { id: "shortsword", name: "Shortsword", category: "Martial Melee", bonus: 2 },
-    { id: "trident", name: "Trident", category: "Martial Melee", bonus: 3 },
-    { id: "warhammer", name: "Warhammer", category: "Martial Melee", bonus: 3 },
-    { id: "war-pick", name: "War Pick", category: "Martial Melee", bonus: 3 },
-    { id: "whip", name: "Whip", category: "Martial Melee", bonus: 1 },
-    { id: "blowgun", name: "Blowgun", category: "Martial Ranged", bonus: 0 },
-    { id: "hand-crossbow", name: "Hand Crossbow", category: "Martial Ranged", bonus: 2 },
-    { id: "heavy-crossbow", name: "Heavy Crossbow", category: "Martial Ranged", bonus: 4 },
-    { id: "longbow", name: "Longbow", category: "Martial Ranged", bonus: 3 },
-    { id: "musket", name: "Musket", category: "Martial Ranged", bonus: 5 },
-    { id: "pistol", name: "Pistol", category: "Martial Ranged", bonus: 4 },
+    { id: "club", name: "Club", category: "Simple Melee", bonus: 1, props: "Bludgeoning, Light, Slow" },
+    { id: "dagger", name: "Dagger", category: "Simple Melee", bonus: 1, props: "Piercing, Finesse, Light, Thrown (Range 20/60)" },
+    { id: "greatclub", name: "Greatclub", category: "Simple Melee", bonus: 3, props: "Bludgeoning, Two-Handed" },
+    { id: "handaxe", name: "Handaxe", category: "Simple Melee", bonus: 2, props: "Slashing, Light, Thrown (Range 20/60)" },
+    { id: "javelin", name: "Javelin", category: "Simple Melee", bonus: 2, props: "Piercing, Thrown (Range 30/120)" },
+    { id: "light-hammer", name: "Light Hammer", category: "Simple Melee", bonus: 1, props: "Bludgeoning, Light, Thrown (Range 20/60)" },
+    { id: "mace", name: "Mace", category: "Simple Melee", bonus: 2, props: "Bludgeoning" },
+    { id: "quarterstaff", name: "Quarterstaff", category: "Simple Melee", bonus: 2, props: "Bludgeoning, Versatile (+3)" },
+    { id: "sickle", name: "Sickle", category: "Simple Melee", bonus: 1, props: "Slashing, Light" },
+    { id: "spear", name: "Spear", category: "Simple Melee", bonus: 2, props: "Piercing, Thrown (Range 20/60), Versatile (+3)" },
+    { id: "dart", name: "Dart", category: "Simple Ranged", bonus: 1, props: "Piercing, Finesse, Thrown (Range 20/60)" },
+    { id: "light-crossbow", name: "Light Crossbow", category: "Simple Ranged", bonus: 3, props: "Piercing, Ammunition (Range 80/320; Bolt), Loading, Two-Handed" },
+    { id: "shortbow", name: "Shortbow", category: "Simple Ranged", bonus: 2, props: "Piercing, Ammunition (Range 80/320; Arrow), Two-Handed" },
+    { id: "sling", name: "Sling", category: "Simple Ranged", bonus: 1, props: "Bludgeoning, Ammunition (Range 30/120; Bullet)" },
+    { id: "battleaxe", name: "Battleaxe", category: "Martial Melee", bonus: 3, props: "Slashing, Versatile (+4)" },
+    { id: "flail", name: "Flail", category: "Martial Melee", bonus: 3, props: "Bludgeoning" },
+    { id: "glaive", name: "Glaive", category: "Martial Melee", bonus: 4, props: "Slashing, Heavy, Reach, Two-Handed" },
+    { id: "greataxe", name: "Greataxe", category: "Martial Melee", bonus: 5, props: "Slashing, Heavy, Two-Handed" },
+    { id: "greatsword", name: "Greatsword", category: "Martial Melee", bonus: 6, props: "Slashing, Heavy, Two-Handed" },
+    { id: "halberd", name: "Halberd", category: "Martial Melee", bonus: 4, props: "Slashing, Heavy, Reach, Two-Handed" },
+    { id: "lance", name: "Lance", category: "Martial Melee", bonus: 4, props: "Piercing, Heavy, Reach, Two-Handed (unless mounted)" },
+    { id: "longsword", name: "Longsword", category: "Martial Melee", bonus: 3, props: "Slashing, Versatile (+4)" },
+    { id: "maul", name: "Maul", category: "Martial Melee", bonus: 6, props: "Bludgeoning, Heavy, Two-Handed" },
+    { id: "morningstar", name: "Morningstar", category: "Martial Melee", bonus: 3, props: "Piercing" },
+    { id: "pike", name: "Pike", category: "Martial Melee", bonus: 4, props: "Piercing, Heavy, Reach, Two-Handed" },
+    { id: "rapier", name: "Rapier", category: "Martial Melee", bonus: 3, props: "Piercing, Finesse" },
+    { id: "scimitar", name: "Scimitar", category: "Martial Melee", bonus: 2, props: "Slashing, Finesse, Light" },
+    { id: "shortsword", name: "Shortsword", category: "Martial Melee", bonus: 2, props: "Piercing, Finesse, Light" },
+    { id: "trident", name: "Trident", category: "Martial Melee", bonus: 3, props: "Piercing, Thrown (Range 20/60), Versatile (+4)" },
+    { id: "warhammer", name: "Warhammer", category: "Martial Melee", bonus: 3, props: "Bludgeoning, Versatile (+4)" },
+    { id: "war-pick", name: "War Pick", category: "Martial Melee", bonus: 3, props: "Piercing, Versatile (+4)" },
+    { id: "whip", name: "Whip", category: "Martial Melee", bonus: 1, props: "Slashing, Finesse, Reach" },
+    { id: "blowgun", name: "Blowgun", category: "Martial Ranged", bonus: 0, props: "Piercing, Ammunition (Range 25/100; Needle), Loading" },
+    { id: "hand-crossbow", name: "Hand Crossbow", category: "Martial Ranged", bonus: 2, props: "Piercing, Ammunition (Range 30/120; Bolt), Light, Loading" },
+    { id: "heavy-crossbow", name: "Heavy Crossbow", category: "Martial Ranged", bonus: 4, props: "Piercing, Ammunition (Range 100/400; Bolt), Heavy, Loading, Two-Handed" },
+    { id: "longbow", name: "Longbow", category: "Martial Ranged", bonus: 3, props: "Piercing, Ammunition (Range 150/600; Arrow), Heavy, Two-Handed" },
+    { id: "musket", name: "Musket", category: "Martial Ranged", bonus: 5, props: "Piercing, Ammunition (Range 40/120; Bullet), Loading, Two-Handed" },
+    { id: "pistol", name: "Pistol", category: "Martial Ranged", bonus: 4, props: "Piercing, Ammunition (Range 30/90; Bullet), Loading" },
   ];
 
   let data = null;
@@ -496,6 +496,8 @@
     const weaponOptions = groupedOptionList(WEAPONS, c.weaponId, "No Weapon", weaponOptionLabel);
     const defBonus = computeDefense(c);
     const attackBonus = computeAttackBonus(c);
+    const selectedArmor = byId(ARMOR, c.armorId);
+    const selectedWeapon = byId(WEAPONS, c.weaponId);
 
     const inventoryRows = INVENTORY_THRESHOLDS.map((threshold, rowIdx) => {
       const rowOpen = rowIdx < inventoryUnlockedRows(c);
@@ -591,17 +593,21 @@
             <div class="cs-field">
               <label class="cs-label" for="cs-armor">Armor</label>
               <select id="cs-armor" class="cs-select">${armorOptions}</select>
+              <p class="cs-props">${selectedArmor ? escapeHtml(selectedArmor.props || "—") : "—"}</p>
             </div>
             <div class="cs-field">
               <label class="cs-label" for="cs-weapon">Weapon</label>
               <select id="cs-weapon" class="cs-select">${weaponOptions}</select>
+              <p class="cs-props">${selectedWeapon ? escapeHtml(selectedWeapon.props) : "—"}</p>
             </div>
           </div>
-          <label class="cs-checkbox-field">
-            <input type="checkbox" id="cs-shield"${c.hasShield ? " checked" : ""} />
-            Shield (+${SHIELD_BONUS} DEF)
-          </label>
-          ${attackBonus !== null ? `<p class="cs-muted">Attack bonus: ${formatMod(attackBonus)} (d20 + weapon + FIT)</p>` : ""}
+          <div class="cs-equip-summary-row">
+            <label class="cs-checkbox-field">
+              <input type="checkbox" id="cs-shield"${c.hasShield ? " checked" : ""} />
+              Shield (+${SHIELD_BONUS} DEF)
+            </label>
+            ${attackBonus !== null ? `<span class="cs-atk-bonus">Attack bonus: ${formatMod(attackBonus)}</span>` : ""}
+          </div>
           <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="Other worn items, ammo, tools…">${escapeHtml(c.equippedText)}</textarea>
         </div>
 

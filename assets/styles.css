@@ -3845,14 +3845,32 @@
   }
   .cs-feature-list li{margin-bottom:4px}
   .cs-muted{color:var(--muted);font-size:.88rem}
+  .cs-props{
+    color:var(--muted);
+    font-size:.78rem;
+    margin:4px 0 0;
+    line-height:1.3;
+  }
   .cs-checkbox-field{
     display:flex;
     align-items:center;
     gap:6px;
     font-size:.85rem;
     font-weight:700;
-    margin:8px 0;
     cursor:pointer;
+  }
+  .cs-equip-summary-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    margin:8px 0;
+  }
+  .cs-atk-bonus{
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--brand-primary);
   }
   .cs-currency{
     display:flex;
