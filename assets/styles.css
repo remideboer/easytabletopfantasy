@@ -3961,6 +3961,10 @@
   }
   .cs-spell-group-sheet:first-child{padding-top:0;margin-top:0;border-top:none}
   .cs-spell-group-sheet-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
     font-size:.68rem;
     font-weight:700;
     text-transform:uppercase;
@@ -4060,6 +4064,33 @@
   .cs-modal--view{max-width:480px}
   .cs-spell-view-meta{font-size:.82rem;color:var(--muted);margin:0 0 6px}
   .cs-spell-view-desc{font-size:.92rem;line-height:1.5;margin:10px 0 0;white-space:pre-line}
+
+  .cs-choice-section{
+    padding-top:8px;
+    margin-top:8px;
+    border-top:1px solid var(--line);
+  }
+  .cs-btn-link{
+    background:none;
+    border:none;
+    padding:0;
+    font-size:.68rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--brand-primary);
+    cursor:pointer;
+    text-decoration:underline;
+  }
+  .cs-choice-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:6px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .cs-choice-add-row{display:flex;gap:8px;margin-top:10px}
+  .cs-choice-add-row .cs-input{flex:1}
   .cs-lineage-stats{
     display:flex;
     gap:10px;

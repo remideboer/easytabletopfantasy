@@ -78,6 +78,10 @@
   let spellModalOpen = false;
   let spellModalFilter = "";
   let spellViewId = null;
+  let skillModalOpen = false;
+  let languageModalOpen = false;
+  let talentModalOpen = false;
+  let languageCustomDraft = "";
 
   const el = {};
 
@@ -146,6 +150,9 @@
       spellPowerNow: 0,
       learnedSpellIds: [],
       preparedSpellIds: [],
+      chosenSkills: [],
+      chosenLanguages: [],
+      chosenTalents: [],
       classId: "",
       subclassId: "",
       lineageId: "",
@@ -212,6 +219,15 @@
     c.preparedSpellIds = Array.isArray(c.preparedSpellIds)
       ? [...new Set(c.preparedSpellIds.filter((id) => typeof id === "string"))].filter((id) => c.learnedSpellIds.includes(id))
       : [];
+    c.chosenSkills = Array.isArray(c.chosenSkills)
+      ? [...new Set(c.chosenSkills.filter((s) => typeof s === "string"))]
+      : [];
+    c.chosenLanguages = Array.isArray(c.chosenLanguages)
+      ? [...new Set(c.chosenLanguages.filter((s) => typeof s === "string"))]
+      : [];
+    c.chosenTalents = Array.isArray(c.chosenTalents)
+      ? [...new Set(c.chosenTalents.filter((s) => typeof s === "string"))].slice(0, 1)
+      : [];
     c.currency = c.currency || { gold: 0, silver: 0, copper: 0 };
     if (!Array.isArray(c.inventory) || c.inventory.length !== INVENTORY_SLOT_COUNT) {
       const inv = Array.isArray(c.inventory) ? c.inventory.slice(0, INVENTORY_SLOT_COUNT) : [];
@@ -240,6 +256,64 @@
 
   function byId(list, id) {
     return (list || []).find((item) => item.id === id) || null;
+  }
+
+  const WORD_TO_NUMBER = { one: 1, two: 2, three: 3, four: 4, five: 5 };
+
+  function wordToNumber(w) {
+    if (!w) return null;
+    return WORD_TO_NUMBER[w.toLowerCase()] || parseInt(w, 10) || null;
+  }
+
+  function splitChoiceList(text) {
+    return text
+      .split(",")
+      .flatMap((part) => part.split(/\s+or\s+|\s+and\s+/i))
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  // Backgrounds state their skill choice as one of two shapes:
+  // "Choose two from A, B, C, or D." or "X and one of A, B, or C."
+  function parseBackgroundSkillChoice(background) {
+    if (!background || !background.body) return null;
+    const m = background.body.match(/Skill Proficiencies:?<\/strong>\s*([^<]+)/i);
+    if (!m) return null;
+    const text = m[1].trim().replace(/\.$/, "");
+    const oneOf = text.match(/^(.+?)\s+and\s+one of\s+(.+)$/i);
+    if (oneOf) {
+      return { fixed: [oneOf[1].trim()], count: 1, options: splitChoiceList(oneOf[2]) };
+    }
+    const chooseN = text.match(/^Choose (\w+) from\s+(.+)$/i);
+    if (chooseN) {
+      return { fixed: [], count: wordToNumber(chooseN[1]) || 1, options: splitChoiceList(chooseN[2]) };
+    }
+    return null;
+  }
+
+  // Backgrounds already ship a structured talentChoices array (always "choose one").
+  function parseBackgroundTalentChoice(background) {
+    if (!background || !Array.isArray(background.talentChoices) || !background.talentChoices.length) return null;
+    return { fixed: [], count: 1, options: background.talentChoices };
+  }
+
+  // Heritages state their language grant as "Common plus N additional
+  // (<lead-in>: A, B, or C)." The lead-in wording varies (typical, often,
+  // "overlord's tongue", etc.) and a few omit a pick-list entirely in favor
+  // of a descriptive hint - those just get an empty option list and the
+  // character sheet's free-text "add custom language" input covers it.
+  function parseHeritageLanguageChoice(heritage) {
+    if (!heritage || !heritage.body) return null;
+    const m = heritage.body.match(/Languages?\.?<\/strong>\s*([^<]+)/i);
+    if (!m) return null;
+    const text = m[1].trim().replace(/\.$/, "");
+    const plusM = text.match(/^Common plus (\w+) additional\s*(?:\(([^)]*)\))?/i);
+    if (!plusM) return { fixed: ["Common"], count: 0, options: [] };
+    const count = wordToNumber(plusM[1]) || 1;
+    let paren = (plusM[2] || "").trim();
+    paren = paren.replace(/^(typical\s+esoteric|typical|often|overlord's tongue|language of the)\s*:?\s*/i, "");
+    const options = splitChoiceList(paren);
+    return { fixed: ["Common"], count, options };
   }
 
   function levelRange() {
@@ -622,6 +696,48 @@
     </div>`;
   }
 
+  function renderSkillsLanguagesSection(c, background, heritage) {
+    const skillChoice = parseBackgroundSkillChoice(background);
+    const langChoice = parseHeritageLanguageChoice(heritage);
+    const talentChoice = parseBackgroundTalentChoice(background);
+    if (!skillChoice && !langChoice && !talentChoice) return "";
+
+    let talentBlock = "";
+    if (talentChoice) {
+      const chosen = c.chosenTalents[0];
+      const pill = chosen ? `<span class="cs-spell-chip is-active">${escapeHtml(chosen)}</span>` : '<span class="cs-muted">None chosen yet</span>';
+      talentBlock = `<div class="cs-choice-section">
+        <h3 class="cs-spell-group-sheet-title">Talent <button type="button" class="cs-btn-link" id="cs-choose-talent">Choose (${c.chosenTalents.length}/${talentChoice.count})</button></h3>
+        <div class="cs-spell-chips">${pill}</div>
+      </div>`;
+    }
+
+    let skillsBlock = "";
+    if (skillChoice) {
+      const chosenOptions = c.chosenSkills.filter((s) => skillChoice.options.includes(s));
+      const pills = [...skillChoice.fixed, ...chosenOptions]
+        .map((s) => `<span class="cs-spell-chip is-active">${escapeHtml(s)}</span>`)
+        .join("");
+      skillsBlock = `<div class="cs-choice-section">
+        <h3 class="cs-spell-group-sheet-title">Skills <button type="button" class="cs-btn-link" id="cs-choose-skills">Choose (${chosenOptions.length}/${skillChoice.count})</button></h3>
+        <div class="cs-spell-chips">${pills || '<span class="cs-muted">None chosen yet</span>'}</div>
+      </div>`;
+    }
+
+    let languagesBlock = "";
+    if (langChoice) {
+      const pills = [...langChoice.fixed, ...c.chosenLanguages]
+        .map((s) => `<span class="cs-spell-chip is-active">${escapeHtml(s)}</span>`)
+        .join("");
+      languagesBlock = `<div class="cs-choice-section">
+        <h3 class="cs-spell-group-sheet-title">Languages <button type="button" class="cs-btn-link" id="cs-choose-languages">Choose (${c.chosenLanguages.length}/${langChoice.count})</button></h3>
+        <div class="cs-spell-chips">${pills}</div>
+      </div>`;
+    }
+
+    return talentBlock + skillsBlock + languagesBlock;
+  }
+
   function renderSpellsPane(c, cls) {
     const mode = spellMode(cls);
     const tiered = usesLearnedTier(mode);
@@ -677,9 +793,145 @@
       renderManageSpellsModal();
     } else if (spellViewId && char) {
       renderSpellViewModal();
+    } else if (skillModalOpen && char) {
+      renderSkillModal();
+    } else if (languageModalOpen && char) {
+      renderLanguageModal();
+    } else if (talentModalOpen && char) {
+      renderTalentModal();
     } else {
       el.modalRoot.innerHTML = "";
     }
+  }
+
+  function renderTalentModal() {
+    const background = byId(data.backgrounds, char.backgroundId);
+    const choice = parseBackgroundTalentChoice(background);
+    if (!background || !choice) {
+      el.modalRoot.innerHTML = "";
+      return;
+    }
+    const chosen = char.chosenTalents[0] || "";
+    const rows = choice.options
+      .map(
+        (opt) => `<li class="cs-choice-row">
+          <label class="cs-spell-check">
+            <input type="radio" name="cs-talent-radio" data-talent-option="${escapeHtml(opt)}"${opt === chosen ? " checked" : ""} />
+            ${escapeHtml(opt)}
+          </label>
+        </li>`
+      )
+      .join("");
+
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-choice-modal-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="Choose Talent">
+        <div class="cs-modal-header">
+          <h2>Choose Talent — ${escapeHtml(background.name)}</h2>
+          <button type="button" class="cs-modal-close" id="cs-choice-modal-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-body">
+          <ul class="cs-spell-list">${rows}</ul>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderSkillModal() {
+    const background = byId(data.backgrounds, char.backgroundId);
+    const choice = parseBackgroundSkillChoice(background);
+    if (!background || !choice) {
+      el.modalRoot.innerHTML = "";
+      return;
+    }
+    const chosenOptions = char.chosenSkills.filter((s) => choice.options.includes(s));
+    const rows = choice.options
+      .map((opt) => {
+        const checked = chosenOptions.includes(opt);
+        const disabled = !checked && chosenOptions.length >= choice.count;
+        return `<li class="cs-choice-row">
+          <label class="cs-spell-check">
+            <input type="checkbox" data-skill-option="${escapeHtml(opt)}"${checked ? " checked" : ""}${disabled ? " disabled" : ""} />
+            ${escapeHtml(opt)}
+          </label>
+        </li>`;
+      })
+      .join("");
+    const fixedPills = choice.fixed
+      .map((f) => `<span class="cs-spell-chip is-active">${escapeHtml(f)}</span>`)
+      .join("");
+
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-choice-modal-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="Choose Skills">
+        <div class="cs-modal-header">
+          <h2>Choose Skills — ${escapeHtml(background.name)}</h2>
+          <button type="button" class="cs-modal-close" id="cs-choice-modal-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-sub">
+          <span class="cs-modal-counter">Chosen ${chosenOptions.length}/${choice.count}</span>
+        </div>
+        <div class="cs-modal-body">
+          ${choice.fixed.length ? `<p class="cs-muted">Granted automatically:</p><div class="cs-spell-chips">${fixedPills}</div>` : ""}
+          <ul class="cs-spell-list">${rows}</ul>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderLanguageModal() {
+    const heritage = byId(data.heritages, char.heritageId);
+    const choice = parseHeritageLanguageChoice(heritage);
+    if (!heritage || !choice) {
+      el.modalRoot.innerHTML = "";
+      return;
+    }
+    const suggestedChosen = char.chosenLanguages.filter((l) => choice.options.includes(l));
+    const customChosen = char.chosenLanguages.filter((l) => !choice.options.includes(l));
+    const atCap = char.chosenLanguages.length >= choice.count;
+
+    const suggestedRows = choice.options
+      .map((opt) => {
+        const checked = suggestedChosen.includes(opt);
+        const disabled = !checked && atCap;
+        return `<li class="cs-choice-row">
+          <label class="cs-spell-check">
+            <input type="checkbox" data-language-option="${escapeHtml(opt)}"${checked ? " checked" : ""}${disabled ? " disabled" : ""} />
+            ${escapeHtml(opt)}
+          </label>
+        </li>`;
+      })
+      .join("");
+    const customRows = customChosen
+      .map(
+        (lang) => `<li class="cs-choice-row">
+          <span class="cs-spell-name">${escapeHtml(lang)}</span>
+          <button type="button" class="cs-modal-close" data-language-remove="${escapeHtml(lang)}" aria-label="Remove ${escapeHtml(lang)}">×</button>
+        </li>`
+      )
+      .join("");
+    const fixedPills = choice.fixed
+      .map((f) => `<span class="cs-spell-chip is-active">${escapeHtml(f)}</span>`)
+      .join("");
+
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-choice-modal-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="Choose Languages">
+        <div class="cs-modal-header">
+          <h2>Choose Languages — ${escapeHtml(heritage.name)}</h2>
+          <button type="button" class="cs-modal-close" id="cs-choice-modal-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-sub">
+          <span class="cs-modal-counter">Chosen ${char.chosenLanguages.length}/${choice.count}</span>
+        </div>
+        <div class="cs-modal-body">
+          ${choice.fixed.length ? `<p class="cs-muted">Granted automatically:</p><div class="cs-spell-chips">${fixedPills}</div>` : ""}
+          ${choice.options.length ? `<p class="cs-muted">Suggested:</p><ul class="cs-spell-list">${suggestedRows}</ul>` : '<p class="cs-muted">No suggested list for this heritage - add languages below.</p>'}
+          ${customChosen.length ? `<p class="cs-muted">Added:</p><ul class="cs-spell-list">${customRows}</ul>` : ""}
+          <div class="cs-choice-add-row">
+            <input type="text" id="cs-language-custom" class="cs-input" placeholder="Add another language…" value="${escapeHtml(languageCustomDraft)}"${atCap ? " disabled" : ""} />
+            <button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-language-add"${atCap ? " disabled" : ""}>Add</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
   }
 
   function renderSpellViewModal() {
@@ -944,6 +1196,7 @@
           <h2 class="cs-pane-title">Abilities</h2>
           ${cls ? `<p class="cs-class-summary">${escapeHtml(cls.summary || "")}</p>` : '<p class="cs-muted">Choose a class to see features.</p>'}
           ${abilitiesHtml}
+          ${renderSkillsLanguagesSection(c, background, heritage)}
         </div>
       </div>
 
@@ -1152,6 +1405,9 @@
   function setActive(id) {
     spellModalOpen = false;
     spellViewId = null;
+    skillModalOpen = false;
+    languageModalOpen = false;
+    talentModalOpen = false;
     if (!id) {
       store.activeId = null;
       saveStore();
@@ -1168,6 +1424,9 @@
   function newCharacter() {
     spellModalOpen = false;
     spellViewId = null;
+    skillModalOpen = false;
+    languageModalOpen = false;
+    talentModalOpen = false;
     const c = defaultCharacter();
     store.characters.push(c);
     store.activeId = c.id;
@@ -1179,6 +1438,9 @@
     if (!char) return;
     spellModalOpen = false;
     spellViewId = null;
+    skillModalOpen = false;
+    languageModalOpen = false;
+    talentModalOpen = false;
     const name = char.name || "Unnamed";
     if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
@@ -1283,6 +1545,22 @@
         renderModals();
         return;
       }
+      if (e.target.closest("#cs-choose-skills")) {
+        skillModalOpen = true;
+        renderModals();
+        return;
+      }
+      if (e.target.closest("#cs-choose-languages")) {
+        languageModalOpen = true;
+        languageCustomDraft = "";
+        renderModals();
+        return;
+      }
+      if (e.target.closest("#cs-choose-talent")) {
+        talentModalOpen = true;
+        renderModals();
+        return;
+      }
       const chip = e.target.closest(".cs-spell-chip[data-spell-view]");
       if (chip) {
         spellViewId = chip.dataset.spellView;
@@ -1337,9 +1615,12 @@
         persistAndRender();
       } else if (t.id === "cs-heritage") {
         char.heritageId = t.value;
+        char.chosenLanguages = [];
         persistAndRender();
       } else if (t.id === "cs-background") {
         char.backgroundId = t.value;
+        char.chosenSkills = [];
+        char.chosenTalents = [];
         persistAndRender();
       } else if (t.id === "cs-armor") {
         char.armorId = t.value;
@@ -1367,6 +1648,24 @@
         } else if (e.target.id === "cs-spell-view-overlay" || e.target.id === "cs-spell-view-close") {
           spellViewId = null;
           renderModals();
+        } else if (e.target.id === "cs-choice-modal-overlay" || e.target.id === "cs-choice-modal-close") {
+          skillModalOpen = false;
+          languageModalOpen = false;
+          talentModalOpen = false;
+          renderModals();
+        } else if (e.target.dataset.languageRemove) {
+          const lang = e.target.dataset.languageRemove;
+          char.chosenLanguages = char.chosenLanguages.filter((l) => l !== lang);
+          persistAndRender();
+        } else if (e.target.id === "cs-language-add") {
+          const heritage = byId(data.heritages, char.heritageId);
+          const choice = parseHeritageLanguageChoice(heritage);
+          const name = languageCustomDraft.trim();
+          if (name && choice && char.chosenLanguages.length < choice.count && !char.chosenLanguages.includes(name)) {
+            char.chosenLanguages.push(name);
+            languageCustomDraft = "";
+            persistAndRender();
+          }
         }
       });
 
@@ -1380,6 +1679,8 @@
             const pos = spellModalFilter.length;
             input.setSelectionRange(pos, pos);
           }
+        } else if (e.target.id === "cs-language-custom") {
+          languageCustomDraft = e.target.value;
         }
       });
 
@@ -1403,13 +1704,35 @@
             char.preparedSpellIds = char.preparedSpellIds.filter((x) => x !== id);
           }
           persistAndRender();
+        } else if (t.dataset.skillOption) {
+          const skill = t.dataset.skillOption;
+          if (t.checked) {
+            if (!char.chosenSkills.includes(skill)) char.chosenSkills.push(skill);
+          } else {
+            char.chosenSkills = char.chosenSkills.filter((s) => s !== skill);
+          }
+          persistAndRender();
+        } else if (t.dataset.languageOption) {
+          const lang = t.dataset.languageOption;
+          if (t.checked) {
+            if (!char.chosenLanguages.includes(lang)) char.chosenLanguages.push(lang);
+          } else {
+            char.chosenLanguages = char.chosenLanguages.filter((l) => l !== lang);
+          }
+          persistAndRender();
+        } else if (t.dataset.talentOption) {
+          char.chosenTalents = [t.dataset.talentOption];
+          persistAndRender();
         }
       });
 
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && (spellModalOpen || spellViewId)) {
+        if (e.key === "Escape" && (spellModalOpen || spellViewId || skillModalOpen || languageModalOpen || talentModalOpen)) {
           spellModalOpen = false;
           spellViewId = null;
+          skillModalOpen = false;
+          languageModalOpen = false;
+          talentModalOpen = false;
           renderModals();
         }
       });
