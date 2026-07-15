@@ -132,6 +132,7 @@
       id: uid(),
       name: "Unnamed Hero",
       level: 1,
+      xp: 0,
       hearts: 3,
       abilities: { fit: 0, ins: 0, wil: 0 },
       woundsNow: 0,
@@ -185,6 +186,7 @@
 
   function normalizeCharacter(c) {
     c.level = Math.min(10, Math.max(1, Number(c.level) || 1));
+    c.xp = Math.max(0, Number(c.xp) || 0);
     c.hearts = Math.min(3, Math.max(0, Number.isFinite(Number(c.hearts)) ? Number(c.hearts) : 3));
     c.resolve = Math.min(4, Math.max(0, Number(c.resolve) || 0));
     c.abilities = c.abilities || { fit: 0, ins: 0, wil: 0 };
@@ -229,6 +231,16 @@
 
   function levelRange() {
     return data?.levelRange || { min: 1, max: 10, subclassMin: 2 };
+  }
+
+  // XP threshold per core.html#experience-points: (level - 1) * 100.
+  function xpThreshold(level) {
+    return Math.max(0, level - 1) * 100;
+  }
+
+  function levelFromXp(xp, range) {
+    const lvl = Math.floor(Math.max(0, xp) / 100) + 1;
+    return Math.min(range.max, Math.max(range.min, lvl));
   }
 
   function clampAbility(n) {
@@ -428,6 +440,8 @@
   }
 
   function levelControl(c, range) {
+    const atMax = c.level >= range.max;
+    const nextXpHint = atMax ? "Max level" : `Next: ${xpThreshold(c.level + 1)} XP`;
     return `<div class="cs-level-control">
       <span class="cs-label">LVL</span>
       <div class="cs-stepper cs-stepper--level" data-stepper="level" data-min="${range.min}" data-max="${range.max}">
@@ -436,6 +450,11 @@
           <button type="button" class="cs-stepper-btn" data-delta="-1" aria-label="Decrease level">▼</button>
           <button type="button" class="cs-stepper-btn" data-delta="1" aria-label="Increase level">▲</button>
         </div>
+      </div>
+      <div class="cs-xp-field">
+        <label class="cs-label" for="cs-xp">XP</label>
+        <input type="number" id="cs-xp" class="cs-input cs-input--xp" min="0" step="5" value="${c.xp}" aria-label="Experience points" />
+        <span class="cs-xp-hint">${nextXpHint}</span>
       </div>
     </div>`;
   }
@@ -766,6 +785,7 @@
       const c = defaultCharacter();
       c.name = draft.name || c.name;
       c.level = Number(draft.level) || 1;
+      c.xp = xpThreshold(c.level);
       c.classId = draft.classId || "";
       c.subclassId = draft.subclassId || "";
       c.lineageId = draft.lineageId || "";
@@ -806,6 +826,7 @@
       const range = levelRange();
       char.level = Math.min(range.max, Math.max(range.min, char.level + delta));
       if (char.level < (range.subclassMin || 2)) char.subclassId = "";
+      char.xp = xpThreshold(char.level);
     } else if (id === "wd-now") {
       char.woundsNow = Math.max(0, Math.min(computeMaxWd(char), char.woundsNow + delta));
     } else if (id === "wd-tmp") {
@@ -902,6 +923,12 @@
         persistAndRender();
       } else if (t.id === "cs-shield") {
         char.hasShield = t.checked;
+        persistAndRender();
+      } else if (t.id === "cs-xp") {
+        const range = levelRange();
+        char.xp = Math.max(0, parseInt(t.value, 10) || 0);
+        char.level = levelFromXp(char.xp, range);
+        if (char.level < (range.subclassMin || 2)) char.subclassId = "";
         persistAndRender();
       }
     });
