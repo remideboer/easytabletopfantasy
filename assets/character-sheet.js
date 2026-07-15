@@ -795,6 +795,10 @@
     if (id.startsWith("ability-")) {
       const ab = id.slice(8);
       char.abilities[ab] = clampAbility(char.abilities[ab] + delta);
+      if (ab === spellcastingAbility(findClass(char))) {
+        const spMax = computeSpellPowerMax(char);
+        char.spellPowerNow = spMax !== null ? spMax : 0;
+      }
     } else if (id === "hearts") {
       char.hearts = Math.min(3, Math.max(0, char.hearts + delta));
     } else if (id === "level") {
@@ -872,6 +876,8 @@
       if (t.id === "cs-class") {
         char.classId = t.value;
         char.subclassId = "";
+        const spMax = computeSpellPowerMax(char);
+        char.spellPowerNow = spMax !== null ? spMax : 0;
         persistAndRender();
       } else if (t.id === "cs-subclass") {
         char.subclassId = t.value;
