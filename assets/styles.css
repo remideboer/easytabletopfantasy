@@ -3942,6 +3942,105 @@
     background:var(--bg);
   }
   .cs-inv-slot.is-locked{background:var(--line);cursor:not-allowed}
+
+  /* Spells pane + Manage Spells modal */
+  .cs-pane--spells{margin-top:10px}
+  .cs-pane-title--with-action{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .cs-btn-small{padding:4px 10px;font-size:.72rem;border-radius:6px}
+  .cs-spell-chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+  .cs-spell-chip{
+    display:inline-block;
+    padding:3px 8px;
+    border-radius:999px;
+    font-size:.78rem;
+    border:1px solid var(--line);
+    background:var(--bg);
+    color:var(--muted);
+  }
+  .cs-spell-chip.is-active{
+    border-color:var(--brand-primary);
+    color:var(--brand-primary);
+    font-weight:700;
+    background:rgba(124,58,237,.08);
+  }
+  .cs-spell-chip.is-inactive{opacity:.6}
+
+  .cs-modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:2000;
+  }
+  .cs-modal{
+    background:var(--bg-card);
+    border:2px solid var(--text-primary);
+    border-radius:var(--r);
+    box-shadow:var(--shadow-strong);
+    width:100%;
+    max-width:640px;
+    max-height:85vh;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .cs-modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 16px;
+    border-bottom:2px solid var(--text-primary);
+  }
+  .cs-modal-header h2{margin:0;font-size:1.1rem}
+  .cs-modal-close{
+    background:none;
+    border:none;
+    font-size:1.4rem;
+    line-height:1;
+    cursor:pointer;
+    color:var(--text-primary);
+    padding:2px 6px;
+  }
+  .cs-modal-sub{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .cs-modal-sub .cs-input{flex:1}
+  .cs-modal-counter{font-size:.8rem;font-weight:700;color:var(--brand-primary);white-space:nowrap}
+  .cs-modal-body{overflow-y:auto;padding:8px 16px 16px}
+  .cs-spell-group-title{
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    margin:14px 0 4px;
+    color:var(--muted);
+  }
+  .cs-spell-list{list-style:none;margin:0;padding:0}
+  .cs-spell-row-modal{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:6px 0;
+    border-bottom:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .cs-spell-check{display:flex;align-items:center;gap:6px;font-size:.88rem;cursor:pointer}
+  .cs-spell-check--prep{font-size:.8rem;color:var(--muted);margin-left:auto}
+  .cs-spell-name{font-weight:600}
+  .cs-spell-tag{font-size:.72rem;color:var(--muted);margin-left:auto}
+  .cs-spell-meta{font-size:.72rem;color:var(--muted);flex-basis:100%}
   .cs-lineage-stats{
     display:flex;
     gap:10px;

@@ -71,9 +71,12 @@
   ];
 
   let data = null;
+  let SPELLS = [];
   let store = loadStore();
   let char = null;
   let eventsBound = false;
+  let spellModalOpen = false;
+  let spellModalFilter = "";
 
   const el = {};
 
@@ -88,6 +91,7 @@
     el.btnNew = document.getElementById("cs-btn-new");
     el.btnImport = document.getElementById("cs-btn-import");
     el.btnDelete = document.getElementById("cs-btn-delete");
+    el.modalRoot = document.getElementById("cs-modal-root");
   }
 
   function rootPath() {
@@ -139,6 +143,8 @@
       woundsTemp: 0,
       resolve: 0,
       spellPowerNow: 0,
+      learnedSpellIds: [],
+      preparedSpellIds: [],
       classId: "",
       subclassId: "",
       lineageId: "",
@@ -199,6 +205,12 @@
     c.hasShield = Boolean(c.hasShield);
     c.weaponId = typeof c.weaponId === "string" ? c.weaponId : "";
     c.spellPowerNow = Math.max(0, Number(c.spellPowerNow) || 0);
+    c.learnedSpellIds = Array.isArray(c.learnedSpellIds)
+      ? [...new Set(c.learnedSpellIds.filter((id) => typeof id === "string"))]
+      : [];
+    c.preparedSpellIds = Array.isArray(c.preparedSpellIds)
+      ? [...new Set(c.preparedSpellIds.filter((id) => typeof id === "string"))].filter((id) => c.learnedSpellIds.includes(id))
+      : [];
     c.currency = c.currency || { gold: 0, silver: 0, copper: 0 };
     if (!Array.isArray(c.inventory) || c.inventory.length !== INVENTORY_SLOT_COUNT) {
       const inv = Array.isArray(c.inventory) ? c.inventory.slice(0, INVENTORY_SLOT_COUNT) : [];
@@ -300,6 +312,149 @@
     if (!spellAb) return null;
     const mod = effectiveMod(c, spellAb);
     return Math.max(0, 3 * mod);
+  }
+
+  // Max spell circle by level per classes.html progression tables.
+  const FULL_CASTER_CIRCLE = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9];
+  const HALF_CASTER_CIRCLE = [null, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5];
+  const WARLOCK_CIRCLE = [null, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
+  const CLASS_CIRCLE_TABLE = {
+    bard: FULL_CASTER_CIRCLE,
+    cleric: FULL_CASTER_CIRCLE,
+    druid: FULL_CASTER_CIRCLE,
+    sorcerer: FULL_CASTER_CIRCLE,
+    wizard: FULL_CASTER_CIRCLE,
+    theurge: FULL_CASTER_CIRCLE,
+    witch: FULL_CASTER_CIRCLE,
+    paladin: HALF_CASTER_CIRCLE,
+    ranger: HALF_CASTER_CIRCLE,
+    warlock: WARLOCK_CIRCLE,
+  };
+
+  function maxSpellCircle(cls, level) {
+    if (!cls) return 0;
+    const table = CLASS_CIRCLE_TABLE[cls.id];
+    if (!table) return 0;
+    return table[Math.min(10, Math.max(1, level))] || 0;
+  }
+
+  // Cleric/Druid/Wizard state their formula outright: spellcasting mod + level
+  // (minimum 1). No class page gives numeric cantrip/known-spell counts (each
+  // just says "as shown on your progression table," but that table only has
+  // Max Circle, not counts) — those are derived from the matching 5e SRD
+  // class table, read at the 5e level this ruleset's own conversion method
+  // (conversion.html) maps a YMIAT level to: 5e level = 2*level - 1.
+  // Witch and Theurge are homebrew with no 5e equivalent, so their numbers
+  // are approximated from the closest same-speed 5e class (flagged below).
+  function cantripsFromBreakpoints(level, base, at4, at10) {
+    const e5 = 2 * level - 1;
+    if (e5 >= 10) return at10;
+    if (e5 >= 4) return at4;
+    return base;
+  }
+
+  const CANTRIP_BREAKPOINTS = {
+    bard: [2, 3, 4],
+    cleric: [3, 4, 5],
+    druid: [2, 3, 4],
+    sorcerer: [4, 5, 6],
+    warlock: [2, 3, 4],
+    wizard: [3, 4, 5],
+    witch: [4, 5, 6], // approximated as Sorcerer (same full-caster-speed known type)
+    theurge: [3, 4, 5], // approximated as Wizard (same full-caster-speed prepared type)
+    paladin: [0, 0, 0],
+    ranger: [0, 0, 0],
+  };
+
+  function cantripCap(cls, level) {
+    const bp = cls && CANTRIP_BREAKPOINTS[cls.id];
+    if (!bp) return 0;
+    return cantripsFromBreakpoints(level, bp[0], bp[1], bp[2]);
+  }
+
+  // 5e SRD "Spells Known" columns, resolved at 5e level (2*YMIAT level - 1)
+  // and indexed 0..9 for YMIAT levels 1..10.
+  const KNOWN_SPELLS_TABLE = {
+    bard: [4, 6, 8, 10, 12, 15, 16, 19, 20, 22],
+    sorcerer: [2, 4, 6, 8, 10, 12, 13, 14, 15, 15],
+    warlock: [2, 4, 6, 8, 10, 11, 12, 13, 14, 15],
+    ranger: [0, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    witch: [2, 4, 6, 8, 10, 12, 13, 14, 15, 15], // approximated as Sorcerer
+  };
+
+  // "known": fixed 5e known-spells table, all known spells are always active.
+  // "known-formula": Paladin has no 5e known-spell table (5e Paladin prepares
+  // instead) — this ruleset made Paladin a known caster, so its own 5e prepare
+  // formula (mod + half level, min 1) is reused as the known-count instead.
+  // "full": Cleric/Druid prepare directly from the whole eligible list, no
+  // personal spellbook — only a Prepared cap exists.
+  // "spellbook": Wizard's stated spellbook (6 spells at 1st, +2/level) gates a
+  // Learned pool, with Prepared (mod + level) a subset of it.
+  // "spellbook-fixed": Theurge's libram uses the same shape as Wizard's
+  // spellbook but is stated outright (6 spells at 1st circle, +2/level).
+  const SPELL_MODE = {
+    bard: "known",
+    sorcerer: "known",
+    warlock: "known",
+    ranger: "known",
+    witch: "known",
+    paladin: "known-formula",
+    cleric: "full",
+    druid: "full",
+    wizard: "spellbook",
+    theurge: "spellbook-fixed",
+  };
+
+  function spellMode(cls) {
+    return (cls && SPELL_MODE[cls.id]) || null;
+  }
+
+  // The number of leveled spells actually usable at once: "Known" for known
+  // casters, "Prepared" for full/spellbook casters.
+  function computeActiveCap(c) {
+    const cls = findClass(c);
+    const mode = spellMode(cls);
+    if (!mode) return 0;
+    const spellAb = spellcastingAbility(cls);
+    if (!spellAb) return 0;
+    const mod = effectiveMod(c, spellAb);
+    if (mode === "known") {
+      const table = KNOWN_SPELLS_TABLE[cls.id];
+      return table ? table[Math.min(10, Math.max(1, c.level)) - 1] : 0;
+    }
+    if (mode === "known-formula") {
+      return Math.max(1, mod + Math.floor(c.level / 2));
+    }
+    return Math.max(1, mod + c.level);
+  }
+
+  function activeCapLabel(mode) {
+    return mode === "known" || mode === "known-formula" ? "Known" : "Prepared";
+  }
+
+  // "spellbook"/"spellbook-fixed" are the only modes with a personal pool
+  // distinct from the active cap (Wizard's spellbook / Theurge's libram: 6 at
+  // 1st, +2/level). "full" (Cleric/Druid prepare straight from the whole
+  // eligible list) and "known"/"known-formula" (fixed known-spell count) have
+  // no separate pool — learnedSpellIds itself is the capped active set.
+  function usesLearnedTier(mode) {
+    return mode === "spellbook" || mode === "spellbook-fixed";
+  }
+
+  // Only meaningful when usesLearnedTier(mode) is true.
+  function computeLearnedCap(c) {
+    return 6 + 2 * Math.max(0, c.level - 1);
+  }
+
+  function spellById(id) {
+    return SPELLS.find((s) => s.id === id) || null;
+  }
+
+  function eligibleSpells(c) {
+    const cls = findClass(c);
+    if (!cls) return [];
+    const maxCircle = maxSpellCircle(cls, c.level);
+    return SPELLS.filter((s) => s.classes.includes(cls.id) && s.circle <= maxCircle);
   }
 
   function computeDefense(c) {
@@ -455,6 +610,155 @@
         <label class="cs-label" for="cs-xp">XP</label>
         <input type="number" id="cs-xp" class="cs-input cs-input--xp" min="0" step="5" value="${c.xp}" aria-label="Experience points" />
         <span class="cs-xp-hint">${nextXpHint}</span>
+      </div>
+    </div>`;
+  }
+
+  function renderSpellsPane(c, cls) {
+    const mode = spellMode(cls);
+    const tiered = usesLearnedTier(mode);
+    const cCap = cantripCap(cls, c.level);
+    const activeCap = computeActiveCap(c);
+    const label = activeCapLabel(mode);
+
+    const learned = c.learnedSpellIds.map(spellById).filter((s) => s && s.classes.includes(cls.id));
+    const cantrips = learned.filter((s) => s.circle === 0).sort((a, b) => a.name.localeCompare(b.name));
+    const leveled = learned.filter((s) => s.circle > 0).sort((a, b) => a.circle - b.circle || a.name.localeCompare(b.name));
+
+    let leveledChips, counterText;
+    if (tiered) {
+      const learnedCap = computeLearnedCap(c);
+      const activeCount = leveled.filter((s) => c.preparedSpellIds.includes(s.id)).length;
+      leveledChips = leveled
+        .map((s) => {
+          const active = c.preparedSpellIds.includes(s.id);
+          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" title="${escapeHtml(s.school)} · Circle ${s.circle} · ${active ? "Prepared" : "Learned"}">${escapeHtml(s.name)}</span>`;
+        })
+        .join("");
+      counterText = `Learned ${leveled.length}/${learnedCap} · Prepared ${activeCount}/${activeCap}`;
+    } else {
+      leveledChips = leveled
+        .map((s) => `<span class="cs-spell-chip is-active" title="${escapeHtml(s.school)} · Circle ${s.circle} · ${label}">${escapeHtml(s.name)}</span>`)
+        .join("");
+      counterText = `${label} ${leveled.length}/${activeCap}`;
+    }
+
+    const cantripChips = cantrips
+      .map((s) => `<span class="cs-spell-chip is-active" title="${escapeHtml(s.school)} · Cantrip">${escapeHtml(s.name)}</span>`)
+      .join("");
+
+    return `<div class="cs-pane cs-pane--spells">
+      <h2 class="cs-pane-title cs-pane-title--with-action">Spells <button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-manage-spells">Manage Spells</button></h2>
+      <p class="cs-muted">Cantrips ${cantrips.length}/${cCap} · ${counterText}</p>
+      ${cantrips.length ? `<div class="cs-spell-chips">${cantripChips}</div>` : ""}
+      ${leveled.length ? `<div class="cs-spell-chips">${leveledChips}</div>` : '<p class="cs-muted">No spells learned yet.</p>'}
+    </div>`;
+  }
+
+  function renderSpellModal() {
+    if (!el.modalRoot) return;
+    if (!spellModalOpen || !char) {
+      el.modalRoot.innerHTML = "";
+      return;
+    }
+    const cls = findClass(char);
+    const mode = spellMode(cls);
+    const tiered = usesLearnedTier(mode);
+    const label = activeCapLabel(mode);
+    const maxCircle = maxSpellCircle(cls, char.level);
+    const cCap = cantripCap(cls, char.level);
+    const activeCap = computeActiveCap(char);
+    const learnedCap = tiered ? computeLearnedCap(char) : null;
+    const filterText = spellModalFilter.trim().toLowerCase();
+    const eligible = eligibleSpells(char).filter((s) => !filterText || s.name.toLowerCase().includes(filterText));
+
+    const cantripLearnedCount = char.learnedSpellIds.filter((id) => {
+      const s = spellById(id);
+      return s && s.circle === 0;
+    }).length;
+    const learnedLeveledCount = char.learnedSpellIds.filter((id) => {
+      const s = spellById(id);
+      return s && s.circle > 0;
+    }).length;
+    const activeLeveledCount = tiered
+      ? char.preparedSpellIds.filter((id) => {
+          const s = spellById(id);
+          return s && s.circle > 0;
+        }).length
+      : learnedLeveledCount;
+
+    const groups = [];
+    for (let circle = 0; circle <= maxCircle; circle++) {
+      const spells = eligible.filter((s) => s.circle === circle).sort((a, b) => a.name.localeCompare(b.name));
+      if (!spells.length) continue;
+      const isCantrip = circle === 0;
+      const rows = spells
+        .map((s) => {
+          const learned = char.learnedSpellIds.includes(s.id);
+          const prepared = char.preparedSpellIds.includes(s.id);
+
+          if (isCantrip) {
+            const disabled = !learned && cantripLearnedCount >= cCap;
+            return `<li class="cs-spell-row-modal">
+              <label class="cs-spell-check">
+                <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
+                <span class="cs-spell-name">${escapeHtml(s.name)}</span>
+              </label>
+              <span class="cs-spell-tag">Always active</span>
+              <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+            </li>`;
+          }
+
+          if (!tiered) {
+            const disabled = !learned && activeLeveledCount >= activeCap;
+            return `<li class="cs-spell-row-modal">
+              <label class="cs-spell-check">
+                <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
+                <span class="cs-spell-name">${escapeHtml(s.name)}</span>
+              </label>
+              <span class="cs-spell-tag">${label}</span>
+              <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+            </li>`;
+          }
+
+          const learnDisabled = !learned && learnedLeveledCount >= learnedCap;
+          const prepDisabled = !learned || (!prepared && activeLeveledCount >= activeCap);
+          return `<li class="cs-spell-row-modal">
+            <label class="cs-spell-check">
+              <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${learnDisabled ? " disabled" : ""} />
+              <span class="cs-spell-name">${escapeHtml(s.name)}</span>
+            </label>
+            <label class="cs-spell-check cs-spell-check--prep">
+              <input type="checkbox" data-spell-prepare="${s.id}"${prepared ? " checked" : ""}${prepDisabled ? " disabled" : ""} />
+              Prepared
+            </label>
+            <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+          </li>`;
+        })
+        .join("");
+      groups.push(`<div class="cs-spell-group">
+        <h3 class="cs-spell-group-title">${circle === 0 ? "Cantrips" : `Circle ${circle}`}</h3>
+        <ul class="cs-spell-list">${rows}</ul>
+      </div>`);
+    }
+
+    const counterText = tiered
+      ? `Learned ${learnedLeveledCount}/${learnedCap} · Prepared ${activeLeveledCount}/${activeCap}`
+      : `${label} ${activeLeveledCount}/${activeCap}`;
+
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-spell-modal-overlay">
+      <div class="cs-modal" role="dialog" aria-modal="true" aria-label="Manage Spells">
+        <div class="cs-modal-header">
+          <h2>Manage Spells — ${escapeHtml(cls ? cls.name : "")}</h2>
+          <button type="button" class="cs-modal-close" id="cs-spell-modal-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-sub">
+          <input type="text" id="cs-spell-search" class="cs-input" placeholder="Search spells…" value="${escapeHtml(spellModalFilter)}" />
+          <span class="cs-modal-counter">Cantrips ${cantripLearnedCount}/${cCap} · ${counterText}</span>
+        </div>
+        <div class="cs-modal-body">
+          ${groups.length ? groups.join("") : '<p class="cs-muted">No spells match.</p>'}
+        </div>
       </div>
     </div>`;
   }
@@ -634,6 +938,8 @@
           <h2 class="cs-pane-title">Inventory <span class="cs-inv-count">${unlocked}/${INVENTORY_SLOT_COUNT} slots (FIT ${formatMod(effectiveMod(c, "fit"))})</span></h2>
           <div class="cs-inv-grid">${inventoryRows}</div>
         </div>
+
+        ${caster ? renderSpellsPane(c, cls) : ""}
       </div>
 
       <div class="cs-col cs-col--identity">
@@ -719,6 +1025,7 @@
     activeCharacter();
     renderCharSelect();
     updateSheetVisibility();
+    renderSpellModal();
     if (!char) {
       if (el.sheet) el.sheet.innerHTML = "";
       return;
@@ -740,9 +1047,66 @@
     if (char.woundsNow > maxWd) char.woundsNow = maxWd;
     const spMax = computeSpellPowerMax(char);
     if (spMax !== null && char.spellPowerNow > spMax) char.spellPowerNow = spMax;
+
+    const cls = findClass(char);
+    const mode = spellMode(cls);
+    if (mode) {
+      const cCap = cantripCap(cls, char.level);
+      const cantripIds = char.learnedSpellIds.filter((id) => {
+        const s = spellById(id);
+        return s && s.circle === 0;
+      });
+      if (cantripIds.length > cCap) {
+        const keep = new Set(cantripIds.slice(0, cCap));
+        char.learnedSpellIds = char.learnedSpellIds.filter((id) => {
+          const s = spellById(id);
+          return !s || s.circle > 0 || keep.has(id);
+        });
+      }
+
+      const activeCap = computeActiveCap(char);
+      if (usesLearnedTier(mode)) {
+        const learnedCap = computeLearnedCap(char);
+        const learnedLeveledIds = char.learnedSpellIds.filter((id) => {
+          const s = spellById(id);
+          return s && s.circle > 0;
+        });
+        if (learnedLeveledIds.length > learnedCap) {
+          const keep = new Set(learnedLeveledIds.slice(0, learnedCap));
+          char.learnedSpellIds = char.learnedSpellIds.filter((id) => {
+            const s = spellById(id);
+            return !s || s.circle === 0 || keep.has(id);
+          });
+        }
+        const preparedLeveledIds = char.preparedSpellIds.filter((id) => {
+          const s = spellById(id);
+          return s && s.circle > 0;
+        });
+        if (preparedLeveledIds.length > activeCap) {
+          const keep = new Set(preparedLeveledIds.slice(0, activeCap));
+          char.preparedSpellIds = char.preparedSpellIds.filter((id) => {
+            const s = spellById(id);
+            return !s || s.circle === 0 || keep.has(id);
+          });
+        }
+      } else {
+        const activeLeveledIds = char.learnedSpellIds.filter((id) => {
+          const s = spellById(id);
+          return s && s.circle > 0;
+        });
+        if (activeLeveledIds.length > activeCap) {
+          const keep = new Set(activeLeveledIds.slice(0, activeCap));
+          char.learnedSpellIds = char.learnedSpellIds.filter((id) => {
+            const s = spellById(id);
+            return !s || s.circle === 0 || keep.has(id);
+          });
+        }
+      }
+    }
   }
 
   function setActive(id) {
+    spellModalOpen = false;
     if (!id) {
       store.activeId = null;
       saveStore();
@@ -757,6 +1121,7 @@
   }
 
   function newCharacter() {
+    spellModalOpen = false;
     const c = defaultCharacter();
     store.characters.push(c);
     store.activeId = c.id;
@@ -766,6 +1131,7 @@
 
   function deleteCharacter() {
     if (!char) return;
+    spellModalOpen = false;
     const name = char.name || "Unnamed";
     if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
@@ -861,6 +1227,12 @@
         const idx = parseInt(heart.dataset.heart, 10);
         char.hearts = idx + 1;
         persistAndRender();
+        return;
+      }
+      if (e.target.closest("#cs-manage-spells")) {
+        spellModalOpen = true;
+        spellModalFilter = "";
+        renderSpellModal();
       }
     });
 
@@ -932,6 +1304,58 @@
         persistAndRender();
       }
     });
+
+    if (el.modalRoot) {
+      el.modalRoot.addEventListener("click", (e) => {
+        if (e.target.id === "cs-spell-modal-overlay" || e.target.id === "cs-spell-modal-close") {
+          spellModalOpen = false;
+          renderSpellModal();
+        }
+      });
+
+      el.modalRoot.addEventListener("input", (e) => {
+        if (e.target.id === "cs-spell-search") {
+          spellModalFilter = e.target.value;
+          renderSpellModal();
+          const input = document.getElementById("cs-spell-search");
+          if (input) {
+            input.focus();
+            const pos = spellModalFilter.length;
+            input.setSelectionRange(pos, pos);
+          }
+        }
+      });
+
+      el.modalRoot.addEventListener("change", (e) => {
+        if (!char) return;
+        const t = e.target;
+        if (t.dataset.spellLearn) {
+          const id = t.dataset.spellLearn;
+          if (t.checked) {
+            if (!char.learnedSpellIds.includes(id)) char.learnedSpellIds.push(id);
+          } else {
+            char.learnedSpellIds = char.learnedSpellIds.filter((x) => x !== id);
+            char.preparedSpellIds = char.preparedSpellIds.filter((x) => x !== id);
+          }
+          persistAndRender();
+        } else if (t.dataset.spellPrepare) {
+          const id = t.dataset.spellPrepare;
+          if (t.checked) {
+            if (!char.preparedSpellIds.includes(id)) char.preparedSpellIds.push(id);
+          } else {
+            char.preparedSpellIds = char.preparedSpellIds.filter((x) => x !== id);
+          }
+          persistAndRender();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && spellModalOpen) {
+          spellModalOpen = false;
+          renderSpellModal();
+        }
+      });
+    }
   }
 
   async function init() {
@@ -947,6 +1371,12 @@
       data = await res.json();
       if (!data || !Array.isArray(data.classes)) {
         throw new Error("Character options file is invalid. Regenerate it with generate-character-creator-data.py.");
+      }
+      try {
+        const spellsRes = await fetch(rp("assets/spells-data.json"));
+        SPELLS = spellsRes.ok ? await spellsRes.json() : [];
+      } catch (_) {
+        SPELLS = [];
       }
       showApp();
       bindEvents();
