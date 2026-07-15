@@ -10,6 +10,66 @@
   const INVENTORY_THRESHOLDS = [-2, -2, -1, -1, 0, 1, 1, 2, 2];
   const INVENTORY_SLOT_COUNT = INVENTORY_THRESHOLDS.length * 2;
 
+  // Defense bonus per gear.html Armor table: base + FIT mod (capped where noted; heavy excludes FIT).
+  const ARMOR = [
+    { id: "padded", name: "Padded", category: "Light Armor", base: 1, addFit: true, fitCap: null },
+    { id: "leather", name: "Leather", category: "Light Armor", base: 1, addFit: true, fitCap: null },
+    { id: "studded-leather", name: "Studded Leather", category: "Light Armor", base: 2, addFit: true, fitCap: null },
+    { id: "brigandine", name: "Brigandine", category: "Light Armor", base: 2, addFit: true, fitCap: null },
+    { id: "hide", name: "Hide", category: "Medium Armor", base: 2, addFit: true, fitCap: 2 },
+    { id: "chain-shirt", name: "Chain Shirt", category: "Medium Armor", base: 3, addFit: true, fitCap: 2 },
+    { id: "scale-mail", name: "Scale Mail", category: "Medium Armor", base: 4, addFit: true, fitCap: 2 },
+    { id: "breastplate", name: "Breastplate", category: "Medium Armor", base: 4, addFit: true, fitCap: 2 },
+    { id: "half-plate", name: "Half Plate", category: "Medium Armor", base: 5, addFit: true, fitCap: 2 },
+    { id: "ring-mail", name: "Ring Mail", category: "Heavy Armor", base: 4, addFit: false, fitCap: null },
+    { id: "chain-mail", name: "Chain Mail", category: "Heavy Armor", base: 6, addFit: false, fitCap: null },
+    { id: "splint", name: "Splint", category: "Heavy Armor", base: 7, addFit: false, fitCap: null },
+    { id: "plate", name: "Plate", category: "Heavy Armor", base: 8, addFit: false, fitCap: null },
+  ];
+  const SHIELD_BONUS = 2;
+
+  // Attack bonus per gear.html weapon tables: weapon bonus + FIT mod.
+  const WEAPONS = [
+    { id: "club", name: "Club", category: "Simple Melee", bonus: 1 },
+    { id: "dagger", name: "Dagger", category: "Simple Melee", bonus: 1 },
+    { id: "greatclub", name: "Greatclub", category: "Simple Melee", bonus: 3 },
+    { id: "handaxe", name: "Handaxe", category: "Simple Melee", bonus: 2 },
+    { id: "javelin", name: "Javelin", category: "Simple Melee", bonus: 2 },
+    { id: "light-hammer", name: "Light Hammer", category: "Simple Melee", bonus: 1 },
+    { id: "mace", name: "Mace", category: "Simple Melee", bonus: 2 },
+    { id: "quarterstaff", name: "Quarterstaff", category: "Simple Melee", bonus: 2 },
+    { id: "sickle", name: "Sickle", category: "Simple Melee", bonus: 1 },
+    { id: "spear", name: "Spear", category: "Simple Melee", bonus: 2 },
+    { id: "dart", name: "Dart", category: "Simple Ranged", bonus: 1 },
+    { id: "light-crossbow", name: "Light Crossbow", category: "Simple Ranged", bonus: 3 },
+    { id: "shortbow", name: "Shortbow", category: "Simple Ranged", bonus: 2 },
+    { id: "sling", name: "Sling", category: "Simple Ranged", bonus: 1 },
+    { id: "battleaxe", name: "Battleaxe", category: "Martial Melee", bonus: 3 },
+    { id: "flail", name: "Flail", category: "Martial Melee", bonus: 3 },
+    { id: "glaive", name: "Glaive", category: "Martial Melee", bonus: 4 },
+    { id: "greataxe", name: "Greataxe", category: "Martial Melee", bonus: 5 },
+    { id: "greatsword", name: "Greatsword", category: "Martial Melee", bonus: 6 },
+    { id: "halberd", name: "Halberd", category: "Martial Melee", bonus: 4 },
+    { id: "lance", name: "Lance", category: "Martial Melee", bonus: 4 },
+    { id: "longsword", name: "Longsword", category: "Martial Melee", bonus: 3 },
+    { id: "maul", name: "Maul", category: "Martial Melee", bonus: 6 },
+    { id: "morningstar", name: "Morningstar", category: "Martial Melee", bonus: 3 },
+    { id: "pike", name: "Pike", category: "Martial Melee", bonus: 4 },
+    { id: "rapier", name: "Rapier", category: "Martial Melee", bonus: 3 },
+    { id: "scimitar", name: "Scimitar", category: "Martial Melee", bonus: 2 },
+    { id: "shortsword", name: "Shortsword", category: "Martial Melee", bonus: 2 },
+    { id: "trident", name: "Trident", category: "Martial Melee", bonus: 3 },
+    { id: "warhammer", name: "Warhammer", category: "Martial Melee", bonus: 3 },
+    { id: "war-pick", name: "War Pick", category: "Martial Melee", bonus: 3 },
+    { id: "whip", name: "Whip", category: "Martial Melee", bonus: 1 },
+    { id: "blowgun", name: "Blowgun", category: "Martial Ranged", bonus: 0 },
+    { id: "hand-crossbow", name: "Hand Crossbow", category: "Martial Ranged", bonus: 2 },
+    { id: "heavy-crossbow", name: "Heavy Crossbow", category: "Martial Ranged", bonus: 4 },
+    { id: "longbow", name: "Longbow", category: "Martial Ranged", bonus: 3 },
+    { id: "musket", name: "Musket", category: "Martial Ranged", bonus: 5 },
+    { id: "pistol", name: "Pistol", category: "Martial Ranged", bonus: 4 },
+  ];
+
   let data = null;
   let store = loadStore();
   let char = null;
@@ -76,7 +136,6 @@
       abilities: { fit: 0, ins: 0, wil: 0 },
       woundsNow: 0,
       woundsTemp: 0,
-      defense: 10,
       resolve: 0,
       spellPowerNow: 0,
       classId: "",
@@ -84,6 +143,9 @@
       lineageId: "",
       heritageId: "",
       backgroundId: "",
+      armorId: "",
+      hasShield: false,
+      weaponId: "",
       speed: 30,
       size: "Medium",
       currency: { gold: 0, silver: 0, copper: 0 },
@@ -131,7 +193,9 @@
     });
     c.woundsNow = Math.max(0, Number(c.woundsNow) || 0);
     c.woundsTemp = Math.max(0, Number(c.woundsTemp) || 0);
-    c.defense = Number(c.defense) || 10;
+    c.armorId = typeof c.armorId === "string" ? c.armorId : "";
+    c.hasShield = Boolean(c.hasShield);
+    c.weaponId = typeof c.weaponId === "string" ? c.weaponId : "";
     c.spellPowerNow = Math.max(0, Number(c.spellPowerNow) || 0);
     c.currency = c.currency || { gold: 0, silver: 0, copper: 0 };
     if (!Array.isArray(c.inventory) || c.inventory.length !== INVENTORY_SLOT_COUNT) {
@@ -224,6 +288,34 @@
     if (!spellAb) return null;
     const mod = effectiveMod(c, spellAb);
     return Math.max(0, 3 * mod);
+  }
+
+  function computeDefense(c) {
+    const fitMod = effectiveMod(c, "fit");
+    const armor = byId(ARMOR, c.armorId);
+    const base = armor
+      ? armor.base + (armor.addFit ? (armor.fitCap != null ? Math.min(fitMod, armor.fitCap) : fitMod) : 0)
+      : fitMod;
+    return base + (c.hasShield ? SHIELD_BONUS : 0);
+  }
+
+  function armorOptionLabel(armor) {
+    const mod = armor.addFit
+      ? armor.fitCap != null
+        ? `+${armor.base} + FIT (max +${armor.fitCap})`
+        : `+${armor.base} + FIT`
+      : formatMod(armor.base);
+    return `${armor.name} (${mod})`;
+  }
+
+  function weaponOptionLabel(weapon) {
+    return `${weapon.name} (${formatMod(weapon.bonus)})`;
+  }
+
+  function computeAttackBonus(c) {
+    const weapon = byId(WEAPONS, c.weaponId);
+    if (!weapon) return null;
+    return effectiveMod(c, "fit") + weapon.bonus;
   }
 
   function computeSpeed(c) {
@@ -400,6 +492,10 @@
     const lineageOptions = optionList(data.lineages, c.lineageId, "Lineage");
     const heritageOptions = optionList(data.heritages, c.heritageId, "Heritage");
     const backgroundOptions = optionList(data.backgrounds, c.backgroundId, "Background");
+    const armorOptions = groupedOptionList(ARMOR, c.armorId, "No Armor", armorOptionLabel);
+    const weaponOptions = groupedOptionList(WEAPONS, c.weaponId, "No Weapon", weaponOptionLabel);
+    const defBonus = computeDefense(c);
+    const attackBonus = computeAttackBonus(c);
 
     const inventoryRows = INVENTORY_THRESHOLDS.map((threshold, rowIdx) => {
       const rowOpen = rowIdx < inventoryUnlockedRows(c);
@@ -431,6 +527,17 @@
           <input type="text" id="cs-name" class="cs-input cs-input--name" value="${escapeHtml(c.name)}" autocomplete="off" />
         </div>
 
+        <div class="cs-class-row">
+          <div class="cs-field">
+            <label class="cs-label" for="cs-class">Class</label>
+            <select id="cs-class" class="cs-select">${classOptions}</select>
+          </div>
+          <div class="cs-field">
+            <label class="cs-label" for="cs-subclass">Subclass</label>
+            <select id="cs-subclass" class="cs-select"${c.level < subclassMin ? " disabled" : ""}>${subclassOptions}</select>
+          </div>
+        </div>
+
         <div class="cs-life-level">
           <div class="cs-life">
             <span class="cs-label">Life</span>
@@ -454,7 +561,7 @@
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">DEF</span>
-            ${stepper("defense", c.defense, "Defense", { min: 0, max: 30, display: String(c.defense) })}
+            <span class="cs-wd-val cs-wd-val--calc" title="Armor bonus + FIT mod (or FIT mod alone, unarmored), + shield if carried">${formatMod(defBonus)}</span>
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">Resolve</span>
@@ -463,17 +570,6 @@
         </div>
 
         ${spSection}
-
-        <div class="cs-class-row">
-          <div class="cs-field">
-            <label class="cs-label" for="cs-class">Class</label>
-            <select id="cs-class" class="cs-select">${classOptions}</select>
-          </div>
-          <div class="cs-field">
-            <label class="cs-label" for="cs-subclass">Subclass</label>
-            <select id="cs-subclass" class="cs-select"${c.level < subclassMin ? " disabled" : ""}>${subclassOptions}</select>
-          </div>
-        </div>
 
         <div class="cs-pane cs-pane--abilities">
           <h2 class="cs-pane-title">Abilities</h2>
@@ -491,7 +587,22 @@
 
         <div class="cs-pane cs-pane--equipped">
           <h2 class="cs-pane-title">Equipped</h2>
-          <textarea class="cs-textarea" id="cs-equipped" rows="4" placeholder="Armor, weapons, worn items…">${escapeHtml(c.equippedText)}</textarea>
+          <div class="cs-class-row">
+            <div class="cs-field">
+              <label class="cs-label" for="cs-armor">Armor</label>
+              <select id="cs-armor" class="cs-select">${armorOptions}</select>
+            </div>
+            <div class="cs-field">
+              <label class="cs-label" for="cs-weapon">Weapon</label>
+              <select id="cs-weapon" class="cs-select">${weaponOptions}</select>
+            </div>
+          </div>
+          <label class="cs-checkbox-field">
+            <input type="checkbox" id="cs-shield"${c.hasShield ? " checked" : ""} />
+            Shield (+${SHIELD_BONUS} DEF)
+          </label>
+          ${attackBonus !== null ? `<p class="cs-muted">Attack bonus: ${formatMod(attackBonus)} (d20 + weapon + FIT)</p>` : ""}
+          <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="Other worn items, ammo, tools…">${escapeHtml(c.equippedText)}</textarea>
         </div>
 
         <div class="cs-pane cs-pane--inventory">
@@ -536,6 +647,27 @@
     return `<option value="">— ${placeholder} —</option>${(items || [])
       .map((item) => `<option value="${item.id}"${selectedId === item.id ? " selected" : ""}>${escapeHtml(item.name)}</option>`)
       .join("")}`;
+  }
+
+  function groupedOptionList(items, selectedId, placeholder, labelFn) {
+    const groups = [];
+    const byCategory = {};
+    items.forEach((item) => {
+      if (!byCategory[item.category]) {
+        byCategory[item.category] = [];
+        groups.push(item.category);
+      }
+      byCategory[item.category].push(item);
+    });
+    const optgroups = groups
+      .map((cat) => {
+        const opts = byCategory[cat]
+          .map((item) => `<option value="${item.id}"${selectedId === item.id ? " selected" : ""}>${escapeHtml(labelFn(item))}</option>`)
+          .join("");
+        return `<optgroup label="${escapeHtml(cat)}">${opts}</optgroup>`;
+      })
+      .join("");
+    return `<option value="">— ${placeholder} —</option>${optgroups}`;
   }
 
   function renderCharSelect() {
@@ -667,8 +799,6 @@
       char.woundsNow = Math.max(0, char.woundsNow + delta);
     } else if (id === "wd-tmp") {
       char.woundsTemp = Math.max(0, char.woundsTemp + delta);
-    } else if (id === "defense") {
-      char.defense = Math.min(30, Math.max(0, char.defense + delta));
     } else if (id === "resolve") {
       char.resolve = Math.min(4, Math.max(0, char.resolve + delta));
     } else if (id === "sp-now") {
@@ -750,6 +880,15 @@
         persistAndRender();
       } else if (t.id === "cs-background") {
         char.backgroundId = t.value;
+        persistAndRender();
+      } else if (t.id === "cs-armor") {
+        char.armorId = t.value;
+        persistAndRender();
+      } else if (t.id === "cs-weapon") {
+        char.weaponId = t.value;
+        persistAndRender();
+      } else if (t.id === "cs-shield") {
+        char.hasShield = t.checked;
         persistAndRender();
       }
     });

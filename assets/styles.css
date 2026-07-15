@@ -3845,6 +3845,15 @@
   }
   .cs-feature-list li{margin-bottom:4px}
   .cs-muted{color:var(--muted);font-size:.88rem}
+  .cs-checkbox-field{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:.85rem;
+    font-weight:700;
+    margin:8px 0;
+    cursor:pointer;
+  }
   .cs-currency{
     display:flex;
     gap:12px;
