@@ -557,7 +557,7 @@
             <span class="cs-stat-label">WD</span>
             <div class="cs-wd-grid">
               <div class="cs-wd-cell"><span class="cs-wd-lbl">MAX</span><span class="cs-wd-val cs-wd-val--calc" title="Class ${cls ? cls.maxWd : 8} + FIT ${formatMod(effectiveMod(c, "fit"))} + level −1">${maxWd}</span></div>
-              <div class="cs-wd-cell"><span class="cs-wd-lbl">NOW</span>${stepper("wd-now", c.woundsNow, "Current wounds", { min: 0, max: 999, display: String(c.woundsNow) })}</div>
+              <div class="cs-wd-cell"><span class="cs-wd-lbl">NOW</span>${stepper("wd-now", c.woundsNow, "Current wounds", { min: 0, max: maxWd, display: String(c.woundsNow) })}</div>
               <div class="cs-wd-cell"><span class="cs-wd-lbl">TMP</span>${stepper("wd-tmp", c.woundsTemp, "Temporary wounds", { min: 0, max: 999, display: String(c.woundsTemp) })}</div>
             </div>
           </div>
@@ -704,13 +704,14 @@
       if (el.sheet) el.sheet.innerHTML = "";
       return;
     }
-    renderSheet();
     clampWoundsAndSp();
+    renderSheet();
   }
 
   function persistAndRender() {
     if (!char) return;
     normalizeCharacter(char);
+    clampWoundsAndSp();
     saveStore();
     render();
   }
@@ -806,7 +807,7 @@
       char.level = Math.min(range.max, Math.max(range.min, char.level + delta));
       if (char.level < (range.subclassMin || 2)) char.subclassId = "";
     } else if (id === "wd-now") {
-      char.woundsNow = Math.max(0, char.woundsNow + delta);
+      char.woundsNow = Math.max(0, Math.min(computeMaxWd(char), char.woundsNow + delta));
     } else if (id === "wd-tmp") {
       char.woundsTemp = Math.max(0, char.woundsTemp + delta);
     } else if (id === "resolve") {
