@@ -11,6 +11,7 @@ build/
 
 # Python / virtualenv (voor eventuele tooling)
 __pycache__/
+*.py
 *.py[cod]
 .venv/
 venv/
@@ -22,4 +23,27 @@ venv/
 
 # Project-specific: do not version source packs and drafts
 foundation/
+
+# Scratch docs / drafts sitting in the working tree
+README.md
+IMPLEMENTATION_SUMMARY.md
+MIGRATION_GUIDE.md
+REFACTORING_COMPLETE.md
+REFACTORING_STATUS.md
+
+# Ad-hoc / experimental assets
+assets/5-party-tavern.png
+assets/5-party-tavern_2.png
+assets/5-party-tavern-3.png
+assets/5-party-tavern-3-kader.png
+assets/5-party-tavern-4.png
+assets/5-party-tavern-5.png
+assets/ChatGPT Image 7 feb 2026, 15_13_53.png
+assets/DnD-lite.png
+assets/classes-line-up - kopie.png
+assets/classes-line-up-tavern.png
+
+# Scratch data dumps
+data/monster_schema.json
+data/monsters_data.js_bak
 
