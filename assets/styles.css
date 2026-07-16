@@ -3641,6 +3641,13 @@
   .cs-toolbar-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
   .cs-toolbar-actions{display:flex;flex-wrap:wrap;gap:8px}
   .cs-btn-secondary{background:var(--bg-card);border:2px solid var(--accent-gold-soft);color:var(--brand-primary)}
+  .cs-btn-secondary:disabled{
+    background:var(--line);
+    border-color:var(--line);
+    color:var(--muted);
+    cursor:not-allowed;
+    opacity:.7;
+  }
   .cs-btn-danger{background:rgba(192,57,43,.08);border:2px solid #c0392b;color:#922b21}
   .cs-select{
     width:100%;
@@ -4066,7 +4073,8 @@
   .cs-modal--view{max-width:480px}
   .cs-spell-view-meta{font-size:.82rem;color:var(--muted);margin:0 0 6px}
   .cs-spell-view-desc{font-size:.92rem;line-height:1.5;margin:10px 0 0;white-space:pre-line}
-  #cs-spell-view-toggle-prepare{margin-top:14px}
+  .cs-modal-header-title{display:flex;align-items:center;gap:10px;min-width:0}
+  .cs-modal-header-title .cs-btn-small{flex-shrink:0;white-space:nowrap}
 
   .cs-choice-section{
     padding-top:8px;

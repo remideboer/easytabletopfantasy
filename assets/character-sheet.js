@@ -989,21 +989,28 @@
       spell.classes.includes(cls.id) &&
       char.learnedSpellIds.includes(spell.id);
     const prepared = canTogglePrepare && char.preparedSpellIds.includes(spell.id);
+    const preparedLeveledCount = char.preparedSpellIds.filter((pid) => {
+      const s = spellById(pid);
+      return s && s.circle > 0;
+    }).length;
+    const atCap = !prepared && preparedLeveledCount >= computeActiveCap(char);
     const toggleButton = canTogglePrepare
-      ? `<button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-spell-view-toggle-prepare" data-spell-id="${escapeHtml(spell.id)}">${prepared ? "Unprepare" : "Prepare"}</button>`
+      ? `<button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-spell-view-toggle-prepare" data-spell-id="${escapeHtml(spell.id)}"${atCap ? " disabled" : ""}>${prepared ? "Unprepare" : "Prepare"}</button>`
       : "";
 
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-spell-view-overlay">
       <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="${escapeHtml(spell.name)}">
         <div class="cs-modal-header">
-          <h2>${escapeHtml(spell.name)}</h2>
+          <div class="cs-modal-header-title">
+            <h2>${escapeHtml(spell.name)}</h2>
+            ${toggleButton}
+          </div>
           <button type="button" class="cs-modal-close" id="cs-spell-view-close" aria-label="Close">×</button>
         </div>
         <div class="cs-modal-body">
           <p class="cs-spell-view-meta">${escapeHtml(spell.school)} · ${escapeHtml(circleLabel)} · ${escapeHtml(spell.castingTime)}</p>
           <p class="cs-spell-view-meta">Range: ${escapeHtml(spell.range)} · Duration: ${escapeHtml(spell.duration)} · Components: ${escapeHtml(spell.components)}</p>
           <p class="cs-spell-view-desc">${escapeHtml(spell.description)}</p>
-          ${toggleButton}
         </div>
       </div>
     </div>`;
@@ -1755,19 +1762,17 @@
           const id = e.target.dataset.spellId;
           if (char.preparedSpellIds.includes(id)) {
             char.preparedSpellIds = char.preparedSpellIds.filter((x) => x !== id);
+            persistAndRender();
           } else {
-            const cap = computeActiveCap(char);
-            const preparedLeveled = char.preparedSpellIds.filter((pid) => {
+            const preparedLeveledCount = char.preparedSpellIds.filter((pid) => {
               const s = spellById(pid);
               return s && s.circle > 0;
-            });
-            if (preparedLeveled.length >= cap && preparedLeveled.length) {
-              const bump = preparedLeveled[0];
-              char.preparedSpellIds = char.preparedSpellIds.filter((x) => x !== bump);
+            }).length;
+            if (preparedLeveledCount < computeActiveCap(char)) {
+              char.preparedSpellIds.push(id);
+              persistAndRender();
             }
-            char.preparedSpellIds.push(id);
           }
-          persistAndRender();
         }
       });
 
