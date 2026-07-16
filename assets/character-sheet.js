@@ -817,6 +817,12 @@
 
   function renderModals() {
     if (!el.modalRoot) return;
+    // Toggling a checkbox rebuilds the whole modal via innerHTML, which
+    // would otherwise reset .cs-modal-body's scroll position to the top
+    // on every click - save and restore it across the rebuild.
+    const prevBody = el.modalRoot.querySelector(".cs-modal-body");
+    const scrollTop = prevBody ? prevBody.scrollTop : 0;
+
     if (spellModalOpen && char) {
       renderManageSpellsModal();
     } else if (spellViewId && char) {
@@ -832,6 +838,9 @@
     } else {
       el.modalRoot.innerHTML = "";
     }
+
+    const newBody = el.modalRoot.querySelector(".cs-modal-body");
+    if (newBody) newBody.scrollTop = scrollTop;
   }
 
   function renderTalentModal() {
