@@ -16712,7 +16712,7 @@
       "reactions": [
         {
           "name": "Counter Spell",
-          "description": "When a creature the archmage can see within 30 feet of it casts a spell, the archmage can counter the spell, interrupting the casting. This reaction works like the counterspell spell with a +5 spellcasting ability check, except the archmage must always make the ability check, regardless of the spell’s circle. The archmage has advantage on this check if the spell is on the Arcane source spell list."
+          "description": "When a creature the archmage can see within 30 feet of it casts a spell, the archmage can counter the spell, interrupting the casting. This reaction works like the counterspell spell with a +5 spellcasting ability check, except the archmage must always make the ability check, regardless of the spell’s level. The archmage has advantage on this check if the spell is on the Arcane source spell list."
         }
       ],
       "legendary_actions": []
@@ -16773,7 +16773,7 @@
       "reactions": [
         {
           "name": "Counter Spell",
-          "description": "When a creature the archmage can see within 30 feet of it casts a spell, the archmage can counter the spell, interrupting the casting. This reaction works like the counterspell spell with a +5 spellcasting ability check, except the archmage must always make the ability check, regardless of the spell’s circle. The archmage has advantage on this check if the spell is on the Arcane source spell list."
+          "description": "When a creature the archmage can see within 30 feet of it casts a spell, the archmage can counter the spell, interrupting the casting. This reaction works like the counterspell spell with a +5 spellcasting ability check, except the archmage must always make the ability check, regardless of the spell’s level. The archmage has advantage on this check if the spell is on the Arcane source spell list."
         }
       ],
       "legendary_actions": []
@@ -28058,7 +28058,7 @@
       "reactions": [
         {
           "name": "Absorb Spell",
-          "description": "When a creature the lich can see within 60 feet of it casts a spell, the lich can absorb the spell’s energy, countering it. This works like the counterspell spell, except the lich must always make a spellcasting ability check, no matter the spell’s circle. Its ability check for this is +12. If it successfully counters the spell, the lich gains 5 temporary HP for each level of the spell."
+          "description": "When a creature the lich can see within 60 feet of it casts a spell, the lich can absorb the spell’s energy, countering it. This works like the counterspell spell, except the lich must always make a spellcasting ability check, no matter the spell’s level. Its ability check for this is +12. If it successfully counters the spell, the lich gains 5 temporary HP for each level of the spell."
         }
       ],
       "legendary_actions": [
@@ -28152,7 +28152,7 @@
       "reactions": [
         {
           "name": "Absorb Spell",
-          "description": "When a creature the lich can see within 60 feet of it casts a spell, the lich can absorb the spell’s energy, countering it. This works like the counterspell spell, except the lich must always make a spellcasting ability check, no matter the spell’s circle. Its ability check for this is +12. If it successfully counters the spell, the lich gains 5 temporary HP for each level of the spell."
+          "description": "When a creature the lich can see within 60 feet of it casts a spell, the lich can absorb the spell’s energy, countering it. This works like the counterspell spell, except the lich must always make a spellcasting ability check, no matter the spell’s level. Its ability check for this is +12. If it successfully counters the spell, the lich gains 5 temporary HP for each level of the spell."
         }
       ],
       "legendary_actions": [

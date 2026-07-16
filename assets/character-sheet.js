@@ -411,7 +411,7 @@
     return Math.max(0, 3 * mod);
   }
 
-  // Max spell circle by level per classes.html progression tables.
+  // Max spell level by character level, per classes.html progression tables.
   const FULL_CASTER_CIRCLE = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9];
   const HALF_CASTER_CIRCLE = [null, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5];
   const WARLOCK_CIRCLE = [null, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
@@ -438,7 +438,7 @@
   // Cleric/Druid/Wizard state their formula outright: spellcasting mod + level
   // (minimum 1). No class page gives numeric cantrip/known-spell counts (each
   // just says "as shown on your progression table," but that table only has
-  // Max Circle, not counts) — those are derived from the matching 5e SRD
+  // Max Spell Level, not counts) — those are derived from the matching 5e SRD
   // class table, read at the 5e level this ruleset's own conversion method
   // (conversion.html) maps a YMIAT level to: 5e level = 2*level - 1.
   // Witch and Theurge are homebrew with no 5e equivalent, so their numbers
@@ -488,7 +488,7 @@
   // "spellbook": Wizard's stated spellbook (6 spells at 1st, +2/level) gates a
   // Learned pool, with Prepared (mod + level) a subset of it.
   // "spellbook-fixed": Theurge's libram uses the same shape as Wizard's
-  // spellbook but is stated outright (6 spells at 1st circle, +2/level).
+  // spellbook but is stated outright (6 spells at 1st level, +2/level).
   const SPELL_MODE = {
     bard: "known",
     sorcerer: "known",
@@ -802,10 +802,10 @@
         .map((s) => {
           const active = tiered ? c.preparedSpellIds.includes(s.id) : true;
           const stateLabel = tiered ? (active ? "Prepared" : "Learned") : label;
-          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" data-spell-view="${s.id}" title="${escapeHtml(s.school)} · Circle ${circle} · ${stateLabel} · Click for details">${escapeHtml(s.name)}</span>`;
+          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" data-spell-view="${s.id}" title="${escapeHtml(s.school)} · Spell Level ${circle} · ${stateLabel} · Click for details">${escapeHtml(s.name)}</span>`;
         })
         .join("");
-      groups.push(renderSpellChipGroup(`Circle ${circle}`, chips));
+      groups.push(renderSpellChipGroup(`Spell Level ${circle}`, chips));
     }
 
     return `<div class="cs-pane cs-pane--spells">
@@ -984,7 +984,7 @@
       el.modalRoot.innerHTML = "";
       return;
     }
-    const circleLabel = spell.circle === 0 ? "Cantrip" : `Circle ${spell.circle}`;
+    const circleLabel = spell.circle === 0 ? "Cantrip" : `Spell Level ${spell.circle}`;
 
     // Only Wizard/Theurge-style tiered casters have a Learned-vs-Prepared
     // split worth toggling; everyone else's learned leveled spells (and
@@ -1122,7 +1122,7 @@
         })
         .join("");
       groups.push(`<div class="cs-spell-group">
-        <h3 class="cs-spell-group-title">${circle === 0 ? "Cantrips" : `Circle ${circle}`}</h3>
+        <h3 class="cs-spell-group-title">${circle === 0 ? "Cantrips" : `Spell Level ${circle}`}</h3>
         <ul class="cs-spell-list">${rows}</ul>
       </div>`);
     }

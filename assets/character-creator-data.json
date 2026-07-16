@@ -380,7 +380,7 @@
             {
               "name": "Apotheosis of Discord",
               "minLevel": 8,
-              "summary": "6th-circle+ spells trigger a minute of chaotic mastery."
+              "summary": "6th-level+ spells trigger a minute of chaotic mastery."
             }
           ]
         },
@@ -2593,7 +2593,7 @@
             {
               "name": "Apotheosis of Discord",
               "minLevel": 8,
-              "summary": "6th-circle+ spells trigger a minute of chaotic mastery."
+              "summary": "6th-level+ spells trigger a minute of chaotic mastery."
             }
           ]
         },
@@ -3217,12 +3217,12 @@
             {
               "name": "Energy Exchange",
               "minLevel": 2,
-              "summary": "Trade Recovery Points or spell circles for spell recovery or item charges."
+              "summary": "Trade Recovery Points or spell levels for spell recovery or item charges."
             },
             {
               "name": "Mystic Vitality",
               "minLevel": 2,
-              "summary": "Unspent spell circles become Recovery Points on rest."
+              "summary": "Unspent spell levels become Recovery Points on rest."
             },
             {
               "name": "Metabolize",
@@ -3293,7 +3293,7 @@
             {
               "name": "Mystic Realignment",
               "minLevel": 4,
-              "summary": "Trade spell circles for recovered circles."
+              "summary": "Trade spell levels for recovered levels."
             },
             {
               "name": "Unravel",
@@ -4197,15 +4197,15 @@
     {
       "id": "cloud",
       "name": "Cloud",
-      "teaser": "You were raised among arcane towers and academies where magic is the center of civic life. Touch of Magic. Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from…",
-      "body": "<p>You were raised among arcane towers and academies where magic is the center of civic life.</p>\n<p><strong>Touch of Magic.</strong> Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from that school—cast once per long rest without Spell Power. Spellcasting ability: Insight or Willpower (choose at creation).</p>\n<p><strong>World of Wonders.</strong> Proficiency in Arcana.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Elvish and Draconic).</p>",
+      "teaser": "You were raised among arcane towers and academies where magic is the center of civic life. Touch of Magic. Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-level spell from…",
+      "body": "<p>You were raised among arcane towers and academies where magic is the center of civic life.</p>\n<p><strong>Touch of Magic.</strong> Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-level spell from that school—cast once per long rest without Spell Power. Spellcasting ability: Insight or Willpower (choose at creation).</p>\n<p><strong>World of Wonders.</strong> Proficiency in Arcana.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Elvish and Draconic).</p>",
       "tag": null,
       "recommendedFor": "Elf",
       "rulesUrl": "rules/heritages.html#cloud",
       "features": [
         {
           "name": "Touch of Magic",
-          "summary": "Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from that school—cast once per long rest without Spell…"
+          "summary": "Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-level spell from that school—cast once per long rest without Spell…"
         },
         {
           "name": "World of Wonders",

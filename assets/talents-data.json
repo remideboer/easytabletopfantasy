@@ -3,7 +3,7 @@
     "id": "arcanist",
     "name": "Arcanist",
     "prerequisite": "Spellcasting class feature",
-    "description": "• Double proficiency bonus on Arcana checks.\n• Once per rest, replace one known cantrip or spell (not from a spellbook) with another of the same circle from your source list.\n• Learn one additional cantrip from your spellcasting source."
+    "description": "• Double proficiency bonus on Arcana checks.\n• Once per rest, replace one known cantrip or spell (not from a spellbook) with another of the same level from your source list.\n• Learn one additional cantrip from your spellcasting source."
   },
   {
     "id": "combat-casting",
@@ -27,7 +27,7 @@
     "id": "ritualist",
     "name": "Ritualist",
     "prerequisite": "Spellcasting class feature",
-    "description": "Gain a ritual book. Choose Arcane, Divine, Primordial, or Wyrd as your ritual source. Add one ritual per spell circle you have unlocked; add another when you gain access to a new circle."
+    "description": "Gain a ritual book. Choose Arcane, Divine, Primordial, or Wyrd as your ritual source. Add one ritual per spell level you have unlocked; add another when you gain access to a new level."
   },
   {
     "id": "school-specialization",
@@ -45,13 +45,13 @@
     "id": "chaos-caster",
     "name": "Chaos Caster",
     "prerequisite": "Spellcasting class feature",
-    "description": "When casting with a spell circle slot, attempt to cast as one circle higher (ability check vs DC 11 + base circle). On success, roll on the Volatile Spell Effect table. Uses per long rest equal to proficiency bonus."
+    "description": "When casting with Spell Power, attempt to cast as one level higher (ability check vs DC 11 + base level). On success, roll on the Volatile Spell Effect table. Uses per long rest equal to proficiency bonus."
   },
   {
     "id": "spell-recall",
     "name": "Spell Recall",
     "prerequisite": "Prepared spellcaster (Cleric, Druid, Theurge, or Wizard)",
-    "description": "• Prepare additional spells equal to half proficiency bonus (rounded down).\n• As a bonus action, swap one prepared spell for another (ability check DC 10 + circle or lose the attempt)."
+    "description": "• Prepare additional spells equal to half proficiency bonus (rounded down).\n• As a bonus action, swap one prepared spell for another (ability check DC 10 + level or lose the attempt)."
   },
   {
     "id": "magical-trickster",
@@ -129,7 +129,7 @@
     "id": "spell-hunter",
     "name": "Spell Hunter",
     "prerequisite": "",
-    "description": "• React with melee attack when a reachable foe casts; extra damage equal to spell circle (crit interrupts spell).\n• Advantage on saves vs. their spells within 5 feet; they have disadvantage on concentration.\n• Grappled creatures can't cast spells requiring somatic components."
+    "description": "• React with melee attack when a reachable foe casts; extra damage equal to spell level (crit interrupts spell).\n• Advantage on saves vs. their spells within 5 feet; they have disadvantage on concentration.\n• Grappled creatures can't cast spells requiring somatic components."
   },
   {
     "id": "vanguard",

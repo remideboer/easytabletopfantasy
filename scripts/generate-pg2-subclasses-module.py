@@ -54,10 +54,10 @@ def adapt_tov(text: str) -> str:
         ("hit dice", "Recovery Points"),
         ("bonus action", "free action"),
         ("Bonus action", "Free action"),
-        ("spell slots", "spell circles"),
-        ("Spell slots", "Spell circles"),
-        ("spell slot", "spell circle"),
-        ("Spell slot", "Spell circle"),
+        ("spell slots", "spell levels"),
+        ("Spell slots", "Spell levels"),
+        ("spell slot", "spell level"),
+        ("Spell slot", "Spell level"),
     ]
     out = text
     for old, new in pairs:
@@ -254,7 +254,7 @@ def main() -> None:
                 stub_summary = f"{sname} subclass feature from ToV Player's Guide 2."
                 stub_body = (
                     f"<p>{sname} subclass features from Tales of the Valiant Player's Guide 2. "
-                    "Apply using YMIAT terminology (Wounds, Fitness/Insight/Willpower, spell circles).</p>"
+                    "Apply using YMIAT terminology (Wounds, Fitness/Insight/Willpower, spell levels).</p>"
                 )
                 for lvl in ("3rd", "7th", "11th", "15th"):
                     feature_lines.append(

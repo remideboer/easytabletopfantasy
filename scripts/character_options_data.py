@@ -32,10 +32,10 @@ def adapt_tov(text: str) -> str:
         (" Luck", " Resolve"),
         ("technical talents", "utility talents"),
         ("Technical talents", "Utility talents"),
-        ("spell slots", "spell circles"),
-        ("Spell slots", "Spell circles"),
-        ("spell slot", "spell circle"),
-        ("Spell slot", "Spell circle"),
+        ("spell slots", "spell levels"),
+        ("Spell slots", "Spell levels"),
+        ("spell slot", "spell level"),
+        ("Spell slot", "Spell level"),
     ]
     for old, new in pairs:
         out = out.replace(old, new)
@@ -205,7 +205,7 @@ TALENTS = [
     # --- Magic (existing + ToV) ---
     _talent("magic", "Arcanist", """<ul>
 <li>Double proficiency bonus on Arcana checks.</li>
-<li>Once per rest, replace one known cantrip or spell (not from a spellbook) with another of the same circle from your source list.</li>
+<li>Once per rest, replace one known cantrip or spell (not from a spellbook) with another of the same level from your source list.</li>
 <li>Learn one additional cantrip from your spellcasting source.</li></ul>""", "Spellcasting class feature"),
     _talent("magic", "Combat Casting", """<ul>
 <li>On Fitness saves to maintain concentration, treat d20 rolls of 7 or less as 8.</li>
@@ -215,7 +215,7 @@ TALENTS = [
     _talent("magic", "Mental Fortitude", """<ul>
 <li>Once per short rest, reroll a failed Insight or Willpower save.</li>
 <li>When you start your turn charmed, frightened, paralyzed, or stunned, gain 1 Resolve.</li></ul>"""),
-    _talent("magic", "Ritualist", """<p>Gain a ritual book. Choose Arcane, Divine, Primordial, or Wyrd as your ritual source. Add one ritual per spell circle you have unlocked; add another when you gain access to a new circle.</p>""", "Spellcasting class feature"),
+    _talent("magic", "Ritualist", """<p>Gain a ritual book. Choose Arcane, Divine, Primordial, or Wyrd as your ritual source. Add one ritual per spell level you have unlocked; add another when you gain access to a new level.</p>""", "Spellcasting class feature"),
     _talent("magic", "School Specialization", """<ul>
 <li>+1 to spell attack and save DC for your chosen school.</li>
 <li>Halve gold and time to copy spells of that school into a spellbook.</li>
@@ -224,10 +224,10 @@ TALENTS = [
     _talent("magic", "Spell Duelist", """<ul>
 <li>When damaged by a spell, react to cast a cantrip at the attacker.</li>
 <li>Spell attacks ignore half/three-quarters cover; touch range becomes 15 feet; double spell range otherwise.</li></ul>""", "Ability to cast one or more cantrips"),
-    _talent("magic", "Chaos Caster", """<p>When casting with a spell circle slot, attempt to cast as one circle higher (ability check vs DC 11 + base circle). On success, roll on the Volatile Spell Effect table. Uses per long rest equal to proficiency bonus.</p>""", "Spellcasting class feature"),
+    _talent("magic", "Chaos Caster", """<p>When casting with Spell Power, attempt to cast as one level higher (ability check vs DC 11 + base level). On success, roll on the Volatile Spell Effect table. Uses per long rest equal to proficiency bonus.</p>""", "Spellcasting class feature"),
     _talent("magic", "Spell Recall", """<ul>
 <li>Prepare additional spells equal to half proficiency bonus (rounded down).</li>
-<li>As a bonus action, swap one prepared spell for another (ability check DC 10 + circle or lose the attempt).</li></ul>""", "Prepared spellcaster (Cleric, Druid, Theurge, or Wizard)"),
+<li>As a bonus action, swap one prepared spell for another (ability check DC 10 + level or lose the attempt).</li></ul>""", "Prepared spellcaster (Cleric, Druid, Theurge, or Wizard)"),
     _talent("magic", "Magical Trickster", """<ul>
 <li>Learn <em>minor illusion</em> and <em>prestidigitation</em> or <em>thaumaturgy</em> (no components; double range).</li>
 <li>As a bonus action, impose disadvantage on one creature's next attack (Willpower save); uses per day equal to proficiency bonus.</li></ul>"""),
@@ -266,7 +266,7 @@ TALENTS = [
 <li>Advantage vs. prone, pull, or push.</li></ul>"""),
     _talent("martial", "Return Fire", """<p>When a visible attacker hits or misses you with a ranged attack, react with a ranged or thrown weapon attack if in range.</p>"""),
     _talent("martial", "Spell Hunter", """<ul>
-<li>React with melee attack when a reachable foe casts; extra damage equal to spell circle (crit interrupts spell).</li>
+<li>React with melee attack when a reachable foe casts; extra damage equal to spell level (crit interrupts spell).</li>
 <li>Advantage on saves vs. their spells within 5 feet; they have disadvantage on concentration.</li>
 <li>Grappled creatures can't cast spells requiring somatic components.</li></ul>"""),
     _talent("martial", "Vanguard", """<ul>
@@ -568,7 +568,7 @@ HERITAGES = [
     _heritage(
         "Cloud",
         """<p>You were raised among arcane towers and academies where magic is the center of civic life.</p>
-<p><strong>Touch of Magic.</strong> Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-circle spell from that school—cast once per long rest without Spell Power. Spellcasting ability: Insight or Willpower (choose at creation).</p>
+<p><strong>Touch of Magic.</strong> Choose a school of magic; learn one cantrip from it. At 3rd character level, learn one 1st-level spell from that school—cast once per long rest without Spell Power. Spellcasting ability: Insight or Willpower (choose at creation).</p>
 <p><strong>World of Wonders.</strong> Proficiency in Arcana.</p>
 <p><strong>Languages.</strong> Common plus two additional (typical: Elvish and Draconic).</p>""",
         recommended="Elf",

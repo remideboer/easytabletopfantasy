@@ -241,7 +241,7 @@ def bard_subclasses():
                     action="action"),
                 _sf(cid, cname, "lore", "Lore", ["Magical Rites"], _ymiat_level_label("11th"),
                     "Learn two extra ritual spells from any source.",
-                    """<p>Learn two ritual spells of your choice from any source list. Each must be of a circle you can cast. They count as Arcane spells for you and don't count against rituals known from your class table.</p>"""),
+                    """<p>Learn two ritual spells of your choice from any source list. Each must be of a level you can cast. They count as Arcane spells for you and don't count against rituals known from your class table.</p>"""),
                 _sf(cid, cname, "lore", "Lore", ["Peerless Skill"], _ymiat_level_label("15th"),
                     "Spend Bardic Inspiration on ability checks; keep the die on success.",
                     """<p>When you make an ability check and have Bardic Inspiration available, you can roll a Bardic Inspiration die and add it to the check. If you succeed, you keep the die; if you fail, the die is expended.</p>"""),
@@ -299,7 +299,7 @@ def cleric_subclasses():
                     action="action"),
                 _sf(cid, cname, "life", "Life", ["Disciple of Life"], _ymiat_level_label("3rd"),
                     "Healing spells restore extra Wounds.",
-                    """<p>When you cast a Divine spell of 1st circle or higher to restore Wounds, the target regains <strong>2 + the spell's circle</strong> additional Wounds.</p>"""),
+                    """<p>When you cast a Divine spell of 1st level or higher to restore Wounds, the target regains <strong>2 + the spell's level</strong> additional Wounds.</p>"""),
                 _sf(cid, cname, "life", "Life", ["Life Domain Spells"], _ymiat_level_label("3rd"),
                     "Always-prepared life domain spells.",
                     _domain_spells_body({
@@ -310,13 +310,13 @@ def cleric_subclasses():
                     })),
                 _sf(cid, cname, "life", "Life", ["Blessed Healer"], _ymiat_level_label("7th"),
                     "Healing others heals you.",
-                    """<p>When you cast a Divine spell of 1st circle or higher that restores Wounds to another creature, you regain <strong>2 + the spell's circle</strong> Wounds.</p>"""),
+                    """<p>When you cast a Divine spell of 1st level or higher that restores Wounds to another creature, you regain <strong>2 + the spell's level</strong> Wounds.</p>"""),
                 _sf(cid, cname, "life", "Life", ["Greater Preservation"], _ymiat_level_label("11th"),
                     "Expanded Preserve Life with condition cleansing.",
                     """<p>Preserve Life affects creatures within <strong>60 feet</strong>. When you use it, one target can also: cure all diseases; end blinded, deafened, paralyzed, or poisoned; or neutralize all poisons.</p>"""),
                 _sf(cid, cname, "life", "Life", ["Perfect Healing"], _ymiat_level_label("15th"),
                     "Healing spells restore maximum Wounds.",
-                    """<p>When you cast a Divine spell of 1st circle or higher that restores Wounds, you automatically restore the maximum possible Wounds (no dice rolling).</p>"""),
+                    """<p>When you cast a Divine spell of 1st level or higher that restores Wounds, you automatically restore the maximum possible Wounds (no dice rolling).</p>"""),
             ],
         ),
         _sub(
@@ -632,7 +632,7 @@ def fighter_subclasses():
                 _sf(cid, cname, "spell-blade", "Spell Blade", ["Arcane Spellcasting"], _ymiat_level_label("3rd"),
                     "Partial Arcane spellcasting (abjuration/evocation focus).",
                     """<p>You cast Arcane spells using <strong>Insight</strong> as your spellcasting ability (save DC 8 + PB + Insight; attack + PB + Insight).</p>
-<p>At 2nd level: learn <strong>2 cantrips</strong> and <strong>3 first-circle</strong> abjuration or evocation spells (one may be from any school). You have <strong>2 first-circle slots</strong>, regained on a long rest. Learn additional cantrips and spells at 4th, 6th, and 8th level per the Spell Blade table in the Player's Guide (adapted to YMIAT circles).</p>
+<p>At 2nd level: learn <strong>2 cantrips</strong> and <strong>3 1st-level</strong> abjuration or evocation spells (one may be from any school). You have <strong>2 1st-level slots</strong>, regained on a long rest. Learn additional cantrips and spells at 4th, 6th, and 8th level per the Spell Blade table in the Player's Guide (adapted to YMIAT spell levels).</p>
 <p>When Improvement grants a talent, choose from magic or martial lists.</p>"""),
                 _sf(cid, cname, "spell-blade", "Spell Blade", ["Enchant Weapon"], _ymiat_level_label("3rd"),
                     "Imbue a weapon (+1, scaling to +3); bonus action summon.",
@@ -726,7 +726,7 @@ def artificer_subclasses():
                 """<p>When you cast an artificer spell that restores Wounds or deals acid, fire, necrotic, or poison damage, add your <strong>Insight modifier</strong> to one Wound restoration or damage roll.</p>"""),
             _sf(cid, cname, "alchemist", "Alchemist", ["Restorative Reagents"], _ymiat_level_label("7th"),
                 "Free healing when casting certain spells.",
-                """<p>When you cast an artificer spell of 1st circle or higher using a slot, the target (or you if self-targeted) regains Wounds equal to <strong>2d6 + Insight modifier</strong>.</p>"""),
+                """<p>When you cast an artificer spell of 1st level or higher using a slot, the target (or you if self-targeted) regains Wounds equal to <strong>2d6 + Insight modifier</strong>.</p>"""),
             _sf(cid, cname, "alchemist", "Alchemist", ["Chemical Mastery"], _ymiat_level_label("11th"),
                 "Resistance to acid/poison; greater restoration on demand.",
                 """<p>You have resistance to acid and poison damage and are immune to the poisoned condition. As an action, touch a creature and end one of: poisoned, paralyzed, or petrified (once per long rest).</p>""",
@@ -783,7 +783,7 @@ def monk_subclasses():
             [
                 _sf(cid, cname, "flickering-dark", "Flickering Dark", ["Dark Flame"], _ymiat_level_label("3rd"),
                     "Bonus action shadow aura: clawing, grasp, or spreading darkness.",
-                    """<p>As a <strong>free action</strong>, spend <strong>2 technique points</strong> for a 10-foot-radius magical darkness (moves with you, 1 minute, not dispelled by spells of 5th circle or lower). Choose one property:</p>
+                    """<p>As a <strong>free action</strong>, spend <strong>2 technique points</strong> for a 10-foot-radius magical darkness (moves with you, 1 minute, not dispelled by spells of 5th level or lower). Choose one property:</p>
 <ul>
 <li><strong>Clawing Shadows:</strong> creatures entering or starting turn inside take necrotic = martial arts die; you regain Wounds equal to necrotic dealt (Constructs/Undead unaffected).</li>
 <li><strong>Grasp of Nothingness:</strong> unarmed strikes deal extra necrotic = PB.</li>
@@ -1063,7 +1063,7 @@ def sorcerer_subclasses():
                     })),
                 _sf(cid, cname, "chaos", "Chaos", ["Volatile Magic"], _ymiat_level_label("3rd"),
                     "Leveled spells may trigger extra volatile effects.",
-                    """<p>When you cast a spell of 1st circle or higher, roll d20 vs volatile DC (<strong>20 − sorcerer level + spell circle</strong>). On a failure the spell still resolves but you also roll on the Volatile Spell Effect table (see Player's Guide). At 0 Luck, roll twice and take the higher result.</p>"""),
+                    """<p>When you cast a spell of 1st level or higher, roll d20 vs volatile DC (<strong>20 − sorcerer level + spell level</strong>). On a failure the spell still resolves but you also roll on the Volatile Spell Effect table (see Player's Guide). At 0 Luck, roll twice and take the higher result.</p>"""),
                 _sf(cid, cname, "chaos", "Chaos", ["Embrace Chaos"], _ymiat_level_label("7th"),
                     "Bonus action: suffer a volatile effect for sorcery points or temp Wounds.",
                     """<p>As a <strong>free action</strong>, roll on the Volatile Spell Effect table and suffer it as if targeted. Even result = gain PB sorcery points; odd result = gain temp Wounds = Fitness score for 1 hour. Once per short or long rest.</p>""",
@@ -1073,8 +1073,8 @@ def sorcerer_subclasses():
                     """<p>When targeted by a spell or attack, use your <strong>reaction</strong> to roll on the Volatile Spell Effect table; spend 1 sorcery point to force the attacker to suffer the effect instead. Once per long rest, or spend 2 sorcery points to reuse.</p>""",
                     action="reaction"),
                 _sf(cid, cname, "chaos", "Chaos", ["Apotheosis of Discord"], _ymiat_level_label("15th"),
-                    "6th-circle+ spells trigger a minute of chaotic mastery.",
-                    """<p>When you cast a spell of 6th circle or higher, become a conduit for 1 minute (until unconscious): metamagic costs −1 (min 0); resistance to all damage until end of next turn after casting a leveled spell; cast any known Arcane or origin spell (≤1 minute casting, circle ≤ half PB) without slots or components. Once per long rest, or spend 15 sorcery points.</p>"""),
+                    "6th-level+ spells trigger a minute of chaotic mastery.",
+                    """<p>When you cast a spell of 6th level or higher, become a conduit for 1 minute (until unconscious): metamagic costs −1 (min 0); resistance to all damage until end of next turn after casting a leveled spell; cast any known Arcane or origin spell (≤1 minute casting, spell level ≤ half PB) without slots or components. Once per long rest, or spend 15 sorcery points.</p>"""),
             ],
         ),
         _sub(
@@ -1087,7 +1087,7 @@ def sorcerer_subclasses():
                 _sf(cid, cname, "draconic", "Draconic", ["Dragon Ancestor"], _ymiat_level_label("3rd"),
                     "Draconic language and affinity; origin spells by dragon type.",
                     """<p>Choose a dragon type (sets damage type for later features). Speak, read, and write Draconic. On dragon-related ability checks, treat d20 rolls below your sorcerer level as equal to your sorcerer level.</p>
-<p>You learn additional origin spells at 2nd, 5th, 7th, and 9th level per BFRD Draconic Origin table (adapted to YMIAT circles).</p>"""),
+<p>You learn additional origin spells at 2nd, 5th, 7th, and 9th level per BFRD Draconic Origin table (adapted to YMIAT spell levels).</p>"""),
                 _sf(cid, cname, "draconic", "Draconic", ["Elemental Affinity"], _ymiat_level_label("7th"),
                     "Add Willpower modifier to one damage roll of your ancestry type per cast.",
                     """<p>When you cast a spell that deals damage of your ancestry type, add your <strong>Willpower modifier</strong> to one damage roll of that spell.</p>"""),
@@ -1210,7 +1210,7 @@ def wizard_subclasses():
                     """<p>When you gain a talent from Improvement, choose from magic or martial talent lists.</p>"""),
                 _sf(cid, cname, "battle-mage", "Battle Mage", ["Spell Ward"], _ymiat_level_label("3rd"),
                     "AC and physical resistance after casting.",
-                    """<p>When you cast an Arcane spell of 1st circle+, weave a ward for 1 minute: <strong>+PB AC</strong> and resistance to B/P/S (ends if unconscious or you end a turn without casting a leveled spell). PB uses per long rest.</p>"""),
+                    """<p>When you cast an Arcane spell of 1st level+, weave a ward for 1 minute: <strong>+PB AC</strong> and resistance to B/P/S (ends if unconscious or you end a turn without casting a leveled spell). PB uses per long rest.</p>"""),
                 _sf(cid, cname, "battle-mage", "Battle Mage", ["Tactical Caster"], _ymiat_level_label("3rd"),
                     "Allies immune to your damaging spells.",
                     """<p>When you cast a damaging Arcane spell, choose yourself and allies you can see to be immune to that spell's damage. PB uses per long rest.</p>"""),
@@ -1220,7 +1220,7 @@ def wizard_subclasses():
                     action="reaction"),
                 _sf(cid, cname, "battle-mage", "Battle Mage", ["Blasting Power"], _ymiat_level_label("11th"),
                     "Empowered spell damage after successful saves.",
-                    """<p>When a creature succeeds on a save against your Arcane spell but takes no damage, it takes force damage equal to <strong>spell circle d6 + Insight modifier</strong>.</p>"""),
+                    """<p>When a creature succeeds on a save against your Arcane spell but takes no damage, it takes force damage equal to <strong>spell level d6 + Insight modifier</strong>.</p>"""),
                 _sf(cid, cname, "battle-mage", "Battle Mage", ["Counterstrike"], _ymiat_level_label("15th"),
                     "Punish creatures that save against your spells.",
                     """<p>When a creature succeeds on a save against your Arcane spell and would suffer no effect, it takes force damage per Blasting Power. Once per turn.</p>"""),
@@ -1262,16 +1262,16 @@ def theurge_subclasses():
             "Exchange vitality for spell power and disrupt enemy magic.",
             [
                 _sf(cid, cname, "conduit", "Conduit", ["Energy Exchange"], _ymiat_level_label("3rd"),
-                    "Trade Recovery Points or spell circles for spell recovery or item charges.",
-                    """<p><strong>Exchange Life:</strong> Bonus action: expend Recovery Points equal to a spell circle to recover that circle (lose Wounds equal to rolls + Fitness modifier; reduce Max Wounds until long rest).</p>
-<p><strong>Exchange Power:</strong> Action: expend a spell circle to restore charges to a touched magic item.</p>""",
+                    "Trade Recovery Points or spell levels for spell recovery or item charges.",
+                    """<p><strong>Exchange Life:</strong> Bonus action: expend Recovery Points equal to a spell level to recover that level (lose Wounds equal to rolls + Fitness modifier; reduce Max Wounds until long rest).</p>
+<p><strong>Exchange Power:</strong> Action: expend a spell level to restore charges to a touched magic item.</p>""",
                     action="bonus action / action"),
                 _sf(cid, cname, "conduit", "Conduit", ["Mystic Vitality"], _ymiat_level_label("3rd"),
-                    "Unspent spell circles become Recovery Points on rest.",
-                    """<p>After a long rest, regain extra Recovery Points equal to half your unspent spell circles (rounded down), up to your maximum.</p>"""),
+                    "Unspent spell levels become Recovery Points on rest.",
+                    """<p>After a long rest, regain extra Recovery Points equal to half your unspent spell levels (rounded down), up to your maximum.</p>"""),
                 _sf(cid, cname, "conduit", "Conduit", ["Metabolize"], _ymiat_level_label("7th"),
                     "Store incoming energy to upcast a spell.",
-                    """<p>Reaction when you take non-B/P/S damage: Fitness save (DC 10 or half damage). On success, store energy up to 1 minute; expend it to cast a spell one circle higher. PB uses per long rest.</p>""",
+                    """<p>Reaction when you take non-B/P/S damage: Fitness save (DC 10 or half damage). On success, store energy up to 1 minute; expend it to cast a spell one level higher. PB uses per long rest.</p>""",
                     action="reaction"),
                 _sf(cid, cname, "conduit", "Conduit", ["Spell Surge"], _ymiat_level_label("11th"),
                     "Expend Recovery Points to add spell damage.",
@@ -1315,13 +1315,13 @@ def theurge_subclasses():
             [
                 _sf(cid, cname, "source-spinner", "Source Spinner", ["Magic Theory"], _ymiat_level_label("3rd"),
                     "Bonus Spellcraft on magic knowledge; extra prepared spells.",
-                    """<p>Add a Spellcraft die to magic knowledge checks without expending it. Gain additional always-prepared spells (<em>detect magic</em>, <em>perceive vulnerability</em>, and higher-circle spells as you level).</p>"""),
+                    """<p>Add a Spellcraft die to magic knowledge checks without expending it. Gain additional always-prepared spells (<em>detect magic</em>, <em>perceive vulnerability</em>, and higher-level spells as you level).</p>"""),
                 _sf(cid, cname, "source-spinner", "Source Spinner", ["Overwrite"], _ymiat_level_label("3rd"),
                     "End a spell when you cast on the same target.",
-                    """<p>When you cast a spell on a creature, attempt to end one ongoing spell on it (auto if equal/lower circle; otherwise Insight check vs. 10 + circle).</p>"""),
+                    """<p>When you cast a spell on a creature, attempt to end one ongoing spell on it (auto if equal/lower spell level; otherwise Insight check vs. 10 + spell level).</p>"""),
                 _sf(cid, cname, "source-spinner", "Source Spinner", ["Mystic Realignment"], _ymiat_level_label("7th"),
-                    "Trade spell circles for recovered circles.",
-                    """<p>Bonus action: exchange spell circles for recovered circles of equal or lesser total value (see ToV Source Spinner rules).</p>""",
+                    "Trade spell levels for recovered levels.",
+                    """<p>Bonus action: exchange spell levels for recovered levels of equal or lesser total value (see ToV Source Spinner rules).</p>""",
                     action="bonus action"),
                 _sf(cid, cname, "source-spinner", "Source Spinner", ["Unravel"], _ymiat_level_label("11th"),
                     "Turn failed saves into successes.",
@@ -1426,7 +1426,7 @@ def witch_subclasses():
             [
                 _sf(cid, cname, "crimson-cord", "Crimson Cord", ["Crimson Cord Coven Spells"], _ymiat_level_label("3rd"),
                     "Always-prepared coven spells.",
-                    """<p>Gain coven spells at 2nd, 4th, 6th, and 8th level: <em>cure wounds</em>, <em>inflict wounds</em>, <em>restoration</em>, and higher-circle healing and necrotic spells per ToV Crimson Cord table.</p>"""),
+                    """<p>Gain coven spells at 2nd, 4th, 6th, and 8th level: <em>cure wounds</em>, <em>inflict wounds</em>, <em>restoration</em>, and higher-level healing and necrotic spells per ToV Crimson Cord table.</p>"""),
                 _sf(cid, cname, "crimson-cord", "Crimson Cord", ["Life Transfer"], _ymiat_level_label("3rd"),
                     "Sacrifice Wounds to heal or harm.",
                     """<p>Action: sacrifice up to 4 × witch level Wounds to heal one creature within 30 feet or force a Fitness save for necrotic damage. PB uses per short or long rest.</p>""",

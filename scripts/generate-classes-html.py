@@ -106,15 +106,15 @@ def render_class(cls):
     if cls.get("spellcasting"):
         blocks.append(f"<p><strong>Spellcasting:</strong> {cls['spellcasting']}</p>")
         if cls.get("spell_circles"):
-            blocks.append("<p><strong>Max spell circle by level:</strong></p>")
+            blocks.append("<p><strong>Max spell level by character level:</strong></p>")
             blocks.append(
-                '<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Circle</th></tr></thead><tbody>'
+                '<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody>'
                 + spell_circle_rows(cls["spell_circles"], cls.get("spell_start", 1))
                 + "</tbody></table></div>"
             )
         blocks.append(
             '<p>Casters use <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> '
-            "instead of spell slots. Spell cost equals spell circle.</p>"
+            "instead of spell slots. Spell cost equals spell level.</p>"
         )
     blocks.append(f'<h3 id="{pid}-progression">Progression</h3>')
     blocks.append(render_progression(cls["table_headers"], cls["table_rows"], pid))
@@ -322,7 +322,7 @@ CLASSES = [
             {
                 "name": "Wild Shape",
                 "level": "2nd-level feature (free action for Beast Form)",
-                "text": "Beast Form: assume a known beast form. Draw Power: recover an expended spell circle ≤ PB. Uses per rest per table.",
+                "text": "Beast Form: assume a known beast form. Draw Power: recover an expended spell level ≤ PB. Uses per rest per table.",
             },
             {
                 "name": "Nature's Gift",
@@ -479,7 +479,7 @@ CLASSES = [
             {
                 "name": "Divine Smite",
                 "level": "2nd-level feature",
-                "text": "Once per turn on hit, spend Spell Power to deal extra radiant damage (2d8 + 1d8 per circle above 1st, max 5d8; +1d8 vs Fiend/Undead).",
+                "text": "Once per turn on hit, spend Spell Power to deal extra radiant damage (2d8 + 1d8 per level above 1st, max 5d8; +1d8 vs Fiend/Undead).",
             },
         ],
         "subclasses": ["Devotion", "Justice", "Anathema", "Safekeeping", "Unbound"],
@@ -592,7 +592,7 @@ CLASSES = [
             {
                 "name": "Font of Magic",
                 "level": "1st-level feature",
-                "text": "Sorcery points per table; convert points and spell circles per BFRD flexible casting.",
+                "text": "Sorcery points per table; convert points and spell levels per BFRD flexible casting.",
             },
         ],
         "subclasses": ["Chaos", "Draconic", "Abominable", "Cyclonic", "Sacred"],
@@ -668,7 +668,7 @@ CLASSES = [
             {
                 "name": "Rote Spell",
                 "level": "3rd-level feature",
-                "text": "Always-prepared spells at 1st (3rd), 2nd (5th), 3rd (7th), and 4th (9th) circle.",
+                "text": "Always-prepared spells at 1st (3rd), 2nd (5th), 3rd (7th), and 4th (9th) level.",
             },
         ],
         "subclasses": ["Battle Mage", "Cantrip Adept", "Arcanist", "Necromancer", "Summoner"],
@@ -701,7 +701,7 @@ CLASSES = [
             {
                 "name": "Spell Nexus",
                 "level": "1st-level feature",
-                "text": "Bonus action while your libram is within 100 feet: swap one prepared spell for another of the same circle and source in your libram. PB uses per long rest.",
+                "text": "Bonus action while your libram is within 100 feet: swap one prepared spell for another of the same level and source in your libram. PB uses per long rest.",
             },
             {
                 "name": "Libram",
@@ -882,7 +882,7 @@ HTML_HEAD = f"""<!doctype html>
   <h1>Character Classes</h1>
   <div class="content">
     <p class="lede">Every adventurer has a class that defines their heroic capabilities. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) adapts classes from <a href="{TOV_URL}" rel="noopener">Tales of the Valiant</a> and the <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a>, compressing 20-level progression into <strong>10 meaningful levels</strong>, using Fitness, Insight, and Willpower instead of traditional six abilities.</p>
-    <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and max spell circles per level instead of daily spell slots. Each class lists <strong>one</strong> save with advantage—the class's primary saving throw. Progression features link to the <a href="class-abilities/index.html">class ability pages</a> (one page per class).</p>
+    <p>Subclass features arrive at <strong>2nd, 4th, 6th, and 8th</strong> level. Improvement (talents or ability increases) arrives at <strong>3rd, 5th, 7th, 9th, and 10th</strong> level. Casters use <a href="core.html#magic-and-spell-resources">Spell Power</a> and a max spell level by character level instead of daily spell slots. Each class lists <strong>one</strong> save with advantage—the class's primary saving throw. Progression features link to the <a href="class-abilities/index.html">class ability pages</a> (one page per class).</p>
 
     <h2 id="classes-at-a-glance">Classes at a Glance</h2>
     <div class="table-wrap"><table>

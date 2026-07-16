@@ -41,7 +41,7 @@ def spellcasting_body(class_name, source, prep: str, key_ability: str) -> str:
         "known": "You know a fixed list of spells and do not prepare them daily. Learn additional spells at the levels shown on your class progression table.",
         "spellbook": f"You keep a spellbook. Prepare spells from it equal to your {key_ability} modifier + your {class_name.lower()} level (minimum one). Add two spells to your spellbook each time you gain a level.",
     }[prep]
-    return f"""<p>As a conduit for <strong>{source}</strong> magic, you cast spells using <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spell cost equals spell circle. Your max spell circle by level is shown on the <a href="../classes.html#{class_name.lower().replace(' ', '-')}">{class_name}</a> progression table.</p>
+    return f"""<p>As a conduit for <strong>{source}</strong> magic, you cast spells using <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spell cost equals spell level. Your max spell level by character level is shown on the <a href="../classes.html#{class_name.lower().replace(' ', '-')}">{class_name}</a> progression table.</p>
 <p>{prep_text}</p>
 <p><strong>Spellcasting ability:</strong> {key_ability}. Spell save DC and spell attack modifier use your proficiency bonus + {key_ability} modifier.</p>
 <p><strong>Cantrips &amp; rituals:</strong> As shown on your progression table. Rituals do not cost Spell Power when cast using the ritual rules in <a href="../magic.html">Magic</a>.</p>
@@ -157,7 +157,7 @@ def all_abilities():
 <p>When a creature within 60 feet fails a check, attack, or save, you can use your <strong>reaction</strong> to expend inspiration and add the die to the total, potentially turning failure into success.</p>"""),
         _a(cid, cname, ["Magical Secrets"], "6th and 9th level",
            "Learn spells from any source.",
-           """<p>Choose two spells (or cantrips) from any spell list at 6th level and two more at 9th. Each must be of a circle you can cast. They count as Arcane spells for you.</p>"""),
+           """<p>Choose two spells (or cantrips) from any spell list at 6th level and two more at 9th. Each must be of a level you can cast. They count as Arcane spells for you.</p>"""),
         _a(cid, cname, ["Grand Performance"], "8th-level feature",
            "Performance range increases to 60 feet.",
            """<p>Your Bardic Performance now affects creatures within <strong>60 feet</strong> that can hear or see you.</p>"""),
@@ -214,7 +214,7 @@ def all_abilities():
         _a(cid, cname, ["Divine Intervention"], "7th-level feature",
            "Call on your deity in dire need.",
            """<p>At the start of your turn, roll d20 + proficiency bonus. On a <strong>19 or lower</strong>, your deity does not intervene. On <strong>20+</strong>, your deity intervenes.</p>
-<p>On intervention, use your action to cast any Divine spell (or domain spell) of casting time action without spending Spell Power. If the circle exceeds your max, make a spellcasting ability check DC 10 + circle.</p>
+<p>On intervention, use your action to cast any Divine spell (or domain spell) of casting time action without spending Spell Power. If the level exceeds your max, make a spellcasting ability check DC 10 + level.</p>
 <p>After a successful intervention, you cannot use this feature again for 1 week (or until a long rest once you have Epic Boon: Divine Herald).</p>"""),
         _a(cid, cname, ["Heroic Boon"], "5th-level feature",
            "Consecration or wrath gifts.",
@@ -270,7 +270,7 @@ def _register_druid():
            """<p>You channel nature as a <strong>free action</strong> (Beast Form) or action (Draw Power). Uses per rest on your progression table.</p>
 <ul>
 <li><strong>Beast Form.</strong> Assume a known beast form. See <a href="druid.html#improved-beast-form">Improved Beast Form</a> for CR limits by level.</li>
-<li><strong>Draw Power.</strong> Recover one expended spell circle up to your proficiency bonus. Cannot use while transformed.</li>
+<li><strong>Draw Power.</strong> Recover one expended spell level up to your proficiency bonus. Cannot use while transformed.</li>
 </ul>""",
            action="free action"),
         _a(cid, cname, ["Improved Beast Form", "Improved Beast Form (CR ¼)", "Improved Beast Form (CR ½)",
@@ -457,7 +457,7 @@ def _register_paladin():
            action="action"),
         _a(cid, cname, ["Divine Smite"], "2nd-level feature",
            "Spend Spell Power for radiant burst on hit.",
-           """<p>Once per turn when you hit with a melee weapon attack, spend Spell Power to deal extra <strong>radiant</strong> damage: 2d8 for 1st circle + 1d8 per higher circle (max 5d8). +1d8 vs Fiends and Undead.</p>"""),
+           """<p>Once per turn when you hit with a melee weapon attack, spend Spell Power to deal extra <strong>radiant</strong> damage: 2d8 for 1st level + 1d8 per higher level (max 5d8). +1d8 vs Fiends and Undead.</p>"""),
         _a(cid, cname, ["Martial Action"], "2nd-level feature",
            "Guard or Wind Up as second action.",
            """<p>Choose <strong>Guard</strong> or <strong>Wind Up</strong>. Use as your second action when you have not moved this turn (see <a href="paladin.html#martial-action">Martial Action</a>).</p>"""),
@@ -588,7 +588,7 @@ def _register_sorcerer():
     return [
         _a(cid, cname, ["Font of Magic"], "1st-level feature",
            "Internal wellspring of sorcery points.",
-           """<p>Sorcery points per progression table. Regain on long rest. Convert points ↔ spell circles per BFRD flexible casting (also use Spell Power in YMIAT).</p>"""),
+           """<p>Sorcery points per progression table. Regain on long rest. Convert points ↔ spell levels per BFRD flexible casting (also use Spell Power in YMIAT).</p>"""),
         _a(cid, cname, ["Spellcasting"], "1st-level feature",
            "Arcane spells known.",
            spellcasting_body("Sorcerer", "Arcane", "known", "Willpower (WIL)")),
@@ -603,10 +603,10 @@ def _register_sorcerer():
            """<p>After a short rest, roll 1d4+1 sorcery points (2d4+1 at 6th, 3d4+1 at 9th).</p>"""),
         _a(cid, cname, ["Devour Spell"], "7th-level feature",
            "Absorb hostile spell energy.",
-           """<p>Reaction when targeted by a spell: Willpower check DC 10 + circle. On success, targets have advantage on saves and half damage; you gain sorcery points equal to the circle. Once per long rest (or spend 4 points to reuse).</p>"""),
+           """<p>Reaction when targeted by a spell: Willpower check DC 10 + spell level. On success, targets have advantage on saves and half damage; you gain sorcery points equal to the spell level. Once per long rest (or spend 4 points to reuse).</p>"""),
         _a(cid, cname, ["Heroic Boon"], "5th-level feature",
            "Arcane Instruction or Innate Spell.",
-           """<p><strong>Arcane Instruction:</strong> spend 1 point to add Willpower to failed check. <strong>Innate Spell:</strong> learn a 1st–2nd circle spell castable with sorcery points.</p>"""),
+           """<p><strong>Arcane Instruction:</strong> spend 1 point to add Willpower to failed check. <strong>Innate Spell:</strong> learn a 1st–2nd level spell castable with sorcery points.</p>"""),
         _a(cid, cname, ["Epic Boon", "Epic Boon: Arcane Conjunction", "Arcane Conjunction"], "10th-level feature",
            "Share spell effects with another target.",
            """<p>Reaction when a spell affects you: a creature you see within 120 feet is also affected. Once per rest (or spend 10 sorcery points).</p>"""),
@@ -644,7 +644,7 @@ def _register_wizard():
     return [
         _a(cid, cname, ["Arcane Recovery"], "1st-level feature",
            "Recover Spell Power on a short rest.",
-           """<p>Once per day on a short rest, recover expended spell circles totaling half your wizard level (rounded up) as Spell Power, or per BFRD slot recovery adapted to SP.</p>"""),
+           """<p>Once per day on a short rest, recover expended spell levels totaling half your wizard level (rounded up) as Spell Power, or per BFRD slot recovery adapted to SP.</p>"""),
         _a(cid, cname, ["Spellcasting", "Spellbook"], "1st-level feature",
            "Prepared Arcane spells from spellbook.",
            spellcasting_body("Wizard", "Arcane", "spellbook", "Insight (INS)")),
@@ -654,7 +654,7 @@ def _register_wizard():
         _a(cid, cname, ["Rote Spell", "Rote Spell (1st)", "Rote Spell (2nd)", "Rote Spell (3rd)", "Rote Spell (4th)"],
            "3rd level and higher",
            "Always-prepared signature spells.",
-           """<p>Choose one spell each at 3rd (1st circle), 5th (2nd), 7th (3rd), and 9th (4th) level as always-prepared rote spells. Swap during a long rest.</p>"""),
+           """<p>Choose one spell each at 3rd (1st level), 5th (2nd), 7th (3rd), and 9th (4th) character level as always-prepared rote spells. Swap during a long rest.</p>"""),
         _a(cid, cname, ["Superior Recovery"], "4th-level feature",
            "Swap prepared spells during Arcane Recovery.",
            """<p>When you use Arcane Recovery, swap up to half your proficiency bonus (rounded down) prepared spells from your spellbook.</p>"""),
@@ -663,13 +663,13 @@ def _register_wizard():
            """<p>Advantage on saves against spells; resistance to damage from spells and spell attacks.</p>"""),
         _a(cid, cname, ["Spell Mastery"], "9th-level feature",
            "Cast rote spells without spending slots.",
-           """<p>Cast each rote spell once per short rest at lowest circle without spending Spell Power.</p>"""),
+           """<p>Cast each rote spell once per short rest at lowest level without spending Spell Power.</p>"""),
         _a(cid, cname, ["Heroic Boon"], "5th-level feature",
            "Rite of the Ritualist or Source Master.",
            """<p><strong>Ritualist:</strong> learn rituals from any magic source. <strong>Source Master:</strong> add spells from Divine, Primordial, or Wyrd when leveling.</p>"""),
         _a(cid, cname, ["Epic Boon", "Epic Boon: Archmage", "Archmage"], "10th-level feature",
            "Chance to recover spent spell power.",
-           """<p>When you cast a spell of 1st circle or higher using Spell Power, roll d10. If the result exceeds the circle spent, recover that Spell Power. Once per short rest.</p>"""),
+           """<p>When you cast a spell of 1st level or higher using Spell Power, roll d10. If the result exceeds the level spent, recover that Spell Power. Once per short rest.</p>"""),
         _a(cid, cname, ["Improvement"], "3rd, 5th, 7th, 9th, and 10th level",
            "Ability increases or a magic talent.",
            improvement_body("magic talents")),
@@ -681,13 +681,13 @@ def _register_theurge():
     return [
         _a(cid, cname, ["Spell Nexus"], "1st-level feature",
            "Swap prepared spells through your libram.",
-           """<p>As a <strong>bonus action</strong> while your libram is within 100 feet, open a conduit to instantly replace one prepared spell with another of the <strong>same circle and source</strong> (Arcane or Divine) transcribed in your libram.</p>
+           """<p>As a <strong>bonus action</strong> while your libram is within 100 feet, open a conduit to instantly replace one prepared spell with another of the <strong>same spell level and source</strong> (Arcane or Divine) transcribed in your libram.</p>
 <p>Uses per long rest equal to your proficiency bonus.</p>""",
            action="bonus action"),
         _a(cid, cname, ["Spellcasting", "Libram"], "1st-level feature",
            "Prepared Arcane and Divine spells from your libram.",
            spellcasting_body("Theurge", "Arcane and Divine", "prepared", "Insight (INS)") + """
-<p><strong>Libram:</strong> Your Tiny magical libram holds all spells you know except cantrips. At 1st level it contains six 1st-circle spells (at least two Arcane and two Divine). Only you can read it. Replace a lost libram with a 1-hour ceremony.</p>
+<p><strong>Libram:</strong> Your Tiny magical libram holds all spells you know except cantrips. At 1st level it contains six 1st-level spells (at least two Arcane and two Divine). Only you can read it. Replace a lost libram with a 1-hour ceremony.</p>
 <p>When you gain a theurge level, add one Arcane and one Divine spell to your libram. You may swap one spell in your libram for another of the same source when you level.</p>"""),
         _a(cid, cname, ["Spellcraft"], "2nd-level feature",
            "Insight dice to manipulate spell outcomes.",
@@ -704,11 +704,11 @@ def _register_theurge():
            action="bonus action"),
         _a(cid, cname, ["Spell Synthesis"], "5th-level feature",
            "Cast Arcane and Divine spells in one turn.",
-           """<p>Once per short or long rest, cast two prepared spells of 4th circle or lower on your turn: one Arcane and one Divine. Use action + bonus action, or cast two action spells with one Cast a Spell action. Each spell costs Spell Power normally.</p>
+           """<p>Once per short or long rest, cast two prepared spells of 4th level or lower on your turn: one Arcane and one Divine. Use action + bonus action, or cast two action spells with one Cast a Spell action. Each spell costs Spell Power normally.</p>
 <p>You cannot take reactions until the start of your next turn.</p>"""),
         _a(cid, cname, ["Superior Focus"], "6th-level feature",
            "Dual concentration on Arcane and Divine spells.",
-           """<p>Concentrate on one Arcane and one Divine spell at once. At the start of each turn, make a Fitness save (DC 10 + highest circle) or both spells end. You have disadvantage on concentration saves from damage while holding both.</p>"""),
+           """<p>Concentrate on one Arcane and one Divine spell at once. At the start of each turn, make a Fitness save (DC 10 + highest spell level) or both spells end. You have disadvantage on concentration saves from damage while holding both.</p>"""),
         _a(cid, cname, ["Heroic Boon"], "5th-level feature",
            "Careful Craft, Persistent Craft, or Precise Craft.",
            """<p>Choose one ToV theurge heroic boon: <strong>Careful Craft</strong> (Spellcraft die not expended on failed boost), <strong>Persistent Craft</strong> (force reroll on successful save vs. your spell), or <strong>Precise Craft</strong> (reroll 1s on Spellcraft dice).</p>"""),
