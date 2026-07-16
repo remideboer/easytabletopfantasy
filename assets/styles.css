@@ -4066,6 +4066,7 @@
   .cs-modal--view{max-width:480px}
   .cs-spell-view-meta{font-size:.82rem;color:var(--muted);margin:0 0 6px}
   .cs-spell-view-desc{font-size:.92rem;line-height:1.5;margin:10px 0 0;white-space:pre-line}
+  #cs-spell-view-toggle-prepare{margin-top:14px}
 
   .cs-choice-section{
     padding-top:8px;

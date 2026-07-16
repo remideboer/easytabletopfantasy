@@ -976,6 +976,23 @@
       return;
     }
     const circleLabel = spell.circle === 0 ? "Cantrip" : `Circle ${spell.circle}`;
+
+    // Only Wizard/Theurge-style tiered casters have a Learned-vs-Prepared
+    // split worth toggling; everyone else's learned leveled spells (and
+    // all cantrips) are already always active.
+    const cls = findClass(char);
+    const mode = spellMode(cls);
+    const canTogglePrepare =
+      spell.circle > 0 &&
+      usesLearnedTier(mode) &&
+      cls &&
+      spell.classes.includes(cls.id) &&
+      char.learnedSpellIds.includes(spell.id);
+    const prepared = canTogglePrepare && char.preparedSpellIds.includes(spell.id);
+    const toggleButton = canTogglePrepare
+      ? `<button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-spell-view-toggle-prepare" data-spell-id="${escapeHtml(spell.id)}">${prepared ? "Unprepare" : "Prepare"}</button>`
+      : "";
+
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-spell-view-overlay">
       <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="${escapeHtml(spell.name)}">
         <div class="cs-modal-header">
@@ -986,6 +1003,7 @@
           <p class="cs-spell-view-meta">${escapeHtml(spell.school)} · ${escapeHtml(circleLabel)} · ${escapeHtml(spell.castingTime)}</p>
           <p class="cs-spell-view-meta">Range: ${escapeHtml(spell.range)} · Duration: ${escapeHtml(spell.duration)} · Components: ${escapeHtml(spell.components)}</p>
           <p class="cs-spell-view-desc">${escapeHtml(spell.description)}</p>
+          ${toggleButton}
         </div>
       </div>
     </div>`;
@@ -1732,6 +1750,23 @@
         } else if (e.target.dataset.languageRemove) {
           const lang = e.target.dataset.languageRemove;
           char.chosenLanguages = char.chosenLanguages.filter((l) => l !== lang);
+          persistAndRender();
+        } else if (e.target.id === "cs-spell-view-toggle-prepare") {
+          const id = e.target.dataset.spellId;
+          if (char.preparedSpellIds.includes(id)) {
+            char.preparedSpellIds = char.preparedSpellIds.filter((x) => x !== id);
+          } else {
+            const cap = computeActiveCap(char);
+            const preparedLeveled = char.preparedSpellIds.filter((pid) => {
+              const s = spellById(pid);
+              return s && s.circle > 0;
+            });
+            if (preparedLeveled.length >= cap && preparedLeveled.length) {
+              const bump = preparedLeveled[0];
+              char.preparedSpellIds = char.preparedSpellIds.filter((x) => x !== bump);
+            }
+            char.preparedSpellIds.push(id);
+          }
           persistAndRender();
         }
       });
