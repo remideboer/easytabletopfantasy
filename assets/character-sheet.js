@@ -96,8 +96,23 @@
     el.hint = document.getElementById("cs-hint");
     el.btnNew = document.getElementById("cs-btn-new");
     el.btnImport = document.getElementById("cs-btn-import");
+    el.btnPrint = document.getElementById("cs-btn-print");
+    el.printOrientation = document.getElementById("cs-print-orientation");
     el.btnDelete = document.getElementById("cs-btn-delete");
     el.modalRoot = document.getElementById("cs-modal-root");
+  }
+
+  // The static @page rule in character-sheet.html defaults to landscape;
+  // this overrides it per print by appending a later, higher-priority rule
+  // (the "Portrait" option is what's dynamic here).
+  function applyPrintOrientation(orientation) {
+    let styleEl = document.getElementById("cs-print-orientation-style");
+    if (!styleEl) {
+      styleEl = document.createElement("style");
+      styleEl.id = "cs-print-orientation-style";
+      document.head.appendChild(styleEl);
+    }
+    styleEl.textContent = `@media print { @page { size: A4 ${orientation === "portrait" ? "portrait" : "landscape"}; margin: 1cm; } }`;
   }
 
   function rootPath() {
@@ -1192,10 +1207,12 @@
           <div class="cs-field">
             <label class="cs-label" for="cs-class">Class</label>
             <select id="cs-class" class="cs-select">${classOptions}</select>
+            <p class="cs-print-value">${escapeHtml(cls ? cls.name : "—")}</p>
           </div>
           <div class="cs-field">
             <label class="cs-label" for="cs-subclass">Subclass</label>
             <select id="cs-subclass" class="cs-select"${c.level < subclassMin ? " disabled" : ""}>${subclassOptions}</select>
+            <p class="cs-print-value">${escapeHtml(sub ? sub.name : "—")}</p>
           </div>
         </div>
 
@@ -1253,11 +1270,13 @@
             <div class="cs-field">
               <label class="cs-label" for="cs-armor">Armor</label>
               <select id="cs-armor" class="cs-select">${armorOptions}</select>
+              <p class="cs-print-value">${escapeHtml(selectedArmor ? selectedArmor.name : "None")}</p>
               <p class="cs-props">${selectedArmor ? escapeHtml(selectedArmor.props || "—") : "—"}</p>
             </div>
             <div class="cs-field">
               <label class="cs-label" for="cs-weapon">Weapon</label>
               <select id="cs-weapon" class="cs-select">${weaponOptions}</select>
+              <p class="cs-print-value">${escapeHtml(selectedWeapon ? selectedWeapon.name : "None")}</p>
               <p class="cs-props">${selectedWeapon ? escapeHtml(selectedWeapon.props) : "—"}</p>
             </div>
           </div>
@@ -1565,6 +1584,12 @@
     el.btnNew.addEventListener("click", newCharacter);
     el.btnDelete.addEventListener("click", deleteCharacter);
     el.btnImport.addEventListener("click", importCreatorDraft);
+    if (el.btnPrint) {
+      el.btnPrint.addEventListener("click", () => {
+        applyPrintOrientation(el.printOrientation ? el.printOrientation.value : "portrait");
+        window.print();
+      });
+    }
 
     el.sheet.addEventListener("click", (e) => {
       const btn = e.target.closest(".cs-stepper-btn");
