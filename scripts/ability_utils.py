@@ -2,6 +2,8 @@
 import re
 
 TOV_URL = "https://www.talesofthevaliant.com/"
+SRD_51_URL = "https://www.dndbeyond.com/srd#PreviousSRDReleases"
+SRD_521_URL = "https://www.dndbeyond.com/srd"
 
 
 def render_tov_pill() -> str:
@@ -9,6 +11,24 @@ def render_tov_pill() -> str:
     return (
         f'<a href="{TOV_URL}" class="source-pill source-pill-tov" rel="noopener" '
         f'title="Tales of the Valiant Player\'s Guide" onclick="event.stopPropagation()">ToV</a>'
+    )
+
+
+def render_srd51_pill() -> str:
+    """Small source tag for content genuinely from the 5.1 SRD (Creative Commons)."""
+    return (
+        f'<a href="{SRD_51_URL}" class="source-pill source-pill-srd51" rel="noopener" '
+        f'title="D&amp;D 5.1 System Reference Document (Creative Commons license)" '
+        f'onclick="event.stopPropagation()">SRD 5.1 CC</a>'
+    )
+
+
+def render_srd521_pill() -> str:
+    """Small source tag for content from the 5.2.1 SRD (Wizards' newer game license, not CC)."""
+    return (
+        f'<a href="{SRD_521_URL}" class="source-pill source-pill-srd521" rel="noopener" '
+        f'title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" '
+        f'onclick="event.stopPropagation()">SRD 5.2.1</a>'
     )
 
 

@@ -60,6 +60,18 @@
     "description": "• Learn minor illusion and prestidigitation or thaumaturgy (no components; double range).\n• As a bonus action, impose disadvantage on one creature's next attack (Willpower save); uses per day equal to proficiency bonus."
   },
   {
+    "id": "magic-initiate",
+    "name": "Magic Initiate",
+    "prerequisite": "",
+    "description": "Learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Insight or Willpower is your spellcasting ability for this talent's spells (choose when you select it).\n\nChoose a 1st-level spell from the same list. You always have it prepared, and can cast it once without spending Spell Power, regaining that use on a long rest. You can also cast it normally by spending Spell Power equal to its level.\n\nWhenever you gain a level, you can replace one spell chosen for this talent with a different spell of the same level from the chosen list.\n\nRepeatable: choose a different spell list each time."
+  },
+  {
+    "id": "boon-of-spell-recall",
+    "name": "Boon of Spell Recall",
+    "prerequisite": "Level 10, Spellcasting class feature",
+    "description": "Increase your Insight or Willpower modifier by 1, to a maximum of +5. Whenever you cast a spell of 1st–4th level using Spell Power, roll 1d4. If the result matches the spell's level, that Spell Power isn't spent."
+  },
+  {
     "id": "armor-expert",
     "name": "Armor Expert",
     "prerequisite": "Fitness +1 or higher",
@@ -142,6 +154,60 @@
     "name": "Weapon Discipline",
     "prerequisite": "Proficiency with at least one martial weapon",
     "description": "Choose one proficient simple or martial weapon: +1 attack and damage; extra weapon die on crit; temp Wounds equal to proficiency bonus when you drop a foe with that weapon."
+  },
+  {
+    "id": "savage-attacker",
+    "name": "Savage Attacker",
+    "prerequisite": "",
+    "description": "Once per turn when you hit a target with a weapon attack, you can deal 1 additional Wound of that weapon's damage type."
+  },
+  {
+    "id": "grappler-2024",
+    "name": "Grappler (2024)",
+    "prerequisite": "Level 3+, Fitness +1 or higher",
+    "description": "• Increase your Fitness modifier by 1, to a maximum of +5.\n• When you hit a creature with an Unarmed Strike as part of the Attack action, you can also attempt to Grapple it. Usable only once per turn.\n• Advantage on attack rolls against a creature Grappled by you.\n• No extra movement cost to move a creature Grappled by you if it's your size or smaller."
+  },
+  {
+    "id": "grappler",
+    "name": "Grappler",
+    "prerequisite": "Fitness +1 or higher",
+    "description": "You've developed the skills necessary to hold your own in close-quarters grappling.\n\n• Advantage on attack rolls against a creature Grappled by you.\n• As your action, attempt to pin a creature Grappled by you with another grapple check. On success, you and the creature both have the Restrained condition until the grapple ends."
+  },
+  {
+    "id": "archery",
+    "name": "Archery",
+    "prerequisite": "Proficiency with at least one ranged weapon",
+    "description": "+2 bonus to attack rolls you make with ranged weapons."
+  },
+  {
+    "id": "defense",
+    "name": "Defense",
+    "prerequisite": "Proficiency with light, medium, or heavy armor",
+    "description": "While wearing light, medium, or heavy armor, gain +1 Defense."
+  },
+  {
+    "id": "great-weapon-fighting",
+    "name": "Great Weapon Fighting",
+    "prerequisite": "Proficiency with at least one Two-Handed or Versatile weapon",
+    "description": "When you hit with a Melee weapon you're wielding with two hands (Two-Handed or Versatile property), deal 1 additional Wound."
+  },
+  {
+    "id": "two-weapon-fighting",
+    "name": "Two-Weapon Fighting",
+    "prerequisite": "Two-Weapon Fighting (dual-wielding light weapons)",
+    "description": "When you make an off-hand attack from Two-Weapon Fighting, add your Fitness modifier to its Wounds even if the modifier isn't negative."
+  },
+  {
+    "id": "boon-of-combat-prowess",
+    "name": "Boon of Combat Prowess",
+    "prerequisite": "Level 10",
+    "description": "• Increase one ability modifier of your choice by 1, to a maximum of +5.\n• When you miss with an attack roll, you can hit instead. Once you use this, you can't again until the start of your next turn."
+  },
+  {
+    "id": "boon-of-irresistible-offense",
+    "name": "Boon of Irresistible Offense",
+    "prerequisite": "Level 10",
+    "description": "• Increase your Fitness modifier by 1, to a maximum of +5.\n• Bludgeoning, Piercing, and Slashing Wounds you deal always ignore resistance.\n• When you roll a natural 20 on an attack roll, you deal extra Wounds equal to your Fitness modifier."
   },
   {
     "id": "alchemy-adept",
@@ -274,5 +340,47 @@
     "name": "Trailblazer",
     "prerequisite": "",
     "description": "• Climb and swim speeds equal to walking speed.\n• Advantage on exhaustion checks while climbing or swimming.\n• Hold breath for 1 + twice Fitness modifier minutes."
+  },
+  {
+    "id": "alert",
+    "name": "Alert",
+    "prerequisite": "",
+    "description": "When using the Initiative variant, add your proficiency bonus to your Fitness check. Immediately after rolling, you can swap your Initiative with a willing ally's in the same combat, unless either of you has the Incapacitated condition."
+  },
+  {
+    "id": "skilled",
+    "name": "Skilled",
+    "prerequisite": "",
+    "description": "Gain proficiency in any combination of three skills or tools of your choice. Repeatable."
+  },
+  {
+    "id": "ability-score-improvement",
+    "name": "Ability Score Improvement",
+    "prerequisite": "Level 3+",
+    "description": "Increase one ability modifier of your choice by 1, to a maximum of +5. Repeatable."
+  },
+  {
+    "id": "boon-of-dimensional-travel",
+    "name": "Boon of Dimensional Travel",
+    "prerequisite": "Level 10",
+    "description": "• Increase one ability modifier of your choice by 1, to a maximum of +5.\n• Immediately after you take the Attack action or the Cast a Spell action, you can teleport up to 30 feet to an unoccupied space you can see."
+  },
+  {
+    "id": "boon-of-fate",
+    "name": "Boon of Fate",
+    "prerequisite": "Level 10",
+    "description": "• Increase one ability modifier of your choice by 1, to a maximum of +5.\n• When you or another creature within 60 feet of you succeeds on or fails a d20 Test, you can roll 2d4 and apply the total as a bonus or penalty to that roll. Once you use this, you can't again until you finish a Short or Long Rest."
+  },
+  {
+    "id": "boon-of-the-night-spirit",
+    "name": "Boon of the Night Spirit",
+    "prerequisite": "Level 10",
+    "description": "• Increase one ability modifier of your choice by 1, to a maximum of +5.\n• While within dim light or darkness, you can give yourself the Invisible condition as a free action. It ends immediately after you take an action, free action, or reaction.\n• While within dim light or darkness, you have resistance to all damage except Psychic and Radiant."
+  },
+  {
+    "id": "boon-of-truesight",
+    "name": "Boon of Truesight",
+    "prerequisite": "Level 10",
+    "description": "Increase one ability modifier of your choice by 1, to a maximum of +5. You have truesight with a range of 60 feet."
   }
 ]

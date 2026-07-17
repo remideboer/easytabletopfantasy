@@ -855,6 +855,30 @@
       border-color:rgba(0,0,0,.2);
     }
   }
+  .source-pill-srd521{
+    background:var(--accent-gold-soft);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    .source-pill-srd521{
+      background:var(--accent-gold);
+      color:var(--bg-page);
+      border-color:rgba(0,0,0,.2);
+    }
+  }
+  .source-pill-srd51{
+    background:#2f7d4f;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    .source-pill-srd51{
+      background:#4caf7d;
+      color:var(--bg-page);
+      border-color:rgba(0,0,0,.2);
+    }
+  }
   .lineage-toggle-icon{
     font-size:0.8em;
     transition:transform 0.2s ease;

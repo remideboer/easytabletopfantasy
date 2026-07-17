@@ -7,7 +7,7 @@ import sys
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from ability_utils import TOV_URL, render_tov_pill, slugify
+from ability_utils import TOV_URL, render_srd51_pill, render_srd521_pill, render_tov_pill, slugify
 from character_options_data import BACKGROUNDS, HERITAGES, LINEAGE_HERITAGE_RECOMMENDATIONS, LINEAGES, TALENTS
 
 ROOT = SCRIPT_DIR.parent
@@ -118,11 +118,16 @@ window.addEventListener('hashchange', expand{js_key}FromHash);
 
 
 def render_title(name: str, tov: bool = True, tag: str | None = None) -> str:
-    label = name
-    if tag:
-        label += f' <span class="text-muted">({tag})</span>'
-    pill = render_tov_pill() if tov else ""
-    return f'<span class="lineage-title-wrap"><span class="lineage-title">{label}</span>{pill}</span>'
+    if tag == "SRD51":
+        pill = render_srd51_pill()
+    elif tag == "SRD52":
+        pill = render_srd521_pill()
+    elif tag:
+        name = f'{name} <span class="text-muted">({tag})</span>'
+        pill = render_tov_pill() if tov else ""
+    else:
+        pill = render_tov_pill() if tov else ""
+    return f'<span class="lineage-title-wrap"><span class="lineage-title">{name}</span>{pill}</span>'
 
 
 def js_toggle(js_key: str) -> str:
@@ -164,7 +169,7 @@ def write_backgrounds():
 
 
 def write_talents():
-    lede = f"""    <p class="lede">Talents from the <a href="{TOV_URL}" rel="noopener">Tales of the Valiant</a> Player's Guide, adapted for YMIAT (Resolve, Wounds, utility talents).</p>
+    lede = f"""    <p class="lede">Talents from the <a href="{TOV_URL}" rel="noopener">Tales of the Valiant</a> Player's Guide, adapted for YMIAT (Resolve, Wounds, utility talents). Talents marked (SRD) are converted from the D&D 5e System Reference Document's feats.</p>
     <p>Talents are gained from backgrounds at 1st level and from class Improvement features.</p>"""
     sections = []
     for cat, heading in [("magic", "Magic Talents"), ("martial", "Martial Talents"), ("utility", "Utility Talents")]:
@@ -180,7 +185,7 @@ def write_talents():
             if t.get("prereq"):
                 body += f'<p><strong>Prerequisite:</strong> {t["prereq"]}</p>'
             body += t["body"]
-            blocks.append(render_item(t["name"], body, "Talents"))
+            blocks.append(render_item(t["name"], body, "Talents", tov=t.get("tov", True), tag=t.get("tag")))
         sections.append('    <div class="lineages-container">')
         sections.extend(blocks)
         sections.append("    </div>")

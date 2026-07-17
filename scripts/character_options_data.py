@@ -194,10 +194,20 @@ BACKGROUNDS = [
 ]
 
 
-def _talent(category: str, name: str, body: str, prereq: str | None = None) -> dict:
-    entry = {"category": category, "name": name, "body": adapt_tov(body)}
+def _talent(
+    category: str,
+    name: str,
+    body: str,
+    prereq: str | None = None,
+    *,
+    tov: bool = True,
+    tag: str | None = None,
+) -> dict:
+    entry = {"category": category, "name": name, "body": adapt_tov(body), "tov": tov}
     if prereq:
         entry["prereq"] = adapt_tov(prereq)
+    if tag:
+        entry["tag"] = tag
     return entry
 
 
@@ -352,6 +362,54 @@ TALENTS = [
 <li>Climb and swim speeds equal to walking speed.</li>
 <li>Advantage on exhaustion checks while climbing or swimming.</li>
 <li>Hold breath for 1 + twice Fitness modifier minutes.</li></ul>"""),
+    # --- SRD 5.2.1 feats, converted to YMIAT talents ---
+    # (Ability score increases become +1 to an ability modifier, max +5, matching
+    # YMIAT's modifier-based abilities instead of 5e's 1-20 score track. Level
+    # prerequisites use the site's own 5e-level = 2*YMIAT-level - 1 mapping, so
+    # 5e "Level 4+" -> "Level 3+" and 5e "Level 19+" (Epic Boons) -> "Level 10",
+    # YMIAT's actual level cap. Fixed-damage-die feats (Savage Attacker, Great
+    # Weapon Fighting) are reworked as a flat bonus Wound, since YMIAT weapons
+    # don't roll damage dice - only the fixed 1 Wound per hit.)
+    _talent("utility", "Alert", """<p>When using the Initiative variant, add your proficiency bonus to your Fitness check. Immediately after rolling, you can swap your Initiative with a willing ally's in the same combat, unless either of you has the Incapacitated condition.</p>""", tov=False, tag="SRD52"),
+    _talent("magic", "Magic Initiate", """<p>Learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Insight or Willpower is your spellcasting ability for this talent's spells (choose when you select it).</p>
+<p>Choose a 1st-level spell from the same list. You always have it prepared, and can cast it once without spending Spell Power, regaining that use on a long rest. You can also cast it normally by spending Spell Power equal to its level.</p>
+<p>Whenever you gain a level, you can replace one spell chosen for this talent with a different spell of the same level from the chosen list.</p>
+<p>Repeatable: choose a different spell list each time.</p>""", tov=False, tag="SRD52"),
+    _talent("martial", "Savage Attacker", """<p>Once per turn when you hit a target with a weapon attack, you can deal 1 additional Wound of that weapon's damage type.</p>""", tov=False, tag="SRD52"),
+    _talent("utility", "Skilled", """<p>Gain proficiency in any combination of three skills or tools of your choice. Repeatable.</p>""", tov=False, tag="SRD52"),
+    _talent("utility", "Ability Score Improvement", """<p>Increase one ability modifier of your choice by 1, to a maximum of +5. Repeatable.</p>""", "Level 3+", tov=False, tag="SRD52"),
+    _talent("martial", "Grappler (2024)", """<ul>
+<li>Increase your Fitness modifier by 1, to a maximum of +5.</li>
+<li>When you hit a creature with an Unarmed Strike as part of the Attack action, you can also attempt to Grapple it. Usable only once per turn.</li>
+<li>Advantage on attack rolls against a creature Grappled by you.</li>
+<li>No extra movement cost to move a creature Grappled by you if it's your size or smaller.</li></ul>""", "Level 3+, Fitness +1 or higher", tov=False, tag="SRD52"),
+    _talent("martial", "Grappler", """<p>You've developed the skills necessary to hold your own in close-quarters grappling.</p>
+<ul>
+<li>Advantage on attack rolls against a creature Grappled by you.</li>
+<li>As your action, attempt to pin a creature Grappled by you with another grapple check. On success, you and the creature both have the Restrained condition until the grapple ends.</li></ul>""", "Fitness +1 or higher", tov=False, tag="SRD51"),
+    _talent("martial", "Archery", """<p>+2 bonus to attack rolls you make with ranged weapons.</p>""", "Proficiency with at least one ranged weapon", tov=False, tag="SRD52"),
+    _talent("martial", "Defense", """<p>While wearing light, medium, or heavy armor, gain +1 Defense.</p>""", "Proficiency with light, medium, or heavy armor", tov=False, tag="SRD52"),
+    _talent("martial", "Great Weapon Fighting", """<p>When you hit with a Melee weapon you're wielding with two hands (Two-Handed or Versatile property), deal 1 additional Wound.</p>""", "Proficiency with at least one Two-Handed or Versatile weapon", tov=False, tag="SRD52"),
+    _talent("martial", "Two-Weapon Fighting", """<p>When you make an off-hand attack from Two-Weapon Fighting, add your Fitness modifier to its Wounds even if the modifier isn't negative.</p>""", "Two-Weapon Fighting (dual-wielding light weapons)", tov=False, tag="SRD52"),
+    _talent("martial", "Boon of Combat Prowess", """<ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>When you miss with an attack roll, you can hit instead. Once you use this, you can't again until the start of your next turn.</li></ul>""", "Level 10", tov=False, tag="SRD52"),
+    _talent("utility", "Boon of Dimensional Travel", """<ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>Immediately after you take the Attack action or the Cast a Spell action, you can teleport up to 30 feet to an unoccupied space you can see.</li></ul>""", "Level 10", tov=False, tag="SRD52"),
+    _talent("utility", "Boon of Fate", """<ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>When you or another creature within 60 feet of you succeeds on or fails a d20 Test, you can roll 2d4 and apply the total as a bonus or penalty to that roll. Once you use this, you can't again until you finish a Short or Long Rest.</li></ul>""", "Level 10", tov=False, tag="SRD52"),
+    _talent("martial", "Boon of Irresistible Offense", """<ul>
+<li>Increase your Fitness modifier by 1, to a maximum of +5.</li>
+<li>Bludgeoning, Piercing, and Slashing Wounds you deal always ignore resistance.</li>
+<li>When you roll a natural 20 on an attack roll, you deal extra Wounds equal to your Fitness modifier.</li></ul>""", "Level 10", tov=False, tag="SRD52"),
+    _talent("magic", "Boon of Spell Recall", """<p>Increase your Insight or Willpower modifier by 1, to a maximum of +5. Whenever you cast a spell of 1st–4th level using Spell Power, roll 1d4. If the result matches the spell's level, that Spell Power isn't spent.</p>""", "Level 10, Spellcasting class feature", tov=False, tag="SRD52"),
+    _talent("utility", "Boon of the Night Spirit", """<ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>While within dim light or darkness, you can give yourself the Invisible condition as a free action. It ends immediately after you take an action, free action, or reaction.</li>
+<li>While within dim light or darkness, you have resistance to all damage except Psychic and Radiant.</li></ul>""", "Level 10", tov=False, tag="SRD52"),
+    _talent("utility", "Boon of Truesight", """<p>Increase one ability modifier of your choice by 1, to a maximum of +5. You have truesight with a range of 60 feet.</p>""", "Level 10", tov=False, tag="SRD52"),
 ]
 
 

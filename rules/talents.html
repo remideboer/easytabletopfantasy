@@ -12,7 +12,7 @@
 <main>
   <h1>Talents</h1>
   <div class="content">
-    <p class="lede">Talents from the <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide, adapted for YMIAT (Resolve, Wounds, utility talents).</p>
+    <p class="lede">Talents from the <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide, adapted for YMIAT (Resolve, Wounds, utility talents). Talents marked (SRD) are converted from the D&D 5e System Reference Document's feats.</p>
     <p>Talents are gained from backgrounds at 1st level and from class Improvement features.</p>
     <div class="lineages-controls">
       <button class="lineage-control-btn" onclick="expandAllTalents()">Expand All</button>
@@ -126,6 +126,27 @@
           <ul>
 <li>Learn <em>minor illusion</em> and <em>prestidigitation</em> or <em>thaumaturgy</em> (no components; double range).</li>
 <li>As a bonus action, impose disadvantage on one creature's next attack (Willpower save); uses per day equal to proficiency bonus.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="magic-initiate">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Magic Initiate</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Insight or Willpower is your spellcasting ability for this talent's spells (choose when you select it).</p>
+<p>Choose a 1st-level spell from the same list. You always have it prepared, and can cast it once without spending Spell Power, regaining that use on a long rest. You can also cast it normally by spending Spell Power equal to its level.</p>
+<p>Whenever you gain a level, you can replace one spell chosen for this talent with a different spell of the same level from the chosen list.</p>
+<p>Repeatable: choose a different spell list each time.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-spell-recall">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Spell Recall</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 10, Spellcasting class feature</p><p>Increase your Insight or Willpower modifier by 1, to a maximum of +5. Whenever you cast a spell of 1st–4th level using Spell Power, roll 1d4. If the result matches the spell's level, that Spell Power isn't spent.</p>
         </div>
       </div>
     </div>
@@ -284,6 +305,99 @@
         </button>
         <div class="lineage-content">
           <p><strong>Prerequisite:</strong> Proficiency with at least one martial weapon</p><p>Choose one proficient simple or martial weapon: +1 attack and damage; extra weapon die on crit; temp Wounds equal to proficiency bonus when you drop a foe with that weapon.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="savage-attacker">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Savage Attacker</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Once per turn when you hit a target with a weapon attack, you can deal 1 additional Wound of that weapon's damage type.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="grappler-2024">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Grappler (2024)</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 3+, Fitness +1 or higher</p><ul>
+<li>Increase your Fitness modifier by 1, to a maximum of +5.</li>
+<li>When you hit a creature with an Unarmed Strike as part of the Attack action, you can also attempt to Grapple it. Usable only once per turn.</li>
+<li>Advantage on attack rolls against a creature Grappled by you.</li>
+<li>No extra movement cost to move a creature Grappled by you if it's your size or smaller.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="grappler">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Grappler</span><a href="https://www.dndbeyond.com/srd#PreviousSRDReleases" class="source-pill source-pill-srd51" rel="noopener" title="D&amp;D 5.1 System Reference Document (Creative Commons license)" onclick="event.stopPropagation()">SRD 5.1 CC</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Fitness +1 or higher</p><p>You've developed the skills necessary to hold your own in close-quarters grappling.</p>
+<ul>
+<li>Advantage on attack rolls against a creature Grappled by you.</li>
+<li>As your action, attempt to pin a creature Grappled by you with another grapple check. On success, you and the creature both have the Restrained condition until the grapple ends.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="archery">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Archery</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Proficiency with at least one ranged weapon</p><p>+2 bonus to attack rolls you make with ranged weapons.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="defense">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Defense</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Proficiency with light, medium, or heavy armor</p><p>While wearing light, medium, or heavy armor, gain +1 Defense.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="great-weapon-fighting">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Great Weapon Fighting</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Proficiency with at least one Two-Handed or Versatile weapon</p><p>When you hit with a Melee weapon you're wielding with two hands (Two-Handed or Versatile property), deal 1 additional Wound.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="two-weapon-fighting">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Two-Weapon Fighting</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Two-Weapon Fighting (dual-wielding light weapons)</p><p>When you make an off-hand attack from Two-Weapon Fighting, add your Fitness modifier to its Wounds even if the modifier isn't negative.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-combat-prowess">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Combat Prowess</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 10</p><ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>When you miss with an attack roll, you can hit instead. Once you use this, you can't again until the start of your next turn.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-irresistible-offense">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Irresistible Offense</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 10</p><ul>
+<li>Increase your Fitness modifier by 1, to a maximum of +5.</li>
+<li>Bludgeoning, Piercing, and Slashing Wounds you deal always ignore resistance.</li>
+<li>When you roll a natural 20 on an attack roll, you deal extra Wounds equal to your Fitness modifier.</li></ul>
         </div>
       </div>
     </div>
@@ -541,6 +655,76 @@
 <li>Climb and swim speeds equal to walking speed.</li>
 <li>Advantage on exhaustion checks while climbing or swimming.</li>
 <li>Hold breath for 1 + twice Fitness modifier minutes.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="alert">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Alert</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>When using the Initiative variant, add your proficiency bonus to your Fitness check. Immediately after rolling, you can swap your Initiative with a willing ally's in the same combat, unless either of you has the Incapacitated condition.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="skilled">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Skilled</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Gain proficiency in any combination of three skills or tools of your choice. Repeatable.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="ability-score-improvement">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Ability Score Improvement</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 3+</p><p>Increase one ability modifier of your choice by 1, to a maximum of +5. Repeatable.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-dimensional-travel">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Dimensional Travel</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 10</p><ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>Immediately after you take the Attack action or the Cast a Spell action, you can teleport up to 30 feet to an unoccupied space you can see.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-fate">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Fate</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 10</p><ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>When you or another creature within 60 feet of you succeeds on or fails a d20 Test, you can roll 2d4 and apply the total as a bonus or penalty to that roll. Once you use this, you can't again until you finish a Short or Long Rest.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-the-night-spirit">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of the Night Spirit</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 10</p><ul>
+<li>Increase one ability modifier of your choice by 1, to a maximum of +5.</li>
+<li>While within dim light or darkness, you can give yourself the Invisible condition as a free action. It ends immediately after you take an action, free action, or reaction.</li>
+<li>While within dim light or darkness, you have resistance to all damage except Psychic and Radiant.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-truesight">
+        <button class="lineage-header" onclick="toggleTalents(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Truesight</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" onclick="event.stopPropagation()">SRD 5.2.1</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Level 10</p><p>Increase one ability modifier of your choice by 1, to a maximum of +5. You have truesight with a range of 60 feet.</p>
         </div>
       </div>
     </div>
