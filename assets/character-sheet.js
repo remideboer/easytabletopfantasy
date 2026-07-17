@@ -83,6 +83,7 @@
   let skillModalOpen = false;
   let languageModalOpen = false;
   let talentModalOpen = false;
+  let ddbModalOpen = false;
 
   const el = {};
 
@@ -96,6 +97,7 @@
     el.hint = document.getElementById("cs-hint");
     el.btnNew = document.getElementById("cs-btn-new");
     el.btnImport = document.getElementById("cs-btn-import");
+    el.btnImportDdb = document.getElementById("cs-btn-import-ddb");
     el.btnPrint = document.getElementById("cs-btn-print");
     el.printOrientation = document.getElementById("cs-print-orientation");
     el.btnDelete = document.getElementById("cs-btn-delete");
@@ -840,6 +842,8 @@
       renderLanguageModal();
     } else if (talentModalOpen && char) {
       renderTalentModal();
+    } else if (ddbModalOpen) {
+      renderDdbImportModal();
     } else {
       el.modalRoot.innerHTML = "";
     }
@@ -1512,6 +1516,7 @@
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
+    ddbModalOpen = false;
     if (!id) {
       store.activeId = null;
       saveStore();
@@ -1532,6 +1537,7 @@
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
+    ddbModalOpen = false;
     const c = defaultCharacter();
     store.characters.push(c);
     store.activeId = c.id;
@@ -1547,6 +1553,7 @@
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
+    ddbModalOpen = false;
     const name = char.name || "Unnamed";
     if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
@@ -1592,6 +1599,357 @@
     }
   }
 
+  // ─── D&D Beyond import ──────────────────────────────────────────────────────
+  // D&D Beyond's character API sends no CORS header, so a browser fetch() from
+  // this static page is blocked by the browser itself before we ever see a
+  // response. Direct fetch is attempted anyway (works if the user has a CORS
+  // extension, or D&D Beyond ever adds the header); the reliable path is
+  // opening the JSON URL in a new tab and pasting its contents here.
+  const DDB_ALIASES = {
+    lineage: {
+      halfling: "Smallfolk",
+      "half orc": "Orc",
+      genasi: "Elemental Scion",
+      warforged: "Gearforged",
+    },
+  };
+
+  function extractDdbId(input) {
+    if (!input) return null;
+    const m = String(input).match(/\/characters\/(\d+)/);
+    if (m) return m[1];
+    const bare = String(input).trim();
+    return /^\d+$/.test(bare) ? bare : null;
+  }
+
+  function ddbNormalizeName(name) {
+    return String(name || "")
+      .toLowerCase()
+      .replace(/\([^)]*\)/g, "")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+  }
+
+  function ddbMatchExact(list, name) {
+    if (!name) return null;
+    const target = ddbNormalizeName(name);
+    if (!target) return null;
+    return list.find((item) => ddbNormalizeName(item.name) === target) || null;
+  }
+
+  const SUBCLASS_PREFIXES = [
+    "path of the", "path of", "college of", "circle of the", "circle of",
+    "domain of", "oath of the", "oath of", "way of the", "way of",
+    "school of", "martial archetype", "roguish archetype", "ranger archetype",
+    "sacred oath", "divine domain", "primal path", "bard college",
+    "otherworldly patron", "bloodline of",
+  ];
+
+  function ddbNormalizeSubclass(name) {
+    let n = ddbNormalizeName(name).replace(/\bbloodline\b/, "").trim();
+    for (const prefix of SUBCLASS_PREFIXES) {
+      if (n.startsWith(prefix + " ")) {
+        n = n.slice(prefix.length).trim();
+        break;
+      }
+    }
+    return n;
+  }
+
+  function ddbMatchSubclass(subclasses, name) {
+    if (!name) return null;
+    const target = ddbNormalizeSubclass(name);
+    if (!target) return null;
+    let hit = subclasses.find((s) => ddbNormalizeSubclass(s.name) === target);
+    if (hit) return hit;
+    hit = subclasses.find((s) => {
+      const n = ddbNormalizeSubclass(s.name);
+      return n.length > 2 && (target.includes(n) || n.includes(target));
+    });
+    return hit || null;
+  }
+
+  // Ability composites per conversion.html#converting-ability-scores:
+  // Fitness = floor((STR+DEX+CON)/3); Insight = floor((INT+WIS)/2);
+  // Willpower = floor((WIS+CHA)/2). Each composite then uses the standard
+  // 5e modifier formula floor((score-10)/2).
+  function ddbComputeAbilities(scores) {
+    const mod = (score) => Math.floor((score - 10) / 2);
+    const fit = Math.floor((scores.str + scores.dex + scores.con) / 3);
+    const ins = Math.floor((scores.int + scores.wis) / 2);
+    const wil = Math.floor((scores.wis + scores.cha) / 2);
+    return {
+      fit: clampAbility(mod(fit)),
+      ins: clampAbility(mod(ins)),
+      wil: clampAbility(mod(wil)),
+    };
+  }
+
+  // D&D Beyond's raw char.stats/overrideStats/bonusStats only carry the
+  // character-builder base scores; racial/feat/item bonuses live in the
+  // modifiers lists and must be folded in separately (mirrors how D&D
+  // Beyond's own character sheet computes final scores).
+  function ddbRawScores(char) {
+    const ids = { str: 1, dex: 2, con: 3, int: 4, wis: 5, cha: 6 };
+    const statSubTypeToId = {
+      "strength-score": 1, "dexterity-score": 2, "constitution-score": 3,
+      "intelligence-score": 4, "wisdom-score": 5, "charisma-score": 6,
+    };
+    const allMods = [
+      ...(char.modifiers?.class || []),
+      ...(char.modifiers?.race || []),
+      ...(char.modifiers?.background || []),
+      ...(char.modifiers?.feat || []),
+      ...(char.modifiers?.item || []),
+    ];
+    const modBonuses = allMods
+      .filter((m) => m.type === "bonus" && statSubTypeToId[m.subType] && m.value != null)
+      .map((m) => ({ id: statSubTypeToId[m.subType], value: m.value }));
+    const bonusStats = [...(char.bonusStats || []).filter((s) => s.value != null), ...modBonuses];
+    const stats = char.stats || [];
+    const overrides = char.overrideStats || [];
+    const getVal = (id) => {
+      const base = stats.find((s) => s.id === id)?.value ?? 10;
+      const override = overrides.find((s) => s.id === id)?.value;
+      if (override != null) return override;
+      const bonus = bonusStats.filter((b) => b.id === id).reduce((sum, b) => sum + (b.value || 0), 0);
+      return base + bonus;
+    };
+    const out = {};
+    Object.keys(ids).forEach((key) => {
+      out[key] = getVal(ids[key]);
+    });
+    return out;
+  }
+
+  function ddbEquippedName(item) {
+    return (item?.definition?.name || "").replace(/^\+\d+\s+/, "").trim();
+  }
+
+  // Per conversion.html's guidance (and Tales of the Valiant's own conversion
+  // guide): a 5e race splits into Lineage (innate/physical traits, matched by
+  // name above) and Heritage (learned/cultural traits — languages, weapon and
+  // tool training, trained skills). Heritage names are original YMIAT/ToV
+  // cultural concepts with no 5e name to match against, so instead of a
+  // lookup table this scores every heritage by how much its granted
+  // languages/skills overlap with what the race actually grants in the
+  // fetched character — the same signal the conversion guide says to keep.
+  const DDB_LANGUAGE_TO_YMIAT = {
+    orc: "Orcish", common: null, dwarvish: "Dwarvish", elvish: "Elvish",
+    giant: "Giant", gnomish: "Gnomish", goblin: "Goblin", halfling: "Halfling",
+    abyssal: "Abyssal", celestial: "Celestial", "deep speech": "Deep Speech",
+    draconic: "Draconic", infernal: "Infernal", primordial: "Primordial",
+    sylvan: "Sylvan", undercommon: "Undercommon",
+  };
+
+  const DDB_SKILL_SUBTYPE_TO_NAME = {
+    acrobatics: "Acrobatics", "animal-handling": "Animal Handling", arcana: "Arcana",
+    athletics: "Athletics", deception: "Deception", history: "History", insight: "Insight",
+    intimidation: "Intimidation", investigation: "Investigation", medicine: "Medicine",
+    nature: "Nature", perception: "Perception", performance: "Performance",
+    persuasion: "Persuasion", religion: "Religion", "sleight-of-hand": "Sleight of Hand",
+    stealth: "Stealth", survival: "Survival",
+  };
+
+  function ddbRaceLanguages(char) {
+    return (char.modifiers?.race || [])
+      .filter((m) => m.type === "language")
+      .map((m) => DDB_LANGUAGE_TO_YMIAT[m.subType])
+      .filter(Boolean);
+  }
+
+  function ddbRaceSkillProficiencies(char) {
+    return (char.modifiers?.race || [])
+      .filter((m) => m.type === "proficiency" && DDB_SKILL_SUBTYPE_TO_NAME[m.subType])
+      .map((m) => DDB_SKILL_SUBTYPE_TO_NAME[m.subType]);
+  }
+
+  // Scores each heritage against the race's languages/skills and returns the
+  // best match plus its score, or null if nothing scored above 0 — heritage
+  // is thematic/roleplay content, so a guess is only worth making when there's
+  // an actual overlap to point to, never a blind default.
+  function ddbMatchHeritage(char) {
+    const languages = ddbRaceLanguages(char);
+    const skills = ddbRaceSkillProficiencies(char);
+    if (!languages.length && !skills.length) return null;
+    let best = null;
+    let bestScore = 0;
+    for (const heritage of data.heritages) {
+      const bodyLower = (heritage.body || "").toLowerCase();
+      let score = 0;
+      const matchedLangs = languages.filter((lang) => bodyLower.includes(lang.toLowerCase()));
+      const matchedSkills = skills.filter((skill) => bodyLower.includes(skill.toLowerCase()));
+      score += matchedLangs.length * 3;
+      score += matchedSkills.length * 2;
+      if (score > bestScore) {
+        bestScore = score;
+        best = { heritage, matchedLangs, matchedSkills };
+      }
+    }
+    return best;
+  }
+
+  // Maps a fetched D&D Beyond character JSON payload onto a fresh YMIAT
+  // character. Returns { character, report } where report lists every field
+  // that couldn't be matched, so the caller can tell the player what to set
+  // by hand rather than silently guessing wrong.
+  function convertDdbCharacter(payload) {
+    const char = payload?.data;
+    if (!char) throw new Error("Unexpected D&D Beyond response — is the character set to Public?");
+
+    const report = [];
+    const c = defaultCharacter();
+    c.name = char.name || c.name;
+
+    const classes = Array.isArray(char.classes) ? char.classes : [];
+    const totalLevel = classes.reduce((sum, cl) => sum + (cl.level || 0), 0) || 1;
+    const range = levelRange();
+    c.level = Math.min(range.max, Math.max(range.min, Math.ceil(totalLevel / 2)));
+    c.xp = xpThreshold(c.level);
+
+    const scores = ddbRawScores(char);
+    c.abilities = ddbComputeAbilities(scores);
+
+    if (classes.length > 1) {
+      report.push(`Multiclassed (${classes.map((cl) => `${cl.definition?.name || "?"} ${cl.level || 0}`).join(" / ")}) — only the highest-level class was imported; YMIAT tracks one class per character.`);
+    }
+    const primaryClass = classes.slice().sort((a, b) => (b.level || 0) - (a.level || 0))[0];
+    const classMatch = primaryClass ? ddbMatchExact(data.classes, primaryClass.definition?.name) : null;
+    if (classMatch) {
+      c.classId = classMatch.id;
+      if (c.level >= (range.subclassMin || 2) && primaryClass.subclassDefinition?.name) {
+        const subMatch = ddbMatchSubclass(classMatch.subclasses || [], primaryClass.subclassDefinition.name);
+        if (subMatch) c.subclassId = subMatch.id;
+        else report.push(`Subclass "${primaryClass.subclassDefinition.name}" has no clear YMIAT equivalent for ${classMatch.name} — pick one manually.`);
+      }
+    } else if (primaryClass) {
+      report.push(`Class "${primaryClass.definition?.name || "?"}" not found in YMIAT — pick one manually.`);
+    }
+
+    const raceName = char.race?.fullName || char.race?.baseName || "";
+    let lineageMatch = ddbMatchExact(data.lineages, char.race?.fullName) || ddbMatchExact(data.lineages, char.race?.baseName);
+    if (!lineageMatch) {
+      const aliasKey = ddbNormalizeName(char.race?.baseName || raceName);
+      const alias = DDB_ALIASES.lineage[aliasKey];
+      if (alias) lineageMatch = ddbMatchExact(data.lineages, alias);
+    }
+    if (lineageMatch) {
+      c.lineageId = lineageMatch.id;
+      Object.assign(c, parseLineageDefaults(lineageMatch));
+    } else if (raceName) {
+      report.push(`Race "${raceName}" has no clear YMIAT lineage match — pick one manually.`);
+    }
+
+    const heritageMatch = ddbMatchHeritage(char);
+    if (heritageMatch) {
+      c.heritageId = heritageMatch.heritage.id;
+      const why = [...heritageMatch.matchedLangs.map((l) => `${l} language`), ...heritageMatch.matchedSkills.map((s) => `${s} proficiency`)].join(", ");
+      report.push(`Heritage guessed as "${heritageMatch.heritage.name}" based on your race's ${why} — verify this fits, or pick a different one (heritage is cultural/roleplay, not a hard rule).`);
+    } else {
+      report.push("No confident Heritage match from your race's languages/proficiencies — pick one manually (see the conversion guide: Heritage carries a race's learned/cultural traits, Lineage carries its innate/physical ones).");
+    }
+
+    const bgMatch = ddbMatchExact(data.backgrounds, char.background?.definition?.name);
+    if (bgMatch) c.backgroundId = bgMatch.id;
+    else if (char.background?.definition?.name) {
+      report.push(`Background "${char.background.definition.name}" has no clear YMIAT match — pick one manually.`);
+    }
+
+    const inventory = Array.isArray(char.inventory) ? char.inventory : [];
+    const equipped = inventory.filter((item) => item.equipped && item.definition);
+    let shieldFound = false;
+    let armorMatch = null;
+    for (const item of equipped) {
+      const nm = ddbEquippedName(item);
+      if (/shield/i.test(nm)) {
+        shieldFound = true;
+        continue;
+      }
+      if (item.definition.armorClass != null) {
+        const m = ddbMatchExact(ARMOR, nm);
+        if (m) armorMatch = m;
+      }
+    }
+    if (armorMatch) c.armorId = armorMatch.id;
+    c.hasShield = shieldFound;
+
+    let weaponMatch = null;
+    for (const item of equipped) {
+      const nm = ddbEquippedName(item);
+      const m = ddbMatchExact(WEAPONS, nm);
+      if (m && (!weaponMatch || m.bonus > weaponMatch.bonus)) weaponMatch = m;
+    }
+    if (weaponMatch) c.weaponId = weaponMatch.id;
+
+    const curr = char.currencies || {};
+    c.currency = {
+      gold: Math.floor((curr.pp || 0) * 10 + (curr.gp || 0) + (curr.ep || 0) * 0.5),
+      silver: curr.sp || 0,
+      copper: curr.cp || 0,
+    };
+
+    if (char.race?.weightSpeeds?.normal?.walk) c.speed = char.race.weightSpeeds.normal.walk;
+
+    const spMax = computeSpellPowerMax(c);
+    c.spellPowerNow = spMax !== null ? spMax : 0;
+
+    report.push("Spells and talents aren't auto-imported — YMIAT spellcasting is derived automatically from class/level, and talents come from your background/class choices on this sheet.");
+
+    return { character: c, report };
+  }
+
+  function applyDdbImport(payload) {
+    const { character, report } = convertDdbCharacter(payload);
+    store.characters.push(character);
+    store.activeId = character.id;
+    saveStore();
+    ddbModalOpen = false;
+    render();
+    if (report.length) {
+      alert(`Imported "${character.name}" from D&D Beyond.\n\nReview needed:\n- ${report.join("\n- ")}`);
+    }
+  }
+
+  async function fetchDdbCharacter(idOrUrl) {
+    const id = extractDdbId(idOrUrl);
+    if (!id) throw new Error("Couldn't find a D&D Beyond character ID in that input.");
+    const res = await fetch(`https://character-service.dndbeyond.com/character/v5/character/${id}`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) throw new Error(`D&D Beyond returned HTTP ${res.status}.`);
+    return res.json();
+  }
+
+  function ddbJsonUrl(idOrUrl) {
+    const id = extractDdbId(idOrUrl);
+    return id ? `https://character-service.dndbeyond.com/character/v5/character/${id}` : null;
+  }
+
+  function renderDdbImportModal() {
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-ddb-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="Import from D&D Beyond">
+        <div class="cs-modal-header">
+          <h2>Import from D&amp;D Beyond</h2>
+          <button type="button" class="cs-modal-close" id="cs-ddb-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-body">
+          <p class="cs-hint">The character must be set to <strong>Public</strong> on D&amp;D Beyond. Converts ability scores, level, class, race, and background using YMIAT's <a href="${rp("rules/conversion.html")}" target="_blank" rel="noopener">conversion rules</a>. Spells, talents, and heritage aren't auto-mapped—those still need a manual pick after import.</p>
+          <label class="cs-label" for="cs-ddb-input">Character ID or D&amp;D Beyond URL</label>
+          <input type="text" id="cs-ddb-input" class="cs-input" placeholder="https://www.dndbeyond.com/characters/12345678" autocomplete="off" />
+          <div class="cs-ddb-actions">
+            <button type="button" class="btn cs-btn-secondary" id="cs-ddb-fetch">Try automatic fetch</button>
+          </div>
+          <p id="cs-ddb-status" class="cs-hint" aria-live="polite"></p>
+          <label class="cs-label" for="cs-ddb-json">Or paste the character JSON here</label>
+          <textarea id="cs-ddb-json" class="cs-input" rows="6" placeholder="Paste the contents of the D&amp;D Beyond character JSON URL here"></textarea>
+          <div class="cs-ddb-actions">
+            <button type="button" class="btn" id="cs-ddb-convert">Convert &amp; Import</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+
   function handleStepper(id, delta) {
     if (!char) return;
     if (id.startsWith("ability-")) {
@@ -1628,6 +1986,12 @@
     el.btnNew.addEventListener("click", newCharacter);
     el.btnDelete.addEventListener("click", deleteCharacter);
     el.btnImport.addEventListener("click", importCreatorDraft);
+    if (el.btnImportDdb) {
+      el.btnImportDdb.addEventListener("click", () => {
+        ddbModalOpen = true;
+        renderModals();
+      });
+    }
     if (el.btnPrint) {
       el.btnPrint.addEventListener("click", () => {
         applyPrintOrientation(el.printOrientation ? el.printOrientation.value : "portrait");
@@ -1773,6 +2137,43 @@
           languageModalOpen = false;
           talentModalOpen = false;
           renderModals();
+        } else if (e.target.id === "cs-ddb-overlay" || e.target.id === "cs-ddb-close") {
+          ddbModalOpen = false;
+          renderModals();
+        } else if (e.target.id === "cs-ddb-fetch") {
+          const input = document.getElementById("cs-ddb-input");
+          const status = document.getElementById("cs-ddb-status");
+          const jsonBox = document.getElementById("cs-ddb-json");
+          const idOrUrl = input ? input.value.trim() : "";
+          if (status) status.textContent = "Fetching…";
+          e.target.disabled = true;
+          fetchDdbCharacter(idOrUrl)
+            .then((payload) => {
+              if (jsonBox) jsonBox.value = JSON.stringify(payload);
+              if (status) status.textContent = "Fetched successfully — click Convert & Import below.";
+            })
+            .catch((err) => {
+              const url = ddbJsonUrl(idOrUrl);
+              if (status) {
+                status.innerHTML = `Automatic fetch failed (browsers block this by default — see the Import guide above). ${
+                  url
+                    ? `Open <a href="${url}" target="_blank" rel="noopener">this link</a> in a new tab, copy everything on the page, and paste it below.`
+                    : "Enter a valid character ID or URL first."
+                }`;
+              }
+            })
+            .finally(() => {
+              e.target.disabled = false;
+            });
+        } else if (e.target.id === "cs-ddb-convert") {
+          const jsonBox = document.getElementById("cs-ddb-json");
+          const status = document.getElementById("cs-ddb-status");
+          try {
+            const payload = JSON.parse(jsonBox ? jsonBox.value : "");
+            applyDdbImport(payload);
+          } catch (err) {
+            if (status) status.textContent = `Couldn't parse that as character JSON: ${err.message}`;
+          }
         } else if (e.target.dataset.languageRemove) {
           const lang = e.target.dataset.languageRemove;
           char.chosenLanguages = char.chosenLanguages.filter((l) => l !== lang);
@@ -1859,13 +2260,14 @@
       });
 
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || skillModalOpen || languageModalOpen || talentModalOpen)) {
+        if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || skillModalOpen || languageModalOpen || talentModalOpen || ddbModalOpen)) {
           spellModalOpen = false;
           spellViewId = null;
           talentViewName = null;
           skillModalOpen = false;
           languageModalOpen = false;
           talentModalOpen = false;
+          ddbModalOpen = false;
           renderModals();
         }
       });
