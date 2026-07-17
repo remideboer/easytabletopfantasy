@@ -62,6 +62,7 @@
 <li><strong>Wounds (WD):</strong> Current injury track. Characters start at 0 Wounds. Taking harm adds Wounds until Max Wounds is reached. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Max Wounds:</strong> Capacity before the Life rule applies. Max Wounds = class start Max Wounds + Fitness modifier + (level − 1). When Wounds reach Max Wounds, the Life rule triggers. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Spell Power (SP):</strong> Represents a spellcaster's magical capacity. SP equals 3 × spellcasting ability modifier. Spellcasters spend SP to cast spells and regain it through rest and Recovery Points. See <a href="#magic-and-spell-resources">Magic and Spell Resources</a> for details.</li>
+<li><strong>Proficiency Bonus (PB):</strong> A flat bonus used only where a class feature, spell, or talent explicitly calls for "PB"—not on ability checks, attack rolls, or Defense rolls, which use advantage instead. PB = level ÷ 2, rounded up. See <a href="#proficiency-and-advantage">Proficiency and Advantage</a> for details.</li>
 <li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character's Wounds reach Max Wounds, they must make Death Saves; failing a Death Save costs one heart. For each heart lost, every ability modifier (Fitness, Insight, and Willpower) is reduced by 1, maximum speed is reduced by 5 feet (one step), and Max Wounds is reduced by 2 until that heart is restored. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life and Death Saves</a> for details.</li>
 </ul>
 <hr>
@@ -78,7 +79,7 @@
 <li>You may “borrow” points by lowering an ability below 0, down to a minimum of −1.</li>
 </ul>
 <hr>
-<h3>Proficiency and Advantage</h3>
+<h3 id="proficiency-and-advantage">Proficiency and Advantage</h3>
 <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a stacking advantage system. When you are proficient with something (such as a weapon, armor, skill, or saving throw), you gain advantage on related rolls. Advantage means you roll two d20s and take the higher result.</p>
 <p>Advantage can stack. If you have multiple sources of advantage, you roll additional d20s and take the highest. For example, if you have proficiency (1 advantage) and another source grants advantage, you roll 3d20 and take the highest. This is called "stacking advantage."</p>
 <p>Disadvantage works similarly but in reverse—you roll multiple d20s and take the lowest. Advantage and disadvantage cancel each other out on a one-to-one basis.</p>
@@ -89,6 +90,19 @@
 <li><strong>Master:</strong> You have triple advantage (roll 4d20, take highest)</li>
 </ul>
 <p>Proficiency is typically granted by your class, background, or talents.</p>
+<p><strong>Proficiency Bonus (PB):</strong> Some class features, spells, and talents call for a flat <strong>Proficiency Bonus</strong> instead of advantage—a static number added to damage, DCs, uses per rest, or similar values whenever a feature explicitly says "PB." It is never added to ability checks, attack rolls, or Defense rolls; those always use the advantage system above.</p>
+<div class="formula-box">
+  <span class="formula-label">Proficiency Bonus</span>
+  <span class="formula-equation">
+    <span class="variable">PB</span>
+    <span class="operator">=</span>
+    <span class="variable">level</span>
+    <span class="operator">÷</span>
+    <span>2</span>
+    <span>, rounded up</span>
+  </span>
+</div>
+<p>PB is +1 at levels 1–2, +2 at levels 3–4, +3 at levels 5–6, +4 at levels 7–8, and +5 at levels 9–10.</p>
 <hr>
 <h3>Skills and Ability Checks</h3>
 <p>All ability checks are made directly with Fitness, Insight, or Willpower. Classes, backgrounds, and talents can grant specific skills; only those listed skills benefit from the character's proficiency advantage, granting you advantage on ability checks made with that skill.</p>

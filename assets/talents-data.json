@@ -162,8 +162,8 @@
     "description": "Once per turn when you hit a target with a weapon attack, you can deal 1 additional Wound of that weapon's damage type."
   },
   {
-    "id": "grappler-2024",
-    "name": "Grappler (2024)",
+    "id": "grappler-5-5e",
+    "name": "Grappler (5.5e)",
     "prerequisite": "Level 3+, Fitness +1 or higher",
     "description": "• Increase your Fitness modifier by 1, to a maximum of +5.\n• When you hit a creature with an Unarmed Strike as part of the Attack action, you can also attempt to Grapple it. Usable only once per turn.\n• Advantage on attack rolls against a creature Grappled by you.\n• No extra movement cost to move a creature Grappled by you if it's your size or smaller."
   },

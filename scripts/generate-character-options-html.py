@@ -7,7 +7,15 @@ import sys
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from ability_utils import TOV_URL, render_srd51_pill, render_srd521_pill, render_tov_pill, slugify
+from ability_utils import (
+    TOV_URL,
+    render_edition_pill,
+    render_srd51_pill,
+    render_srd521_pill,
+    render_tag_pill,
+    render_tov_pill,
+    slugify,
+)
 from character_options_data import BACKGROUNDS, HERITAGES, LINEAGE_HERITAGE_RECOMMENDATIONS, LINEAGES, TALENTS
 
 ROOT = SCRIPT_DIR.parent
@@ -117,16 +125,22 @@ window.addEventListener('hashchange', expand{js_key}FromHash);
 """
 
 
-def render_title(name: str, tov: bool = True, tag: str | None = None) -> str:
+def render_title(name: str, tov: bool = True, tag: str | None = None, edition: str | None = None) -> str:
+    if edition and name.endswith(f" ({edition})"):
+        name = name[: -len(f" ({edition})")]
+    tag_pill = ""
     if tag == "SRD51":
         pill = render_srd51_pill()
     elif tag == "SRD52":
         pill = render_srd521_pill()
     elif tag:
-        name = f'{name} <span class="text-muted">({tag})</span>'
         pill = render_tov_pill() if tov else ""
+        tag_pill = render_tag_pill(tag)
     else:
         pill = render_tov_pill() if tov else ""
+    if edition and edition != "5.5e":
+        pill = f"{pill}{render_edition_pill(edition)}"
+    pill = f"{pill}{tag_pill}"
     return f'<span class="lineage-title-wrap"><span class="lineage-title">{name}</span>{pill}</span>'
 
 
@@ -135,12 +149,14 @@ def js_toggle(js_key: str) -> str:
     return f"toggle{js_key}"
 
 
-def render_item(name: str, body: str, js_key: str, tov: bool = True, tag: str | None = None) -> str:
+def render_item(
+    name: str, body: str, js_key: str, tov: bool = True, tag: str | None = None, edition: str | None = None
+) -> str:
     toggle = js_toggle(js_key)
     item_id = slugify(name)
     return f"""      <div class="lineage-item" id="{item_id}">
         <button class="lineage-header" onclick="{toggle}(this)">
-          {render_title(name, tov, tag)}
+          {render_title(name, tov, tag, edition)}
           <span class="lineage-toggle-icon">▼</span>
         </button>
         <div class="lineage-content">
@@ -152,7 +168,12 @@ def render_item(name: str, body: str, js_key: str, tov: bool = True, tag: str | 
 def write_backgrounds():
     lede = f"""    <p class="lede">Background helps define your character's personal history before taking up the mantle of an adventurer.</p>
     <p>Backgrounds from the <a href="{TOV_URL}" rel="noopener">Tales of the Valiant</a> Player's Guide (2024 core and 2026 options). In YMIAT, only skills explicitly granted benefit from proficiency advantage.</p>"""
-    items = "\n".join(render_item(b["name"], b["body"], "Backgrounds") for b in BACKGROUNDS)
+    items = "\n".join(
+        render_item(
+            b["name"], b["body"], "Backgrounds", tov=b.get("tov", True), tag=b.get("tag"), edition=b.get("edition")
+        )
+        for b in BACKGROUNDS
+    )
     html = HEAD.format(
         title="Backgrounds",
         description="Character backgrounds for You-Meet-In-A-Tavern (YMIAT).",
@@ -185,7 +206,11 @@ def write_talents():
             if t.get("prereq"):
                 body += f'<p><strong>Prerequisite:</strong> {t["prereq"]}</p>'
             body += t["body"]
-            blocks.append(render_item(t["name"], body, "Talents", tov=t.get("tov", True), tag=t.get("tag")))
+            blocks.append(
+                render_item(
+                    t["name"], body, "Talents", tov=t.get("tov", True), tag=t.get("tag"), edition=t.get("edition")
+                )
+            )
         sections.append('    <div class="lineages-container">')
         sections.extend(blocks)
         sections.append("    </div>")

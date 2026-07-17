@@ -42,11 +42,38 @@ def adapt_tov(text: str) -> str:
     return out
 
 
-def _bg(name: str, body: str) -> dict:
-    return {"name": name, "body": adapt_tov(body)}
+def _bg(name: str, body: str, *, tov: bool = True, tag: str | None = None, edition: str | None = None) -> dict:
+    entry = {"name": name, "body": adapt_tov(body), "tov": tov}
+    if tag:
+        entry["tag"] = tag
+    if edition:
+        entry["edition"] = edition
+    return entry
 
 
 BACKGROUNDS = [
+    _bg(
+        "Acolyte",
+        """<p>You have spent your life in service to a temple dedicated to a specific god or pantheon, acting as an intermediary between the divine and the mortal world—performing sacred rites, offering blessings, and conducting worshipers into the presence of the divine. You aren't necessarily a cleric; performing sacred rites isn't the same as channeling divine power.</p>
+<p>Those who share your faith support you (but only you) at a modest lifestyle, and you can expect free healing and care at any temple, shrine, or established presence of your faith, though you must still provide any material components needed for spells.</p>
+<p><strong>Skill Proficiencies:</strong> Insight and Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Calligrapher's supplies, and two languages of your choice.</p>
+<p><strong>Equipment:</strong> A holy symbol, a prayer book or prayer wheel, 5 sticks of incense, vestments, common clothes, and a pouch containing 15 gp.</p>
+<p><strong>Talent:</strong> Choose one: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>""",
+        tov=False,
+        tag="SRD51",
+    ),
+    _bg(
+        "Acolyte (5.5e)",
+        """<p>You have devoted your life to serving a temple, learning its rites and lore. This is the streamlined 5.5e-style take on the Acolyte, granting the Magic Initiate talent directly rather than a broader talent choice.</p>
+<p><strong>Skill Proficiencies:</strong> Insight and Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Calligrapher's supplies.</p>
+<p><strong>Equipment:</strong> Choose A or B: (A) Calligrapher's supplies, a prayer book, a holy symbol, 10 sheets of parchment, a robe, and 8 gp; or (B) 50 gp.</p>
+<p><strong>Talent:</strong> Magic Initiate (choose the Cleric spell list when you take it).</p>""",
+        tov=False,
+        tag="SRD52",
+        edition="5.5e",
+    ),
     _bg(
         "Adherent",
         """<p>Before you began adventuring, you committed yourself to a faith, belief, or cause. Skill, equipment, and devotion from that life still shape you.</p>
@@ -202,12 +229,15 @@ def _talent(
     *,
     tov: bool = True,
     tag: str | None = None,
+    edition: str | None = None,
 ) -> dict:
     entry = {"category": category, "name": name, "body": adapt_tov(body), "tov": tov}
     if prereq:
         entry["prereq"] = adapt_tov(prereq)
     if tag:
         entry["tag"] = tag
+    if edition:
+        entry["edition"] = edition
     return entry
 
 
@@ -378,11 +408,11 @@ TALENTS = [
     _talent("martial", "Savage Attacker", """<p>Once per turn when you hit a target with a weapon attack, you can deal 1 additional Wound of that weapon's damage type.</p>""", tov=False, tag="SRD52"),
     _talent("utility", "Skilled", """<p>Gain proficiency in any combination of three skills or tools of your choice. Repeatable.</p>""", tov=False, tag="SRD52"),
     _talent("utility", "Ability Score Improvement", """<p>Increase one ability modifier of your choice by 1, to a maximum of +5. Repeatable.</p>""", "Level 3+", tov=False, tag="SRD52"),
-    _talent("martial", "Grappler (2024)", """<ul>
+    _talent("martial", "Grappler (5.5e)", """<ul>
 <li>Increase your Fitness modifier by 1, to a maximum of +5.</li>
 <li>When you hit a creature with an Unarmed Strike as part of the Attack action, you can also attempt to Grapple it. Usable only once per turn.</li>
 <li>Advantage on attack rolls against a creature Grappled by you.</li>
-<li>No extra movement cost to move a creature Grappled by you if it's your size or smaller.</li></ul>""", "Level 3+, Fitness +1 or higher", tov=False, tag="SRD52"),
+<li>No extra movement cost to move a creature Grappled by you if it's your size or smaller.</li></ul>""", "Level 3+, Fitness +1 or higher", tov=False, tag="SRD52", edition="5.5e"),
     _talent("martial", "Grappler", """<p>You've developed the skills necessary to hold your own in close-quarters grappling.</p>
 <ul>
 <li>Advantage on attack rolls against a creature Grappled by you.</li>

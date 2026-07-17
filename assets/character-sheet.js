@@ -411,6 +411,11 @@
     return Math.max(0, 3 * mod);
   }
 
+  // Proficiency Bonus per core.html#proficiency-and-advantage: PB = level / 2, rounded up.
+  function computePB(c) {
+    return Math.ceil(c.level / 2);
+  }
+
   // Max spell level by character level, per classes.html progression tables.
   const FULL_CASTER_CIRCLE = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9];
   const HALF_CASTER_CIRCLE = [null, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5];
@@ -1204,6 +1209,7 @@
     const weaponOptions = groupedOptionList(WEAPONS, c.weaponId, "No Weapon", weaponOptionLabel);
     const defBonus = computeDefense(c);
     const attackBonus = computeAttackBonus(c);
+    const pb = computePB(c);
     const selectedArmor = byId(ARMOR, c.armorId);
     const selectedWeapon = byId(WEAPONS, c.weaponId);
 
@@ -1278,6 +1284,10 @@
           <div class="cs-stat-box">
             <span class="cs-stat-label">Resolve</span>
             ${stepper("resolve", c.resolve, "Resolve", { min: 0, max: 4, display: String(c.resolve) })}
+          </div>
+          <div class="cs-stat-box">
+            <span class="cs-stat-label">PB</span>
+            <span class="cs-wd-val cs-wd-val--calc" title="Proficiency Bonus = level ÷ 2, rounded up. Used only where a feature explicitly calls for PB—not on ability checks, attacks, or Defense.">${formatMod(pb)}</span>
           </div>
         </div>
 

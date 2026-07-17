@@ -4657,6 +4657,32 @@
   ],
   "backgrounds": [
     {
+      "id": "acolyte",
+      "name": "Acolyte",
+      "teaser": "You have spent your life in service to a temple dedicated to a specific god or pantheon, acting as an intermediary between the divine and the mortal world—performing sacred rites, offering blessings, and conducting…",
+      "body": "<p>You have spent your life in service to a temple dedicated to a specific god or pantheon, acting as an intermediary between the divine and the mortal world—performing sacred rites, offering blessings, and conducting worshipers into the presence of the divine. You aren't necessarily a cleric; performing sacred rites isn't the same as channeling divine power.</p>\n<p>Those who share your faith support you (but only you) at a modest lifestyle, and you can expect free healing and care at any temple, shrine, or established presence of your faith, though you must still provide any material components needed for spells.</p>\n<p><strong>Skill Proficiencies:</strong> Insight and Religion.</p>\n<p><strong>Additional Proficiencies:</strong> Calligrapher's supplies, and two languages of your choice.</p>\n<p><strong>Equipment:</strong> A holy symbol, a prayer book or prayer wheel, 5 sticks of incense, vestments, common clothes, and a pouch containing 15 gp.</p>\n<p><strong>Talent:</strong> Choose one: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>",
+      "tag": "SRD51",
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#acolyte",
+      "features": [],
+      "talentChoices": [
+        "Field Medic",
+        "Mental Fortitude",
+        "Ritualist"
+      ]
+    },
+    {
+      "id": "acolyte-5-5e",
+      "name": "Acolyte (5.5e)",
+      "teaser": "You have devoted your life to serving a temple, learning its rites and lore. This is the streamlined 5.5e-style take on the Acolyte, granting the Magic Initiate talent directly rather than a broader talent choice.…",
+      "body": "<p>You have devoted your life to serving a temple, learning its rites and lore. This is the streamlined 5.5e-style take on the Acolyte, granting the Magic Initiate talent directly rather than a broader talent choice.</p>\n<p><strong>Skill Proficiencies:</strong> Insight and Religion.</p>\n<p><strong>Additional Proficiencies:</strong> Calligrapher's supplies.</p>\n<p><strong>Equipment:</strong> Choose A or B: (A) Calligrapher's supplies, a prayer book, a holy symbol, 10 sheets of parchment, a robe, and 8 gp; or (B) 50 gp.</p>\n<p><strong>Talent:</strong> Magic Initiate (choose the Cleric spell list when you take it).</p>",
+      "tag": "SRD52",
+      "recommendedFor": null,
+      "rulesUrl": "rules/backgrounds.html#acolyte-5-5e",
+      "features": [],
+      "talentChoices": []
+    },
+    {
       "id": "adherent",
       "name": "Adherent",
       "teaser": "Before you began adventuring, you committed yourself to a faith, belief, or cause. Skill, equipment, and devotion from that life still shape you. Skill Proficiencies: Choose two from History, Investigation, Religion,…",

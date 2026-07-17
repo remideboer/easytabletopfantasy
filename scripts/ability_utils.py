@@ -28,7 +28,24 @@ def render_srd521_pill() -> str:
     return (
         f'<a href="{SRD_521_URL}" class="source-pill source-pill-srd521" rel="noopener" '
         f'title="D&amp;D 5.2.1 System Reference Document (Wizards of the Coast Game License)" '
-        f'onclick="event.stopPropagation()">SRD 5.2.1</a>'
+        f'onclick="event.stopPropagation()">5.5e</a>'
+    )
+
+
+def render_edition_pill(edition: str) -> str:
+    """Small non-link badge marking a D&D edition variant (e.g. 5.5e)."""
+    return (
+        f'<span class="source-pill source-pill-edition" '
+        f'title="{edition}-style variant" onclick="event.stopPropagation()">{edition}</span>'
+    )
+
+
+def render_tag_pill(tag: str) -> str:
+    """Small non-link badge for a miscellaneous sourcebook tag (e.g. PG2)."""
+    attr = escape_html_attr(tag)
+    return (
+        f'<span class="source-pill source-pill-edition" '
+        f'title="{attr}" onclick="event.stopPropagation()">{tag}</span>'
     )
 
 

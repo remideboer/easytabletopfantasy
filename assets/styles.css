@@ -879,6 +879,19 @@
       border-color:rgba(0,0,0,.2);
     }
   }
+  .source-pill-edition{
+    background:#5b6472;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+    cursor:default;
+  }
+  @media (prefers-color-scheme: dark){
+    .source-pill-edition{
+      background:#7c8798;
+      color:var(--bg-page);
+      border-color:rgba(0,0,0,.2);
+    }
+  }
   .lineage-toggle-icon{
     font-size:0.8em;
     transition:transform 0.2s ease;
@@ -3809,7 +3822,7 @@
   }
   .cs-combat-row{
     display:grid;
-    grid-template-columns:2fr 1fr 1fr;
+    grid-template-columns:2fr 1fr 1fr 1fr;
     gap:8px;
   }
   .cs-wd-grid,.cs-wd-row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
