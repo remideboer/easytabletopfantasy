@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classless (Optional Variant) | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="An optional classless variant for You-Meet-In-A-Tavern (YMIAT): train abilities with XP instead of taking a class, with a silver-standard economy." />
+<link rel="canonical" href="rules/classless.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+<meta property="og:title" content="Classless (Optional Variant) | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="An optional classless variant for You-Meet-In-A-Tavern (YMIAT): train abilities with XP instead of taking a class, with a silver-standard economy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/classless.html" />
+
+</head>
+<body>
+<header data-include="nav"></header>
+<main><h1>Classless (Optional Variant)</h1>
+<div class="layout">
+  <aside class="toc">
+    <h2>On this page</h2>
+    <div data-toc></div>
+  </aside>
+  <div class="content">
+  <p class="lede">Classless is an optional variant of <strong>You-Meet-In-A-Tavern</strong> (YMIAT) that removes the class chassis. Instead of picking a class and unlocking its features by level, you spend XP to train individual abilities from a shared pool, at your own pace. Everything else about YMIAT — the three abilities, Wounds and Defense, Lineage, Heritage, Background, Talents, and Magic — works exactly as described elsewhere in the rules unless this page says otherwise.</p>
+
+  <div class="callout note">
+    <p class="callout-title">Use this page instead of Classes</p>
+    <p>Classless replaces <a href="classes.html">Classes</a> as the character chassis. Everywhere else in the rules that says "your class determines…", read it as "your trained abilities determine…" for a Classless character. This is a Game Master option — agree on it with your table before character creation.</p>
+  </div>
+
+  <hr>
+  <h2 id="what-changes">What Changes</h2>
+  <ul>
+    <li><strong>No classes.</strong> Skip the "Choose a Class" step entirely. There is no class list, no per-class proficiencies, and no fixed spellcasting ability tied to a class.</li>
+    <li><strong>Max Wounds is flat.</strong> Every Classless character starts with the same base instead of a class start value; see <a href="#max-wounds-classless">Max Wounds</a> below.</li>
+    <li><strong>Abilities are trained, not granted.</strong> Features that would normally come from a class or level (Rage, Sneak Attack, Spellcasting, and so on) are instead learned individually by spending XP; see <a href="#trained-abilities">Trained Abilities</a>.</li>
+    <li><strong>Silver is the everyday coin.</strong> Gold is rare and mostly a store of value, not pocket change. Starting funds and equipment prices are in silver pieces (SP); see <a href="#currency-classless">Currency</a>.</li>
+    <li><strong>Lineage, Heritage, and Background are unchanged</strong> — you still choose all three as normal.</li>
+  </ul>
+
+  <hr>
+  <h2 id="character-creation-classless">Character Creation (Classless)</h2>
+  <p>Follow the same overall flow as standard <a href="characters.html">Character Creation</a>, with the class step replaced:</p>
+  <ol>
+    <li><a href="characters.html#character-concept">Character Concept</a> — as usual.</li>
+    <li>Determine <a href="characters.html#determine-ability-scores">Ability Scores</a> (Fitness, Insight, Willpower) — as usual, using Point-Buy or Standard Array.</li>
+    <li>Choose a <a href="lineages.html">Lineage</a> — as usual.</li>
+    <li>Choose a <a href="heritages.html">Heritage</a> — as usual.</li>
+    <li>Choose a <a href="backgrounds.html">Background</a> for its skills, tool/language proficiencies, and talent choice. <strong>Ignore its listed starting money and equipment package</strong> — Classless characters buy their own gear (see <a href="#currency-classless">Currency</a>).</li>
+    <li>Pick your <strong>starting trained ability</strong> — one ability from the curated Classless ability list, free of charge; see <a href="#trained-abilities">Trained Abilities</a>.</li>
+    <li>Spend your <strong>starting silver</strong> on equipment from the <a href="gear.html">Gear</a> tables.</li>
+  </ol>
+
+  <hr>
+  <h2 id="max-wounds-classless">Max Wounds</h2>
+  <p>Classless characters calculate Max Wounds without a class start value:</p>
+  <div class="formula-box">
+    <span class="formula-label">Max Wounds (Classless)</span>
+    <span class="formula-equation">
+      <span class="variable">Max Wounds</span>
+      <span class="operator">=</span>
+      <span>4</span>
+      <span class="operator">+</span>
+      <span class="variable">Fitness modifier</span>
+    </span>
+  </div>
+  <p>There is no automatic per-level increase, since Classless characters don't gain class levels. Instead, Max Wounds only goes up when you train an ability that says so — for example the <a href="talents.html#combat-conditioning">Combat Conditioning</a> talent, or an equivalent entry from the curated ability list. Everything else about Wounds — how they're inflicted, how they're healed, hearts, weakening, and Death Saves — works exactly as described in <a href="core.html#wounds-and-scale">Wounds and Scale</a> and <a href="combat.html">Combat</a>.</p>
+
+  <hr>
+  <h2 id="trained-abilities">Trained Abilities (XP Economy)</h2>
+  <p>In standard YMIAT, class features unlock automatically as you level. In Classless, there is no level gate — instead, every ability (from any class, plus general Talents) is drawn from one shared pool, and you unlock it by spending accumulated XP on it directly. Think of it as paying for training time rather than for character sheet space.</p>
+  <p>As in the core rules (see <a href="core.html#level-advancement">Level Advancement</a>), a newly trained ability doesn't come online mid-scene — it becomes usable after a <strong>long rest</strong> or a period of dedicated <strong>study or practice</strong> (Game Master's discretion), reflecting the time it takes to actually learn it.</p>
+
+  <h3 id="starting-ability">Starting Ability</h3>
+  <p>At creation, choose <strong>one ability</strong> free of charge from the curated Classless ability list.</p>
+  <div class="callout note">
+    <p class="callout-title">TODO — curated ability list</p>
+    <p>The actual list of which class features and Talents are available to train, and any prerequisites between them (for example requiring a basic attack ability before an upgraded version of it), still needs to be curated from <a href="classes.html">Classes</a>, <a href="class-abilities/index.html">Class Abilities</a>, and <a href="talents.html">Talents</a>. Until that list exists, use Game Master judgment: reasonable starting picks are single, self-contained 1st-level features (Rage, Bardic Inspiration, Sneak Attack, a single school of Spellcasting, and similar).</p>
+  </div>
+
+  <h3 id="training-cost">Training Cost</h3>
+  <p>Each further ability costs XP to train. The exact cost per ability is still being tuned alongside the curated list above — treat the table below as a starting default you can adjust for your table, not a final number.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Tier</th><th>Suggested XP Cost</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Minor</td><td>50 XP</td><td>A skill/tool proficiency, a small utility feature</td></tr>
+        <tr><td>Core</td><td>150 XP</td><td>Rage, Sneak Attack, Bardic Inspiration, a single Spellcasting school</td></tr>
+        <tr><td>Major</td><td>300 XP</td><td>Extra Attack, Wild Shape, full multi-school Spellcasting</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>These costs are pitched against the same scale as normal leveling (100 XP per level, see <a href="core.html#experience-points">Experience Points</a>), so a Core ability costs roughly as much XP as reaching character level 2. Subclass-style abilities and repeatable Talents (like <a href="talents.html#ability-score-improvement">Ability Score Improvement</a>) can be trained the same way, at Game Master discretion.</p>
+
+  <hr>
+  <h2 id="currency-classless">Currency: Silver Standard</h2>
+  <p>Classless assumes a lower-magic, more historically grounded economy: silver is the coin ordinary people actually use, and gold is uncommon enough to be a notable find rather than pocket change.</p>
+  <ul>
+    <li><strong>Starting funds:</strong> every Classless character begins with <strong>100 SP</strong>, regardless of Background.</li>
+    <li><strong>Equipment prices:</strong> use the SP/CP prices already listed on the <a href="gear.html">Gear</a> page — for example, a shortsword costs 60 SP.</li>
+    <li><strong>Gold pieces (GP)</strong> still exist as a rare, high-value coin (roughly 10 SP per GP) for treasure and big-ticket transactions, but new characters don't start with any.</li>
+  </ul>
+  <div class="callout warning">
+    <p class="callout-title">Ignore Background gold amounts</p>
+    <p><a href="backgrounds.html">Backgrounds</a> still list legacy starting money in gold pieces (a holdover that hasn't been converted to the silver-standard economy). For Classless characters, ignore that figure entirely and use the flat 100 SP above instead.</p>
+  </div>
+
+  <hr>
+  <h2 id="everything-else">Everything Else Stays the Same</h2>
+  <p>Classless only touches the character chassis, ability training, and starting currency. Everything else in the core rules applies unchanged:</p>
+  <ul>
+    <li><a href="core.html">Core Rules</a> — dice and tests, proficiency and advantage, skills, Resolve, rests.</li>
+    <li><a href="combat.html">Combat</a> — attacks, Defense, Life/Death Saves.</li>
+    <li><a href="lineages.html">Lineages</a>, <a href="heritages.html">Heritages</a>, and <a href="backgrounds.html">Backgrounds</a> — chosen exactly as normal (aside from the equipment override above).</li>
+    <li><a href="talents.html">Talents</a> — part of the same trained-ability pool as class features.</li>
+    <li><a href="magic.html">Magic</a> — spells work the same once a character has trained the relevant Spellcasting ability.</li>
+  </ul>
+
+  <hr>
+  <h2 id="open-design-questions">Open Design Questions</h2>
+  <div class="callout note">
+    <p class="callout-title">Still to decide</p>
+    <ul>
+      <li>The full curated list of trainable abilities (which class features and Talents are included, and in what form).</li>
+      <li>Final XP costs per ability — the tiers above are a placeholder.</li>
+      <li>Whether some abilities need prerequisites (e.g. training an upgraded feature before its base version) or a "tier cap" tied to total XP spent, to keep power roughly in line with a same-XP class character.</li>
+      <li>How multiclass-style spellcasting (multiple schools) should be priced relative to a single-school pick.</li>
+    </ul>
+  </div>
+  </div>
+</div></main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>
