@@ -50,6 +50,10 @@
     return String(n);
   }
 
+  function heartsLost(c) {
+    return 3 - (c.hearts ?? 3);
+  }
+
   function escapeHtml(s) {
     return String(s ?? "")
       .replace(/&/g, "&amp;")
@@ -278,6 +282,12 @@
     const deadIconHtml = c.hearts <= 0
       ? `<img src="assets/dead-head.svg" class="cls-dead-icon" alt="Dead" aria-hidden="true" />`
       : "";
+    const lost = heartsLost(c);
+    const penaltyNoteHtml = c.hearts <= 0
+      ? `<p class="cs-penalty-note">Dead</p>`
+      : lost
+        ? `<p class="cs-penalty-note">−${lost} to each ability mod, −${5 * lost} ft speed, −${2 * lost} Max WD</p>`
+        : "";
 
     const abilityLinesHtml = c.abilityLines.map((val, i) =>
       `<textarea class="cs-input cls-ability-line" rows="1" data-ability-line="${i}" placeholder="Trained ability…" aria-label="Ability ${i + 1}">${escapeHtml(val)}</textarea>`
@@ -298,6 +308,7 @@
               <div class="cs-hearts" role="group" aria-label="Life hearts">${heartsHtml}</div>
             </div>
             ${stepper("hearts", c.hearts, "Hearts", { min: 0, max: 3, display: String(c.hearts) })}
+            ${penaltyNoteHtml}
           </div>
         </div>
 

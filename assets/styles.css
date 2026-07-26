@@ -3767,7 +3767,7 @@
     color:#c0392b;
   }
   .cs-heart.is-empty{color:var(--line);opacity:.7}
-  .cs-penalty-note{font-size:.78rem;color:#922b21;margin:4px 0 0}
+  .cs-penalty-note{font-size:.78rem;color:#922b21;margin:4px 0 0;text-align:center}
   .cs-level-control{text-align:center;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px}
   .cs-level-circle{
     width:56px;height:56px;
