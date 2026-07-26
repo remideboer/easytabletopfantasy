@@ -49,7 +49,7 @@
     <li>Choose a <a href="lineages.html">Lineage</a> — as usual.</li>
     <li>Choose a <a href="heritages.html">Heritage</a> — as usual.</li>
     <li>Choose a <a href="backgrounds.html">Background</a> for its skills, tool/language proficiencies, and talent choice. <strong>Ignore its listed starting money and equipment package</strong> — Classless characters buy their own gear (see <a href="#currency-classless">Currency</a>).</li>
-    <li>Spend your <strong>starting XP budget</strong> (200 XP) on trained abilities from the curated Classless ability list; see <a href="#trained-abilities">Trained Abilities</a>.</li>
+    <li>Spend your <strong>starting XP budget</strong> (20 XP) on trained abilities from the curated Classless ability list; see <a href="#trained-abilities">Trained Abilities</a>.</li>
     <li>Spend your <strong>starting silver</strong> on equipment from the <a href="gear.html">Gear</a> tables.</li>
   </ol>
 
@@ -75,12 +75,30 @@
   <p>In standard YMIAT, class features unlock automatically as you level. In Classless, there is no level gate — instead, every ability (from any class, plus general Talents) is drawn from one shared pool, and you unlock it by spending accumulated XP on it directly. Think of it as paying for training time rather than for character sheet space.</p>
   <p>As in the core rules (see <a href="core.html#level-advancement">Level Advancement</a>), a newly trained ability doesn't come online mid-scene — it becomes usable after a <strong>long rest</strong> or a period of dedicated <strong>study or practice</strong> (Game Master's discretion), reflecting the time it takes to actually learn it.</p>
 
+  <h3 id="earning-xp">Earning XP</h3>
+  <p>Classless training costs run on their own, much smaller scale than standard leveling, so award XP using this table instead of the core <a href="core.html#experience-points">Experience Points</a> award table:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Difficulty</th><th>XP Awarded</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Trivial</td><td>0</td></tr>
+        <tr><td>Easy</td><td>1</td></tr>
+        <tr><td>Moderate</td><td>2</td></tr>
+        <tr><td>Hard</td><td>3</td></tr>
+        <tr><td>Near Impossible</td><td>5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Award XP for any resolved challenge that mattered to the outcome — a combat encounter, a piece of roleplaying that changed the situation, a puzzle solved, a trap disarmed, or similar — using the difficulty that best fits, the same judgment call as the core rules, just on this smaller scale.</p>
+
   <h3 id="starting-ability">Starting XP Budget</h3>
-  <p>At creation, you have a budget of <strong>200 XP</strong> to spend on trained abilities from the curated Classless ability list, at the same costs as normal training (see <a href="#training-cost">Training Cost</a> below). You can split it across more than one ability if you can afford them. Any XP you don't spend isn't lost — it carries over as banked XP toward whatever you train next.</p>
-  <p><strong>Major-tier abilities (300 XP) cost more than your entire starting budget and can't be trained at creation</strong> — that includes <a href="#spellcasting-classless">Spellcasting</a>. Classless characters start as non-casters and train into Spellcasting once they've earned enough XP in play.</p>
+  <p>At creation, you have a budget of <strong>20 XP</strong> to spend on trained abilities from the curated Classless ability list, at the same costs as normal training (see <a href="#training-cost">Training Cost</a> below). You can split it across more than one ability if you can afford them. Any XP you don't spend isn't lost — it carries over as banked XP toward whatever you train next.</p>
+  <p><strong>Major-tier abilities (30 XP) cost more than your entire starting budget and can't be trained at creation.</strong> Your first <a href="#spellcasting-classless">Spellcasting</a> source and style is Core tier (15 XP), not Major, so it fits your starting budget with 5 XP to spare — a starting Classless character can be a spellcaster from level 1.</p>
   <div class="callout note">
     <p class="callout-title">TODO — curated ability list</p>
-    <p>The actual list of which class features and Talents are available to train, and any prerequisites between them (for example requiring a basic attack ability before an upgraded version of it), still needs to be curated from <a href="classes.html">Classes</a>, <a href="class-abilities/index.html">Class Abilities</a>, and <a href="talents.html">Talents</a>. Until that list exists, use Game Master judgment: reasonable starting picks within 200 XP are single, self-contained 1st-level features (Rage, Bardic Inspiration, Sneak Attack, and similar), and/or a level of <a href="#toughness">Toughness</a>.</p>
+    <p>The actual list of which class features and Talents are available to train, and any prerequisites between them (for example requiring a basic attack ability before an upgraded version of it), still needs to be curated from <a href="classes.html">Classes</a>, <a href="class-abilities/index.html">Class Abilities</a>, and <a href="talents.html">Talents</a>. Until that list exists, use Game Master judgment: reasonable starting picks within 20 XP are single, self-contained 1st-level features (Rage, Bardic Inspiration, Sneak Attack, and similar), a level of <a href="#toughness">Toughness</a>, and/or <a href="#spellcasting-classless">Spellcasting</a> in a single source and style.</p>
   </div>
 
   <h3 id="toughness">Toughness (Leveled Ability)</h3>
@@ -91,7 +109,7 @@
     <span class="formula-equation">
       <span class="variable">XP cost</span>
       <span class="operator">=</span>
-      <span>100</span>
+      <span>10</span>
       <span class="operator">×</span>
       <span class="variable">Toughness level</span>
     </span>
@@ -102,24 +120,24 @@
         <tr><th>Toughness Level</th><th>Max Wounds Bonus</th><th>XP to Train This Level</th><th>Cumulative XP Spent</th></tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>+1</td><td>100 XP</td><td>100 XP</td></tr>
-        <tr><td>2</td><td>+2</td><td>200 XP</td><td>300 XP</td></tr>
-        <tr><td>3</td><td>+3</td><td>300 XP</td><td>600 XP</td></tr>
-        <tr><td>4</td><td>+4</td><td>400 XP</td><td>1,000 XP</td></tr>
-        <tr><td>5</td><td>+5</td><td>500 XP</td><td>1,500 XP</td></tr>
+        <tr><td>1</td><td>+1</td><td>10 XP</td><td>10 XP</td></tr>
+        <tr><td>2</td><td>+2</td><td>20 XP</td><td>30 XP</td></tr>
+        <tr><td>3</td><td>+3</td><td>30 XP</td><td>60 XP</td></tr>
+        <tr><td>4</td><td>+4</td><td>40 XP</td><td>100 XP</td></tr>
+        <tr><td>5</td><td>+5</td><td>50 XP</td><td>150 XP</td></tr>
       </tbody>
     </table>
   </div>
-  <p>Toughness is a Trained Ability like any other, so it can be trained from your <a href="#starting-ability">starting XP budget</a>: level 1 costs 100 XP, leaving 100 XP for something else. Level 2 costs 200 XP more (300 XP total) — already more than the whole starting budget — so most starting characters cap out at Toughness level 1, if they take it at all. It isn't mandatory; a character who never trains it simply keeps Max Wounds = 4 + Fitness modifier.</p>
+  <p>Toughness is a Trained Ability like any other, so it can be trained from your <a href="#starting-ability">starting XP budget</a>: level 1 costs 10 XP, leaving 10 XP for something else. Level 2 costs 20 XP more (30 XP total) — already more than the whole starting budget — so most starting characters cap out at Toughness level 1, if they take it at all. It isn't mandatory; a character who never trains it simply keeps Max Wounds = 4 + Fitness modifier.</p>
 
   <h3 id="spellcasting-classless">Spellcasting</h3>
-  <p>Spellcasting is a Trained Ability like any other, but a heavier one — it opens an entire spell list rather than a single feature, and costs the <strong>Major</strong> tier, 300 XP (see <a href="#training-cost">Training Cost</a> below). That's more than the entire <a href="#starting-ability">starting XP budget</a>, so Spellcasting can't be trained at creation — Classless characters start as non-casters and train into it once they've earned enough XP in play.</p>
+  <p>Spellcasting is a Trained Ability like any other. Your first source and style costs the <strong>Core</strong> tier, 15 XP (see <a href="#training-cost">Training Cost</a> below) — it fits within your <a href="#starting-ability">starting XP budget</a>, so Spellcasting can be trained at creation. Training an <em>additional</em> source or style later (multiple traditions of magic at once) is a heavier ask and costs the <strong>Major</strong> tier, 30 XP, each time.</p>
   <p><strong>Prerequisite:</strong> a <strong>+1 or better modifier</strong> in whichever ability powers your spells (see "Casting ability" below). You can't train Spellcasting through an ability that's still +0 or negative.</p>
   <p>Training Spellcasting means making three choices:</p>
   <ul>
     <li><strong>Source of magic</strong> — which spell list you draw from: <strong>Arcane</strong>, <strong>Nature</strong>, <strong>Mystic</strong> (includes Divine), or <strong>Hex</strong>. The <a href="magic.html">Magic</a> page doesn't have a source filter, only class and school filters — as a rule of thumb, use the class filter: Arcane ≈ Wizard/Sorcerer/Artificer spells, Nature ≈ Druid/Ranger spells, Mystic ≈ Cleric/Paladin (Divine) spells, Hex ≈ Warlock/Witch spells. Bard spells can slot into whichever source fits your concept.</li>
     <li><strong>Casting ability</strong> — Insight or Willpower. Its modifier is your <strong>spellcasting modifier</strong>, used for Spell Power, spell attack rolls and save DCs, and everything else in <a href="core.html#magic-and-spell-resources">Magic and Spell Resources</a>, unchanged from the core rules.</li>
-    <li><strong>Casting style</strong> — <strong>Prepared</strong> or <strong>Known</strong>, below. Training a second source or a second style later is a separate Major (300 XP) purchase each time — it isn't discounted for already being a caster.</li>
+    <li><strong>Casting style</strong> — <strong>Prepared</strong> or <strong>Known</strong>, below. Training a second source or a second style later is a separate Major (30 XP) purchase each time — it isn't discounted for already being a caster.</li>
   </ul>
   <div class="table-wrap">
     <table>
@@ -146,13 +164,13 @@
         <tr><th>Tier</th><th>Suggested XP Cost</th><th>Example</th></tr>
       </thead>
       <tbody>
-        <tr><td>Minor</td><td>50 XP</td><td>A skill/tool proficiency, a small utility feature</td></tr>
-        <tr><td>Core</td><td>150 XP</td><td>Rage, Sneak Attack, Bardic Inspiration, a single Spellcasting school</td></tr>
-        <tr><td>Major</td><td>300 XP</td><td>Extra Attack, Wild Shape, <a href="#spellcasting-classless">Spellcasting</a> (per source trained)</td></tr>
+        <tr><td>Minor</td><td>5 XP</td><td>A skill/tool proficiency, a small utility feature</td></tr>
+        <tr><td>Core</td><td>15 XP</td><td>Rage, Sneak Attack, Bardic Inspiration, your first <a href="#spellcasting-classless">Spellcasting</a> source and style</td></tr>
+        <tr><td>Major</td><td>30 XP</td><td>Extra Attack, Wild Shape, an <em>additional</em> <a href="#spellcasting-classless">Spellcasting</a> source or style</td></tr>
       </tbody>
     </table>
   </div>
-  <p>These costs are pitched against the same scale as normal leveling (100 XP per level, see <a href="core.html#experience-points">Experience Points</a>), so a Core ability costs roughly as much XP as reaching character level 2. Subclass-style abilities and repeatable Talents (like <a href="talents.html#ability-score-improvement">Ability Score Improvement</a>) can be trained the same way, at Game Master discretion.</p>
+  <p>Classless runs on its own, smaller XP scale — these costs are roughly a tenth of standard YMIAT's leveling thresholds (see <a href="core.html#experience-points">Experience Points</a>), not directly comparable to them. Subclass-style abilities and repeatable Talents (like <a href="talents.html#ability-score-improvement">Ability Score Improvement</a>) can be trained the same way, at Game Master discretion.</p>
 
   <hr>
   <h2 id="currency-classless">Currency: Silver Standard</h2>
