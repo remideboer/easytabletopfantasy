@@ -157,6 +157,36 @@
   <p><strong>Cantrips</strong> are castable at will for both styles: no Spell Power cost, and no roll to cast. Unlike your learned/known spell counts, your cantrip count isn't fixed at training — it recalculates automatically whenever your spellcasting modifier changes (for example after training a level of <a href="talents.html#ability-score-improvement">Ability Score Improvement</a>).</p>
   <p>Beyond the starting values above, growing your spell list is a matter of play, not a fixed price: train a new spell for XP, pay a trainer or scribe in coin, or find one in the field (a scroll to copy, a rival's spellbook, a ritual taught by an NPC). The Game Master adjudicates cost and availability case by case. For a Known caster, only <em>training</em> (spending XP) actually adds the new spell to their fixed list — coin or in-fiction discovery can locate a spell to learn, but the XP is still what makes it stick.</p>
 
+  <h3 id="weapon-armor-proficiency">Weapon and Armor Proficiency</h3>
+  <p>Weapon proficiency adds your <strong>Fitness modifier</strong> to the attack roll. Without the matching proficiency, you can still use a weapon, but you don't add Fitness modifier — the attack roll uses only the weapon's plain attack bonus.</p>
+  <div class="formula-box">
+    <span class="formula-label">Weapon Attack Roll (Classless)</span>
+    <span class="formula-equation">
+      <code class="dice">d20</code>
+      <span class="operator">+</span>
+      <span class="variable">weapon attack bonus</span>
+      <span class="operator">+</span>
+      <span class="variable">Fitness modifier (if proficient)</span>
+    </span>
+  </div>
+  <p>Armor proficiency keeps the core <a href="core.html#armor-and-defense">Armor and Defense</a> penalties for wearing armor above your trained category — training the abilities below just raises which category you're proficient in. Per step above your proficiency, you gain one level of stacking disadvantage on all d20 rolls made in that armor, including Fitness checks, Defense rolls, and spellcasting rolls for spells with a somatic component.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Ability</th><th>XP Cost</th><th>Prerequisite</th><th>Effect</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Light Armor Proficiency</td><td>2 XP</td><td>—</td><td>Proficient wearing light armor; not hindered in movement by it.</td></tr>
+        <tr><td>Medium Armor Proficiency</td><td>5 XP</td><td>Light Armor Proficiency</td><td>Proficient wearing medium armor; not hindered in movement by it.</td></tr>
+        <tr><td>Heavy Armor Proficiency</td><td>10 XP</td><td>Medium Armor Proficiency, +1 Fitness modifier</td><td>Proficient wearing heavy armor; not hindered in movement by it.</td></tr>
+        <tr><td>Simple Melee Weapon Proficiency</td><td>2 XP</td><td>—</td><td>Proficient wielding simple melee weapons; add Fitness modifier to attack rolls made with them.</td></tr>
+        <tr><td>Martial Melee Weapon Proficiency</td><td>2 XP</td><td>Simple Melee Weapon Proficiency</td><td>Proficient wielding martial melee weapons; add Fitness modifier to attack rolls made with them.</td></tr>
+        <tr><td>Simple Ranged Weapon Proficiency</td><td>2 XP</td><td>—</td><td>Proficient using simple ranged weapons; add Fitness modifier to attack rolls made with them.</td></tr>
+        <tr><td>Martial Ranged Weapon Proficiency</td><td>5 XP</td><td>Simple Ranged Weapon Proficiency</td><td>Proficient using martial ranged weapons; add Fitness modifier to attack rolls made with them.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <h3 id="training-cost">Training Cost (Other Abilities)</h3>
   <p>Toughness above has its own fixed cost formula because it's leveled. Every other (one-off) trained ability costs a flat amount of XP. The exact cost per ability is still being tuned alongside the curated list above — treat the table below as a starting default you can adjust for your table, not a final number.</p>
   <div class="table-wrap">
@@ -202,7 +232,7 @@
   <div class="callout note">
     <p class="callout-title">Still to decide</p>
     <ul>
-      <li>The full curated list of trainable abilities (which class features and Talents are included, and in what form). <a href="#toughness">Toughness</a> and <a href="#spellcasting-classless">Spellcasting</a> are now defined; everything else is still open.</li>
+      <li>The full curated list of trainable abilities (which class features and Talents are included, and in what form). <a href="#toughness">Toughness</a>, <a href="#spellcasting-classless">Spellcasting</a>, and <a href="#weapon-armor-proficiency">Weapon and Armor Proficiency</a> are now defined; everything else is still open.</li>
       <li>Final XP costs for one-off abilities — the tiers in <a href="#training-cost">Training Cost</a> are a placeholder (Toughness and Spellcasting have fixed costs, see above).</li>
       <li>Whether some abilities need prerequisites (e.g. training an upgraded feature before its base version) or a "tier cap" tied to total XP spent, to keep power roughly in line with a same-XP class character.</li>
       <li>Exact prices for learning spells beyond a caster's starting count.</li>
