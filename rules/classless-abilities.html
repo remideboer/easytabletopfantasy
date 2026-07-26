@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classless Abilities | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="The curated list of trainable abilities for the Classless XP economy: what they cost, what they require, and what they do." />
+<link rel="canonical" href="rules/classless-abilities.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+<meta property="og:title" content="Classless Abilities | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="The curated list of trainable abilities for the Classless XP economy: what they cost, what they require, and what they do." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/classless-abilities.html" />
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Classless Abilities</h1>
+  <div class="content">
+    <p class="lede">The curated list of abilities you can train with XP under <a href="classless.html">Classless</a> — what each one costs, what it requires, and what it does. For how training, budgets, and costs actually work, see Classless's <a href="classless.html#trained-abilities">Trained Abilities</a> section.</p>
+
+    <div class="callout note">
+      <p class="callout-title">Already documented on the Classless Rules page</p>
+      <p>A few foundational abilities have their own formulas and tables, so they stay on the main <a href="classless.html">Classless</a> page instead of being repeated here:</p>
+      <ul>
+        <li><a href="classless.html#toughness">Toughness</a> — the leveled Max Wounds ability.</li>
+        <li><a href="classless.html#spellcasting-classless">Spellcasting</a> — choosing a source, casting ability, and Prepared/Known style. The <em>Spellcasting: Prepared</em> entry some tables use is the same ability, just named after one of its two styles.</li>
+        <li><a href="classless.html#weapon-armor-proficiency">Weapon and Armor Proficiency</a> — light/medium/heavy armor and simple/martial melee/ranged weapons.</li>
+      </ul>
+    </div>
+
+    <div class="lineages-controls">
+      <button class="lineage-control-btn" onclick="expandAllAbilities()">Expand All</button>
+      <button class="lineage-control-btn" onclick="collapseAllAbilities()">Collapse All</button>
+    </div>
+
+    <h2 id="universal">Universal</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="improvement">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Improvement — 20 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Ability increases or a utility talent. Increase a single ability modifier by 1.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="combat-techniques">Combat Techniques</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="last-stand">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Last Stand — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Emergency healing when badly wounded.</p>
+          <p><strong>Reaction.</strong> When damage would bring your Wounds above half your Max Wounds, use your reaction to heal Wounds equal to your Fitness modifier. Uses equal to your Fitness modifier per rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="action-surge">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Action Surge — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Gain an additional action on your turn.</p>
+          <p>On your turn, gain another action in addition to your normal action. Uses equal to your Fitness modifier per rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="multiattack">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Multiattack — 20 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Multiple attacks per Attack action.</p>
+          <p>Make two attacks with the Attack action.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="barbaric-fury">Barbaric Fury</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="rage">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rage — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Primal fury as a free action; bonus damage and physical resilience.</p>
+          <p><strong>Free action.</strong> In battle, you fight with primal ferocity. On your turn, you can rage as a free action.</p>
+          <p>While raging (and not wearing heavy armor): you have advantage on Fitness ability checks and saves. Each time you get hit, your rage counter increases by 1 to a maximum of 1 + your Fitness modifier. You can use these rage points to add to your attack roll. You cannot cast spells or concentrate on them while raging.</p>
+          <p>Your rage lasts 1 minute. It ends early if you are knocked unconscious, or if your turn ends and you have not attacked a hostile creature or taken damage from one since the start of your last turn. You can end rage early as a free action. Uses equal to your Fitness modifier per rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="unarmored-defense">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Unarmored Defense — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>High Defense without armor when relying on raw toughness.</p>
+          <p>While you are not wearing armor, your Defense equals 2 × your Fitness modifier. You can use a shield and still gain this benefit.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="reckless-attack">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Reckless Attack — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Trade defense for ferocious accuracy.</p>
+          <p>When you make an attack on your turn, you can attack recklessly. You have advantage on melee weapon attack rolls using Fitness during this turn, but you have disadvantage on your Defense roll until the start of your next turn.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="brutal-critical">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Brutal Critical — 20 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Expanded critical range and extra critical damage dice.</p>
+          <p>You score a critical hit on a d20 roll of 19 or 20 with melee weapons and unarmed strikes. Your critical hits also "explode," meaning you can roll for an extra attack. This effect stacks.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="retaliation">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Retaliation — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Close on attacker and strike back.</p>
+          <p><strong>Reaction.</strong> When a creature hits or misses you with an attack, you can use your reaction to move up to half your speed toward that creature and make a single melee attack against it. If the creature is Large or larger, you have advantage on the attack roll.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="precision-and-stealth">Precision and Stealth</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="sneak-attack">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sneak Attack — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Extra precision damage once per turn.</p>
+          <p>Once per turn, deal an extra Wound when you hit with a finesse or ranged weapon if you have advantage, or if an ally is within 5 feet of the target.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="cunning-action">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cunning Action — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Dash, Disengage, or Hide as a free action.</p>
+          <p><strong>Free action.</strong> On your turn, use a free action to Dash, Disengage, or Hide.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="uncanny-dodge">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Uncanny Dodge — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Halve damage from one attack.</p>
+          <p><strong>Reaction.</strong> When an attacker you can see hits you, use your reaction to halve the Wounds from that attack.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="evasion">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Evasion — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Negate area damage on successful saves.</p>
+          <p>On successful Fitness saves against area effects, take no Wounds; half on a failure.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="precise-critical">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Precise Critical — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Critical hits on 19–20 with finesse/ranged.</p>
+          <p>Score a critical hit on a d20 roll of 19 or 20 with finesse or ranged weapons.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="mystic-channel">Mystic Channel</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="mystic-channel">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystic Channel — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Channel Mystical energy beyond spells.</p>
+          <p><strong>Action.</strong> You channel Mystical energy. Choose one Mystic Channel option as your first channeling ability. Uses equal to your Fitness modifier per rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="turn-the-unholy">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Turn the Unholy — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Mystic Channel</p>
+          <p>Turn fiends and undead.</p>
+          <p><strong>Action.</strong> You channel Mystical light. Each Fiend and Undead of your choice within 30 feet that can see or hear you makes an Insight save against your spell save DC. On a failure, the creature is turned for 1 minute or until it takes Wounds.</p>
+          <p>A turned creature must move away from you and can only Dash or Dodge on its turn.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="mystic-channel-preserve-life">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystic Channel: Preserve Life — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Mystic Channel</p>
+          <p>Channel life energy to distribute healing among nearby allies.</p>
+          <p><strong>Action.</strong> Channel Mystical life force to restore Wounds equal to 5 × your spellcasting modifier, divided among creatures within 30 feet. No creature can be restored above half its Max Wounds. No effect on Constructs or Undead.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="disciple-of-life">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Disciple of Life — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Mystic Channel: Preserve Life</p>
+          <p>Healing spells restore extra Wounds.</p>
+          <p>When you cast a Mystical spell of 1st level or higher to restore Wounds, the target regains double the amount of Wounds the spell would normally restore.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="mystical-warrior">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystical Warrior — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Spellcasting (Mystic)</p>
+          <p>Martial weapon proficiency and Mystical-based attacks.</p>
+          <p>You gain proficiency with martial weapons. You can use your spellcasting modifier for attack rolls with martial weapons.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="natures-call">Nature's Call</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="natures-call">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Nature's Call — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Spellcasting (Nature)</p>
+          <p>Channel nature for beast forms and spell recovery.</p>
+          <p>You channel nature as a free action (Beast Form) or an action (Draw Power). Uses equal to your spellcasting modifier per rest.</p>
+          <p><strong>Beast Form.</strong> Assume a known beast form up to the level of your spellcasting modifier ÷ 2, rounded up. You assume the chosen beast form's stat block, but keep your Insight and Willpower modifiers.</p>
+          <p><strong>Draw Power.</strong> Recover Spell Power up to the amount of your spellcasting modifier. You can't use this while transformed.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="potent-beast-forms">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Potent Beast Forms — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Nature's Call</p>
+          <p>Higher-level beast forms; speak while transformed.</p>
+          <p>Assume a known beast form up to the level of your spellcasting modifier. You use the creature's Max Wounds when you transform. You can speak languages you know in beast form, but still can't cast spells.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="lay-on-hands">Lay on Hands</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="lay-on-hands">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Lay on Hands — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Pool of healing touch.</p>
+          <p><strong>Action.</strong> You have a pool of healing power equal to 2 + your Willpower modifier, restored on a rest. Touch a creature and heal Wounds from the pool. Spend 2 healing from the pool to cure one disease or poison.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="marking-and-stealth">Marking and Stealth</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="mystic-mark">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystic Mark — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Mark quarry for extra accuracy.</p>
+          <p>When you hit a creature, mark it for 1 minute. While marked, you add a bonus to your attack rolls against it equal to your Fitness modifier. Uses equal to your Fitness modifier per rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="stalkers-step">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Stalker's Step — 5 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Vanish in natural cover.</p>
+          <p><strong>Action.</strong> In dim light, darkness, or natural obscurement, become invisible until your next turn (ends early if you attack or cast a spell). Uses equal to your Fitness modifier per rest.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="sorcerous-renewal">Sorcerous Renewal</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="sorcerous-renewal">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sorcerous Renewal — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Spellcasting (Arcane, Known)</p>
+          <p>Recover Spell Power at will.</p>
+          <p>Recover Spell Power equal to your spellcasting modifier. Uses equal to your spellcasting modifier per rest.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="pact-magic">Pact Magic</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="pact-magic">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Pact Magic — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>You can cast magic because you made a pact with a powerful entity (your Patron).</p>
+          <p>You can cast spells using your Willpower modifier. Choose from a spell list fitting the patron you made a pact with. Roll to cast, to see if your patron wants to grant you the power at that moment: the DC to be able to cast is (11 + spell level) − your reputation with your patron. Reputation starts at 1 and increases by 1 each time you reach a milestone set by your patron. You can also lose reputation if your patron thinks you're acting against its interest.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="hex">Hex</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="hex">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hex — 5 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Spellcasting (Hex)</p>
+          <p>Curse foes.</p>
+          <p><strong>Action.</strong> Give a creature within 60 feet a Hex. When the target makes an attack roll, check, or save, it subtracts your spellcasting modifier from the roll or from its Defense. You can only Hex one creature at a time. Uses equal to your spellcasting modifier per rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="rending-hex">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rending Hex — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Hex</p>
+          <p>Hexed prey takes extra weapon damage.</p>
+          <p>When a hexed creature takes weapon damage, it takes an extra Wound. While below half Wounds, it must succeed on a Fitness save against your spell save DC or your allies gain advantage against it.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="epic-boons">Epic Boons</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="primal-champion">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Primal Champion — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Embody untamed power.</p>
+          <p>Your Fitness modifier increases by 2. Your maximum Fitness modifier is now +7.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="devastator">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Devastator — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Devastating blows that ignore defenses.</p>
+          <p>Once per turn when you hit with a weapon attack, deal extra Wounds equal to your Fitness modifier. This damage ignores immunity and can't be reduced.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="sure-shot">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sure Shot — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Turn failure into success.</p>
+          <p>Turn a missed attack into a hit. Uses equal to your Fitness modifier per rest.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="archdruid">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Archdruid — 50 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Prerequisite:</strong> Nature's Call, Insight modifier +5 or higher</p>
+          <p>Unlimited wild shape; effortless spellcasting.</p>
+          <p>Beast Form has unlimited uses. You can ignore verbal and somatic components of Nature spells, and material components without a listed cost.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script>
+function toggleAbilities(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const open = content.style.display === 'block' || content.classList.contains('expanded');
+  content.style.display = open ? 'none' : 'block';
+  content.classList.toggle('expanded', !open);
+  icon.textContent = open ? '▼' : '▲';
+  button.setAttribute('aria-expanded', open ? 'false' : 'true');
+}
+function expandAllAbilities(){
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='block'; c.classList.add('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▲');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','true'));
+}
+function collapseAllAbilities(){
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='none'; c.classList.remove('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▼');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','false'));
+}
+function expandAbilitiesFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target) return;
+  if(target.classList.contains('lineage-item')){
+    const content = target.querySelector('.lineage-content');
+    const button = target.querySelector('.lineage-header');
+    if(content && button){
+      content.style.display = 'block';
+      content.classList.add('expanded');
+      const icon = button.querySelector('.lineage-toggle-icon');
+      if(icon) icon.textContent = '▲';
+      button.setAttribute('aria-expanded', 'true');
+    }
+  }
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  collapseAllAbilities();
+  expandAbilitiesFromHash();
+});
+window.addEventListener('hashchange', expandAbilitiesFromHash);
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
