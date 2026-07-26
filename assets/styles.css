@@ -3995,6 +3995,15 @@
   }
   .cs-inv-slot.is-locked{background:var(--line);cursor:not-allowed}
 
+  /* Classless character sheet: ability-line list, details header + speed box */
+  .cs-field--xp{text-align:center}
+  .cls-hearts-row{display:flex;align-items:center;justify-content:center;gap:8px}
+  .cls-dead-icon{width:22px;height:22px;flex-shrink:0}
+  .cls-ability-lines{display:flex;flex-direction:column;gap:6px}
+  .cls-details-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .cls-details-header .cs-pane-title{flex:1;margin:0;padding:0;border:0}
+  .cls-stat-box--speed{padding:4px 8px;min-width:70px;flex-shrink:0}
+
   /* Spells pane + Manage Spells modal */
   .cs-pane--spells{margin-top:10px}
   .cs-pane-title--with-action{
