@@ -280,7 +280,7 @@
       : "";
 
     const abilityLinesHtml = c.abilityLines.map((val, i) =>
-      `<input type="text" class="cs-input cls-ability-line" data-ability-line="${i}" value="${escapeHtml(val)}" placeholder="Trained ability…" aria-label="Ability ${i + 1}" />`
+      `<textarea class="cs-input cls-ability-line" rows="1" data-ability-line="${i}" placeholder="Trained ability…" aria-label="Ability ${i + 1}">${escapeHtml(val)}</textarea>`
     ).join("");
 
     el.sheet.innerHTML = `
