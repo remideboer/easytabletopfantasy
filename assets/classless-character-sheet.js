@@ -54,6 +54,10 @@
     return 3 - (c.hearts ?? 3);
   }
 
+  function resolveMax(c) {
+    return 4 + Math.ceil((c.wil ?? 0) / 2);
+  }
+
   function escapeHtml(s) {
     return String(s ?? "")
       .replace(/&/g, "&amp;")
@@ -131,7 +135,7 @@
     c.ins = clamp(Number(c.ins) || 0, -5, 5);
     c.wil = clamp(Number(c.wil) || 0, -5, 5);
     c.def = clamp(Number(c.def) || 0, -5, 30);
-    c.res = clamp(Number(c.res) || 0, 0, 4);
+    c.res = clamp(Number(c.res) || 0, 0, resolveMax(c));
     c.spMax = Math.max(0, Number(c.spMax) || 0);
     c.spNow = clamp(Number(c.spNow) || 0, 0, c.spMax);
     c.wdMax = Math.max(1, Number(c.wdMax) || 1);
@@ -180,7 +184,7 @@
     } else if (id === "def") {
       char.def = clamp(char.def + delta, -5, 30);
     } else if (id === "res") {
-      char.res = clamp(char.res + delta, 0, 4);
+      char.res = clamp(char.res + delta, 0, resolveMax(char));
     } else if (id === "sp-max") {
       char.spMax = Math.max(0, char.spMax + delta);
       char.spNow = Math.min(char.spNow, char.spMax);
@@ -345,7 +349,7 @@
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">RES</span>
-            ${stepper("res", c.res, "Resolve", { min: 0, max: 4, display: String(c.res) })}
+            ${stepper("res", c.res, "Resolve", { min: 0, max: resolveMax(c), display: String(c.res) })}
           </div>
         </div>
 

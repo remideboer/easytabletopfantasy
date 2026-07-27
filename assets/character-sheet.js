@@ -220,11 +220,11 @@
     c.level = Math.min(10, Math.max(1, Number(c.level) || 1));
     c.xp = Math.max(0, Number(c.xp) || 0);
     c.hearts = Math.min(3, Math.max(0, Number.isFinite(Number(c.hearts)) ? Number(c.hearts) : 3));
-    c.resolve = Math.min(4, Math.max(0, Number(c.resolve) || 0));
     c.abilities = c.abilities || { fit: 0, ins: 0, wil: 0 };
     ABILITIES.forEach((a) => {
       c.abilities[a] = clampAbility(Number(c.abilities[a]) || 0);
     });
+    c.resolve = Math.min(resolveMax(c), Math.max(0, Number(c.resolve) || 0));
     c.woundsNow = Math.max(0, Number(c.woundsNow) || 0);
     c.woundsTemp = Math.max(0, Number(c.woundsTemp) || 0);
     c.armorId = typeof c.armorId === "string" ? c.armorId : "";
@@ -369,6 +369,10 @@
 
   function effectiveMod(c, ability) {
     return c.abilities[ability] + heartPenalties(c).ability;
+  }
+
+  function resolveMax(c) {
+    return 4 + Math.ceil(effectiveMod(c, "wil") / 2);
   }
 
   function findClass(c) {
@@ -1287,7 +1291,7 @@
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">Resolve</span>
-            ${stepper("resolve", c.resolve, "Resolve", { min: 0, max: 4, display: String(c.resolve) })}
+            ${stepper("resolve", c.resolve, "Resolve", { min: 0, max: resolveMax(c), display: String(c.resolve) })}
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">PB</span>
@@ -1971,7 +1975,7 @@
     } else if (id === "wd-tmp") {
       char.woundsTemp = Math.max(0, char.woundsTemp + delta);
     } else if (id === "resolve") {
-      char.resolve = Math.min(4, Math.max(0, char.resolve + delta));
+      char.resolve = Math.min(resolveMax(char), Math.max(0, char.resolve + delta));
     } else if (id === "sp-now") {
       char.spellPowerNow = Math.max(0, char.spellPowerNow + delta);
     }

@@ -365,15 +365,26 @@
 <p>Spells can also apply additional effects, such as fire, frost, control, or movement, as described in their individual entries.</p>
 <hr>
 <h3 id="resolve">Luck and Resolve</h3>
-<p>Resolve (also called <strong>Luck</strong> in some class features) represents a character’s growing determination and focus after setbacks. Each time a character fails a d20 test—no matter the type of roll—the character gains 1 Resolve. Resolve can accumulate, up to a maximum of 4.</p>
-<p>When a character with 4 Resolve fails a d20 test, roll a d20 to set their new Resolve value (replacing the previous total):</p>
+<p>Resolve (also called <strong>Luck</strong> in some class features) represents a character’s growing determination and focus after setbacks. Each time a character fails a d20 test—no matter the type of roll—the character gains 1 Resolve, or <strong>2 Resolve</strong> instead if the fail was a natural 1. Resolve can accumulate, up to a maximum based on Willpower:</p>
+<div class="formula-box">
+  <span class="formula-label">Maximum Resolve</span>
+  <span class="formula-equation">
+    <span class="variable">Max Resolve</span>
+    <span class="operator">=</span>
+    <span>4</span>
+    <span class="operator">+</span>
+    <span class="variable">⌈Willpower modifier ÷ 2⌉</span>
+  </span>
+</div>
+<p>Round the halved Willpower modifier up. For example, a +1 Willpower modifier gives Max Resolve = 4 + ⌈1 ÷ 2⌉ = 4 + 1 = 5.</p>
+<p>When a character at their maximum Resolve fails a d20 test, roll a d20 to set their new Resolve value (replacing the previous total). This reset roll always uses the same four bands below, no matter how high your maximum Resolve actually is:</p>
 <ul>
 <li><strong>1–5:</strong> Resolve becomes 1</li>
 <li><strong>6–10:</strong> Resolve becomes 2</li>
 <li><strong>11–15:</strong> Resolve becomes 3</li>
 <li><strong>16–20:</strong> Resolve becomes 4</li>
 </ul>
-<p>Resolve is then available as a resource to interact with advanced rules, features, or optional systems defined elsewhere in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) (for example, to boost rolls or activate special abilities).</p>
+<p><strong>Spending Resolve:</strong> spend Resolve on any d20 roll—attack roll, saving throw, ability check, or otherwise—to add the amount spent directly to that roll's result. Alternatively, spend <strong>3 Resolve</strong> to reroll the d20 entirely and use the new result instead. Resolve is also available to interact with advanced rules, features, or optional systems defined elsewhere in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) (for example, to boost an ally's roll or activate special abilities), which may spend it differently than these baseline uses.</p>
 <hr>
 <h3>Recovery Points and Rest</h3>
 <p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character’s level. The player can spend Recovery Points to heal Wounds and/or regain Spell Power in any combination. Unspent Recovery Points remain available for later short rests until they are used.</p>
