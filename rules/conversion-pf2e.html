@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Converting from Pathfinder 2e | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Guide for converting Pathfinder Second Edition (Player Core) characters and rules to You-Meet-In-A-Tavern (YMIAT)'s class-based system." />
+<link rel="canonical" href="rules/conversion-pf2e.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+<meta property="og:title" content="Converting from Pathfinder 2e | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Guide for converting Pathfinder Second Edition (Player Core) characters and rules to You-Meet-In-A-Tavern (YMIAT)'s class-based system." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/conversion-pf2e.html" />
+</head>
+<body>
+<header data-include="nav"></header>
+<main><h1>Converting from Pathfinder 2e to <strong>You-Meet-In-A-Tavern</strong> (YMIAT)</h1>
+<div class="layout">
+  <aside class="toc">
+    <h2>On this page</h2>
+    <div data-toc></div>
+  </aside>
+  <div class="content">
+  <p class="lede">This guide explains how to convert characters, rules, and mechanics from <strong>Pathfinder Second Edition</strong> (PF2e, Player Core) to <strong>You-Meet-In-A-Tavern</strong> (YMIAT)'s standard, class-based system. It targets the same eight classes Player Core defines — Bard, Cleric, Druid, Fighter, Ranger, Rogue, Witch, Wizard — all of which already exist in <a href="classes.html">Classes</a>, so most of this guide is about translating PF2e's different core math onto that existing chassis, not building new classes from scratch.</p>
+
+  <div class="callout warning">
+    <p class="callout-title">Approximate by design</p>
+    <p>PF2e and YMIAT resolve the game very differently under the hood — four degrees of success vs. binary hit/miss, level-scaling proficiency vs. advantage, a flexible three-action turn vs. action/movement/reaction. This guide picks one reasonable, consistent mapping for each and applies it throughout, the same way the <a href="conversion.html">D&amp;D 5e guide</a> does. Treat individual feats and spells as needing a look, not a guarantee — see <a href="#open-questions">Open Questions</a> for what's still GM judgment.</p>
+  </div>
+
+  <hr>
+  <h2 id="converting-attribute-modifiers">Converting Attribute Modifiers</h2>
+  <p>PF2e (2023 remaster) records attribute <em>modifiers</em> directly — Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma — with no separate 3–18 score to derive them from. Composite the three YMIAT abilities straight from those modifiers, the same grouping as the <a href="conversion.html#converting-ability-scores">5e guide</a> uses:</p>
+  <ul>
+    <li><strong>Fitness</strong> = (Strength + Dexterity + Constitution modifiers) ÷ 3, rounded down.</li>
+    <li><strong>Insight</strong> = (Intelligence + Wisdom modifiers) ÷ 2, rounded down.</li>
+    <li><strong>Willpower</strong> = (Wisdom + Charisma modifiers) ÷ 2, rounded down.</li>
+  </ul>
+  <p><strong>Example: Converting Attribute Modifiers</strong></p>
+  <p>Given PF2e modifiers Strength +3, Dexterity +1, Constitution +2, Intelligence +0, Wisdom +1, Charisma −1:</p>
+  <ul>
+    <li>Fitness = (3 + 1 + 2) / 3 = 2 (round down) → +2</li>
+    <li>Insight = (0 + 1) / 2 = 0.5 → 0</li>
+    <li>Willpower = (1 + (−1)) / 2 = 0 → 0</li>
+  </ul>
+  <p>The YMIAT modifiers are: Fitness +2, Insight +0, Willpower +0.</p>
+
+  <hr>
+  <h2 id="converting-levels">Converting Levels</h2>
+  <p>PF2e characters advance from level 1 to level 20 — the same range as D&amp;D 5e — so the identical mapping applies: every two PF2e levels combine into one YMIAT level.</p>
+  <ul>
+    <li>Levels 1–2 → YMIAT level 1</li>
+    <li>Levels 3–4 → YMIAT level 2</li>
+    <li>Levels 5–6 → YMIAT level 3</li>
+    <li>Levels 7–8 → YMIAT level 4</li>
+    <li>Levels 9–10 → YMIAT level 5</li>
+    <li>Levels 11–12 → YMIAT level 6</li>
+    <li>Levels 13–14 → YMIAT level 7</li>
+    <li>Levels 15–16 → YMIAT level 8</li>
+    <li>Levels 17–18 → YMIAT level 9</li>
+    <li>Levels 19–20 → YMIAT level 10</li>
+  </ul>
+
+  <hr>
+  <h2 id="converting-proficiency-ranks">Converting Proficiency Ranks</h2>
+  <p>PF2e's proficiency bonus is <strong>level + a rank bonus</strong> (Untrained +0, Trained +2, Expert +4, Master +6, Legendary +8), applied to nearly everything — AC, attack rolls, Perception, saving throws, skills, spell effectiveness. That linear, ever-growing bonus doesn't fit YMIAT, which uses advantage instead of stacking flat bonuses. Convert rank to <strong>stacked advantage</strong> instead, reusing the "double advantage" language already used for <a href="core.html#spell-school-expertise">Spell School Expertise</a> and the <a href="classless-abilities.html">Classless</a> Weapon Expertise ability:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>PF2e Rank</th><th>YMIAT Equivalent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Untrained</td><td>No advantage (flat d20)</td></tr>
+        <tr><td>Trained</td><td>Advantage (roll 2d20, take highest)</td></tr>
+        <tr><td>Expert</td><td>Double advantage (roll 3d20, take highest)</td></tr>
+        <tr><td>Master</td><td>Triple advantage (roll 4d20, take highest)</td></tr>
+        <tr><td>Legendary</td><td>Quadruple advantage (roll 5d20, take highest)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Apply this to whatever roll the PF2e rank was modifying: an Expert attack proficiency becomes double advantage on that attack roll; Master in a saving throw becomes triple advantage on that save; and so on. A character's rank in a given statistic rarely exceeds Expert before YMIAT level 5–6 (PF2e level 10–12) — don't front-load Master or Legendary onto a low-level conversion just because the PF2e source eventually gets there.</p>
+
+  <hr>
+  <h2 id="converting-degrees-of-success">Converting Degrees of Success</h2>
+  <p>PF2e resolves every d20 roll — attacks, saves, skill checks, spell effects — into one of four outcomes, and a great deal of PF2e content (spell descriptions, reactions, monster abilities) is written directly against those four outcomes. Rather than flattening that back to a binary hit/miss, layer PF2e's margin rule on top of YMIAT's own d20 rolls for any check made against PF2e-converted material:</p>
+  <div class="formula-box">
+    <span class="formula-label">Degree of Success</span>
+    <span class="formula-equation">
+      <span class="variable">result</span>
+      <span class="operator">=</span>
+      <code class="dice">d20</code>
+      <span class="operator">+</span>
+      <span class="variable">modifiers</span>
+    </span>
+  </div>
+  <ul>
+    <li><strong>Critical success:</strong> result meets or beats the DC by 10 or more.</li>
+    <li><strong>Success:</strong> result meets or beats the DC.</li>
+    <li><strong>Failure:</strong> result is below the DC.</li>
+    <li><strong>Critical failure:</strong> result is below the DC by 10 or more.</li>
+  </ul>
+  <p>A natural 20 shifts the outcome one step better (success → critical success, failure → success); a natural 1 shifts it one step worse — exactly as in PF2e. On advantage rolls, apply this to the die you keep, after picking the higher (or lower, on disadvantage) result.</p>
+  <p>This only applies where the converted material actually specifies a critical effect. For anything that only ever had a hit/miss in the source, YMIAT's normal single-Wound-per-hit, two-on-a-crit combat math still applies unchanged.</p>
+
+  <hr>
+  <h2 id="converting-max-wounds-pf2e">Converting Max Wounds</h2>
+  <p>PF2e Hit Points run much higher than D&amp;D 5e's — a PF2e Fighter alone gains 10 + Constitution modifier <em>every level</em>, before ancestry HP or Toughness feats — but that's not something to reconvert from scratch. Since PF2e's eight classes already exist in YMIAT with their own Max Wounds bases already tuned for YMIAT's Wounds scale, just use the identically-named class's existing value unchanged:</p>
+  <div class="formula-box">
+    <span class="formula-label">Max Wounds</span>
+    <span class="formula-equation">
+      <span class="variable">Max Wounds</span>
+      <span class="operator">=</span>
+      <span class="variable">YMIAT class Max Wounds base</span>
+      <span class="operator">+</span>
+      <span class="variable">Fitness modifier</span>
+      <span class="operator">+</span>
+      <span>(</span>
+      <span class="variable">level</span>
+      <span class="operator">−</span>
+      <span>1</span>
+      <span>)</span>
+    </span>
+  </div>
+  <p>See each class's entry on <a href="classes.html">Classes</a> for its base (for example, Fighter and Ranger start at 10 + Fitness modifier; Wizard and Witch at 8 + Fitness modifier — see the class page for exact current values). PF2e's higher HP total is already "priced in" to how tough that class is designed to feel; it doesn't need a separate divisor the way monster stat blocks do.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-weapons">Converting Weapons and Damage</h2>
+  <p>PF2e's base weapon damage dice are the same familiar d4–d12 range as D&amp;D 5e (a longsword is 1d8 in both games), so the <a href="conversion.html#converting-weapons">5e dice-to-bonus table</a> applies unchanged:</p>
+  <ul>
+    <li>Unarmed: +0</li>
+    <li>d4: +1</li>
+    <li>d6: +2</li>
+    <li>d8: +3</li>
+    <li>d10: +4</li>
+    <li>d12: +5</li>
+    <li>2d6: +6</li>
+  </ul>
+  <p>PF2e adds extra damage dice from several places D&amp;D 5e doesn't: striking runes (multiply the weapon's base dice), the <strong>deadly</strong> trait (extra die on a critical hit only), and precision-based class features. Convert each extra die the same way and add it to the weapon bonus; for a deadly or crit-only die, apply that extra bonus only when the attack roll is a critical hit (see <a href="#converting-degrees-of-success">Converting Degrees of Success</a>).</p>
+  <p>The <strong>multiple attack penalty</strong> (PF2e: −5 on your second attack action in a turn, −10 on the third and beyond; agile weapons reduce this to −4/−8) maps directly onto YMIAT's existing <a href="combat.html#variant-3-moments-system">Stacking Disadvantage and Agile Weapons</a> rules for extra attacks in a turn — no separate penalty needed, the systems already match conceptually.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-wounds">Converting Wounds (Spells and Effects)</h2>
+  <p>Use the same conversion as the <a href="conversion.html#converting-wounds">5e guide</a>: take the maximum total of the damage dice expression, divide by 6, and round to the nearest whole number. PF2e spell damage scales by adding dice as the spell is heightened to a higher rank — convert the dice at whatever rank is being cast, the same way you'd convert a 5e spell cast with a higher-level slot.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-ac">Converting Armor Class</h2>
+  <p>PF2e's Armor Class = 10 + Dexterity modifier (capped by the armor) + proficiency bonus + armor's item bonus. Split this the same way as attack and save proficiency above:</p>
+  <ul>
+    <li><strong>Armor's item bonus</strong> → YMIAT Defense bonus, taken directly from the <a href="gear.html#armor-table">Armor table</a> for the equivalent armor category, same as a 5e conversion.</li>
+    <li><strong>AC proficiency rank</strong> (Trained/Expert/Master/Legendary in armor) → advantage on the <strong>Defense roll</strong>, using the same stacked-advantage table as <a href="#converting-proficiency-ranks">Converting Proficiency Ranks</a> above, instead of a flat number.</li>
+  </ul>
+  <p>For an unarmored character, Defense = Fitness modifier, same as standard YMIAT.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-actions">Converting the Action Economy</h2>
+  <p>PF2e turns are three flexible actions (Strike, Stride, Raise a Shield, cast a spell that costs 1–3 actions, and so on), which doesn't map cleanly onto YMIAT's default action + movement + reaction turn. Use YMIAT's optional <a href="combat.html#variant-3-moments-system">3 Moments System</a> instead — it already splits a turn into three spendable units for movement, attacks, and spellcasting, the closest existing match:</p>
+  <ul>
+    <li>A PF2e 1-action activity (Strike, Stride, Raise a Shield, Interact) costs <strong>1 Moment</strong>.</li>
+    <li>A PF2e 2-action activity (most spells, Sudden Charge-style combos) costs <strong>2 Moments</strong>.</li>
+    <li>A PF2e 3-action activity (a handful of powerful class feats and rituals) costs all <strong>3 Moments</strong> for the turn.</li>
+  </ul>
+  <p>PF2e's free actions and reactions convert directly to YMIAT's free actions and reaction, unchanged.</p>
+
+  <hr>
+  <h2 id="open-questions">Open Questions</h2>
+  <div class="callout note">
+    <p class="callout-title">Still to work out</p>
+    <ul>
+      <li><strong>Dying, Wounded, and Doomed.</strong> PF2e tracks death with a numeric dying value instead of YMIAT's three-hearts/Death Save system. These don't map 1:1 yet — for now, treat reaching 0 Wounds as triggering a normal YMIAT Death Save, and ignore the PF2e dying/wounded/doomed values entirely.</li>
+      <li><strong>Class-by-class feat conversion.</strong> This guide covers the shared math; each class's specific feats, class features, and spellcasting progression (Bard, Cleric, Druid, Fighter, Ranger, Rogue, Witch, Wizard) still need converting individually into that class's existing <a href="class-abilities/index.html">Class Abilities</a> entry.</li>
+      <li><strong>Ancestry feats and heritages.</strong> PF2e's ancestries (Dwarf, Elf, Gnome, Goblin, Halfling, Human, Leshy, Orc, plus Versatile Heritages) need mapping onto YMIAT's <a href="lineages.html">Lineages</a> and <a href="heritages.html">Heritages</a> — not yet started.</li>
+      <li><strong>Spell list conversion.</strong> PF2e's spell rank (1st–10th) roughly lines up with YMIAT spell level, but PF2e's four spellcasting traditions (Arcane, Divine, Occult, Primal) and its Spell Points-free slot system still need a pass against YMIAT's <a href="magic.html">Magic</a> list and Spell Power economy.</li>
+    </ul>
+  </div>
+  </div>
+</div></main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>
