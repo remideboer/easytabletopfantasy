@@ -349,7 +349,10 @@
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">RES</span>
-            ${stepper("res", c.res, "Resolve", { min: 0, max: resolveMax(c), display: String(c.res) })}
+            <div class="cs-wd-grid">
+              <div class="cs-wd-cell"><span class="cs-wd-lbl">MAX</span><span class="cs-wd-val cs-wd-val--calc" title="4 + Willpower modifier ÷ 2, rounded up">${resolveMax(c)}</span></div>
+              <div class="cs-wd-cell"><span class="cs-wd-lbl">NOW</span>${stepper("res", c.res, "Resolve", { min: 0, max: resolveMax(c), display: String(c.res) })}</div>
+            </div>
           </div>
         </div>
 
