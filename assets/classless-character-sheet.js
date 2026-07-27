@@ -288,6 +288,10 @@
       : lost
         ? `<p class="cs-penalty-note">−${lost} to each ability mod, −${5 * lost} ft speed, −${2 * lost} Max WD</p>`
         : "";
+    const weakened = c.hearts === 1 || c.hearts === 2;
+    const penaltyMark = (effective) => weakened
+      ? `<span class="cs-penalty-mark">(${effective})</span>`
+      : "";
 
     const abilityLinesHtml = c.abilityLines.map((val, i) =>
       `<textarea class="cs-input cls-ability-line" rows="1" data-ability-line="${i}" placeholder="Trained ability…" aria-label="Ability ${i + 1}">${escapeHtml(val)}</textarea>`
@@ -315,15 +319,15 @@
         <div class="cs-abilities-row">
           <div class="cs-stat-box">
             <span class="cs-stat-label">FIT</span>
-            ${stepper("fit", c.fit, "Fitness", { display: formatMod(c.fit) })}
+            ${stepper("fit", c.fit, "Fitness", { display: formatMod(c.fit) })}${penaltyMark(formatMod(c.fit - lost))}
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">INS</span>
-            ${stepper("ins", c.ins, "Insight", { display: formatMod(c.ins) })}
+            ${stepper("ins", c.ins, "Insight", { display: formatMod(c.ins) })}${penaltyMark(formatMod(c.ins - lost))}
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">WILL</span>
-            ${stepper("wil", c.wil, "Willpower", { display: formatMod(c.wil) })}
+            ${stepper("wil", c.wil, "Willpower", { display: formatMod(c.wil) })}${penaltyMark(formatMod(c.wil - lost))}
           </div>
         </div>
 
@@ -348,7 +352,7 @@
         <div class="cs-stat-box cs-stat-box--wd">
           <span class="cs-stat-label">WD</span>
           <div class="cs-wd-grid">
-            <div class="cs-wd-cell"><span class="cs-wd-lbl">MAX</span>${stepper("wd-max", c.wdMax, "Max Wounds", { min: 1, max: 99, display: String(c.wdMax) })}</div>
+            <div class="cs-wd-cell"><span class="cs-wd-lbl">MAX</span>${stepper("wd-max", c.wdMax, "Max Wounds", { min: 1, max: 99, display: String(c.wdMax) })}${penaltyMark(Math.max(0, c.wdMax - 2 * lost))}</div>
             <div class="cs-wd-cell"><span class="cs-wd-lbl">NOW</span>${stepper("wd-now", c.wdNow, "Current Wounds", { min: 0, max: c.wdMax, display: String(c.wdNow) })}</div>
             <div class="cs-wd-cell"><span class="cs-wd-lbl">TMP</span>${stepper("wd-tmp", c.wdTmp, "Temporary Wounds", { min: 0, max: 99, display: String(c.wdTmp) })}</div>
           </div>
@@ -384,7 +388,7 @@
             <h2 class="cs-pane-title">Details</h2>
             <div class="cs-stat-box cls-stat-box--speed">
               <span class="cs-stat-label">Speed</span>
-              ${stepper("speed", c.speed, "Speed", { min: 0, max: 120, display: `${c.speed} ft` })}
+              ${stepper("speed", c.speed, "Speed", { min: 0, max: 120, display: `${c.speed} ft` })}${penaltyMark(`${Math.max(0, c.speed - 5 * lost)} ft`)}
             </div>
           </div>
           <div class="cs-field">
