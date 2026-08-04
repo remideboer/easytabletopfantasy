@@ -1270,25 +1270,33 @@
     overflow:auto;
     border:1px solid var(--line);
     border-radius:var(--r);
-    background:#fff;
+    background:var(--bg-card);
     box-shadow:0 1px 0 rgba(0,0,0,.02);
     margin:0 0 14px;
   }
-  table{border-collapse:separate;border-spacing:0;width:100%;font-size:.98rem}
+  table{
+    border-collapse:separate;
+    border-spacing:0;
+    width:100%;
+    font-size:.98rem;
+    color:var(--text-primary);
+  }
   thead th{
     position:sticky;top:0; /* helpt bij lange tabellen */
-    background:linear-gradient(180deg,#fff,var(--soft));
+    background:linear-gradient(180deg,var(--bg-card),var(--soft));
     border-bottom:1px solid var(--line);
     font-weight:700;
+    color:var(--text-primary);
   }
   th,td{
     text-align:left;
     vertical-align:top;
     padding:10px 12px;
-    border-bottom:1px solid #f0f0f2;
+    border-bottom:1px solid var(--line);
+    color:var(--text-primary);
   }
   tbody tr:last-child td{border-bottom:0}
-  tbody tr:hover td{background:rgba(246,247,249,.7)}
+  tbody tr:hover td{background:rgba(0,0,0,.04)}
   
   /* Buttons */
   .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;position:relative;z-index:100}
@@ -1523,6 +1531,24 @@
       background:var(--bg-card);
       color:var(--text-primary);
     }
+    /* Tables: avoid light row backgrounds with muted text in dark mode */
+    .table-wrap{
+      background:var(--bg-card);
+      border-color:var(--line);
+      box-shadow:0 1px 0 rgba(0,0,0,.25);
+    }
+    table{color:var(--text-primary)}
+    thead th{
+      background:linear-gradient(180deg,var(--soft2),var(--bg-card));
+      color:var(--text-primary);
+      border-bottom-color:var(--line);
+    }
+    th,td{
+      color:var(--text-primary);
+      border-bottom-color:var(--line);
+    }
+    tbody tr:nth-child(even) td{background:rgba(255,255,255,.04)}
+    tbody tr:hover td{background:rgba(255,255,255,.08)}
     /* TOC sidebar: dark background, light text */
     .toc{
       background:var(--bg-card);
@@ -4185,4 +4211,69 @@
     display:inline-block;
     margin-top:8px;
     font-size:.82rem;
+  }
+
+  @media (prefers-color-scheme: dark){
+    .cs-stat-box,
+    .cs-pane,
+    .cs-mini-stat,
+    .cs-toolbar{
+      background:var(--bg-card);
+      border-color:var(--line);
+      color:var(--text-primary);
+    }
+    .cs-input,
+    .cs-select,
+    .cs-textarea,
+    .cs-inv-slot,
+    .cs-coin-input,
+    .cs-input--xp{
+      background:var(--bg-page);
+      color:var(--text-primary);
+      border-color:var(--line);
+    }
+    .cs-input::placeholder,
+    .cs-textarea::placeholder,
+    .cs-inv-slot::placeholder{
+      color:var(--text-secondary);
+      opacity:1;
+    }
+    .cs-stat-label,
+    .cs-wd-lbl,
+    .cs-label,
+    .cs-class-summary,
+    .cs-muted,
+    .cs-hint,
+    .cs-empty{
+      color:var(--text-secondary);
+    }
+    .cs-stepper-val,
+    .cs-wd-val,
+    .cs-mini-val,
+    .cs-detail-title{
+      color:var(--text-primary);
+    }
+    .cs-wd-val--calc{color:var(--accent-gold)}
+    .cs-btn-secondary{
+      background:var(--bg-card);
+      color:var(--brand-primary);
+      border-color:var(--accent-gold-soft);
+    }
+    .cs-inv-slot.is-locked{
+      background:var(--border-subtle);
+      color:var(--text-secondary);
+    }
+    .cs-modal{
+      background:var(--bg-card);
+      color:var(--text-primary);
+      border:1px solid var(--line);
+    }
+    .cs-spell-chip{
+      background:var(--bg-page);
+      color:var(--text-primary);
+      border-color:var(--line);
+    }
+    .cs-spell-row-modal{
+      border-color:var(--line);
+    }
   }
