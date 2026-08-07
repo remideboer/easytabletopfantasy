@@ -4116,6 +4116,9 @@
     font-weight:800;
     color:var(--brand-primary);
   }
+  .cls-ability-card.is-current{
+    border-color:var(--accent-gold-soft);
+  }
   .cls-ability-card.is-disabled{
     opacity:.72;
     cursor:not-allowed;

@@ -492,12 +492,17 @@
       </div>`;
   }
 
-  function ownedAbilityIds(excludeLine) {
-    if (!char) return new Set();
-    const ids = new Set();
-    char.abilityLines.forEach((entry, i) => {
-      if (i === excludeLine) return;
-      if (entry && entry.id) ids.add(entry.id);
+  function trainedAbilityIdsInOrder() {
+    if (!char) return [];
+    const ids = [];
+    char.abilityLines.forEach((entry) => {
+      if (!entry) return;
+      let id = entry.id || "";
+      if (!id && entry.name && abilitiesData) {
+        const match = (abilitiesData.abilities || []).find((a) => a.name === entry.name);
+        id = match ? match.id : "";
+      }
+      if (id && !ids.includes(id)) ids.push(id);
     });
     return ids;
   }
@@ -508,11 +513,14 @@
     return Number(ability.xp) || 0;
   }
 
-  function availableXpForLine(lineIndex) {
+  /** Banked XP plus full refund of every ability currently on the sheet. */
+  function selectionXpPool() {
     if (!char) return 0;
-    const current = char.abilityLines[lineIndex];
-    const refund = current && current.id ? abilityCost(current.id) : 0;
-    return char.xp + refund;
+    let pool = char.xp;
+    char.abilityLines.forEach((entry) => {
+      if (entry && entry.id) pool += abilityCost(entry.id);
+    });
+    return pool;
   }
 
   function selectedIdsExcept(excludeId) {
@@ -523,10 +531,8 @@
     return selectedIdsExcept(excludeId).reduce((sum, id) => sum + abilityCost(id), 0);
   }
 
-  function pendingOwnedIds(lineIndex, excludeId) {
-    const owned = ownedAbilityIds(lineIndex);
-    selectedIdsExcept(excludeId).forEach((id) => owned.add(id));
-    return owned;
+  function pendingOwnedIds(excludeId) {
+    return new Set(selectedIdsExcept(excludeId));
   }
 
   function orderSelectedByRequires(ids) {
@@ -551,36 +557,23 @@
     return result;
   }
 
-  function findTargetSlots(startIndex, count) {
-    if (count <= 0) return [];
-    const targets = [startIndex];
-    for (let i = startIndex + 1; i < ABILITY_LINE_COUNT && targets.length < count; i++) {
-      if (!char.abilityLines[i]) targets.push(i);
-    }
-    return targets;
-  }
-
-  function evaluateAbility(ability, lineIndex) {
-    const owned = pendingOwnedIds(lineIndex, ability.id);
+  function evaluateAbility(ability) {
+    const owned = pendingOwnedIds(ability.id);
     const reasons = [];
     const cost = abilityCost(ability);
-    const budget = availableXpForLine(lineIndex) - selectedCostExcept(ability.id);
-    const currentId = char && char.abilityLines[lineIndex] ? char.abilityLines[lineIndex].id : null;
+    const budget = selectionXpPool() - selectedCostExcept(ability.id);
     const isSelected = abilityModalSelectedIds.includes(ability.id);
-    const isCurrent = currentId === ability.id;
-
-    if (!isSelected && owned.has(ability.id)) {
-      reasons.push("Already trained in another slot");
-    }
+    const sheetIds = new Set(trainedAbilityIdsInOrder());
+    const isCurrent = sheetIds.has(ability.id);
 
     (ability.requires || []).forEach((reqId) => {
-      if (owned.has(reqId) || reqId === currentId) return;
+      if (owned.has(reqId)) return;
       const req = abilityById(reqId);
       reasons.push("Requires " + (req ? req.name : reqId));
     });
 
     if (Array.isArray(ability.requiresAny) && ability.requiresAny.length) {
-      const ok = ability.requiresAny.some((reqId) => owned.has(reqId) || reqId === currentId);
+      const ok = ability.requiresAny.some((reqId) => owned.has(reqId));
       if (!ok) reasons.push("Requires a matching weapon proficiency");
     }
 
@@ -603,12 +596,8 @@
       reasons.push("Not enough experience (needs " + cost + " XP, " + Math.max(0, budget) + " available)");
     }
 
-    if (!isSelected) {
-      const neededSlots = abilityModalSelectedIds.length + 1;
-      const targets = findTargetSlots(lineIndex, neededSlots);
-      if (targets.length < neededSlots) {
-        reasons.push("Not enough empty ability slots");
-      }
+    if (!isSelected && abilityModalSelectedIds.length + 1 > ABILITY_LINE_COUNT) {
+      reasons.push("Not enough ability slots");
     }
 
     return {
@@ -621,16 +610,38 @@
     };
   }
 
-  function partitionAbilities(lineIndex) {
+  function partitionAbilities() {
+    const catalog = abilitiesData && abilitiesData.abilities ? abilitiesData.abilities : [];
+    const byId = new Map();
+    catalog.forEach((ability) => {
+      const evalResult = evaluateAbility(ability);
+      byId.set(ability.id, Object.assign({ ability: ability }, evalResult));
+    });
+
+    const selected = [];
+    const usedIds = new Set();
+    abilityModalSelectedIds.forEach((id) => {
+      const item = byId.get(id);
+      if (!item || usedIds.has(id)) return;
+      selected.push(item);
+      usedIds.add(id);
+    });
+
     const available = [];
     const unavailable = [];
-    (abilitiesData && abilitiesData.abilities ? abilitiesData.abilities : []).forEach((ability) => {
-      const evalResult = evaluateAbility(ability, lineIndex);
-      const item = Object.assign({ ability: ability }, evalResult);
-      if (evalResult.selectable) available.push(item);
+    catalog.forEach((ability) => {
+      if (usedIds.has(ability.id)) return;
+      const item = byId.get(ability.id);
+      if (!item) return;
+      if (item.selectable) available.push(item);
       else unavailable.push(item);
     });
-    return { available: available, unavailable: unavailable };
+
+    return {
+      selected: selected,
+      available: available,
+      unavailable: unavailable,
+    };
   }
 
   function groupItems(items) {
@@ -658,13 +669,15 @@
       const selected = abilityModalSelectedIds.includes(ability.id);
       const xpLabel = cost ? cost + " XP" : "";
       const reasonText = reasons.length ? reasons.join(" · ") : "";
+      // Selected cards stay clickable so you can unselect/clear them even if prereqs break.
+      const cardDisabled = !selected && (sectionDisabled || !selectable);
       const classes = [
         "cls-ability-card",
         selected ? "is-selected" : "",
-        sectionDisabled || !selectable ? "is-disabled" : "",
+        cardDisabled ? "is-disabled" : "",
         isCurrent ? "is-current" : "",
       ].filter(Boolean).join(" ");
-      return `<button type="button" class="${classes}" data-ability-id="${escapeHtml(ability.id)}" data-selectable="${selectable ? "1" : "0"}" aria-pressed="${selected ? "true" : "false"}"${sectionDisabled || !selectable ? ' aria-disabled="true"' : ""}>
+      return `<button type="button" class="${classes}" data-ability-id="${escapeHtml(ability.id)}" data-selectable="${selectable ? "1" : "0"}" aria-pressed="${selected ? "true" : "false"}"${cardDisabled ? ' aria-disabled="true"' : ""}>
         <span class="cls-ability-card-header">
           <span class="cls-ability-card-title">${escapeHtml(ability.name)}</span>
           ${xpLabel ? `<span class="cls-ability-card-xp">${escapeHtml(xpLabel)}</span>` : ""}
@@ -675,17 +688,24 @@
     }).join("");
   }
 
-  function renderAbilitySection(title, items) {
+  function renderAbilitySection(title, items, interactive) {
     if (!items.length) return "";
-    const groups = groupItems(items);
-    const disabled = title !== "Available now";
-    const groupsHtml = groups.map((group) => `<section class="cls-ability-group">
+    // Selected picks stay as a flat list (no category groups) so they stay compact at the top.
+    const flatSelected = title === "Selected";
+    const disabled = !interactive;
+    let bodyHtml;
+    if (flatSelected) {
+      bodyHtml = `<div class="cls-ability-card-list">${renderAbilityCards(items, disabled)}</div>`;
+    } else {
+      const groups = groupItems(items);
+      bodyHtml = groups.map((group) => `<section class="cls-ability-group">
         <h3 class="cls-ability-group-title">${escapeHtml(group.name)}</h3>
         <div class="cls-ability-card-list">${renderAbilityCards(group.items, disabled)}</div>
       </section>`).join("");
+    }
     return `<div class="cls-ability-section">
       <h2 class="cls-ability-section-title">${escapeHtml(title)}</h2>
-      ${groupsHtml}
+      ${bodyHtml}
     </div>`;
   }
 
@@ -693,13 +713,7 @@
     if (!abilitiesData || !char || !el.modalRoot) return;
     abilityEditLine = null;
     abilityModalLine = lineIndex;
-    const current = char.abilityLines[lineIndex];
-    let initialId = current && current.id ? current.id : null;
-    if (!initialId && current && current.name) {
-      const match = (abilitiesData.abilities || []).find((a) => a.name === current.name);
-      initialId = match ? match.id : null;
-    }
-    abilityModalSelectedIds = initialId ? [initialId] : [];
+    abilityModalSelectedIds = trainedAbilityIdsInOrder();
     abilityModalMessage = "";
     renderAbilityModal();
   }
@@ -791,28 +805,31 @@
 
   function applyAbilityChoice() {
     if (!char || abilityModalLine == null) return;
-    const lineIndex = abilityModalLine;
-    const previous = char.abilityLines[lineIndex];
-    const previousCost = previous && previous.id ? abilityCost(previous.id) : 0;
+
+    const existingById = new Map();
+    char.abilityLines.forEach((entry) => {
+      if (entry && entry.id) existingById.set(entry.id, entry);
+    });
+
+    const pool = selectionXpPool();
 
     if (!abilityModalSelectedIds.length) {
-      char.xp += previousCost;
-      char.abilityLines[lineIndex] = null;
+      char.abilityLines = Array(ABILITY_LINE_COUNT).fill(null);
+      char.xp = pool;
       closeAbilityModal();
       persistAndRender();
       return;
     }
 
     const orderedIds = orderSelectedByRequires(abilityModalSelectedIds);
-    const targets = findTargetSlots(lineIndex, orderedIds.length);
-    if (targets.length < orderedIds.length) {
-      abilityModalMessage = "Not enough empty ability slots for " + orderedIds.length + " abilities.";
+    if (orderedIds.length > ABILITY_LINE_COUNT) {
+      abilityModalMessage = "Not enough ability slots for " + orderedIds.length + " abilities.";
       renderAbilityModal();
       return;
     }
 
-    let budget = availableXpForLine(lineIndex);
-    const placements = [];
+    let spent = 0;
+    const owned = new Set();
     for (let i = 0; i < orderedIds.length; i++) {
       const ability = abilityById(orderedIds[i]);
       if (!ability) {
@@ -820,53 +837,70 @@
         renderAbilityModal();
         return;
       }
-      // Simulate ownership of abilities already placed in this batch
-      const simulated = evaluateAbilityForApply(ability, lineIndex, orderedIds.slice(0, i), budget);
-      if (!simulated.ok) {
-        abilityModalMessage = simulated.reason || "Requirements not met.";
+      const check = evaluateAbilityForApply(ability, owned, pool - spent);
+      if (!check.ok) {
+        abilityModalMessage = check.reason || "Requirements not met.";
         renderAbilityModal();
         return;
       }
-      if (abilityCost(ability) > budget) {
-        abilityModalMessage = "Not enough experience (needs " + abilityCost(ability) + " XP, " + budget + " available).";
-        renderAbilityModal();
-        return;
-      }
-      budget -= abilityCost(ability);
-      placements.push({ slot: targets[i], ability: ability });
+      spent += abilityCost(ability);
+      owned.add(ability.id);
     }
 
-    char.xp = budget;
-    placements.forEach((placement) => {
-      const existing = char.abilityLines[placement.slot];
-      const sameAbility = existing && existing.id === placement.ability.id;
-      char.abilityLines[placement.slot] = {
-        id: placement.ability.id,
-        name: sameAbility && existing.name ? existing.name : placement.ability.name,
-        description: sameAbility ? (existing.description || "") : placement.ability.description,
-        notes: sameAbility ? (existing.notes || "") : "",
-        xp: placement.ability.xp,
+    const newLines = Array(ABILITY_LINE_COUNT).fill(null);
+    const placed = new Set();
+
+    // Keep still-selected abilities in their current slots.
+    char.abilityLines.forEach((entry, i) => {
+      if (!entry || !entry.id || !orderedIds.includes(entry.id) || placed.has(entry.id)) return;
+      newLines[i] = {
+        id: entry.id,
+        name: entry.name,
+        description: entry.description || "",
+        notes: entry.notes || "",
+        xp: entry.xp,
+      };
+      placed.add(entry.id);
+    });
+
+    const remaining = orderedIds.filter((id) => !placed.has(id));
+    const emptySlots = [];
+    if (!newLines[abilityModalLine]) emptySlots.push(abilityModalLine);
+    for (let i = 0; i < ABILITY_LINE_COUNT; i++) {
+      if (i !== abilityModalLine && !newLines[i]) emptySlots.push(i);
+    }
+    if (remaining.length > emptySlots.length) {
+      abilityModalMessage = "Not enough empty ability slots for the new selections.";
+      renderAbilityModal();
+      return;
+    }
+
+    remaining.forEach((id, idx) => {
+      const ability = abilityById(id);
+      const existing = existingById.get(id);
+      newLines[emptySlots[idx]] = {
+        id: ability.id,
+        name: existing && existing.name ? existing.name : ability.name,
+        description: existing ? (existing.description || "") : ability.description,
+        notes: existing ? (existing.notes || "") : "",
+        xp: ability.xp,
       };
     });
+
+    char.abilityLines = newLines;
+    char.xp = pool - spent;
     closeAbilityModal();
     persistAndRender();
   }
 
-  function evaluateAbilityForApply(ability, lineIndex, priorBatchIds, budget) {
-    const owned = ownedAbilityIds(lineIndex);
-    priorBatchIds.forEach((id) => owned.add(id));
-    const currentId = char.abilityLines[lineIndex]?.id || null;
-
-    if (owned.has(ability.id)) {
-      return { ok: false, reason: "Already trained in another slot" };
-    }
+  function evaluateAbilityForApply(ability, owned, budget) {
     for (const reqId of ability.requires || []) {
-      if (owned.has(reqId) || reqId === currentId) continue;
+      if (owned.has(reqId)) continue;
       const req = abilityById(reqId);
       return { ok: false, reason: "Requires " + (req ? req.name : reqId) };
     }
     if (Array.isArray(ability.requiresAny) && ability.requiresAny.length) {
-      const ok = ability.requiresAny.some((reqId) => owned.has(reqId) || reqId === currentId);
+      const ok = ability.requiresAny.some((reqId) => owned.has(reqId));
       if (!ok) return { ok: false, reason: "Requires a matching weapon proficiency" };
     }
     if (ability.requiresFit != null) {
@@ -890,16 +924,14 @@
 
   function renderAbilityModal() {
     if (!el.modalRoot || !abilitiesData || abilityModalLine == null || !char) return;
-    const budget = availableXpForLine(abilityModalLine);
-    const remaining = Math.max(0, budget - selectedCostExcept(null));
-    const parts = partitionAbilities(abilityModalLine);
-    const current = char.abilityLines[abilityModalLine];
-    const refund = current && current.id ? abilityCost(current.id) : 0;
+    const pool = selectionXpPool();
+    const remaining = Math.max(0, pool - selectedCostExcept(null));
+    const parts = partitionAbilities();
     const selectedCount = abilityModalSelectedIds.length;
     const messageHtml = abilityModalMessage
       ? `<p class="cls-ability-modal-message" role="alert">${escapeHtml(abilityModalMessage)}</p>`
       : "";
-    const chooseLabel = selectedCount ? `Choose (${selectedCount})` : "Clear slot";
+    const chooseLabel = selectedCount ? `Choose (${selectedCount})` : "Clear all abilities";
 
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cls-ability-overlay">
       <div class="cs-modal cls-ability-modal" role="dialog" aria-modal="true" aria-labelledby="cls-ability-modal-title">
@@ -907,11 +939,12 @@
           <h2 id="cls-ability-modal-title">Choose Abilities</h2>
           <button type="button" class="cs-modal-close" id="cls-ability-close" aria-label="Close">×</button>
         </div>
-        <p class="cls-ability-modal-hint">Select one or more abilities. They fill this slot and the next empty slots. Budget: <strong>${remaining}</strong> XP left of <strong>${budget}</strong> (banked ${char.xp}${refund ? ` + refund ${refund}` : ""})${selectedCount ? ` · ${selectedCount} selected` : ""}.</p>
+        <p class="cls-ability-modal-hint">Your trained abilities are selected at the top — click one to unselect and refund its XP. Add more from the list below. Budget: <strong>${remaining}</strong> XP left of <strong>${pool}</strong> (banked ${char.xp} + trained refunds)${selectedCount ? ` · ${selectedCount} selected` : ""}.</p>
         ${messageHtml}
         <div class="cs-modal-body cls-ability-modal-body">
-          ${renderAbilitySection("Available now", parts.available)}
-          ${renderAbilitySection("Not yet available", parts.unavailable)}
+          ${renderAbilitySection("Selected", parts.selected, true)}
+          ${renderAbilitySection("Available now", parts.available, true)}
+          ${renderAbilitySection("Not yet available", parts.unavailable, false)}
         </div>
         <div class="cls-ability-modal-footer">
           <button type="button" class="btn cs-btn-secondary" id="cls-ability-cancel">Cancel</button>
@@ -930,7 +963,7 @@
       renderAbilityModal();
       return;
     }
-    const evaluation = evaluateAbility(ability, abilityModalLine);
+    const evaluation = evaluateAbility(ability);
     if (!evaluation.selectable) {
       abilityModalMessage = evaluation.reasons[0] || "Requirements not met.";
       renderAbilityModal();
