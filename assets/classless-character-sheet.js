@@ -1,9 +1,8 @@
 /**
  * YMIAT Classless Character Sheet — local character management.
- * Standalone from the class-based sheet: no shared data file, everything
- * beyond the core stat boxes (FIT/INS/WILL, DEF, RES, SP, WD, Speed) is
- * free-form text, since Classless abilities are trained individually
- * rather than picked from a fixed class list. Persistence in localStorage.
+ * Standalone from the class-based sheet: no shared class data file.
+ * Trained abilities are picked from the Classless abilities list via a modal.
+ * Persistence in localStorage.
  */
 (function () {
   const STORAGE_KEY = "ymiat-classless-characters-v1";
@@ -12,6 +11,11 @@
   let store = loadStore();
   let char = null;
   let eventsBound = false;
+  let abilitiesData = null;
+  let abilityModalLine = null;
+  let abilityModalSelectedIds = [];
+  let abilityModalMessage = "";
+  let abilityEditLine = null;
 
   const el = {};
 
@@ -25,6 +29,22 @@
     el.btnPrint = document.getElementById("cls-btn-print");
     el.printOrientation = document.getElementById("cls-print-orientation");
     el.btnDelete = document.getElementById("cls-btn-delete");
+    el.modalRoot = document.getElementById("cls-modal-root");
+  }
+
+  function rootPath() {
+    if (typeof window.ymiatGetRootPath === "function") {
+      return window.ymiatGetRootPath();
+    }
+    const path = window.location.pathname;
+    const depth = path.replace(/^\//, "").split("/").filter(Boolean).length - 1;
+    if (depth <= 0) return "";
+    return "../".repeat(depth);
+  }
+
+  function rp(url) {
+    if (!url || url.startsWith("http")) return url;
+    return rootPath() + url;
   }
 
   function applyPrintOrientation(orientation) {
@@ -70,7 +90,7 @@
     return {
       id: uid(),
       name: "",
-      xp: 0,
+      xp: 20,
       hearts: 3,
       fit: 0,
       ins: 0,
@@ -84,7 +104,7 @@
       wdTmp: 0,
       speed: 30,
       currency: { gold: 0, silver: 0, copper: 0 },
-      abilityLines: Array(ABILITY_LINE_COUNT).fill(""),
+      abilityLines: Array(ABILITY_LINE_COUNT).fill(null),
       activeText: "",
       lineageText: "",
       heritageText: "",
@@ -92,6 +112,34 @@
       spellListText: "",
       inventoryText: "",
     };
+  }
+
+  function normalizeAbilityLine(value) {
+    if (value == null || value === "") return null;
+    if (typeof value === "object") {
+      const name = String(value.name || "").trim();
+      const description = String(value.description || "").trim();
+      if (!name && !description) return null;
+      return {
+        id: String(value.id || ""),
+        name,
+        description,
+        notes: String(value.notes || "").trim(),
+        xp: value.xp != null ? Number(value.xp) : undefined,
+      };
+    }
+    const text = String(value).trim();
+    if (!text) return null;
+    const match = text.match(/^([^:]+):\s*([\s\S]*)$/);
+    if (match) {
+      return { id: "", name: match[1].trim(), description: match[2].trim() };
+    }
+    return { id: "", name: text, description: "" };
+  }
+
+  function abilityById(id) {
+    if (!abilitiesData || !id) return null;
+    return abilitiesData.abilities.find((a) => a.id === id) || null;
   }
 
   function defaultStore() {
@@ -147,8 +195,8 @@
       silver: Math.max(0, Number(c.currency?.silver) || 0),
       copper: Math.max(0, Number(c.currency?.copper) || 0),
     };
-    const lines = Array.isArray(c.abilityLines) ? c.abilityLines.map((v) => String(v ?? "")) : [];
-    while (lines.length < ABILITY_LINE_COUNT) lines.push("");
+    const lines = Array.isArray(c.abilityLines) ? c.abilityLines.map(normalizeAbilityLine) : [];
+    while (lines.length < ABILITY_LINE_COUNT) lines.push(null);
     c.abilityLines = lines.slice(0, ABILITY_LINE_COUNT);
     c.activeText = String(c.activeText ?? "");
     c.lineageText = String(c.lineageText ?? "");
@@ -241,6 +289,7 @@
     normalizeCharacter(char);
     saveStore();
     render();
+    if (abilityModalLine != null) renderAbilityModal();
   }
 
   function setActive(id) {
@@ -297,9 +346,27 @@
       ? `<span class="cs-penalty-mark">(${effective})</span>`
       : "";
 
-    const abilityLinesHtml = c.abilityLines.map((val, i) =>
-      `<textarea class="cs-input cls-ability-line" rows="1" data-ability-line="${i}" placeholder="Trained ability…" aria-label="Ability ${i + 1}">${escapeHtml(val)}</textarea>`
-    ).join("");
+    const abilityLinesHtml = c.abilityLines.map((entry, i) => {
+      if (entry && entry.name) {
+        const notesHtml = entry.notes
+          ? `<span class="cls-ability-notes">${escapeHtml(entry.notes)}</span>`
+          : "";
+        return `<div class="cls-ability-row">
+          <button type="button" class="cls-ability-slot is-filled" data-ability-line="${i}" aria-label="Ability ${i + 1}: ${escapeHtml(entry.name)}. Click to change selection.">
+            <span class="cls-ability-main">
+              <strong class="cls-ability-name">${escapeHtml(entry.name)}</strong><span class="cls-ability-sep">: </span><span class="cls-ability-desc">${escapeHtml(entry.description)}</span>
+            </span>
+            ${notesHtml}
+          </button>
+          <button type="button" class="cls-ability-edit" data-ability-edit="${i}" title="Edit ability text and notes" aria-label="Edit ability ${i + 1}">✎</button>
+        </div>`;
+      }
+      return `<div class="cls-ability-row">
+        <button type="button" class="cls-ability-slot" data-ability-line="${i}" aria-label="Ability ${i + 1}, choose trained ability">
+          <span class="cls-ability-empty">Trained ability…</span>
+        </button>
+      </div>`;
+    }).join("");
 
     el.sheet.innerHTML = `
       <div class="cs-col cs-col--stats">
@@ -373,8 +440,9 @@
 
       <div class="cs-col cs-col--trained">
         <div class="cs-field cs-field--xp">
-          <label class="cs-label" for="cls-xp">Experience Points</label>
-          <input type="number" id="cls-xp" class="cs-input cs-input--xp" min="0" step="1" value="${c.xp}" aria-label="Experience points" />
+          <label class="cs-label" for="cls-xp">Available XP</label>
+          <input type="number" id="cls-xp" class="cs-input cs-input--xp" min="0" step="1" value="${c.xp}" aria-label="Available experience points" />
+          <span class="cs-xp-hint">Banked for training</span>
         </div>
 
         <div class="cs-currency">
@@ -424,6 +492,455 @@
       </div>`;
   }
 
+  function ownedAbilityIds(excludeLine) {
+    if (!char) return new Set();
+    const ids = new Set();
+    char.abilityLines.forEach((entry, i) => {
+      if (i === excludeLine) return;
+      if (entry && entry.id) ids.add(entry.id);
+    });
+    return ids;
+  }
+
+  function abilityCost(abilityOrId) {
+    const ability = typeof abilityOrId === "string" ? abilityById(abilityOrId) : abilityOrId;
+    if (!ability || ability.xp == null) return 0;
+    return Number(ability.xp) || 0;
+  }
+
+  function availableXpForLine(lineIndex) {
+    if (!char) return 0;
+    const current = char.abilityLines[lineIndex];
+    const refund = current && current.id ? abilityCost(current.id) : 0;
+    return char.xp + refund;
+  }
+
+  function selectedIdsExcept(excludeId) {
+    return abilityModalSelectedIds.filter((id) => id !== excludeId);
+  }
+
+  function selectedCostExcept(excludeId) {
+    return selectedIdsExcept(excludeId).reduce((sum, id) => sum + abilityCost(id), 0);
+  }
+
+  function pendingOwnedIds(lineIndex, excludeId) {
+    const owned = ownedAbilityIds(lineIndex);
+    selectedIdsExcept(excludeId).forEach((id) => owned.add(id));
+    return owned;
+  }
+
+  function orderSelectedByRequires(ids) {
+    const idSet = new Set(ids);
+    const result = [];
+    const visiting = new Set();
+
+    function visit(id) {
+      if (!idSet.has(id) || result.includes(id)) return;
+      if (visiting.has(id)) return;
+      visiting.add(id);
+      const ability = abilityById(id);
+      (ability?.requires || []).forEach(visit);
+      visiting.delete(id);
+      if (!result.includes(id)) result.push(id);
+    }
+
+    ids.forEach(visit);
+    ids.forEach((id) => {
+      if (!result.includes(id)) result.push(id);
+    });
+    return result;
+  }
+
+  function findTargetSlots(startIndex, count) {
+    if (count <= 0) return [];
+    const targets = [startIndex];
+    for (let i = startIndex + 1; i < ABILITY_LINE_COUNT && targets.length < count; i++) {
+      if (!char.abilityLines[i]) targets.push(i);
+    }
+    return targets;
+  }
+
+  function evaluateAbility(ability, lineIndex) {
+    const owned = pendingOwnedIds(lineIndex, ability.id);
+    const reasons = [];
+    const cost = abilityCost(ability);
+    const budget = availableXpForLine(lineIndex) - selectedCostExcept(ability.id);
+    const currentId = char && char.abilityLines[lineIndex] ? char.abilityLines[lineIndex].id : null;
+    const isSelected = abilityModalSelectedIds.includes(ability.id);
+    const isCurrent = currentId === ability.id;
+
+    if (!isSelected && owned.has(ability.id)) {
+      reasons.push("Already trained in another slot");
+    }
+
+    (ability.requires || []).forEach((reqId) => {
+      if (owned.has(reqId) || reqId === currentId) return;
+      const req = abilityById(reqId);
+      reasons.push("Requires " + (req ? req.name : reqId));
+    });
+
+    if (Array.isArray(ability.requiresAny) && ability.requiresAny.length) {
+      const ok = ability.requiresAny.some((reqId) => owned.has(reqId) || reqId === currentId);
+      if (!ok) reasons.push("Requires a matching weapon proficiency");
+    }
+
+    if (ability.requiresFit != null && char) {
+      const fitEff = char.fit - heartsLost(char);
+      if (fitEff < ability.requiresFit) {
+        reasons.push("Requires Fitness " + (ability.requiresFit >= 0 ? "+" : "") + ability.requiresFit + " or higher");
+      }
+    }
+
+    if (ability.requiresCastingMod != null && char) {
+      const lost = heartsLost(char);
+      const casting = Math.max(char.ins - lost, char.wil - lost);
+      if (casting < ability.requiresCastingMod) {
+        reasons.push("Requires Insight or Willpower +" + ability.requiresCastingMod + " or higher");
+      }
+    }
+
+    if (!isSelected && cost > budget) {
+      reasons.push("Not enough experience (needs " + cost + " XP, " + Math.max(0, budget) + " available)");
+    }
+
+    if (!isSelected) {
+      const neededSlots = abilityModalSelectedIds.length + 1;
+      const targets = findTargetSlots(lineIndex, neededSlots);
+      if (targets.length < neededSlots) {
+        reasons.push("Not enough empty ability slots");
+      }
+    }
+
+    return {
+      selectable: reasons.length === 0,
+      reasons: reasons,
+      cost: cost,
+      budget: budget,
+      isCurrent: isCurrent,
+      isSelected: isSelected,
+    };
+  }
+
+  function partitionAbilities(lineIndex) {
+    const available = [];
+    const unavailable = [];
+    (abilitiesData && abilitiesData.abilities ? abilitiesData.abilities : []).forEach((ability) => {
+      const evalResult = evaluateAbility(ability, lineIndex);
+      const item = Object.assign({ ability: ability }, evalResult);
+      if (evalResult.selectable) available.push(item);
+      else unavailable.push(item);
+    });
+    return { available: available, unavailable: unavailable };
+  }
+
+  function groupItems(items) {
+    const groups = [];
+    const seen = new Map();
+    items.forEach((item) => {
+      const ability = item.ability;
+      const key = ability.categoryId || "other";
+      if (!seen.has(key)) {
+        seen.set(key, { id: key, name: ability.category || "Other", items: [] });
+        groups.push(seen.get(key));
+      }
+      seen.get(key).items.push(item);
+    });
+    return groups;
+  }
+
+  function renderAbilityCards(items, sectionDisabled) {
+    return items.map((item) => {
+      const ability = item.ability;
+      const selectable = item.selectable;
+      const reasons = item.reasons;
+      const cost = item.cost;
+      const isCurrent = item.isCurrent;
+      const selected = abilityModalSelectedIds.includes(ability.id);
+      const xpLabel = cost ? cost + " XP" : "";
+      const reasonText = reasons.length ? reasons.join(" · ") : "";
+      const classes = [
+        "cls-ability-card",
+        selected ? "is-selected" : "",
+        sectionDisabled || !selectable ? "is-disabled" : "",
+        isCurrent ? "is-current" : "",
+      ].filter(Boolean).join(" ");
+      return `<button type="button" class="${classes}" data-ability-id="${escapeHtml(ability.id)}" data-selectable="${selectable ? "1" : "0"}" aria-pressed="${selected ? "true" : "false"}"${sectionDisabled || !selectable ? ' aria-disabled="true"' : ""}>
+        <span class="cls-ability-card-header">
+          <span class="cls-ability-card-title">${escapeHtml(ability.name)}</span>
+          ${xpLabel ? `<span class="cls-ability-card-xp">${escapeHtml(xpLabel)}</span>` : ""}
+        </span>
+        <span class="cls-ability-card-body">${escapeHtml(ability.description)}</span>
+        ${reasonText ? `<span class="cls-ability-card-reason">${escapeHtml(reasonText)}</span>` : ""}
+      </button>`;
+    }).join("");
+  }
+
+  function renderAbilitySection(title, items) {
+    if (!items.length) return "";
+    const groups = groupItems(items);
+    const disabled = title !== "Available now";
+    const groupsHtml = groups.map((group) => `<section class="cls-ability-group">
+        <h3 class="cls-ability-group-title">${escapeHtml(group.name)}</h3>
+        <div class="cls-ability-card-list">${renderAbilityCards(group.items, disabled)}</div>
+      </section>`).join("");
+    return `<div class="cls-ability-section">
+      <h2 class="cls-ability-section-title">${escapeHtml(title)}</h2>
+      ${groupsHtml}
+    </div>`;
+  }
+
+  function openAbilityModal(lineIndex) {
+    if (!abilitiesData || !char || !el.modalRoot) return;
+    abilityEditLine = null;
+    abilityModalLine = lineIndex;
+    const current = char.abilityLines[lineIndex];
+    let initialId = current && current.id ? current.id : null;
+    if (!initialId && current && current.name) {
+      const match = (abilitiesData.abilities || []).find((a) => a.name === current.name);
+      initialId = match ? match.id : null;
+    }
+    abilityModalSelectedIds = initialId ? [initialId] : [];
+    abilityModalMessage = "";
+    renderAbilityModal();
+  }
+
+  function closeAbilityModal() {
+    abilityModalLine = null;
+    abilityModalSelectedIds = [];
+    abilityModalMessage = "";
+    if (el.modalRoot && abilityEditLine == null) el.modalRoot.innerHTML = "";
+  }
+
+  function openAbilityEditModal(lineIndex) {
+    if (!char || !el.modalRoot) return;
+    const entry = char.abilityLines[lineIndex];
+    if (!entry) return;
+    abilityEditLine = lineIndex;
+    abilityModalLine = null;
+    abilityModalSelectedIds = [];
+    abilityModalMessage = "";
+    renderAbilityEditModal();
+  }
+
+  function closeAbilityEditModal() {
+    abilityEditLine = null;
+    if (el.modalRoot) el.modalRoot.innerHTML = "";
+  }
+
+  function applyAbilityEdit() {
+    if (!char || abilityEditLine == null || !el.modalRoot) return;
+    const nameInput = el.modalRoot.querySelector("#cls-ability-edit-name");
+    const descInput = el.modalRoot.querySelector("#cls-ability-edit-desc");
+    const notesInput = el.modalRoot.querySelector("#cls-ability-edit-notes");
+    const entry = char.abilityLines[abilityEditLine];
+    if (!entry) {
+      closeAbilityEditModal();
+      return;
+    }
+    const name = (nameInput?.value || "").trim();
+    const description = (descInput?.value || "").trim();
+    const notes = (notesInput?.value || "").trim();
+    if (!name) {
+      abilityModalMessage = "Name is required.";
+      renderAbilityEditModal({ name, description, notes });
+      return;
+    }
+    char.abilityLines[abilityEditLine] = {
+      ...entry,
+      name,
+      description,
+      notes,
+    };
+    closeAbilityEditModal();
+    persistAndRender();
+  }
+
+  function renderAbilityEditModal(draft) {
+    if (!el.modalRoot || abilityEditLine == null || !char) return;
+    const entry = char.abilityLines[abilityEditLine] || {};
+    const name = draft?.name != null ? draft.name : (entry.name || "");
+    const description = draft?.description != null ? draft.description : (entry.description || "");
+    const notes = draft?.notes != null ? draft.notes : (entry.notes || "");
+    const messageHtml = abilityModalMessage
+      ? `<p class="cls-ability-modal-message" role="alert">${escapeHtml(abilityModalMessage)}</p>`
+      : "";
+
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cls-ability-edit-overlay">
+      <div class="cs-modal cls-ability-edit-modal" role="dialog" aria-modal="true" aria-labelledby="cls-ability-edit-title">
+        <div class="cs-modal-header">
+          <h2 id="cls-ability-edit-title">Edit Ability</h2>
+          <button type="button" class="cs-modal-close" id="cls-ability-edit-close" aria-label="Close">×</button>
+        </div>
+        <p class="cls-ability-modal-hint">Customize the wording or add personal notes. XP cost and training identity stay linked to the original ability.</p>
+        ${messageHtml}
+        <div class="cs-modal-body cls-ability-edit-body">
+          <label class="cs-label" for="cls-ability-edit-name">Name</label>
+          <input type="text" id="cls-ability-edit-name" class="cs-input" value="${escapeHtml(name)}" autocomplete="off" />
+          <label class="cs-label" for="cls-ability-edit-desc">Description</label>
+          <textarea id="cls-ability-edit-desc" class="cs-textarea" rows="5">${escapeHtml(description)}</textarea>
+          <label class="cs-label" for="cls-ability-edit-notes">Notes</label>
+          <textarea id="cls-ability-edit-notes" class="cs-textarea" rows="3" placeholder="House rulings, reminders, customization…">${escapeHtml(notes)}</textarea>
+        </div>
+        <div class="cls-ability-modal-footer">
+          <button type="button" class="btn cs-btn-secondary" id="cls-ability-edit-cancel">Cancel</button>
+          <button type="button" class="btn" id="cls-ability-edit-save">Save</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function applyAbilityChoice() {
+    if (!char || abilityModalLine == null) return;
+    const lineIndex = abilityModalLine;
+    const previous = char.abilityLines[lineIndex];
+    const previousCost = previous && previous.id ? abilityCost(previous.id) : 0;
+
+    if (!abilityModalSelectedIds.length) {
+      char.xp += previousCost;
+      char.abilityLines[lineIndex] = null;
+      closeAbilityModal();
+      persistAndRender();
+      return;
+    }
+
+    const orderedIds = orderSelectedByRequires(abilityModalSelectedIds);
+    const targets = findTargetSlots(lineIndex, orderedIds.length);
+    if (targets.length < orderedIds.length) {
+      abilityModalMessage = "Not enough empty ability slots for " + orderedIds.length + " abilities.";
+      renderAbilityModal();
+      return;
+    }
+
+    let budget = availableXpForLine(lineIndex);
+    const placements = [];
+    for (let i = 0; i < orderedIds.length; i++) {
+      const ability = abilityById(orderedIds[i]);
+      if (!ability) {
+        abilityModalMessage = "That ability could not be found.";
+        renderAbilityModal();
+        return;
+      }
+      // Simulate ownership of abilities already placed in this batch
+      const simulated = evaluateAbilityForApply(ability, lineIndex, orderedIds.slice(0, i), budget);
+      if (!simulated.ok) {
+        abilityModalMessage = simulated.reason || "Requirements not met.";
+        renderAbilityModal();
+        return;
+      }
+      if (abilityCost(ability) > budget) {
+        abilityModalMessage = "Not enough experience (needs " + abilityCost(ability) + " XP, " + budget + " available).";
+        renderAbilityModal();
+        return;
+      }
+      budget -= abilityCost(ability);
+      placements.push({ slot: targets[i], ability: ability });
+    }
+
+    char.xp = budget;
+    placements.forEach((placement) => {
+      const existing = char.abilityLines[placement.slot];
+      const sameAbility = existing && existing.id === placement.ability.id;
+      char.abilityLines[placement.slot] = {
+        id: placement.ability.id,
+        name: sameAbility && existing.name ? existing.name : placement.ability.name,
+        description: sameAbility ? (existing.description || "") : placement.ability.description,
+        notes: sameAbility ? (existing.notes || "") : "",
+        xp: placement.ability.xp,
+      };
+    });
+    closeAbilityModal();
+    persistAndRender();
+  }
+
+  function evaluateAbilityForApply(ability, lineIndex, priorBatchIds, budget) {
+    const owned = ownedAbilityIds(lineIndex);
+    priorBatchIds.forEach((id) => owned.add(id));
+    const currentId = char.abilityLines[lineIndex]?.id || null;
+
+    if (owned.has(ability.id)) {
+      return { ok: false, reason: "Already trained in another slot" };
+    }
+    for (const reqId of ability.requires || []) {
+      if (owned.has(reqId) || reqId === currentId) continue;
+      const req = abilityById(reqId);
+      return { ok: false, reason: "Requires " + (req ? req.name : reqId) };
+    }
+    if (Array.isArray(ability.requiresAny) && ability.requiresAny.length) {
+      const ok = ability.requiresAny.some((reqId) => owned.has(reqId) || reqId === currentId);
+      if (!ok) return { ok: false, reason: "Requires a matching weapon proficiency" };
+    }
+    if (ability.requiresFit != null) {
+      const fitEff = char.fit - heartsLost(char);
+      if (fitEff < ability.requiresFit) {
+        return { ok: false, reason: "Requires Fitness +" + ability.requiresFit + " or higher" };
+      }
+    }
+    if (ability.requiresCastingMod != null) {
+      const lost = heartsLost(char);
+      const casting = Math.max(char.ins - lost, char.wil - lost);
+      if (casting < ability.requiresCastingMod) {
+        return { ok: false, reason: "Requires Insight or Willpower +" + ability.requiresCastingMod + " or higher" };
+      }
+    }
+    if (abilityCost(ability) > budget) {
+      return { ok: false, reason: "Not enough experience (needs " + abilityCost(ability) + " XP, " + budget + " available)" };
+    }
+    return { ok: true };
+  }
+
+  function renderAbilityModal() {
+    if (!el.modalRoot || !abilitiesData || abilityModalLine == null || !char) return;
+    const budget = availableXpForLine(abilityModalLine);
+    const remaining = Math.max(0, budget - selectedCostExcept(null));
+    const parts = partitionAbilities(abilityModalLine);
+    const current = char.abilityLines[abilityModalLine];
+    const refund = current && current.id ? abilityCost(current.id) : 0;
+    const selectedCount = abilityModalSelectedIds.length;
+    const messageHtml = abilityModalMessage
+      ? `<p class="cls-ability-modal-message" role="alert">${escapeHtml(abilityModalMessage)}</p>`
+      : "";
+    const chooseLabel = selectedCount ? `Choose (${selectedCount})` : "Clear slot";
+
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cls-ability-overlay">
+      <div class="cs-modal cls-ability-modal" role="dialog" aria-modal="true" aria-labelledby="cls-ability-modal-title">
+        <div class="cs-modal-header">
+          <h2 id="cls-ability-modal-title">Choose Abilities</h2>
+          <button type="button" class="cs-modal-close" id="cls-ability-close" aria-label="Close">×</button>
+        </div>
+        <p class="cls-ability-modal-hint">Select one or more abilities. They fill this slot and the next empty slots. Budget: <strong>${remaining}</strong> XP left of <strong>${budget}</strong> (banked ${char.xp}${refund ? ` + refund ${refund}` : ""})${selectedCount ? ` · ${selectedCount} selected` : ""}.</p>
+        ${messageHtml}
+        <div class="cs-modal-body cls-ability-modal-body">
+          ${renderAbilitySection("Available now", parts.available)}
+          ${renderAbilitySection("Not yet available", parts.unavailable)}
+        </div>
+        <div class="cls-ability-modal-footer">
+          <button type="button" class="btn cs-btn-secondary" id="cls-ability-cancel">Cancel</button>
+          <button type="button" class="btn" id="cls-ability-choose">${escapeHtml(chooseLabel)}</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function trySelectAbilityCard(abilityId) {
+    const ability = abilityById(abilityId);
+    if (!ability || abilityModalLine == null) return;
+    if (abilityModalSelectedIds.includes(abilityId)) {
+      abilityModalSelectedIds = abilityModalSelectedIds.filter((id) => id !== abilityId);
+      abilityModalMessage = "";
+      renderAbilityModal();
+      return;
+    }
+    const evaluation = evaluateAbility(ability, abilityModalLine);
+    if (!evaluation.selectable) {
+      abilityModalMessage = evaluation.reasons[0] || "Requirements not met.";
+      renderAbilityModal();
+      return;
+    }
+    abilityModalSelectedIds = abilityModalSelectedIds.concat(abilityId);
+    abilityModalMessage = "";
+    renderAbilityModal();
+  }
+
   function bindEvents() {
     if (eventsBound) return;
     eventsBound = true;
@@ -440,6 +957,18 @@
     }
 
     el.sheet.addEventListener("click", (e) => {
+      const editBtn = e.target.closest(".cls-ability-edit");
+      if (editBtn && char) {
+        const idx = parseInt(editBtn.dataset.abilityEdit, 10);
+        openAbilityEditModal(idx);
+        return;
+      }
+      const abilitySlot = e.target.closest(".cls-ability-slot");
+      if (abilitySlot && char) {
+        const idx = parseInt(abilitySlot.dataset.abilityLine, 10);
+        openAbilityModal(idx);
+        return;
+      }
       const btn = e.target.closest(".cs-stepper-btn");
       if (btn) {
         const stepperEl = btn.closest("[data-stepper]");
@@ -470,10 +999,13 @@
       if (t.id === "cls-background") { char.backgroundText = t.value; saveStore(); return; }
       if (t.id === "cls-spelllist") { char.spellListText = t.value; saveStore(); return; }
       if (t.id === "cls-inventory") { char.inventoryText = t.value; saveStore(); return; }
-      if (t.dataset.abilityLine != null) {
-        const idx = parseInt(t.dataset.abilityLine, 10);
-        char.abilityLines[idx] = t.value;
+      if (t.id === "cls-xp") {
+        char.xp = Math.max(0, parseInt(t.value, 10) || 0);
         saveStore();
+        if (abilityModalLine != null) {
+          abilityModalMessage = "";
+          renderAbilityModal();
+        }
         return;
       }
       if (t.dataset.coin) {
@@ -488,13 +1020,50 @@
       if (t.id === "cls-xp") {
         char.xp = Math.max(0, parseInt(t.value, 10) || 0);
         saveStore();
+        if (abilityModalLine != null) {
+          abilityModalMessage = "";
+          renderAbilityModal();
+        }
       }
     });
+
+    if (el.modalRoot) {
+      el.modalRoot.addEventListener("click", (e) => {
+        if (e.target.id === "cls-ability-overlay" || e.target.id === "cls-ability-close" || e.target.id === "cls-ability-cancel") {
+          closeAbilityModal();
+          return;
+        }
+        if (e.target.id === "cls-ability-choose") {
+          applyAbilityChoice();
+          return;
+        }
+        if (e.target.id === "cls-ability-edit-overlay" || e.target.id === "cls-ability-edit-close" || e.target.id === "cls-ability-edit-cancel") {
+          closeAbilityEditModal();
+          return;
+        }
+        if (e.target.id === "cls-ability-edit-save") {
+          applyAbilityEdit();
+          return;
+        }
+        const card = e.target.closest(".cls-ability-card");
+        if (card) {
+          trySelectAbilityCard(card.dataset.abilityId);
+        }
+      });
+    }
   }
 
-  function init() {
+  async function init() {
     cacheElements();
     bindEvents();
+    try {
+      const res = await fetch(rp("assets/classless-abilities-data.json"));
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      abilitiesData = await res.json();
+    } catch (err) {
+      console.error("Could not load classless abilities:", err);
+      abilitiesData = { version: 1, abilities: [] };
+    }
     render();
   }
 

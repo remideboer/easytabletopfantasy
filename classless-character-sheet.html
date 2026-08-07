@@ -36,6 +36,19 @@
       color: transparent !important;
     }
 
+    body.cs-page #cls-modal-root {
+      display: none !important;
+    }
+
+    body.cs-page .cls-ability-slot {
+      border-color: #000 !important;
+      background: transparent !important;
+      color: #000 !important;
+      box-shadow: none !important;
+    }
+    body.cs-page .cls-ability-name { color: #000 !important; font-weight: 700 !important; }
+    body.cs-page .cls-ability-empty { color: transparent !important; }
+
     body.cs-page .cs-pane,
     body.cs-page .cs-stat-box {
       break-inside: avoid;
@@ -72,8 +85,10 @@
     <p id="cls-empty" class="cs-empty">Select a character from the list, or create a new one to open the sheet.</p>
 
     <div class="cs-sheet" id="cls-sheet" aria-label="Classless character sheet" hidden></div>
-    <p class="cs-hint" id="cls-hint" hidden>Changes save automatically. Max Wounds, Spell Power, Defense, and Resolve are tracked by hand here since Classless abilities aren't fixed to a class — see the <a href="rules/classless.html#max-wounds-classless">Max Wounds</a> and <a href="rules/core.html#magic-and-spell-resources">Spell Power</a> rules for the formulas to apply as you train.</p>
+    <p class="cs-hint" id="cls-hint" hidden>Changes save automatically. Max Wounds, Spell Power, Defense, and Resolve are tracked by hand here since Classless abilities aren't fixed to a class — see the <a href="rules/classless.html#max-wounds-classless">Max Wounds</a> and <a href="rules/core.html#magic-and-spell-resources">Spell Power</a> rules for the formulas to apply as you train. Click an Abilities slot to pick a trained ability from the list.</p>
   </div>
+
+  <div id="cls-modal-root"></div>
 </main>
 <footer class="legal" data-include="footer"></footer>
 <script src="assets/classless-character-sheet.js"></script>
