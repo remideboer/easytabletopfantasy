@@ -49,6 +49,8 @@ window.YMIAT_I18N_CHROME = {
       "wildSheepChase": "The Wild Sheep Chase",
       "faq": "FAQ",
       "legal": "Legal",
+      "menu": "Menu",
+      "menuClose": "Close menu",
       "coreGameLoop": "Core Game Loop",
       "modesOfPlay": "Modes of Play",
       "diceAndTests": "Dice and Tests",
@@ -124,6 +126,8 @@ window.YMIAT_I18N_CHROME = {
       "wildSheepChase": "The Wild Sheep Chase",
       "faq": "FAQ",
       "legal": "Juridisch",
+      "menu": "Menu",
+      "menuClose": "Menu sluiten",
       "coreGameLoop": "Kernspelloop",
       "modesOfPlay": "Speelmodi",
       "diceAndTests": "Dobbelstenen en tests",
@@ -297,9 +301,12 @@ function ymiatBuildNav(locale) {
   const activeNl = locale === 'nl' ? ' is-active' : '';
   const ariaEn = locale === 'en' ? ' aria-current="true"' : '';
   const ariaNl = locale === 'nl' ? ' aria-current="true"' : '';
+  const menuLabel = e(n.menu || 'Menu');
+  const menuCloseLabel = e(n.menuClose || 'Close menu');
   return (
-    '<nav>' +
+    '<nav class="site-nav" aria-label="' + e(n.logoAlt || 'YMIAT') + '">' +
     '<a href="{{ROOT}}index.html" class="logo-link"><img src="{{ASSETS}}assets/You-Meet-In-A-Tavern.png" alt="' + e(n.logoAlt || 'YMIAT') + '" class="nav-logo" /></a>' +
+    '<div class="nav-panel" id="site-nav-panel">' +
     '<div class="nav-dropdown"><a href="{{ROOT}}rules/core.html">' + e(n.rules) + '</a><div class="nav-dropdown-menu nav-dropdown-menu-wide">' +
     '<a href="{{ROOT}}rules/core.html#core-game-loop">' + e(n.coreGameLoop) + '</a>' +
     '<a href="{{ROOT}}rules/core.html#modes-of-play">' + e(n.modesOfPlay) + '</a>' +
@@ -319,6 +326,7 @@ function ymiatBuildNav(locale) {
     '<a href="{{ROOT}}rules/core.html#resolve">' + e(n.resolve) + '</a>' +
     '<a href="{{ROOT}}rules/core.html#recovery-points-and-rest">' + e(n.recoveryPointsAndRest) + '</a>' +
     '<a href="{{ROOT}}rules/core.html#spell-school-expertise">' + e(n.spellSchoolExpertise) + '</a>' +
+    '<a href="{{ROOT}}rules/combat.html">' + e(n.combat) + '</a>' +
     '</div></div>' +
     chars +
     '<a href="{{ROOT}}convert.html">' + e(n.converter) + '</a>' +
@@ -329,7 +337,6 @@ function ymiatBuildNav(locale) {
     '<a href="{{ROOT}}classless-character-sheet.html">' + e(n.classlessSheet) + '</a>' +
     '<a href="{{ROOT}}rules/classless-abilities.html">' + e(n.classlessAbilities) + '</a>' +
     '</div></div>' +
-    '<a href="{{ROOT}}rules/combat.html">' + e(n.combat) + '</a>' +
     '<a href="{{ROOT}}rules/magic.html">' + e(n.magic) + '</a>' +
     '<a href="{{ROOT}}rules/gear.html">' + e(n.gear) + '</a>' +
     '<a href="{{ROOT}}rules/services.html">' + e(n.services) + '</a>' +
@@ -340,6 +347,8 @@ function ymiatBuildNav(locale) {
     '</div></div>' +
     '<a href="{{ROOT}}faq.html">' + e(n.faq) + '</a>' +
     '<a href="{{ROOT}}legal.html">' + e(n.legal) + '</a>' +
+    '</div>' +
+    '<div class="nav-bar-end">' +
     '<div class="lang-switch" role="group" aria-label="' + e(t.label || 'Language') + '">' +
     '<a class="lang-switch-btn' + activeEn + '" href="#" data-lang-switch="en" title="' + e(t.switchToEn || 'English') + '"' + ariaEn + '>' +
     '<img src="{{ASSETS}}assets/flag-gb.svg" alt="' + e(t.en || 'English') + '" width="24" height="18" />' +
@@ -347,6 +356,11 @@ function ymiatBuildNav(locale) {
     '<a class="lang-switch-btn' + activeNl + '" href="#" data-lang-switch="nl" title="' + e(t.switchToNl || 'Nederlands') + '"' + ariaNl + '>' +
     '<img src="{{ASSETS}}assets/flag-nl.svg" alt="' + e(t.nl || 'Nederlands') + '" width="24" height="18" />' +
     '</a>' +
+    '</div>' +
+    '<button type="button" class="nav-toggle" id="site-nav-toggle" aria-expanded="false" aria-controls="site-nav-panel" aria-label="' + menuLabel + '" data-label-open="' + menuLabel + '" data-label-close="' + menuCloseLabel + '">' +
+    '<span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>' +
+    '<span class="nav-toggle-text">' + menuLabel + '</span>' +
+    '</button>' +
     '</div>' +
     '</nav>'
   );
@@ -412,8 +426,20 @@ function ymiatBindLangSwitch() {
 
 // Load includes into page - works with file:// protocol and web deployments
 (function(){
-function needsTouchNav(){
+  function needsTouchNav(){
     return window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  }
+
+  function needsCompactNav(){
+    return window.matchMedia('(max-width: 1024px)').matches;
+  }
+
+  function getSiteNav(){
+    return document.querySelector('nav.site-nav');
+  }
+
+  function getNavToggle(){
+    return document.getElementById('site-nav-toggle');
   }
 
   function ensureNavBackdrop(){
@@ -422,10 +448,20 @@ function needsTouchNav(){
       backdrop = document.createElement('div');
       backdrop.className = 'nav-dropdown-backdrop';
       backdrop.hidden = true;
-      backdrop.addEventListener('click', closeAllNavDropdowns);
+      backdrop.addEventListener('click', () => {
+        if(document.body.classList.contains('nav-drawer-open')) closeNavDrawer();
+        else closeAllNavDropdowns();
+      });
       document.body.appendChild(backdrop);
     }
     return backdrop;
+  }
+
+  function syncBackdrop(){
+    const backdrop = ensureNavBackdrop();
+    const open = document.body.classList.contains('nav-drawer-open')
+      || document.body.classList.contains('nav-menu-open');
+    backdrop.hidden = !open;
   }
 
   function closeAllNavDropdowns(){
@@ -443,8 +479,62 @@ function needsTouchNav(){
     });
     restoreAllFlyoutPanels();
     document.body.classList.remove('nav-menu-open');
-    const backdrop = document.querySelector('.nav-dropdown-backdrop');
-    if(backdrop) backdrop.hidden = true;
+    syncBackdrop();
+  }
+
+  function setNavToggleLabel(open){
+    const toggle = getNavToggle();
+    if(!toggle) return;
+    const label = open
+      ? (toggle.getAttribute('data-label-close') || 'Close menu')
+      : (toggle.getAttribute('data-label-open') || 'Menu');
+    toggle.setAttribute('aria-label', label);
+    const text = toggle.querySelector('.nav-toggle-text');
+    if(text) text.textContent = label;
+  }
+
+  function openNavDrawer(){
+    const nav = getSiteNav();
+    const toggle = getNavToggle();
+    if(!nav || !toggle) return;
+    nav.classList.add('is-drawer-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-drawer-open');
+    setNavToggleLabel(true);
+    syncBackdrop();
+  }
+
+  function closeNavDrawer(){
+    const nav = getSiteNav();
+    const toggle = getNavToggle();
+    if(nav) nav.classList.remove('is-drawer-open');
+    if(toggle) toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-drawer-open');
+    setNavToggleLabel(false);
+    closeAllNavDropdowns();
+    syncBackdrop();
+  }
+
+  function toggleNavDrawer(){
+    const nav = getSiteNav();
+    if(!nav) return;
+    if(nav.classList.contains('is-drawer-open')) closeNavDrawer();
+    else openNavDrawer();
+  }
+
+  function initNavToggle(){
+    const toggle = getNavToggle();
+    if(!toggle) return;
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleNavDrawer();
+    });
+    window.addEventListener('resize', () => {
+      if(!needsCompactNav() && document.body.classList.contains('nav-drawer-open')){
+        closeNavDrawer();
+      }
+    });
   }
 
   function getBranchPanel(branch){
@@ -513,6 +603,20 @@ function needsTouchNav(){
       trigger.setAttribute('aria-expanded', 'false');
 
       trigger.addEventListener('click', e => {
+        if(needsCompactNav()){
+          e.preventDefault();
+          const isOpen = dropdown.classList.contains('is-open');
+          document.querySelectorAll('.nav-dropdown.is-open').forEach(other => {
+            if(other === dropdown) return;
+            other.classList.remove('is-open');
+            const otherTrigger = other.querySelector(':scope > a');
+            if(otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+          });
+          dropdown.classList.toggle('is-open', !isOpen);
+          trigger.setAttribute('aria-expanded', (!isOpen).toString());
+          return;
+        }
+
         if(!needsTouchNav()) return;
 
         const isOpen = dropdown.classList.contains('is-open');
@@ -523,7 +627,7 @@ function needsTouchNav(){
           dropdown.classList.add('is-open');
           trigger.setAttribute('aria-expanded', 'true');
           document.body.classList.add('nav-menu-open');
-          backdrop.hidden = false;
+          syncBackdrop();
           requestAnimationFrame(() => {
             const first = menu.querySelector('a, [tabindex="0"]');
             if(first) first.focus({preventScroll: true});
@@ -533,13 +637,23 @@ function needsTouchNav(){
 
       menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          if(needsTouchNav()) closeAllNavDropdowns();
+          if(needsCompactNav()) closeNavDrawer();
+          else if(needsTouchNav()) closeAllNavDropdowns();
         });
       });
     });
 
+    document.querySelectorAll('.nav-panel > a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(needsCompactNav()) closeNavDrawer();
+      });
+    });
+
     document.addEventListener('keydown', e => {
-      if(e.key === 'Escape') closeAllNavDropdowns();
+      if(e.key === 'Escape'){
+        if(document.body.classList.contains('nav-drawer-open')) closeNavDrawer();
+        else closeAllNavDropdowns();
+      }
     });
   }
 
@@ -563,7 +677,7 @@ function needsTouchNav(){
         if(trigger.getAttribute('role') === 'button'){
           trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
-        if(open && inScrollList){
+        if(open && inScrollList && !needsCompactNav()){
           placeBranchFlyout(branch);
         } else if(!open){
           clearBranchFlyoutPanel(branch);
@@ -571,7 +685,7 @@ function needsTouchNav(){
       }
 
       function toggleBranch(e){
-        if(!needsTouchNav()) return;
+        if(!needsTouchNav() && !needsCompactNav()) return;
 
         const hasFlyout = Boolean(panel.querySelector('a'));
         if(!hasFlyout) return;
@@ -643,6 +757,7 @@ function needsTouchNav(){
     }
 
     function placeBranchFlyout(branch){
+      if(needsCompactNav()) return;
       const panel = branch._flyoutPanel || branch.querySelector(':scope > .nav-submenu-panel');
       const trigger = branch.querySelector(':scope > .nav-submenu-link');
       if(!panel || !trigger) return;
@@ -693,14 +808,20 @@ function needsTouchNav(){
 
     document.querySelectorAll('.nav-submenu-panel-inner--branch-list').forEach(list => {
       list.querySelectorAll('.nav-submenu--branch').forEach(branch => {
-        branch.addEventListener('mouseenter', () => placeBranchFlyout(branch));
-        branch.addEventListener('focusin', () => placeBranchFlyout(branch));
+        branch.addEventListener('mouseenter', () => {
+          if(!needsCompactNav()) placeBranchFlyout(branch);
+        });
+        branch.addEventListener('focusin', () => {
+          if(!needsCompactNav()) placeBranchFlyout(branch);
+        });
         branch.addEventListener('mouseleave', e => {
+          if(needsCompactNav()) return;
           if(!branchFocusTarget(branch, e.relatedTarget)){
             clearBranchFlyoutPanel(branch);
           }
         });
         branch.addEventListener('focusout', e => {
+          if(needsCompactNav()) return;
           if(!branchFocusTarget(branch, e.relatedTarget)){
             requestAnimationFrame(() => clearBranchFlyout(branch));
           }
@@ -708,6 +829,7 @@ function needsTouchNav(){
       });
 
       list.addEventListener('scroll', () => {
+        if(needsCompactNav()) return;
         list.querySelectorAll('.nav-submenu--branch.is-open, .nav-submenu--branch:hover').forEach(branch => {
           const panel = getBranchPanel(branch);
           const trigger = branch.querySelector(':scope > .nav-submenu-link');
@@ -719,6 +841,10 @@ function needsTouchNav(){
     });
 
     window.addEventListener('resize', () => {
+      if(needsCompactNav()){
+        restoreAllFlyoutPanels();
+        return;
+      }
       document.querySelectorAll('.nav-submenu--branch.is-open, .nav-submenu--branch:hover').forEach(branch => {
         if(!branch.closest('.nav-submenu-panel-inner--branch-list')) return;
         const panel = getBranchPanel(branch);
@@ -744,6 +870,7 @@ function needsTouchNav(){
         .replace(/\{\{ASSETS\}\}/g, assetsPath);
       navPlaceholder.innerHTML = html;
       updateActiveNav();
+      initNavToggle();
       initBranchListFlyouts();
       initNavDropdowns();
       ymiatBindLangSwitch();
