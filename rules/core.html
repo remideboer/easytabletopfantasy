@@ -46,7 +46,7 @@
 <p>The Game Master determines which mode applies at any given time, and the game can shift between modes as the situation changes. For example, exploration might transition to encounter mode when combat begins, then return to exploration or downtime afterward.</p>
 <hr>
 <h2 id="dice-and-tests">Dice and Tests</h2>
-<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses the d20 for nearly all resolution.</p>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses the d20 for all resolution.</p>
 <p>All actions, attacks, saving throws, and ability checks are d20 tests. Some spells grant advantage (roll 2d20, take highest) or disadvantage (roll 2d20, take lowest) to d20 rolls. Harm is resolved as <strong>Wounds</strong>.</p>
 <hr>
 <h3 id="ability-scores">Abilities and Properties</h3>
@@ -62,7 +62,7 @@
 <li><strong>Wounds (WD):</strong> Current injury track. Characters start at 0 Wounds. Taking harm adds Wounds until Max Wounds is reached. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Max Wounds:</strong> Capacity before the Life rule applies. Max Wounds = class start Max Wounds + Fitness modifier + (level − 1). When Wounds reach Max Wounds, the Life rule triggers. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Spell Power (SP):</strong> Represents a spellcaster's magical capacity. SP equals 3 × spellcasting ability modifier. Spellcasters spend SP to cast spells and regain it through rest and Recovery Points. See <a href="#magic-and-spell-resources">Magic and Spell Resources</a> for details.</li>
-<li><strong>Proficiency Bonus (PB):</strong> A flat bonus used only where a class feature, spell, or talent explicitly calls for "PB"—not on ability checks, attack rolls, or Defense rolls, which use advantage instead. PB = level ÷ 2, rounded up. See <a href="#proficiency-and-advantage">Proficiency and Advantage</a> for details.</li>
+<li><strong>Proficiency Bonus (PB):</strong> Added to rolls when you are proficient (or Expert/Master) with a weapon, skill, tool, or similar. Features that say "PB" for damage, DCs, or uses per rest also use this number. PB = level ÷ 2, rounded up. See <a href="#proficiency-and-advantage">Proficiency Bonus</a> for details.</li>
 <li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character's Wounds reach Max Wounds, they must make Death Saves; failing a Death Save costs one heart. For each heart lost, every ability modifier (Fitness, Insight, and Willpower) is reduced by 1, maximum speed is reduced by 5 feet (one step), and Max Wounds is reduced by 2 until that heart is restored. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life and Death Saves</a> for details.</li>
 </ul>
 <hr>
@@ -79,18 +79,14 @@
 <li>You may “borrow” points by lowering an ability below 0, down to a minimum of −1.</li>
 </ul>
 <hr>
-<h3 id="proficiency-and-advantage">Proficiency and Advantage</h3>
-<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) uses a stacking advantage system. When you are proficient with something (such as a weapon, armor, skill, or saving throw), you gain advantage on related rolls. Advantage means you roll two d20s and take the higher result.</p>
-<p>Advantage can stack. If you have multiple sources of advantage, you roll additional d20s and take the highest. For example, if you have proficiency (1 advantage) and another source grants advantage, you roll 3d20 and take the highest. This is called "stacking advantage."</p>
-<p>Disadvantage works similarly but in reverse—you roll multiple d20s and take the lowest. Advantage and disadvantage cancel each other out on a one-to-one basis.</p>
-<p>Your proficiency level determines how many advantage dice you gain:</p>
+<h3 id="proficiency-and-advantage">Proficiency</h3>
+<p>When you are proficient with something (such as a weapon, skill, tool, or saving throw), you add your <strong>Proficiency Bonus (PB)</strong> to related rolls. Proficiency is typically granted by your class, background, or talents.</p>
+<p>Your proficiency <em>level</em> multiplies how much PB you add:</p>
 <ul>
-<li><strong>Proficient:</strong> You have advantage (roll 2d20, take highest)</li>
-<li><strong>Expert:</strong> You have double advantage (roll 3d20, take highest)</li>
-<li><strong>Master:</strong> You have triple advantage (roll 4d20, take highest)</li>
+<li><strong>Proficient:</strong> +PB</li>
+<li><strong>Expert:</strong> +2×PB</li>
+<li><strong>Master:</strong> +3×PB</li>
 </ul>
-<p>Proficiency is typically granted by your class, background, or talents.</p>
-<p><strong>Proficiency Bonus (PB):</strong> Some class features, spells, and talents call for a flat <strong>Proficiency Bonus</strong> instead of advantage—a static number added to damage, DCs, uses per rest, or similar values whenever a feature explicitly says "PB." It is never added to ability checks, attack rolls, or Defense rolls; those always use the advantage system above.</p>
 <div class="formula-box">
   <span class="formula-label">Proficiency Bonus</span>
   <span class="formula-equation">
@@ -103,9 +99,11 @@
   </span>
 </div>
 <p>PB is +1 at levels 1–2, +2 at levels 3–4, +3 at levels 5–6, +4 at levels 7–8, and +5 at levels 9–10.</p>
+<p>Some class features, spells, and talents also call for the flat <strong>PB</strong> number for damage, DCs, uses per rest, or similar values whenever a feature explicitly says "PB."</p>
+<p><strong>Advantage and disadvantage</strong> are separate from proficiency. They apply when circumstances favor or hinder you (cover, spells such as <em>bless</em>, Reckless Attack, wearing armor above your trained category, and so on). Advantage means you roll two d20s and take the higher result; disadvantage means you roll two d20s and take the lower. Advantage can stack: multiple sources mean additional d20s, taking the highest (or lowest for disadvantage). Advantage and disadvantage cancel each other out on a one-to-one basis.</p>
 <hr>
-<h3>Skills and Ability Checks</h3>
-<p>All ability checks are made directly with Fitness, Insight, or Willpower. Classes, backgrounds, and talents can grant specific skills; only those listed skills benefit from the character's proficiency advantage, granting you advantage on ability checks made with that skill.</p>
+<h3 id="skills-and-ability-checks">Skills and Ability Checks</h3>
+<p>All ability checks are made directly with Fitness, Insight, or Willpower. Classes, backgrounds, and talents can grant specific skills; only those listed skills are proficient. Add your PB to ability checks made with a proficient skill (+2×PB if you have Expertise in that skill, +3×PB if Master).</p>
 <p>The core ability always forms the basis of the roll. Skills indicate where a character has additional training or talent and make explicit why the character is good at a particular task. Record only the skills the character actually possesses. This approach keeps character sheets compact and supports clear, consistent roleplaying.</p>
 <p>New or setting-specific skills can be attached to classes, backgrounds, or talents, making <strong>You-Meet-In-A-Tavern</strong> (YMIAT) flexible and easy to expand.</p>
 <hr>
@@ -215,7 +213,7 @@
 <hr>
 <h3 id="weapon-proficiency">Weapon Proficiency</h3>
 <p>Weapons are divided into two categories: <strong>simple weapons</strong> and <strong>martial weapons</strong>. Your class determines which weapon categories you are proficient with.</p>
-<p><strong>Proficiency Benefit:</strong> If you are proficient with a weapon, you gain <strong>advantage</strong> on attack rolls made with that weapon (roll 2d20, take highest). If you are not proficient with a weapon, you do not gain advantage—you only roll a single d20 for your attack roll.</p>
+<p><strong>Proficiency Benefit:</strong> If you are proficient with a weapon, add your <strong>PB</strong> to attack rolls made with that weapon (+2×PB if Expert with that weapon, +3×PB if Master). If you are not proficient, you still roll d20 + weapon bonus + ability modifier, but you do not add PB.</p>
 
 <h3>Weapon Attacks</h3>
 <p>Weapon attack rolls use the following formula:</p>
@@ -228,11 +226,11 @@
     <span class="operator">+</span>
     <span class="variable">ability modifier</span>
     <span class="operator">+</span>
-    <span class="variable">(advantage if proficient)</span>
+    <span class="variable">PB (if proficient)</span>
   </span>
 </div>
 <p><strong>Example: Weapon Attack Roll</strong></p>
-<p>A fighter with Fitness +2 and a shortsword (attack bonus +2) who is proficient with martial weapons makes an attack roll with advantage (roll 2d20, take highest) + 2 (weapon) + 2 (Fitness) = highest of 2d20 + 4.</p>
+<p>A 1st-level fighter (PB +1) with Fitness +2 and a shortsword (attack bonus +2) who is proficient with martial weapons makes an attack roll of d20 + 2 (weapon) + 2 (Fitness) + 1 (PB) = d20 + 5. Circumstantial advantage or disadvantage (if any) applies to the d20 as usual.</p>
 <p>On a hit, the attack inflicts 1 Wound. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) assumes that better weapons improve the chance to hit, while spells generally increase the number of Wounds inflicted and/or apply additional effects.</p>
 
 <h3 id="armor-and-defense">Armor and Defense</h3>
@@ -392,7 +390,7 @@
 <p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. When a heart is restored, the −1 penalty to each ability modifier, the −5 ft speed penalty, and the −2 Max Wounds penalty from that lost heart are removed as well. During this rest, however, no Wounds are healed; Wounds must be healed separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also heal Wounds again. The order of recovery during a long rest is always: first hearts, then Wounds. See the <a href="combat.html#life-and-death-saves">Life and Death Saves</a> section for more details on hearts and death saves.</p>
 <hr>
 <h3>Spell School Expertise</h3>
-<p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school gains double advantage (roll 3d20, take highest) on spell attack rolls for spells of that school, and targets of those spells have disadvantage (roll 2d20, take lowest) on saving throws against them.</p>
+<p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school adds <strong>+2×PB</strong> (Expert) to spell attack rolls for spells of that school, and targets of those spells have disadvantage on saving throws against them.</p>
 <p>The number of spell schools in which a caster is proficient is equal to their spellcasting ability modifier divided by 2, rounded up.</p></div>
 </div></main>
 <footer class="legal" data-include="footer"></footer>

@@ -164,7 +164,7 @@
       "categoryId": "weapon-armor-proficiency",
       "category": "Weapon and Armor Proficiency",
       "requires": [],
-      "description": "Proficient wielding simple melee weapons; add Fitness modifier to attack rolls made with them."
+      "description": "Proficient with simple melee weapons; add Fitness + PB to attack rolls with them."
     },
     {
       "id": "martial-melee-weapon-proficiency",
@@ -175,7 +175,7 @@
       "requires": [
         "simple-melee-weapon-proficiency"
       ],
-      "description": "Proficient wielding martial melee weapons; add Fitness modifier to attack rolls made with them. Prerequisite: Simple Melee Weapon Proficiency."
+      "description": "Proficient with martial melee weapons; add Fitness + PB to attack rolls with them. Prerequisite: Simple Melee Weapon Proficiency."
     },
     {
       "id": "simple-ranged-weapon-proficiency",
@@ -184,7 +184,7 @@
       "categoryId": "weapon-armor-proficiency",
       "category": "Weapon and Armor Proficiency",
       "requires": [],
-      "description": "Proficient using simple ranged weapons; add Fitness modifier to attack rolls made with them."
+      "description": "Proficient with simple ranged weapons; add Fitness + PB to attack rolls with them."
     },
     {
       "id": "martial-ranged-weapon-proficiency",
@@ -195,7 +195,7 @@
       "requires": [
         "simple-ranged-weapon-proficiency"
       ],
-      "description": "Proficient using martial ranged weapons; add Fitness modifier to attack rolls made with them. Prerequisite: Simple Ranged Weapon Proficiency."
+      "description": "Proficient with martial ranged weapons; add Fitness + PB to attack rolls with them. Prerequisite: Simple Ranged Weapon Proficiency."
     },
     {
       "id": "single-weapon-proficiency",
@@ -204,7 +204,7 @@
       "categoryId": "weapon-armor-proficiency",
       "category": "Weapon and Armor Proficiency",
       "requires": [],
-      "description": "Proficient with one simple or martial weapon of your choice; add Fitness modifier to attack rolls made with it. Choose the weapon when you train this."
+      "description": "Proficient with one simple or martial weapon of your choice; add Fitness + PB to attack rolls with it. Choose the weapon when you train this."
     },
     {
       "id": "weapon-expertise",
@@ -213,7 +213,7 @@
       "categoryId": "weapon-armor-proficiency",
       "category": "Weapon and Armor Proficiency",
       "requires": [],
-      "description": "Add your Fitness modifier twice (instead of once) to attack rolls made with one specific weapon you are already proficient with.",
+      "description": "Expert with one specific weapon you are already proficient with: add Fitness + 2×PB (instead of Fitness + PB) to attack rolls with it.",
       "requiresAny": [
         "simple-melee-weapon-proficiency",
         "martial-melee-weapon-proficiency",

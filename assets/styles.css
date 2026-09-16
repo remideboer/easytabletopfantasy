@@ -4024,6 +4024,19 @@
 
   /* Classless character sheet: ability-line list, details header + speed box */
   .cs-field--xp{text-align:center}
+  .cls-field--level{text-align:center;margin-top:8px}
+  .cls-level-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .cls-pb-display{
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--brand-primary);
+    white-space:nowrap;
+  }
   .cls-hearts-row{display:flex;align-items:center;justify-content:center;gap:8px}
   .cls-dead-icon{width:22px;height:22px;flex-shrink:0}
   .cls-ability-lines{display:flex;flex-direction:column;gap:6px}

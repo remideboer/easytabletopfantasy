@@ -38,6 +38,7 @@
     <li><strong>Max Wounds grows through training, not levels.</strong> Every Classless character starts from the same flat base instead of a class start value, and gains further Max Wounds by training the <a href="#toughness">Toughness</a> ability instead of automatically per character level; see <a href="#max-wounds-classless">Max Wounds</a> below.</li>
     <li><strong>Abilities are trained, not granted.</strong> Features that would normally come from a class or level (Rage, Sneak Attack, Spellcasting, and so on) are instead learned individually by spending XP; see <a href="#trained-abilities">Trained Abilities</a>.</li>
     <li><strong>Silver is the everyday coin.</strong> Gold is rare and mostly a store of value, not pocket change. Starting funds and equipment prices are in silver pieces (SP); see <a href="#currency-classless">Currency</a>.</li>
+    <li><strong>Adventuring Level sets PB.</strong> Classless characters still track an Adventuring Level (usually the party level) for <a href="core.html#proficiency-and-advantage">Proficiency Bonus</a>; trained abilities do not replace that.</li>
     <li><strong>Lineage, Heritage, and Background are unchanged</strong> — you still choose all three as normal.</li>
   </ul>
 
@@ -158,7 +159,8 @@
   <p>Beyond the starting values above, growing your spell list is a matter of play, not a fixed price: train a new spell for XP, pay a trainer or scribe in coin, or find one in the field (a scroll to copy, a rival's spellbook, a ritual taught by an NPC). The Game Master adjudicates cost and availability case by case. For a Known caster, only <em>training</em> (spending XP) actually adds the new spell to their fixed list — coin or in-fiction discovery can locate a spell to learn, but the XP is still what makes it stick.</p>
 
   <h3 id="weapon-armor-proficiency">Weapon and Armor Proficiency</h3>
-  <p>Weapon proficiency adds your <strong>Fitness modifier</strong> to the attack roll. Without the matching proficiency, you can still use a weapon, but you don't add Fitness modifier — the attack roll uses only the weapon's plain attack bonus. <strong>Expert</strong> proficiency with a specific weapon (see below) is stronger still: it adds your Fitness modifier <strong>twice</strong> instead of once.</p>
+  <p>Classless characters track an <strong>Adventuring Level</strong> (normally the party or campaign level) solely for <a href="core.html#proficiency-and-advantage">Proficiency Bonus</a>. PB uses the same table as core: PB = Adventuring Level ÷ 2, rounded up.</p>
+  <p>Weapon proficiency adds your <strong>Fitness modifier</strong> and your <strong>PB</strong> to the attack roll. Without the matching proficiency, you can still use a weapon, but you add neither Fitness nor PB — the attack roll uses only the weapon's plain attack bonus. <strong>Expert</strong> proficiency with a specific weapon (see Weapon Expertise below) adds <strong>+2×PB</strong> instead of +PB.</p>
   <div class="formula-box">
     <span class="formula-label">Weapon Attack Roll (Classless)</span>
     <span class="formula-equation">
@@ -166,10 +168,10 @@
       <span class="operator">+</span>
       <span class="variable">weapon attack bonus</span>
       <span class="operator">+</span>
-      <span class="variable">Fitness modifier (if proficient, twice if Expert)</span>
+      <span class="variable">Fitness + PB (if proficient; +2×PB if Expert)</span>
     </span>
   </div>
-  <p>Instead of (or alongside) a full weapon category, you can train proficiency with just one specific weapon — cheaper, but narrower. You choose the weapon when you train it. Training that same weapon's <strong>Expertise</strong> afterward is what doubles your Fitness modifier on attack rolls made with it.</p>
+  <p>Instead of (or alongside) a full weapon category, you can train proficiency with just one specific weapon — cheaper, but narrower. You choose the weapon when you train it. Training that same weapon's <strong>Expertise</strong> afterward raises it to Expert (+2×PB) on attack rolls made with it.</p>
   <p>Armor proficiency keeps the core <a href="core.html#armor-and-defense">Armor and Defense</a> penalties for wearing armor above your trained category — training the abilities below just raises which category you're proficient in. Per step above your proficiency, you gain one level of stacking disadvantage on all d20 rolls made in that armor, including Fitness checks, Defense rolls, and spellcasting rolls for spells with a somatic component.</p>
   <div class="table-wrap">
     <table>
@@ -180,12 +182,12 @@
         <tr><td>Light Armor Proficiency</td><td>5 XP</td><td>—</td><td>Proficient wearing light armor; not hindered in movement by it.</td></tr>
         <tr><td>Medium Armor Proficiency</td><td>5 XP</td><td>Light Armor Proficiency</td><td>Proficient wearing medium armor; not hindered in movement by it.</td></tr>
         <tr><td>Heavy Armor Proficiency</td><td>10 XP</td><td>Medium Armor Proficiency, +1 Fitness modifier</td><td>Proficient wearing heavy armor; not hindered in movement by it.</td></tr>
-        <tr><td>Simple Melee Weapon Proficiency</td><td>5 XP</td><td>—</td><td>Proficient wielding simple melee weapons; add Fitness modifier to attack rolls made with them.</td></tr>
-        <tr><td>Martial Melee Weapon Proficiency</td><td>10 XP</td><td>Simple Melee Weapon Proficiency</td><td>Proficient wielding martial melee weapons; add Fitness modifier to attack rolls made with them.</td></tr>
-        <tr><td>Simple Ranged Weapon Proficiency</td><td>5 XP</td><td>—</td><td>Proficient using simple ranged weapons; add Fitness modifier to attack rolls made with them.</td></tr>
-        <tr><td>Martial Ranged Weapon Proficiency</td><td>10 XP</td><td>Simple Ranged Weapon Proficiency</td><td>Proficient using martial ranged weapons; add Fitness modifier to attack rolls made with them.</td></tr>
-        <tr><td>Single Weapon Proficiency</td><td>1 XP</td><td>—</td><td>Proficient with one simple or martial weapon of your choice; add Fitness modifier to attack rolls made with it.</td></tr>
-        <tr><td>Weapon Expertise</td><td>10 XP</td><td>Proficiency with the chosen weapon</td><td>Add your Fitness modifier twice (instead of once) to attack rolls made with that specific weapon.</td></tr>
+        <tr><td>Simple Melee Weapon Proficiency</td><td>5 XP</td><td>—</td><td>Proficient with simple melee weapons; add Fitness + PB to attack rolls with them.</td></tr>
+        <tr><td>Martial Melee Weapon Proficiency</td><td>10 XP</td><td>Simple Melee Weapon Proficiency</td><td>Proficient with martial melee weapons; add Fitness + PB to attack rolls with them.</td></tr>
+        <tr><td>Simple Ranged Weapon Proficiency</td><td>5 XP</td><td>—</td><td>Proficient with simple ranged weapons; add Fitness + PB to attack rolls with them.</td></tr>
+        <tr><td>Martial Ranged Weapon Proficiency</td><td>10 XP</td><td>Simple Ranged Weapon Proficiency</td><td>Proficient with martial ranged weapons; add Fitness + PB to attack rolls with them.</td></tr>
+        <tr><td>Single Weapon Proficiency</td><td>1 XP</td><td>—</td><td>Proficient with one simple or martial weapon of your choice; add Fitness + PB to attack rolls with it.</td></tr>
+        <tr><td>Weapon Expertise</td><td>10 XP</td><td>Proficiency with the chosen weapon</td><td>Expert with that weapon: add Fitness + 2×PB (instead of Fitness + PB) to attack rolls with it.</td></tr>
       </tbody>
     </table>
   </div>
@@ -223,7 +225,7 @@
   <h2 id="everything-else">Everything Else Stays the Same</h2>
   <p>Classless only touches the character chassis, ability training, and starting currency. Everything else in the core rules applies unchanged:</p>
   <ul>
-    <li><a href="core.html">Core Rules</a> — dice and tests, proficiency and advantage, skills, Resolve, rests.</li>
+    <li><a href="core.html">Core Rules</a> — dice and tests, Proficiency Bonus, skills, Resolve, rests.</li>
     <li><a href="combat.html">Combat</a> — attacks, Defense, Life/Death Saves.</li>
     <li><a href="lineages.html">Lineages</a>, <a href="heritages.html">Heritages</a>, and <a href="backgrounds.html">Backgrounds</a> — chosen exactly as normal (aside from the equipment override above).</li>
     <li><a href="talents.html">Talents</a> — part of the same trained-ability pool as class features.</li>

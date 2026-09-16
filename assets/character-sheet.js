@@ -1295,7 +1295,7 @@
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">PB</span>
-            <span class="cs-wd-val cs-wd-val--calc" title="Proficiency Bonus = level ÷ 2, rounded up. Used only where a feature explicitly calls for PB—not on ability checks, attacks, or Defense.">${formatMod(pb)}</span>
+            <span class="cs-wd-val cs-wd-val--calc" title="Proficiency Bonus = level ÷ 2, rounded up. Add PB to proficient ability checks and attack rolls (+2×PB Expert, +3×PB Master). Features may also call for flat PB for uses, DCs, or damage.">${formatMod(pb)}</span>
           </div>
         </div>
 

@@ -100,8 +100,8 @@
           </div>
           
           <div class="form-group">
-            <label for="proficiency-display">Proficiency Level:</label>
-            <div id="proficiency-display" class="proficiency-display">1</div>
+            <label for="proficiency-display">Proficiency Bonus (PB):</label>
+            <div id="proficiency-display" class="proficiency-display">+1</div>
           </div>
         </div>
         
@@ -139,10 +139,10 @@
   </div>
 </main>
 <script>
-// Calculate proficiency level based on You-Meet-In-A-Tavern (YMIAT) level (proficiency level = You-Meet-In-A-Tavern (YMIAT) level, which is D&D level / 2 rounded up)
-function calculateProficiencyLevel(dndLevel){
+// PB = YMIAT level ÷ 2, rounded up (YMIAT level = D&D level ÷ 2, rounded up)
+function calculateProficiencyBonus(dndLevel){
   const easyLevel = convertLevel(dndLevel);
-  return easyLevel;
+  return Math.ceil(easyLevel / 2);
 }
 
 // Convert D&D 5e level to You-Meet-In-A-Tavern (YMIAT) level
@@ -153,8 +153,8 @@ function convertLevel(dndLevel){
 // Update proficiency display when level changes
 function updateProficiency(){
   const level = parseInt(document.getElementById('char-level').value) || 1;
-  const proficiencyLevel = calculateProficiencyLevel(level);
-  document.getElementById('proficiency-display').textContent = proficiencyLevel;
+  const pb = calculateProficiencyBonus(level);
+  document.getElementById('proficiency-display').textContent = "+" + pb;
   updateCalculations();
 }
 
@@ -228,7 +228,7 @@ function generateCharacterSheet(){
   
   // Convert level
   const easyLevel = convertLevel(dndLevel);
-  const proficiencyLevel = calculateProficiencyLevel(dndLevel);
+  const proficiencyBonus = calculateProficiencyBonus(dndLevel);
   
   // Calculate Max Wounds
   const classMaxWoundsBase = getClassMaxWoundsBase(className);
@@ -243,7 +243,7 @@ function generateCharacterSheet(){
     class: className,
     dndLevel: dndLevel,
     easyLevel: easyLevel,
-    proficiencyLevel: proficiencyLevel,
+    proficiencyBonus: proficiencyBonus,
     ac: ac,
     defenseBonus: defenseBonus,
     abilities: {
@@ -277,7 +277,7 @@ function displayCharacterSheet(character){
       <div class="character-basics">
         <div><strong>Class:</strong> ${character.class}</div>
         <div><strong>Level:</strong> ${character.easyLevel}</div>
-        <div><strong>Proficiency Level:</strong> ${character.proficiencyLevel} (grants advantage on proficient rolls)</div>
+        <div><strong>Proficiency Bonus (PB):</strong> +${character.proficiencyBonus} (added to proficient rolls; Expert = 2×PB, Master = 3×PB)</div>
       </div>
     </div>
     

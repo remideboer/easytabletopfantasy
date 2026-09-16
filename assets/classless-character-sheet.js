@@ -78,6 +78,11 @@
     return 4 + Math.ceil((c.wil ?? 0) / 2);
   }
 
+  function proficiencyBonus(c) {
+    const level = clamp(Number(c.level) || 1, 1, 10);
+    return Math.ceil(level / 2);
+  }
+
   function escapeHtml(s) {
     return String(s ?? "")
       .replace(/&/g, "&amp;")
@@ -91,6 +96,7 @@
       id: uid(),
       name: "",
       xp: 20,
+      level: 1,
       hearts: 3,
       fit: 0,
       ins: 0,
@@ -178,6 +184,7 @@
     c.id = c.id || d.id;
     c.name = String(c.name ?? "");
     c.xp = Math.max(0, Number(c.xp) || 0);
+    c.level = clamp(Number.isFinite(Number(c.level)) ? Number(c.level) : 1, 1, 10);
     c.hearts = clamp(Number.isFinite(Number(c.hearts)) ? Number(c.hearts) : 3, 0, 3);
     c.fit = clamp(Number(c.fit) || 0, -5, 5);
     c.ins = clamp(Number(c.ins) || 0, -5, 5);
@@ -443,6 +450,14 @@
           <label class="cs-label" for="cls-xp">Available XP</label>
           <input type="number" id="cls-xp" class="cs-input cs-input--xp" min="0" step="1" value="${c.xp}" aria-label="Available experience points" />
           <span class="cs-xp-hint">Banked for training</span>
+        </div>
+        <div class="cs-field cls-field--level">
+          <label class="cs-label" for="cls-level">Adventuring Level</label>
+          <div class="cls-level-row">
+            <input type="number" id="cls-level" class="cs-input cs-input--xp" min="1" max="10" step="1" value="${c.level}" aria-label="Adventuring level for Proficiency Bonus" />
+            <span class="cls-pb-display" title="Proficiency Bonus = Adventuring Level ÷ 2, rounded up">PB +${proficiencyBonus(c)}</span>
+          </div>
+          <span class="cs-xp-hint">Sets PB for proficient rolls</span>
         </div>
 
         <div class="cs-currency">
@@ -1041,6 +1056,11 @@
         }
         return;
       }
+      if (t.id === "cls-level") {
+        char.level = clamp(parseInt(t.value, 10) || 1, 1, 10);
+        persistAndRender();
+        return;
+      }
       if (t.dataset.coin) {
         char.currency[t.dataset.coin] = Math.max(0, parseInt(t.value, 10) || 0);
         saveStore();
@@ -1057,6 +1077,10 @@
           abilityModalMessage = "";
           renderAbilityModal();
         }
+      }
+      if (t.id === "cls-level") {
+        char.level = clamp(parseInt(t.value, 10) || 1, 1, 10);
+        persistAndRender();
       }
     });
 

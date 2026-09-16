@@ -26,7 +26,7 @@
 
   <div class="callout warning">
     <p class="callout-title">Approximate by design</p>
-    <p>PF2e and YMIAT resolve the game very differently under the hood — four degrees of success vs. binary hit/miss, level-scaling proficiency vs. advantage, a flexible three-action turn vs. action/movement/reaction. This guide picks one reasonable, consistent mapping for each and applies it throughout, the same way the <a href="conversion.html">D&amp;D 5e guide</a> does. Treat individual feats and spells as needing a look, not a guarantee — see <a href="#open-questions">Open Questions</a> for what's still GM judgment.</p>
+    <p>PF2e and YMIAT resolve the game very differently under the hood — four degrees of success vs. binary hit/miss, level-scaling proficiency vs. PB multipliers, a flexible three-action turn vs. action/movement/reaction. This guide picks one reasonable, consistent mapping for each and applies it throughout, the same way the <a href="conversion.html">D&amp;D 5e guide</a> does. Treat individual feats and spells as needing a look, not a guarantee — see <a href="#open-questions">Open Questions</a> for what's still GM judgment.</p>
   </div>
 
   <hr>
@@ -64,22 +64,22 @@
 
   <hr>
   <h2 id="converting-proficiency-ranks">Converting Proficiency Ranks</h2>
-  <p>PF2e's proficiency bonus is <strong>level + a rank bonus</strong> (Untrained +0, Trained +2, Expert +4, Master +6, Legendary +8), applied to nearly everything — AC, attack rolls, Perception, saving throws, skills, spell effectiveness. That linear, ever-growing bonus doesn't fit YMIAT, which uses advantage instead of stacking flat bonuses. Convert rank to <strong>stacked advantage</strong> instead, reusing the "double advantage" language already used for <a href="core.html#spell-school-expertise">Spell School Expertise</a> and the <a href="classless-abilities.html">Classless</a> Weapon Expertise ability:</p>
+  <p>PF2e's proficiency bonus is <strong>level + a rank bonus</strong> (Untrained +0, Trained +2, Expert +4, Master +6, Legendary +8), applied to nearly everything — AC, attack rolls, Perception, saving throws, skills, spell effectiveness. That linear, ever-growing bonus doesn't map 1:1 onto YMIAT. Convert rank to YMIAT's <strong>PB multiplier</strong> instead (see <a href="core.html#proficiency-and-advantage">Proficiency Bonus</a>):</p>
   <div class="table-wrap">
     <table>
       <thead>
         <tr><th>PF2e Rank</th><th>YMIAT Equivalent</th></tr>
       </thead>
       <tbody>
-        <tr><td>Untrained</td><td>No advantage (flat d20)</td></tr>
-        <tr><td>Trained</td><td>Advantage (roll 2d20, take highest)</td></tr>
-        <tr><td>Expert</td><td>Double advantage (roll 3d20, take highest)</td></tr>
-        <tr><td>Master</td><td>Triple advantage (roll 4d20, take highest)</td></tr>
-        <tr><td>Legendary</td><td>Quadruple advantage (roll 5d20, take highest)</td></tr>
+        <tr><td>Untrained</td><td>No PB (ability modifier only)</td></tr>
+        <tr><td>Trained</td><td>Proficient (+PB)</td></tr>
+        <tr><td>Expert</td><td>Expert (+2×PB)</td></tr>
+        <tr><td>Master</td><td>Master (+3×PB)</td></tr>
+        <tr><td>Legendary</td><td>Master (+3×PB) — YMIAT's top proficiency tier</td></tr>
       </tbody>
     </table>
   </div>
-  <p>Apply this to whatever roll the PF2e rank was modifying: an Expert attack proficiency becomes double advantage on that attack roll; Master in a saving throw becomes triple advantage on that save; and so on. A character's rank in a given statistic rarely exceeds Expert before YMIAT level 5–6 (PF2e level 10–12) — don't front-load Master or Legendary onto a low-level conversion just because the PF2e source eventually gets there.</p>
+  <p>Apply this to whatever roll the PF2e rank was modifying: an Expert attack proficiency becomes +2×PB on that attack roll; Master in a saving throw becomes +3×PB on that save; and so on. A character's rank in a given statistic rarely exceeds Expert before YMIAT level 5–6 (PF2e level 10–12) — don't front-load Master or Legendary onto a low-level conversion just because the PF2e source eventually gets there.</p>
 
   <hr>
   <h2 id="converting-degrees-of-success">Converting Degrees of Success</h2>
@@ -148,7 +148,7 @@
   <p>PF2e's Armor Class = 10 + Dexterity modifier (capped by the armor) + proficiency bonus + armor's item bonus. Split this the same way as attack and save proficiency above:</p>
   <ul>
     <li><strong>Armor's item bonus</strong> → YMIAT Defense bonus, taken directly from the <a href="gear.html#armor-table">Armor table</a> for the equivalent armor category, same as a 5e conversion.</li>
-    <li><strong>AC proficiency rank</strong> (Trained/Expert/Master/Legendary in armor) → advantage on the <strong>Defense roll</strong>, using the same stacked-advantage table as <a href="#converting-proficiency-ranks">Converting Proficiency Ranks</a> above, instead of a flat number.</li>
+    <li><strong>AC proficiency rank</strong> (Trained/Expert/Master/Legendary in armor) → add the matching <strong>PB multiplier</strong> to the <strong>Defense roll</strong>, using the same table as <a href="#converting-proficiency-ranks">Converting Proficiency Ranks</a> above (Trained +PB, Expert +2×PB, Master/Legendary +3×PB).</li>
   </ul>
   <p>For an unarmored character, Defense = Fitness modifier, same as standard YMIAT.</p>
 
