@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../character-sheet.html" />
+<link rel="alternate" hreflang="nl" href="character-sheet.html" />
+<link rel="alternate" hreflang="x-default" href="../character-sheet.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personageblad | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Beheer YMIAT-personages—houd wonden, eigenschappen, inventaris en progressie bij. Lokaal bewaard in je browser." />
+<link rel="canonical" href="character-sheet.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+<meta property="og:title" content="Personageblad | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Maak en beheer YMIAT-personages met automatische Max. wonden, Spell Power en inventarisberekening." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="character-sheet.html" />
+<style>
+  @media print {
+    body.cs-page .cs-hero,
+    body.cs-page .cs-toolbar,
+    body.cs-page #cs-loading,
+    body.cs-page #cs-error,
+    body.cs-page #cs-empty,
+    body.cs-page #cs-hint,
+    body.cs-page #cs-modal-root {
+      display: none !important;
+    }
+    body.cs-page {
+      background: #fff !important;
+    }
+    @page {
+      size: A4 portrait;
+      margin: 1cm;
+    }
+
+    /* A printed sheet is filled in by hand at the table - hide the on-screen
+       +/- controls and blank the fields meant to be tracked with a pencil. */
+    body.cs-page .cs-stepper-btns {
+      display: none !important;
+    }
+    body.cs-page [data-stepper="wd-now"] .cs-stepper-val,
+    body.cs-page [data-stepper="wd-tmp"] .cs-stepper-val,
+    body.cs-page [data-stepper="sp-now"] .cs-stepper-val,
+    body.cs-page [data-stepper="resolve"] .cs-stepper-val,
+    body.cs-page #cs-xp,
+    body.cs-page .cs-coin-input {
+      color: transparent !important;
+    }
+
+    /* Lineage/Heritage/Background dropdowns are redundant on paper - the
+       pane right below each one already names the selected option. */
+    body.cs-page .cs-col--identity > .cs-field {
+      display: none !important;
+    }
+
+    /* Class/Subclass/Armor/Weapon dropdowns become plain text: the control
+       itself is useless on paper, but there's no adjacent pane already
+       naming the pick, so swap in the selected value instead of just
+       hiding it. */
+    body.cs-page .cs-sheet select {
+      display: none !important;
+    }
+    body.cs-page .cs-print-value {
+      display: block !important;
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    /* Don't split a pane or stat box across a page break. */
+    body.cs-page .cs-pane,
+    body.cs-page .cs-stat-box,
+    body.cs-page .cs-life-level,
+    body.cs-page .cs-combat-row,
+    body.cs-page .cs-abilities-row {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* CSS Grid columns don't reflow across printed pages - when the Stats
+       and Gear columns spill onto page 2, the shorter Identity column
+       (Lineage/Heritage/Background) would otherwise overlap that spillover
+       instead of following it. Force it onto its own page. */
+    body.cs-page .cs-col--identity {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    /* Life + Spell Power run oversized on screen; tighten them for print. */
+    body.cs-page .cs-pane {
+      min-height: 0;
+      padding: 6px 8px;
+    }
+    body.cs-page .cs-pane-title {
+      margin-bottom: 4px;
+      padding-bottom: 3px;
+    }
+    body.cs-page .cs-life-level {
+      gap: 8px;
+    }
+    body.cs-page .cs-heart {
+      font-size: 1.1rem;
+    }
+    body.cs-page .cs-level-circle {
+      width: 36px;
+      height: 36px;
+      font-size: 1rem;
+    }
+    body.cs-page .cs-xp-field {
+      margin-top: 2px;
+    }
+    body.cs-page .cs-input--xp {
+      width: 46px;
+      font-size: .75rem;
+      padding: 2px 4px;
+    }
+    body.cs-page .cs-xp-hint {
+      font-size: .6rem;
+    }
+    body.cs-page .cs-stat-box--wide {
+      padding: 4px 8px;
+    }
+    body.cs-page .cs-stat-box--wide .cs-stat-label {
+      margin-bottom: 2px;
+      font-size: .62rem;
+    }
+    body.cs-page .cs-wd-val {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body class="cs-page">
+<header data-include="nav"></header>
+<main class="cs-main">
+  <div class="cs-hero">
+    <h1>Personageblad</h1>
+    <p class="lede">Maak en beheer personages op een digitaal blad—Max. wonden, Spell Power en inventarisvakken volgen je keuzes. Bewaard in deze browser (geen account nodig).</p>
+  </div>
+
+  <div id="cs-loading" class="cs-loading" aria-live="polite">
+    <span class="cs-loading-spinner" aria-hidden="true"></span>
+    Personagegegevens laden…
+  </div>
+
+  <div id="cs-error" class="cs-error" hidden role="alert">
+    <p>Kon personage-opties niet laden. Vernieuw de pagina, of draai <code>python scripts/generate-character-creator-data.py</code> als je lokaal ontwikkelt.</p>
+  </div>
+
+  <div id="cs-app" class="cs-app" hidden>
+    <div class="cs-toolbar">
+      <div class="cs-toolbar-group">
+        <label class="cs-toolbar-label" for="cs-char-select">Personage</label>
+        <select id="cs-char-select" class="cs-select cs-select--char"></select>
+      </div>
+      <div class="cs-toolbar-actions">
+        <button type="button" class="btn cs-btn-secondary" id="cs-btn-new">Nieuw personage</button>
+        <button type="button" class="btn cs-btn-secondary" id="cs-btn-import">Importeer maker-concept</button>
+        <button type="button" class="btn cs-btn-secondary" id="cs-btn-import-ddb">Importeer van D&amp;D Beyond</button>
+        <select id="cs-print-orientation" class="cs-select cs-select--print" aria-label="Afdrukstand">
+          <option value="landscape">Liggend</option>
+          <option value="portrait" selected>Staand</option>
+        </select>
+        <button type="button" class="btn cs-btn-secondary" id="cs-btn-print">Afdrukken</button>
+        <button type="button" class="btn cs-btn-danger" id="cs-btn-delete" disabled>Verwijderen</button>
+      </div>
+    </div>
+
+    <p id="cs-empty" class="cs-empty">Kies een personage uit de lijst, of maak een nieuw personage om het blad te openen.</p>
+
+    <div class="cs-sheet" id="cs-sheet" aria-label="Personageblad" hidden></div>
+    <p class="cs-hint" id="cs-hint" hidden>Wijzigingen worden automatisch opgeslagen. Max. wonden = class + FIT-mod + (niveau − 1) − 2 per verloren hart. Spell Power = 3 × spellcasting-eigenschapsmod. Verdediging = pantserbonus + FIT-mod (of alleen FIT-mod zonder pantser), plus +2 als je een schild draagt. XP om een niveau te bereiken = 100 × (niveau − 1) × niveau ÷ 2; bij levelen genezen Wonden niet en verloren harten komen niet terug.</p>
+  </div>
+  <div id="cs-modal-root"></div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../assets/i18n-apps.js"></script>
+<script src="../assets/character-sheet.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

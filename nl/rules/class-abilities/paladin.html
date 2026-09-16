@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/paladin.html" />
+<link rel="alternate" hreflang="nl" href="paladin.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/paladin.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paladin-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Paladin class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/paladin.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Paladin-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Paladin vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#paladin">← Terug naar Paladin</a> · <a href="index.html#paladin">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Paladin abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#divine-sense">Divine Sense</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#lay-on-hands">Lay on Hands</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#divine-smite">Divine Smite</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#martial-action">Martial Action</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#aura-of-protection">Aura of Protection</a> <span class="text-muted">(4e-niveauvermogen)</span></li>
+<li><a href="#aura-of-courage">Aura of Courage</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#channel-divinity">Channel Divinity</a> <span class="text-muted">(6e en 9e niveau)</span></li>
+<li><a href="#cleansing-touch">Cleansing Touch</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#aura-improvements">Aura Improvements</a> <span class="text-muted">(8e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#devotion">Devotion</a></li>
+<li class="toc-sub toc-feature"><a href="#devotion-sacred-weapon">Channel Divinity: Sacred Weapon</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-sanctifying-light">Channel Divinity: Sanctifying Light</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-devotion-oath-spells">Devotion Oath Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-aura-of-devotion">Aura of Devotion</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-purity-of-spirit">Purity of Spirit</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#devotion-holy-nimbus">Holy Nimbus</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#justice">Justice</a></li>
+<li class="toc-sub toc-feature"><a href="#justice-burden-of-guilt">Channel Divinity: Burden of Guilt</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#justice-judgement">Channel Divinity: Judgement</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#justice-justice-oath-spells">Justice Oath Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#justice-aura-of-vigilance">Aura of Vigilance</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#justice-unworthy-adversary">Unworthy Adversary</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#justice-divine-executioner">Divine Executioner</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#anathema">Anathema</a></li>
+<li class="toc-sub toc-feature"><a href="#anathema-anathema-oath-spells">Anathema Oath Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#safekeeping">Safekeeping</a></li>
+<li class="toc-sub toc-feature"><a href="#safekeeping-divine-blockade">Channel Divinity: Divine Blockade</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#safekeeping-channel">Channel</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#unbound">Unbound</a></li>
+<li class="toc-sub toc-feature"><a href="#unbound-forceful-unyoking">Channel Divinity: Forceful Unyoking</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="divine-sense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Divine Sense</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Detecteer celestials, fiends en undead.</em></p>
+    <p>Op je beurt detecteer je Celestials, Fiends en Undead binnen 60 voet (niet achter total cover) en consecrated/desecrated plekken. Gebruiken = behendigheidsbonus + 1 per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="lay-on-hands">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Lay on Hands</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Pool van helende aanraking.</em></p>
+    <p>Pool = 5 × paladin-niveau, hersteld bij lange rust. Als <strong>actie</strong> raak je een wezen aan en heel je Wonden uit de pool. Geef 5 healing uit om één ziekte of poison te genezen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="divine-smite">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Divine Smite</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Geef Spell Power uit voor radiant-burst bij treffer.</em></p>
+    <p>Eén keer per beurt, wanneer je raakt met een melee-wapenaanval, geef je Spell Power uit om extra <strong>radiant</strong>-schade te doen: 2d8 voor 1e niveau + 1d8 per hoger niveau (max. 5d8). +1d8 tegen Fiends en Undead.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="martial-action">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Martial Action</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Guard of Wind Up als tweede actie.</em></p>
+    <p>Kies <strong>Guard</strong> of <strong>Wind Up</strong>. Gebruik als je tweede actie wanneer je deze beurt niet hebt bewogen (zie <a href="paladin.html#martial-action">Martial Action</a>).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bekende Divine spells (half caster).</em></p>
+    <p>Als kanaal voor <strong>Divine</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#paladin">Paladin</a>-progressietabel.</p>
+<p>Je kent een vaste spelllijst en prepareert die niet dagelijks. Leer extra spells op de niveaus in je class-progressietabel.</p>
+<p><strong>Spellcasting ability:</strong> Willpower (WIL). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Willpower (WIL)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Twee aanvallen per Attack-actie.</em></p>
+    <p>Je fysieke kracht is gegroeid. Op je beurt kun je tot <strong>twee</strong> aanvallen maken wanneer je de Attack-actie neemt.</p>
+<p>In YMIAT veroorzaakt elke succesvolle wapenaanval doorgaans <strong>1 Wond</strong> (2 bij een critical hit). Wapenbonussen gelden voor raken, niet voor het aantal Wonden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="aura-of-protection">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura of Protection</h4>
+    <span class="spell-card-level">4e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Versterk de saves van bondgenoten.</em></p>
+    <p>Wanneer jij of een vriendelijk wezen binnen 10 voet een save maakt, tellen ze je <strong>Willpower-modifier</strong> op (minimaal +1). Je moet bij bewustzijn zijn.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="aura-of-courage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura of Courage</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bondgenoten kunnen niet frightened zijn.</em></p>
+    <p>Jij en vriendelijke wezens binnen 10 voet kunnen niet frightened zijn terwijl je bij bewustzijn bent.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="channel-divinity">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity</h4>
+    <span class="spell-card-level">6e en 9e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Oath-specifieke channel divinity.</em></p>
+    <p>Je eed geeft Channel Divinity-opties. Gebruiken: 1/rust tot 6e niveau, daarna 2/rust, dan 3/rust op 9e. Terug bij korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cleansing-touch">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cleansing Touch</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Beëindig spells op jezelf of bondgenoten.</em></p>
+    <p>Actie om één spell op jezelf of een willig wezen dat je aanraakt te beëindigen. Gebruiken = Willpower-modifier per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="aura-improvements">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura Improvements</h4>
+    <span class="spell-card-level">8e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Aura-bereik stijgt naar 30 voet.</em></p>
+    <p>Aura of Protection, Aura of Courage en oath-aura's reiken tot 30 voet.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Divine Recovery of Radiant Strikes.</em></p>
+    <p><strong>Divine Recovery</strong> (Lay on Hands laat het doelwit een Recovery die uitgeven) of <strong>Radiant Strikes</strong> (+1d8 radiant op wapentreffers, 2d8 tegen Fiends/Undead).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Kalmerende aura van redding.</em></p>
+    <p>Actie: 1-uurs aura (30 voet). Bondgenoten weerstaan nonmagical schade, slagen automatisch op death saves, en krijgen Willpower-modifier Wonden terug aan het begin van de beurt als ze nog Wonden over hebben. Eén keer per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een martiaal talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Martiale talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="devotion">
+  <h3 class="subclass-name">Devotion</h3>
+  <p class="subclass-summary">Eedgebonden ridder van plicht, eer en rechtvaardige orde.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="devotion-sacred-weapon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Sacred Weapon</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Versterk een vastgehouden wapen met radiant licht.</em></p>
+    <p>Als actie imbue je 1 minuut een vastgehouden wapen: tel Willpower-modifier op bij aanvalsworpen (min. +1); bright light 20 voet. Het wapen wordt magisch voor de duur.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-sanctifying-light">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Sanctifying Light</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Verblind aberrations, fey, fiends en undead.</em></p>
+    <p>Als actie maakt elk Aberration, Fey, Fiend of Undead binnen 30 voet dat je kan zien een Willpower-save of is 1 minuut blinded (Fitness-save beëindigt op zichzelf elke beurt).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-devotion-oath-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Devotion Oath Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende oath spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> sanctuary</li><li><strong>Niveau 5:</strong> warding bond</li><li><strong>Niveau 7:</strong> protection from energy</li><li><strong>Niveau 9:</strong> stoneskin</li><li><strong>Niveau 10:</strong> mass cure wounds</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-aura-of-devotion">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura of Devotion</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span></div>
+  <div class="spell-card-description">
+<p><em>Bondgenoten nabij jou kunnen niet charmed zijn.</em></p>
+    <p>Jij en vriendelijke wezens binnen 10 voet kunnen niet charmed zijn terwijl je bij bewustzijn bent (30 voet op 8e paladin-niveau via Aura Improvements).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-purity-of-spirit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Purity of Spirit</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span></div>
+  <div class="spell-card-description">
+<p><em>Bescherming tegen bovennatuurlijke wezens.</em></p>
+    <p>Tegen Aberrations, Celestials, Elementals, Fey, Fiends, Undead en Outsiders: zij hebben nadeel om jou aan te vallen; jij kunt niet charmed, frightened of possessed zijn; Divine Sense detecteert alle genoemde types.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="devotion-holy-nimbus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Holy Nimbus</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Devotion</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Radiant zonlicht-aura doet vijanden schade.</em></p>
+    <p>Als actie straalt je 1 minuut zonlicht uit (30 voet bright / 30 voet dim). Vijanden die hun beurt in bright light beginnen, nemen radiant-schade gelijk aan paladin-niveau. Je hebt voordeel op saves. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="justice">
+  <h3 class="subclass-name">Justice</h3>
+  <p class="subclass-summary">Paladin van wet die de schuldigen zonder genade straft.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="justice-burden-of-guilt">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Burden of Guilt</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Justice</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Vervloek een vijand met gehalveerde snelheid en gegronde vlucht.</em></p>
+    <p>Als <strong>vrije actie</strong> vervloek je 1 minuut één vijand die je binnen 30 voet kunt zien: snelheid gehalveerd; als die vliegt aan einde van beurt, Willpower-save of val. Eindigt als je bewusteloos raakt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="justice-judgement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Judgement</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Justice</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Markeer een quarry voor voordeel en radiant-schade.</em></p>
+    <p>Als <strong>vrije actie</strong> markeer je 1 minuut één doelwit binnen 10 voet: voordeel op aanvallen ertegen; wapentreffers doen extra radiant = Willpower-modifier. Eindigt als je een ander wezen schade toebrengt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="justice-justice-oath-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Justice Oath Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Justice</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende justice oath spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> pendulum</li><li><strong>Niveau 5:</strong> misty step</li><li><strong>Niveau 9:</strong> haste</li><li><strong>Niveau 10:</strong> greater invisibility</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="justice-aura-of-vigilance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Aura of Vigilance</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Justice</span></div>
+  <div class="spell-card-description">
+<p><em>Bondgenoten nabij jou herpositioneren wanneer gevecht begint.</em></p>
+    <p>Wanneer gevecht begint, kunnen jij en vriendelijke wezens binnen 10 voet (30 voet op 8e paladin-niveau) elk tot <strong>10 voet</strong> bewegen zonder opportunity attacks vóór de eerste beurt. Je mag niet incapacitated zijn.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="justice-unworthy-adversary">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unworthy Adversary</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Justice</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie-interceptie: beweeg naar aanvaller en sla judged quarry.</em></p>
+    <p>Wanneer een wezen binnen 30 voet een bondgenoot aanvalt, gebruik je je <strong>reactie</strong> om tot de helft van je snelheid naar de aanvaller te bewegen. Is de aanvaller je Judgement-doelwit, maak dan als onderdeel van dezelfde reactie een wapenaanval.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="justice-divine-executioner">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Divine Executioner</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Justice</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Uurlang avatar van beslissende justitie.</em></p>
+    <p>Als <strong>actie</strong> kanaliseer je 1 uur orde (één keer per lange rust): herrol elke schade die je doet (moet nieuw resultaat gebruiken); één extra aanval wanneer je de Attack-actie neemt; reactie wanneer een vijand binnen 10 voet jou of een bondgenoot schade toebrengt dwingt die vijand de helft van de toegebrachte schade te nemen (zelfde type).</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="anathema">
+  <h3 class="subclass-name">Anathema</h3>
+  <p class="subclass-summary">Paladins die directe dreigingen van evil wezens willen beëindigen, ook als dat vuile handen betekent.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="anathema-anathema-oath-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Anathema Oath Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Anathema</span></div>
+  <div class="spell-card-description">
+<p><em>Oath spells volgens de Anathema Oath Spells-tabel.</em></p>
+    <p>Je krijgt oath spells op de paladin-niveaus vermeld in de Anathema Oath Spells-tabel.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Anathema</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="safekeeping">
+  <h3 class="subclass-name">Safekeeping</h3>
+  <p class="subclass-summary">Een eed van Safekeeping bindt een paladin aan een persoon, plek of object dat standvastig bewaakt wordt.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="safekeeping-divine-blockade">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Divine Blockade</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Safekeeping</span></div>
+  <div class="spell-card-description">
+<p><em>Ward een object of ruimte tegen één doelwit.</em></p>
+    <p>Als vrije actie kun je een object of ruimte (niet groter dan 5 voet per zijde) warden tegen één doelwitwezen dat je binnen 30 voet kunt zien. 1 minuut lang is de snelheid van het doelwit gehalveerd wanneer het naar het object of de ruimte probeert te bewegen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="safekeeping-channel">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Safekeeping</span></div>
+  <div class="spell-card-description">
+<p><em>Death Domain Spells en Death's Sentinel.</em></p>
+    <p>Death Domain Spells, Death's Sentinel (7e).</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Safekeeping</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="unbound">
+  <h3 class="subclass-name">Unbound</h3>
+  <p class="subclass-summary">Paladins die bedrog of misbruik door leiders zagen, zweren vaak de eed van the Unbound.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="unbound-forceful-unyoking">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Forceful Unyoking</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Unbound</span></div>
+  <div class="spell-card-description">
+<p><em>Bevrijd charmed/grappled/restrained wezens in een kegel.</em></p>
+    <p>Als actie toon je je holy symbol en spreek je een berisping in een kegel van 30 voet. Elk wezen in het gebied dat charmed, grappled of restrained is door een ander wezen is meteen vrij en heeft 1 minuut voordeel op tests en saves tegen die condities. Elk wezen binnen 30 voet van jou dat een wezen in de kegel een van die condities bezorgde, neemt psychic-schade gelijk aan tweemaal je CHA-modifier (minimaal 1).</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Unbound</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#paladin">← Terug naar Paladin</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

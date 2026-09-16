@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/classless-abilities.html" />
+<link rel="alternate" hreflang="nl" href="classless-abilities.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/classless-abilities.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classless-vermogens | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="De gecureerde lijst van trainbare vermogens voor de Classless XP-economie: wat ze kosten, wat ze vereisen en wat ze doen." />
+<link rel="canonical" href="rules/classless-abilities.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+<meta property="og:title" content="Classless-vermogens | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="De gecureerde lijst van trainbare vermogens voor de Classless XP-economie: wat ze kosten, wat ze vereisen en wat ze doen." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/classless-abilities.html" />
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Classless-vermogens</h1>
+  <div class="content">
+    <p class="lede">De gecureerde lijst van vermogens die je met XP kunt trainen onder <a href="classless.html">Classless</a> — wat elk kost, wat het vereist en wat het doet. Voor hoe training, budgetten en kosten werken, zie het <a href="classless.html#trained-abilities">Getrainde vermogens</a>-hoofdstuk op de Classless-pagina.</p>
+
+    <div class="callout note">
+      <p class="callout-title">Al gedocumenteerd op de Classless-regelspagina</p>
+      <p>Een paar fundamentele vermogens hebben eigen formules en tabellen, dus die staan op de hoofd-<a href="classless.html">Classless</a>-pagina in plaats van hier herhaald te worden:</p>
+      <ul>
+        <li><a href="classless.html#toughness">Toughness</a> — het genivelleerde Max. wonden-vermogen.</li>
+        <li><a href="classless.html#spellcasting-classless">Spellcasting</a> — kiezen van bron, casting ability en Prepared/Known-stijl. De <em>Spellcasting: Prepared</em>-vermelding in sommige tabellen is hetzelfde vermogen, alleen benoemd naar één van de twee stijlen.</li>
+        <li><a href="classless.html#weapon-armor-proficiency">Weapon and Armor Proficiency</a> — licht/medium/zwaar pantser en simple/martial melee-/ranged-wapens.</li>
+      </ul>
+    </div>
+
+    <div class="lineages-controls">
+      <button class="lineage-control-btn" onclick="expandAllAbilities()">Alles uitklappen</button>
+      <button class="lineage-control-btn" onclick="collapseAllAbilities()">Alles inklappen</button>
+    </div>
+
+    <h2 id="universal">Universeel</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="improvement">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Improvement — 20 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Eigenschapsverhogingen of een utility-talent. Verhoog één eigenschapsmodifier met 1.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="combat-techniques">Gevechtstechnieken</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="last-stand">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Last Stand — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Noodgenezing wanneer je zwaar gewond bent.</p>
+          <p><strong>Reactie.</strong> Wanneer schade je Wonden boven de helft van je Max. wonden zou brengen, gebruik je je reactie om Wonden te genezen gelijk aan je Fitness-modifier. Gebruiken gelijk aan je Fitness-modifier per rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="action-surge">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Action Surge — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Krijg een extra actie op je beurt.</p>
+          <p>Op je beurt krijg je naast je normale actie nog een actie. Gebruiken gelijk aan je Fitness-modifier per rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="multiattack">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Multiattack — 20 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Meerdere aanvallen per Attack-actie.</p>
+          <p>Maak twee aanvallen met de Attack-actie.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="barbaric-fury">Barbaric Fury</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="rage">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rage — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Primitieve woede als vrije actie; bonusschade en fysieke veerkracht.</p>
+          <p><strong>Vrije actie.</strong> In gevecht vecht je met primitieve woede. Op je beurt kun je als vrije actie in rage gaan.</p>
+          <p>Tijdens rage (en zonder zwaar pantser): je hebt voordeel op Fitness-eigenschapstests en -saves. Elke keer dat je geraakt wordt, stijgt je rage-teller met 1 tot een maximum van 1 + je Fitness-modifier. Je kunt deze rage-punten toevoegen aan je aanvalsworp. Je kunt geen spells casten of erop concentreren terwijl je raagt.</p>
+          <p>Je rage duurt 1 minuut. Hij eindigt eerder als je bewusteloos raakt, of als je beurt eindigt en je sinds het begin van je vorige beurt geen vijandig wezen hebt aangevallen en er geen schade van hebt opgelopen. Je kunt rage vroegtijdig beëindigen als vrije actie. Gebruiken gelijk aan je Fitness-modifier per rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="unarmored-defense">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Unarmored Defense — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Hoge Verdediging zonder pantser, op pure taaiheid.</p>
+          <p>Zolang je geen pantser draagt, is je Verdediging gelijk aan 2 × je Fitness-modifier. Je kunt een schild gebruiken en dit voordeel behouden.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="reckless-attack">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Reckless Attack — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Ruil verdediging in voor meedogenloze precisie.</p>
+          <p>Wanneer je op je beurt een aanval maakt, kun je reckless aanvallen. Je hebt voordeel op melee-wapenaanvalsworpen met Fitness tijdens deze beurt, maar nadeel op je Verdedigingsrol tot het begin van je volgende beurt.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="brutal-critical">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Brutal Critical — 20 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Breder critical-bereik en extra critical-schade.</p>
+          <p>Je scoort een critical hit op een d20-worp van 19 of 20 met melee-wapens en ongewapende aanvallen. Je critical hits "exploderen" ook: je mag opnieuw rollen voor een extra aanval. Dit effect stapelt.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="retaliation">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Retaliation — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Sluit aan op de aanvaller en sla terug.</p>
+          <p><strong>Reactie.</strong> Wanneer een wezen je raakt of mist met een aanval, kun je je reactie gebruiken om tot de helft van je snelheid naar dat wezen te bewegen en één melee-aanval ertegen te maken. Als het wezen Large of groter is, heb je voordeel op de aanvalsworp.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="precision-and-stealth">Precision and Stealth</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="sneak-attack">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sneak Attack — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Extra precisieschade één keer per beurt.</p>
+          <p>Eén keer per beurt doe je een extra Wond wanneer je raakt met een finesse- of ranged-wapen als je voordeel hebt, of als een bondgenoot binnen 5 voet van het doelwit staat.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="cunning-action">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cunning Action — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Dash, Disengage of Hide als vrije actie.</p>
+          <p><strong>Vrije actie.</strong> Op je beurt gebruik je een vrije actie om te Dash, Disengage of Hide.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="uncanny-dodge">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Uncanny Dodge — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Halveer schade van één aanval.</p>
+          <p><strong>Reactie.</strong> Wanneer een aanvaller die je kunt zien je raakt, gebruik je je reactie om de Wonden van die aanval te halveren.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="evasion">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Evasion — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Negeren van gebiedsschade bij geslaagde saves.</p>
+          <p>Bij geslaagde Fitness-saves tegen gebiedseffecten krijg je geen Wonden; bij falen de helft.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="precise-critical">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Precise Critical — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Critical hits op 19–20 met finesse-/ranged-wapens.</p>
+          <p>Je scoort een critical hit op een d20-worp van 19 of 20 met finesse- of ranged-wapens.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="mystic-channel">Mystic Channel</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="mystic-channel">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystic Channel — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Kanaliseer Mystical energie buiten spells om.</p>
+          <p><strong>Actie.</strong> Je kanaliseert Mystical energie. Kies één Mystic Channel-optie als je eerste channeling-vermogen. Gebruiken gelijk aan je Fitness-modifier per rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="turn-the-unholy">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Turn the Unholy — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Mystic Channel</p>
+          <p>Verdrijf fiends en undead.</p>
+          <p><strong>Actie.</strong> Je kanaliseert Mystical licht. Elke Fiend en Undead naar keuze binnen 30 voet die je kan zien of horen maakt een Insight-save tegen je spell save DC. Bij falen is het wezen turned gedurende 1 minuut of tot het Wonden oploopt.</p>
+          <p>Een turned wezen moet van je weg bewegen en mag op zijn beurt alleen Dash of Dodge gebruiken.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="mystic-channel-preserve-life">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystic Channel: Preserve Life — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Mystic Channel</p>
+          <p>Kanaliseer levensenergie om genezing over nabije bondgenoten te verdelen.</p>
+          <p><strong>Actie.</strong> Kanaliseer Mystical levenskracht om Wonden te herstellen gelijk aan 5 × je spellcasting-modifier, verdeeld over wezens binnen 30 voet. Geen wezen mag boven de helft van zijn Max. wonden worden hersteld. Geen effect op Constructs of Undead.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="disciple-of-life">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Disciple of Life — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Mystic Channel: Preserve Life</p>
+          <p>Genezingsspells herstellen extra Wonden.</p>
+          <p>Wanneer je een Mystical spell van 1e niveau of hoger cast om Wonden te herstellen, krijgt het doelwit het dubbele aantal Wonden dat de spell normaal zou herstellen.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="mystical-warrior">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystical Warrior — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Spellcasting (Mystic)</p>
+          <p>Martial-wapenbehendigheid en aanvallen op Mystical basis.</p>
+          <p>Je krijgt behendigheid met martial weapons. Je kunt je spellcasting-modifier gebruiken voor aanvalsworpen met martial weapons.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="natures-call">Nature's Call</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="natures-call">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Nature's Call — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Spellcasting (Nature)</p>
+          <p>Kanaliseer de natuur voor beast forms en spell-herstel.</p>
+          <p>Je kanaliseert de natuur als vrije actie (Beast Form) of als actie (Draw Power). Gebruiken gelijk aan je spellcasting-modifier per rust.</p>
+          <p><strong>Beast Form.</strong> Neem een bekende beast form aan tot het niveau van je spellcasting-modifier ÷ 2, naar boven afgerond. Je neemt het stat block van de gekozen vorm over, maar behoudt je Insight- en Willpower-modifiers.</p>
+          <p><strong>Draw Power.</strong> Herstel Spell Power tot het bedrag van je spellcasting-modifier. Je kunt dit niet gebruiken terwijl je getransformeerd bent.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="potent-beast-forms">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Potent Beast Forms — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Nature's Call</p>
+          <p>Krachtigere beast forms; spreken terwijl je getransformeerd bent.</p>
+          <p>Neem een bekende beast form aan tot het niveau van je spellcasting-modifier. Je gebruikt de Max. wonden van het wezen wanneer je transformeert. Je kunt talen spreken die je kent in beast form, maar je kunt nog steeds geen spells casten.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="lay-on-hands">Lay on Hands</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="lay-on-hands">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Lay on Hands — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Pool van genezende aanraking.</p>
+          <p><strong>Actie.</strong> Je hebt een pool van genezende kracht gelijk aan 2 + je Willpower-modifier, hersteld bij een rust. Raak een wezen aan en genees Wonden uit de pool. Geef 2 genezing uit de pool uit om één ziekte of vergif te genezen.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="marking-and-stealth">Marking and Stealth</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="mystic-mark">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mystic Mark — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Markeer je prooi voor extra precisie.</p>
+          <p>Wanneer je een wezen raakt, markeer je het gedurende 1 minuut. Zolang het gemarkeerd is, voeg je een bonus toe aan je aanvalsworpen ertegen gelijk aan je Fitness-modifier. Gebruiken gelijk aan je Fitness-modifier per rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="stalkers-step">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Stalker's Step — 5 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Verdwiin in natuurlijke dekking.</p>
+          <p><strong>Actie.</strong> In schemerlicht, duisternis of natuurlijke obscurement word je invisible tot je volgende beurt (eindigt eerder als je aanvalt of een spell cast). Gebruiken gelijk aan je Fitness-modifier per rust.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="sorcerous-renewal">Sorcerous Renewal</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="sorcerous-renewal">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sorcerous Renewal — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Spellcasting (Arcane, Known)</p>
+          <p>Herstel Spell Power naar wens.</p>
+          <p>Herstel Spell Power gelijk aan je spellcasting-modifier. Gebruiken gelijk aan je spellcasting-modifier per rust.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="pact-magic">Pact Magic</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="pact-magic">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Pact Magic — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je kunt magie casten omdat je een pact sloot met een machtige entiteit (je Patron).</p>
+          <p>Je kunt spells casten met je Willpower-modifier. Kies uit een spell list die past bij de patron waarmee je een pact sloot. Rol om te casten, om te zien of je patron je op dat moment de kracht wil geven: de DC om te mogen casten is (11 + spell-niveau) − je reputatie bij je patron. Reputatie begint op 1 en stijgt met 1 elke keer dat je een mijlpaal bereikt die je patron stelt. Je kunt ook reputatie verliezen als je patron vindt dat je tegen diens belangen handelt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="hex">Hex</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="hex">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hex — 5 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Spellcasting (Hex)</p>
+          <p>Vervloek vijanden.</p>
+          <p><strong>Actie.</strong> Geef een wezen binnen 60 voet een Hex. Wanneer het doelwit een aanvalsworp, check of save maakt, trekt het je spellcasting-modifier af van de worp of van zijn Verdediging. Je kunt maar één wezen tegelijk Hexen. Gebruiken gelijk aan je spellcasting-modifier per rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="rending-hex">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rending Hex — 15 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Hex</p>
+          <p>Gehexte prooi krijgt extra wapenschade.</p>
+          <p>Wanneer een gehext wezen wapenschade oploopt, krijgt het een extra Wond. Zolang het onder de helft van zijn Wonden zit, moet het slagen voor een Fitness-save tegen je spell save DC, anders krijgen je bondgenoten voordeel ertegen.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="epic-boons">Epic Boons</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="primal-champion">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Primal Champion — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Belichaam ongetemde kracht.</p>
+          <p>Je Fitness-modifier stijgt met 2. Je maximale Fitness-modifier is nu +7.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="devastator">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Devastator — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Vernietigende slagen die verdediging negeren.</p>
+          <p>Eén keer per beurt wanneer je raakt met een wapenaanval, doe je extra Wonden gelijk aan je Fitness-modifier. Deze schade negeert immuniteit en kan niet worden verminderd.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="sure-shot">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sure Shot — 30 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Maak van falen een succes.</p>
+          <p>Maak van een gemiste aanval een treffer. Gebruiken gelijk aan je Fitness-modifier per rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="archdruid">
+        <button class="lineage-header" onclick="toggleAbilities(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Archdruid — 50 XP</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Nature's Call, Insight-modifier +5 of hoger</p>
+          <p>Onbeperkte wild shape; moeiteloos spellcasting.</p>
+          <p>Beast Form heeft onbeperkte gebruiken. Je kunt verbale en somatische componenten van Nature-spells negeren, en materiële componenten zonder vermelde kostprijs.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script> function toggleAbilities(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const open = content.style.display === 'block' || content.classList.contains('expanded');
+  content.style.display = open ? 'none' : 'block';
+  content.classList.toggle('expanded', !open);
+  icon.textContent = open ? '▼' : '▲';
+  button.setAttribute('aria-expanded', open ? 'false' : 'true');
+}
+function expandAllAbilities(){
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='block'; c.classList.add('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▲');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','true'));
+}
+function collapseAllAbilities(){
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='none'; c.classList.remove('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▼');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','false'));
+}
+function expandAbilitiesFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target) return;
+  if(target.classList.contains('lineage-item')){
+    const content = target.querySelector('.lineage-content');
+    const button = target.querySelector('.lineage-header');
+    if(content && button){
+      content.style.display = 'block';
+      content.classList.add('expanded');
+      const icon = button.querySelector('.lineage-toggle-icon');
+      if(icon) icon.textContent = '▲';
+      button.setAttribute('aria-expanded', 'true');
+    }
+  }
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  collapseAllAbilities();
+  expandAbilitiesFromHash();
+});
+window.addEventListener('hashchange', expandAbilitiesFromHash);
+</script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

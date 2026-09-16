@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/talents.html" />
+<link rel="alternate" hreflang="nl" href="talents.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/talents.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Talenten | You-Meet-In-A-Tavern (YMIAT)</title>
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Talenten</h1>
+  <div class="content">
+    <p class="lede">Talenten uit de <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide, aangepast voor YMIAT (Resolve, Wonden, utility-talenten). Talenten met (SRD) zijn omgezet vanuit de D&D 5e System Reference Document-feats.</p>
+    <p>Talenten krijg je via achtergronden op 1e niveau en via class-Improvement-vermogens.</p>
+    <div class="lineages-controls">
+      <button class="lineage-control-btn" onclick="expandAllTalenten()">Alles uitklappen</button>
+      <button class="lineage-control-btn" onclick="collapseAllTalenten()">Alles inklappen</button>
+    </div>
+    <h2 id="magic-talents">Magie-talenten</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="arcanist">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Arcanist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Spellcasting class-vermogen</p><ul>
+<li>Dubbele behendigheidsbonus op Arcana-tests.</li>
+<li>Eén keer per rust: vervang één bekende cantrip of spell (niet uit spellbook) door een andere van hetzelfde niveau uit je bronlijst.</li>
+<li>Leer één extra cantrip uit je spellcasting-bron.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="combat-casting">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Combat Casting</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Op Fitness-saves om concentratie te behouden: behandel d20-resultaten van 7 of lager als 8.</li>
+<li>Wanneer een wezen een opportunity attack uitlokt, cast je met je reactie een cantrip in plaats van een melee-aanval.</li>
+<li>Gebruik een schild of wapen als spellcasting focus.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="elemental-savant">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Elemental Savant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Minstens één damaging spell kunnen casten</p><p>Kies acid, cold, fire, lightning of thunder. Wanneer je een spell cast die schade doet, mag je het schade-type omzetten naar je gekozen type. Bij schade-rollen voor spells die dat type van nature gebruiken, gooi je 1'en op damage dice opnieuw. Meerdere keren selecteerbaar voor verschillende types.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="mental-fortitude">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Mental Fortitude</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Eén keer per korte rust: gooi een mislukte Insight- of Willpower-save opnieuw.</li>
+<li>Wanneer je beurt begint terwijl je charmed, frightened, paralyzed of stunned bent, krijg je 1 Resolve.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="ritualist">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Ritualist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Spellcasting class feature</p><p>Krijg een ritual book. Kies Arcane, Divine, Primordial of Wyrd als ritual-bron. Voeg één ritual toe per spell-niveau dat je hebt ontgrendeld; voeg er één toe wanneer je toegang krijgt tot een nieuw niveau.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="school-specialization">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">School Specialization</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>+1 op spell attack en save DC voor je gekozen school.</li>
+<li>Halveer goud en tijd om spells van die school in een spellbook te kopiëren.</li>
+<li>Wanneer je 2+ sorcery points uitgeeft aan een spell van die school, krijg je aan het einde van je beurt 1 sorcery point terug.</li></ul>
+<p>Meerdere keren selecteerbaar voor verschillende schools.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="spell-duelist">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Spell Duelist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Je kunt één of meer cantrips casten</p><ul>
+<li>Wanneer je schade oploopt door een spell, reageer met een cantrip op de aanvaller.</li>
+<li>Spell attacks negeren half/three-quarters cover; touch-bereik wordt 15 voet; verdubbel anders spell-bereik.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="chaos-caster">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Chaos Caster</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Spellcasting class feature</p><p>Bij casten met Spell Power: probeer één niveau hoger te casten (eigenschapstest vs DC 11 + basisniveau). Bij succes: rol op de Volatile Spell Effect-tabel. Gebruik per lange rust gelijk aan behendigheidsbonus.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="spell-recall">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Spell Recall</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Prepared spellcaster (Cleric, Druid, Theurge of Wizard)</p><ul>
+<li>Bereid extra spells voor gelijk aan de helft van behendigheidsbonus (naar beneden afgerond).</li>
+<li>Als vrije actie: wissel één prepared spell voor een andere (eigenschapstest DC 10 + niveau of verlies de poging).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="magical-trickster">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Magical Trickster</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Leer <em>minor illusion</em> en <em>prestidigitation</em> of <em>thaumaturgy</em> (geen components; dubbel bereik).</li>
+<li>Als vrije actie: leg nadeel op op de volgende aanval van één wezen (Willpower-save); gebruik per dag gelijk aan behendigheidsbonus.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="magic-initiate">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Magic Initiate</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Leer twee cantrips naar keuze uit de Cleric-, Druid- of Wizard spell-lijst. Insight of Willpower is je spellcasting-eigenschap voor spells van dit talent (kies bij selectie).</p>
+<p>Kies een 1e-niveau spell uit dezelfde lijst. Je hebt het altijd prepared en cast het één keer zonder Spell Power, met herstel bij lange rust. Je kunt het ook normaal casten door Spell Power gelijk aan het niveau uit te geven.</p>
+<p>Wanneer je een niveau krijgt, mag je één spell van dit talent vervangen door een andere van hetzelfde niveau uit de gekozen lijst.</p>
+<p>Herhaalbaar: kies elke keer een andere spell-lijst.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-spell-recall">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Spell Recall</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 10, Spellcasting class feature</p><p>Verhoog je Insight- of Willpower-modifier met 1, tot maximaal +5. Telkens wanneer je een spell van 1e–4e niveau cast met Spell Power, rol 1d4. Als het resultaat gelijk is aan het spell-niveau, wordt die Spell Power niet uitgegeven.</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h2 id="martial-talents">Martiale talenten</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="armor-expert">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Armor Expert</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Fitness +1 of hoger</p><ul>
+<li>Met medium of zwaar pantser waarin je behendig bent: +1 Verdediging, voordeel op Fitness-saves tegen pull/shove/prone.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="armor-training">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Armor Training</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Behendigheid met light of medium pantser</p><ul>
+<li>Krijg de volgende armor-behendigheidsstap (light→medium→heavy en schilden).</li>
+<li>Geen nadeel op Stealth in medium pantser; voeg tot +3 Fitness toe aan Verdediging in medium pantser.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="athletic">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Athletic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Dubbele behendigheid op Athletics-tests.</li>
+<li>Meer draag-/duw-/tilcapaciteit; opstaan uit prone voor 5 ft beweging; +10 ft running long jump, +3 ft high jump.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="artillerist">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Artillerist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Fitness +1 of hoger</p><ul>
+<li>Negeer Loading op ranged weapons waarin je behendig bent.</li>
+<li>Voordeel op siege weapon-aanvallen.</li>
+<li>Met voordeel op een ranged-aanval: gooi één d20 opnieuw.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="brave">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Brave</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Voordeel op saves tegen fear; inspireer bondgenoot binnen 5× behendigheidsbonus voet met voordeel op één fear-save.</li>
+<li>Eén keer per lange rust: beëindig frightened op jezelf of een bondgenoot binnen 5 voet als vrije actie.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="combat-conditioning">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Combat Conditioning</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Max. wonden +2 per personageniveau (met terugwerkende kracht en op toekomstige niveaus).</li>
+<li>+1 maximum Herstelpunten; herstel alle Herstelpunten bij lange rust.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="critical-training">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Critical Training</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Critical hit op 19–20 met wapens.</li>
+<li>Bij weapon-crits: voeg de attack-eigenschapsmodifier nogmaals toe aan schade.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="hand-to-hand">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hand to Hand</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Unarmed strikes doen 1d6 + Fitness-modifier.</li>
+<li>Behendigheid met improvised weapons (minimaal 1d8 eenhandig, 1d10 tweehands).</li>
+<li>Voordeel op grapple-tests; grappled tegenstanders krijgen Fitness-modifier bludgeoning aan het begin van je beurt.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="opportunist">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Opportunist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Voordeel op opportunity attacks.</li>
+<li>Opportunity attacks wanneer tegenstanders opstaan uit prone of Use an Object doen.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="physical-fortitude">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Physical Fortitude</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Eén keer per beurt: gooi mislukte Fitness-save opnieuw door Herstelpunten uit te geven.</li>
+<li>Krijg 1 Resolve wanneer je beurt begint terwijl je blinded, deafened, restrained of poisoned bent.</li>
+<li>Voordeel tegen prone, pull of push.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="return-fire">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Return Fire</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Wanneer een zichtbare aanvaller je raakt of mist met een ranged-aanval, reageer met een ranged- of thrown weapon-aanval indien binnen bereik.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="spell-hunter">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Spell Hunter</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Reageer met melee-aanval wanneer bereikbare tegenstander cast; extra schade gelijk aan spell-niveau (crit onderbreekt spell).</li>
+<li>Voordeel op saves tegen hun spells binnen 5 voet; zij hebben nadeel op concentratie.</li>
+<li>Grappled wezens kunnen geen spells met somatic components casten.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="vanguard">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Vanguard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Reageer met melee-aanval wanneer tegenstander in reach iemand anders aanvalt.</li>
+<li>Opportunity attacks wanneer wezens reach verlaten, ook zonder provocatie.</li>
+<li>Readied melee-aanvallen krijgen +behendigheidsbonus; bij treffer wordt snelheid doelwit 0 tot einde volgende beurt.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="weapon-discipline">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Weapon Discipline</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Behendigheid met minstens één martial weapon</p><p>Kies één simple of martial wapen waarin je behendig bent: +1 aanval en schade; extra weapon die bij crit; tijdelijke Wonden gelijk aan behendigheidsbonus wanneer je tegenstander neerhaalt met dat wapen.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="savage-attacker">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Savage Attacker</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Eén keer per beurt wanneer je een doelwit raakt met een weapon-aanval, kun je 1 extra Wond van het schade-type van dat wapen toevoegen.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="grappler-5-5e">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Grappler</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 3+, Fitness +1 of hoger</p><ul>
+<li>Verhoog je Fitness-modifier met 1, tot maximaal +5.</li>
+<li>Wanneer je een wezen raakt met een Unarmed Strike als onderdeel van de Attack-actie, kun je het ook proberen te Grapplen. Alleen één keer per beurt bruikbaar.</li>
+<li>Voordeel op aanvalsworpen tegen een wezen dat door jou Grappled is.</li>
+<li>Geen extra bewegingskosten om een wezen dat door jou Grappled is te verplaatsen als het jouw grootte of kleiner is.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="grappler">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Grappler</span><a href="https://www.dndbeyond.com/srd#PreviousSRDReleases" class="source-pill source-pill-srd51" rel="noopener" title="D&amp;D 5.1 System Reference Document (Creative Commons license)" onclick="event.stopPropagation()">SRD 5.1 CC</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Fitness +1 of hoger</p><p>Je hebt de vaardigheden ontwikkeld om je staande te houden in close-quarters grappling.</p>
+<ul>
+<li>Voordeel op aanvalsworpen tegen een wezen dat door jou Grappled is.</li>
+<li>Als actie probeer je een wezen dat door jou Grappled is te pinnen met nog een grapple-check. Bij succes hebben jij en het wezen beide de Restrained-conditie tot de grapple eindigt.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="archery">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Archery</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Behendigheid met minstens één ranged weapon</p><p>+2 bonus op aanvalsworpen met ranged weapons.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="defense">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Defense</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Behendigheid met light, medium of zwaar pantser</p><p>Met light, medium of zwaar pantser: +1 Verdediging.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="great-weapon-fighting">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Great Weapon Fighting</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Behendigheid met minstens één Two-Handed of Versatile weapon</p><p>Wanneer je raakt met een Melee-wapen dat je tweehands hanteert (Two-Handed of Versatile), doe je 1 extra Wond.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="two-weapon-fighting">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Two-Weapon Fighting</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Two-Weapon Fighting (dual-wielding light weapons)</p><p>Bij een off-hand-aanval via Two-Weapon Fighting voeg je je Fitness-modifier toe aan de Wonden, ook als de modifier niet negatief is.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-combat-prowess">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Combat Prowess</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 10</p><ul>
+<li>Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.</li>
+<li>Wanneer je mist met een aanvalsworp, kun je in plaats daarvan raken. Zodra je dit gebruikt, kun je het niet opnieuw tot het begin van je volgende beurt.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-irresistible-offense">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Irresistible Offense</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 10</p><ul>
+<li>Verhoog je Fitness-modifier met 1, tot maximaal +5.</li>
+<li>Bludgeoning-, Piercing- en Slashing-Wonden die je doet negeren altijd resistance.</li>
+<li>Wanneer je een natural 20 gooit op een aanvalsworp, doe je extra Wonden gelijk aan je Fitness-modifier.</li></ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h2 id="utility-talents">Utility-talenten</h2>
+    <div class="lineages-container">
+      <div class="lineage-item" id="alchemy-adept">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Alchemy Adept</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Behendigheid met alchemist's tools</p><ul>
+<li>Dubbele behendigheid op alchemist's tool-tests.</li>
+<li>Maak alchemische items sneller tijdens downtime; behendig met alchemische ranged-aanvallen met Fitness of Insight.</li>
+<li>+behendigheidsbonus op concoction save DC; bereik 30/60 ft.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="aware">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Aware</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Op initiative: behandel d20-resultaten van 9 of lager als 10.</li>
+<li>Je kunt niet verrast worden terwijl je bij bewustzijn bent.</li>
+<li>Verborgen aanvallers krijgen geen voordeel tegen jou.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="bottomless-luck">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Bottomless Luck</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Wanneer je 20 gooit op d20, krijgt één bondgenoot die je ziet of hoort 1 Resolve.</li>
+<li>Bij Reset Resolve: rol d20 in vier banden (zie core-regels) en houd de betere van twee worpen als je twee keer rolt.</li>
+<li>Bij Resolve uitgeven om opnieuw te rollen: rol twee keer en houd het beste resultaat.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="comrade">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Comrade</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Help als vrije actie.</li>
+<li>Geef Resolve uit om de worp van een bondgenoot binnen 30 voet te versterken.</li>
+<li>Wanneer bondgenoot binnen 30 voet een death save faalt of Max. wonden bereikt, krijg je 2 Resolve.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="covert">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Covert</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Stealth proficiency, Fitness +1</p><ul>
+<li>Hide in three-quarters cover of terwijl je licht obscured bent.</li>
+<li>Darkvision-gebruikers zien je niet wanneer je stilstaat in dim light of darkness.</li>
+<li>Geen nadeel bij aanvallen of waarnemen in dim light.</li>
+<li>Reactie Stealth vs. Perception om verborgen te blijven na ontdekking (één keer per wezen per 24 uur).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="dungeoneer">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dungeoneer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Voeg behendigheidsbonus toe aan ontmantelen vallen/deuren openen zonder tools; eerste mislukking op vallen activeert ze niet.</li>
+<li>Voordeel bij vinden van geheimen, vallen en illusies; voordeel tegen vallen en gevaren; weerstand tegen trap/hazard-schade.</li>
+<li>Bij gevechtsstart mogen jij en bondgenoten binnen 5 voet Stealth rollen voor verrassing.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="empathetic">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Empathetic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Lees eenvoudige intentie uit lichaamstaal in onbekende talen.</li>
+<li>+5 passive Insight; behendigheid in Persuasion (of dubbele behendigheid).</li>
+<li>Na 10 minuten vriendelijk gesprek: voordeel op Willpower (Persuasion)-tests.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="escamotage">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Escamotage</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Behendigheid in Sleight of Hand (of dubbele behendigheid).</li>
+<li>Geef 2 Resolve uit om Sleight of Hand-tests opnieuw te rollen.</li>
+<li>Actie om zichtbaar gedragen nonmagical item te stelen (DC 10 + Fitness-bonus doelwit + CR).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="far-traveler">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Far Traveler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Reis 10 uur/dag vóór forced march-saves; fast pace verlaagt passive Perception niet.</li>
+<li>Voordeel op Survival-tests om de weg niet kwijt te raken.</li>
+<li>Negeer één niveau exhaustion.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="field-medic">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Field Medic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Op Medicine-tests: behandel d20-resultaten van 9 of lager als 10.</li>
+<li>Actie: genees Wonden gelijk aan behendigheidsbonus + Fitness-modifier (één keer per doelwit per rust).</li>
+<li>Bij Herstelpunten uitgeven tijdens korte rust: gooi tot behendigheidsbonus dice opnieuw.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="hardy">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hardy</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Fitness +1 of hoger</p><ul>
+<li>Eén keer per lange rust: zak naar 1 Wond in plaats van 0 wanneer je naar 0 Wonden gaat.</li>
+<li>Voordeel op tests om exhaustion te vermijden of te verlagen; één keer per lange rust negeer je het krijgen van een exhaustion-niveau.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="learned-researcher">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Learned Researcher</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Kies twee uit Arcana, History, Nature of Religion: behandel d20-resultaten van 9 of lager als 10 (gebruik per dag = behendigheidsbonus). Downtime-onderzoekskosten en -tijd gedeeld door behendigheidsbonus; voordeel op research resolution-rolls.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="polyglot">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Polyglot</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Leer drie talen.</li>
+<li>Eén keer per lange rust: voordeel op één Willpower-test om een wezen te beïnvloeden waarmee je een niet-Common taal deelt.</li>
+<li>Voeg behendigheidsbonus toe bij ontcijferen van onbekende talen (dubbel als je ook behendig bent in relevante skill/tool).</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="quick">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Quick</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>+10 ft snelheid zonder medium/zwaar pantser.</li>
+<li>Dash langs verticale oppervlakken; verminder valafstand met 5× behendigheidsbonus als reactie.</li>
+<li>Vrije actie: beweeg 5 voet zonder opportunity attacks uit te lokken.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="scrutinous">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Scrutinous</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Lees lippen in talen die je kent.</li>
+<li>+5 passive Perception en Investigation.</li>
+<li>Na 1 minuut een voorwerp onderzoeken: stel de GM één waarheidsgetrouwe vraag erover.</li>
+<li>Imiteer stemmen na 1 minuut spraak horen.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="situational-awareness">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Situational Awareness</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Voordeel op tests om verrassing te vermijden.</li>
+<li>Na melee-schade: reageer om 10 voet te bewegen zonder opportunity attacks uit te lokken.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="sleuth">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sleuth</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Insight +1 of Willpower +1</p><p>Kies twee uit Insight, Investigation, Perception of Survival: behandel 9 of lager als 10. Na 1 minuut praten met een wezen: <em>zone of truth</em>-effect (gebruik per dag = behendigheidsbonus).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="slippery">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Slippery</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Eerste 5× behendigheidsbonus voet moeilijk terrein per beweging kost normale beweging.</li>
+<li>Voordeel om grappled te vermijden en te beëindigen.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="tag-team">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Tag Team</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Markeer een vijand binnen 30 voet voor 1 minuut. Als je een melee-aanval op het merk mist zonder nadeel, krijgt de volgende bondgenoot die het aanvalt voordeel. Eén keer per korte of lange rust.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="touch-of-luck">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Touch of Luck</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Wanneer je 1 Resolve zou krijgen door mislukte save of aanval, krijg je 2.</li>
+<li>Bij 4 Resolve: wanneer je meer zou krijgen, reset Resolve via de d20-bandtabel in de core-regels.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="trade-skills">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Trade Skills</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Krijg behendigheid in één skill en gerelateerde tool/vehicle (of twee tools/vehicles).</li>
+<li>Dubbele behendigheid op één gekozen skill.</li>
+<li>Voordeel wanneer zowel behendige tool als skill van toepassing zijn.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="trailblazer">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Trailblazer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <ul>
+<li>Klim- en zwemsnelheid gelijk aan loopsnelheid.</li>
+<li>Voordeel op exhaustion-tests tijdens klimmen of zwemmen.</li>
+<li>Adem inhouden voor 1 + tweemaal Fitness-modifier minuten.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="alert">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Alert</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Met de Initiative-variant: voeg behendigheidsbonus toe aan je Fitness-check. Direct na rollen kun je je Initiative wisselen met die van een bereidwillige bondgenoot in hetzelfde gevecht, tenzij een van jullie Incapacitated is.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="skilled">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Skilled</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Krijg behendigheid in elke combinatie van drie skills of tools naar keuze. Herhaalbaar.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="ability-score-improvement">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Ability Score Improvement</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Level 3+</p><p>Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5. Herhaalbaar.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-dimensional-travel">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Dimensional Travel</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 10</p><ul>
+<li>Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.</li>
+<li>Direct nadat je de Attack-actie of de Cast a Spell-actie neemt, kun je tot 30 voet teleporteren naar een onbezette ruimte die je kunt zien.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-fate">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Fate</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 10</p><ul>
+<li>Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.</li>
+<li>Wanneer jij of een ander wezen binnen 60 voet van je slaagt of faalt voor een d20-test, kun je 2d4 rollen en het totaal als bonus of straf op die worp toepassen. Zodra je dit gebruikt, kun je het niet opnieuw tot je een korte of lange rust afrondt.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-the-night-spirit">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of the Night Spirit</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 10</p><ul>
+<li>Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.</li>
+<li>In schemerlicht of duisternis kun je jezelf als vrije actie de Invisible-conditie geven. Die eindigt meteen nadat je een actie, vrije actie of reactie neemt.</li>
+<li>In schemerlicht of duisternis heb je resistance tegen alle schade behalve Psychic en Radiant.</li></ul>
+        </div>
+      </div>
+      <div class="lineage-item" id="boon-of-truesight">
+        <button class="lineage-header" onclick="toggleTalenten(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Boon of Truesight</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Voorwaarde:</strong> Niveau 10</p><p>Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5. Je hebt truesight met een bereik van 60 voet.</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p><em>Extra talenten staan in de ToV Player's Guide en Player's Guide 2. Alleen de talenten hier zijn samengevat voor YMIAT-spel.</em></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script> function toggleTalenten(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const open = content.style.display === 'block' || content.classList.contains('expanded');
+  content.style.display = open ? 'none' : 'block';
+  content.classList.toggle('expanded', !open);
+  icon.textContent = open ? '▼' : '▲';
+  button.setAttribute('aria-expanded', open ? 'false' : 'true');
+}
+function expandAllTalenten(){
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='block'; c.classList.add('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▲');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','true'));
+}
+function collapseAllTalenten(){
+  document.querySelectorAll('.lineage-item .lineage-content').forEach(c => { c.style.display='none'; c.classList.remove('expanded'); });
+  document.querySelectorAll('.lineage-toggle-icon').forEach(i => i.textContent='▼');
+  document.querySelectorAll('.lineage-header').forEach(b => b.setAttribute('aria-expanded','false'));
+}
+function expandTalentenFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target) return;
+  if(target.classList.contains('lineage-item')){
+    const content = target.querySelector('.lineage-content');
+    const button = target.querySelector('.lineage-header');
+    if(content && button){
+      content.style.display = 'block';
+      content.classList.add('expanded');
+      const icon = button.querySelector('.lineage-toggle-icon');
+      if(icon) icon.textContent = '▲';
+      button.setAttribute('aria-expanded', 'true');
+    }
+  }
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  collapseAllTalenten();
+  expandTalentenFromHash();
+});
+window.addEventListener('hashchange', expandTalentenFromHash);
+</script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

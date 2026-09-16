@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/heritages.html" />
+<link rel="alternate" hreflang="nl" href="heritages.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/heritages.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Erfenissen | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Personage-erfenissen voor You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/heritages.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Erfenissen</h1>
+  <div class="content">
+        <p class="lede">Erfenis staat voor opvoeding en cultuur — wat je gemeenschap je leerde, los van bloedlijn-<a href="lineages.html">afkomst</a>-trekken.</p>
+    <p>Erfenisopties uit de <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide (2024) en Player's Guide 2 (2026). Je mag <strong>elke</strong> erfenis combineren met elke afkomst (bijv. human-afkomst met elven Grove-erfenis).</p>
+    <div class="lineages-controls">
+      <button id="expand-all-heritages" class="lineage-control-btn" onclick="expandAllErfenissen()">Alles uitklappen</button>
+      <button id="collapse-all-heritages" class="lineage-control-btn" onclick="collapseAllErfenissen()">Alles inklappen</button>
+    </div>
+    <div class="lineages-container">
+      <div class="lineage-item" id="anointed">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Anointed</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Syderean</p>
+<p>Je hebt een bovennatuurlijke band geaccepteerd met extraplanare krachten of een kosmisch doel — gemarkeerd door voortekenen, riten of een voorouderlijke last.</p>
+<p><strong>Favored Disciple.</strong> Je kent de cantrip <em>thaumaturgy</em> en hebt voordeel op death saves.</p>
+<p><strong>Occult Studies.</strong> Behendigheid in History of Religion. Voordeel op tests om informatie over Celestials, Fiends of Outsiders op te roepen.</p>
+<p><strong>Talen.</strong> Common plus twee extra (typisch: Abyssal, Celestial of Infernal).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="cloud">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cloud</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Elf</p>
+<p>Je groeide op tussen arcane torens en academies waar magie het middelpunt van het burgerlijke leven is.</p>
+<p><strong>Touch of Magic.</strong> Kies een school of magic; leer één cantrip daaruit. Op 3e personageniveau leer je één spell van 1e niveau uit die school — cast één keer per lange rust zonder Spell Power. Spellcasting-eigenschap: Insight of Willpower (kies bij creatie).</p>
+<p><strong>World of Wonders.</strong> Behendigheid in Arcana.</p>
+<p><strong>Talen.</strong> Common plus twee extra (typisch: Elvish en Draconic).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="cosmopolitan">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cosmopolitan</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Human, Gearforged</p>
+<p>Opgegroeid in een grote stad of nomadisch tussen culturen — je bent burger van de bredere wereld.</p>
+<p><strong>Street Smarts.</strong> In stedelijke omgevingen: voordeel op tests om niet verdwaald te raken of openbare bestemmingen te vinden; kan niet verrast worden tenzij slapend of incapacitated.</p>
+<p><strong>Worldly Wisdom.</strong> Behendigheid in History. Tel PB op bij tests over onbekende culturen, gebouwen, riten of objecten (dubbele PB als je behendig bent in een relevante skill of tool).</p>
+<p><strong>Talen.</strong> Common plus drie extra (typisch: Dwarvish en Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="cottage">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Cottage</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Smallfolk, Rachisan</p>
+<p>Je groeide op in een hechte agrarische gemeenschap — hardwerkend, praktisch en gericht op haard en huis.</p>
+<p><strong>Comforts of Home.</strong> Tijdens een lange rust kun je tot PB bondgenoten (inclusief jezelf) koken of troosten; elk krijgt tijdelijke Wonden gelijk aan tweemaal PB tot je volgende lange rust.</p>
+<p><strong>Homesteader.</strong> Behendigheid in Animal Handling of Nature.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Halfling of Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="diaspora">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Diaspora</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Orc, Duergar, Shade</p>
+<p>Je verdreven gemeenschap bewaart de erfenis van een verloren thuisland via gilden, huurlingencompagnieën of geloof.</p>
+<p><strong>Preserved Traditions.</strong> Behendigheid in History en één martial weapon naar keuze.</p>
+<p><strong>Timeless Resolve.</strong> Jij en bondgenoten binnen 5 voet hebben voordeel op saves tegen frightened.</p>
+<p><strong>Talen.</strong> Common plus één extra (vaak Orcish of Dwarvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="fireforge">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Fireforge</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Dwarf</p>
+<p>Opgegroeid in vulkanische smeedklanen waar dwergen midden in magma werken en bondgenootschappen sluiten met elementals.</p>
+<p><strong>Forgecraft.</strong> Behendigheid met smithing tools; dubbele PB op tests daarmee. Je kent <em>mending</em>.</p>
+<p><strong>Heat Resilience.</strong> Weerstand tegen fire-schade.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Dwarvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="grove">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Grove</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Elf</p>
+<p>Bosgemeenschappen in harmonie met de natuur — heilige linden, bladerdakpaden en bewakers van het wild.</p>
+<p><strong>Canopy Walker.</strong> Climb speed gelijk aan loopsnelheid.</p>
+<p><strong>Nature's Camouflage.</strong> Voordeel op Stealth terwijl je licht obscured bent door natuurlijke fenomenen; je kunt Hide gebruiken wanneer natuur je licht obscured zelfs als dat normaal niet mag.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="nomadic">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Nomadic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Human</p>
+<p>Je volk trekt mee met seizoenen, handelsroutes of traditie — je kent de ontberingen van de weg.</p>
+<p><strong>Resilient.</strong> Voordeel tegen extreme weersomstandigheden. Eén keer per lange rust verlaag je exhaustion met één wanneer je een korte rust afrondt.</p>
+<p><strong>Traveler.</strong> Behendigheid in Survival.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Dwarvish of Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="salvager">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Salvager</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Kobold, Smallfolk, Goblin</p>
+<p>Opgeleid om te bouwen, repareren en overleven met wat voor materiaal dan ook — geduldig, vindingrijk en inventief.</p>
+<p><strong>Repurpose.</strong> In 1 minuut creëer je een Tiny nonmagical item (≤25 gp adventuring gear) uit je omgeving; houdt één gebruik stand en breekt daarna.</p>
+<p><strong>Tinkerer.</strong> Behendigheid met tinker's tools of een andere tool; dubbele PB op tests om objecten of vallen te maken, identificeren of ontwapenen met relevante behendigheid.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Draconic of Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="slayer">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Slayer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Beastkin, Orc, Dragonborn</p>
+<p>Monsterjacht-roddels die van jongs af aan trainen om gevaarlijke roofdieren te volgen en te doden.</p>
+<p><strong>Natural Predator.</strong> Behendigheid in Intimidation; voordeel op Intimidation tegen Beasts en Animals.</p>
+<p><strong>Tracker.</strong> Tel PB op bij locate/spot/track-tests (dubbele PB als je behendig bent in de gebruikte skill of tool).</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Primordial of Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="stone">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Stone</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Dwarf</p>
+<p>Ondergrondse mijnwerkers en metselaars die voorouderlijke delves onder de wereld verdedigen.</p>
+<p><strong>Ancestral Arts.</strong> Behendigheid met construction tools (dubbele PB); behendigheid met één martial weapon.</p>
+<p><strong>Eye for Quality.</strong> Tel PB op bij tests over metalen/stenen objecten of structuren (dubbele PB als je behendig bent in een relevante skill of tool).</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Dwarvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="supplicant">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Supplicant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Kobold, Dhampir</p>
+<p>Een gemeenschap gebonden aan een monsterlijke overlord — vaak draken — die vallen en gevaren rond diens hol bouwt.</p>
+<p><strong>Scurry.</strong> Bonusactie: beweeg 10 voet zonder opportunity attacks; triggert geen vallen die je kent.</p>
+<p><strong>Supplicant.</strong> Behendigheid in Insight of Persuasion. Wanneer een wezen binnen 30 voet Resolve uitgeeft, heb je voordeel op tests en saves tot je volgende beurt.</p>
+<p><strong>Talen.</strong> Common plus één extra (taal van de overlord: Draconic, Giant of Undercommon).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="vexed">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Vexed</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Syderean, Shade</p>
+<p>Je leven wordt bepaald door het trotseren van een bovennatuurlijke band — geclaimd bij geboorte, achtervolgd door dromen of een bloedschuld geërfd.</p>
+<p><strong>Prodigal Disciple.</strong> Behandel d20-resultaten van 9 of lager als 10 op saves tegen charmed of possessed.</p>
+<p><strong>Quarry's Cunning.</strong> Behendigheid in Deception of Insight.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch esoterisch: Abyssal, Celestial of Infernal).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="wildlands">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Wildlands</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Beastkin, Tosculi</p>
+<p>Primordial-magische gemeenschappen waar Beasts en humanoids als gelijken leven in ongerept gebied.</p>
+<p><strong>Beast Affinity.</strong> Communiceer eenvoudige ideeën met Beasts/Animals; voordeel bij interactie met hen.</p>
+<p><strong>Shepherd's Gift.</strong> Behendigheid in Animal Handling. Beasts/Animals met CR ≤ PB moeten een Willpower (Animal Handling)-contest halen om je aan te vallen of kiezen een ander doelwit.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="conflicted">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Conflicted</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Dhampir, Drow, Duergar, Goblin, Gearforged, Shade</p>
+<p>Opgegroeid in een samenleving verscheurd door factie-geweld, revolutie of rebellie — overleven betekent gevaar vroeg lezen.</p>
+<p><strong>Prepared for Trouble.</strong> Behendigheid met improvised weapons. Ontwapen vallen zonder thieves' tools.</p>
+<p><strong>Talk Your Way Out.</strong> Behendigheid in Deception of Persuasion.</p>
+<p><strong>Talen.</strong> Common plus één extra (taal van het conflictgebied).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="coterminous">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Coterminous</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Dragonborn, Elemental Scion</p>
+<p>Uit een grensgemeenschap waar het Material Plane een Elemental Plane raakt — handelsknooppunt, genie-heerschappij en elementair gevaar.</p>
+<p><strong>Elemental Community.</strong> Kies Air (lightning), Earth (acid), Fire (fire) of Water (cold).</p>
+<p><strong>Ambient Absorption.</strong> Wanneer je schade van je elementtype neemt, rol d8s gelijk aan de helft van PB (min. 1) en verlaag schade met het totaal.</p>
+<p><strong>Environmental Acclimatization.</strong> Behendigheid op tests/saves tegen gevaren van je element (dubbele PB als je al behendig bent).</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Primordial).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="covenant">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Covenant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Drow</p>
+<p>Een magie-geobsedeerde gemeenschap die arcane macht hoort bij ruwe magische knooppunten — spellcraft boven alles.</p>
+<p><strong>Expert Caster.</strong> Behendigheid in Arcana; leer één cantrip uit elke source (Insight of Willpower als spellcasting-eigenschap).</p>
+<p><strong>Spell Inoculation.</strong> Voordeel op saves tegen spells die jou specifiek targeten (geen area effects).</p>
+<p><strong>Talen.</strong> Common plus twee extra (typisch: Draconic, Infernal of Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="feysworn">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Feysworn</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Rachisan</p>
+<p>Opgegroeid onder fey-heerschappij, gebonden door eden aan archfey en hun vreemde doelen.</p>
+<p><strong>Accustomed to Trickery.</strong> Je kent <em>prestidigitation</em> (Insight of Willpower). Voordeel tegen charmed; bij falen op een charm-save krijg je 2 Resolve in plaats van 1.</p>
+<p><strong>Enchanting Call.</strong> Actie: één wezen maakt Willpower-save (DC 10 + PB) of is charmed tot einde van je volgende beurt. Of geef 2 Resolve uit om frighten te proberen (Resolve verloren alleen bij succes). Eén keer per korte of lange rust.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="hivebound">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Hivebound</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Tosculi</p>
+<p>Een telepathisch verbonden gemeenschap die als collectief functioneert — eenheid boven individualiteit.</p>
+<p><strong>Open Mind.</strong> Behendigheid in Insight. Bonusactie: tijdelijke telepathische link met één bereid wezen dat je aanraakt tot je stop met aanraken of iemand anders linkt.</p>
+<p><strong>Unity.</strong> Wanneer je Help gebruikt op een test, krijgt het doelwit +PB; wanneer jij geholpen wordt, krijg jij +PB van de helper.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Primordial of Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="ironwrought">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Ironwrought</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Gearforged</p>
+<p>Opgegroeid onder gearforged en artificers die geboren en gemaakte mensen als gelijken behandelen.</p>
+<p><strong>Construct Affinity.</strong> Communiceer eenvoudige ideeën met Constructs; voordeel bij interactie met hen.</p>
+<p><strong>Mechanic.</strong> Behendigheid met tinker's of smithing tools; dubbele PB op tests om metalen wezens te maken, repareren of upgraden met relevante behendigheid.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Dwarvish of Draconic).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="islander">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Islander</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Sapopova</p>
+<p>Van een archipel die specialty goods tussen eilanden verhandelt — taai, sociaal en veerkrachtig.</p>
+<p><strong>Like Water off Your Back.</strong> Voordeel op saves tegen frightened.</p>
+<p><strong>Tiderider.</strong> Behendigheid met vehicles (water); zwemsnelheid gelijk aan loopsnelheid.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Halfling of Sylvan).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="joymonger">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Joymonger</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p>Opgegroeid in een gemeenschap die geluk verkoopt — performers, artisans en arbeiders die attracties draaiende houden.</p>
+<p><strong>Joyful Endurance.</strong> Voordeel op Fitness-tests voor vermoeidheid/overleving buiten gevecht. Eén keer per lange rust: negeer het krijgen van een exhaustion-niveau.</p>
+<p><strong>Welcome to the Show.</strong> Behendigheid in Persuasion of Performance.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Halfling of Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="kithren">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Kithren</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p>Nomadische herbouwers die naar verwoeste nederzettingen reizen en overlevenden helpen herstellen.</p>
+<p><strong>Helping Hands.</strong> Behendigheid in Medicine of Survival; behendigheid met één melee weapon naar keuze.</p>
+<p><strong>Search and Rescue.</strong> Een netwerk van kithren-contacten kan wijzen naar de laatst bekende locatie van een Humanoid (GM-beslissing). Cast <em>mending</em> één keer per lange rust zelfs als je geen spellcaster bent.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Goblin of Gnomish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="seafarer">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Seafarer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Sea Elf, Elemental Scion</p>
+<p>Opgegroeid op een reizende vloot — verkenningsschepen, boerderijen, trawlers en cruisers samen over open water.</p>
+<p><strong>Jack of all Trades.</strong> Eén keer per lange rust: tel PB op bij een tool- of eigenschapstest zonder behendigheid.</p>
+<p><strong>Sea Legs.</strong> Behendigheid met vehicles (water); voordeel op Fitness-tests aan boord van drijvende vaartuigen.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Dwarvish of Elvish).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="waterside">
+        <button class="lineage-header" onclick="toggleErfenissen(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Waterside</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+<p><strong>Veelvoorkomend bij afkomsten:</strong> Sapopova, Sea Elf</p>
+<p>Gemeenschappen aan de waterkant die het leven tussen land en water verdelen — vissen, varen en aquacultuur.</p>
+<p><strong>Knowledgeable.</strong> Behendigheid in History of Nature; dubbele PB op die skill voor waterside-gebieden.</p>
+<p><strong>Water Legs.</strong> Behendigheid met vehicles (water); voordeel op Fitness (Athletics)- en Fitness (Acrobatics)-balancetests bij water; water tot de heup is geen difficult terrain.</p>
+<p><strong>Talen.</strong> Common plus één extra (typisch: Sylvan, Dwarvish of Elvish).</p>
+        </div>
+      </div>
+    </div>
+    <h2 id="heritages-by-lineage">Common Erfenissen by Lineage</h2>
+    <p>Typical pairings for classic fantasy archetypes. These are suggestions, not requirements.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Lineage</th><th>Recommended Erfenissen</th></tr></thead>
+      <tbody>
+        <tr><td>Beastkin</td><td>Slayer, Wildlands</td></tr>
+        <tr><td>Dhampir</td><td>Conflicted, Supplicant</td></tr>
+        <tr><td>Dragonborn</td><td>Coterminous, Slayer</td></tr>
+        <tr><td>Drow (Elf variant)</td><td>Conflicted, Covenant</td></tr>
+        <tr><td>Duergar (Dwarf variant)</td><td>Conflicted, Diaspora</td></tr>
+        <tr><td>Dwarf</td><td>Fireforge, Stone</td></tr>
+        <tr><td>Elemental Scion</td><td>Coterminous, Seafarer</td></tr>
+        <tr><td>Elf</td><td>Cloud, Grove</td></tr>
+        <tr><td>Gearforged</td><td>Cosmopolitan, Ironwrought</td></tr>
+        <tr><td>Goblin</td><td>Conflicted, Salvager</td></tr>
+        <tr><td>Human</td><td>Cosmopolitan, Nomadic</td></tr>
+        <tr><td>Kobold</td><td>Supplicant, Salvager</td></tr>
+        <tr><td>Orc</td><td>Diaspora, Slayer</td></tr>
+        <tr><td>Rachisan</td><td>Cottage, Feysworn</td></tr>
+        <tr><td>Sapopova</td><td>Islander, Waterside</td></tr>
+        <tr><td>Sea Elf (Elf variant)</td><td>Seafarer, Waterside</td></tr>
+        <tr><td>Shade</td><td>Diaspora, Vexed</td></tr>
+        <tr><td>Smallfolk</td><td>Cottage, Salvager</td></tr>
+        <tr><td>Syderean</td><td>Anointed, Vexed</td></tr>
+        <tr><td>Tosculi</td><td>Hivebound, Wildlands</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script>
+function toggleErfenissen(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  if(isExpanded){
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+function expandAllErfenissen(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+function collapseAllErfenissen(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+function expandErfenissenFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item')) return;
+  const content = target.querySelector('.lineage-content');
+  const button = target.querySelector('.lineage-header');
+  if(!content || !button) return;
+  content.style.display = 'block';
+  content.classList.add('expanded');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  if(icon) icon.textContent = '▲';
+  button.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+  expandErfenissenFromHash();
+});
+window.addEventListener('hashchange', expandErfenissenFromHash);
+</script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

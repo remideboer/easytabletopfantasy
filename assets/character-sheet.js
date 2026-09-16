@@ -7,6 +7,11 @@
   const CREATOR_KEY = "ymiat-character-creator-v1";
   const ABILITIES = ["fit", "ins", "wil"];
   const ABILITY_LABELS = { fit: "FIT", ins: "INS", wil: "WIL" };
+
+  function t(key, fallback) {
+    const pack = (window.ymiatAppStrings && window.ymiatAppStrings("sheet")) || {};
+    return pack[key] != null && pack[key] !== "" ? pack[key] : fallback;
+  }
   const INVENTORY_THRESHOLDS = [-2, -2, -1, -1, 0, 1, 1, 2, 2];
   const INVENTORY_SLOT_COUNT = INVENTORY_THRESHOLDS.length * 2;
 
@@ -128,8 +133,16 @@
     return "../".repeat(depth);
   }
 
+  function assetsPath() {
+    if (typeof window.ymiatGetAssetsPath === "function") {
+      return window.ymiatGetAssetsPath();
+    }
+    return rootPath();
+  }
+
   function rp(url) {
     if (!url || url.startsWith("http")) return url;
+    if (url.startsWith("assets/")) return assetsPath() + url;
     return rootPath() + url;
   }
 
@@ -692,7 +705,7 @@
     bodies.forEach((node, i) => {
       const entry = items[i];
       const html = entry.item?.body || entry.item?.teaser;
-      node.innerHTML = html || '<p class="cs-muted">Select an option to see details.</p>';
+      node.innerHTML = html || `<p class="cs-muted">${escapeHtml(t("selectOption", "Select an option to see details."))}</p>`;
       const title = node.closest(".cs-detail-pane")?.querySelector(".cs-detail-title");
       if (title) title.textContent = entry.item?.name || entry.fallback;
     });
@@ -827,7 +840,7 @@
     }
 
     return `<div class="cs-pane cs-pane--spells">
-      <h2 class="cs-pane-title cs-pane-title--with-action">Spells <button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-manage-spells">Manage Spells</button></h2>
+      <h2 class="cs-pane-title cs-pane-title--with-action">${escapeHtml(t("spells", "Spells"))} <button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-manage-spells">${escapeHtml(t("manageSpells", "Manage Spells"))}</button></h2>
       <p class="cs-muted">Cantrips ${cantrips.length}/${cCap} · ${counterText}</p>
       ${groups.length ? groups.join("") : '<p class="cs-muted">No spells learned yet.</p>'}
     </div>`;
@@ -1066,7 +1079,7 @@
   }
 
   function spellRowDetailsToggle(s, expanded) {
-    const label = expanded ? "Hide details" : "Show details";
+    const label = expanded ? t("hideDetails", "Hide details") : t("showDetails", "Show details");
     const chevron = expanded ? "⌄" : "›";
     return `<button type="button" class="cs-spell-details-toggle" data-spell-details="${escapeHtml(s.id)}" aria-expanded="${expanded ? "true" : "false"}" aria-controls="cs-spell-details-${escapeHtml(s.id)}">
       ${label} <span class="cs-spell-chevron" aria-hidden="true">${chevron}</span>
@@ -1178,10 +1191,10 @@
       : `${label} ${activeLeveledCount}/${activeCap}`;
 
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-spell-modal-overlay">
-      <div class="cs-modal" role="dialog" aria-modal="true" aria-label="Manage Spells">
+      <div class="cs-modal" role="dialog" aria-modal="true" aria-label="${escapeHtml(t("manageSpells", "Manage Spells"))}">
         <div class="cs-modal-header">
-          <h2>Manage Spells — ${escapeHtml(cls ? cls.name : "")}</h2>
-          <button type="button" class="cs-modal-close" id="cs-spell-modal-close" aria-label="Close">×</button>
+          <h2>${escapeHtml(t("manageSpells", "Manage Spells"))} — ${escapeHtml(cls ? cls.name : "")}</h2>
+          <button type="button" class="cs-modal-close" id="cs-spell-modal-close" aria-label="${escapeHtml(t("close", "Close"))}">×</button>
         </div>
         <div class="cs-modal-sub">
           <input type="text" id="cs-spell-search" class="cs-input" placeholder="Search spells…" value="${escapeHtml(spellModalFilter)}" />

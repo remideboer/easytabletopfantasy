@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../classless-character-sheet.html" />
+<link rel="alternate" hreflang="nl" href="classless-character-sheet.html" />
+<link rel="alternate" hreflang="x-default" href="../classless-character-sheet.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classless Personageblad | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Digitaal personageblad voor de Classless-variant van You-Meet-In-A-Tavern (YMIAT). Lokaal opgeslagen in je browser." />
+<link rel="canonical" href="classless-character-sheet.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+<meta property="og:title" content="Classless Personageblad | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Digitaal personageblad voor de Classless-variant van You-Meet-In-A-Tavern (YMIAT)." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="classless-character-sheet.html" />
+<style>
+  @media print {
+    body.cs-page .cs-hero,
+    body.cs-page .cs-toolbar,
+    body.cs-page #cls-empty,
+    body.cs-page #cls-hint,
+    body.cs-page .cs-stepper-btns {
+      display: none !important;
+    }
+    body.cs-page { background: #fff !important; }
+    @page { size: A4 portrait; margin: 1cm; }
+
+    /* Session-tracked fields are blanked on print - they go stale the
+       moment you print them, so the sheet prints ready for pencil use
+       instead of a snapshot of today's numbers. */
+    body.cs-page [data-stepper="wd-now"] .cs-stepper-val,
+    body.cs-page [data-stepper="wd-tmp"] .cs-stepper-val,
+    body.cs-page [data-stepper="sp-now"] .cs-stepper-val,
+    body.cs-page [data-stepper="res"] .cs-stepper-val,
+    body.cs-page #cls-xp,
+    body.cs-page .cs-coin-input {
+      color: transparent !important;
+    }
+
+    body.cs-page #cls-modal-root {
+      display: none !important;
+    }
+
+    body.cs-page .cls-ability-slot {
+      border-color: #000 !important;
+      background: transparent !important;
+      color: #000 !important;
+      box-shadow: none !important;
+    }
+    body.cs-page .cls-ability-name { color: #000 !important; font-weight: 700 !important; }
+    body.cs-page .cls-ability-empty { color: transparent !important; }
+
+    body.cs-page .cs-pane,
+    body.cs-page .cs-stat-box {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body class="cs-page">
+<header data-include="nav"></header>
+<main class="cs-main">
+  <div class="cs-hero">
+    <h1>Classless Personageblad</h1>
+    <p class="lede">Een digitaal blad voor de <a href="rules/classless.html">Classless</a>-variant van <strong>You-Meet-In-A-Tavern</strong> (YMIAT). Statblokken werken als op het standaard <a href="character-sheet.html">Personageblad</a>; de rest is vrije tekst, omdat Classless-vermogens per stuk getraind worden in plaats van uit een vaste classlijst. Opgeslagen in deze browser (geen account nodig).</p>
+  </div>
+
+  <div id="cls-app" class="cs-app">
+    <div class="cs-toolbar">
+      <div class="cs-toolbar-group">
+        <label class="cs-toolbar-label" for="cls-char-select">Personage</label>
+        <select id="cls-char-select" class="cs-select cs-select--char"></select>
+      </div>
+      <div class="cs-toolbar-actions">
+        <button type="button" class="btn cs-btn-secondary" id="cls-btn-new">Nieuw personage</button>
+        <select id="cls-print-orientation" class="cs-select cs-select--print" aria-label="Afdrukstand">
+          <option value="landscape">Liggend</option>
+          <option value="portrait" selected>Staand</option>
+        </select>
+        <button type="button" class="btn cs-btn-secondary" id="cls-btn-print">Afdrukken</button>
+        <button type="button" class="btn cs-btn-danger" id="cls-btn-delete" disabled>Verwijderen</button>
+      </div>
+    </div>
+
+    <p id="cls-empty" class="cs-empty">Kies een personage uit de lijst, of maak een nieuw personage om het blad te openen.</p>
+
+    <div class="cs-sheet" id="cls-sheet" aria-label="Classless personageblad" hidden></div>
+    <p class="cs-hint" id="cls-hint" hidden>Wijzigingen worden automatisch opgeslagen. Max. wonden, Spell Power, Verdediging en Resolve houd je hier handmatig bij, omdat Classless-vermogens niet aan een class vastzitten — zie de regels voor <a href="rules/classless.html#max-wounds-classless">Max. wonden</a> en <a href="rules/core.html#magic-and-spell-resources">Spell Power</a> voor de formules die je toepast terwijl je traint. Klik op een Vermogens-vak om een getraind vermogen uit de lijst te kiezen.</p>
+  </div>
+
+  <div id="cls-modal-root"></div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../assets/i18n-apps.js"></script>
+<script src="../assets/classless-character-sheet.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

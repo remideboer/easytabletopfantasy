@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/conversion-pf2e.html" />
+<link rel="alternate" hreflang="nl" href="conversion-pf2e.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/conversion-pf2e.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Converteren vanuit Pathfinder 2e | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Gids om Pathfinder Second Edition (Player Core)-personages en -regels te converteren naar het class-gebaseerde systeem van You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/conversion-pf2e.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+<meta property="og:title" content="Converteren vanuit Pathfinder 2e | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Gids om Pathfinder Second Edition (Player Core)-personages en -regels te converteren naar het class-gebaseerde systeem van You-Meet-In-A-Tavern (YMIAT)." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/conversion-pf2e.html" />
+</head>
+<body>
+<header data-include="nav"></header>
+<main><h1>Converteren vanuit Pathfinder 2e naar <strong>You-Meet-In-A-Tavern</strong> (YMIAT)</h1>
+<div class="layout">
+  <aside class="toc">
+    <h2>Op deze pagina</h2>
+    <div data-toc></div>
+  </aside>
+  <div class="content">
+  <p class="lede">Deze gids legt uit hoe je personages, regels en mechanics uit <strong>Pathfinder Second Edition</strong> (PF2e, Player Core) omzet naar het standaard, class-gebaseerde systeem van <strong>You-Meet-In-A-Tavern</strong> (YMIAT). De focus ligt op dezelfde acht classes die Player Core definieert — Bard, Cleric, Druid, Fighter, Ranger, Rogue, Witch, Wizard — die allemaal al in <a href="classes.html">Classes</a> staan. Het grootste deel van deze gids gaat over het vertalen van de andere kernwiskunde van PF2e naar dat bestaande chassis, niet over nieuwe classes vanaf nul bouwen.</p>
+
+  <div class="callout warning">
+    <p class="callout-title">Bewust bij benadering</p>
+    <p>PF2e en YMIAT lossen het spel onder de motorkap heel anders op — vier succesgraden versus binair raken/missen, niveau-schalende proficiency versus PB-vermenigvuldigers, een flexibele drie-actie-beurt versus actie/beweging/reaction. Deze gids kiest per stuk één redelijke, consistente mapping en past die overal toe, net als de <a href="conversion.html">D&amp;D 5e-gids</a>. Behandel individuele feats en spells als “even nalopen”, niet als garantie — zie <a href="#open-questions">Open vragen</a> voor wat nog GM-oordeel blijft.</p>
+  </div>
+
+  <hr>
+  <h2 id="converting-attribute-modifiers">Attribute-modifiers converteren</h2>
+  <p>PF2e (2023 remaster) noteert attribute-<em>modifiers</em> rechtstreeks — Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma — zonder aparte 3–18-score waaruit je ze afleidt. Stel de drie YMIAT-vermogens samen rechtstreeks uit die modifiers, met dezelfde groepering als de <a href="conversion.html#converting-ability-scores">5e-gids</a>:</p>
+  <ul>
+    <li><strong>Fitness</strong> = (Strength + Dexterity + Constitution-modifiers) ÷ 3, naar beneden afgerond.</li>
+    <li><strong>Insight</strong> = (Intelligence + Wisdom-modifiers) ÷ 2, naar beneden afgerond.</li>
+    <li><strong>Willpower</strong> = (Wisdom + Charisma-modifiers) ÷ 2, naar beneden afgerond.</li>
+  </ul>
+  <p><strong>Voorbeeld: attribute-modifiers converteren</strong></p>
+  <p>Gegeven PF2e-modifiers Strength +3, Dexterity +1, Constitution +2, Intelligence +0, Wisdom +1, Charisma −1:</p>
+  <ul>
+    <li>Fitness = (3 + 1 + 2) / 3 = 2 (naar beneden) → +2</li>
+    <li>Insight = (0 + 1) / 2 = 0,5 → 0</li>
+    <li>Willpower = (1 + (−1)) / 2 = 0 → 0</li>
+  </ul>
+  <p>De YMIAT-modifiers zijn: Fitness +2, Insight +0, Willpower +0.</p>
+
+  <hr>
+  <h2 id="converting-levels">Niveaus converteren</h2>
+  <p>PF2e-personages gaan van niveau 1 tot niveau 20 — dezelfde range als D&amp;D 5e — dus dezelfde mapping geldt: elke twee PF2e-niveaus worden één YMIAT-niveau.</p>
+  <ul>
+    <li>Niveaus 1–2 → YMIAT niveau 1</li>
+    <li>Niveaus 3–4 → YMIAT niveau 2</li>
+    <li>Niveaus 5–6 → YMIAT niveau 3</li>
+    <li>Niveaus 7–8 → YMIAT niveau 4</li>
+    <li>Niveaus 9–10 → YMIAT niveau 5</li>
+    <li>Niveaus 11–12 → YMIAT niveau 6</li>
+    <li>Niveaus 13–14 → YMIAT niveau 7</li>
+    <li>Niveaus 15–16 → YMIAT niveau 8</li>
+    <li>Niveaus 17–18 → YMIAT niveau 9</li>
+    <li>Niveaus 19–20 → YMIAT niveau 10</li>
+  </ul>
+
+  <hr>
+  <h2 id="converting-proficiency-ranks">Proficiency ranks converteren</h2>
+  <p>De proficiency bonus van PF2e is <strong>niveau + een rank-bonus</strong> (Untrained +0, Trained +2, Expert +4, Master +6, Legendary +8), toegepast op bijna alles — AC, aanvalsrollen, Perception, saves, skills, spell-effectiviteit. Die lineaire, steeds groeiende bonus mapt niet 1:1 op YMIAT. Zet rank daarom om naar de <strong>PB-vermenigvuldiger</strong> van YMIAT (zie <a href="core.html#proficiency-and-advantage">Behendigheidsbonus</a>):</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>PF2e Rank</th><th>YMIAT-equivalent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Untrained</td><td>Geen PB (alleen vermogensmodifier)</td></tr>
+        <tr><td>Trained</td><td>Proficient (+PB)</td></tr>
+        <tr><td>Expert</td><td>Expert (+2×PB)</td></tr>
+        <tr><td>Master</td><td>Master (+3×PB)</td></tr>
+        <tr><td>Legendary</td><td>Master (+3×PB) — hoogste behendigheidsniveau van YMIAT</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Pas dit toe op elke rol die de PF2e-rank beïnvloedde: Expert-aanvalsproficiency wordt +2×PB op die aanvalsrol; Master in een save wordt +3×PB op die save; enzovoort. De rank van een personage in een gegeven statistic komt zelden boven Expert vóór YMIAT-niveau 5–6 (PF2e-niveau 10–12) — laad geen Master of Legendary op een laag-niveau-conversie alleen omdat de PF2e-bron daar uiteindelijk komt.</p>
+
+  <hr>
+  <h2 id="converting-degrees-of-success">Succesgraden converteren</h2>
+  <p>PF2e lost elke d20-rol — aanvallen, saves, skill checks, spell-effecten — op in een van vier uitkomsten, en veel PF2e-content (spellbeschrijvingen, reactions, monstervermogens) is rechtstreeks tegen die vier uitkomsten geschreven. In plaats van dat terug te flattenen naar binair raken/missen, leg je de marge-regel van PF2e over de eigen d20-rollen van YMIAT voor elke check tegen PF2e-geconverteerd materiaal:</p>
+  <div class="formula-box">
+    <span class="formula-label">Succesgraad</span>
+    <span class="formula-equation">
+      <span class="variable">resultaat</span>
+      <span class="operator">=</span>
+      <code class="dice">d20</code>
+      <span class="operator">+</span>
+      <span class="variable">modifiers</span>
+    </span>
+  </div>
+  <ul>
+    <li><strong>Critical success:</strong> resultaat haalt of overschrijdt de DC met 10 of meer.</li>
+    <li><strong>Success:</strong> resultaat haalt of overschrijdt de DC.</li>
+    <li><strong>Failure:</strong> resultaat ligt onder de DC.</li>
+    <li><strong>Critical failure:</strong> resultaat ligt 10 of meer onder de DC.</li>
+  </ul>
+  <p>Een natuurlijke 20 verschuift de uitkomst één stap beter (success → critical success, failure → success); een natuurlijke 1 verschuift één stap slechter — precies zoals in PF2e. Bij voordeelrollen pas je dit toe op de dobbelsteen die je houdt, nadat je de hoogste (of laagste bij nadeel) hebt gekozen.</p>
+  <p>Dit geldt alleen waar het geconverteerde materiaal echt een critical-effect specificeert. Voor alles dat in de bron alleen raken/missen had, blijft de normale YMIAT-gevechtswiskunde (één Wond per hit, twee bij een crit) ongewijzigd.</p>
+
+  <hr>
+  <h2 id="converting-max-wounds-pf2e">Max. wonden converteren</h2>
+  <p>PF2e Hit Points liggen veel hoger dan die van D&amp;D 5e — een PF2e Fighter alleen al krijgt 10 + Constitution-modifier <em>elk niveau</em>, vóór ancestry HP of Toughness-feats — maar dat hoef je niet opnieuw vanaf nul te converteren. Omdat de acht classes van PF2e al in YMIAT bestaan met eigen Max. wonden-bases die al zijn afgestemd op de Wonden-schaal van YMIAT, gebruik je gewoon de waarde van de gelijknamige class ongewijzigd:</p>
+  <div class="formula-box">
+    <span class="formula-label">Max. wonden</span>
+    <span class="formula-equation">
+      <span class="variable">Max. wonden</span>
+      <span class="operator">=</span>
+      <span class="variable">YMIAT-class Max. wonden-basis</span>
+      <span class="operator">+</span>
+      <span class="variable">Fitness-modifier</span>
+      <span class="operator">+</span>
+      <span>(</span>
+      <span class="variable">niveau</span>
+      <span class="operator">−</span>
+      <span>1</span>
+      <span>)</span>
+    </span>
+  </div>
+  <p>Zie de class-entry op <a href="classes.html">Classes</a> voor de basis (bijvoorbeeld starten Fighter en Ranger op 10 + Fitness-modifier; Wizard en Witch op 8 + Fitness-modifier — zie de classpagina voor de exacte huidige waarden). Het hogere HP-totaal van PF2e zit al “ingeprijsd” in hoe taai die class moet aanvoelen; er is geen aparte deler nodig zoals bij monsterstatblocks.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-weapons">Wapens en schade converteren</h2>
+  <p>De basis-wapenschadedobbelstenen van PF2e zitten in dezelfde d4–d12-range als D&amp;D 5e (een longsword is in beide games 1d8), dus de <a href="conversion.html#converting-weapons">5e dobbelsteen-naar-bonus-tabel</a> geldt ongewijzigd:</p>
+  <ul>
+    <li>Unarmed: +0</li>
+    <li>d4: +1</li>
+    <li>d6: +2</li>
+    <li>d8: +3</li>
+    <li>d10: +4</li>
+    <li>d12: +5</li>
+    <li>2d6: +6</li>
+  </ul>
+  <p>PF2e voegt extra schadedobbelstenen toe uit plekken die D&amp;D 5e niet heeft: striking runes (vermenigvuldigt de basisdobbelstenen van het wapen), de trait <strong>deadly</strong> (extra dobbelsteen alleen bij een critical hit), en precisie-gebaseerde class features. Converteer elke extra dobbelsteen op dezelfde manier en tel die op bij de wapenbonus; voor een deadly- of crit-only-dobbelsteen geldt die extra bonus alleen wanneer de aanvalsrol een critical hit is (zie <a href="#converting-degrees-of-success">Succesgraden converteren</a>).</p>
+  <p>De <strong>multiple attack penalty</strong> (PF2e: −5 op je tweede aanvalsactie in een beurt, −10 op de derde en verder; agile wapens verlagen dit tot −4/−8) mapt rechtstreeks op de bestaande regels voor <a href="combat.html#variant-3-moments-system">Stapelend nadeel en Agile wapens</a> van YMIAT voor extra aanvallen in een beurt — geen aparte straf nodig; de systemen passen conceptueel al bij elkaar.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-wounds">Wonden converteren (spells en effecten)</h2>
+  <p>Gebruik dezelfde conversie als de <a href="conversion.html#converting-wounds">5e-gids</a>: neem het maximumtotaal van de schadedobbelsteenuitdrukking, deel door 6, en rond af naar het dichtstbijzijnde gehele getal. Spellschade in PF2e schaalt door dobbelstenen toe te voegen wanneer de spell naar een hogere rank wordt heightened — converteer de dobbelstenen op de rank die wordt gecast, net zoals je een 5e-spell met een hoger slot zou converteren.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-ac">Armor Class converteren</h2>
+  <p>Armor Class in PF2e = 10 + Dexterity-modifier (gecappt door het pantser) + proficiency bonus + itembonus van het pantser. Splits dit op dezelfde manier als aanvals- en save-proficiency hierboven:</p>
+  <ul>
+    <li><strong>Itembonus van het pantser</strong> → YMIAT Verdediging-bonus, rechtstreeks uit de <a href="gear.html#armor-table">Pantser-tabel</a> voor de equivalente pantsercategorie, net als bij een 5e-conversie.</li>
+    <li><strong>AC proficiency rank</strong> (Trained/Expert/Master/Legendary in pantser) → tel de bijbehorende <strong>PB-vermenigvuldiger</strong> op bij de <strong>Verdediging-worp</strong>, met dezelfde tabel als <a href="#converting-proficiency-ranks">Proficiency ranks converteren</a> hierboven (Trained +PB, Expert +2×PB, Master/Legendary +3×PB).</li>
+  </ul>
+  <p>Voor een personage zonder pantser: Verdediging = Fitness-modifier, zoals standaard in YMIAT.</p>
+
+  <hr>
+  <h2 id="converting-pf2e-actions">Action economy converteren</h2>
+  <p>PF2e-beurten zijn drie flexibele acties (Strike, Stride, Raise a Shield, een spell casten die 1–3 acties kost, enzovoort), wat niet schoon mapt op de standaardbeurt van YMIAT (actie + beweging + reaction). Gebruik in plaats daarvan het optionele <a href="combat.html#variant-3-moments-system">3 Momenten-systeem</a> van YMIAT — dat splitst een beurt al in drie uit te geven eenheden voor beweging, aanvallen en spellcasting, de dichtstbijzijnde bestaande match:</p>
+  <ul>
+    <li>Een PF2e 1-actie-activiteit (Strike, Stride, Raise a Shield, Interact) kost <strong>1 Moment</strong>.</li>
+    <li>Een PF2e 2-actie-activiteit (de meeste spells, Sudden Charge-achtige combo’s) kost <strong>2 Momenten</strong>.</li>
+    <li>Een PF2e 3-actie-activiteit (een handvol krachtige class feats en rituals) kost alle <strong>3 Momenten</strong> van de beurt.</li>
+  </ul>
+  <p>Free actions en reactions van PF2e converteren rechtstreeks naar vrije acties en reactions van YMIAT, ongewijzigd.</p>
+
+  <hr>
+  <h2 id="open-questions">Open vragen</h2>
+  <div class="callout note">
+    <p class="callout-title">Nog uit te werken</p>
+    <ul>
+      <li><strong>Dying, Wounded en Doomed.</strong> PF2e houdt dood bij met een numerieke dying-waarde in plaats van het drie-harten/Death Save-systeem van YMIAT. Die mappen nog niet 1:1 — behandel voorlopig het bereiken van Max. wonden als een normale YMIAT Death Save, en negeer de PF2e dying/wounded/doomed-waarden volledig.</li>
+      <li><strong>Feat-conversie per class.</strong> Deze gids dekt de gedeelde wiskunde; de specifieke feats, class features en spellcasting-progressie van elke class (Bard, Cleric, Druid, Fighter, Ranger, Rogue, Witch, Wizard) moeten nog individueel worden omgezet naar de bestaande entry onder <a href="class-abilities/index.html">Class-vermogens</a>.</li>
+      <li><strong>Ancestry feats en heritages.</strong> De ancestries van PF2e (Dwarf, Elf, Gnome, Goblin, Halfling, Human, Leshy, Orc, plus Versatile Heritages) moeten nog gemapt worden op de <a href="lineages.html">Afkomsten</a> en <a href="heritages.html">Erfenissen</a> van YMIAT — nog niet gestart.</li>
+      <li><strong>Spelllijst-conversie.</strong> Spell rank in PF2e (1st–10th) ligt grofweg in lijn met YMIAT-spellniveau, maar de vier spellcasting-tradities van PF2e (Arcane, Divine, Occult, Primal) en het slot-systeem zonder Spell Points vragen nog een pass tegen de <a href="magic.html">Magie</a>-lijst en Spell Power-economie van YMIAT.</li>
+    </ul>
+  </div>
+  </div>
+</div></main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

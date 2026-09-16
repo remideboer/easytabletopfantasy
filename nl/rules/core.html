@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/core.html" />
+<link rel="alternate" hreflang="nl" href="core.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/core.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kernregels | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Kernregels voor You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/core.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+<meta property="og:title" content="Kernregels | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Kernregels voor You-Meet-In-A-Tavern (YMIAT)." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/core.html" />
+
+</head>
+<body>
+<header data-include="nav"></header>
+<main><h1>Kernregels</h1>
+<div class="layout">
+  <aside class="toc">
+    <h2>Op deze pagina</h2>
+    <div data-toc></div>
+  </aside>
+  <div class="content">
+<hr>
+<h2 id="core-game-loop">Kernspelloop</h2>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) volgt een eenvoudige speelcyclus die bepaalt hoe spelers en de Spelleider met elkaar omgaan:</p>
+<ol>
+<li><strong>Beschrijf de situatie:</strong> De Spelleider schetst de huidige scène, omgeving en omstandigheden.</li>
+<li><strong>Spelerskeuze:</strong> Spelers beschrijven wat hun personages willen doen of proberen.</li>
+<li><strong>Resolutie:</strong> Als de uitkomst onzeker is, vraagt de Spelleider om een test (eigenschapstest, aanvalsrol of save) met het d20-systeem.</li>
+<li><strong>Gevolg:</strong> Het resultaat van de test bepaalt wat er gebeurt, en de situatie verandert op basis van die uitkomst.</li>
+<li><strong>Herhaal:</strong> De cyclus gaat door: de nieuwe situatie roept nieuwe keuzes en acties op.</li>
+</ol>
+<p>Deze loop is de basis van al het spel, of personages nu een dungeon verkennen, met NPC’s onderhandelen, of monsters bevechten.</p>
+<hr>
+<h3 id="modes-of-play">Speelmodi</h3>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) deelt het spel in drie duidelijke modi, elk met eigen tempo en mechanische focus:</p>
+<h4>Downtime-modus</h4>
+<p>Downtime speelt zich af tussen avonturen of tijdens langere rustperiodes. Personages gaan individuele activiteiten na: handwerk, onderzoek, training of sociale interacties. Tijd loopt in dagen, weken of maanden. Downtime laat personages middelen herstellen, persoonlijke doelen najagen en hun kunnen ontwikkelen buiten actieve avonturen.</p>
+<h4>Verkenningsmodus</h4>
+<p>Verkenningsmodus dekt reizen, onderzoeken en ontdekken. Personages bewegen door omgevingen, gaan met de wereld om, en beslissen waarheen ze gaan en wat ze onderzoeken. Tijd loopt in minuten of uren. De Spelleider beschrijft locaties en situaties; spelers bepalen hoe hun personages verkennen, zoeken en interactie hebben met de omgeving.</p>
+<h4>Encounter-modus</h4>
+<p>Encounter-modus regelt gestructureerde, tijdgevoelige situaties zoals gevecht, achtervolgingen of andere scenario’s die precieze timing vragen. Tijd loopt in rondes; elk personage neemt beurten. Op jouw beurt kun je tot je snelheid bewegen en één actie nemen — of twee acties als je geen beweging gebruikt (zie <a href="#actions-and-time-encounter-mode">Acties en tijd</a>). Encounter-modus geeft duidelijke regels voor gevechtsvolgorde en actieresolutie. (Een optionele variant met 3 Momenten is beschikbaar voor groepen die meer tactisch detail willen — zie de <a href="combat.html#variant-3-moments-system">Gevecht</a>-regels.)</p>
+<p>De Spelleider bepaalt welke modus op enig moment geldt, en het spel kan wisselen naarmate de situatie verandert. Verkenning kan bijvoorbeeld overgaan in encounter-modus als er gevecht begint, en daarna terug naar verkenning of downtime.</p>
+<hr>
+<h2 id="dice-and-tests">Dobbelstenen en tests</h2>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) gebruikt de d20 voor alle resolutie.</p>
+<p>Alle acties, aanvallen, saves en eigenschapstests zijn d20-tests. Sommige spells geven voordeel (rol 2d20, neem de hoogste) of nadeel (rol 2d20, neem de laagste) op d20-rollen. Schade wordt opgelost als <strong>Wonden</strong>.</p>
+<hr>
+<h3 id="ability-scores">Eigenschappen en kenmerken</h3>
+<p>In <strong>You-Meet-In-A-Tavern</strong> (YMIAT) heeft elk personage drie kernvermogens:</p>
+<ul>
+<li><strong>Fitness</strong> staat voor fysiek kunnen, coördinatie en uithoudingsvermogen.</li>
+<li><strong>Insight</strong> staat voor rationeel denken, waarneming en kennis.</li>
+<li><strong>Willpower</strong> staat voor persoonlijkheidskracht, mystieke macht en mentale veerkracht.</li>
+</ul>
+<p>De waarde die je per vermogen noteert, is de modifier die je optelt bij alle bijbehorende tests, aanvallen en verdedigingen.</p>
+<p>Naast vermogens houden personages drie kernkenmerken bij:</p>
+<ul>
+<li><strong>Wonden (WD):</strong> Huidige verwondingsstaat. Personages beginnen op 0 Wonden. Schade voegt Wonden toe tot Max. wonden is bereikt. Zie <a href="#wounds-and-scale">Wonden en schaal</a>.</li>
+<li><strong>Max. wonden:</strong> Capaciteit voordat de Life-regel geldt. Max. wonden = class start Max. wonden + Fitness-modifier + (niveau − 1). Wanneer Wonden Max. wonden bereiken, geldt de Life-regel. Zie <a href="#wounds-and-scale">Wonden en schaal</a>.</li>
+<li><strong>Spell Power (SP):</strong> De magische capaciteit van een spellcaster. SP = 3 × spellcasting-vermogensmodifier. Spellcasters geven SP uit om spells te casten en krijgen het terug via rust en Herstelpunten. Zie <a href="#magic-and-spell-resources">Magie en spellbronnen</a>.</li>
+<li><strong>Behendigheidsbonus (PB):</strong> Wordt opgeteld bij rollen waar je Proficient (of Expert/Master) mee bent: wapen, skill, tool, of vergelijkbaar. Features die “PB” noemen voor schade, DC’s of gebruiken per rust gebruiken dit getal ook. PB = niveau ÷ 2, naar boven afgerond. Zie <a href="#proficiency-and-advantage">Behendigheidsbonus</a>.</li>
+<li><strong>Life (harten):</strong> De levensenergie van een personage. Elk personage start met 3 harten. Wanneer Wonden Max. wonden bereiken, moet je Death Saves maken; een mislukte Death Save kost één hart. Per verloren hart daalt elke vermogensmodifier (Fitness, Insight en Willpower) met 1, daalt de maximale snelheid met 5 voet (één stap), en daalt Max. wonden met 2 tot dat hart is hersteld. Een verloren hart herstellen kost één lange rust. Zie <a href="combat.html#life-and-death-saves">Life en Death Saves</a>.</li>
+</ul>
+<hr>
+<h3>Vermogensmodifiers bepalen</h3>
+<p>Bij het maken van een personage kies je een van de volgende methoden om je vermogensmodifiers te bepalen. Bij beide methoden werk je alleen met modifiers; je houdt geen eigenschapsscores bij.</p>
+<p><strong>Vaste array</strong></p>
+<p>Wijs de modifiers +2, +1 en +0 toe aan Fitness, Insight en Willpower in willekeurige volgorde. Geen vermogen mag hoger starten dan +2.</p>
+<p><strong>Puntenverdeling</strong></p>
+<p>Je begint met 3 modifierpunten om te verdelen over Fitness, Insight en Willpower.</p>
+<ul>
+<li>Startwaarde per vermogen: 0</li>
+<li>Maximum per vermogen: +2</li>
+<li>Minimum per vermogen: −1</li>
+<li>Je mag punten “lenen” door een vermogen onder 0 te zetten, tot een minimum van −1.</li>
+</ul>
+<hr>
+<h3 id="proficiency-and-advantage">Behendigheid</h3>
+<p>Als je Proficient bent met iets (wapen, skill, tool of save), tel je je <strong>Behendigheidsbonus (PB)</strong> op bij gerelateerde rollen. Behendigheid komt typisch van je class, achtergrond of talenten.</p>
+<p>Je behendigheids<em>niveau</em> vermenigvuldigt hoeveel PB je optelt:</p>
+<ul>
+<li><strong>Proficient:</strong> +PB</li>
+<li><strong>Expert:</strong> +2×PB</li>
+<li><strong>Master:</strong> +3×PB</li>
+</ul>
+<div class="formula-box">
+  <span class="formula-label">Behendigheidsbonus</span>
+  <span class="formula-equation">
+    <span class="variable">PB</span>
+    <span class="operator">=</span>
+    <span class="variable">niveau</span>
+    <span class="operator">÷</span>
+    <span>2</span>
+    <span>, naar boven afgerond</span>
+  </span>
+</div>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Personageniveau</th>
+        <th>PB</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1–2</td><td>+1</td></tr>
+      <tr><td>3–4</td><td>+2</td></tr>
+      <tr><td>5–6</td><td>+3</td></tr>
+      <tr><td>7–8</td><td>+4</td></tr>
+      <tr><td>9–10</td><td>+5</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Sommige class features, spells en talenten vragen ook het kale <strong>PB</strong>-getal voor schade, DC’s, gebruiken per rust, of vergelijkbare waarden wanneer een feature expliciet “PB” noemt.</p>
+<p><strong>Voordeel en nadeel</strong> staan los van behendigheid. Ze gelden wanneer omstandigheden je helpen of hinderen (dekking, spells zoals <em>bless</em>, Reckless Attack, pantser boven je getrainde categorie, enzovoort). Voordeel betekent twee d20’s rollen en de hoogste nemen; nadeel betekent twee d20’s en de laagste. Voordeel kan stapelen: meerdere bronnen betekenen extra d20’s, waarbij je de hoogste (of laagste bij nadeel) neemt. Voordeel en nadeel heffen elkaar één-op-één op.</p>
+<hr>
+<h3 id="skills-and-ability-checks">Skills en eigenschapstests</h3>
+<p>Alle eigenschapstests gaan rechtstreeks met Fitness, Insight of Willpower. Classes, achtergronden en talenten kunnen specifieke skills geven; alleen die vermelde skills zijn Proficient. Tel je PB op bij eigenschapstests met een Proficient skill (+2×PB bij Expert in die skill, +3×PB bij Master).</p>
+<p>Het kernvermogen vormt altijd de basis van de rol. Skills laten zien waar een personage extra training of talent heeft en maken expliciet waarom het personage ergens goed in is. Noteer alleen de skills die het personage echt heeft. Zo blijft het personageblad compact en ondersteunt het duidelijk, consistent roleplay.</p>
+<p>Nieuwe of setting-specifieke skills kun je koppelen aan classes, achtergronden of talenten, waardoor <strong>You-Meet-In-A-Tavern</strong> (YMIAT) flexibel en makkelijk uitbreidbaar blijft.</p>
+<hr>
+<h3 id="talents">Talenten</h3>
+<p>Talenten zijn de concrete manieren waarop een avonturier in de loop van avonturen beter is geworden. Talenten vallen in drie categorieën: magie-talenten, martiale talenten en nut-talenten. Je class bepaalt typisch tot welke talentlijsten je toegang hebt.</p>
+<p>Talenten krijg je op twee hoofdmanieren:</p>
+<ul>
+<li>Bij het kiezen van een achtergrond tijdens personage maken kies je één talent uit de optielijst van die achtergrond.</li>
+<li>Wanneer een class een Improvement geeft, kies je een talent uit de lijst die je class features aangeven — mits je eventuele voorwaarden haalt.</li>
+</ul>
+<h4>Magie-talenten</h4>
+<p>De meeste magie-talenten raken spellcasting, maar er zitten ook features bij die de geest versterken en beschermen tegen schadelijke magische effecten.</p>
+<h4>Martiale talenten</h4>
+<p>Martiale talenten raken gevechtsvermogen, inclusief betere algehele fitness en het hanteren van wapens.</p>
+<h4>Nut-talenten</h4>
+<p>Nut-talenten raken niet-gevechtsvermogen: praktische verbeteringen voor sociale encounters, verkenning en omgang met objecten.</p>
+<p><em>Let op: het talentsysteem van <strong>You-Meet-In-A-Tavern</strong> (YMIAT) is gebaseerd op het talentsysteem in Tales of the Valiant en het Black Flag Reference Document. Voor gedetailleerde talentbeschrijvingen en volledige lijsten: raadpleeg die bronnen of overleg met je Spelleider.</em></p>
+<hr>
+<h3 id="wounds-and-scale">Wonden en schaal</h3>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) gebruikt een gecomprimeerde Wonden-schaal. Personages beginnen op <strong>0 Wonden (WD)</strong> en stapelen Wonden op bij schade. Spelerpersonages berekenen hun <strong>Max. wonden</strong> met deze uitdrukking:</p>
+<div class="formula-box">
+  <span class="formula-label">Max. wonden</span>
+  <span class="formula-equation">
+    <span class="variable">Max. wonden</span>
+    <span class="operator">=</span>
+    <span class="variable">class start Max. wonden</span>
+    <span class="operator">+</span>
+    <span class="variable">Fitness-modifier</span>
+    <span class="operator">+</span>
+    <span>(</span>
+    <span class="variable">niveau</span>
+    <span class="operator">−</span>
+    <span>1</span>
+    <span>)</span>
+  </span>
+</div>
+<p>Schade voegt Wonden toe; genezing haalt Wonden weg. Een geslaagde wapenaanval doet typisch <strong>1 Wond</strong>; een critical hit doet <strong>2 Wonden</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Class</th><th>Max WD</th><th>Class</th><th>Max WD</th></tr></thead>
+<tbody>
+<tr><td>Artificer</td><td>8</td><td>Paladin</td><td>10</td></tr>
+<tr><td>Barbarian</td><td>12</td><td>Ranger</td><td>10</td></tr>
+<tr><td>Bard</td><td>8</td><td>Rogue</td><td>8</td></tr>
+<tr><td>Cleric</td><td>8</td><td>Sorcerer</td><td>6</td></tr>
+<tr><td>Druid</td><td>8</td><td>Warlock</td><td>8</td></tr>
+<tr><td>Fighter</td><td>10</td><td>Wizard</td><td>6</td></tr>
+<tr><td>Monk</td><td>8</td><td></td><td></td></tr>
+</tbody></table></div>
+<hr>
+<h3 id="level-advancement">Niveaustijging</h3>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT)-personages stijgen van niveau 1 tot niveau 10. Elk niveau geeft een merkbare powerboost en houdt class-progressie — inclusief spellcasting — coherent en makkelijk te volgen.</p>
+<p>Elk behaald niveau verhoogt <strong>Max. wonden met 1</strong>, bovenop de class-, Fitness-modifier- en niveautermen die al in de Max. wonden-formule hierboven zitten.</p>
+<p>Een niveau omhoog is geen volledige reset. Wanneer een personage een niveau stijgt, gaat het Max. wonden-plafond meteen omhoog, maar <strong>huidige Wonden en verloren harten (Life) veranderen niet</strong> — er is geen automatische genezing bij niveaustijging, want <strong>You-Meet-In-A-Tavern</strong> (YMIAT) is geen videogame. Genezing komt nog steeds van rust, spells of andere middelen in het verhaal.</p>
+<p>Nieuwe class features, prepared spells en andere niveau-gebonden vermogens worden pas beschikbaar nadat het personage ze heeft kunnen verwerken: typisch na een <strong>lange rust</strong> of een periode van toegewijde <strong>studie</strong> (naar inzicht van de Spelleider), niet op het moment dat de XP-drempel midden in een scène valt.</p>
+
+<h4 id="experience-points">Ervaringspunten (XP)</h4>
+<p>Voor groepen die de methode XP toekennen gebruiken (zie <a href="characters.html#leveling-methods">Levelmethoden</a>) wordt XP als lopend totaal bijgehouden. Om van het ene niveau naar het volgende te gaan, heb je <strong>100 × het niveau dat je verlaat</strong> extra XP nodig (100 om 2 te bereiken, 200 om 3 te bereiken, enzovoort). Het totale XP om een gegeven niveau te <em>bereiken</em> is de som van die stappen:</p>
+<div class="formula-box">
+  <span class="formula-label">XP om niveau te bereiken</span>
+  <span class="formula-equation">
+    <span class="variable">XP-drempel</span>
+    <span class="operator">=</span>
+    <span>100</span>
+    <span class="operator">×</span>
+    <span>(</span>
+    <span class="variable">niveau</span>
+    <span class="operator">−</span>
+    <span>1</span>
+    <span>)</span>
+    <span class="operator">×</span>
+    <span class="variable">niveau</span>
+    <span class="operator">÷</span>
+    <span>2</span>
+  </span>
+</div>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Niveau</th>
+        <th>XP tot volgende</th>
+        <th>Totaal XP nodig</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>100</td><td>0</td></tr>
+      <tr><td>2</td><td>200</td><td>100</td></tr>
+      <tr><td>3</td><td>300</td><td>300</td></tr>
+      <tr><td>4</td><td>400</td><td>600</td></tr>
+      <tr><td>5</td><td>500</td><td>1,000</td></tr>
+      <tr><td>6</td><td>600</td><td>1,500</td></tr>
+      <tr><td>7</td><td>700</td><td>2,100</td></tr>
+      <tr><td>8</td><td>800</td><td>2,800</td></tr>
+      <tr><td>9</td><td>900</td><td>3,600</td></tr>
+      <tr><td>10</td><td>—</td><td>4,500</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Als het XP-totaal van een personage ooit daalt (bijvoorbeeld door een uitspraak van de Spelleider of een gecorrigeerde toekenning), daalt het niveau mee en reset XP naar de drempel van dat lagere niveau — niet naar 0.</p>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) gebruikt bewust veel kleinere XP-getallen dan fifth edition. Ken XP toe per prestatie met deze tabel, of het nu uit gevecht, roleplay, puzzels of andere uitdagingen komt:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Moeilijkheid</th><th>XP toegekend</th></tr></thead>
+<tbody>
+<tr><td>Triviaal</td><td>0</td></tr>
+<tr><td>Makkelijk</td><td>5</td></tr>
+<tr><td>Gemiddeld</td><td>10</td></tr>
+<tr><td>Moeilijk</td><td>20</td></tr>
+<tr><td>Bijna onmogelijk</td><td>50</td></tr>
+</tbody></table></div>
+<p>Ken XP toe voor elke opgeloste uitdaging die ertoe deed voor de uitkomst — een gevechtsencounter, een stuk roleplay dat de situatie veranderde, een opgeloste puzzel, een ontmantelde val, of vergelijkbaar — met de moeilijkheid die het best past, niet alleen voor gevechten.</p>
+<hr>
+<h3>Aanvallen en Verdediging</h3>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) lost gevecht op met één aanvalsrol en vaste Wonden. Bij een geslaagde wapenaanvalsrol krijgt het doelwit 1 Wond. Een critical hit doet 2 Wonden. Wapens geven bonussen om te raken, niet op het aantal Wonden.</p>
+<ul>
+<li>Bij een mislukte aanvalsrol: de aanval doet geen Wonden.</li>
+<li>Bij een natural 1: de aanvaller lijdt een kritieke mislukking, en het doelwit mag meteen een reaction-tegenaanval maken.</li>
+<li>Bij een natural 20: de aanval doet 2 Wonden en activeert exploding dice — rol opnieuw. Rol je opnieuw een natural 20, dan doe je weer 2 Wonden en rol je opnieuw. Dit effect stapelt, zodat meerdere critical hits in één aanval mogelijk zijn.</li>
+</ul>
+<p>Wanneer een wezen een spelerpersonage aanvalt, maakt het personage een Verdedigingsrol:</p>
+<div class="formula-box">
+  <span class="formula-label">Verdedigingsrol</span>
+  <span class="formula-equation">
+    <code class="dice">d20</code>
+    <span class="operator">+</span>
+    <span class="variable">Verdedigingsbonus</span>
+  </span>
+</div>
+<p>De Verdedigingsrol gaat tegen een doelgetal dat de Spelleider bepaalt. Voor een wezen dat normaal met +X zou aanvallen, is het doelgetal 11 + X. Je Verdedigingsrol-totaal moet het doelgetal van de aanval evenaren of overtreffen om Wonden te vermijden.</p>
+<ul>
+<li>Bij een mislukte Verdedigingsrol (totaal onder doelgetal): het personage krijgt 1 Wond.</li>
+<li>Bij een natural 1: de aanval wordt een critical hit, en het personage krijgt 2 Wonden.</li>
+<li>Bij een natural 20: het personage krijgt geen Wonden en mag meteen een reaction-tegenaanval maken.</li>
+</ul>
+<hr>
+<h3 id="weapon-proficiency">Wapenbehendigheid</h3>
+<p>Wapens vallen in twee categorieën: <strong>simple weapons</strong> en <strong>martial weapons</strong>. Je class bepaalt met welke wapencategorieën je Proficient bent.</p>
+<p><strong>Behendigheidsvoordeel:</strong> Als je Proficient bent met een wapen, tel je je <strong>PB</strong> op bij aanvalsrollen met dat wapen (+2×PB bij Expert met dat wapen, +3×PB bij Master). Ben je niet Proficient, dan rol je nog steeds d20 + wapenbonus + vermogensmodifier, maar zonder PB.</p>
+
+<h3>Wapenaanvallen</h3>
+<p>Wapenaanvalsrollen gebruiken deze formule:</p>
+<div class="formula-box">
+  <span class="formula-label">Aanvalsrol</span>
+  <span class="formula-equation">
+    <code class="dice">d20</code>
+    <span class="operator">+</span>
+    <span class="variable">wapenbonus</span>
+    <span class="operator">+</span>
+    <span class="variable">vermogensmodifier</span>
+    <span class="operator">+</span>
+    <span class="variable">PB (indien Proficient)</span>
+  </span>
+</div>
+<p><strong>Voorbeeld: wapenaanvalsrol</strong></p>
+<p>Een Fighter van niveau 1 (PB +1) met Fitness +2 en een shortsword (aanvalsbonus +2) die Proficient is met martial weapons maakt een aanvalsrol van d20 + 2 (wapen) + 2 (Fitness) + 1 (PB) = d20 + 5. Situationeel voordeel of nadeel (indien van toepassing) geldt zoals gebruikelijk voor de d20.</p>
+<p>Bij een raaktreffer doet de aanval 1 Wond. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) gaat ervan uit dat betere wapens de kans om te raken verbeteren, terwijl spells meestal het aantal Wonden verhogen en/of extra effecten toevoegen.</p>
+
+<h3 id="armor-and-defense">Pantser en Verdediging</h3>
+<p>Pantser verhoogt je Verdedigingsbonus, waardoor je Verdedigingsrol beter wordt wanneer je wordt aangevallen. Wanneer een wezen je aanvalt, maak je een Verdedigingsrol (d20 + Verdedigingsbonus). Je totaal moet het doelgetal van de aanval evenaren of overtreffen om Wonden te vermijden.</p>
+
+<h4>Basisverdediging</h4>
+<p>Zonder pantser is je Verdedigingsbonus gelijk aan je <strong>Fitness-modifier</strong>.</p>
+<p>Met pantser gebruik je de Verdedigingsbonus die bij dat pantsertype hoort. Zie de <a href="gear.html#armor-table">Pantsertabel</a> in de Uitrusting-sectie voor specifieke Verdedigingsbonussen.</p>
+
+<h4>Pantserbehendigheid</h4>
+<p>Pantser valt in drie gewichten: <strong>light</strong>, <strong>medium</strong> of <strong>heavy</strong>. Je class bepaalt met welke pantsercategorieën je Proficient bent.</p>
+<p>Je mag elk pantser dragen, ongeacht behendigheid, maar pantser uit een hogere categorie dan waarmee je Proficient bent geeft straffen:</p>
+<ul>
+  <li><strong>Stapelend nadeel:</strong> Voor elke stap hoger in categorie dan je behendigheid krijg je één niveau nadeel op alle d20-rollen terwijl je dat pantser draagt. Ben je bijvoorbeeld Proficient in light armor en draag je medium armor, dan heb je nadeel (rol 2d20, neem de laagste). Draag je heavy armor terwijl je alleen light armor bent, dan heb je dubbel nadeel (rol 3d20, neem de laagste).</li>
+  <li><strong>Fitness-tests:</strong> Je hebt nadeel op alle Fitness-eigenschapstests terwijl je pantser draagt waarmee je niet Proficient bent.</li>
+  <li><strong>Verdedigingsrollen:</strong> Je hebt nadeel op Verdedigingsrollen omdat je minder geoefend bent om in dat pantser te bewegen.</li>
+  <li><strong>Spellcasting:</strong> Je hebt nadeel op spellcasting-rollen terwijl je pantser draagt waarmee je niet Proficient bent.</li>
+</ul>
+
+<p>De pantsercategorieën lopen van geen naar heavy; elke stap betekent meer bescherming en meer beperking:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Pantsercategorie</th>
+      <th>Stap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Geen</td><td>0</td></tr>
+    <tr><td>Light</td><td>1</td></tr>
+    <tr><td>Medium</td><td>2</td></tr>
+    <tr><td>Heavy</td><td>3</td></tr>
+  </tbody>
+</table>
+
+<p>Voor volledige pantserstatistieken, eigenschappen en beschrijvingen: zie de sectie <a href="gear.html">Uitrusting</a>.</p>
+<hr>
+<h3>Wapenbeheersing</h3>
+<p>Wapenbeheersing-effecten bereik je via <strong>geïmproviseerde acties</strong>. Spelers worden aangemoedigd creatief wapengebruik te beschrijven; de Spelleider kan die als geïmproviseerde acties beoordelen. Zo ligt de focus op spelercreativiteit en narratieve beschrijving, voor dynamische gevechten.</p>
+<p>De volgende lijst wapenbeheersingen dient als inspiratie en voorbeelden van wat spelers als geïmproviseerde acties kunnen proberen. Het zijn geen automatische vermogens, maar suggesties voor creatief wapengebruik waar spelers en Spelleiders naar kunnen verwijzen bij gevechtsmanoeuvres:</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Beheersing</th>
+        <th>Beschrijving</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cleave</strong></td>
+        <td>Wanneer je een wezen raakt, kun je proberen met dezelfde aanval een ander wezen binnen bereik te raken.</td>
+      </tr>
+      <tr>
+        <td><strong>Graze</strong></td>
+        <td>Wanneer je mist, doe je nog steeds een klein aantal Wonden (typisch 1 Wond bij een bijna-raak).</td>
+      </tr>
+      <tr>
+        <td><strong>Nick</strong></td>
+        <td>Wanneer je aanvalt, kun je een snelle, lichte slag proberen die ruimte biedt voor een extra actie.</td>
+      </tr>
+      <tr>
+        <td><strong>Push</strong></td>
+        <td>Wanneer je raakt, kun je proberen het doelwit van je af te duwen, mogelijk te verplaatsen of plat op de grond te zetten.</td>
+      </tr>
+      <tr>
+        <td><strong>Sap</strong></td>
+        <td>Wanneer je raakt, kun je proberen het doelwit te verdoven of te stunnen, zodat het minder effectief is.</td>
+      </tr>
+      <tr>
+        <td><strong>Slow</strong></td>
+        <td>Wanneer je raakt, kun je proberen de beweging of acties van het doelwit te vertragen.</td>
+      </tr>
+      <tr>
+        <td><strong>Topple</strong></td>
+        <td>Wanneer je raakt, kun je proberen het doelwit plat op de grond of uit balans te brengen.</td>
+      </tr>
+      <tr>
+        <td><strong>Vex</strong></td>
+        <td>Wanneer je raakt, kun je proberen een opening of voordeel te creëren voor je volgende aanval.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Onthoud: dit zijn voorbeelden ter inspiratie. Spelers beschrijven wat ze willen bereiken; de Spelleider bepaalt de juiste test, moeilijkheid en uitkomst op basis van de situatie en de regels voor geïmproviseerde acties.</p>
+<hr>
+<h3 id="actions-and-time-encounter-mode">Acties en tijd (encounter-modus)</h3>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) gebruikt een eenvoudige actie-economie tijdens encounters. Op jouw beurt kun je:</p>
+<ul>
+<li><strong>Bewegen</strong> tot je snelheid</li>
+<li><strong>Eén actie</strong> nemen (Attack, Cast a Spell, Dash, Dodge, Help, Hide, Ready, Search, Use an Object, enz.)</li>
+<li><strong>Met één object interactie</strong> gratis (wapen trekken, deur openen, item oppakken, enz.)</li>
+<li>Eén <strong>class-feature vrije actie</strong> activeren als je een vermogen hebt dat dat toestaat (zie hieronder)</li>
+</ul>
+<p>Je kunt bewegen voor, na of tijdens je actie, en je beweging splitsen. Je kunt bijvoorbeeld 10 voet bewegen, je actie nemen, en dan nog 20 voet bewegen.</p>
+
+<h4>Beweging inruilen voor een tweede actie</h4>
+<p>Beweging staat voor tijd besteed aan herpositioneren. Gebruik je <strong>geen</strong> beweging op je beurt (je beweegt 0 voet), dan mag je een <strong>tweede actie</strong> nemen. Beweeg je zelfs maar 5 voet, dan kun je geen tweede actie nemen.</p>
+<p>De tweede actie volgt dezelfde opties als de eerste. Ze is gehaast, dus straffen gelden wanneer je anderen wilt schaden of hinderen:</p>
+<ul>
+<li>Is de tweede actie de <strong>Attack</strong>-actie of bevat die een aanval, dan worden die aanvalsrollen met <strong>nadeel</strong> gemaakt (rol 2d20, neem de laagste).</li>
+<li>Is de tweede actie <strong>Cast a Spell</strong> en vereist de spell een aanvalsrol, dan is die rol met nadeel. Forceert de spell een save, dan hebben doelwitten <strong>voordeel</strong> op die save (rol 2d20, neem de hoogste).</li>
+<li>Andere tweede acties (Dash, Dodge, Help, Hide, Ready, Search, Use an Object, enz.) hebben geen straf.</li>
+</ul>
+<p>Je hebt nog steeds maar <strong>één reaction per ronde</strong>, ongeacht hoeveel acties je op je beurt neemt.</p>
+
+<p><strong>Reactions:</strong> Naast je actie en beweging heb je <strong>één reaction per ronde</strong>. Een reaction is een speciale reactie op een trigger, zoals <em>shield</em> casten wanneer je geraakt wordt, <em>counterspell</em> om een vijandelijke spell te onderbreken, of een voorbereide actie wanneer de trigger plaatsvindt. Je reaction vernieuwt aan het begin van je beurt. Reactions kun je op jouw beurt of die van een ander gebruiken, wanneer de trigger optreedt. Zie de sectie <a href="combat.html#reactions">Reacties</a> in de Gevecht-regels.</p>
+
+<p><strong>Vrije acties:</strong> <strong>You-Meet-In-A-Tavern</strong> (YMIAT) gebruikt geen bonusacties. Snelle activiteiten die je actie niet kosten zijn <strong>vrije acties</strong>: je ene objectinteractie per beurt, plus hoogstens één class-feature vrije actie als je die hebt (zoals Rage, Second Wind of Cunning Action). Zie de sectie <a href="combat.html#free-actions">Vrije acties</a> in de Gevecht-regels voor voorbeelden.</p>
+
+<p><strong>Spellcasting:</strong> Cantrips en leveled spells die je op je beurt cast, gebruiken je <strong>actie</strong> tenzij hun beschrijving anders zegt. Spells als <strong>reaction</strong> (zoals <em>shield</em> of <em>counterspell</em>) gebruiken je reaction, niet je actie. Spellcasting is geen vrije actie tenzij een vermogen of spellbeschrijving dat expliciet zegt.</p>
+
+<p><strong>Variant:</strong> Voor groepen die meer tactische flexibiliteit willen, is er een optioneel <a href="combat.html#variant-3-moments-system">3 Momenten-systeem</a>. In die variant bestaat elke beurt uit 3 Momenten die je fijner kunt uitgeven aan beweging, aanvallen en spellcasting.</p>
+<hr>
+<h3>Magie en spellbronnen</h3>
+<p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) meet de capaciteit van een caster met <strong>Spell Power</strong>:</p>
+<div class="formula-box">
+  <span class="formula-label">Spell Power</span>
+  <span class="formula-equation">
+    <span class="variable">Spell Power</span>
+    <span class="operator">=</span>
+    <span>3</span>
+    <span class="operator">×</span>
+    <span class="variable">spellcasting-vermogensmodifier</span>
+  </span>
+</div>
+<p>De Spell Power-kosten van een spell zijn gelijk aan het spellniveau. Een spellcaster geeft Spell Power uit om spells te casten en krijgt het terug via rust en Herstelpunten.</p>
+<p><strong>Voorbeeld: Magic Missile</strong></p>
+<p>Magic Missile kost 1 Spell Power om te casten en creëert drie missiles. Elke missile doet 1 Wond, raakt automatisch, en negeert verdedigingen. Elke extra Spell Power die je bij het casten uitgeeft, creëert één extra missile.</p>
+<p>Spells kunnen ook extra effecten toevoegen, zoals vuur, vorst, controle of beweging, zoals in hun individuele beschrijvingen staat.</p>
+<hr>
+<h3 id="resolve">Luck en Resolve</h3>
+<p>Resolve (in sommige class features ook <strong>Luck</strong> genoemd) staat voor de groeiende vastberadenheid en focus van een personage na tegenslagen. Elke keer dat een personage een d20-test faalt — ongeacht het type rol — krijgt het personage 1 Resolve, of <strong>2 Resolve</strong> als de mislukking een natural 1 was. Resolve kan oplopen, tot een maximum op basis van Willpower:</p>
+<div class="formula-box">
+  <span class="formula-label">Maximum Resolve</span>
+  <span class="formula-equation">
+    <span class="variable">Max Resolve</span>
+    <span class="operator">=</span>
+    <span>4</span>
+    <span class="operator">+</span>
+    <span class="variable">⌈Willpower-modifier ÷ 2⌉</span>
+  </span>
+</div>
+<p>Rond de gehalveerde Willpower-modifier naar boven af. Bijvoorbeeld: Willpower-modifier +1 geeft Max Resolve = 4 + ⌈1 ÷ 2⌉ = 4 + 1 = 5.</p>
+<p>Wanneer een personage op maximale Resolve een d20-test faalt, rol je een d20 om de nieuwe Resolve-waarde te bepalen (die het vorige totaal vervangt). Deze resetrol gebruikt altijd dezelfde vier banden hieronder, ongeacht hoe hoog je maximum Resolve echt is:</p>
+<ul>
+<li><strong>1–5:</strong> Resolve wordt 1</li>
+<li><strong>6–10:</strong> Resolve wordt 2</li>
+<li><strong>11–15:</strong> Resolve wordt 3</li>
+<li><strong>16–20:</strong> Resolve wordt 4</li>
+</ul>
+<p><strong>Resolve uitgeven:</strong> geef Resolve uit op elke d20-rol — aanvalsrol, save, eigenschapstest, of anders — om het uitgegeven bedrag rechtstreeks bij het resultaat op te tellen. Of geef <strong>3 Resolve</strong> uit om de d20 volledig opnieuw te rollen en het nieuwe resultaat te gebruiken. Resolve is ook beschikbaar voor geavanceerde regels, features of optionele systemen elders in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) (bijvoorbeeld om de rol van een bondgenoot te versterken of speciale vermogens te activeren), die Resolve anders kunnen uitgeven dan deze basisopties.</p>
+<hr>
+<h3>Herstelpunten en rust</h3>
+<p>Tijdens een korte rust krijgt een personage een pool van <strong>Herstelpunten</strong> gelijk aan het niveau van het personage. De speler kan Herstelpunten uitgeven om Wonden te helen en/of Spell Power terug te krijgen, in elke combinatie. Onuitgegeven Herstelpunten blijven beschikbaar voor latere korte rusten tot ze gebruikt zijn.</p>
+<p>Het maximum aan Herstelpunten van een personage is gelijk aan het niveau. Tijdens een lange rust krijgt een personage de helft van het totale aantal Herstelpunten terug (naar boven afgerond).</p>
+<p><strong>Harten herstellen:</strong> Een verloren hart herstellen kost één lange rust. Wanneer een hart is hersteld, verdwijnen ook de −1-straf op elke vermogensmodifier, de −5 ft-snelheidsstraf en de −2 Max. wonden-straf van dat verloren hart. Tijdens deze rust worden echter geen Wonden geheeld; Wonden moeten apart geheeld worden via spells, genezing of andere effecten. Pas wanneer het aantal harten weer op 3 staat, heelt een lange rust ook weer Wonden. De volgorde van herstel tijdens een lange rust is altijd: eerst harten, dan Wonden. Zie de sectie <a href="combat.html#life-and-death-saves">Life en Death Saves</a> voor meer over harten en Death Saves.</p>
+<hr>
+<h3>Schoolspecialisatie</h3>
+<p>Sommige spellcasters specialiseren zich in bepaalde magiescholen. Een personage met expertise in een spell school telt <strong>+2×PB</strong> (Expert) op bij spellaanvalsrollen voor spells van die school, en doelwitten van die spells hebben nadeel op saves ertegen.</p>
+<p>Het aantal magiescholen waarin een caster Proficient is, is gelijk aan hun spellcasting-vermogensmodifier gedeeld door 2, naar boven afgerond.</p></div>
+</div></main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

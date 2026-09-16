@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/monk.html" />
+<link rel="alternate" hreflang="nl" href="monk.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/monk.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Monk-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Monk class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/monk.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Monk-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Monk vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#monk">← Terug naar Monk</a> · <a href="index.html#monk">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Monk abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#martial-arts">Martial Arts</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#unarmored-defense">Unarmored Defense</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#techniques">Techniques</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#unarmored-movement">Unarmored Movement</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#stunning-strike">Stunning Strike</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#empowered-strikes">Empowered Strikes</a> <span class="text-muted">(4e-niveauvermogen)</span></li>
+<li><a href="#evasion">Evasion</a> <span class="text-muted">(4e-niveauvermogen)</span></li>
+<li><a href="#perfect-motion">Perfect Motion</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#astral-teachings">Astral Teachings</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#diamond-soul">Diamond Soul</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#timeless-self">Timeless Self</a> <span class="text-muted">(8e-niveauvermogen)</span></li>
+<li><a href="#empty-body">Empty Body</a> <span class="text-muted">(9e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#flickering-dark">Flickering Dark</a></li>
+<li class="toc-sub toc-feature"><a href="#flickering-dark-dark-flame">Dark Flame</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#flickering-dark-obsidian-eyes">Obsidian Eyes</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#flickering-dark-grace-of-umbra">Grace of Umbra</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#flickering-dark-feeding-dark">Feeding Dark</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#flickering-dark-strike-of-searing-shadow">Strike of Searing Shadow</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#open-hand">Open Hand</a></li>
+<li class="toc-sub toc-feature"><a href="#open-hand-focus-intent">Focus Intent</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#open-hand-open-hand-technique">Open Hand Technique</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#open-hand-wholeness-of-body">Wholeness of Body</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#open-hand-tranquil-soul">Tranquil Soul</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#open-hand-quivering-palm">Quivering Palm</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#affliction-eater">Affliction Eater</a></li>
+<li class="toc-sub toc-feature"><a href="#affliction-eater-absorb-affliction">Absorb Affliction</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#affliction-eater-stay-execution">Stay Execution</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#affliction-eater-intercedence">Intercedence</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#affliction-eater-shield-from-harm">Shield from Harm</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#affliction-eater-merciful-burst">Merciful Burst</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#elemental-voice">Elemental Voice</a></li>
+<li class="toc-sub toc-feature"><a href="#elemental-voice-elemental-voice-feature">Elemental Voice Feature</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elemental-voice-elemental-voice-feature">Elemental Voice Feature</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elemental-voice-elemental-voice-feature">Elemental Voice Feature</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elemental-voice-elemental-voice-feature">Elemental Voice Feature</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#seal-guardian">Seal Guardian</a></li>
+<li class="toc-sub toc-feature"><a href="#seal-guardian-seal-guardian-feature">Seal Guardian Feature</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#seal-guardian-seal-guardian-feature">Seal Guardian Feature</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#seal-guardian-seal-guardian-feature">Seal Guardian Feature</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#seal-guardian-seal-guardian-feature">Seal Guardian Feature</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="martial-arts">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Martial Arts</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ongewapende aanvallen en monk weapons.</em></p>
+    <p>Zolang je ongewapend bent of alleen monk weapons hanteert zonder pantser of schild:</p>
+<ul>
+<li>Je ongewapende aanvallen gebruiken de Martial Arts-dobbelsteen van je progressietabel.</li>
+<li>Je gebruikt <strong>Fitness</strong> voor aanval en schade met ongewapende aanvallen en monk weapons.</li>
+<li>Wanneer je de Attack-actie neemt met een ongewapende aanval of monk weapon, kun je één ongewapende aanval maken als je <strong>tweede actie</strong> als je niet hebt bewogen (met nadeel als het een aanval is).</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="unarmored-defense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unarmored Defense</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>AC uit agiliteit en inzicht.</em></p>
+    <p>Zonder pantser en zonder schild is AC = <strong>10 + Fitness-modifier + Insight-modifier</strong>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="techniques">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Techniques</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Geef technique points uit voor bovennatuurlijke manoeuvres.</em></p>
+    <p>Technique points volgens de progressietabel, terug bij korte of lange rust (30 min meditatie). Opties omvatten <strong>Flurry of Blows</strong>, <strong>Patient Defense</strong>, <strong>Step of the Wind</strong> en meer. Save-DC = 8 + PB + Insight-modifier.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="unarmored-movement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unarmored Movement</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bovennatuurlijke snelheid zonder pantser.</em></p>
+    <p>Je snelheid stijgt zonder pantser volgens de Movement-kolom op je progressietabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Twee aanvallen per Attack-actie.</em></p>
+    <p>Je fysieke kracht is gegroeid. Op je beurt kun je tot <strong>twee</strong> aanvallen maken wanneer je de Attack-actie neemt.</p>
+<p>In YMIAT veroorzaakt elke succesvolle wapenaanval doorgaans <strong>1 Wond</strong> (2 bij een critical hit). Wapenbonussen gelden voor raken, niet voor het aantal Wonden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="stunning-strike">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stunning Strike</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Stun vijanden met ki-geladen slagen.</em></p>
+    <p>Eén keer per beurt, wanneer je raakt met een ongewapende aanval of monk weapon, geef je 1 technique point uit om een <strong>Fitness-save</strong> af te dwingen. Bij falen is het doelwit stunned tot het einde van je volgende beurt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="empowered-strikes">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Empowered Strikes</h4>
+    <span class="spell-card-level">4e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ongewapende aanvallen tellen als magisch.</em></p>
+    <p>Je ongewapende aanvallen tellen als magisch voor het overwinnen van weerstand en immuniteit tegen nonmagical aanvallen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="evasion">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Evasion</h4>
+    <span class="spell-card-level">4e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ontwijk gebiedseffecten.</em></p>
+    <p>Wanneer je een Fitness-save maakt voor half schade van een gebiedseffect, neem je geen schade bij succes en de helft bij falen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="perfect-motion">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Perfect Motion</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ren over muren en val veilig.</em></p>
+    <p>Verlaag valschade met 5 × monk-niveau als reactie. Beweeg langs verticale oppervlakken en vloeistoffen zonder te vallen tijdens de beweging.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="astral-teachings">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Astral Teachings</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Master tijdelijk elke skill.</em></p>
+    <p>Geef 2 technique points uit om behendigheid te krijgen in één taal, skill, tool of wapen tot je incapacitated bent of dit opnieuw gebruikt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="diamond-soul">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Diamond Soul</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Behendigheid in alle saves; herrol falen.</em></p>
+    <p>Behendigheid in alle saves. Wanneer je een save faalt, geef je 1 technique point uit om te herrollen (moet het nieuwe resultaat nemen).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="timeless-self">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Timeless Self</h4>
+    <span class="spell-card-level">8e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Onderhouden door innerlijke energie.</em></p>
+    <p>Kan niet magisch verouderen; geen voedsel of water nodig; eigenschapsmodifiers en Max. wonden kunnen niet verlaagd worden behalve door <em>wish</em>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="empty-body">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Empty Body</h4>
+    <span class="spell-card-level">9e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Invisibility en astral travel.</em></p>
+    <p>Geef 4 technique points uit om 1 minuut invisible te worden met weerstand tegen alle schade behalve force. Of geef 8 points uit om <em>astral projection</em> als actie te casten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Purity of Body of Mind.</em></p>
+    <p>Kies <strong>Purity of Body</strong> (immuun voor ziekte/poison) of <strong>Purity of Mind</strong> (voordeel op Insight-saves; beëindig charm/fear als vrije actie).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Technique points vullen bij wanneer gevecht begint.</em></p>
+    <p>Wanneer gevecht begint, krijg je tot 4 technique points terug. Begin je een beurt met 0 points, krijg je 2 terug.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een martiaal talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Martiale talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="flickering-dark">
+  <h3 class="subclass-name">Flickering Dark</h3>
+  <p class="subclass-summary">Kanaliseer schaduwenergie tussen slagen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="flickering-dark-dark-flame">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Dark Flame</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Flickering Dark</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Vrije actie schaduw-aura: clawing, grasp of spreading darkness.</em></p>
+    <p>Als <strong>vrije actie</strong> geef je <strong>2 technique points</strong> uit voor magische duisternis met straal 10 voet (beweegt met jou, 1 minuut, niet dispelled door spells van 5e niveau of lager). Kies één eigenschap:</p>
+<ul>
+<li><strong>Clawing Shadows:</strong> wezens die binnenkomen of hun beurt binnen beginnen, nemen necrotic = martial arts-dobbelsteen; jij krijgt Wonden terug gelijk aan de necrotic (Constructs/Undead niet getroffen).</li>
+<li><strong>Grasp of Nothingness:</strong> ongewapende aanvallen doen extra necrotic = PB.</li>
+<li><strong>Spreading Darkness:</strong> actie + 1 technique point om <em>darkness</em> te casten zonder slot.</li>
+</ul>
+<p>Op 6e niveau kies je twee eigenschappen in plaats van één.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="flickering-dark-obsidian-eyes">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Obsidian Eyes</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Flickering Dark</span></div>
+  <div class="spell-card-description">
+<p><em>Geef darkvision door magische duisternis; upgrades op 4e/6e.</em></p>
+    <p>Na 1 minuut meditatie (tijdens een rust) geef je een willig wezen obsidian eyes tot hun volgende lange rust: zie in dim light, duisternis en magische duisternis als bright light (60 voet). Op 4e monk-niveau zien ze invisible wezens; op 6e kunnen ze niet blinded zijn.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="flickering-dark-grace-of-umbra">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Grace of Umbra</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Flickering Dark</span></div>
+  <div class="spell-card-description">
+<p><em>Step of the Wind geeft intangibility en schaduw-teleport.</em></p>
+    <p>Wanneer je Step of the Wind gebruikt, word je tot einde van volgende beurt insubstantial — buiten zonlicht kunnen jij en je uitrusting door smalle openingen bewegen. Geef +1 technique point uit om tot je snelheid te teleporteren naar dim light, duisternis of magische duisternis die je kunt zien. Op 8e niveau: weerstand tegen alle schade behalve radiant terwijl actief.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="flickering-dark-feeding-dark">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Feeding Dark</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Flickering Dark</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Verzwak aanvallers in jouw magische duisternis; schaduwstap op lange afstand.</em></p>
+    <p>Wezens die hun beurt in jouw magische duisternis beginnen, maken een Fitness-save of doen half schade met Fitness/Dexterity-wapenaanvallen tot einde van beurt. Wanneer een wezen slaagt of faalt, gebruik je een <strong>reactie</strong> om tot 1 mijl ernaast te teleporteren (één keer per lange rust, of 3 technique points).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="flickering-dark-strike-of-searing-shadow">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Strike of Searing Shadow</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Flickering Dark</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie-finisher die vijanden naar een stervende vijand trekt.</em></p>
+    <p>Wanneer je raakt met een melee-aanval, gebruik je een <strong>reactie</strong> en geef je <strong>5 technique points</strong> uit. Doelwit maakt Fitness-save: 3d10 fire + 3d10 necrotic (helft bij succes). Wezens die jij kiest binnen 30 voet maken Fitness-save vs technique-DC of nemen 2d10 force en worden 20 voet naar het doelwit getrokken. Reduceer je een wezen tot 0 Wonden hiermee, blijft diens schaduw permanent op het oppervlak; jij krijgt tijdelijke Wonden = half Max. wonden van het wezen.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="open-hand">
+  <h3 class="subclass-name">Open Hand</h3>
+  <p class="subclass-summary">Duw, trip en verbrijzel vijanden met geperfectioneerde techniek.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="open-hand-focus-intent">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Focus Intent</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Open Hand</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: tel martial arts-dobbelsteen op bij bondgenoot- of vijandrol.</em></p>
+    <p>Wanneer jij of een wezen binnen 5 voet een eigenschapstest of aanvalsworp maakt, gebruik je je <strong>reactie</strong> om je martial arts-dobbelsteen te rollen en die op of af te trekken van de rol. Gebruiken = Insight-modifier per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="open-hand-open-hand-technique">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Open Hand Technique</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Open Hand</span></div>
+  <div class="spell-card-description">
+<p><em>Flurry of Blows: knockdown, push of geen reacties.</em></p>
+    <p>Wanneer je raakt met een Flurry of Blows-aanval, leg je één effect op: doelwit kan tot je volgende beurt geen reacties nemen; Insight-save of prone; Fitness-save of 15 voet geduwd.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="open-hand-wholeness-of-body">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wholeness of Body</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Open Hand</span></div>
+  <div class="spell-card-description">
+<p><em>Heel wanneer gevecht begint.</em></p>
+    <p>Wanneer gevecht begint met minstens 1 Wond over, herstel je Wonden gelijk aan <strong>Fitness-modifier + monk-niveau</strong>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="open-hand-tranquil-soul">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Tranquil Soul</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Open Hand</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Lange-duur sanctuary via technique points.</em></p>
+    <p>Als actie geef je <strong>3 technique points</strong> uit om <em>sanctuary</em> op jezelf te casten tot je volgende korte of lange rust (of tot die normaal eindigt).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="open-hand-quivering-palm">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Quivering Palm</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Open Hand</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Sla dodelijke trillingen op in een geraakte vijand.</em></p>
+    <p>Als actie maak je één ongewapende aanval. Bij treffer geef je <strong>4 technique points</strong> uit om trillingen op te slaan voor dagen gelijk aan monk-niveau. Later als actie beëindig je die: doelwit maakt Fitness-save of neemt force-schade gelijk aan <strong>5 × monk-niveau</strong> en is paralyzed; falen met 5+ is instant death. Kosten stijgen met 2 per extra gebruik tot lange rust.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="affliction-eater">
+  <h3 class="subclass-name">Affliction Eater</h3>
+  <p class="subclass-summary">Monks die de balans tussen leven en dood tippen in hun voordeel — vaak ten koste van zichzelf.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="affliction-eater-absorb-affliction">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Absorb Affliction</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Affliction Eater</span></div>
+  <div class="spell-card-description">
+<p><em>Raak een wezen aan om te helen ten koste van jezelf.</em></p>
+    <p>Als vrije actie kun je een wezen binnen 5 voet aanraken en helen ten koste van jezelf. Het doelwit krijgt tot CON-modifier + monk-niveau Wonden terug of verliest een condition. In ruil neem jij schade gelijk aan die Wonden, of krijg jij de condition die je wegnam. Als de condition een save toeliet en ≤1 minuut duurt, mag je die save aan het einde van elke beurt herhalen. Bij langere duur mag je elk uur saven.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="affliction-eater-stay-execution">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stay Execution</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Affliction Eater</span></div>
+  <div class="spell-card-description">
+<p><em>Houd de dood van een nabij wezen tegen.</em></p>
+    <p>Wanneer een wezen binnen 30 voet tot 0 HP/Wonden wordt gereduceerd, kun je 2 technique points uitgeven om de dood tegen te houden. Het doelwit is unconscious maar stabiel, of je kiest dat het Wonden gelijk aan één martial arts-dobbelsteen + WIS-modifier terugkrijgt en bewust wordt. Was het vijandig vóór 0, dan heb je 24 uur voordeel op CHA-tests om ermee te interacten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="affliction-eater-intercedence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Intercedence</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Affliction Eater</span></div>
+  <div class="spell-card-description">
+<p><em>Geef fortuin aan een bondgenoot ten koste van jezelf.</em></p>
+    <p>Je schenkt een bondgenoot goed fortuin ten koste van jezelf.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="affliction-eater-shield-from-harm">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Shield from Harm</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Affliction Eater</span></div>
+  <div class="spell-card-description">
+<p><em>Link jezelf aan een wezen om schade te delen.</em></p>
+    <p>Je linkt jezelf aan een ander wezen en verlaagt diens schade door een deel van de Wonden naar jezelf te kanaliseren. Als actie kun je 3 technique points uitgeven om <em>warding bond</em> op een vriendelijk wezen te casten zonder material component.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="affliction-eater-merciful-burst">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Merciful Burst</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Affliction Eater</span></div>
+  <div class="spell-card-description">
+<p><em>Offer Wonden (of technique points) voor een healing-burst.</em></p>
+    <p>Als vrije actie kun je je huidige Wonden met 40 verlagen (en Max. wonden evenveel) om een healing-burst vrij te laten in een straal van 60 voet, gecentreerd op jou. Geef je 11 technique points uit bij activeren, dan verlaag je geen Wonden of Max. wonden. Elk wezen dat je kiest in het gebied krijgt Wonden terug.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Affliction Eater</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="elemental-voice">
+  <h3 class="subclass-name">Elemental Voice</h3>
+  <p class="subclass-summary">Monks van Elemental Voice herscheppen de primordiale wereld met hun wil.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="elemental-voice-elemental-voice-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Voice Feature</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elemental Voice</span></div>
+  <div class="spell-card-description">
+<p><em>Elemental Voice subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Elemental Voice subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="elemental-voice-elemental-voice-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Voice Feature</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elemental Voice</span></div>
+  <div class="spell-card-description">
+<p><em>Elemental Voice subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Elemental Voice subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="elemental-voice-elemental-voice-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Voice Feature</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elemental Voice</span></div>
+  <div class="spell-card-description">
+<p><em>Elemental Voice subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Elemental Voice subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="elemental-voice-elemental-voice-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Voice Feature</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elemental Voice</span></div>
+  <div class="spell-card-description">
+<p><em>Elemental Voice subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Elemental Voice subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Elemental Voice</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="seal-guardian">
+  <h3 class="subclass-name">Seal Guardian</h3>
+  <p class="subclass-summary">Seal Guardian-monks maken magische seals voor bescherming of om kwaad uit te drijven.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="seal-guardian-seal-guardian-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Seal Guardian Feature</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Seal Guardian</span></div>
+  <div class="spell-card-description">
+<p><em>Seal Guardian subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Seal Guardian subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="seal-guardian-seal-guardian-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Seal Guardian Feature</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Seal Guardian</span></div>
+  <div class="spell-card-description">
+<p><em>Seal Guardian subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Seal Guardian subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="seal-guardian-seal-guardian-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Seal Guardian Feature</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Seal Guardian</span></div>
+  <div class="spell-card-description">
+<p><em>Seal Guardian subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Seal Guardian subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="seal-guardian-seal-guardian-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Seal Guardian Feature</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Seal Guardian</span></div>
+  <div class="spell-card-description">
+<p><em>Seal Guardian subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Seal Guardian subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Seal Guardian</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#monk">← Terug naar Monk</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

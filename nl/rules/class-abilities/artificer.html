@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/artificer.html" />
+<link rel="alternate" hreflang="nl" href="artificer.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/artificer.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Artificer-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Artificer class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/artificer.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Artificer-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Artificer vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#artificer">← Terug naar Artificer</a> · <a href="index.html#artificer">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Artificer abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#eyes-of-the-maker">Eyes of the Maker</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#shard-of-creation">Shard of Creation</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#augment">Augment</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#efficient-action">Efficient Action</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#rapid-augment">Rapid Augment</a> <span class="text-muted">(4e-niveauvermogen)</span></li>
+<li><a href="#greater-creation">Greater Creation</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#engineers-insight">Engineer's Insight</a> <span class="text-muted">(6e-niveauvermogen)</span></li>
+<li><a href="#ranged-augment">Ranged Augment</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#always-prepared">Always Prepared</a> <span class="text-muted">(8e-niveauvermogen)</span></li>
+<li><a href="#perfect-creation">Perfect Creation</a> <span class="text-muted">(9e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#armorer">Armorer</a></li>
+<li class="toc-sub toc-feature"><a href="#armorer-augment-absorbing">Augment: Absorbing</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#armorer-mystic-metal">Mystic Metal</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#armorer-heavy-hitter">Heavy Hitter</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#armorer-juggernaut">Juggernaut</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#armorer-full-metal">Full Metal</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#alchemist">Alchemist</a></li>
+<li class="toc-sub toc-feature"><a href="#alchemist-experimental-elixir">Experimental Elixir</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#alchemist-alchemical-savant">Alchemical Savant</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#alchemist-restorative-reagents">Restorative Reagents</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#alchemist-chemical-mastery">Chemical Mastery</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#artillerist">Artillerist</a></li>
+<li class="toc-sub toc-feature"><a href="#artillerist-arcane-grenades">Arcane Grenades</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#artillerist-augment-explosive">Augment: Explosive</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#artillerist-controlled-blasts">Controlled Blasts</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#artillerist-superior-firepower">Superior Firepower</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#battle-smith">Battle Smith</a></li>
+<li class="toc-sub toc-feature"><a href="#battle-smith-battle-ready">Battle Ready</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-smith-augment-messenger">Augment: Messenger</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-smith-arcane-jolt">Arcane Jolt</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-smith-improved-defender">Improved Defender</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#cog-augur">Cog Augur</a></li>
+<li class="toc-sub toc-feature"><a href="#cog-augur-augment-clairvoyant">Augment: Clairvoyant</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cog-augur-auguring-device">Auguring Device</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cog-augur-intricate-predictions">Intricate Predictions</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cog-augur-improved-divining">Improved Divining</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cog-augur-clarity-of-vision">Clarity of Vision</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#grenadier">Grenadier</a></li>
+<li class="toc-sub toc-feature"><a href="#grenadier-arcane-grenades">Arcane Grenades (1d8, 1/turn)</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#toymaker">Toymaker</a></li>
+<li class="toc-sub toc-feature"><a href="#toymaker-augment-messenger">Augment: Messenger</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#toymaker-autonomous-toys">Autonomous Toys</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#toymaker-automated-power">Automated Power</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#toymaker-eyes-everywhere">Eyes Everywhere</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#toymaker-ultimate-toymaker">Ultimate Toymaker</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="eyes-of-the-maker">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Eyes of the Maker</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Identificeer magic items door aanraking.</em></p>
+    <p>Wanneer je een magic item aanraakt, leer je diens eigenschappen, attunement-eisen, charges, actieve spells en de spell die het creëerde (indien van toepassing).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="shard-of-creation">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Shard of Creation</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Magisch tool met veelzijdige charges.</em></p>
+    <p>Je craft een Tiny <strong>shard of creation</strong> (charges = Insight-modifier, minimaal 1, terug bij lange rust). Eigenschappen omvatten <strong>Inspire</strong>, <strong>Mend</strong> en andere BFRD-opties. De shard verdwijnt als je sterft of 24 uur van je gescheiden bent; recreate met een ritual van 1 uur.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="augment">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Augment</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Pas augment-effecten toe op gedragen items.</em></p>
+    <p>Je past augment-effecten toe op items die je draagt. Bekende augment-effecten en limieten staan op je progressietabel. Zie BFRD Mechanist augment-lijst.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="efficient-action">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Efficient Action</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Augmenteer zonder verspilde inspanning.</em></p>
+    <p>Wanneer je je actie gebruikt om een augment-effect toe te passen, kun je als onderdeel van dezelfde actie een tweede effect op een ander item toepassen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Twee aanvallen per Attack-actie.</em></p>
+    <p>Je fysieke kracht is gegroeid. Op je beurt kun je tot <strong>twee</strong> aanvallen maken wanneer je de Attack-actie neemt.</p>
+<p>In YMIAT veroorzaakt elke succesvolle wapenaanval doorgaans <strong>1 Wond</strong> (2 bij een critical hit). Wapenbonussen gelden voor raken, niet voor het aantal Wonden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="rapid-augment">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Rapid Augment</h4>
+    <span class="spell-card-level">4e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Augmenteer als vrije actie.</em></p>
+    <p>Eén keer per beurt kun je een augment-effect als <strong>vrije actie</strong> toepassen in plaats van als actie.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="greater-creation">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Greater Creation</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Craft krachtigere items.</em></p>
+    <p>Je kunt uncommon magic items maken met je shard en augment-vermogens volgens BFRD Greater Creation.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="engineers-insight">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Engineer's Insight</h4>
+    <span class="spell-card-level">6e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Flits van mechanisch genie.</em></p>
+    <p>Wanneer je een Insight-check faalt met een tool waarmee je behendig bent, kun je herrollen en het hogere resultaat nemen. Eén keer per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="ranged-augment">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ranged Augment</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Pas augments op afstand toe.</em></p>
+    <p>Je kunt augment-effecten toepassen op items die je binnen 30 voet kunt zien.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="always-prepared">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Always Prepared</h4>
+    <span class="spell-card-level">8e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Augments blijven na rust.</em></p>
+    <p>Augment-effecten die je toepast blijven tot je ze beëindigt (geen actie) of een nieuw effect op dat item toepast.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="perfect-creation">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Perfect Creation</h4>
+    <span class="spell-card-level">9e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Master-crafted magische items.</em></p>
+    <p>Je kunt rare magic items maken volgens BFRD Perfect Creation.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Artificer heroic-opties volgens BFRD.</em></p>
+    <p>Kies een heroic boon uit de BFRD Mechanist-lijst, aangepast voor YMIAT.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Capstone-uitvinding.</em></p>
+    <p>Krijg de Mechanist Epic Boon uit BFRD, aangepast voor YMIAT.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of utility/martial-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Utility- of martiale talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="armorer">
+  <h3 class="subclass-name">Armorer</h3>
+  <p class="subclass-summary">Mystic metal-pantser en absorberende augments (BFRD Metallurgist).</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="armorer-augment-absorbing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Augment: Absorbing</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Armorer</span></div>
+  <div class="spell-card-description">
+<p><em>Pantser/schild absorbeert elemental schade en geeft weerstand.</em></p>
+    <p>Unieke augment (telt niet mee voor bekende augments): wanneer je acid-, cold-, fire-, force-, lightning-, poison- of thunder-schade neemt terwijl je het item draagt/hanteert, gebruik je je reactie om schade te verlagen met <strong>2 × Insight-modifier</strong> en 1 minuut weerstand tegen dat type te krijgen. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="armorer-mystic-metal">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mystic Metal</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Armorer</span></div>
+  <div class="spell-card-description">
+<p><em>Transmuteer pantser tot draagbaar mystic metal-pak.</em></p>
+    <p>Na 1 uur focus transmuteer je een nonmagical pantserpak tot <strong>mystic metal</strong> (AC 13 + Insight-modifier; gauntlets 1d6 + FIT of INS; oproepen als vrije actie binnen 5 voet). Keert terug als een ander wezen het aantrekt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="armorer-heavy-hitter">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heavy Hitter</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Armorer</span></div>
+  <div class="spell-card-description">
+<p><em>Extra force-schade en beter crit-bereik in mystic metal.</em></p>
+    <p>In mystic metal: wapenaanvallen doen <strong>1d6 force</strong> (1d8 op 5e artificer-niveau, 1d10 op 10e); crit op 19–20.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="armorer-juggernaut">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Juggernaut</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Armorer</span></div>
+  <div class="spell-card-description">
+<p><em>Athletics Expertise; charge geeft aanvalsvoordeel.</em></p>
+    <p>In mystic metal: behendigheid in Athletics (of Expertise / +2×PB als je die al hebt); voordeel op grapple/shove-tests; beweeg je 15+ voet vóór een melee-aanval, dan voordeel op die aanval.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="armorer-full-metal">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Full Metal</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Armorer</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Korte immuniteit voor fysieke schade.</em></p>
+    <p>Als vrije actie ga je 1 minuut in Full Metal: immuun voor B/P/S; weerstand tegen alle andere schade. Auto-activeert bij 0 Wonden, één keer per lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://bfrd.net/classes/mechanist/" rel="noopener">BFRD Armorer</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="alchemist">
+  <h3 class="subclass-name">Alchemist</h3>
+  <p class="subclass-summary">Brouw vluchtige concocties en ondersteunende elixers.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="alchemist-experimental-elixir">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Experimental Elixir</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Alchemist</span></div>
+  <div class="spell-card-description">
+<p><em>Lange-rust-elixer voor jezelf of een bondgenoot.</em></p>
+    <p>Wanneer je een lange rust afrondt, creëer je één experimental elixir in een vial. Als <strong>vrije actie</strong> kan een wezen die drinken (of jij gooit die 20 voet; breekt bij impact). Rol d6 voor het effect:</p>
+<ul>
+<li><strong>1–2 Healing:</strong> krijg 2d4 + Insight Wonden terug.</li>
+<li><strong>3 Swiftness:</strong> +10 voet snelheid voor 1 uur.</li>
+<li><strong>4 Resilience:</strong> +1 AC voor 10 minuten.</li>
+<li><strong>5 Flight:</strong> fly speed 10 voet voor 10 minuten.</li>
+<li><strong>6 Transformation:</strong> <em>alter self</em> voor 10 minuten (Insight als spellcasting ability).</li>
+</ul>
+<p>Ongebruikte elixers verliezen na 24 uur hun kracht. PB elixers per lange rust op 8e niveau.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="alchemist-alchemical-savant">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Alchemical Savant</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Alchemist</span></div>
+  <div class="spell-card-description">
+<p><em>Tel Insight op bij alchemist-spellschade en healing.</em></p>
+    <p>Wanneer je een artificer-spell cast die Wonden herstelt of acid-, fire-, necrotic- of poison-schade doet, tel je je <strong>Insight-modifier</strong> op bij één Wond-herstel of schaderol.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="alchemist-restorative-reagents">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Restorative Reagents</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Alchemist</span></div>
+  <div class="spell-card-description">
+<p><em>Gratis healing bij bepaalde spells.</em></p>
+    <p>Wanneer je een artificer-spell van 1e niveau of hoger cast met een slot, krijgt het doelwit (of jij bij self) Wonden terug gelijk aan <strong>2d6 + Insight-modifier</strong>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="alchemist-chemical-mastery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Chemical Mastery</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Alchemist</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Weerstand tegen acid/poison; greater restoration on demand.</em></p>
+    <p>Je hebt weerstand tegen acid- en poison-schade en bent immuun voor poisoned. Als actie raak je een wezen aan en beëindig je één van: poisoned, paralyzed of petrified (één keer per lange rust).</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="artillerist">
+  <h3 class="subclass-name">Artillerist</h3>
+  <p class="subclass-summary">Zet ranged magische ordnance in.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="artillerist-arcane-grenades">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arcane Grenades</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Artillerist</span></div>
+  <div class="spell-card-description">
+<p><em>Gooi force-granaten; schade schaalt 1d8→4d8.</em></p>
+    <p>Als actie (Use an Object) of door één Attack-actie-aanval te vervangen, gooi je een arcane grenade (bereik 20/60, behendig). Gebruik Dexterity of Insight voor aanval; treffer = force-schade d8 + Insight (2d8 op 4e, 3d8 op 6e, 4d8 op 8e). Eén grenade per beurt. PB gemodificeerde granaten per korte of lange rust (dispersal, flash, kinetic, smoke — zie Grenadier-regels).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="artillerist-augment-explosive">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Augment: Explosive</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Artillerist</span></div>
+  <div class="spell-card-description">
+<p><em>Unieke augment: val objecten met force-bursts.</em></p>
+    <p>Unieke augment (telt niet mee): imbue een Medium of kleiner stationair item om op jouw trigger te exploderen (bol 10 voet, DEX-save vs augment-DC, (PB+1)d6 force minimaal 3d6). PB triggers per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="artillerist-controlled-blasts">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Controlled Blasts</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Artillerist</span></div>
+  <div class="spell-card-description">
+<p><em>Geen close-range-nadeel; bescherm bondgenoten tegen jouw ordnance.</em></p>
+    <p>Geen nadeel op ranged-aanvallen (inclusief granaten) door vijanden binnen 5 voet. Wanneer jouw items of granaten schade doen of conditions opleggen, kies tot PB bondgenoten die immuun zijn. Jij bent immuun voor je eigen granaten en augment-explosies. Twee granaten per beurt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="artillerist-superior-firepower">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Superior Firepower</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Artillerist</span></div>
+  <div class="spell-card-description">
+<p><em>Maak misses tot hits; groter bereik; disintegrating crits.</em></p>
+    <p>Eén keer per beurt, wanneer een grenade-aanval mist, maak je die tot een treffer (Insight-modifier gebruiken per lange rust). Grenade-bereik 40/80. Crit die een vijand tot 0 Wonden brengt, disintegreert die (geen magic items). Drie granaten per beurt.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="battle-smith">
+  <h3 class="subclass-name">Battle Smith</h3>
+  <p class="subclass-summary">Veld een steel defender-companion.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="battle-smith-battle-ready">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Battle Ready</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Smith</span></div>
+  <div class="spell-card-description">
+<p><em>Insight voor magic weapons; steel defender-companion.</em></p>
+    <p>Je mag <strong>Insight</strong> gebruiken voor aanval en schade met magic weapons. Je krijgt een <strong>steel defender</strong> (Medium Construct, PB + Insight AC, Wonden = 5 + vijf × artificer-niveau). Die handelt na jouw beurt, gehoorzaamt bevelen, en maakt force-aanvallen (+ PB om te raken, 1d8 + PB force). Bij 0 Wonden revive na lange rust of ritual van 1 uur.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-smith-augment-messenger">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Augment: Messenger</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Smith</span></div>
+  <div class="spell-card-description">
+<p><em>Augmenteer items met storend geluid of remote voice.</em></p>
+    <p>Unieke augment: imbue een vastgehouden/gedragen item met storend geluid (WIS-save of 1 ronde deafened; breek concentratie) of Master's Voice (spreek/hoor 1 minuut door item). PB activaties per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-smith-arcane-jolt">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arcane Jolt</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Smith</span></div>
+  <div class="spell-card-description">
+<p><em>Defender of jij jolten een treffer voor extra force en voordeel.</em></p>
+    <p>Wanneer jij of je defender raakt met een magic weapon, tel <strong>2d6 force</strong>-schade op. Eén keer per beurt, wanneer je een artificer-spell cast, heeft de volgende defender-aanval vóór jouw volgende beurt voordeel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-smith-improved-defender">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improved Defender</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Smith</span></div>
+  <div class="spell-card-description">
+<p><em>Defender krijgt Multiattack; jolt heelt jou.</em></p>
+    <p>Je steel defender maakt <strong>twee aanvallen</strong> wanneer bevolen te Attack. Wanneer je Arcane Jolt gebruikt, krijgen jij of de defender Wonden terug gelijk aan half de force-schade.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="cog-augur">
+  <h3 class="subclass-name">Cog Augur</h3>
+  <p class="subclass-summary">Mechanists die het universum als berekeningen zien en barokke devices craften om die te lezen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="cog-augur-augment-clairvoyant">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Augment: Clairvoyant</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cog Augur</span></div>
+  <div class="spell-card-description">
+<p><em>Itemvereiste: equipment of object dat in één hand past.</em></p>
+    <p>Itemvereiste: equipment of object dat in één hand past.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cog-augur-auguring-device">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Auguring Device</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cog Augur</span></div>
+  <div class="spell-card-description">
+<p><em>Transmuteer een klein device tot augury-tool.</em></p>
+    <p>Je leert een klein device te transmuteren tot een augury-tool voor berekenen en voorspellen. Besteed 1 uur ononderbroken focus in contact met een object dat in één hand past (mag tijdens korte of lange rust): transmuteer dat tot een auguring device. Het moet één object zijn (interne bewegende delen mogen) en geen set tools. Duurt tot je beëindigt of een ander object transmuteert.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cog-augur-intricate-predictions">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Intricate Predictions</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cog Augur</span></div>
+  <div class="spell-card-description">
+<p><em>Upgrade Auguring Device met sterkere voorspellingen.</em></p>
+    <p>Je Auguring Device krijgt extra eigenschappen: bij consultatie over een wezen leer je nu twee details; weather prediction geeft voordeel op WIS (Survival) voor de komende 7 dagen; terwijl je het device vasthoudt, kun je 10 minuten communen voor divination- of locate-achtige effecten (device als material component, niet verbruikt).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cog-augur-improved-divining">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improved Divining</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cog Augur</span></div>
+  <div class="spell-card-description">
+<p><em>Lagere faalkans op augury/divination; Clairvoyant-upgrade.</em></p>
+    <p>Bij augury- of divination-aspecten van het device is de kans op een willekeurig/geen antwoord cumulatief 10% in plaats van 25%. Is het device geïmbueerd met Clairvoyant, dan kun je één doelwit voordeel op alle aanvalsworpen geven in plaats van slechts één.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cog-augur-clarity-of-vision">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Clarity of Vision</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cog Augur</span></div>
+  <div class="spell-card-description">
+<p><em>Communiceer 1 minuut met je device.</em></p>
+    <p>Je kunt 1 minuut besteden aan communie met je device.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Cog Augur</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="grenadier">
+  <h3 class="subclass-name">Grenadier</h3>
+  <p class="subclass-summary">Discipelen van entropie: meer geïnteresseerd in hoe dingen uit elkaar vallen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="grenadier-arcane-grenades">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arcane Grenades (1d8, 1/turn)</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Grenadier</span></div>
+  <div class="spell-card-description">
+<p><em>Construeer krachtige arcane grenades.</em></p>
+    <p>Je hebt geleerd krachtige magische devices te construeren genaamd arcane grenades. Als actie (telt als Use an Object) kun je die gebruiken.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Grenadier</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="toymaker">
+  <h3 class="subclass-name">Toymaker</h3>
+  <p class="subclass-summary">Mechanists die miniature replica's van dieren en mensen maken voor entertainment, taken en chaos.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="toymaker-augment-messenger">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Augment: Messenger</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Toymaker</span></div>
+  <div class="spell-card-description">
+<p><em>Uniek Messenger-augment-effect voor Augment.</em></p>
+    <p>Je krijgt het volgende unieke effect voor Augment. Dat effect kan niet vervangen worden en telt niet mee voor het aantal effecten dat je kent (Augment Effects Known-kolom).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="toymaker-autonomous-toys">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Autonomous Toys</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Toymaker</span></div>
+  <div class="spell-card-description">
+<p><em>Animeer Tiny objecten die je instructies volgen.</em></p>
+    <p>Je ontwerpt en animeert intricate Tiny objecten die je instructies volgen. Tijdens een lange rust kun je tot twee autonomous toys in dierenvormen maken. Elke toy is gemodelleerd naar een Small of kleinere Beast.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="toymaker-automated-power">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Automated Power</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Toymaker</span></div>
+  <div class="spell-card-description">
+<p><em>Toys krijgen PB-bonussen; vernietiging empower't jou.</em></p>
+    <p>Toys van Autonomous Toys krijgen een bonus op saves en AC gelijk aan je PB. Wanneer één van je toys binnen 30 voet van jou vernietigd wordt, ben je tot einde van je volgende beurt empowered: voordeel op aanvalsworpen en saves.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="toymaker-eyes-everywhere">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Eyes Everywhere</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Toymaker</span></div>
+  <div class="spell-card-description">
+<p><em>Voordeel nabij twee toys van Autonomous Toys.</em></p>
+    <p>Zolang je binnen 10 voet bent van minstens twee toys van Autonomous Toys, heb je voordeel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="toymaker-ultimate-toymaker">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ultimate Toymaker</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Toymaker</span></div>
+  <div class="spell-card-description">
+<p><em>Extra augments op toys; tot twee per toy.</em></p>
+    <p>Je maximum aantal augmented items stijgt met 3, maar die extra augments moeten op toys van Autonomous Toys. Een toy kan tot twee augments tegelijk hebben. Meerdere instanties van één augment stapelen niet.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Toymaker</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#artificer">← Terug naar Artificer</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

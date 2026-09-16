@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/theurge.html" />
+<link rel="alternate" hreflang="nl" href="theurge.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/theurge.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Theurge-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Theurge class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/theurge.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Theurge-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Theurge vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#theurge">← Terug naar Theurge</a> · <a href="index.html#theurge">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Theurge abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#spell-nexus">Spell Nexus</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#spellcraft">Spellcraft</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#summon-libram">Summon Libram</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#spell-synthesis">Spell Synthesis</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#superior-focus">Superior Focus</a> <span class="text-muted">(6e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#conduit">Conduit</a></li>
+<li class="toc-sub toc-feature"><a href="#conduit-energy-exchange">Energy Exchange</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#conduit-mystic-vitality">Mystic Vitality</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#conduit-metabolize">Metabolize</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#conduit-spell-surge">Spell Surge</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#conduit-nullify">Nullify</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#illuminary">Illuminary</a></li>
+<li class="toc-sub toc-feature"><a href="#illuminary-mystic-scribe">Mystic Scribe</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#illuminary-sacred-sign">Sacred Sign</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#illuminary-spell-sigil">Spell Sigil</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#illuminary-guarding-glyph">Guarding Glyph</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#illuminary-potent-symbol">Potent Symbol</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#source-spinner">Source Spinner</a></li>
+<li class="toc-sub toc-feature"><a href="#source-spinner-magic-theory">Magic Theory</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#source-spinner-overwrite">Overwrite</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#source-spinner-mystic-realignment">Mystic Realignment</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#source-spinner-unravel">Unravel</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#source-spinner-spell-loom">Spell Loom</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="spell-nexus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Nexus</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> bonusactie</span></div>
+  <div class="spell-card-description">
+<p><em>Wissel prepared spells via je libram.</em></p>
+    <p>Als <strong>vrije actie</strong>, terwijl je libram binnen 100 voet is, open je een kanaal om meteen één prepared spell te vervangen door een andere van het <strong>zelfde spellniveau en dezelfde source</strong> (Arcane of Divine) die in je libram staat.</p>
+<p>Gebruiken per lange rust gelijk aan je behendigheidsbonus.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Prepared Arcane en Divine spells uit je libram.</em></p>
+    <p>Als kanaal voor <strong>Arcane en Divine</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#theurge">Theurge</a>-progressietabel.</p>
+<p>Je prepareert spells vooraf. Je kunt een aantal spells prepareren gelijk aan je Insight (INS)-modifier + je theurge-niveau (minimaal één). Wijzig je prepared lijst tijdens een lange rust.</p>
+<p><strong>Spellcasting ability:</strong> Insight (INS). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Insight (INS)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p>
+<p><strong>Libram:</strong> Je Tiny magische libram bevat alle spells die je kent behalve cantrips. Op 1e niveau bevat die zes 1e-niveau spells (minstens twee Arcane en twee Divine). Alleen jij kunt die lezen. Vervang een verloren libram met een ceremonie van 1 uur.</p>
+<p>Wanneer je een theurge-niveau stijgt, voeg je één Arcane en één Divine spell toe aan je libram. Bij level-up mag je één spell in je libram wisselen voor een andere van dezelfde source.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcraft">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcraft</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Insight-dobbelstenen om spelluitkomsten te sturen.</em></p>
+    <p>Je hebt Spellcraft-dobbelstenen gelijk aan je <strong>Insight-modifier</strong> (minimaal 1). Het zijn d6s (d8 op 9e niveau). Krijg uitgegeven dobbelstenen terug bij een korte of lange rust.</p>
+<p>Geef één dobbelsteen uit (rol meteen) om:</p>
+<ul>
+<li>Het resultaat op te tellen bij schade of healing van een spell die je cast.</li>
+<li>Het resultaat op te tellen bij een Fitness-save om concentratie te behouden.</li>
+<li>Het resultaat op te tellen bij een test om magische informatie te leren, te ontcijferen of te herinneren.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="summon-libram">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Summon Libram</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> bonusactie</span></div>
+  <div class="spell-card-description">
+<p><em>Voel en roep je libram terug over planes.</em></p>
+    <p>Zolang je libram op hetzelfde vlak is, ken je de afstand en richting. Als <strong>vrije actie</strong> op hetzelfde vlak roep je die naar je hand of een aangrenzende ruimte.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-synthesis">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Synthesis</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Cast Arcane en Divine spells in één beurt.</em></p>
+    <p>Eén keer per korte of lange rust cast je op je beurt twee prepared spells van 4e niveau of lager: één Arcane en één Divine. Gebruik actie + vrije actie, of cast twee actie-spells met één Cast a Spell-actie. Elke spell kost normaal Spell Power.</p>
+<p>Je kunt geen reacties nemen tot het begin van je volgende beurt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="superior-focus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Superior Focus</h4>
+    <span class="spell-card-level">6e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Dubbele concentratie op Arcane en Divine spells.</em></p>
+    <p>Concentreer tegelijk op één Arcane en één Divine spell. Aan het begin van elke beurt maak je een Fitness-save (DC 10 + hoogste spellniveau) of beide spells eindigen. Je hebt nadeel op concentratie-saves door schade terwijl je beide vasthoudt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Careful Craft, Persistent Craft of Precise Craft.</em></p>
+    <p>Kies één ToV theurge heroic boon: <strong>Careful Craft</strong> (Spellcraft-dobbelsteen niet uitgegeven bij gefaalde boost), <strong>Persistent Craft</strong> (dwing herrol bij geslaagde save tegen jouw spell), of <strong>Precise Craft</strong> (herrol 1en op Spellcraft-dobbelstenen).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Epic theurge-boon uit ToV Player's Guide 2.</em></p>
+    <p>Kies een epic boon uit de ToV theurge-lijst (aangepast voor YMIAT), zoals meer Spell Synthesis-gebruiken of groter libram-bereik.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een magic-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Magie-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="conduit">
+  <h3 class="subclass-name">Conduit</h3>
+  <p class="subclass-summary">Wissel vitaliteit voor spellkracht en verstoor vijandige magie.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="conduit-energy-exchange">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Energy Exchange</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Conduit</span><span><strong>Actie:</strong> bonusactie / action</span></div>
+  <div class="spell-card-description">
+<p><em>Ruil Recovery Points of spellniveaus voor spellherstel of itemcharges.</em></p>
+    <p><strong>Exchange Life:</strong> Vrije actie: geef Recovery Points gelijk aan een spellniveau uit om dat niveau te herstellen (verlies Wonden gelijk aan rollen + Fitness-modifier; verlaag Max. wonden tot lange rust).</p>
+<p><strong>Exchange Power:</strong> Actie: geef een spellniveau uit om charges van een aangeraakt magic item te herstellen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="conduit-mystic-vitality">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mystic Vitality</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Conduit</span></div>
+  <div class="spell-card-description">
+<p><em>Ongebruikte spellniveaus worden Recovery Points na rust.</em></p>
+    <p>Na een lange rust krijg je extra Recovery Points gelijk aan de helft van je ongebruikte spellniveaus (naar beneden), tot je maximum.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="conduit-metabolize">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Metabolize</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Conduit</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Sla inkomende energie op om een spell te upcasten.</em></p>
+    <p>Reactie wanneer je non-B/P/S-schade neemt: Fitness-save (DC 10 of half schade). Bij succes sla je tot 1 minuut energie op; geef die uit om een spell één niveau hoger te casten. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="conduit-spell-surge">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Surge</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Conduit</span></div>
+  <div class="spell-card-description">
+<p><em>Geef Recovery Points uit voor extra spellschade.</em></p>
+    <p>Wanneer jouw Arcane of Divine spell een wezen schade doet, geef je Recovery Points uit en tel je Fitness-modifier op; één doelwit neemt extra schade van het type van de spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="conduit-nullify">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Nullify</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Conduit</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Onderdruk magie van een wezen of item.</em></p>
+    <p>Actie: onderdruk 1 minuut magie op één wezen of item binnen 120 voet. Wezens moeten Fitness-saves slagen om te casten of met magie aan te vallen. Items functioneren als nonmagical. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Conduit</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="illuminary">
+  <h3 class="subclass-name">Illuminary</h3>
+  <p class="subclass-summary">Graveer sacred signs en sigils om je magie te verlengen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="illuminary-mystic-scribe">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mystic Scribe</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Illuminary</span></div>
+  <div class="spell-card-description">
+<p><em>Leer talen en artist tools-meesterschap.</em></p>
+    <p>Krijg behendigheid met artist's tools (dubbele PB als je die al hebt). In 10 minuten leer je tijdelijk een taal tot je dit opnieuw gebruikt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="illuminary-sacred-sign">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Sacred Sign</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Illuminary</span><span><strong>Actie:</strong> bonusactie</span></div>
+  <div class="spell-card-description">
+<p><em>Markeer bondgenoten om touch spells op afstand te casten.</em></p>
+    <p>Vrije actie: graveer 10 minuten je symbool op een willig wezen. Zolang actief cast je touch spells op hen binnen 120 voet; als actie kijk je door hun zintuigen.</p>
+<p>Actieve symbolen: 1 op 2e niveau, 2 op 4e, 3 op 6e, 4 op 8e.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="illuminary-spell-sigil">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Sigil</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Illuminary</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Sla spells op in gegraveerde items.</em></p>
+    <p>Actie: graveer 24 uur een spell in een gedragen/gehanteerd item. Jij of een aangewezen bondgenoot activeert die met een actie. Half PB sigils tegelijk actief.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="illuminary-guarding-glyph">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Guarding Glyph</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Illuminary</span></div>
+  <div class="spell-card-description">
+<p><em>Gemarkeerde bondgenoten delen defensieve bonussen.</em></p>
+    <p>Wanneer je een wezen markeert met Sacred Sign, krijg jij een wederkerige markering. Jij en gemarkeerde bondgenoten binnen 30 voet krijgen +1 AC en saves per nabije gemarkeerde bondgenoot.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="illuminary-potent-symbol">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Potent Symbol</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Illuminary</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Cast symbol zonder kosten.</em></p>
+    <p>Actie: cast <em>symbol</em> zonder Spell Power of componenten. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Illuminary</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="source-spinner">
+  <h3 class="subclass-name">Source Spinner</h3>
+  <p class="subclass-summary">Ontrafel en herlijn de weave van magie.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="source-spinner-magic-theory">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Magic Theory</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Source Spinner</span></div>
+  <div class="spell-card-description">
+<p><em>Bonus Spellcraft op magiekennis; extra prepared spells.</em></p>
+    <p>Tel een Spellcraft-dobbelsteen op bij magiekennis-tests zonder die uit te geven. Krijg extra altijd-prepared spells (<em>detect magic</em>, <em>perceive vulnerability</em>, en hogere spells naarmate je levelt).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="source-spinner-overwrite">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Overwrite</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Source Spinner</span></div>
+  <div class="spell-card-description">
+<p><em>Beëindig een spell wanneer je op hetzelfde doelwit cast.</em></p>
+    <p>Wanneer je een spell op een wezen cast, probeer je één lopende spell erop te beëindigen (automatisch bij gelijk/lager spellniveau; anders Insight-check vs. 10 + spellniveau).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="source-spinner-mystic-realignment">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mystic Realignment</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Source Spinner</span><span><strong>Actie:</strong> bonusactie</span></div>
+  <div class="spell-card-description">
+<p><em>Ruil spellniveaus voor herstelde niveaus.</em></p>
+    <p>Vrije actie: wissel spellniveaus voor herstelde niveaus van gelijke of lagere totale waarde (zie ToV Source Spinner-regels).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="source-spinner-unravel">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unravel</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Source Spinner</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Draai gefaalde saves om in successen.</em></p>
+    <p>Reactie: wanneer jij of een bondgenoot binnen 30 voet faalt op een save tegen magie, veroorzaak je in plaats daarvan succes; de bron neemt force-schade gelijk aan je theurge-niveau. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="source-spinner-spell-loom">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Loom</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Source Spinner</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Manipuleer magie in een klein gebied.</em></p>
+    <p>Actie: 1 minuut lang heel je bij het casten van spells, leid je single-target spells om die missen of waar je tegen save't, en krijg je tijdelijke Wonden. Eén keer per korte of lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Source Spinner</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#theurge">← Terug naar Theurge</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

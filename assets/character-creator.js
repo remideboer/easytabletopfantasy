@@ -7,6 +7,11 @@
   const ABILITIES = ["fit", "ins", "wil"];
   const ABILITY_LABELS = { fit: "Fitness", ins: "Insight", wil: "Willpower" };
 
+  function t(key, fallback) {
+    const pack = (window.ymiatAppStrings && window.ymiatAppStrings("creator")) || {};
+    return pack[key] != null && pack[key] !== "" ? pack[key] : fallback;
+  }
+
   let data = null;
   let stepIndex = 0;
 
@@ -95,8 +100,16 @@
     return "../".repeat(depth);
   }
 
+  function assetsPath() {
+    if (typeof window.ymiatGetAssetsPath === "function") {
+      return window.ymiatGetAssetsPath();
+    }
+    return rootPath();
+  }
+
   function rp(url) {
     if (!url || url.startsWith("http")) return url;
+    if (url.startsWith("assets/")) return assetsPath() + url;
     return rootPath() + url;
   }
 
@@ -252,21 +265,21 @@
     if (validateStep(step)) return "";
     switch (step.type) {
       case "concept":
-        return "Pick an archetype to continue.";
+        return t("pickArchetype", "Pick an archetype to continue.");
       case "class":
-        return "Select a class.";
+        return t("selectClass", "Select a class.");
       case "subclass":
-        return "Select a subclass.";
+        return t("selectSubclass", "Select a subclass.");
       case "abilities":
-        return "Complete ability assignment for your chosen method.";
+        return t("completeAbilities", "Complete ability assignment for your chosen method.");
       case "lineage":
-        return "Select a lineage.";
+        return t("selectLineage", "Select a lineage.");
       case "heritage":
-        return "Select a heritage.";
+        return t("selectHeritage", "Select a heritage.");
       case "background":
-        return "Select a background.";
+        return t("selectBackground", "Select a background.");
       default:
-        return "Complete this step to continue.";
+        return t("completeStep", "Complete this step to continue.");
     }
   }
 
@@ -311,26 +324,26 @@
     const subclassMin = range.subclassMin || 2;
 
     const rows = [
-      ["Name", state.name || "—"],
-      ["Level", String(state.level)],
-      ["Concept", arch ? arch.label : "—"],
-      ["Class", cls ? cls.name : "—"],
+      [t("labelName", "Name"), state.name || "—"],
+      [t("labelLevel", "Level"), String(state.level)],
+      [t("labelConcept", "Concept"), arch ? arch.label : "—"],
+      [t("labelClass", "Class"), cls ? cls.name : "—"],
       [
-        "Subclass",
+        t("labelSubclass", "Subclass"),
         state.level < subclassMin ? `— (level ${subclassMin}+)` : sub ? sub.name : "—",
       ],
       [
-        "Abilities",
+        t("labelAbilities", "Abilities"),
         ABILITIES.every((k) => state.abilities[k] !== null)
           ? ABILITIES.map((k) => `${ABILITY_LABELS[k].slice(0, 3)} ${fmtMod(state.abilities[k])}`).join(" · ")
           : "—",
       ],
-      ["Max Wounds", maxWd !== null ? String(maxWd) : "—"],
-      ["Lineage", lineage ? lineage.name : "—"],
-      ["Heritage", heritage ? heritage.name : "—"],
-      ["Background", bg ? bg.name : "—"],
+      [t("labelMaxWounds", "Max Wounds"), maxWd !== null ? String(maxWd) : "—"],
+      [t("labelLineage", "Lineage"), lineage ? lineage.name : "—"],
+      [t("labelHeritage", "Heritage"), heritage ? heritage.name : "—"],
+      [t("labelBackground", "Background"), bg ? bg.name : "—"],
       [
-        "Equipment",
+        t("labelEquipment", "Equipment"),
         data.equipmentMethods.find((m) => m.id === state.equipmentMethod)?.label || "—",
       ],
     ];
@@ -346,25 +359,25 @@
     if (cls) {
       const classFeats = featuresAtLevel(cls.abilities, state.level);
       if (classFeats.length) {
-        blocks.push(renderFeatureBlock("Class features", cls.name, classFeats));
+        blocks.push(renderFeatureBlock(t("classFeatures", "Class features"), cls.name, classFeats));
       }
     }
     if (state.level >= subclassMin && sub) {
       const subFeats = featuresAtLevel(sub.features, state.level);
       if (subFeats.length) {
-        blocks.push(renderFeatureBlock("Subclass features", sub.name, subFeats));
+        blocks.push(renderFeatureBlock(t("subclassFeatures", "Subclass features"), sub.name, subFeats));
       }
     }
     if (lineage?.features?.length) {
-      blocks.push(renderFeatureBlock("Lineage traits", lineage.name, lineage.features));
+      blocks.push(renderFeatureBlock(t("lineageTraits", "Lineage traits"), lineage.name, lineage.features));
     }
     if (heritage?.features?.length) {
-      blocks.push(renderFeatureBlock("Heritage traits", heritage.name, heritage.features));
+      blocks.push(renderFeatureBlock(t("heritageTraits", "Heritage traits"), heritage.name, heritage.features));
     }
     if (bg) {
       let bgHtml = "";
       if (bg.features?.length) {
-        bgHtml += renderFeatureBlock("Background traits", bg.name, bg.features);
+        bgHtml += renderFeatureBlock(t("backgroundTraits", "Background traits"), bg.name, bg.features);
       }
       if (bg.talentChoices?.length) {
         bgHtml += `<div class="cc-summary-block">
@@ -427,7 +440,7 @@
         const badgeHtml = badge ? badge(item) : "";
         const detailsToggle = hasLong
           ? `<button type="button" class="cc-card-details-toggle" data-card-details="${escapeHtml(item.id)}" aria-expanded="${expanded ? "true" : "false"}" aria-controls="cc-card-details-${escapeHtml(item.id)}">
-              ${expanded ? "Hide details" : "Show details"}
+              ${expanded ? t("hideDetails", "Hide details") : t("showDetails", "Show details")}
               <span class="cc-card-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>
             </button>`
           : "";
@@ -457,7 +470,7 @@
       el.detailPlaceholder.hidden = empty;
       el.detailPlaceholder.textContent = empty
         ? ""
-        : message || "Select an option to pin its summary here.";
+        : message || t("pinHint", "Select an option to pin its summary here.");
     }
     if (el.detailTitle) el.detailTitle.hidden = true;
     if (el.detailBody) el.detailBody.innerHTML = "";
@@ -541,7 +554,7 @@
         const card = btn.closest(".cc-card");
         const expanded = cardExpandedIds.has(id);
         btn.setAttribute("aria-expanded", expanded ? "true" : "false");
-        btn.innerHTML = `${expanded ? "Hide details" : "Show details"} <span class="cc-card-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`;
+        btn.innerHTML = `${expanded ? t("hideDetails", "Hide details") : t("showDetails", "Show details")} <span class="cc-card-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`;
         let panel = card.querySelector(".cc-card-details");
         if (!panel) {
           panel = document.createElement("div");
@@ -572,14 +585,14 @@
     el.body.innerHTML = `
       <div class="form-group">
         <label for="cc-name">Character name <span class="cc-optional">(optional)</span></label>
-        <input type="text" id="cc-name" class="cc-input" placeholder="Name your hero" value="${escapeHtml(state.name)}" maxlength="80" />
+        <input type="text" id="cc-name" class="cc-input" placeholder="${escapeHtml(t("namePlaceholder", "Name your hero"))}" value="${escapeHtml(state.name)}" maxlength="80" />
       </div>
       <fieldset class="cc-fieldset">
         <legend>Starting level</legend>
         <div class="cc-level-row">
-          <button type="button" class="cc-stepper-btn" id="cc-level-down" aria-label="Lower level" ${state.level <= range.min ? "disabled" : ""}>−</button>
+          <button type="button" class="cc-stepper-btn" id="cc-level-down" aria-label="${escapeHtml(t("lowerLevel", "Lower level"))}" ${state.level <= range.min ? "disabled" : ""}>−</button>
           <span class="cc-stepper-val" id="cc-level-val" aria-live="polite">${state.level}</span>
-          <button type="button" class="cc-stepper-btn" id="cc-level-up" aria-label="Raise level" ${state.level >= range.max ? "disabled" : ""}>+</button>
+          <button type="button" class="cc-stepper-btn" id="cc-level-up" aria-label="${escapeHtml(t("raiseLevel", "Raise level"))}" ${state.level >= range.max ? "disabled" : ""}>+</button>
         </div>
         <p class="cc-hint">Subclass choice unlocks at level ${range.subclassMin || 2}. Features in the summary update with level.</p>
       </fieldset>
@@ -599,7 +612,7 @@
       </fieldset>
       <div class="form-group">
         <label for="cc-notes">Concept notes</label>
-        <textarea id="cc-notes" class="cc-textarea" rows="3" placeholder="Motivation, personality, party role…">${escapeHtml(state.conceptNotes)}</textarea>
+        <textarea id="cc-notes" class="cc-textarea" rows="3" placeholder="${escapeHtml(t("notesPlaceholder", "Motivation, personality, party role…"))}">${escapeHtml(state.conceptNotes)}</textarea>
       </div>`;
 
     el.body.querySelector("#cc-name").addEventListener("input", (e) => {
@@ -836,8 +849,8 @@
         <p class="cc-hint">Finish opens your character sheet with this character filled in.</p>
       </div>
       <div class="cc-review-actions">
-        <button type="button" class="btn" id="cc-copy-summary">Copy summary</button>
-        <button type="button" class="btn cc-btn-secondary" id="cc-reset">Start over</button>
+        <button type="button" class="btn" id="cc-copy-summary">${escapeHtml(t("copySummary", "Copy summary"))}</button>
+        <button type="button" class="btn cc-btn-secondary" id="cc-reset">${escapeHtml(t("startOver", "Start over"))}</button>
       </div>
       <textarea class="cc-export" id="cc-export" readonly rows="8"></textarea>`;
 
@@ -847,9 +860,9 @@
     el.body.querySelector("#cc-copy-summary").addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(exportText);
-        el.body.querySelector("#cc-copy-summary").textContent = "Copied!";
+        el.body.querySelector("#cc-copy-summary").textContent = t("copied", "Copied!");
         setTimeout(() => {
-          el.body.querySelector("#cc-copy-summary").textContent = "Copy summary";
+          el.body.querySelector("#cc-copy-summary").textContent = t("copySummary", "Copy summary");
         }, 2000);
       } catch (_) {
         el.body.querySelector("#cc-export").select();
@@ -857,7 +870,7 @@
     });
 
     el.body.querySelector("#cc-reset").addEventListener("click", () => {
-      if (window.confirm("Clear this character draft and start over?")) {
+      if (window.confirm(t("clearConfirm", "Clear this character draft and start over?"))) {
         state = defaultState();
         stepIndex = 0;
         saveState();
@@ -963,7 +976,7 @@
     const step = currentStep();
     const valid = validateStep(step);
     el.btnBack.disabled = stepIndex === 0;
-    el.btnNext.textContent = stepIndex >= steps.length - 1 ? "Finish" : "Next";
+    el.btnNext.textContent = stepIndex >= steps.length - 1 ? t("finish", "Finish") : t("next", "Next");
     el.btnNext.disabled = !valid && step.type !== "review";
     el.btnNext.setAttribute("aria-describedby", valid ? "" : "cc-step-error");
   }

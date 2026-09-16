@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../character-creator.html" />
+<link rel="alternate" hreflang="nl" href="character-creator.html" />
+<link rel="alternate" hreflang="x-default" href="../character-creator.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personage-maker | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Stap-voor-stap personage maken voor You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="character-creator.html" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<script src="../assets/includes.js"></script>
+<meta property="og:title" content="Personage-maker | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Bouw een YMIAT-personage stap voor stap—class, eigenschappen, afkomst, erfenis, achtergrond en uitrusting." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="character-creator.html" />
+</head>
+<body class="cc-page">
+<header data-include="nav"></header>
+<main class="cc-main">
+  <div class="cc-hero">
+    <h1>Personage-maker</h1>
+    <p class="lede">Bouw stap voor stap een personage op niveau&nbsp;1—in dezelfde volgorde als het <a href="rules/characters.html#character-creation-overview">overzicht personage maken</a>. Opties werken mee naarmate je kiest.</p>
+  </div>
+
+  <div id="cc-loading" class="cc-loading" aria-live="polite">
+    <span class="cc-loading-spinner" aria-hidden="true"></span>
+    Personage-opties laden…
+  </div>
+
+  <div id="cc-app" class="cc-app" hidden>
+    <nav class="cc-progress" id="cc-progress" aria-label="Stappen"></nav>
+
+    <aside class="cc-summary cc-summary--bar" aria-labelledby="cc-summary-title">
+      <h2 id="cc-summary-title" class="cc-summary-title">Jouw personage</h2>
+      <dl class="cc-summary-list" id="cc-summary-list"></dl>
+      <div class="cc-summary-features" id="cc-summary-features" hidden></div>
+      <p class="cc-summary-hint">Concept wordt automatisch bewaard in deze browser.</p>
+    </aside>
+
+    <div class="cc-stage">
+      <section class="cc-options-pane" aria-label="Stapopties">
+        <div class="cc-step-body" id="cc-step-body"></div>
+      </section>
+
+      <aside class="cc-sidebar" id="cc-sidebar" aria-labelledby="cc-step-title">
+        <div class="cc-sidebar-step">
+          <p class="cc-step-kicker" id="cc-step-kicker"></p>
+          <h2 id="cc-step-title" tabindex="-1"></h2>
+          <p class="cc-step-desc" id="cc-step-desc"></p>
+          <a class="cc-rules-link" id="cc-rules-link" href="rules/characters.html">Volledige regels</a>
+        </div>
+
+        <div class="cc-sidebar-detail cc-detail-panel" id="cc-detail-panel" aria-labelledby="cc-detail-title">
+          <p class="cc-detail-placeholder" id="cc-detail-placeholder"></p>
+          <h3 class="cc-detail-title" id="cc-detail-title" hidden></h3>
+          <div class="cc-detail-body" id="cc-detail-body"></div>
+          <a class="cc-detail-link" id="cc-detail-link" href="#" target="_blank" rel="noopener" hidden>Open volledige regels</a>
+        </div>
+
+        <div class="cc-sidebar-nav">
+          <button type="button" class="btn cc-btn-secondary" id="cc-btn-back">Terug</button>
+          <button type="button" class="btn" id="cc-btn-next">Volgende</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="cc-error" class="cc-error" hidden role="alert">
+    <p>Kon personagegegevens niet laden. Vernieuw de pagina, of draai <code>python scripts/generate-character-creator-data.py</code> als je lokaal ontwikkelt.</p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../assets/i18n-apps.js"></script>
+<script src="../assets/character-creator.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

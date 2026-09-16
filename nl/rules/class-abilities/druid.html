@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/druid.html" />
+<link rel="alternate" hreflang="nl" href="druid.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/druid.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Druid-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Druid class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/druid.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Druid-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Druid vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#druid">← Terug naar Druid</a> · <a href="index.html#druid">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Druid abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#druidic">Druidic</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#natures-gift">Nature's Gift</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#wild-shape">Wild Shape</a> <span class="text-muted">(2e niveau en hoger)</span></li>
+<li><a href="#improved-beast-form">Improved Beast Form</a> <span class="text-muted">(3e niveau en hoger)</span></li>
+<li><a href="#natures-grace">Nature's Grace</a> <span class="text-muted">(8e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#leaf">Leaf</a></li>
+<li class="toc-sub toc-feature"><a href="#leaf-leaf-ring-spells">Leaf Ring Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#leaf-green-song">Green Song</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#leaf-wild-shape-sacred-grove">Wild Shape: Sacred Grove</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#leaf-take-root">Take Root</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#leaf-grove-warden">Grove Warden</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#leaf-heart-of-the-forest">Heart of the Forest</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#shifter">Shifter</a></li>
+<li class="toc-sub toc-feature"><a href="#shifter-potent-forms">Potent Forms</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-quick-shift">Quick Shift</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-shifter-ring-spells">Shifter Ring Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-beasts-fury">Beast's Fury</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-elemental-infusion">Elemental Infusion</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#shifter-manifold-mind">Manifold Mind</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#elementalist">Elementalist</a></li>
+<li class="toc-sub toc-feature"><a href="#elementalist-elemental-convergence">Elemental Convergence</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elementalist-elementalist-ring-spells">Elementalist Ring Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elementalist-wild-shape-elemental-conduit">Wild Shape: Elemental Conduit</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elementalist-elemental-deflection">Elemental Deflection</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elementalist-elemental-bulwark">Elemental Bulwark</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elementalist-elemental-flare">Elemental Flare</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#fey">Fey</a></li>
+<li class="toc-sub toc-feature"><a href="#fey-enchanting-presence">Enchanting Presence</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-fey-ring-spells">Fey Ring Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-wild-shape-seelie-spirit">Wild Shape: Seelie Spirit</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-mercurial-magic">Mercurial Magic</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-superior-seelie">Superior Seelie</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-archfeys-blessing">Archfey's Blessing</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#stoneheart">Stoneheart</a></li>
+<li class="toc-sub toc-feature"><a href="#stoneheart-stone-intuition">Stone Intuition</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stoneheart-stoneheart-ring-spells">Stoneheart Ring Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stoneheart-wild-shape-earthen-armor">Wild Shape: Earthen Armor</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stoneheart-stones-vengeance">Stone's Vengeance</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stoneheart-stone-sentinel">Stone Sentinel</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stoneheart-stone-heart">Stone Heart</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="druidic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Druidic</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Geheime taal van druids.</em></p>
+    <p>Je kent Druidic. Je kunt verborgen boodschappen achterlaten in natuurlijke elementen die alleen druids begrijpen. Anderen spotten de boodschap met een geslaagde Insight (Perception)-check maar kunnen die zonder magie niet ontcijferen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="natures-gift">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Nature's Gift</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Kanaliseer omgevingsenergie om te helen.</em></p>
+    <p>Als <strong>actie</strong> kies je één wezen binnen 5 voet (mag jezelf zijn). Rol een aantal d4s gelijk aan je behendigheidsbonus (minimaal 2d4). Dat wezen heelt Wonden gelijk aan het totaal. Geen effect op Constructs of Undead.</p>
+<p>Gebruiken per lange rust gelijk aan je behendigheidsbonus.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Prepared Primordial spells.</em></p>
+    <p>Als kanaal voor <strong>Primordial</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#druid">Druid</a>-progressietabel.</p>
+<p>Je prepareert spells vooraf. Je kunt een aantal spells prepareren gelijk aan je Insight (INS)-modifier + je druid-niveau (minimaal één). Wijzig je prepared lijst tijdens een lange rust.</p>
+<p><strong>Spellcasting ability:</strong> Insight (INS). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Insight (INS)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-shape">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wild Shape</h4>
+    <span class="spell-card-level">2e niveau en hoger</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Kanaliseer natuur voor beast forms en spellherstel.</em></p>
+    <p>Je kanaliseert natuur als <strong>vrije actie</strong> (Beast Form) of actie (Draw Power). Gebruiken per rust op je progressietabel.</p>
+<ul>
+<li><strong>Beast Form.</strong> Neem een bekende beast form aan. Zie <a href="druid.html#improved-beast-form">Improved Beast Form</a> voor CR-limieten per niveau.</li>
+<li><strong>Draw Power.</strong> Herstel één uitgegeven spellniveau tot je behendigheidsbonus. Niet bruikbaar terwijl getransformeerd.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="improved-beast-form">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improved Beast Form</h4>
+    <span class="spell-card-level">3e niveau en hoger</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Neem krachtigere beast forms aan.</em></p>
+    <p>Wanneer je beast forms leert, maximale CR per niveau:</p>
+<ul>
+<li><strong>3e:</strong> CR ¼</li>
+<li><strong>5e:</strong> CR ½</li>
+<li><strong>7e:</strong> CR 1</li>
+<li><strong>9e:</strong> CR 2</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="natures-grace">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Nature's Grace</h4>
+    <span class="spell-card-level">8e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Afstemming onderhoudt en beschermt je.</em></p>
+    <p>Je kunt niet magisch verouderen. Je hebt geen voedsel of water nodig. Je eigenschapsmodifiers en Max. wonden kunnen niet verlaagd worden behalve door <em>wish</em>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Rite of the Kingdom of Shaper.</em></p>
+    <p>Kies één:</p>
+<ul>
+<li><strong>Rite of the Kingdom.</strong> Communiceer basisideeën met Beasts; voordeel op tests om ze te beïnvloeden.</li>
+<li><strong>Rite of the Shaper.</strong> Wanneer gevecht begint zonder resterende Wild Shape-gebruiken, krijg je er één terug (één keer per lange rust).</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Onbeperkte wild shape; moeiteloze spellcasting.</em></p>
+    <p><strong>Archdruid.</strong> Wild Shape (Beast Form) heeft onbeperkte gebruiken. Je mag verbale en somatische componenten van Primordial spells negeren, en material components zonder vermelde kosten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een magic-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Magie-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="leaf">
+  <h3 class="subclass-name">Leaf</h3>
+  <p class="subclass-summary">Beschermer van groeiende dingen en vredige wildernis.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="leaf-leaf-ring-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Leaf Ring Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Leaf</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared leaf ring spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> barkskin, entangle, goodberry, spike growth</li><li><strong>Niveau 5:</strong> plant growth, speak with plants</li><li><strong>Niveau 7:</strong> blight, freedom of movement</li><li><strong>Niveau 9:</strong> greater hold, tree stride</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="leaf-green-song">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Green Song</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Leaf</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Spreek met planten; inspecteer flora als actie.</em></p>
+    <p>Als <strong>actie</strong> focus je op een nonmagical plant binnen 30 voet om te leren of die eetbaar of giftig is, diens typische omgeving en conditie. Plant-wezens begrijpen jouw spraak en jij de hunne.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="leaf-wild-shape-sacred-grove">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wild Shape: Sacred Grove</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Leaf</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Wild Shape creëert een magische pocket grove.</em></p>
+    <p>Geef Wild Shape uit als <strong>actie</strong> om 1 minuut een sacred grove met straal 10 voet te creëren (één tegelijk). Kies één eigenschap:</p>
+<ul>
+<li><strong>Tangle Weed:</strong> difficult terrain; reactie om movers te restrainen (Fitness-save vs spell-DC).</li>
+<li><strong>Tree Line:</strong> nadeel op aanvallen tegen wezens in de grove; reactie om één aanval tegen jou op vaste grond te onderscheppen (grove vernietigd).</li>
+<li><strong>Wildflowers:</strong> voordeel vs charmed/frightened; vrije actie om grove te vernietigen en conditions van één wezen te beëindigen — bondgenoten op vaste grond krijgen tijdelijke Wonden = PB.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="leaf-take-root">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Take Root</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Leaf</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Vrije actie: root jezelf; geef hit dice uit om te helen terwijl rooted.</em></p>
+    <p>Als <strong>vrije actie</strong> op vaste grond root je op je plek (snelheid 0, kan niet bewogen of prone gegooid worden) tot je beëindigt. Ben je rooted wanneer je beurt begint, geef dan één hit die uit om Wonden = rol + Fitness-modifier terug te krijgen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="leaf-grove-warden">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Grove Warden</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Leaf</span></div>
+  <div class="spell-card-description">
+<p><em>Sacred grove groeit tot 30 voet; kies wie immuun is.</em></p>
+    <p>Sacred Grove-straal wordt <strong>30 voet</strong>. Jij bepaalt of elke bondgenoot (inclusief jij) immuun is voor effecten die de grove oplegt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="leaf-heart-of-the-forest">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heart of the Forest</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Leaf</span></div>
+  <div class="spell-card-description">
+<p><em>Grove redt je bij 0 Wonden; acorn-wederopstanding als vernietigd.</em></p>
+    <p>Bij 0 Wonden in je sacred grove verdort de grove en krijg je Wonden terug gelijk aan je druid-niveau (één keer per lange rust). Is je lichaam vernietigd, blijft een eikel; onaangeroerd of geplant krijg je in 1d10 dagen een nieuw lichaam met volle Wonden.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="shifter">
+  <h3 class="subclass-name">Shifter</h3>
+  <p class="subclass-summary">Meester van beast forms en primordiale transformatie.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="shifter-potent-forms">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Potent Forms</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+<p><em>Hogere-CR beast forms; spreek terwijl getransformeerd.</em></p>
+    <p>Kies beast forms met CR tot 1 (schaalt met niveau via Improved Beast Form). Je gebruikt de Max. wonden van het wezen bij transformeren. Je kunt talen die je kent spreken in beast form maar nog steeds geen spells casten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-quick-shift">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Quick Shift</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Beast Form als vrije actie.</em></p>
+    <p>Wanneer je Beast Form gebruikt, kun je als <strong>vrije actie</strong> transformeren in plaats van als actie.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-shifter-ring-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Shifter Ring Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared shifter ring spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> alter self, animal friendship, speak with animals</li><li><strong>Niveau 5:</strong> conjure animals, water breathing</li><li><strong>Niveau 7:</strong> giant insect, polymorph</li><li><strong>Niveau 9:</strong> dominate, insect plague</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-beasts-fury">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Beast's Fury</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+<p><em>Extra natural attack na Attack-actie in beast form.</em></p>
+    <p>Nadat je in beast form de Attack-actie neemt, kun je je <strong>tweede actie</strong> (als je niet hebt bewogen) gebruiken om één natural weapon-aanval te maken voor <strong>1d6 + PB</strong> schade. Melee-schade in beast form telt als magisch.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-elemental-infusion">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Infusion</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+<p><em>Infuseer beast form met air-, earth-, fire- of water-kracht.</em></p>
+    <p>Geef twee Wild Shape-gebruiken uit om je beast form te infuseren met elemental power (Air, Earth, Fire of Water), met beweging, weerstand en een rechargeable actie volgens BFRD Shifter. Of geef één gebruik uit als reactie om infusion te wisselen terwijl getransformeerd.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="shifter-manifold-mind">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Manifold Mind</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shifter</span></div>
+  <div class="spell-card-description">
+<p><em>Cast spells in beast form.</em></p>
+    <p>Je kunt Primordial spells casten in beast form, verbale en somatische componenten normaal uitvoerend. Material components gelden nog.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://bfrd.net/classes/druid/druid-subclasses/shifter" rel="noopener">BFRD Shifter</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="elementalist">
+  <h3 class="subclass-name">Elementalist</h3>
+  <p class="subclass-summary">Beheers acid, cold, fire, lightning en thunder om de natuur te beschermen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="elementalist-elemental-convergence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Convergence</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elementalist</span></div>
+  <div class="spell-card-description">
+<p><em>Extra elemental cantrip; wissel schadedices tussen elemental types.</em></p>
+    <p>Leer één cantrip uit: <em>acid splash</em>, <em>electric jolt</em>, <em>firebolt</em>, <em>hoarfrost</em>, <em>ray of frost</em> of <em>shocking grasp</em>. Die telt als Primordial en niet mee voor cantrips known. Wissel bij lange rust. Wanneer je schade doet met zo'n cantrip, tel extra schade van diens type gelijk aan je <strong>PB</strong> op.</p>
+<p>Wanneer je acid-, cold-, fire-, lightning- of thunder-schade doet, kun je een willekeurig aantal schadedices wijzigen naar één van de andere genoemde types.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="elementalist-elementalist-ring-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elementalist Ring Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elementalist</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared elementalist ring spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> acid arrow, burning hands, shatter, thunderwave</li><li><strong>Niveau 5:</strong> call lightning, fireball</li><li><strong>Niveau 7:</strong> conjure minor elementals, elemental shield</li><li><strong>Niveau 9:</strong> cone of cold, conjure elemental</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="elementalist-wild-shape-elemental-conduit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wild Shape: Elemental Conduit</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elementalist</span><span><strong>Actie:</strong> vrije actie / reaction</span></div>
+  <div class="spell-card-description">
+<p><em>Wild Shape wordt een elemental conduit met reactieve krachten.</em></p>
+    <p>Als <strong>vrije actie</strong> geef je Wild Shape uit om 10 minuten een levende elemental conduit te worden (of tot beëindigd, incapacitated of dood).</p>
+<p>Als <strong>reactie</strong> terwijl actief, kies één:</p>
+<ul>
+<li><strong>Elemental Absorption:</strong> Wanneer je acid-, cold-, fire-, lightning- of thunder-schade neemt, word je resistant tot je volgende beurt (immuun als je al resistant was).</li>
+<li><strong>Elemental Empowerment:</strong> Wanneer je elemental schade doet, herrol schadedices tot je <strong>Willpower-modifier</strong> (minimaal 1).</li>
+<li><strong>Elemental Enervation:</strong> Wanneer een wezen binnen 30 voet slaagt op een save vs. elemental schade, dwing je het te herrollen.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="elementalist-elemental-deflection">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Deflection</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elementalist</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: geef een bondgenoot weerstand tegen inkomende elemental schade.</em></p>
+    <p>Als <strong>reactie</strong>, wanneer een vriendelijk wezen binnen 30 voet acid-, cold-, fire-, lightning- of thunder-schade neemt, wordt dat wezen resistant voor dat type (inclusief het triggerende effect) tot begin van diens volgende beurt. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="elementalist-elemental-bulwark">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Bulwark</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elementalist</span></div>
+  <div class="spell-card-description">
+<p><em>Elemental conduit geeft brede weerstanden en condition-immuniteit.</em></p>
+    <p>Tijdens Elemental Conduit heb je weerstand tegen acid, cold, fire, lightning en thunder, en immuniteit voor paralyzed, petrified, poisoned en unconscious.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="elementalist-elemental-flare">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Flare</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elementalist</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Vergeld met elemental schade; langere conduit met bewegingsmodes.</em></p>
+    <p>Als <strong>reactie</strong>, wanneer een wezen binnen 5 voet je raakt, neemt het acid-, cold-, fire-, lightning- of thunder-schade (jouw keuze) gelijk aan half je druid-niveau (naar beneden).</p>
+<p>Elemental Conduit duurt nu 1 uur. Terwijl actief krijg je burrowing-, flying- (hover) en swimming-snelheid gelijk aan je loopsnelheid.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Elementalist</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="fey">
+  <h3 class="subclass-name">Fey</h3>
+  <p class="subclass-summary">Roep seelie spirits op en hanteer grillige fey-magie.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="fey-enchanting-presence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enchanting Presence</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey</span></div>
+  <div class="spell-card-description">
+<p><em>Spreek Sylvan; gebruik Willpower voor sociale tests vs. fey.</em></p>
+    <p>Je kent Sylvan. Gebruik je <strong>Willpower-modifier</strong> in plaats van een andere eigenschap op Willpower-tests, en heb voordeel op Willpower-tests bij interactie met Fey.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-fey-ring-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fey Ring Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared fey ring spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> charm, disguise self, misty step, suggestion</li><li><strong>Niveau 5:</strong> conjure animals, major image</li><li><strong>Niveau 7:</strong> conjure woodland beings, dimension door</li><li><strong>Niveau 9:</strong> seeming, tree stride</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-wild-shape-seelie-spirit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wild Shape: Seelie Spirit</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Wild Shape roept een seizoens-fey-spirit op met spectrale effecten.</em></p>
+    <p>Als <strong>vrije actie</strong> geef je Wild Shape uit om een spectrale fey-spirit binnen 60 voet op te roepen (geen wezen; neemt geen ruimte in). Kies een seizoen (spring, summer, autumn, winter) volgens de Seelie Seasons-tabel. Beweeg die tot 30 voet en trigger diens effect als vrije actie op je beurt. Duurt 1 minuut of tot beëindigd, incapacitated, of je meer dan 120 voet vandaan eindigt.</p>
+<ul>
+<li><strong>Spring — Euphoric Perfume:</strong> Eén bondgenoot binnen 5 voet heeft voordeel op diens volgende save vóór jouw volgende beurt.</li>
+<li><strong>Summer — Fey Ferocity:</strong> Eén bondgenoot binnen 5 voet heeft voordeel op diens volgende aanval vóór jouw volgende beurt.</li>
+<li><strong>Autumn — Enchanting Distraction:</strong> Eén hostile binnen 5 voet heeft nadeel op diens volgende aanval vóór jouw volgende beurt.</li>
+<li><strong>Winter — Sorrowful Rebuke:</strong> Wanneer een gekozen bondgenoot binnen 5 voet schade neemt van een wezen binnen 10 voet, maakt die aanvaller een Fitness-save vs. je spell-DC of neemt cold-schade gelijk aan je PB.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-mercurial-magic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mercurial Magic</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Weerstand tegen charm/unconscious; reactie om saves vs. fey-effecten te helpen.</em></p>
+    <p>Je hebt weerstand tegen charmed en unconscious. Als <strong>reactie</strong>, wanneer een vriendelijk wezen binnen 60 voet (inclusief jij) een save maakt vs. charmed, frightened, poisoned, unconscious of een Fey-effect, geef je voordeel op die save. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-superior-seelie">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Superior Seelie</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey</span></div>
+  <div class="spell-card-description">
+<p><em>Seizoensgeesten krijgen sterkere effecten en langere duur.</em></p>
+    <p>Seelie Spirit-effectbereik stijgt naar 15 voet (20 voor Sorrowful Rebuke). Spirit duurt tot 10 minuten. Elk seizoen krijgt een tweede effect:</p>
+<ul>
+<li><strong>Spring's Vigor:</strong> Volgende treffer van doelwit geeft tijdelijke Wonden = PB.</li>
+<li><strong>Summer's Exuberance:</strong> +10 voet snelheid tot jouw volgende beurt.</li>
+<li><strong>Autumn's Charm:</strong> Hostile maakt WIL-save of is charmed tot jouw volgende beurt.</li>
+<li><strong>Winter's Grasp:</strong> Hostile maakt FIT-save of is restrained tot jouw volgende beurt.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-archfeys-blessing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Archfey's Blessing</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey</span></div>
+  <div class="spell-card-description">
+<p><em>Ageless fey-veerkracht; twin spirits met groter bereik.</em></p>
+    <p>Je kunt niet sterven van ouderdom. Immuun voor charmed en unconscious; weerstand tegen frightened en poisoned.</p>
+<p>Seelie Spirit-bereik wordt 30 voet (40 voor Sorrowful Rebuke), beweging 60 voet, en je kunt per gebruik <strong>twee spirits</strong> van verschillende seizoenen oproepen, beide besturend met één vrije actie.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Fey</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="stoneheart">
+  <h3 class="subclass-name">Stoneheart</h3>
+  <p class="subclass-summary">Wikkel je in earthen armor en sta als sentinel van de natuur.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="stoneheart-stone-intuition">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stone Intuition</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stoneheart</span></div>
+  <div class="spell-card-description">
+<p><em>Versterkte shillelagh; voordeel bij steen- en metaalwerk herkennen.</em></p>
+    <p>Leer <em>shillelagh</em> als je die niet kent. Je <em>shillelagh</em>-club of -quarterstaff wordt steen (niet brandbaar, licht als hout). Je kunt een kubus van 1 voet steen of aarde vormen tot club of quarterstaff.</p>
+<p>Voordeel op tests om oorsprong of doel van metalen of stenen objecten en structuren te bepalen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="stoneheart-stoneheart-ring-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stoneheart Ring Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stoneheart</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared stoneheart ring spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> boulder toss, circle of stones, entangle, shield of faith</li><li><strong>Niveau 5:</strong> elemental fusion (alleen earth), meld into stone</li><li><strong>Niveau 7:</strong> stone shape, stoneskin</li><li><strong>Niveau 9:</strong> conjure elemental (alleen earth), wall of stone</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="stoneheart-wild-shape-earthen-armor">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wild Shape: Earthen Armor</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stoneheart</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Wild Shape wikkelt je in beschermende earth armor.</em></p>
+    <p>Als <strong>vrije actie</strong> zonder pantser geef je Wild Shape uit om uren gelijk aan je PB earthen armor aan te trekken (of tot je een ander gebruik uitgeeft).</p>
+<ul>
+<li><em>Shillelagh</em>-schadedobbelsteen wordt <strong>d10</strong>.</li>
+<li>Burrowing-snelheid gelijk aan loopsnelheid.</li>
+<li>Tremorsense 10 voet.</li>
+<li>AC = 13 + Willpower-modifier.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="stoneheart-stones-vengeance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stone's Vengeance</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stoneheart</span></div>
+  <div class="spell-card-description">
+<p><em>Twee aanvallen; earth pillars leggen nadeel op bondgenoot-aanvallen.</em></p>
+    <p>Wanneer je de Attack-actie neemt, maak je <strong>twee aanvallen</strong>.</p>
+<p>Wanneer een vriendelijk wezen binnen 30 voet op de grond aangevallen wordt, roep je een pillar op om nadeel op de aanval te leggen. Raakt die toch, dan neemt de aanvaller bludgeoning-schade gelijk aan je druid-niveau. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="stoneheart-stone-sentinel">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stone Sentinel</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stoneheart</span></div>
+  <div class="spell-card-description">
+<p><em>Verbeterde earthen armor: d12 shillelagh, AC 15 + WIL, stille burrowing.</em></p>
+    <p>Terwijl Earthen Armor actief is:</p>
+<ul>
+<li><em>Shillelagh</em>-schadedobbelsteen wordt <strong>d12</strong>.</li>
+<li>Dubbele schade aan objecten/structuren met metalen of stenen wapens.</li>
+<li>Burrowing verstoort materiaal niet.</li>
+<li>AC = 15 + Willpower-modifier.</li>
+<li>Tremorsense 20 voet.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="stoneheart-stone-heart">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stone Heart</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stoneheart</span></div>
+  <div class="spell-card-description">
+<p><em>Weerstand tegen acid en bludgeoning; immuun in armor met tijdelijke Wonden per beurt.</em></p>
+    <p>Weerstand tegen acid en bludgeoning. Terwijl Earthen Armor actief is, in plaats daarvan immuun voor die types en krijg je tijdelijke Wonden gelijk aan je PB aan het begin van elke beurt.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Stoneheart</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#druid">← Terug naar Druid</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

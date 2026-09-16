@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/barbarian.html" />
+<link rel="alternate" hreflang="nl" href="barbarian.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/barbarian.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Barbarian-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Barbarian class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/barbarian.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Barbarian-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Barbarian vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#barbarian">← Terug naar Barbarian</a> · <a href="index.html#barbarian">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Barbarian abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#rage">Rage</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#unarmored-defense">Unarmored Defense</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#danger-sense">Danger Sense</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#reckless-attack">Reckless Attack</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#fast-movement">Fast Movement</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#feral-instinct">Feral Instinct</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#brutal-critical">Brutal Critical</a> <span class="text-muted">(5e, 7e en 9e niveau)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#relentless-rage">Relentless Rage</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#unyielding-might">Unyielding Might</a> <span class="text-muted">(9e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#berserker">Berserker</a></li>
+<li class="toc-sub toc-feature"><a href="#berserker-frenzy">Frenzy</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-ruthless-bearing">Ruthless Bearing</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-mindless-rage">Mindless Rage</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-intimidating-presence">Intimidating Presence</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#berserker-retaliation">Retaliation</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#wild-fury">Wild Fury</a></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-animal-focus">Animal Focus</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-deepening-focus">Deepening Focus</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-primal-synthesis">Primal Synthesis</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#wild-fury-apex-predator">Apex Predator</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#chaos">Chaos</a></li>
+<li class="toc-sub toc-feature"><a href="#chaos-chaos-conduit">Chaos Conduit</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-random-polymath">Random Polymath</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-invoke-entropy">Invoke Entropy</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-mayhem-shield">Mayhem Shield</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-cry-havoc">Cry Havoc</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#four-winds">Four Winds</a></li>
+<li class="toc-sub toc-feature"><a href="#four-winds-implacable-presence">Implacable Presence</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#four-winds-winds-of-wrath">Winds of Wrath</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#four-winds-cyclonic-ward">Cyclonic Ward</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#four-winds-howling-charge">Howling Charge</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#four-winds-raging-storm">Raging Storm</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#kraken">Kraken</a></li>
+<li class="toc-sub toc-feature"><a href="#kraken-deep-vision">Deep Vision</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#kraken-krakens-grasp">Kraken's Grasp</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#kraken-ink-cloud">Ink Cloud</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#kraken-titan-grip">Titan Grip</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#kraken-tentacle-fling">Tentacle Fling</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#kraken-leviathan-wakes">Leviathan Wakes</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="rage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Rage</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Oeroude woede als vrije actie; bonusschade en fysieke veerkracht.</em></p>
+    <p>In gevecht vecht je met oeroude ferociteit. Op je beurt kun je als <strong>vrije actie in rage gaan</strong>.</p>
+<p>Tijdens rage (en zonder zwaar pantser):</p>
+<ul>
+<li>Je hebt voordeel op <strong>Fitness</strong>-eigenschapstests en -saves.</li>
+<li>Wanneer je een melee-wapenaanval met Fitness maakt, krijg je bonusschade volgens de kolom <strong>Rage +</strong> op je progressietabel.</li>
+<li>Je hebt weerstand tegen bludgeoning-, piercing- en slashing-schade — aanvallers hebben <strong>nadeel</strong> op die schaderollen tegen jou.</li>
+</ul>
+<p>Je kunt geen spells casten of concentreren tijdens rage.</p>
+<p>Je rage duurt 1 minuut. Die eindigt vroegtijdig als je bewusteloos raakt, of als je beurt eindigt en je sinds het begin van je vorige beurt geen vijandig wezen hebt aangevallen of er schade van hebt opgelopen. Je kunt rage vroegtijdig beëindigen als vrije actie.</p>
+<p>Gebruiken per lange rust: zie de kolom <strong>Rages</strong> op je progressietabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="unarmored-defense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unarmored Defense</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Hoge AC zonder pantser dankzij rauwe hardheid.</em></p>
+    <p>Zolang je geen pantser draagt, is je basis Armor Class <strong>10 + 2 × je Fitness-modifier</strong>. Je mag een schild gebruiken en dit voordeel behouden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="danger-sense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Danger Sense</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Voordeel op Fitness-saves tegen onzichtbaar gevaar.</em></p>
+    <p>Je krijgt een onheimelijk gevoel wanneer iets niet klopt. Je hebt <strong>voordeel op Fitness-saves</strong>, tenzij je de Incapacitated-conditie hebt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="reckless-attack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Reckless Attack</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ruil verdediging in voor woeste precisie.</em></p>
+    <p>Wanneer je op je beurt een aanval maakt, kun je <strong>recklessly</strong> aanvallen. Je hebt voordeel op melee-wapenaanvalsworpen met Fitness tijdens deze beurt, maar je hebt <strong>nadeel op je Verdediging-worp</strong> tot het begin van je volgende beurt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fast-movement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fast Movement</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Extra snelheid en openingsherpositionering.</em></p>
+    <p>Je snelheid stijgt met <strong>10 voet</strong> zolang je geen zwaar pantser draagt. Wanneer gevecht begint en je niet verrast bent, kun je tot de helft van je snelheid bewegen vóór er beurten worden genomen. Deze beweging gebruikt niet je beweging op je beurt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Twee aanvallen met de Attack-actie.</em></p>
+    <p>Je fysieke kracht is gegroeid. Op je beurt kun je tot <strong>twee</strong> aanvallen maken wanneer je de Attack-actie neemt.</p>
+<p>In YMIAT veroorzaakt elke succesvolle wapenaanval doorgaans <strong>1 Wond</strong> (2 bij een critical hit). Wapenbonussen gelden voor raken, niet voor het aantal Wonden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="feral-instinct">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Feral Instinct</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ferociteit in de eerste beurt en immuniteit voor verrassing tijdens rage.</em></p>
+    <p>In de eerste beurt van elk gevecht heb je <strong>voordeel op melee-wapenaanvalsworpen</strong> (circumstantieel voordeel; je telt PB nog steeds op als je behendig bent met het wapen).</p>
+<p>Als je aan het begin van gevecht verrast bent en niet incapacitated, kun je op je eerste beurt normaal handelen als je eerst in rage gaat vóór je iets anders doet die beurt.</p>
+<p>Met de <a href="../combat.html#combat-order">initiative-variant</a> heb je voordeel op initiative-rollen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="brutal-critical">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Brutal Critical</h4>
+    <span class="spell-card-level">5e, 7e en 9e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ruimer critical-bereik en extra critical damage dice.</em></p>
+    <p>Je scoort een critical hit op een d20-resultaat van <strong>19 of 20</strong> met melee-wapens en ongewapende aanvallen.</p>
+<p>Je rolt ook extra wapen-schadedices bij melee critical hits:</p>
+<ul>
+<li><strong>5e niveau:</strong> 1 extra dobbelsteen</li>
+<li><strong>7e niveau:</strong> 2 extra dobbelstenen</li>
+<li><strong>9e niveau:</strong> 3 extra dobbelstenen</li>
+</ul>
+<p>Bij een critical hit in YMIAT veroorzaakt de aanval <strong>2 Wonden</strong> vóór je extra dobbelstenen toepast (exploding 20s gelden nog steeds).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Kies een krachtige boon die je rage versterkt.</em></p>
+    <p>Kies één heroic boon:</p>
+<ul>
+<li><strong>Instant Rage.</strong> Wanneer gevecht begint en je de openingsbeweging van Fast Movement gebruikt, kun je in rage gaan zonder een vrije actie te spenderen als je nog een Rage-gebruik over hebt.</li>
+<li><strong>Stubborn Rage.</strong> Je rage eindigt alleen wanneer de duur afloopt, je bewusteloos raakt, of je ervoor kiest die te beëindigen.</li>
+<li><strong>Bloody Rage.</strong> Tijdens rage negeert slashing-schade van je wapenaanvallen weerstand.</li>
+<li><strong>Vengeful Rage.</strong> Wanneer een vijandig wezen je schade toebrengt terwijl je in rage bent, heb je stapelend voordeel op de eerste aanval die je op je volgende beurt tegen dat wezen maakt.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="relentless-rage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Relentless Rage</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Blijf bij bewustzijn tijdens rage op Max. wonden.</em></p>
+    <p>Tijdens rage, als je Wonden je Max. wonden bereiken, kun je een <strong>DC 10 Fitness-save</strong> maken. Bij succes raak je niet bewusteloos tot je rage eindigt. Je maakt nog steeds <a href="../combat.html#life-and-death-saves">death saves</a> zoals normaal.</p>
+<p>Elke keer dat je dit vermogen na de eerste keer gebruikt, stijgt de DC met 5. De DC reset wanneer je een korte of lange rust afrondt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="unyielding-might">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unyielding Might</h4>
+    <span class="spell-card-level">9e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Betrouwbare Fitness en verwoestende slagen tegen voorwerpen.</em></p>
+    <p>Wanneer je een eigenschapstest of save met Fitness maakt, behandel je elk d20-resultaat van 9 of lager als een 10.</p>
+<p>Je melee-wapenaanvallen doen extra schade gelijk aan je <strong>Fitness-score</strong> (niet de modifier) tegen objecten en structuren.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Belichaam ongetemde kracht.</em></p>
+    <p><strong>Primal Champion.</strong> Je Fitness-modifier stijgt met <strong>2</strong>. Je maximum Fitness-modifier is nu <strong>+7</strong>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een martiaal talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Martiale talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="berserker">
+  <h3 class="subclass-name">Berserker</h3>
+  <p class="subclass-summary">Oeroude bloeddorst drijft je rage tot een verwoestende frenzy.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="berserker-frenzy">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Frenzy</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span><span><strong>Actie:</strong> vrije actie (with Rage)</span></div>
+  <div class="spell-card-description">
+<p><em>Optionele frenzy bij rage; extra melee-aanval tijdens frenzy.</em></p>
+    <p>Wanneer je in rage gaat, kun je als onderdeel van dezelfde vrije actie een <strong>frenzy</strong> beginnen.</p>
+<p>Tijdens frenzy kun je één keer per beurt <strong>één extra melee-wapenaanval als je tweede actie</strong> maken (je mag deze beurt niet hebben bewogen, volgens de YMIAT-regels voor een tweede actie).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-ruthless-bearing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ruthless Bearing</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span></div>
+  <div class="spell-card-description">
+<p><em>Behendigheid in Intimidation; Expertise als je die al hebt.</em></p>
+    <p>Je krijgt behendigheid in de skill <strong>Intimidation</strong>. Als je die al hebt, krijg je in plaats daarvan Expertise: tel <strong>+2×PB</strong> op bij Intimidation-tests.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-mindless-rage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mindless Rage</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span></div>
+  <div class="spell-card-description">
+<p><em>Negeer exhaustion tijdens rage; immuun voor charm en frighten; tijdelijke Wonden bij crit of kill tijdens frenzy.</em></p>
+    <p>Tijdens rage krijg je de volgende voordelen:</p>
+<ul>
+<li>Je negeert alle niveaus van exhaustion voor de duur van je rage.</li>
+<li>Je kunt niet charmed of frightened zijn tijdens rage. Ben je al charmed of frightened wanneer je in rage gaat, dan wordt het effect opgeschort voor de duur.</li>
+<li>Tijdens een frenzy, als je een critical hit scoort of een wezen tot 0 Wonden reduceert, krijg je tijdelijke Wonden gelijk aan je <strong>PB + je Fitness-modifier</strong>. Die blijven tot ze opgebruikt zijn of tot je een korte of lange rust afrondt.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-intimidating-presence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Intimidating Presence</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Bonusschade tegen frightened vijanden; vrije actie om nabije wezens te frightenen.</em></p>
+    <p>Je wapenaanvallen doen extra schade gelijk aan je <strong>PB</strong> (zelfde schadetype als het wapen) tegen frightened wezens.</p>
+<p>Als <strong>vrije actie</strong> kun je tot <strong>PB</strong> wezens binnen 30 voet die je kunnen zien of horen proberen te frightenen. Elk doelwit maakt een <strong>Insight-save</strong> (DC 8 + PB + Willpower-modifier + tijdelijke Wonden van Mindless Rage). Bij falen is een wezen frightened van jou tot het einde van je volgende beurt.</p>
+<p>Op volgende beurten kun je als vrije actie het effect op elk frightened wezen verlengen tot het einde van je volgende beurt. Het effect eindigt als het wezen zijn beurt eindigt meer dan 60 voet van je vandaan, of je niet meer kan zien of horen. Bij een geslaagde save kun je dit vermogen 24 uur niet opnieuw op dat wezen gebruiken.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="berserker-retaliation">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Retaliation</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Berserker</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: nader de aanvaller en sla terug.</em></p>
+    <p>Wanneer een wezen je raakt of mist met een aanval, kun je je <strong>reactie</strong> gebruiken om tot de helft van je snelheid naar dat wezen te bewegen en één melee-aanval ertegen te maken. Is het wezen Large of groter, dan heb je voordeel op de aanvalsworp.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://bfrd.net/classes/barbarian/barbarian-subclasses/" rel="noopener">BFRD Berserker</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="wild-fury">
+  <h3 class="subclass-name">Wild Fury</h3>
+  <p class="subclass-summary">Diergeesten sturen je rage — kies op elk subclass-niveau een dierfocus.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="wild-fury-animal-focus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Animal Focus</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+<p><em>Kies je eerste animal focus (2e niveau in YMIAT).</em></p>
+    <p>Op <strong>2e niveau</strong> kies je een <strong>animal focus</strong> die bepaalt hoe je rage zich uit. Je kiest nog een focus op 4e, 6e en 8e niveau.</p>
+<p>Opties zijn onder meer: Alligator, Bear, Tiger, Toad, Hawk, Lizard, Turtle, Wolf, Crane, Ram, Shark en Snake. Elke focus geeft een thematisch voordeel tijdens rage (beweging, zintuigen, schadetype of verdediging). Werk met je GM om de BFRD Wild Fury-focusregels aan te passen aan YMIAT.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-fury-deepening-focus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Deepening Focus</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+<p><em>Tweede animal focus (4e niveau in YMIAT).</em></p>
+    <p>Kies een tweede animal focus. De voordelen stapelen met je eerste tijdens rage.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-fury-primal-synthesis">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Primal Synthesis</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+<p><em>Derde animal focus (6e niveau in YMIAT).</em></p>
+    <p>Kies een derde animal focus. Wanneer je in rage gaat, kun je één keer per rage twee actieve focuses combineren tot één versterkt effect.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="wild-fury-apex-predator">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Apex Predator</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Wild Fury</span></div>
+  <div class="spell-card-description">
+<p><em>Vierde animal focus (8e niveau in YMIAT).</em></p>
+    <p>Kies een vierde animal focus. Tijdens rage kun je tot de helft van je snelheid bewegen wanneer je in rage gaat. Eén keer per gevecht: als je op je eerste beurt in rage gaat, doet je eerste succesvolle melee-aanval die beurt <strong>2 Wonden</strong> in plaats van 1 (tenzij het al een critical hit is).</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="chaos">
+  <h3 class="subclass-name">Chaos</h3>
+  <p class="subclass-summary">Entropische woede vervormt het slagveld rond je rage.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="chaos-chaos-conduit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Chaos Conduit</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>Chaos Dice versterken melee-treffers met willekeurige banes tijdens rage.</em></p>
+    <p>Tijdens rage, wanneer je raakt met een melee-aanval, kun je één <strong>Chaos Die</strong> (d10) uitgeven. Je hebt Chaos Dice gelijk aan <strong>PB + 1</strong> (minimaal 3), teruggekregen bij een korte of lange rust.</p>
+<p>Rol de dobbelsteen: het doelwit neemt extra force-schade gelijk aan het resultaat en krijgt een <strong>Chaos Bane</strong> naar keuze:</p>
+<ul>
+<li><strong>Enervate:</strong> Insight-save of nadeel op zijn volgende aanval vóór het einde van zijn volgende beurt.</li>
+<li><strong>Impede:</strong> Insight-save of het kan tot het begin van zijn volgende beurt geen reacties nemen.</li>
+<li><strong>Martyr:</strong> Rol de dobbelsteen opnieuw; doelwit en jij nemen elk force-schade gelijk aan die rol (kan niet verlaagd worden door jouw weerstanden).</li>
+<li><strong>Shunt:</strong> Fitness-save of teleport tot 30 voet naar een onbezette ruimte die je kunt zien.</li>
+</ul>
+<p>Bane-save-DC = 8 + PB + Fitness-modifier (jij kiest Fitness voor de modifier).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-random-polymath">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Random Polymath</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>Willekeurige skill-behendigheid (of dubbele PB) na elke lange rust.</em></p>
+    <p>Wanneer je een lange rust afrondt, rol je d20 op de Random Skill-tabel. Je krijgt behendigheid in die skill tot je volgende lange rust. Heb je die al, tel dan in plaats daarvan dubbele PB op bij tests met die skill.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-invoke-entropy">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Invoke Entropy</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: dwing een nabij wezen een test opnieuw te rollen.</em></p>
+    <p>Als <strong>reactie</strong>, wanneer jij of een wezen dat je binnen 30 voet kunt zien een eigenschapstest slaagt of faalt, dwing je dat wezen opnieuw te rollen en het nieuwe resultaat te gebruiken. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-mayhem-shield">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mayhem Shield</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>Geef Chaos Dice uit om inkomende schade te verlagen; 1en en 10en triggeren extra effecten.</em></p>
+    <p>Wanneer een wezen je raakt met een aanval, geef je één of meer Chaos Dice uit en verlaag je de schade met het totaal van de rollen. Voor elke gerolde <strong>1</strong> krijg je uitgegeven Chaos Dice terug tot je maximum. Voor elke gerolde <strong>10</strong> neemt de aanvaller force-schade gelijk aan het totaal van je uitgegeven dobbelstenen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-cry-havoc">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cry Havoc</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>Krijg een Chaos Die terug en voordeel op je eerste aanval wanneer je leeg bent.</em></p>
+    <p>Als je je beurt begint zonder overgebleven Chaos Dice, krijg je automatisch één dobbelsteen terug en heb je voordeel op de eerste aanvalsworp die je vóór het einde van je beurt maakt.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="four-winds">
+  <h3 class="subclass-name">Four Winds</h3>
+  <p class="subclass-summary">Elementaire winden versterken je beweging en aanvallen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="four-winds-implacable-presence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Implacable Presence</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Four Winds</span></div>
+  <div class="spell-card-description">
+<p><em>Behendigheid in Acrobatics of dubbele PB op Acrobatics-tests.</em></p>
+    <p>Je krijgt behendigheid in <strong>Acrobatics</strong>. Heb je die al, tel dan in plaats daarvan dubbele PB op bij Acrobatics-tests.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="four-winds-winds-of-wrath">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Winds of Wrath</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Four Winds</span></div>
+  <div class="spell-card-description">
+<p><em>Rage geeft windbescherming, thunder-sprongen of reckless geworpen wapens.</em></p>
+    <p>Wanneer je in rage gaat, omringen wervelwinden je. Zolang je in rage en bij bewustzijn bent, kun je niet prone worden gegooid en land je na een val altijd op je voeten.</p>
+<p>Wanneer je voor het eerst in rage gaat, kies je één voordeel voor de duur:</p>
+<ul>
+<li><strong>Buffeting winds:</strong> licht obscured; ranged-aanvallen tegen jou met nadeel; weerstand tegen lightning en thunder.</li>
+<li><strong>Thunder leap:</strong> als je 10+ voet naar een vijand springt en in dezelfde beurt met melee raakt, tel 1d6 thunder per 10 voet afgelegd (max. 10d6). Bij thunder-schade: Fitness-save (DC = toegebrachte schade) of prone.</li>
+<li><strong>Thrown wrath:</strong> Reckless Attack met geworpen wapens met Fitness; geworpen bereik verdubbeld; dubbele rage-schadebonus op de worp.</li>
+</ul>
+<p>Wanneer je in rage gaat, kun je een extra Rage-gebruik uitgeven om een tweede optie te nemen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="four-winds-cyclonic-ward">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cyclonic Ward</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Four Winds</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Verlaag valschade; reactie om bondgenoten te beschermen en te herpositioneren.</em></p>
+    <p>Verlaag valschade met tweemaal je barbarian-niveau (na de halvering door rage tijdens rage).</p>
+<p>Tijdens rage, als <strong>reactie</strong> wanneer jij of een bondgenoot binnen 30 voet schade neemt, verlaag je die schade met je barbarian-niveau en verplaats je de bondgenoot tot 10 voet (als die dat wil).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="four-winds-howling-charge">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Howling Charge</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Four Winds</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Vrije actie Dash; negeer difficult terrain en paralysis/restraint tot je volgende beurt.</em></p>
+    <p>Als <strong>vrije actie</strong> neem je de Dash-actie. Tot het begin van je volgende beurt negeer je difficult terrain en kun je niet paralyzed of restrained zijn.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="four-winds-raging-storm">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Raging Storm</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Four Winds</span></div>
+  <div class="spell-card-description">
+<p><em>Thunder-aura bij treffers; cyclonische vergelding en lightning-worpen.</em></p>
+    <p>Tijdens rage:</p>
+<ul>
+<li>Elke melee- of ongewapende treffer doet 1d6 thunder aan het doelwit en elk vijandig wezen binnen 10 voet.</li>
+<li>Wanneer je Cyclonic Ward gebruikt tegen een melee-aanval, maakt de aanvaller een Fitness-save (DC 8 + PB + Fitness) of neemt 4d6 thunder (helft bij succes). Falen met 5+ = deafened 1 minuut.</li>
+<li>Eerste geworpen-wapentreffer (Fitness) per beurt: doelwit en wezens binnen 10 voet nemen 3d6 lightning.</li>
+</ul>
+<p>Thunder van Raging Storm is hoorbaar tot 300 voet.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="kraken">
+  <h3 class="subclass-name">Kraken</h3>
+  <p class="subclass-summary">Verpletterende tentakelkracht en abyssale veerkracht.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="kraken-deep-vision">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Deep Vision</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Kraken</span></div>
+  <div class="spell-card-description">
+<p><em>Zwemsnelheid, waterademhaling, versterkte darkvision onder water.</em></p>
+    <p>Je krijgt een zwemsnelheid gelijk aan je loopsnelheid en kunt onder water ademen. Onder water krijg je darkvision 60 voet (of +30 voet als je al darkvision hebt).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="kraken-krakens-grasp">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Kraken's Grasp</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Kraken</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Spectrale tentakels tijdens rage: grapple, schade schaalt d4→d10.</em></p>
+    <p>Wanneer je in rage gaat, groeien twee spectrale tentakels (bereik 10 voet, behendige melee-wapens). Als <strong>vrije actie</strong> wanneer je in rage gaat (of later op je beurt) maak je tot twee tentakelaanvallen (één per tentakel). Bij treffer: force-schade = tentakel-dobbelsteen + Fitness-modifier; doelwitten van Large of kleiner zijn grappled (ontsnap-DC 8 + PB + Fitness). Een tentakel die grappled houdt, kan alleen zijn grappled doelwit aanvallen.</p>
+<p>Tentakelschade-dobbelsteen schaalt: <strong>d4</strong> (2e), <strong>d6</strong> (4e), <strong>d8</strong> (6e), <strong>d10</strong> (8e). Tentakels kunnen objecten tillen tot Fitness × PB pond en eenvoudige taken uitvoeren (geen wapens hanteren of tools gebruiken).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="kraken-ink-cloud">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ink Cloud</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Kraken</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Vrije actie: inktwolk die jij wel kunt zien.</em></p>
+    <p>Als <strong>vrije actie</strong> creëer je een stationaire bol met straal 20 voet, zwaar obscured, gecentreerd op jou. Jij ziet er normaal in. Duurt 1 minuut of tot je die beëindigt. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="kraken-titan-grip">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Titan Grip</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Kraken</span></div>
+  <div class="spell-card-description">
+<p><em>Grappled vijanden zijn restrained; tentakels kunnen Attack-actie-aanvallen vervangen.</em></p>
+    <p>Wezens die door je tentakels grappled zijn, zijn <strong>restrained</strong> tot de grapple eindigt. Wanneer je de Attack-actie neemt, kun je tentakels gebruiken voor een willekeurig aantal van je aanvallen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="kraken-tentacle-fling">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Tentacle Fling</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Kraken</span></div>
+  <div class="spell-card-description">
+<p><em>Gooi grappled vijanden tot 30 voet voor valschade.</em></p>
+    <p>Wanneer je de Attack-actie neemt, kun je één of meer aanvallen gebruiken om een door een tentakel grappled wezen tot 30 voet te gooien. Het landt prone; bludgeoning-schade 1d6 per 10 voet gegooid (ook aan een geraakt wezen bij gefaalde Fitness-save, DC 8 + PB + Fitness).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="kraken-leviathan-wakes">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Leviathan Wakes</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Kraken</span></div>
+  <div class="spell-card-description">
+<p><em>+10 voet tentakelbereik; één extra tentakelaanval per vrije actie.</em></p>
+    <p>Tentakelbereik stijgt met 10 voet. Elke keer dat je een vrije actie voor tentakelaanvallen gebruikt, kun je als onderdeel van diezelfde vrije actie <strong>één extra</strong> tentakelaanval maken.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#barbarian">← Terug naar Barbarian</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/classless.html" />
+<link rel="alternate" hreflang="nl" href="classless.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/classless.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classless (optionele variant) | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Optionele classless-variant voor You-Meet-In-A-Tavern (YMIAT): train vermogens met XP in plaats van een class, met een zilverstandaard-economie." />
+<link rel="canonical" href="rules/classless.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+<meta property="og:title" content="Classless (optionele variant) | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Optionele classless-variant voor You-Meet-In-A-Tavern (YMIAT): train vermogens met XP in plaats van een class, met een zilverstandaard-economie." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/classless.html" />
+
+</head>
+<body>
+<header data-include="nav"></header>
+<main><h1>Classless (optionele variant)</h1>
+<div class="layout">
+  <aside class="toc">
+    <h2>Op deze pagina</h2>
+    <div data-toc></div>
+  </aside>
+  <div class="content">
+  <p class="lede">Classless is een optionele variant van <strong>You-Meet-In-A-Tavern</strong> (YMIAT) zonder class-chassis. In plaats van een class te kiezen en vermogens per niveau te ontgrendelen, besteed je XP om individuele vermogens uit een gedeelde pool te trainen, in je eigen tempo. Verder werkt YMIAT — de drie eigenschappen, Wonden en Verdediging, Afkomst, Erfenis, Achtergrond, Talenten en Magie — precies zoals elders in de regels beschreven, tenzij deze pagina anders zegt.</p>
+  <p class="btnrow"><a class="btn" href="../../classless-character-sheet.html">Open Classless Personageblad</a></p>
+
+  <div class="callout note">
+    <p class="callout-title">Gebruik deze pagina in plaats van Classes</p>
+    <p>Classless vervangt <a href="classes.html">Classes</a> als personage-chassis. Waar elders in de regels staat "your class determines…", lees dat voor een Classless-personage als "your trained abilities determine…". Dit is een Game Master-optie — spreek het af met je tafel vóór personagecreatie.</p>
+  </div>
+
+  <hr>
+  <h2 id="what-changes">Wat verandert</h2>
+  <ul>
+    <li><strong>Geen classes.</strong> Sla de stap "Kies een Class" volledig over. Geen classlijst, geen per-class-behendigheden en geen vaste spellcasting-eigenschap gekoppeld aan een class.</li>
+    <li><strong>Max. wonden groeien via training, niet via niveaus.</strong> Elk Classless-personage start vanuit dezelfde vlakke basis in plaats van een class-startwaarde, en krijgt extra Max. wonden door <a href="#toughness">Toughness</a> te trainen in plaats van automatisch per personageniveau; zie <a href="#max-wounds-classless">Max. wonden</a> hieronder.</li>
+    <li><strong>Vermogens worden getraind, niet toegekend.</strong> Vermogens die normaal uit een class of niveau komen (Rage, Sneak Attack, Spellcasting, enz.) leer je individueel door XP te besteden; zie <a href="#trained-abilities">Getrainde vermogens</a>.</li>
+    <li><strong>Zilver is het dagelijkse muntstuk.</strong> Goud is zeldzaam en vooral waardeopslag, geen kleingeld. Startgeld en uitrustingprijzen zijn in silver pieces (SP); zie <a href="#currency-classless">Valuta</a>.</li>
+    <li><strong>Adventuring Level bepaalt PB.</strong> Classless-personages houden nog steeds een Adventuring Level bij (meestal het party-niveau) voor de <a href="core.html#proficiency-and-advantage">Behendigheidsbonus</a>; getrainde vermogens vervangen dat niet.</li>
+    <li><strong>Afkomst, Erfenis en Achtergrond blijven hetzelfde</strong> — je kiest nog steeds alle drie zoals normaal.</li>
+  </ul>
+
+  <hr>
+  <h2 id="character-creation-classless">Personage maken (Classless)</h2>
+  <p>Volg dezelfde algemene flow als standaard <a href="characters.html">Personage maken</a>, met de class-stap vervangen:</p>
+  <ol>
+    <li><a href="characters.html#character-concept">Character Concept</a> — zoals gebruikelijk.</li>
+    <li>Bepaal <a href="characters.html#determine-ability-scores">Ability Scores</a> (Fitness, Insight, Willpower) — zoals gebruikelijk, met Point-Buy of Standard Array.</li>
+    <li>Kies een <a href="lineages.html">Afkomst</a> — zoals gebruikelijk.</li>
+    <li>Kies een <a href="heritages.html">Erfenis</a> — zoals gebruikelijk.</li>
+    <li>Kies een <a href="backgrounds.html">Achtergrond</a> voor skills, tool-/taalbehendigheden en talentkeuze. <strong>Negeer het vermelde startgeld en uitrustingpakket</strong> — Classless-personages kopen hun eigen uitrusting (zie <a href="#currency-classless">Valuta</a>).</li>
+    <li>Besteed je <strong>starting XP-budget</strong> (20 XP) aan getrainde vermogens uit de gecureerde Classless-lijst; zie <a href="#trained-abilities">Getrainde vermogens</a>.</li>
+    <li>Besteed je <strong>starting silver</strong> aan uitrusting uit de <a href="gear.html">Uitrusting</a>-tabellen.</li>
+  </ol>
+
+  <hr>
+  <h2 id="max-wounds-classless">Max. wonden</h2>
+  <p>Classless-personages berekenen Max. wonden zonder class-startwaarde, en vervangen YMIAT's "+1 Max. wonden per personageniveau" door je getrainde <a href="#toughness">Toughness</a>-niveau:</p>
+  <div class="formula-box">
+    <span class="formula-label">Max. wonden (Classless)</span>
+    <span class="formula-equation">
+      <span class="variable">Max. wonden</span>
+      <span class="operator">=</span>
+      <span>4</span>
+      <span class="operator">+</span>
+      <span class="variable">Fitness-modifier</span>
+      <span class="operator">+</span>
+      <span class="variable">Toughness level</span>
+    </span>
+  </div>
+  <p>Toughness-niveau is 0 tot je het traint — zie <a href="#toughness">Toughness</a> hieronder voor training en kosten. Verder werken Wonden — hoe ze ontstaan, hoe ze genezen, hearts, weakening en Death Saves — precies zoals in <a href="core.html#wounds-and-scale">Wonden en schaal</a> en <a href="combat.html">Gevecht</a>.</p>
+
+  <hr>
+  <h2 id="trained-abilities">Getrainde vermogens (XP-economie)</h2>
+  <p>In standaard YMIAT ontgrendel je class-vermogens automatisch per niveau. In Classless is er geen niveau-poort — elk vermogen (uit elke class, plus algemene Talenten) komt uit één gedeelde pool, en je ontgrendelt het door opgespaarde XP direct uit te geven. Zie het als betalen voor trainingstijd in plaats van voor ruimte op het personageblad.</p>
+  <p>Zoals in de core-regels (zie <a href="core.html#level-advancement">Niveaustijging</a>) wordt een nieuw getraind vermogen niet midden in een scène actief — het wordt bruikbaar na een <strong>lange rust</strong> of een periode van <strong>studie of oefening</strong> (GM-beslissing), wat de tijd weerspiegelt die het echt kost om het te leren.</p>
+
+  <h3 id="earning-xp">XP verdienen</h3>
+  <p>Classless-trainingskosten draaien op een eigen, veel kleinere schaal dan standaard niveaustijging; ken XP toe met deze tabel in plaats van de core-<a href="core.html#experience-points">Experience Points</a>-toekenningstabel:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Moeilijkheid</th><th>XP toegekend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Triviaal</td><td>0</td></tr>
+        <tr><td>Makkelijk</td><td>1</td></tr>
+        <tr><td>Gemiddeld</td><td>2</td></tr>
+        <tr><td>Moeilijk</td><td>3</td></tr>
+        <tr><td>Bijna onmogelijk</td><td>5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Ken XP toe voor elke afgeronde uitdaging die het resultaat beïnvloedde — gevecht, roleplay dat de situatie veranderde, puzzel opgelost, val ontmanteld, enz. — met de passende moeilijkheid, dezelfde GM-afweging als in de core-regels, maar op deze kleinere schaal.</p>
+
+  <h3 id="starting-ability">Starting XP-budget</h3>
+  <p>Bij creatie heb je een budget van <strong>20 XP</strong> voor getrainde vermogens uit de gecureerde Classless-lijst, tegen dezelfde kosten als normale training (zie <a href="#training-cost">Trainingskosten</a> hieronder). Je mag het over meerdere vermogens verdelen als je het kunt betalen. Ongebruikte XP gaat niet verloren — het blijft als gespaarde XP voor je volgende training.</p>
+  <p><strong>Major-tier vermogens (30 XP) kosten meer dan je hele starting budget en kunnen niet bij creatie getraind worden.</strong> Je eerste <a href="#spellcasting-classless">Spellcasting</a>-bron en -stijl is Core-tier (15 XP), niet Major, dus past in je starting budget met 5 XP over — een start-Classless-personage kan vanaf niveau 1 een spellcaster zijn.</p>
+  <div class="callout note">
+    <p class="callout-title">Gecureerde vermogenslijst</p>
+    <p>Zie <a href="classless-abilities.html">Classless-vermogens</a> voor de gecureerde lijst van wat trainbaar is, kosten en vereisten — naast <a href="#toughness">Toughness</a>, <a href="#spellcasting-classless">Spellcasting</a> en <a href="#weapon-armor-proficiency">Weapon and Armor Proficiency</a> hieronder. De lijst groeit nog: meer class-vermogens en Talenten komen erbij naarmate ze worden omgezet; behandel alles wat nog niet staat als GM-terrein.</p>
+  </div>
+
+  <h3 id="toughness">Toughness (genivelleerd vermogen)</h3>
+  <p>De meeste getrainde vermogens koop je één keer. <strong>Toughness</strong> is anders: een <em>genivelleerd</em> vermogen, herhaaldelijk getraind voor een schaalend effect, zoals <a href="talents.html#ability-score-improvement">Ability Score Improvement</a> herhaalbaar is in standaard YMIAT. Elk Toughness-niveau voegt <strong>+1 Max. wond</strong> toe (zie formule hierboven), zonder maximum op het aantal niveaus.</p>
+  <p>Trainen van een nieuw Toughness-niveau kost XP op basis van het niveau waarin je traint:</p>
+  <div class="formula-box">
+    <span class="formula-label">Toughness-trainingskosten</span>
+    <span class="formula-equation">
+      <span class="variable">XP cost</span>
+      <span class="operator">=</span>
+      <span>10</span>
+      <span class="operator">×</span>
+      <span class="variable">Toughness level</span>
+    </span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Toughness-niveau</th><th>Max. wonden-bonus</th><th>XP voor dit niveau</th><th>Cumulatieve XP</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>+1</td><td>10 XP</td><td>10 XP</td></tr>
+        <tr><td>2</td><td>+2</td><td>20 XP</td><td>30 XP</td></tr>
+        <tr><td>3</td><td>+3</td><td>30 XP</td><td>60 XP</td></tr>
+        <tr><td>4</td><td>+4</td><td>40 XP</td><td>100 XP</td></tr>
+        <tr><td>5</td><td>+5</td><td>50 XP</td><td>150 XP</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Toughness is een Trained Ability als elke andere, dus je kunt het trainen vanuit je <a href="#starting-ability">start-XP-budget</a>: niveau 1 kost 10 XP en laat 10 XP over voor iets anders. Niveau 2 kost nog eens 20 XP (30 XP totaal) — meer dan het hele startbudget — dus de meeste startpersonages stoppen bij Toughness-niveau 1, als ze het überhaupt nemen. Het is niet verplicht; een personage dat het nooit traint houdt gewoon Max. wonden = 4 + Fitness-modifier.</p>
+
+  <h3 id="spellcasting-classless">Spellcasting</h3>
+  <p>Spellcasting is een Trained Ability als elke andere. Je eerste bron en stijl kosten de <strong>Core</strong>-tier, 15 XP (zie <a href="#training-cost">Trainingskosten</a> hieronder) — dat past in je <a href="#starting-ability">start-XP-budget</a>, dus Spellcasting kun je bij creatie trainen. Later een <em>extra</em> bron of stijl trainen (meerdere magietradities tegelijk) is zwaarder en kost elke keer de <strong>Major</strong>-tier, 30 XP.</p>
+  <p><strong>Voorwaarde:</strong> een <strong>modifier van +1 of hoger</strong> in de eigenschap die je spells aandrijft (zie "Casting ability" hieronder). Je kunt Spellcasting niet trainen via een eigenschap die nog +0 of negatief is.</p>
+  <p>Spellcasting trainen betekent drie keuzes maken:</p>
+  <ul>
+    <li><strong>Source of magic</strong> — welke spell-lijst je gebruikt: <strong>Arcane</strong>, <strong>Nature</strong>, <strong>Mystic</strong> (inclusief Divine), of <strong>Hex</strong>. De <a href="magic.html">Magic</a>-pagina heeft geen bronfilter, alleen class- en schoolfilters — vuistregel: gebruik het class-filter: Arcane ≈ Wizard/Sorcerer/Artificer-spells, Nature ≈ Druid/Ranger-spells, Mystic ≈ Cleric/Paladin (Divine)-spells, Hex ≈ Warlock/Witch-spells. Bard-spells passen in de bron die bij je concept hoort.</li>
+    <li><strong>Casting ability</strong> — Insight of Willpower. Die modifier is je <strong>spellcasting modifier</strong>, gebruikt voor Spell Power, spell-aanvalsworpen en save-DC's, en al het andere in <a href="core.html#magic-and-spell-resources">Magie en spell-resources</a>, ongewijzigd ten opzichte van de kernregels.</li>
+    <li><strong>Casting style</strong> — <strong>Prepared</strong> of <strong>Known</strong>, hieronder. Later een tweede bron of tweede stijl trainen is elke keer een aparte Major-aankoop (30 XP) — geen korting omdat je al caster bent.</li>
+  </ul>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th></th><th>Prepared Caster</th><th>Known Caster</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Cantrips bekend</td><td>3 + spellcasting modifier</td><td>1 + spellcasting modifier</td></tr>
+        <tr><td>Spells geleerd bij start</td><td>4 × spellcasting modifier</td><td>2 × spellcasting modifier</td></tr>
+        <tr><td>Spells bruikbaar tegelijk</td><td>spellcasting modifier (herprepareren uit je geleerde spells na een lange rust)</td><td>alle geleerde spells — er is geen aparte "prepared"-pool</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Prepared casters</strong> mogen ook een geleerde spell proberen die ze nu niet prepared hebben: rol <strong>d20 + spellcasting modifier</strong> tegen <strong>DC 15 + het niveau van de spell</strong>. Bij succes cast je hem en betaal je Spell Power zoals normaal. Bij falen mislukt de spell en wordt geen Spell Power uitgegeven.</p>
+  <p><strong>Known casters</strong> kunnen alleen casten wat ze momenteel kennen — er is geen equivalent van ongeprepareerde spells doorbladeren. De spell-lijst van een Known caster staat vast tot ze een nieuwe spell trainen.</p>
+  <p><strong>Cantrips</strong> zijn voor beide stijlen at will: geen Spell Power-kosten en geen rol om te casten. In tegenstelling tot je geleerde/known spell-aantallen is je cantrip-aantal niet vast bij training — het herberekent automatisch wanneer je spellcasting modifier verandert (bijvoorbeeld na een niveau <a href="talents.html#ability-score-improvement">Ability Score Improvement</a>).</p>
+  <p>Bovenop de startwaarden hierboven groeit je spell-lijst door spel, niet tegen een vaste prijs: train een nieuwe spell voor XP, betaal een trainer of scribent in munt, of vind er een in het veld (een scroll om te kopiëren, het spellbook van een rivaal, een ritual van een NPC). De Game Master bepaalt kosten en beschikbaarheid per geval. Voor een Known caster voegt alleen <em>training</em> (XP uitgeven) de nieuwe spell echt toe aan de vaste lijst — munt of in-fiction ontdekking kan een spell lokaliseren om te leren, maar XP maakt hem pas blijvend.</p>
+
+  <h3 id="weapon-armor-proficiency">Wapen- en pantserbehendigheid</h3>
+  <p>Classless-personages houden een <strong>Adventuring Level</strong> bij (normaal het party- of campagneniveau) uitsluitend voor de <a href="core.html#proficiency-and-advantage">Behendigheidsbonus</a>. PB gebruikt dezelfde tabel als de kern: PB = Adventuring Level ÷ 2, naar boven afgerond.</p>
+  <p>Wapenbehendigheid voegt je <strong>Fitness-modifier</strong> en je <strong>PB</strong> toe aan de aanvalsworp. Zonder de bijpassende behendigheid kun je het wapen nog gebruiken, maar je voegt noch Fitness noch PB toe — de aanvalsworp gebruikt alleen de kale aanvalsbonus van het wapen. <strong>Expert</strong>-behendigheid met een specifiek wapen (zie Weapon Expertise hieronder) voegt <strong>+2×PB</strong> toe in plaats van +PB.</p>
+  <div class="formula-box">
+    <span class="formula-label">Wapenaanvalsworp (Classless)</span>
+    <span class="formula-equation">
+      <code class="dice">d20</code>
+      <span class="operator">+</span>
+      <span class="variable">wapenaanvalsbonus</span>
+      <span class="operator">+</span>
+      <span class="variable">Fitness + PB (bij behendigheid; +2×PB bij Expert)</span>
+    </span>
+  </div>
+  <p>In plaats van (of naast) een volledige wapencategorie kun je behendigheid trainen in slechts één specifiek wapen — goedkoper, maar smaller. Je kiest het wapen wanneer je het traint. Daarna Expertise in datzelfde wapen trainen verhoogt het naar Expert (+2×PB) op aanvalsworpen daarmee.</p>
+  <p>Pantserbehendigheid houdt de kern-<a href="core.html#armor-and-defense">Armor and Defense</a>-straffen voor pantser boven je getrainde categorie — de vermogens hieronder verhogen alleen in welke categorie je behendig bent. Per stap boven je behendigheid krijg je één niveau gestapeld nadeel op alle d20-worpen in dat pantser, inclusief Fitness-tests, Verdediging-worpen en spellcasting-rollen voor spells met een somatic component.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Vermogen</th><th>XP-kosten</th><th>Voorwaarde</th><th>Effect</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Light Armor Proficiency</td><td>5 XP</td><td>—</td><td>Behendig in licht pantser; beweging wordt er niet door gehinderd.</td></tr>
+        <tr><td>Medium Armor Proficiency</td><td>5 XP</td><td>Light Armor Proficiency</td><td>Behendig in medium pantser; beweging wordt er niet door gehinderd.</td></tr>
+        <tr><td>Heavy Armor Proficiency</td><td>10 XP</td><td>Medium Armor Proficiency, +1 Fitness-modifier</td><td>Behendig in zwaar pantser; beweging wordt er niet door gehinderd.</td></tr>
+        <tr><td>Simple Melee Weapon Proficiency</td><td>5 XP</td><td>—</td><td>Behendig met simple melee-wapens; voeg Fitness + PB toe aan aanvalsworpen daarmee.</td></tr>
+        <tr><td>Martial Melee Weapon Proficiency</td><td>10 XP</td><td>Simple Melee Weapon Proficiency</td><td>Behendig met martial melee-wapens; voeg Fitness + PB toe aan aanvalsworpen daarmee.</td></tr>
+        <tr><td>Simple Ranged Weapon Proficiency</td><td>5 XP</td><td>—</td><td>Behendig met simple ranged-wapens; voeg Fitness + PB toe aan aanvalsworpen daarmee.</td></tr>
+        <tr><td>Martial Ranged Weapon Proficiency</td><td>10 XP</td><td>Simple Ranged Weapon Proficiency</td><td>Behendig met martial ranged-wapens; voeg Fitness + PB toe aan aanvalsworpen daarmee.</td></tr>
+        <tr><td>Single Weapon Proficiency</td><td>1 XP</td><td>—</td><td>Behendig met één simple of martial wapen naar keuze; voeg Fitness + PB toe aan aanvalsworpen daarmee.</td></tr>
+        <tr><td>Weapon Expertise</td><td>10 XP</td><td>Behendigheid met het gekozen wapen</td><td>Expert met dat wapen: voeg Fitness + 2×PB (in plaats van Fitness + PB) toe aan aanvalsworpen daarmee.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="training-cost">Trainingskosten (overige vermogens)</h3>
+  <p>Toughness hierboven heeft een eigen vaste kostenformule omdat het geniveleerd is. Elk ander (eenmalig) getraind vermogen kost een vast bedrag XP. De exacte kosten per vermogen worden nog afgestemd naast de gecureerde lijst hierboven — behandel de tabel hieronder als startpunt dat je voor je tafel kunt bijstellen, niet als definitief getal.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Tier</th><th>Voorgestelde XP-kosten</th><th>Voorbeeld</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Minor</td><td>5 XP</td><td>Een skill-/tool-behendigheid, een klein nut-vermogen</td></tr>
+        <tr><td>Core</td><td>15 XP</td><td>Rage, Sneak Attack, Bardic Inspiration, je eerste <a href="#spellcasting-classless">Spellcasting</a>-bron en -stijl</td></tr>
+        <tr><td>Major</td><td>30 XP</td><td>Extra Attack, Wild Shape, een <em>extra</em> <a href="#spellcasting-classless">Spellcasting</a>-bron of -stijl</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Classless draait op een eigen, kleinere XP-schaal — deze kosten zijn ongeveer een tiende van de standaard YMIAT-niveaudrempels (zie <a href="core.html#experience-points">Experience Points</a>), niet rechtstreeks daarmee te vergelijken. Subclass-achtige vermogens en herhaalbare Talenten (zoals <a href="talents.html#ability-score-improvement">Ability Score Improvement</a>) kun je op dezelfde manier trainen, naar oordeel van de Game Master.</p>
+
+  <hr>
+  <h2 id="currency-classless">Valuta: zilverstandaard</h2>
+  <p>Classless gaat uit van een lager-magische, historisch aardsere economie: zilver is de munt die gewone mensen echt gebruiken, en goud is zeldzaam genoeg om een opvallende vondst te zijn in plaats van zakgeld.</p>
+  <ul>
+    <li><strong>Startkapitaal:</strong> elk Classless-personage begint met <strong>100 SP</strong>, ongeacht Achtergrond.</li>
+    <li><strong>Uitrustingsprijzen:</strong> gebruik de SP/CP-prijzen op de <a href="gear.html">Gear</a>-pagina — bijvoorbeeld kost een shortsword 60 SP.</li>
+    <li><strong>Gold pieces (GP)</strong> bestaan nog als zeldzame, hoogwaardige munt (ongeveer 10 SP per GP) voor schatten en grote aankopen, maar nieuwe personages starten er niet mee.</li>
+  </ul>
+  <div class="callout warning">
+    <p class="callout-title">Negeer goudbedragen van Achtergronden</p>
+    <p><a href="backgrounds.html">Achtergronden</a> vermelden nog legacy-startgeld in gold pieces (een restant dat nog niet naar de zilverstandaard is omgezet). Voor Classless-personages negeer je dat bedrag volledig en gebruik je de vaste 100 SP hierboven.</p>
+  </div>
+
+  <hr>
+  <h2 id="everything-else">Al het andere blijft gelijk</h2>
+  <p>Classless raakt alleen het personage-chassis, vermogenstraining en startvaluta. Al het andere in de kernregels geldt ongewijzigd:</p>
+  <ul>
+    <li><a href="core.html">Core Rules</a> — dobbelstenen en tests, Behendigheidsbonus, skills, Resolve, rust.</li>
+    <li><a href="combat.html">Combat</a> — aanvallen, Verdediging, Life/Death Saves.</li>
+    <li><a href="lineages.html">Afkomsten</a>, <a href="heritages.html">Erfenissen</a> en <a href="backgrounds.html">Achtergronden</a> — precies zoals normaal gekozen (afgezien van de uitrustingsoverschrijving hierboven).</li>
+    <li><a href="talents.html">Talenten</a> — onderdeel van dezelfde getrainde-vermogenspool als class-features.</li>
+    <li><a href="magic.html">Magic</a> — spells werken hetzelfde zodra een personage het relevante Spellcasting-vermogen heeft getraind.</li>
+  </ul>
+
+  <hr>
+  <h2 id="open-design-questions">Open ontwerpvragen</h2>
+  <div class="callout note">
+    <p class="callout-title">Nog te beslissen</p>
+    <ul>
+      <li>De volledige gecureerde lijst van trainbare vermogens (welke class-features en Talenten, en in welke vorm). <a href="#toughness">Toughness</a>, <a href="#spellcasting-classless">Spellcasting</a>, <a href="#weapon-armor-proficiency">Wapen- en pantserbehendigheid</a>, en een eerste batch class-feature-achtige vermogens op <a href="classless-abilities.html">Classless Abilities</a> zijn nu gedefinieerd; de rest van de class/Talent-lijst staat nog open.</li>
+      <li>Definitieve XP-kosten voor eenmalige vermogens — de tiers in <a href="#training-cost">Trainingskosten</a> zijn een placeholder (Toughness en Spellcasting hebben vaste kosten, zie hierboven).</li>
+      <li>Of sommige vermogens voorwaarden nodig hebben (bijv. eerst de basisversie trainen vóór een upgrade) of een "tier-plafond" gekoppeld aan totale uitgegeven XP, om power ongeveer in lijn te houden met een class-personage met dezelfde XP.</li>
+      <li>Exacte prijzen voor spells leren boven het startaantal van een caster.</li>
+    </ul>
+  </div>
+  </div>
+</div></main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/cleric.html" />
+<link rel="alternate" hreflang="nl" href="cleric.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/cleric.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cleric-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Cleric class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/cleric.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Cleric-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Cleric vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#cleric">← Terug naar Cleric</a> · <a href="index.html#cleric">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Cleric abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#manifestation-of-faith">Manifestation of Faith</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#channel-divinity">Channel Divinity</a> <span class="text-muted">(2e, 5e en 9e niveau)</span></li>
+<li><a href="#turn-the-profane">Turn the Profane</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#destroy-the-profane">Destroy the Profane</a> <span class="text-muted">(4e, 6e, 8e en 10e niveau)</span></li>
+<li><a href="#divine-intervention">Divine Intervention</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#life">Life</a></li>
+<li class="toc-sub toc-feature"><a href="#life-preserve-life">Channel Divinity: Preserve Life</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#life-disciple-of-life">Disciple of Life</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#life-life-domain-spells">Life Domain Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#life-blessed-healer">Blessed Healer</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#life-greater-preservation">Greater Preservation</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#life-perfect-healing">Perfect Healing</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#light">Light</a></li>
+<li class="toc-sub toc-feature"><a href="#light-searing-radiance">Channel Divinity: Searing Radiance</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#light-imbue-light">Imbue Light</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#light-light-domain-spells">Light Domain Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#light-overwhelming-flash">Overwhelming Flash</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#light-radiant-spellcasting">Radiant Spellcasting</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#light-lux-malediction">Lux Malediction</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#light-luminous-shroud">Luminous Shroud</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#war">War</a></li>
+<li class="toc-sub toc-feature"><a href="#war-mark-of-triumph">Channel Divinity: Mark of Triumph</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#war-disciple-of-war">Disciple of War</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#war-expanded-talent-list">Expanded Talent List</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#war-war-domain-spells">War Domain Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#war-blessed-warrior">Blessed Warrior</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#war-greater-triumph">Greater Triumph</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#war-holy-strike">Holy Strike</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#death">Death</a></li>
+<li class="toc-sub toc-feature"><a href="#death-forsee-doom">Channel Divinity: Forsee Doom</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#nature">Nature</a></li>
+<li class="toc-sub toc-feature"><a href="#nature-apostle-of-nature">Apostle of Nature</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#tempest">Tempest</a></li>
+<li class="toc-sub toc-feature"><a href="#tempest-storm-s-fury">Channel Divinity: Storm’s Fury</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#tempest-tempest">Tempest</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="manifestation-of-faith">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Manifestation of Faith</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Pad van heilige krijger of wonderwerker.</em></p>
+    <p>Kies hoe je je geloof manifesteert:</p>
+<ul>
+<li><strong>Manifest Might.</strong> Behendigheid met zwaar pantser en één martial wapen. Eén keer per beurt, wanneer je raakt met een wapenaanval, doe je extra radiant- of necrotic-schade gelijk aan je behendigheidsbonus.</li>
+<li><strong>Manifest Miracles.</strong> Leer één extra cantrip uit elke source (telt als Divine). Tel je behendigheidsbonus op bij schade van je Divine cantrips.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Prepared Divine spells met Spell Power.</em></p>
+    <p>Als kanaal voor <strong>Divine</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#cleric">Cleric</a>-progressietabel.</p>
+<p>Je prepareert spells vooraf. Je kunt een aantal spells prepareren gelijk aan je Insight (INS)-modifier + je cleric-niveau (minimaal één). Wijzig je prepared lijst tijdens een lange rust.</p>
+<p><strong>Spellcasting ability:</strong> Insight (INS). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Insight (INS)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="channel-divinity">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity</h4>
+    <span class="spell-card-level">2e, 5e en 9e niveau</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Kanaliseer goddelijke energie voorbij spells.</em></p>
+    <p>Je kanaliseert goddelijke energie als <strong>vrije actie</strong>. Je begint met <strong>Turn the Profane</strong>. Gebruiken: 1/rust op 2e, 2/rust op 5e, 3/rust op 9e. Krijg alle gebruiken terug bij een korte of lange rust.</p>
+<p>Zie <a href="cleric.html#turn-the-profane">Turn the Profane</a> en <a href="cleric.html#destroy-the-profane">Destroy the Profane</a>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="turn-the-profane">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Turn the Profane</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Turn Fiends en Undead.</em></p>
+    <p>Als <strong>actie</strong> toon je je holy symbol. Elk Fiend en Undead naar keuze binnen 30 voet dat je kan zien of horen maakt een <strong>Insight-save</strong> tegen je spell-save-DC. Bij falen is het wezen <strong>turned</strong> voor 1 minuut of tot het schade neemt.</p>
+<p>Een turned wezen moet van je weg bewegen en mag op zijn beurt alleen Dash of Dodge.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="destroy-the-profane">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Destroy the Profane</h4>
+    <span class="spell-card-level">4e, 6e, 8e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Vernietig turned wezens onder een CR-drempel.</em></p>
+    <p>Wanneer een Fiend of Undead faalt op zijn save tegen Turn the Profane, wordt het meteen vernietigd als zijn CR gelijk is aan of lager dan:</p>
+<ul>
+<li><strong>4e niveau:</strong> CR ½</li>
+<li><strong>6e niveau:</strong> CR 1</li>
+<li><strong>8e niveau:</strong> CR 2</li>
+<li><strong>10e niveau:</strong> CR 4</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="divine-intervention">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Divine Intervention</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Roep je godheid aan in nood.</em></p>
+    <p>Aan het begin van je beurt rol je d20 + behendigheidsbonus. Op <strong>19 of lager</strong> grijpt je godheid niet in. Op <strong>20+</strong> wel.</p>
+<p>Bij interventie gebruik je je actie om elke Divine spell (of domain spell) met casting time actie te casten zonder Spell Power. Overschrijdt het niveau je max., maak dan een spellcasting-ability-check DC 10 + niveau.</p>
+<p>Na een geslaagde interventie kun je dit vermogen 1 week niet opnieuw gebruiken (of tot een lange rust zodra je Epic Boon: Divine Herald hebt).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Consecration- of wrath-gaven.</em></p>
+    <p>Kies één:</p>
+<ul>
+<li><strong>Gift of Consecration.</strong> Immuun voor ziekte, poison-schade en poisoned. Als je sterft, blijft je lichaam tot een jaar bewaard als <em>gentle repose</em>.</li>
+<li><strong>Gift of Wrath.</strong> Weerstand tegen radiant of necrotic (jouw keuze). Wanneer je een schadende spell cast, kun je het schadetype wijzigen naar radiant of necrotic.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Automatische divine intervention.</em></p>
+    <p><strong>Divine Herald.</strong> Divine Intervention slaagt automatisch. Je wacht niet langer een week tussen gebruiken, al kun je het nog steeds maar één keer per lange rust gebruiken.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een magic-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Magie-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="life">
+  <h3 class="subclass-name">Life</h3>
+  <p class="subclass-summary">Vier vitaliteit en bestrijd de perversie van undeath.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="life-preserve-life">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Preserve Life</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Life</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Channel divinity om heling onder nabije bondgenoten te verdelen.</em></p>
+    <p>Als <strong>actie</strong> toon je je holy symbol en herstel je Wonden gelijk aan <strong>5 × je cleric-niveau</strong>, verdeeld over wezens binnen 30 voet. Geen wezen mag boven de helft van zijn Max. wonden worden hersteld. Geen effect op Constructs of Undead.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="life-disciple-of-life">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Disciple of Life</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Life</span></div>
+  <div class="spell-card-description">
+<p><em>Healing spells herstellen extra Wonden.</em></p>
+    <p>Wanneer je een Divine spell van 1e niveau of hoger cast om Wonden te herstellen, krijgt het doelwit <strong>2 + het spellniveau</strong> extra Wonden terug.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="life-life-domain-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Life Domain Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Life</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared Life domain spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> bless, cure wounds, gentle repose, restoration</li><li><strong>Niveau 5:</strong> mass healing word, revivify</li><li><strong>Niveau 7:</strong> death ward, guardian of faith</li><li><strong>Niveau 9:</strong> greater restoration, mass cure wounds</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="life-blessed-healer">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Blessed Healer</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Life</span></div>
+  <div class="spell-card-description">
+<p><em>Anderen helen heelt jou.</em></p>
+    <p>Wanneer je een Divine spell van 1e niveau of hoger cast die Wonden bij een ander wezen herstelt, krijg jij <strong>2 + het spellniveau</strong> Wonden terug.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="life-greater-preservation">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Greater Preservation</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Life</span></div>
+  <div class="spell-card-description">
+<p><em>Uitgebreide Preserve Life met condition cleansing.</em></p>
+    <p>Preserve Life treft wezens binnen <strong>60 voet</strong>. Wanneer je die gebruikt, mag één doelwit ook: alle ziekten genezen; blinded, deafened, paralyzed of poisoned beëindigen; of alle poisons neutraliseren.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="life-perfect-healing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Perfect Healing</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Life</span></div>
+  <div class="spell-card-description">
+<p><em>Healing spells herstellen maximale Wonden.</em></p>
+    <p>Wanneer je een Divine spell van 1e niveau of hoger cast die Wonden herstelt, herstel je automatisch het maximale aantal Wonden (geen dobbelstenen rollen).</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="light">
+  <h3 class="subclass-name">Light</h3>
+  <p class="subclass-summary">Hanteer radiant vuur en brandende waarheid tegen duisternis.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="light-searing-radiance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Searing Radiance</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Light</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Kanaliseer radiance door je magische lichten.</em></p>
+    <p>Als <strong>actie</strong> toon je je holy symbol en kanaliseer je radiance door elke magische lichtbron die je op hetzelfde vlak hebt gecreëerd. Elk vijandig wezen in hun bright light maakt een <strong>Fitness-save</strong>. Rol 2 × PB d8s; gefaalde save = volle radiant-schade, succes = helft. Aberrations en Undead hebben nadeel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="light-imbue-light">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Imbue Light</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Light</span></div>
+  <div class="spell-card-description">
+<p><em>Leer light en dancing lights; dancing lights zonder concentratie.</em></p>
+    <p>Je leert <em>light</em> en <em>dancing lights</em> als je die niet kent. <em>Dancing lights</em> vereist geen concentratie en duurt de volle duur of tot je die opnieuw cast. Beide tellen als Divine cantrips en tellen niet mee voor cantrips known.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="light-light-domain-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Light Domain Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Light</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared Light domain spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> burning hands, guiding bolt, moonbeam, scorching ray</li><li><strong>Niveau 5:</strong> daylight, fireball</li><li><strong>Niveau 7:</strong> elemental shield, wall of fire</li><li><strong>Niveau 9:</strong> dispel evil and good, flame strike</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="light-overwhelming-flash">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Overwhelming Flash</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Light</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: verblindend licht straft nabije aanvalsworpen.</em></p>
+    <p>Wanneer een wezen binnen 10 voet een aanvalsworp maakt, gebruik je je <strong>reactie</strong> om goddelijk licht vrij te laten. De aanvaller krijgt een straf gelijk aan je <strong>Insight-modifier</strong> op de rol. Raakt de aanval toch, dan is de aanvaller blinded tot het einde van zijn beurt. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="light-radiant-spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Radiant Spellcasting</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Light</span></div>
+  <div class="spell-card-description">
+<p><em>Cantrips en belichte wapens doen extra radiant-schade.</em></p>
+    <p>Je schadende Divine cantrips doen extra <strong>1d8 radiant</strong>-schade. Terwijl je een wapen onder <em>light</em> of <em>continual flame</em> vasthoudt, tel je de eerste keer dat het per beurt schade doet radiant-schade gelijk aan je Insight-modifier op.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="light-lux-malediction">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Lux Malediction</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Light</span></div>
+  <div class="spell-card-description">
+<p><em>Searing Radiance wordt zonlicht; Overwhelming Flash vervloekt vijanden.</em></p>
+    <p>Searing Radiance maakt je lichten 1 minuut magisch zonlicht. Wanneer je Overwhelming Flash gebruikt, vervloek je het doelwit (één tegelijk): kan tot einde van volgende beurt geen Wonden terugkrijgen; radiant-schade = cleric-niveau; −10 Insight (Perception) voor 10 minuten; of 1 minuut geen voordeel van invisibility. <em>Remove curse</em> beëindigt het; magische duisternis op beide beurten ook.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="light-luminous-shroud">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Luminous Shroud</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Light</span></div>
+  <div class="spell-card-description">
+<p><em>Voordeel op saves in bright light; immuun voor charm/frighten; schadekeuze.</em></p>
+    <p>In bright light heb je voordeel op saves, kun je niet charmed of frightened zijn, en krijg je immuniteit voor radiant-schade <strong>of</strong> weerstand tegen necrotic-schade (jouw keuze).</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="war">
+  <h3 class="subclass-name">War</h3>
+  <p class="subclass-summary">Belichaam moed en beslissende overwinning in gevecht.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="war-mark-of-triumph">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Mark of Triumph</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> War</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Markeer een vijand zodat bondgenoten voordeel hebben op de eerste aanval.</em></p>
+    <p>Als <strong>vrije actie</strong> toon je je holy symbol en markeer je één wezen binnen 60 voet dat je kunt zien. Tot het begin van je volgende beurt heeft de eerste aanvalsworp die elke bondgenoot tegen het gemarkeerde wezen maakt voordeel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="war-disciple-of-war">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Disciple of War</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> War</span></div>
+  <div class="spell-card-description">
+<p><em>Extra wapenaanval wanneer je raakt met de Attack-actie.</em></p>
+    <p>Eén keer per beurt, wanneer je raakt met een wapenaanval tijdens de Attack-actie, kun je als onderdeel van diezelfde actie één extra wapenaanval maken. Gebruiken per korte of lange rust gelijk aan je PB.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="war-expanded-talent-list">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expanded Talent List</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> War</span></div>
+  <div class="spell-card-description">
+<p><em>Martial- of magic-talenten bij Improvement.</em></p>
+    <p>Wanneer je een talent van Improvement krijgt, kun je kiezen uit de magic- of martial-talentlijsten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="war-war-domain-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">War Domain Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> War</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared War domain spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> command, magic weapon, shield of faith, warding bond</li><li><strong>Niveau 5:</strong> fear, spirit guardians</li><li><strong>Niveau 7:</strong> death ward, guardian of faith</li><li><strong>Niveau 9:</strong> antilife shell, flame strike</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="war-blessed-warrior">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Blessed Warrior</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> War</span></div>
+  <div class="spell-card-description">
+<p><em>Behendigheid met martial wapens en Fitness-aanvallen.</em></p>
+    <p>Je krijgt behendigheid met martial wapens. Je mag Fitness gebruiken voor aanvals- en schaderollen met martial wapens.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="war-greater-triumph">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Greater Triumph</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> War</span></div>
+  <div class="spell-card-description">
+<p><em>Gemarkeerde wezens hebben nadeel op saves tegen jouw spells.</em></p>
+    <p>Wezens gemarkeerd door Mark of Triumph hebben nadeel op saves tegen jouw Divine spells tot de markering eindigt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="war-holy-strike">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Holy Strike</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> War</span></div>
+  <div class="spell-card-description">
+<p><em>Wapenaanvallen doen één keer per beurt extra radiant-schade.</em></p>
+    <p>Eén keer per beurt, wanneer je raakt met een wapenaanval, doet de aanval <strong>1d8 radiant-schade</strong> naast de wapenschade.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="death">
+  <h3 class="subclass-name">Death</h3>
+  <p class="subclass-summary">Goden van het Death-domein beheersen dood en hiernamaals; hun dienaren brengen rust aan achterblijvers.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="death-forsee-doom">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Forsee Doom</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Death</span></div>
+  <div class="spell-card-description">
+<p><em>Death Domain Spells en Death's Sentinel.</em></p>
+    <p>Death Domain Spells, Death's Sentinel (7e).</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Death</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="nature">
+  <h3 class="subclass-name">Nature</h3>
+  <p class="subclass-summary">Goden van Nature beschermen wildernis en vruchtbaar land; volgelingen waken over veiligheid en voorspoed.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="nature-apostle-of-nature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Apostle of Nature</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Nature</span></div>
+  <div class="spell-card-description">
+<p><em>Behendigheid in twee nature-skills of -tools.</em></p>
+    <p>Je krijgt behendigheid in twee van de volgende skills of tools: Animal Handling, Nature, Survival; herbalist tools, land vehicles of water vehicles.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Nature</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="tempest">
+  <h3 class="subclass-name">Tempest</h3>
+  <p class="subclass-summary">Goden van Tempest belichamen de vernietigende kracht van stormen en rampen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="tempest-storm-s-fury">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Channel Divinity: Storm’s Fury</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Tempest</span></div>
+  <div class="spell-card-description">
+<p><em>Channel Divinity: maximale lightning/thunder-schade.</em></p>
+    <p>Je kunt Channel Divinity gebruiken om de woede van onweer op te roepen. Wanneer je lightning- of thunder-schade doet, kun je Storm's Fury gebruiken om op elk van die schadedobbelstenen maximale schade te doen in plaats van te rollen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="tempest-tempest">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Tempest</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Tempest</span></div>
+  <div class="spell-card-description">
+<p><em>Domain spells volgens de Tempest Domain Spells-tabel.</em></p>
+    <p>Je krijgt domain spells op de cleric-niveaus vermeld in de Tempest Domain Spells-tabel.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Tempest</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#cleric">← Terug naar Cleric</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

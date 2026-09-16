@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/sorcerer.html" />
+<link rel="alternate" hreflang="nl" href="sorcerer.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/sorcerer.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sorcerer-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Sorcerer class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/sorcerer.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Sorcerer-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Sorcerer vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#sorcerer">← Terug naar Sorcerer</a> · <a href="index.html#sorcerer">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Sorcerer abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#font-of-magic">Font of Magic</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#metamagic">Metamagic</a> <span class="text-muted">(2e niveau en hoger)</span></li>
+<li><a href="#sorcerous-renewal">Sorcerous Renewal</a> <span class="text-muted">(3e niveau en hoger)</span></li>
+<li><a href="#devour-spell">Devour Spell</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#chaos">Chaos</a></li>
+<li class="toc-sub toc-feature"><a href="#chaos-chaos-manifestation">Chaos Manifestation</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-chaos-origin-spells">Chaos Origin Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-volatile-magic">Volatile Magic</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-embrace-chaos">Embrace Chaos</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-inflict-disorder">Inflict Disorder</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#chaos-apotheosis-of-discord">Apotheosis of Discord</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#draconic">Draconic</a></li>
+<li class="toc-sub toc-feature"><a href="#draconic-draconic-resilience">Draconic Resilience</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-dragon-ancestor">Dragon Ancestor</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-elemental-affinity">Elemental Affinity</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-imperious-wings">Imperious Wings</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#draconic-draconic-vengeance">Draconic Vengeance</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#abominable">Abominable</a></li>
+<li class="toc-sub toc-feature"><a href="#abominable-abominable-origin-spells">Abominable Origin Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#abominable-physical">Physical</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#cyclonic">Cyclonic</a></li>
+<li class="toc-sub toc-feature"><a href="#cyclonic-cyclonic-origin-spells">Cyclonic Origin Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cyclonic-stormborn">Stormborn</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#sacred">Sacred</a></li>
+<li class="toc-sub toc-feature"><a href="#sacred-divine-providence">Divine Providence</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#sacred-metamagic-divine">Metamagic: Divine</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="font-of-magic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Font of Magic</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Interne bron van sorcery points.</em></p>
+    <p>Sorcery points volgens de progressietabel. Terug bij lange rust. Wissel points ↔ spellniveaus volgens BFRD flexible casting (gebruik in YMIAT ook Spell Power).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bekende Arcane spells.</em></p>
+    <p>Als kanaal voor <strong>Arcane</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#sorcerer">Sorcerer</a>-progressietabel.</p>
+<p>Je kent een vaste spelllijst en prepareert die niet dagelijks. Leer extra spells op de niveaus in je class-progressietabel.</p>
+<p><strong>Spellcasting ability:</strong> Willpower (WIL). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Willpower (WIL)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="metamagic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Metamagic</h4>
+    <span class="spell-card-level">2e niveau en hoger</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Verdraai spells met sorcery points.</em></p>
+    <p>Kies Metamagic-opties (Careful, Quickened, Twinned, Heightened, enz.). Krijg meer opties op 4e, 8e en 10e niveau. Eén optie per spell tenzij anders vermeld.</p>
+<p><strong>Quickened Spell</strong> kost nog steeds 2 points; de spell gebruikt je actie (geen aparte vrije actie in YMIAT).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="sorcerous-renewal">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Sorcerous Renewal</h4>
+    <span class="spell-card-level">3e niveau en hoger</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Herstel sorcery points bij korte rust.</em></p>
+    <p>Na een korte rust rol je 1d4+1 sorcery points (2d4+1 op 6e, 3d4+1 op 9e).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="devour-spell">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Devour Spell</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Absorbeer vijandige spellenergie.</em></p>
+    <p>Reactie wanneer je het doelwit van een spell bent: Willpower-check DC 10 + spellniveau. Bij succes hebben doelwitten voordeel op saves en halve schade; jij krijgt sorcery points gelijk aan het spellniveau. Eén keer per lange rust (of geef 4 points uit om opnieuw te gebruiken).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Arcane Instruction of Innate Spell.</em></p>
+    <p><strong>Arcane Instruction:</strong> geef 1 point uit om Willpower op te tellen bij een gefaalde test. <strong>Innate Spell:</strong> leer een 1e–2e-niveau spell die je met sorcery points kunt casten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Deel spelleffecten met een ander doelwit.</em></p>
+    <p>Reactie wanneer een spell jou treft: een wezen dat je binnen 120 voet kunt zien wordt ook getroffen. Eén keer per rust (of geef 10 sorcery points uit).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een magic-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Magie-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="chaos">
+  <h3 class="subclass-name">Chaos</h3>
+  <p class="subclass-summary">Wilde surges van ongecontroleerde arcane kracht.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="chaos-chaos-manifestation">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Chaos Manifestation</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>Willekeurige surge bij crit of uitschakelen met spellaanvallen.</em></p>
+    <p>Wanneer je wezens tot 0 Wonden reduceert of een critical hit scoort met een spellaanval, rol je d6 op de Chaos Manifestation-tabel (invisibility, force-burst, AC-bonus, phasing, magische duisternis of teleport-met-risico). Eén keer per beurt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-chaos-origin-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Chaos Origin Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende chaos origin spells.</em></p>
+    <p>Deze origin spells zijn altijd known/prepared:</p><ul><li><strong>Niveau 2:</strong> misty step, shatter</li><li><strong>Niveau 5:</strong> blink, hypnotic pattern</li><li><strong>Niveau 7:</strong> compulsion, polymorph</li><li><strong>Niveau 9:</strong> seeming, telekinesis</li><li><strong>Niveau 10:</strong> eyebite, irresistible dance</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-volatile-magic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Volatile Magic</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>Leveled spells kunnen extra volatile effecten triggeren.</em></p>
+    <p>Wanneer je een spell van 1e niveau of hoger cast, rol je d20 tegen volatile DC (<strong>20 − sorcerer-niveau + spellniveau</strong>). Bij falen resolveert de spell nog steeds, maar je rolt ook op de Volatile Spell Effect-tabel (zie Player's Guide). Bij 0 Luck rol je twee keer en neem je het hogere resultaat.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-embrace-chaos">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Embrace Chaos</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Vrije actie: ondergaan van een volatile effect voor points of tijdelijke Wonden.</em></p>
+    <p>Als <strong>vrije actie</strong> rol je op de Volatile Spell Effect-tabel en onderga je die alsof je het doelwit bent. Even resultaat = krijg PB sorcery points; oneven = krijg tijdelijke Wonden = Fitness-score voor 1 uur. Eén keer per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-inflict-disorder">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Inflict Disorder</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Leid volatile effecten om naar aanvallers.</em></p>
+    <p>Wanneer je het doelwit bent van een spell of aanval, gebruik je je <strong>reactie</strong> om op de Volatile Spell Effect-tabel te rollen; geef 1 sorcery point uit om de aanvaller het effect te laten ondergaan. Eén keer per lange rust, of geef 2 sorcery points uit om opnieuw te gebruiken.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="chaos-apotheosis-of-discord">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Apotheosis of Discord</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Chaos</span></div>
+  <div class="spell-card-description">
+<p><em>6e-niveau+ spells triggeren een minuut chaotische meesterschap.</em></p>
+    <p>Wanneer je een spell van 6e niveau of hoger cast, word je 1 minuut een kanaal (tot bewusteloos): metamagic kost −1 (min. 0); weerstand tegen alle schade tot einde van volgende beurt na het casten van een leveled spell; cast elke bekende Arcane of origin spell (casting ≤1 minuut, spellniveau ≤ half PB) zonder slots of componenten. Eén keer per lange rust, of geef 15 sorcery points uit.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="draconic">
+  <h3 class="subclass-name">Draconic</h3>
+  <p class="subclass-summary">Aangeboren kracht uit draconic ancestry.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="draconic-draconic-resilience">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Draconic Resilience</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span></div>
+  <div class="spell-card-description">
+<p><em>Natuurlijke AC en extra Max. wonden.</em></p>
+    <p>Zonder pantser: AC = 10 + Fitness-modifier + Willpower-modifier. Max. wonden stijgen met 1 per sorcerer-niveau.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-dragon-ancestor">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Dragon Ancestor</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span></div>
+  <div class="spell-card-description">
+<p><em>Draconic taal en affinity; origin spells per dragon type.</em></p>
+    <p>Kies een dragon type (bepaalt schadetype voor latere vermogens). Spreek, lees en schrijf Draconic. Op dragon-gerelateerde eigenschapstests behandel je d20-rollen onder je sorcerer-niveau als gelijk aan je sorcerer-niveau.</p>
+<p>Je leert extra origin spells op 2e, 5e, 7e en 9e niveau volgens de BFRD Draconic Origin-tabel (aangepast aan YMIAT-spellniveaus).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-elemental-affinity">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Affinity</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span></div>
+  <div class="spell-card-description">
+<p><em>Tel Willpower op bij één schaderol van je ancestry-type per cast.</em></p>
+    <p>Wanneer je een spell cast die schade van je ancestry-type doet, tel je je <strong>Willpower-modifier</strong> op bij één schaderol van die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-imperious-wings">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Imperious Wings</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Laat vleugels groeien voor fly speed.</em></p>
+    <p>Als vrije actie laat je vleugels groeien met fly speed gelijk aan loopsnelheid tot je die intrekt. Wezens die je zien hebben nadeel om frighten/intimidate te vermijden. Niet bruikbaar met pantser.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="draconic-draconic-vengeance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Draconic Vengeance</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Draconic</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Brandmerk een vijand als vulnerable voor jouw element.</em></p>
+    <p>Actie: doelwit binnen 60 voet maakt Willpower-save of wordt vulnerable voor jouw ancestry-schadetype tot einde van je volgende beurt (immuniteit blijft). Eén keer per lange rust, of geef 4 sorcery points uit om opnieuw te gebruiken.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="abominable">
+  <h3 class="subclass-name">Abominable</h3>
+  <p class="subclass-summary">Je magie komt van primordiale wezens van vóór de schepping — onverschillig en gruwelijk.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="abominable-abominable-origin-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Abominable Origin Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Abominable</span></div>
+  <div class="spell-card-description">
+<p><em>Origin spells volgens de Abominable Origin Spells-tabel.</em></p>
+    <p>Je krijgt origin spells op de sorcerer-niveaus vermeld in de Abominable Origin Spells-tabel. Zie de Sorcerer-regels.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="abominable-physical">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Physical</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Abominable</span></div>
+  <div class="spell-card-description">
+<p><em>Subtiele lichamelijke transformaties die ernstige schade bemoeilijken.</em></p>
+    <p>Je lichaam ondergaat subtiele transformaties terwijl je je otherworldly origin omarmt. Vitale organen verschuiven of versmelten zonder nadeel voor jou, maar maken het moeilijker voor anderen om je ernstig te verwonden.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Abominable</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="cyclonic">
+  <h3 class="subclass-name">Cyclonic</h3>
+  <p class="subclass-summary">Stormkracht dondert in je: onontkoombaar als een blizzard, onmiskenbaar als een orkaan.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="cyclonic-cyclonic-origin-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cyclonic Origin Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cyclonic</span></div>
+  <div class="spell-card-description">
+<p><em>Origin spells volgens de Cyclonic Origin Spells-tabel.</em></p>
+    <p>Je krijgt origin spells op de sorcerer-niveaus vermeld in de Cyclonic Origin Spells-tabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cyclonic-stormborn">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stormborn</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cyclonic</span></div>
+  <div class="spell-card-description">
+<p><em>Stormmagie verbonden met de elemental planes.</em></p>
+    <p>De stormmagie in jou is voorgoed verbonden met de elemental planes. Je krijgt de volgende voordelen: • Zolang je buitenshuis bent op het Material Plane.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Cyclonic</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="sacred">
+  <h3 class="subclass-name">Sacred</h3>
+  <p class="subclass-summary">Je magische kracht komt van een godheid of een machtige hemelse of fiendish proxy in je afkomst.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="sacred-divine-providence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Divine Providence</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Sacred</span></div>
+  <div class="spell-card-description">
+<p><em>Goddelijke natuur geeft een beetje genade.</em></p>
+    <p>Je goddelijke natuur schenkt je een bescheiden mate van genade.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="sacred-metamagic-divine">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Metamagic: Divine</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Sacred</span></div>
+  <div class="spell-card-description">
+<p><em>Unieke Metamagic-optie die niet vervangen kan worden.</em></p>
+    <p>Je krijgt de volgende unieke optie voor Metamagic (zie Player's Guide). Die optie kan niet vervangen worden en telt niet mee voor het aantal Metamagic-opties dat je kent.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Sacred</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#sorcerer">← Terug naar Sorcerer</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

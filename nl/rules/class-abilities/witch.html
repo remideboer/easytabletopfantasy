@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/witch.html" />
+<link rel="alternate" hreflang="nl" href="witch.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/witch.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Witch-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Witch class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/witch.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Witch-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Witch vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#witch">← Terug naar Witch</a> · <a href="index.html#witch">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Witch abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#hex">Hex</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#shadow-craft">Shadow Craft</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#spirit-binding">Spirit Binding</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#greater-hex">Greater Hex</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#otherworldly-form">Otherworldly Form</a> <span class="text-muted">(9e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#crimson-cord">Crimson Cord</a></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-crimson-cord-coven-spells">Crimson Cord Coven Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-life-transfer">Life Transfer</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-wasting-hex">Wasting Hex</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-sanguine-link">Sanguine Link</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#crimson-cord-scarlet-web">Scarlet Web</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#night-song">Night Song</a></li>
+<li class="toc-sub toc-feature"><a href="#night-song-night-blessing">Night Blessing</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-rending-hex">Rending Hex</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-draining-curse">Draining Curse</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-enhanced-blessing">Enhanced Blessing</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#night-song-apex-predator">Apex Predator</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#twilight-soul">Twilight Soul</a></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-obscuring-hex">Obscuring Hex</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-spirit-sentinel">Spirit Sentinel</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-ephemeral-shroud">Ephemeral Shroud</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-welcomed-spirits">Welcomed Spirits</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twilight-soul-soul-sanctum">Soul Sanctum</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Hex</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> bonusactie</span></div>
+  <div class="spell-card-description">
+<p><em>Vervloek vijanden met een Hex-dobbelsteen.</em></p>
+    <p>Als <strong>vrije actie</strong> geef je een wezen binnen 60 voet een Hex-dobbelsteen (d6; d8 op 5e, d10 op 9e). Wanneer het doelwit een aanval, test of save maakt, kun je rollen en de dobbelsteen aftrekken (waarmee die uitgegeven is). Slechts één Hex-dobbelsteen per wezen.</p>
+<p>Gebruiken per lange rust gelijk aan je <strong>Willpower-modifier</strong> (minimaal 1).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bekende Wyrd spells.</em></p>
+    <p>Als kanaal voor <strong>Wyrd</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#witch">Witch</a>-progressietabel.</p>
+<p>Je kent een vaste spelllijst en prepareert die niet dagelijks. Leer extra spells op de niveaus in je class-progressietabel.</p>
+<p><strong>Spellcasting ability:</strong> Willpower (WIL). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Willpower (WIL)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="shadow-craft">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Shadow Craft</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Kleine illusies en witch-light craft.</em></p>
+    <p>Je weeft schaduw en wyrd tot kleine effecten — verborgen boodschappen, verhullende nevels en coven-fetishes. Opties breiden uit op 6e en 9e niveau volgens de ToV witch-regels.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spirit-binding">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spirit Binding</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bind behulpzame geesten.</em></p>
+    <p>In 10 minuten bind je een spirit companion voor scouting en spelllevering. Op 2e niveau houd je één binding; extra bindings op hogere niveaus volgens ToV witch-progressie (aangepast aan YMIAT 10 niveaus).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="greater-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Greater Hex</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Gehexte vijanden raken jou moeilijker.</em></p>
+    <p>Wanneer je een wezen een Hex-dobbelsteen geeft, heeft het <strong>nadeel</strong> op de eerste aanvalsworp tegen jou vóór de dobbelsteen is uitgegeven.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="otherworldly-form">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Otherworldly Form</h4>
+    <span class="spell-card-level">9e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Korte spirit-transformatie.</em></p>
+    <p>Als actie neem je 1 minuut een otherworldly form aan: weerstand tegen nonmagical B/P/S, voordeel op Willpower-saves, en één coven-voordeel van je subclass. Eén keer per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Witch heroic boon uit ToV PG2.</em></p>
+    <p>Kies een witch heroic boon uit de ToV Player's Guide 2-lijst, aangepast voor YMIAT.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Witch epic boon uit ToV PG2.</em></p>
+    <p>Kies een witch epic boon uit de ToV Player's Guide 2-lijst, aangepast voor YMIAT.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een magic-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Magie-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="crimson-cord">
+  <h3 class="subclass-name">Crimson Cord</h3>
+  <p class="subclass-summary">Vitality-witch die bondgenoten heelt en vijanden uitholt met bloedmagie.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="crimson-cord-crimson-cord-coven-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Crimson Cord Coven Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-prepared coven spells.</em></p>
+    <p>Krijg coven spells op 2e, 4e, 6e en 8e niveau: <em>cure wounds</em>, <em>inflict wounds</em>, <em>restoration</em>, en hogere healing- en necrotic-spells volgens de ToV Crimson Cord-tabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-life-transfer">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Life Transfer</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Offer Wonden om te helen of te schaden.</em></p>
+    <p>Actie: offer tot 4 × witch-niveau Wonden om één wezen binnen 30 voet te helen of een Fitness-save af te dwingen voor necrotic-schade. PB gebruiken per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-wasting-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Wasting Hex</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span></div>
+  <div class="spell-card-description">
+<p><em>Hexes tappen vitaliteit af.</em></p>
+    <p>Wanneer je een wezen hex't, kan het aan het begin van de beurt 2 × PB Wonden nemen (Fitness-save voor de helft) en kan het tot de volgende beurt geen Wonden terugkrijgen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-sanguine-link">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Sanguine Link</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Mystieke bloedband.</em></p>
+    <p>Actie: link met een willig wezen (verlaag Max. wonden met 10). Gelinkte doelwitten kunnen Life Transfer en <em>cure wounds</em> op afstand ontvangen. Half PB links actief.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="crimson-cord-scarlet-web">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Scarlet Web</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Crimson Cord</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Gebied life-drain en healing-aura.</em></p>
+    <p>Actie: 1 minuut lang nemen hostiles binnen 30 voet Wonden bij binnenkomst/begin van beurt; bondgenoten die nabij hun beurt eindigen helen. Voordeel op Fitness-saves; weerstand tegen nonmagical B/P/S. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Crimson Cord</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="night-song">
+  <h3 class="subclass-name">Night Song</h3>
+  <p class="subclass-summary">Predator-witch, versterkt door duisternis en night blessings.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="night-song-night-blessing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Night Blessing</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+<p><em>Darkvision en nachtelijke predator-gaven.</em></p>
+    <p>Voordeel op Stealth in dim light/duisternis; darkvision 60 voet (+30 als je die al hebt). Na elke lange rust kies je Night Children, Night Crawler of Night Creature blessing.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-rending-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Rending Hex</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+<p><em>Gehexte prooi neemt extra wapenschade.</em></p>
+    <p>Wanneer een gehexte wezen wapenschade neemt, tel Hex-dobbelsteen + Willpower op bij de schade zonder de dobbelsteen uit te geven. Onder de helft Wonden: Fitness-save of bondgenoten krijgen voordeel tegen het doelwit.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-draining-curse">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Draining Curse</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+<p><em>Vervloek prooi en tap hun leven af.</em></p>
+    <p>Actie of samen met Hex: offer een Recovery Point om een wezen 1 uur te vervloeken; schade aan vervloekte doelwitten heelt jou tot witch-niveau. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-enhanced-blessing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enhanced Blessing</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span></div>
+  <div class="spell-card-description">
+<p><em>Wissel blessings bij rust; sterkere gaven.</em></p>
+    <p>Wijzig Night Blessing bij korte of lange rust. Elke blessing krijgt een extra voordeel (charm beasts, B/P/S-weerstand of fly speed).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="night-song-apex-predator">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Apex Predator</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Night Song</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Volledige night-transformatie.</em></p>
+    <p>Actie: 1 minuut lang krijg je twee blessings, voordeel tegen vervloekte doelwitten, en herstel je 20 Wonden per beurt buiten zonlicht. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Night Song</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="twilight-soul">
+  <h3 class="subclass-name">Twilight Soul</h3>
+  <p class="subclass-summary">Spirit-diplomaat met een sentinel-metgezel.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="twilight-soul-obscuring-hex">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Obscuring Hex</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span></div>
+  <div class="spell-card-description">
+<p><em>Onzichtbaar voor gehexte doelwitten.</em></p>
+    <p>Wanneer je een wezen hex't, ben je tot 1 minuut invisible voor het tot je aanvalt, schade doet of het met een spell target.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-spirit-sentinel">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spirit Sentinel</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span></div>
+  <div class="spell-card-description">
+<p><em>Tiny spirit-scout en spell-oorsprong.</em></p>
+    <p>Ritual van 10 minuten roept een Tiny spirit op (bat, raven, cat, enz.). Cast spells vanuit diens ruimte; telepathische zintuigen; beveel Move, Hinder of Invisible-taken.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-ephemeral-shroud">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ephemeral Shroud</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Teleport weg van aanvallen.</em></p>
+    <p>Reactie wanneer je geraakt wordt door een single-target-aanval: teleport tot 60 voet; de aanval mist. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-welcomed-spirits">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Welcomed Spirits</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span></div>
+  <div class="spell-card-description">
+<p><em>Ritual-communie met geesten.</em></p>
+    <p>Ceremonie van 10 minuten: geef Recovery Points uit om <em>augury</em>, <em>speak with dead</em> of <em>commune with nature</em> te casten zonder Spell Power.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="twilight-soul-soul-sanctum">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Soul Sanctum</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twilight Soul</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Geesten beschermen jou en straffen vijanden.</em></p>
+    <p>Actie: 1 minuut lang nemen hostiles nabij jou of je sentinel force-schade aan het begin van hun beurt; aanvallers hebben nadeel tegen jou; hostiles hebben nadeel op saves tegen jouw spells. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Twilight Soul</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#witch">← Terug naar Witch</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

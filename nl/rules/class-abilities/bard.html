@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/bard.html" />
+<link rel="alternate" hreflang="nl" href="bard.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/bard.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bard-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Bard class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/bard.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Bard-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Bard vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#bard">← Terug naar Bard</a> · <a href="index.html#bard">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Bard abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#bardic-inspiration">Bardic Inspiration</a> <span class="text-muted">(1e, 4e en 7e niveau)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#expertise">Expertise</a> <span class="text-muted">(1e en 5e niveau)</span></li>
+<li><a href="#bardic-performance">Bardic Performance</a> <span class="text-muted">(2e en 5e niveau)</span></li>
+<li><a href="#font-of-inspiration">Font of Inspiration</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#magical-secrets">Magical Secrets</a> <span class="text-muted">(6e en 9e niveau)</span></li>
+<li><a href="#grand-performance">Grand Performance</a> <span class="text-muted">(8e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#lore">Lore</a></li>
+<li class="toc-sub toc-feature"><a href="#lore-ode-to-heroes">Bardic Performance: Ode to Heroes</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#lore-expanded-talent-list">Expanded Talent List</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#lore-jack-of-all-trades">Jack of Alle Trades</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#lore-swift-ritual">Swift Ritual</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#lore-magical-rites">Magical Rites</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#lore-peerless-skill">Peerless Skill</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#victory">Victory</a></li>
+<li class="toc-sub toc-feature"><a href="#victory-battle-march">Bardic Performance: Battle March</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#victory-multiattack">Multiattack</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#victory-unified-front">Unified Front</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#victory-inspired-strike">Inspired Strike</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#allure">Allure</a></li>
+<li class="toc-sub toc-feature"><a href="#allure-mirror-mirror">Bardic Performance: Mirror Mirror</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#mockery">Mockery</a></li>
+<li class="toc-sub toc-feature"><a href="#mockery-playful-banter">Bardic Performance: Playful Banter</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#mockery-razor-wit">Razor Wit</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#mockery-infectious-laughter">Infectious Laughter</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#mockery-crushing-jest">Crushing Jest</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#mockery-mocking-rage">Mocking Rage</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#sound">Sound</a></li>
+<li class="toc-sub toc-feature"><a href="#sound-amplify-dampen">Amplify/Dampen</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#sound-spell">Bardic Performance: Spell</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="bardic-inspiration">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bardic Inspiration</h4>
+    <span class="spell-card-level">1e, 4e en 7e niveau</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Geef een inspiration-dobbelsteen om de rol van een bondgenoot te versterken.</em></p>
+    <p>Als <strong>actie</strong> kies je één ander wezen binnen 60 voet dat je kan horen of zien. Dat wezen krijgt één Bardic Inspiration-dobbelsteen (d6 op 1e niveau, d8 op 4e, d10 op 7e).</p>
+<p>Binnen de volgende 10 minuten kan het wezen de dobbelsteen rollen en het resultaat optellen bij één eigenschapstest, aanvalsworp of save. Daarna is de dobbelsteen weg.</p>
+<p>Gebruiken per lange rust gelijk aan je <strong>Willpower-modifier</strong> (minimaal 1). Zie <a href="bard.html#font-of-inspiration">Font of Inspiration</a> op 3e niveau.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bekende Arcane spells; gebruikt Spell Power.</em></p>
+    <p>Als kanaal voor <strong>Arcane</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#bard">Bard</a>-progressietabel.</p>
+<p>Je kent een vaste spelllijst en prepareert die niet dagelijks. Leer extra spells op de niveaus in je class-progressietabel.</p>
+<p><strong>Spellcasting ability:</strong> Willpower (WIL). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Willpower (WIL)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="expertise">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expertise</h4>
+    <span class="spell-card-level">1e en 5e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>+2×PB op gekozen skills of tools.</em></p>
+    <p>Kies twee skill- of tool-behendigheden (of één van elk). Je hebt Expertise ermee: tel <strong>+2×PB</strong> in plaats van +PB op bij eigenschapstests die die behendigheid gebruiken.</p>
+<p>Op 5e niveau kies je twee extra behendigheden voor dit voordeel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="bardic-performance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bardic Performance</h4>
+    <span class="spell-card-level">2e en 5e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Weef magie in doorlopende performances.</em></p>
+    <p>Als <strong>actie</strong> begin je een performance (Celebrate Life, Cutting Words, of Clarity of Thought op 5e niveau). Houd die vol door aan het begin van elke beurt een <strong>actie</strong> te spenderen, tot 1 minuut.</p>
+<ul>
+<li><strong>Celebrate Life.</strong> Bondgenoten in bereik kunnen aan het begin van hun beurt een Recovery die uitgeven om te helen; bondgenoten hebben voordeel op death saves.</li>
+<li><strong>Cutting Words.</strong> Reactie tijdens performance: trek een inspiration-dobbelsteen af van een check, aanval of schaderol van een vijand.</li>
+<li><strong>Clarity of Thought (5e).</strong> Bondgenoten in bereik kunnen niet charmed worden en hebben voordeel op saves tegen fear.</li>
+</ul>
+<p>Gebruiken per lange rust gelijk aan je behendigheidsbonus.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="font-of-inspiration">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Font of Inspiration</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Krijg inspiration terug bij korte rust; versterk gefaalde rollen.</em></p>
+    <p>Je krijgt alle uitgegeven gebruiken van Bardic Inspiration terug wanneer je een <strong>korte of lange rust</strong> afrondt.</p>
+<p>Wanneer een wezen binnen 60 voet faalt op een check, aanval of save, kun je je <strong>reactie</strong> gebruiken om inspiration uit te geven en de dobbelsteen bij het totaal op te tellen, zodat falen mogelijk succes wordt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="magical-secrets">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Magical Secrets</h4>
+    <span class="spell-card-level">6e en 9e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Leer spells uit elke source.</em></p>
+    <p>Kies twee spells (of cantrips) van elke spelllijst op 6e niveau en twee meer op 9e. Elke moet van een niveau zijn dat je kunt casten. Ze tellen voor jou als Arcane spells.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="grand-performance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Grand Performance</h4>
+    <span class="spell-card-level">8e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Performance-bereik stijgt naar 60 voet.</em></p>
+    <p>Je Bardic Performance treft nu wezens binnen <strong>60 voet</strong> die je kunnen horen of zien.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Persistent of valiant inspiration-opties.</em></p>
+    <p>Kies één:</p>
+<ul>
+<li><strong>Persistent Inspiration.</strong> Als een wezen jouw inspiration-dobbelsteen optelt en toch faalt, gaat de dobbelsteen niet verloren.</li>
+<li><strong>Valiant Inspiration.</strong> Na een geslaagde aanval kan het wezen de dobbelsteen uitgeven voor extra schade; of als reactie bij schade, verlaag schade met dobbelsteen + je Willpower-modifier.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Herstel inspiration tijdens performance.</em></p>
+    <p><strong>Curtain Call.</strong> Als je je beurt begint zonder resterende Bardic Inspiration-gebruiken, kun je gebruiken gelijk aan je Willpower-modifier (minimaal 1) terugkrijgen als onderdeel van de actie die je performance onderhoudt. Eén keer per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een utility-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Utility-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="lore">
+  <h3 class="subclass-name">Lore</h3>
+  <p class="subclass-summary">Een kennisverzamelaar die magie en talenten uit elke traditie weeft.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="lore-ode-to-heroes">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bardic Performance: Ode to Heroes</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Lore</span></div>
+  <div class="spell-card-description">
+<p><em>Performance die bondgenoten helpt en vijanden hindert op eigenschapstests.</em></p>
+    <p>Je krijgt de Bardic Performance-optie <strong>Ode to Heroes</strong>. Wanneer je performt, kies <strong>Fitness, Insight of Willpower</strong>. Zolang je performance duurt, hebben bondgenoten in bereik voordeel op eigenschapstests met die eigenschap en vijanden nadeel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="lore-expanded-talent-list">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expanded Talent List</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Lore</span></div>
+  <div class="spell-card-description">
+<p><em>Kies talenten uit magic- of utility-lijsten.</em></p>
+    <p>Wanneer je een nieuw talent van Improvement krijgt, kun je die kiezen uit de <a href="../talents.html">magic</a>- of <a href="../talents.html">utility</a>-talentlijsten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="lore-jack-of-all-trades">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Jack of Alle Trades</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Lore</span></div>
+  <div class="spell-card-description">
+<p><em>Half PB op eigenschapstests die PB nog niet bevatten.</em></p>
+    <p>Tel de helft van je PB (naar beneden) op bij elke eigenschapstest die je PB nog niet bevat.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="lore-swift-ritual">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Swift Ritual</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Lore</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Cast een bekend ritual als actie, één keer per lange rust.</em></p>
+    <p>Je kunt een Arcane ritual dat je kent als <strong>actie</strong> casten in plaats van de vermelde casting time. Je moet nog steeds alle andere componenten leveren. Eén keer gebruikt, kun je dit niet opnieuw tot je een lange rust afrondt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="lore-magical-rites">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Magical Rites</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Lore</span></div>
+  <div class="spell-card-description">
+<p><em>Leer twee extra ritual spells uit elke source.</em></p>
+    <p>Leer twee ritual spells naar keuze van elke source-lijst. Elke moet van een niveau zijn dat je kunt casten. Ze tellen voor jou als Arcane en tellen niet mee voor rituals known van je class-tabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="lore-peerless-skill">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Peerless Skill</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Lore</span></div>
+  <div class="spell-card-description">
+<p><em>Geef Bardic Inspiration uit op eigenschapstests; behoud de dobbelsteen bij succes.</em></p>
+    <p>Wanneer je een eigenschapstest maakt en Bardic Inspiration beschikbaar hebt, kun je een Bardic Inspiration-dobbelsteen rollen en die bij de test optellen. Bij succes behoud je de dobbelsteen; bij falen is die uitgegeven.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://bfrd.net/classes/bard/bard-subclasses/" rel="noopener">BFRD Lore</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="victory">
+  <h3 class="subclass-name">Victory</h3>
+  <p class="subclass-summary">Inspireer bondgenoten tot overwinning door martiale cadans.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="victory-battle-march">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bardic Performance: Battle March</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Victory</span></div>
+  <div class="spell-card-description">
+<p><em>Performance laat bondgenoten reactie-bewegen; medium pantser en martial wapen.</em></p>
+    <p>Je krijgt <strong>Battle March</strong> als Bardic Performance-optie. Wanneer je performt — en als onderdeel van elke vrije actie om die te onderhouden — kun je tot drie willige bondgenoten die je kunnen zien of horen bevelen hun <strong>reactie</strong> te gebruiken om tot de helft van hun snelheid te bewegen zonder opportunity attacks.</p>
+<p>Je krijgt ook behendigheid met medium pantser, schilden en één martial wapen naar keuze.</p>
+<p>Wanneer Improvement een nieuw talent geeft, kun je kiezen uit de martial- of utility-talentlijsten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="victory-multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Victory</span></div>
+  <div class="spell-card-description">
+<p><em>Twee aanvallen wanneer je de Attack-actie neemt.</em></p>
+    <p>Wanneer je op je beurt de Attack-actie neemt, kun je <strong>twee aanvallen</strong> maken in plaats van één.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="victory-unified-front">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unified Front</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Victory</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: versterk je save; bondgenoten slagen automatisch op gebiedseffecten.</em></p>
+    <p>Wanneer je het doelwit bent van een gebiedseffect dat een save vereist, gebruik je je <strong>reactie</strong> om een Bardic Inspiration-dobbelsteen uit te geven en die bij je save op te tellen. Bij succes slaagt elk vriendelijk wezen in het gebied automatisch ook op hun saves.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="victory-inspired-strike">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Inspired Strike</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Victory</span></div>
+  <div class="spell-card-description">
+<p><em>Geef Bardic Inspiration uit op aanvallen; behoud de dobbelsteen bij treffer.</em></p>
+    <p>Eén keer per beurt, wanneer je een wapen- of spellaanval maakt en Bardic Inspiration beschikbaar hebt, rol je een Bardic Inspiration-dobbelsteen en tel je die op bij de aanvalsworp. Bij treffer behoud je de dobbelsteen; bij missen is die uitgegeven.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="allure">
+  <h3 class="subclass-name">Allure</h3>
+  <p class="subclass-summary">Bards van Allure begrijpen de geest en hoe een kleine zet die in hun voordeel buigt.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="allure-mirror-mirror">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bardic Performance: Mirror Mirror</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Allure</span></div>
+  <div class="spell-card-description">
+<p><em>Weef illusies om metgezellen te beschermen.</em></p>
+    <p>Je weeft illusies om je metgezellen te beschermen. Wanneer je je Bardic Performance-vermogen gebruikt (zie Player's Guide).</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Allure</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="mockery">
+  <h3 class="subclass-name">Mockery</h3>
+  <p class="subclass-summary">Bards van Mockery perfectioneren bijtende repartee — als entertainment én als wapen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="mockery-playful-banter">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bardic Performance: Playful Banter</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Mockery</span></div>
+  <div class="spell-card-description">
+<p><em>Banter versterkt verdediging tegen mentale aanvallen.</em></p>
+    <p>Je grappen en banter versterken de verdediging van bondgenoten tegen vergelijkbare mentale aanvallen. Zolang je performance duurt, verlaagt elke bondgenoot in bereik die psychic-schade neemt die schade met een bedrag gelijk aan je bard-niveau.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="mockery-razor-wit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Razor Wit</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Mockery</span></div>
+  <div class="spell-card-description">
+<p><em>Leer vicious mockery en hideous laughter; CHA op schade.</em></p>
+    <p>Je leert de cantrip <em>vicious mockery</em> en de spell <em>hideous laughter</em> als je die nog niet kent. Wanneer je vicious mockery cast, tel je je CHA-modifier op bij de schaderol.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="mockery-infectious-laughter">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Infectious Laughter</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Mockery</span></div>
+  <div class="spell-card-description">
+<p><em>Vicious mockery treft meerdere doelwitten.</em></p>
+    <p>Wanneer je vicious mockery cast, kun je een aantal wezens targeten gelijk aan één + de helft van je PB (naar beneden).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="mockery-crushing-jest">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Crushing Jest</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Mockery</span></div>
+  <div class="spell-card-description">
+<p><em>Beledigingen doorbreken zelfs sterke mentale verdediging.</em></p>
+    <p>Je beledigingen zijn zo vernietigend dat zelfs wezens met sterke mentale verdediging bezwijken onder de verbale aanval.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="mockery-mocking-rage">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mocking Rage</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Mockery</span></div>
+  <div class="spell-card-description">
+<p><em>Banter en mockery kunnen wezens enrageren.</em></p>
+    <p>Als actie kies je tot PB wezens die je binnen 30 voet kunt zien. Elk doelwit moet een WIS-save maken tegen je spell-save-DC of 1 minuut in een rage-fit belanden. In zo'n fit kan een doelwit vriend van vijand niet onderscheiden en moet het op zijn beurt het dichtstbijzijnde wezen aanvallen. Is er geen wezen dichtbij genoeg, dan loopt het in een willekeurige richting op zoek naar een doelwit. Een doelwit mag de save herhalen aan het einde van elk van zijn beurten en beëindigt het effect bij succes.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Mockery</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="sound">
+  <h3 class="subclass-name">Sound</h3>
+  <p class="subclass-summary">Bards van Sound worden vaak getrokken door de wens hun muzikale talenten te masteren.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="sound-amplify-dampen">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Amplify/Dampen</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Sound</span></div>
+  <div class="spell-card-description">
+<p><em>Leer message, thaumaturgy en silence.</em></p>
+    <p>Je leert de cantrips <em>message</em> en <em>thaumaturgy</em> en de spell <em>silence</em> als je die nog niet kent. Die tellen als Arcane wanneer je ze cast, maar tellen niet mee voor cantrips of spells known in de Bard-progressietabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="sound-spell">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bardic Performance: Spell</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Sound</span></div>
+  <div class="spell-card-description">
+<p><em>Nieuwe bard-vermogens en subclasses.</em></p>
+    <p>De bard class krijgt in deze sectie nieuwe vermogens en subclasses.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Sound</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#bard">← Terug naar Bard</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

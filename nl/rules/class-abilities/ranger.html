@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/ranger.html" />
+<link rel="alternate" hreflang="nl" href="ranger.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/ranger.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ranger-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Ranger class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/ranger.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Ranger-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Ranger vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#ranger">← Terug naar Ranger</a> · <a href="index.html#ranger">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Ranger abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#explorer">Explorer</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#mystic-mark">Mystic Mark</a> <span class="text-muted">(1e niveau en hoger)</span></li>
+<li><a href="#martial-action">Martial Action</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#empowered-mark">Empowered Mark</a> <span class="text-muted">(4e-niveauvermogen)</span></li>
+<li><a href="#stalkers-step">Stalker's Step</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#keensense">Keensense</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#strider">Strider</a> <span class="text-muted">(8e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#hunter">Hunter</a></li>
+<li class="toc-sub toc-feature"><a href="#hunter-hunter-calling-spells">Hunter Calling Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#hunter-killer-instinct">Killer Instinct</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#hunter-relentless-pursuit">Relentless Pursuit</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#hunter-favored-foe">Favored Foe</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#hunter-no-escape">No Escape</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#hunter-predators-shield">Predator's Shield</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#pack-master">Pack Master</a></li>
+<li class="toc-sub toc-feature"><a href="#pack-master-beast-spirit">Beast Spirit</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#pack-master-life-link">Life Link</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#pack-master-pack-master-calling-spells">Pack Master Calling Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#pack-master-shared-mark">Shared Mark</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#pack-master-soul-bond">Soul Bond</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#pack-master-undying-friendship">Undying Friendship</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#arrow-binder">Arrow Binder</a></li>
+<li class="toc-sub toc-feature"><a href="#arrow-binder-arrow-binder-calling-spells">Arrow Binder Calling Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#arrow-binder-bind-spell">Bind Spell</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#shadow">Shadow</a></li>
+<li class="toc-sub toc-feature"><a href="#shadow-night-s-gaze">Night’s Gaze</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#shadow-predator-s-strike">Predator’s Strike</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#trailblazer">Trailblazer</a></li>
+<li class="toc-sub toc-feature"><a href="#trailblazer-expert-guide">Expert Guide</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#trailblazer-focus-fire">Focus Fire</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#trailblazer-trailblazer">Trailblazer</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="explorer">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Explorer</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Ongeëvenaarde wildernis-mobiliteit.</em></p>
+    <p>Klim- of zwemsnelheid gelijk aan loopsnelheid. Voordeel op tracking-tests. Snelheid niet gehalveerd in difficult terrain (andere straffen gelden nog).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="mystic-mark">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mystic Mark</h4>
+    <span class="spell-card-level">1e niveau en hoger</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Markeer quarry voor extra schade.</em></p>
+    <p>Wanneer je een wezen raakt, markeer je het 1 minuut (extra schade d4 → d6 op 3e → d8 op 6e → d10 op 9e). Gebruiken = behendigheidsbonus per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="martial-action">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Martial Action</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Aim of Quick Strike als tweede actie.</em></p>
+    <p>Kies <strong>Aim</strong> of <strong>Quick Strike</strong>. Tweede actie wanneer je niet hebt bewogen (zie Martial Action).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Bekende Primordial spells.</em></p>
+    <p>Als kanaal voor <strong>Primordial</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#ranger">Ranger</a>-progressietabel.</p>
+<p>Je kent een vaste spelllijst en prepareert die niet dagelijks. Leer extra spells op de niveaus in je class-progressietabel.</p>
+<p><strong>Spellcasting ability:</strong> Insight (INS). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Insight (INS)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Twee aanvallen per Attack-actie.</em></p>
+    <p>Je fysieke kracht is gegroeid. Op je beurt kun je tot <strong>twee</strong> aanvallen maken wanneer je de Attack-actie neemt.</p>
+<p>In YMIAT veroorzaakt elke succesvolle wapenaanval doorgaans <strong>1 Wond</strong> (2 bij een critical hit). Wapenbonussen gelden voor raken, niet voor het aantal Wonden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="empowered-mark">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Empowered Mark</h4>
+    <span class="spell-card-level">4e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Voel en sla je quarry.</em></p>
+    <p>Zolang je mark binnen 60 voet is, ken je de locatie en kan het geen voordeel krijgen door ongezien te zijn. Geen nadeel door invisibility wanneer je het aanvalt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="stalkers-step">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stalker's Step</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Verdwaal in natuurlijke dekking.</em></p>
+    <p>In dim light, duisternis of natuurlijke obscurement gebruik je een actie om invisible te worden tot je volgende beurt (eindigt als je aanvalt of cast). Gebruiken = PB per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="keensense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Keensense</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Gehoor-gebaseerde blindsight.</em></p>
+    <p>Keensense 10 voet (werkt niet terwijl je deafened bent).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="strider">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Strider</h4>
+    <span class="spell-card-level">8e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Beweeg zonder opportunity attacks te provoceren.</em></p>
+    <p>Je beweging provoceert geen opportunity attacks. Voordeel op saves tegen grapple, restraint, paralysis en snelheidsverlaging.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Path of the Predator of Sage.</em></p>
+    <p><strong>Predator:</strong> Markeer je quarry wanneer gevecht begint zonder eerst te raken; verplaats de mark wanneer quarry sterft. <strong>Sage:</strong> Leer twee extra cantrips en twee Primordial rituals.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Wijsheid stuurt elke slag tegen je mark.</em></p>
+    <p>Tel je Insight-modifier op bij de aanvals- of schaderol van elke aanval tegen een mystic-marked wezen op je beurt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of martial/utility-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Martiale of Utility-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="hunter">
+  <h3 class="subclass-name">Hunter</h3>
+  <p class="subclass-summary">Jager van bovennatuurlijke roofdieren die de wildernis bedreigen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="hunter-hunter-calling-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Hunter Calling Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Hunter</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende hunter spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> protection from evil and good</li><li><strong>Niveau 5:</strong> misty step</li><li><strong>Niveau 9:</strong> nondetection</li><li><strong>Niveau 10:</strong> banishment</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="hunter-killer-instinct">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Killer Instinct</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Hunter</span><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Leer weerstanden en vulnerabilities van een doelwit.</em></p>
+    <p>Als vrije actie leer je immuniteiten, weerstanden en vulnerabilities van een wezen binnen 60 voet (geblokkeerd door anti-divination). PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="hunter-relentless-pursuit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Relentless Pursuit</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Hunter</span></div>
+  <div class="spell-card-description">
+<p><em>Extra schade tegen gewonde quarry.</em></p>
+    <p>Eén keer per beurt, wanneer je een wezen onder Max. wonden raakt, doe je extra schade gelijk aan je Mystic Mark-dobbelsteen (zelfde schadetype).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="hunter-favored-foe">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Favored Foe</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Hunter</span></div>
+  <div class="spell-card-description">
+<p><em>Bereid je voor op een creature type na research.</em></p>
+    <p>Tijdens een lange rust kies je een creature type (Aberration, Beast, Celestial, enz.). 24 uur lang heeft dat type nadeel om jou aan te vallen en heb jij voordeel op saves tegen hun charm, frighten of possession.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="hunter-no-escape">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">No Escape</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Hunter</span></div>
+  <div class="spell-card-description">
+<p><em>Teleport naar gemarkeerde prooi die probeert te vluchten.</em></p>
+    <p>Wanneer een wezen met Mystic Mark beweegt, gebruik je je reactie om tot 30 voet te teleporteren. Eindig je binnen bereik, maak dan als onderdeel van dezelfde reactie een opportunity attack.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="hunter-predators-shield">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Predator's Shield</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Hunter</span></div>
+  <div class="spell-card-description">
+<p><em>Weerstand tegen schade van een gezien aanvaller.</em></p>
+    <p>Wanneer je schade neemt van een wezen dat je kunt zien, gebruik je je reactie om 1 minuut weerstand te krijgen tegen alle schade van dat wezen (inclusief de triggerende treffer). Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="pack-master">
+  <h3 class="subclass-name">Pack Master</h3>
+  <p class="subclass-summary">Leid beast companions en gecoördineerde pack-tactieken.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="pack-master-beast-spirit">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Beast Spirit</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Pack Master</span></div>
+  <div class="spell-card-description">
+<p><em>Ritual-gebonden beast spirit companion.</em></p>
+    <p>Na een ritual van 1 uur (tijdens een rust) bind je een beast spirit in een Medium dierenform (avian/agile/aquatic/sturdy). Die is vriendelijk, deelt je initiative (handelt na jou), en gebruikt je PB in statistics. Natural weapon: +4 + PB om te raken, 1d8 + 4 + PB schade (B/P/S naar keuze). Multiattack-aantal = half PB (naar beneden). Bij 0 Wonden is het lichaam vernietigd; herhaal het ritual om opnieuw te creëren. Zie Pack Master-stat block in Player's Guide.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="pack-master-life-link">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Life Link</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Pack Master</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: neem de schade van je companion.</em></p>
+    <p>Wanneer je beast spirit binnen 30 voet schade neemt, gebruik je je <strong>reactie</strong> om een willekeurig deel van die schade in plaats daarvan te nemen (niet verlaagd door jouw weerstanden). PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="pack-master-pack-master-calling-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Pack Master Calling Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Pack Master</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende pack master calling spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> animal friendship</li><li><strong>Niveau 5:</strong> wildsense</li><li><strong>Niveau 9:</strong> spirit guardians</li><li><strong>Niveau 10:</strong> polymorph</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="pack-master-shared-mark">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Shared Mark</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Pack Master</span></div>
+  <div class="spell-card-description">
+<p><em>Companion-aanvallen zijn magisch; extra schade vs Mystic Mark.</em></p>
+    <p>Aanvallen van je beast spirit tellen als magisch. Zolang een wezen jouw Mystic Mark draagt, doen treffers van de spirit extra schade gelijk aan je Mystic Mark-dobbelsteen (schaalt met ranger-niveau).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="pack-master-soul-bond">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Soul Bond</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Pack Master</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Deel spell-targeting en levering met je spirit.</em></p>
+    <p>Wanneer jij het doelwit van een spell bent, kan je spirit binnen 30 voet ook getarget worden en dezelfde voordelen ontvangen. Wanneer je een non-self spell cast, kan je spirit binnen 100 voet als reactie die leveren met jouw spellcasting-modifier en DC.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="pack-master-undying-friendship">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Undying Friendship</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Pack Master</span></div>
+  <div class="spell-card-description">
+<p><em>Spirit-offer herstelt jou bij 0 Wonden.</em></p>
+    <p>Bij 0 Wonden of instant death terwijl je spirit actief is, kan die zichzelf offeren: het lichaam wordt vernietigd en jij keert terug met Wonden gelijk aan die van de spirit. Vereist een lange rust vóór je het binding-ritual opnieuw kunt doen.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="arrow-binder">
+  <h3 class="subclass-name">Arrow Binder</h3>
+  <p class="subclass-summary">Rangers die wildernismeesterschap mengen met boogschieten en primordial magie in munitie kanaliseren.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="arrow-binder-arrow-binder-calling-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arrow Binder Calling Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Arrow Binder</span></div>
+  <div class="spell-card-description">
+<p><em>Calling spells volgens de Arrow Binder Calling Spells-tabel.</em></p>
+    <p>Je krijgt calling spells op de ranger-niveaus vermeld in de Arrow Binder Calling Spells-tabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="arrow-binder-bind-spell">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bind Spell</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Arrow Binder</span></div>
+  <div class="spell-card-description">
+<p><em>Geef een spellniveau uit om een spell te casten.</em></p>
+    <p>Als actie kun je een spellniveau uitgeven om een spell te casten.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Arrow Binder</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="shadow">
+  <h3 class="subclass-name">Shadow</h3>
+  <p class="subclass-summary">Shadow-calling trekt rangers die veel verloren aan monsters; zij putten uit nacht en zonloze grotten.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="shadow-night-s-gaze">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Night’s Gaze</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shadow</span></div>
+  <div class="spell-card-description">
+<p><em>Darkvision en zien in magische duisternis.</em></p>
+    <p>Je afstemming op donkere hoeken scherpt je zintuigen. Je krijgt darkvision tot 60 voet als je die nog niet hebt, en kunt in magische duisternis zien alsof het normale duisternis is. Je hebt voordeel op DEX (Stealth)-tests in magische duisternis.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="shadow-predator-s-strike">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Predator’s Strike</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Shadow</span></div>
+  <div class="spell-card-description">
+<p><em>Voordeel op verraste doelen; extra schade vanuit stealth of isolatie.</em></p>
+    <p>Je hebt voordeel op aanvalsworpen tegen verraste wezens. Eén keer op je beurt, wanneer je een wapenaanval raakt tegen een wezen dat je niet kan zien of dat geen bondgenoten binnen 5 voet heeft, doe je extra schade.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Shadow</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="trailblazer">
+  <h3 class="subclass-name">Trailblazer</h3>
+  <p class="subclass-summary">Trailblazers leiden expedities en bewaken reizigers door de gevaarlijkste wildernis.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="trailblazer-expert-guide">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expert Guide</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trailblazer</span></div>
+  <div class="spell-card-description">
+<p><em>Behendigheid in Nature en Survival; dubbele PB als je die al hebt.</em></p>
+    <p>Je krijgt behendigheid in Nature en Survival. Ben je al behendig in een of beide, tel dan in plaats daarvan dubbele PB op bij tests met die skill.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="trailblazer-focus-fire">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Focus Fire</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trailblazer</span></div>
+  <div class="spell-card-description">
+<p><em>Deel Mystic Mark-kracht met een bondgenoot.</em></p>
+    <p>Wanneer je een wezen markeert met Mystic Mark (zie Player's Guide), kun je iets van die kracht delen met een bondgenoot. Kies één vriendelijk wezen binnen 30 voet dat je kan zien of horen. Zolang de mark duurt, doet die bondgenoot extra schade van het type van diens wapen gelijk aan je Mystic Mark.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="trailblazer-trailblazer">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Trailblazer</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trailblazer</span></div>
+  <div class="spell-card-description">
+<p><em>Calling spells volgens de Trailblazer Calling Spells-tabel.</em></p>
+    <p>Je krijgt calling spells op de ranger-niveaus vermeld in de Trailblazer Calling Spells-tabel.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Trailblazer</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#ranger">← Terug naar Ranger</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

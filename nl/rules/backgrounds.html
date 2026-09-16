@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/backgrounds.html" />
+<link rel="alternate" hreflang="nl" href="backgrounds.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/backgrounds.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Achtergronden | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Personage-achtergronden voor You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/backgrounds.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Achtergronden</h1>
+  <div class="content">
+    <p class="lede">Achtergrond schetst de persoonlijke geschiedenis van je personage vóór het avonturenleven.</p>
+    <p>Achtergronden uit de <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player's Guide (2024 core en 2026-opties). In YMIAT ben je alleen behendig in skills die expliciet worden toegekend (voeg PB toe aan gerelateerde eigenschapstests).</p>
+    <div class="lineages-controls">
+      <button id="expand-all-backgrounds" class="lineage-control-btn" onclick="expandAllAchtergronden()">Alles uitklappen</button>
+      <button id="collapse-all-backgrounds" class="lineage-control-btn" onclick="collapseAllAchtergronden()">Alles inklappen</button>
+    </div>
+    <div class="lineages-container">
+      <div class="lineage-item" id="acolyte">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Acolyte</span><a href="https://www.dndbeyond.com/srd#PreviousSRDReleases" class="source-pill source-pill-srd51" rel="noopener" title="D&amp;D 5.1 System Reference Document (Creative Commons license)" onclick="event.stopPropagation()">SRD 5.1 CC</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je hebt je leven gewijd aan een tempel voor een specifieke god of pantheon, als tussenpersoon tussen het goddelijke en de sterfelijke wereld — heilige rites uitvoeren, zegeningen schenken en gelovigen naar de goddelijke aanwezigheid geleiden. Je bent niet per se een cleric; heilige rites uitvoeren is niet hetzelfde als goddelijke kracht kanaliseren.</p>
+<p>Gelovigen van jouw geloof ondersteunen jou (alleen jou) in een bescheiden levensstijl, en je mag gratis genezing en zorg verwachten in elke tempel, shrine of vestiging van je geloof, al moet je wel zelf materiële componenten voor spells leveren.</p>
+<p><strong>Skill Proficiencies:</strong> Insight and Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Calligrapher's supplies, and two languages van je choice.</p>
+<p><strong>Equipment:</strong> A holy symbol, a prayer book or prayer wheel, 5 sticks of incense, vestments, common clothes, en een pouch containing 15 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="acolyte-5-5e">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Acolyte</span><a href="https://www.dndbeyond.com/srd" class="source-pill source-pill-srd521" rel="noopener" title="D&amp;D 5.2.1 System Reference Document (Wizards van de Coast Game License)" onclick="event.stopPropagation()">5.5e</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je hebt je leven gewijd aan tempeldienst en het leren van rites en lore. Dit is de gestroomlijnde 5.5e-variant van Acolyte, die direct het Magic Initiate-talent geeft in plaats van een bredere talentkeuze.</p>
+<p><strong>Skill Proficiencies:</strong> Insight and Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Calligrapher's supplies.</p>
+<p><strong>Equipment:</strong> Choose A or B: (A) Calligrapher's supplies, a prayer book, a holy symbol, 10 sheets of parchment, a robe, and 8 gp; or (B) 50 gp.</p>
+<p><strong>Talent:</strong> Magic Initiate (kies de Cleric spell list wanneer je het neemt).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="adherent">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Adherent</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Vóór je avonturen ging, wijdde je je aan een geloof, overtuiging of zaak. Skills, uitrusting en toewijding uit dat leven vormen je nog steeds.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from History, Investigation, Religion, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> Artist's tools and one additional tool van je choice.</p>
+<p><strong>Equipment:</strong> A prayer book or ceremonial dagger, a holy symbol, fragrant incense, vestments, common clothes, en een pouch containing 10 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Field Medic</em>, <em>Mental Fortitude</em>, or <em>Ritualist</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="alchemist">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Alchemist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je combineert natuurlijke en alchemistische componenten tot wonderen — drankjes, gif en transformerende stoffen.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Arcana, Investigation, Nature, or Perception.</p>
+<p><strong>Additional Proficiencies:</strong> Alchemist's tools and one of charlatan's tools, herbalism tools, or provisioner's tools.</p>
+<p><strong>Equipment:</strong> Common clothes, alchemist's tools, stained gloves, a flask of alchemist's fire, glass vials, en een coin purse with 5 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Alchemy Adept</em>, <em>Elemental Savant</em>, or <em>Learned Researcher</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="artist">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Artist</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je oefende hardnekkig een kunstvorm vóór het avonturen — acrobaat, poppenspeler, toneelspeler, zanger of iets dergelijks.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Acrobatics, Insight, Performance, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> One additional language and one tool representing je art.</p>
+<p><strong>Equipment:</strong> A musical instrument or artisan tool, steel mirror, fine clothes, ink and quill, and 4 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Quick</em>, <em>Scrutinous</em>, or <em>Trade Skills</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="chronicler">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Chronicler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je documenteerde de wereld — archieven, onderzoeken of het dagelijks leven voor het nageslacht.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from History, Investigation, Perception, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> One additional language and artist's, navigator's, or provisioner's tools.</p>
+<p><strong>Equipment:</strong> Proficient tools from above, ink and 25 sheets of paper, bedroll, common clothes, and 3 gp in small coin.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Learned Researcher</em>, <em>Polyglot</em>, or <em>Spell Recall</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="courtier">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Courtier</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je bracht jaren door aan hoven, leerde etiquette, plicht en de positie van anderen kennen.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from History, Religion, Insight, or Deception.</p>
+<p><strong>Additional Proficiencies:</strong> One additional language, artist's or navigator's tools, en een musical instrument.</p>
+<p><strong>Equipment:</strong> A writ of nobility or patronage, signet ring, fine clothes, and 12 gp.</p>
+<p><strong>Talent:</strong> Kies één: <em>Combat Conditioning</em>, <em>Mental Fortitude</em> of <em>Polyglot</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="criminal">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Criminal</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je overleefde het criminele underworld als zakkenroller, oplichter, dief of moordenaar.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Stealth, Investigation, Insight, or Deception.</p>
+<p><strong>Extra behendigheden:</strong> Thieves' Cant (of een andere taal als je het al kent), plus één tool en één vehicle.</p>
+<p><strong>Equipment:</strong> Five pieces of chalk, grappling hook, dark traveler's clothes or costume, and 10 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Covert</em>, <em>Scrutinous</em>, or <em>Touch of Resolve</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="gravedigger">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Gravedigger</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je legde de doden tot rust — stadsbegraafplaatsen, crypten of eenzame grafvelden.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Athletics, Insight, Nature, or Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Construction tools and either scythes or thieves' tools.</p>
+<p><strong>Equipment:</strong> Common clothes, construction tools, holy water, small shovel, a burial keepsake, and 2 gp in copper and silver.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Empathetic</em>, <em>Hardy</em>, or <em>Mental Fortitude</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="healer">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Healer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je zorgde voor je gemeenschap met kruiden, charms en praktische kennis.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Arcana, Insight, Medicine, or Survival.</p>
+<p><strong>Additional Proficiencies:</strong> Herbalism tools and one additional tool.</p>
+<p><strong>Equipment:</strong> Herbalism tools, healer's kit, candle, potion bottles, common clothes, and 5 days of rations.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Empathetic</em>, <em>Field Medic</em>, or <em>Ritualist</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="homesteader">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Homesteader</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je verdiende de kost tussen beschaving en wilde uithoeken.</p>
+<p><strong>Skill Proficiencies:</strong> Survival and one of Athletics, Animal Handling, or Intimidation.</p>
+<p><strong>Additional Proficiencies:</strong> Herbalism or navigator's tools.</p>
+<p><strong>Equipment:</strong> Hunting trap, fishing tackle, skinning knife, canvas hammock, heavy traveler's clothes, and 8 gp of gold-crusted quartz.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Aware</em>, <em>Dungeoneer</em>, or <em>Far Traveler</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="investigator">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Investigator</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je loste problemen tegen betaling op — voor autoriteit, opdrachtgevers of jezelf.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Deception, Insight, Investigation, or Perception.</p>
+<p><strong>Additional Proficiencies:</strong> Charlatan's and thieves' tools.</p>
+<p><strong>Equipment:</strong> Common and fine clothes, charlatan's or thieves' tools, letter of reference, magnifying glass, notebook, case memento, and two purses of 5 gp each.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Scrutinous</em>, <em>Situational Awareness</em>, or <em>Sleuth</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="maker">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Maker</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je beoefende een ambacht tot vakmanschap je reputatie bepaalde.</p>
+<p><strong>Skill Proficiencies:</strong> Investigation and one of History, Performance, or Sleight of Hand.</p>
+<p><strong>Extra behendigheden:</strong> Één tool; dubbele behendigheidsbonus op tests met die tool.</p>
+<p><strong>Equipment:</strong> That tool, personal emblem stamp or chisel, traveler's clothes, and 10 gp in shavings or dust.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Artillerist</em>, <em>School Specialization</em>, or <em>Trade Skills</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="outcast">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Outcast</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je overleefde op kruimels en straatvaardigheden, soms aan de verkeerde kant van de wet.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Deception, Insight, Sleight of Hand, or Stealth.</p>
+<p><strong>Additional Proficiencies:</strong> One gaming set and charlatan's, herbalism, or thieves' tools.</p>
+<p><strong>Equipment:</strong> Dark cloak and clothes, a silver coin van een stranger, and 10 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Aware</em>, <em>Opportunist</em>, or <em>Quick</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="rebel">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rebel</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je vocht voor je overtuigingen tegen het establishment — openlijk of vanuit de schaduw.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from History, Insight, Performance, or Persuasion.</p>
+<p><strong>Additional Proficiencies:</strong> Artist's or alchemist's tools and provisioner's tools, a musical instrument, or Thieves' Cant.</p>
+<p><strong>Equipment:</strong> Common clothes, artist's or alchemist's tools, flag or banner, pamphlets, alchemist's fire, and 3 gp in small coin.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Brave</em>, <em>Comrade</em>, or <em>Hard to Kill</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="rustic">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rustic</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Jaren hard werken gaven je onwrikbare vastberadenheid, maar geen grote mysteries in je verleden.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Athletics, Acrobatics, Investigation, or Medicine.</p>
+<p><strong>Additional Proficiencies:</strong> Land vehicles and one martial weapon, instrument, tool, or armor type.</p>
+<p><strong>Equipment:</strong> Backpack, bedroll, woven blanket, three candles, traveler's clothes, and 20 sp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Comrade</em>, <em>Hand to Hand</em>, or <em>Physical Fortitude</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="scholar">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Scholar</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Jaren academisch werk scherpten je geest en intellectuele blik op de wereld.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Arcana, History, Nature, or Religion.</p>
+<p><strong>Additional Proficiencies:</strong> Two languages or one tool or vehicle relevant aan je field.</p>
+<p><strong>Equipment:</strong> Ink, quill, knife, reference book, common clothes, and 10 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Polyglot</em>, <em>Ritualist</em>, or <em>School Specialization</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="servant">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Servant</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je anticipeerde op behoeften van anderen terwijl je achter de schermen voor werkgevers werkte.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Insight, Perception, Sleight of Hand, or Stealth.</p>
+<p><strong>Additional Proficiencies:</strong> Two of clothier's, provisioner's, thieves', tinkerer's tools, of een musical instrument.</p>
+<p><strong>Equipment:</strong> Common clothes, sturdy shoes, proficient tools, notebook, employer's essential item, and 3 gp.</p>
+<p><strong>Talent:</strong> Kies er één: <em>Hardy</em>, <em>Quick</em>, or <em>Tag Team</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="smuggler">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Smuggler</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Je smokkelde waar het verboden was, met scherpzinnigheid en zorgvuldige planning.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Deception, Persuasion, Sleight of Hand, or Stealth.</p>
+<p><strong>Extra behendigheden:</strong> Thieves' Cant (of een andere taal), navigator's tools en één vehicle.</p>
+<p><strong>Equipment:</strong> Navigator's tools, magnifying glass, merchant's scale, common and fine clothes, hooded cloak, lantern, empty pouches, and 10 gp.</p>
+<p><strong>Talent:</strong> Kies één: <em>Covert</em>, <em>Escamotage</em> of <em>Slippery</em>.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="soldier">
+        <button class="lineage-header" onclick="toggleAchtergronden(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Soldier</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Strenge training en discipline bepaalden je tijd in militaire dienst.</p>
+<p><strong>Skill Proficiencies:</strong> Kies er twee from Animal Handling, Athletics, Medicine, or Survival.</p>
+<p><strong>Additional Proficiencies:</strong> One tool and one vehicle.</p>
+<p><strong>Equipment:</strong> Symbol of rank, mess kit, playing cards or dice, common clothes, and 10 gp.</p>
+<p><strong>Talent:</strong> Kies één: <em>Combat Casting</em>, <em>Combat Conditioning</em> of <em>Field Medic</em>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script> function toggleAchtergronden(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  if(isExpanded){
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+function expandAllAchtergronden(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+function collapseAllAchtergronden(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+function expandAchtergrondenFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item')) return;
+  const content = target.querySelector('.lineage-content');
+  const button = target.querySelector('.lineage-header');
+  if(!content || !button) return;
+  content.style.display = 'block';
+  content.classList.add('expanded');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  if(icon) icon.textContent = '▲';
+  button.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+  expandAchtergrondenFromHash();
+});
+window.addEventListener('hashchange', expandAchtergrondenFromHash); </script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/classes.html" />
+<link rel="alternate" hreflang="nl" href="classes.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/classes.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classes | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Personage-classes voor You-Meet-In-A-Tavern (YMIAT), aangepast vanuit Black Flag voor 10-niveau-spel." />
+<link rel="canonical" href="rules/classes.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+<meta property="og:title" content="Classes | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Personage-classes voor You-Meet-In-A-Tavern (YMIAT)." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/classes.html" />
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Classes</h1>
+  <div class="content">
+    <p class="lede">Elke avonturier heeft een class die zijn heldhaftige capaciteiten bepaalt. <strong>You-Meet-In-A-Tavern</strong> (YMIAT) past classes aan vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a>, en comprimeert 20-niveau-progressie tot <strong>10 betekenisvolle niveaus</strong>, met Fitness, Insight en Willpower in plaats van zes traditionele eigenschappen.</p>
+    <p>Subclass-vermogens komen op <strong>2e, 4e, 6e en 8e</strong> niveau. Improvement (talenten of eigenschapsverhogingen) op <strong>3e, 5e, 7e, 9e en 10e</strong> niveau. Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power</a> en een max. spell-niveau per personageniveau in plaats van dagelijkse spell slots. Elke class vermeldt <strong>één</strong> save met behendigheid (+PB) — de primaire save van de class. Progressie-vermogens linken naar de <a href="class-abilities/index.html">class-vermogenspagina's</a> (één pagina per class).</p>
+
+    <h2 id="classes-at-a-glance">Classes in één oogopslag</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Class</th><th>Max WD</th><th>Kern-eigenschap</th><th>Saves</th><th>Spell Source</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#barbarian">Barbarian</a></td><td>12</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#bard">Bard</a></td><td>8</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
+        <tr><td><a href="#cleric">Cleric</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Divine</td></tr>
+        <tr><td><a href="#druid">Druid</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Primordial</td></tr>
+        <tr><td><a href="#fighter">Fighter</a></td><td>10</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#artificer">Artificer</a></td><td>8</td><td>INS</td><td>INS (advantage)</td><td>Martial/Utility</td></tr>
+        <tr><td><a href="#monk">Monk</a></td><td>8</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#paladin">Paladin</a></td><td>10</td><td>FIT</td><td>INS (advantage)</td><td>Divine/Martial</td></tr>
+        <tr><td><a href="#ranger">Ranger</a></td><td>10</td><td>FIT</td><td>FIT (advantage)</td><td>Primordial/Martial</td></tr>
+        <tr><td><a href="#rogue">Rogue</a></td><td>8</td><td>FIT</td><td>FIT (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#sorcerer">Sorcerer</a></td><td>6</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
+        <tr><td><a href="#warlock">Warlock</a></td><td>8</td><td>WIL</td><td>WIL (advantage)</td><td>Arcane</td></tr>
+        <tr><td><a href="#theurge">Theurge</a></td><td>6</td><td>INS</td><td>INS (advantage)</td><td>Arcane/Divine</td></tr>
+        <tr><td><a href="#vanguard">Vanguard</a></td><td>12</td><td>WIL</td><td>WIL (advantage)</td><td>Martial</td></tr>
+        <tr><td><a href="#witch">Witch</a></td><td>8</td><td>WIL</td><td>WIL (advantage)</td><td>Wyrd</td></tr>
+        <tr><td><a href="#wizard">Wizard</a></td><td>6</td><td>INS</td><td>INS (advantage)</td><td>Arcane</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="lineages-controls">
+      <button id="expand-all-classes" class="lineage-control-btn" onclick="expandAllClasses()">Alles uitklappen</button>
+      <button id="collapse-all-classes" class="lineage-control-btn" onclick="collapseAllClasses()">Alles inklappen</button>
+    </div>
+
+    <div class="lineages-container">
+<div class="lineage-item" id="barbarian">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Barbarian</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een primitieve krijger die woede kanaliseert in gevecht. Hoge Max. wonden, melee-dominantie en resistance tijdens rage.</p>
+<p><strong>Max. wonden (start):</strong> 12 + Fitness-modifier. <strong>Kernvermogen:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light en medium pantser, shields, simple en martial weapons, herbalism tools. Skills: kies er twee uit Animal Handling, Athletics, Intimidation, Nature, Perception, Survival.</p>
+<h3 id="barbarian-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Rages</th><th>Rage +</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>2</td><td>+2</td><td><a href="class-abilities/barbarian.html#rage" class="ability-tip" data-tip="Primitieve woede als vrije actie; bonusschade en fysieke veerkracht. — Actie: vrije actie — 1e-niveauvermogen">Rage</a>, <a href="class-abilities/barbarian.html#unarmored-defense" class="ability-tip" data-tip="Hoge Verdediging zonder pantser, op pure taaiheid. — 1e-niveauvermogen">Unarmored Defense</a>, <a href="class-abilities/barbarian.html#danger-sense" class="ability-tip" data-tip="Voordeel op Fitness-saves tegen ongezien gevaar. — 1e-niveauvermogen">Danger Sense</a>, <a href="class-abilities/barbarian.html#reckless-attack" class="ability-tip" data-tip="Ruil verdediging in voor meedogenloze precisie. — 1e-niveauvermogen">Reckless Attack</a></td></tr>
+<tr><td>2</td><td>2</td><td>+2</td><td><a href="class-abilities/barbarian.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Barbarian Subclass</a></td></tr>
+<tr><td>3</td><td>3</td><td>+2</td><td><a href="class-abilities/barbarian.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/barbarian.html#fast-movement" class="ability-tip" data-tip="Extra snelheid en herpositioneren bij openingszetten. — 3e-niveauvermogen">Fast Movement</a>, <a href="class-abilities/barbarian.html#multiattack" class="ability-tip" data-tip="Twee aanvallen met de Attack-actie. — 3e-niveauvermogen">Multiattack</a>, <a href="class-abilities/barbarian.html#feral-instinct" class="ability-tip" data-tip="Woede in de eerste beurt en immuniteit voor surprise tijdens rage. — 3e-niveauvermogen">Feral Instinct</a></td></tr>
+<tr><td>4</td><td>3</td><td>+2</td><td><a href="class-abilities/barbarian.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/barbarian.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>5</td><td>4</td><td>+3</td><td><a href="class-abilities/barbarian.html#brutal-critical" class="ability-tip" data-tip="Breder critical-bereik en extra critical-schadedobbelstenen. — 5e, 7e en 9e niveau">Brutal Critical (1 die)</a>; <a href="class-abilities/barbarian.html#heroic-boon" class="ability-tip" data-tip="Kies een krachtige rage-versterkende boon. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td>4</td><td>+3</td><td><a href="class-abilities/barbarian.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>7</td><td>5</td><td>+3</td><td><a href="class-abilities/barbarian.html#brutal-critical" class="ability-tip" data-tip="Breder critical-bereik en extra critical-schadedobbelstenen. — 5e, 7e en 9e niveau">Brutal Critical (2 dice)</a>; <a href="class-abilities/barbarian.html#relentless-rage" class="ability-tip" data-tip="Blijf bij bewustzijn tijdens rage op Max. wonden. — 7e-niveauvermogen">Relentless Rage</a>; <a href="class-abilities/barbarian.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>8</td><td>5</td><td>+3</td><td><a href="class-abilities/barbarian.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td>6</td><td>+4</td><td><a href="class-abilities/barbarian.html#brutal-critical" class="ability-tip" data-tip="Breder critical-bereik en extra critical-schadedobbelstenen. — 5e, 7e en 9e niveau">Brutal Critical (3 dice)</a>; <a href="class-abilities/barbarian.html#unyielding-might" class="ability-tip" data-tip="Betrouwbare Fitness en vernietigende slagen tegen objecten. — 9e-niveauvermogen">Unyielding Might</a>; <a href="class-abilities/barbarian.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>10</td><td>Unlimited</td><td>+5</td><td><a href="class-abilities/barbarian.html#epic-boon" class="ability-tip" data-tip="Belichaam ongetemde kracht. — 10e-niveauvermogen">Epic Boon</a>; <a href="class-abilities/barbarian.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="barbarian-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/barbarian.html">Alle Barbarian-vermogens →</a> (<a href="class-abilities/index.html#barbarian">index</a>) · <a href="class-abilities/barbarian.html#subclasses">subclasses</a></p>
+<h3 id="barbarian-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/barbarian.html#berserker" class="ability-tip" data-tip="Primitieve bloeddorst drijft je rage tot een vernietigende frenzy.">Berserker</a></strong></li>
+<li><strong><a href="class-abilities/barbarian.html#wild-fury" class="ability-tip" data-tip="Dierlijke geesten leiden je rage — kies een beast-focus op elk subclass-niveau.">Wild Fury</a></strong></li>
+<li><strong><a href="class-abilities/barbarian.html#chaos" class="ability-tip" data-tip="Entropische woede vervormt het slagveld rond je rage.">Chaos</a></strong></li>
+<li><strong><a href="class-abilities/barbarian.html#four-winds" class="ability-tip" data-tip="Elementaire winden versterken je beweging en aanvallen.">Four Winds</a></strong></li>
+<li><strong><a href="class-abilities/barbarian.html#kraken" class="ability-tip" data-tip="Verpletterende tentakelkracht en afgrondelijke weerbaarheid.">Kraken</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/barbarian/" rel="noopener">BFRD Barbarian</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="bard">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Bard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een veelzijdige performer wiens magie en inspiration bondgenoten steunen en vijanden verwarren.</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light armor; simple weapons en martial finesse weapons; drie muziekinstrumenten of tools; drie willekeurige skills.</p>
+<p><strong>Spellcasting:</strong> Arcane spells. Spells known (geen preparation). Rituals known per niveau.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="bard-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Geef een inspiration-dobbelsteen om de worp van een bondgenoot te versterken. — Actie: actie — 1e, 4e en 7e niveau">Bardic Inspiration (d6)</a>, <a href="class-abilities/bard.html#spellcasting" class="ability-tip" data-tip="Arcane spells known; gebruikt Spell Power. — 1e-niveauvermogen">Spellcasting</a>, <a href="class-abilities/bard.html#expertise" class="ability-tip" data-tip="+2×PB op gekozen skills of tools. — 1e en 5e niveau">Expertise (2)</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Bard Subclass</a>; Bardic Performance (Celebrate Life, Cutting Words)</td></tr>
+<tr><td>3</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/bard.html#font-of-inspiration" class="ability-tip" data-tip="Herwin inspiration bij korte rust; versterk mislukte worpen. — 3e-niveauvermogen">Font of Inspiration</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Geef een inspiration-dobbelsteen om de worp van een bondgenoot te versterken. — Actie: actie — 1e, 4e en 7e niveau">Bardic Inspiration (d8)</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/bard.html#bardic-performance" class="ability-tip" data-tip="Weef magie in lopende performances. — 2e en 5e niveau">Bardic Performance: Clarity of Thought</a>; <a href="class-abilities/bard.html#expertise" class="ability-tip" data-tip="+2×PB op gekozen skills of tools. — 1e en 5e niveau">Expertise (4)</a>; <a href="class-abilities/bard.html#heroic-boon" class="ability-tip" data-tip="Persistent of valiant inspiration-opties. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/bard.html#magical-secrets" class="ability-tip" data-tip="Leer spells uit elke bron. — 6e en 9e niveau">Magical Secrets</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/bard.html#bardic-inspiration" class="ability-tip" data-tip="Geef een inspiration-dobbelsteen om de worp van een bondgenoot te versterken. — Actie: actie — 1e, 4e en 7e niveau">Bardic Inspiration (d10)</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/bard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/bard.html#grand-performance" class="ability-tip" data-tip="Performance-bereik stijgt tot 60 voet. — 8e-niveauvermogen">Grand Performance</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/bard.html#magical-secrets" class="ability-tip" data-tip="Leer spells uit elke bron. — 6e en 9e niveau">Magical Secrets</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/bard.html#epic-boon" class="ability-tip" data-tip="Herwin inspiration tijdens een performance. — 10e-niveauvermogen">Epic Boon: Curtain Call</a>; <a href="class-abilities/bard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="bard-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/bard.html">Alle Bard-vermogens →</a> (<a href="class-abilities/index.html#bard">index</a>) · <a href="class-abilities/bard.html#subclasses">subclasses</a></p>
+<h3 id="bard-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/bard.html#lore" class="ability-tip" data-tip="Een verzamelaar van kennis die magie en talenten uit elke traditie weeft.">Lore</a></strong></li>
+<li><strong><a href="class-abilities/bard.html#victory" class="ability-tip" data-tip="Inspireer bondgenoten tot overwinning via martial cadence.">Victory</a></strong></li>
+<li><strong><a href="class-abilities/bard.html#allure" class="ability-tip" data-tip="Bards van het college of Allure begrijpen de kracht van de geest en hoe het kleinste zetje die kracht in hun voordeel buigt. Meesters van subtiele">Allure</a></strong></li>
+<li><strong><a href="class-abilities/bard.html#mockery" class="ability-tip" data-tip="Bards van het college of Mockery wijden hun leven aan bijtende repartee — om publiek te vermaken én als vernietigend wapen">Mockery</a></strong></li>
+<li><strong><a href="class-abilities/bard.html#sound" class="ability-tip" data-tip="Bards van het college of Sound worden vaak aangetrokken door de wens hun muzikale talenten te beheersen. Wie perfect pitch heeft of een luit-virtuoos is,">Sound</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/bard/" rel="noopener">BFRD Bard</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="cleric">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Cleric</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een goddelijke kampioen die deity-kracht kanaliseert via spells en channel divinity.</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Insight (INS). <strong>Saves:</strong> INS (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light en medium pantser, shields, simple weapons. Skills: History, Insight, Medicine, Persuasion, Religion (kies er twee).</p>
+<p><strong>Spellcasting:</strong> Divine spells (prepared). Domain spells altijd prepared.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="cleric-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/cleric.html#manifestation-of-faith" class="ability-tip" data-tip="Pad van heilige krijger of wonderdoener. — 1e-niveauvermogen">Manifestation of Faith</a>, <a href="class-abilities/cleric.html#spellcasting" class="ability-tip" data-tip="Prepared Divine spells met Spell Power. — 1e-niveauvermogen">Spellcasting</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/cleric.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Cleric Subclass</a>; <a href="class-abilities/cleric.html#turn-the-profane" class="ability-tip" data-tip="Verdrijf fiends en undead. — 2e-niveauvermogen">Channel Divinity: Turn the Profane</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/cleric.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/cleric.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/cleric.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/cleric.html#destroy-the-profane" class="ability-tip" data-tip="Vernietig turned wezens onder een CR-drempel. — 4e, 6e, 8e en 10e niveau">Destroy the Profane (CR ½)</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/cleric.html#channel-divinity" class="ability-tip" data-tip="Kanaliseer goddelijke energie buiten spells om. — Actie: vrije actie — 2e, 5e en 9e niveau">Channel Divinity (2/rest)</a>; <a href="class-abilities/cleric.html#heroic-boon" class="ability-tip" data-tip="Consecration- of wrath-gaven. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/cleric.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/cleric.html#destroy-the-profane" class="ability-tip" data-tip="Vernietig turned wezens onder een CR-drempel. — 4e, 6e, 8e en 10e niveau">Destroy the Profane (CR 1)</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/cleric.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/cleric.html#divine-intervention" class="ability-tip" data-tip="Roep je deity aan in nood. — 7e-niveauvermogen">Divine Intervention</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/cleric.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/cleric.html#destroy-the-profane" class="ability-tip" data-tip="Vernietig turned wezens onder een CR-drempel. — 4e, 6e, 8e en 10e niveau">Destroy the Profane (CR 2)</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/cleric.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/cleric.html#channel-divinity" class="ability-tip" data-tip="Kanaliseer goddelijke energie buiten spells om. — Actie: vrije actie — 2e, 5e en 9e niveau">Channel Divinity (3/rest)</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/cleric.html#epic-boon" class="ability-tip" data-tip="Automatische divine intervention. — 10e-niveauvermogen">Epic Boon: Divine Herald</a>; <a href="class-abilities/cleric.html#destroy-the-profane" class="ability-tip" data-tip="Vernietig turned wezens onder een CR-drempel. — 4e, 6e, 8e en 10e niveau">Destroy the Profane (CR 4)</a></td></tr>
+</tbody></table></div>
+<h3 id="cleric-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/cleric.html">Alle Cleric-vermogens →</a> (<a href="class-abilities/index.html#cleric">index</a>) · <a href="class-abilities/cleric.html#subclasses">subclasses</a></p>
+<h3 id="cleric-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/cleric.html#life" class="ability-tip" data-tip="Vier vitaliteit en bestrijd de verdraaiing van undeath.">Life</a></strong></li>
+<li><strong><a href="class-abilities/cleric.html#light" class="ability-tip" data-tip="Hanteer radiant vuur en bijtende waarheid tegen de duisternis.">Light</a></strong></li>
+<li><strong><a href="class-abilities/cleric.html#war" class="ability-tip" data-tip="Kampioen van moed en beslissende overwinning in gevecht.">War</a></strong></li>
+<li><strong><a href="class-abilities/cleric.html#death" class="ability-tip" data-tip="Goden van het Death-domein regeren over dood en hiernamaals, en belichamen het onvermijdelijke en mysterie van daarna. Volgelingen brengen rust aan nabestaanden,">Death</a></strong></li>
+<li><strong><a href="class-abilities/cleric.html#nature" class="ability-tip" data-tip="Goden van het Nature-domein beschermen wildernis en vruchtbaar land. Dogmatische volgelingen waken over veiligheid en voorspoed">Nature</a></strong></li>
+<li><strong><a href="class-abilities/cleric.html#tempest" class="ability-tip" data-tip="Goden van het Tempest-domein belichamen de vernietigende kracht van stormen, aardbevingen, wildvuur en rampen. Clerics van dit domein zijn vaak even">Tempest</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/cleric/" rel="noopener">BFRD Cleric</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="druid">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Druid</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een beschermer van de natuur met primordiale magie en wild shape.</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Insight (INS). <strong>Saves:</strong> INS (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light en medium pantser, shields, simple weapons, herbalist tools.</p>
+<p><strong>Spellcasting:</strong> Primordial spells (prepared). Ring spells altijd prepared.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="druid-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Wild Shape</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>—</td><td><a href="class-abilities/druid.html#druidic" class="ability-tip" data-tip="Geheime taal van druids. — 1e-niveauvermogen">Druidic</a>, <a href="class-abilities/druid.html#natures-gift" class="ability-tip" data-tip="Kanaliseer omgevingsenergie om te genezen. — Actie: actie — 1e-niveauvermogen">Nature's Gift</a>, <a href="class-abilities/druid.html#spellcasting" class="ability-tip" data-tip="Prepared Primordial spells. — 1e-niveauvermogen">Spellcasting</a></td></tr>
+<tr><td>2</td><td>1/rest</td><td><a href="class-abilities/druid.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Druid Subclass</a>; Wild Shape (Beast Form, Draw Power)</td></tr>
+<tr><td>3</td><td>1/rest</td><td><a href="class-abilities/druid.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/druid.html#improved-beast-form" class="ability-tip" data-tip="Neem krachtigere beast forms aan. — 3e niveau en hoger">Improved Beast Form (CR ¼)</a></td></tr>
+<tr><td>4</td><td>2/rest</td><td><a href="class-abilities/druid.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/druid.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>5</td><td>2/rest</td><td><a href="class-abilities/druid.html#improved-beast-form" class="ability-tip" data-tip="Neem krachtigere beast forms aan. — 3e niveau en hoger">Improved Beast Form (CR ½)</a>; <a href="class-abilities/druid.html#heroic-boon" class="ability-tip" data-tip="Rite of the Kingdom of Shaper. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td>2/rest</td><td><a href="class-abilities/druid.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>7</td><td>3/rest</td><td><a href="class-abilities/druid.html#improved-beast-form" class="ability-tip" data-tip="Neem krachtigere beast forms aan. — 3e niveau en hoger">Improved Beast Form (CR 1)</a>; <a href="class-abilities/druid.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>8</td><td>3/rest</td><td><a href="class-abilities/druid.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/druid.html#natures-grace" class="ability-tip" data-tip="Attunement voedt en beschermt je. — 8e-niveauvermogen">Nature's Grace</a></td></tr>
+<tr><td>9</td><td>4/rest</td><td><a href="class-abilities/druid.html#improved-beast-form" class="ability-tip" data-tip="Neem krachtigere beast forms aan. — 3e niveau en hoger">Improved Beast Form (CR 2)</a>; <a href="class-abilities/druid.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>10</td><td>4/rest</td><td><a href="class-abilities/druid.html#epic-boon" class="ability-tip" data-tip="Onbeperkte wild shape; moeiteloos spellcasting. — 10e-niveauvermogen">Epic Boon: Archdruid</a></td></tr>
+</tbody></table></div>
+<h3 id="druid-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/druid.html">Alle Druid-vermogens →</a> (<a href="class-abilities/index.html#druid">index</a>) · <a href="class-abilities/druid.html#subclasses">subclasses</a></p>
+<h3 id="druid-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/druid.html#leaf" class="ability-tip" data-tip="Beschermer van groeiende dingen en vredige wildernis.">Leaf</a></strong></li>
+<li><strong><a href="class-abilities/druid.html#shifter" class="ability-tip" data-tip="Meester van beast forms en primitieve transformatie.">Shifter</a></strong></li>
+<li><strong><a href="class-abilities/druid.html#elementalist" class="ability-tip" data-tip="Beveel acid, cold, fire, lightning en thunder om de natuur te beschermen.">Elementalist</a></strong></li>
+<li><strong><a href="class-abilities/druid.html#fey" class="ability-tip" data-tip="Roep seelie-geesten op en hanteer grillige fey-magie.">Fey</a></strong></li>
+<li><strong><a href="class-abilities/druid.html#stoneheart" class="ability-tip" data-tip="Hull je in aarden pantser en sta als schildwacht van de natuur.">Stoneheart</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/druid/" rel="noopener">BFRD Druid</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="fighter">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Fighter</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een meester van wapens en slagveldtactiek met action surge en martial actions.</p>
+<p><strong>Max. wonden (start):</strong> 10 + Fitness-modifier. <strong>Kernvermogen:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Alle armor en shields; simple en martial weapons.</p>
+<h3 id="fighter-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/fighter.html#last-stand" class="ability-tip" data-tip="Noodgenezing wanneer je zwaar gewond bent. — Actie: reactie — 1e-niveauvermogen">Last Stand</a>, <a href="class-abilities/fighter.html#martial-action" class="ability-tip" data-tip="Tactische tweede actie wanneer je standhoudt. — 1e-niveauvermogen">Martial Action</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/fighter.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Fighter Subclass</a>; <a href="class-abilities/fighter.html#action-surge" class="ability-tip" data-tip="Krijg een extra actie op je beurt. — 2e, 7e en 10e niveau">Action Surge</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/fighter.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/fighter.html#multiattack" class="ability-tip" data-tip="Meerdere aanvallen per Attack-actie. — 3e, 6e en 9e niveau">Multiattack (2)</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/fighter.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/fighter.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/fighter.html#heroic-boon" class="ability-tip" data-tip="Trotse saves of onstuitbaar herstel. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/fighter.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/fighter.html#multiattack" class="ability-tip" data-tip="Meerdere aanvallen per Attack-actie. — 3e, 6e en 9e niveau">Multiattack (3)</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/fighter.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/fighter.html#action-surge" class="ability-tip" data-tip="Krijg een extra actie op je beurt. — 2e, 7e en 10e niveau">Action Surge (2/rest)</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/fighter.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/fighter.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/fighter.html#multiattack" class="ability-tip" data-tip="Meerdere aanvallen per Attack-actie. — 3e, 6e en 9e niveau">Multiattack (4)</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/fighter.html#epic-boon" class="ability-tip" data-tip="Vernietigende slagen die verdediging negeren. — 10e-niveauvermogen">Epic Boon: Turn the Tide</a>; <a href="class-abilities/fighter.html#action-surge" class="ability-tip" data-tip="Krijg een extra actie op je beurt. — 2e, 7e en 10e niveau">Action Surge (3/rest)</a></td></tr>
+</tbody></table></div>
+<h3 id="fighter-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/fighter.html">Alle Fighter-vermogens →</a> (<a href="class-abilities/index.html#fighter">index</a>) · <a href="class-abilities/fighter.html#subclasses">subclasses</a></p>
+<h3 id="fighter-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/fighter.html#spell-blade" class="ability-tip" data-tip="Meng arcane magie met wapenmeesterschap.">Spell Blade</a></strong></li>
+<li><strong><a href="class-abilities/fighter.html#weapon-master" class="ability-tip" data-tip="Meesterschap over gekozen wapens en tactische stunts.">Weapon Master</a></strong></li>
+<li><strong><a href="class-abilities/fighter.html#scrapper" class="ability-tip" data-tip="Fighters vechten meestal met gemaakte wapens. Sommigen genieten echter van hun lichaam als wapen en worden">Scrapper</a></strong></li>
+<li><strong><a href="class-abilities/fighter.html#stunt-archer" class="ability-tip" data-tip="Sommige fighters laten melee-wapens volledig links liggen voor de range van bogen en kruisbogen. Ze worden zo vertrouwd met die wapens dat ze">Stunt Archer</a></strong></li>
+<li><strong><a href="class-abilities/fighter.html#twinblade" class="ability-tip" data-tip="Fighters van de Twinblade-discipline zijn meesters in dual wielding en laten zware wapenrusting achter om als wervelende dood door gevechten te bewegen">Twinblade</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/fighter/" rel="noopener">BFRD Fighter</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="artificer">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Artificer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een uitvinder die uitrusting augmenteert en magical items maakt. (BFRD Mechanist.)</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Insight (INS). <strong>Saves:</strong> INS (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light en medium pantser, shields, alle weapons, tinker tools + twee tools.</p>
+<h3 id="artificer-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Augments</th><th>Items</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>—</td><td>—</td><td><a href="class-abilities/artificer.html#eyes-of-the-maker" class="ability-tip" data-tip="Identificeer magic items door aanraking. — 1e-niveauvermogen">Eyes of the Maker</a>, <a href="class-abilities/artificer.html#shard-of-creation" class="ability-tip" data-tip="Magisch tool met veelzijdige charges. — 1e-niveauvermogen">Shard of Creation</a></td></tr>
+<tr><td>2</td><td>2</td><td>3</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Artificer Subclass</a>; <a href="class-abilities/artificer.html#augment" class="ability-tip" data-tip="Pas augment-effecten toe op gedragen items. — 2e-niveauvermogen">Augment</a>, <a href="class-abilities/artificer.html#efficient-action" class="ability-tip" data-tip="Augment zonder verspilde moeite. — 2e-niveauvermogen">Efficient Action</a></td></tr>
+<tr><td>3</td><td>3</td><td>3</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of utility/martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/artificer.html#multiattack" class="ability-tip" data-tip="Twee aanvallen per Attack-actie. — 3e-niveauvermogen">Multiattack (2)</a></td></tr>
+<tr><td>4</td><td>4</td><td>4</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of utility/martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/artificer.html#rapid-augment" class="ability-tip" data-tip="Augment als vrije actie. — Actie: vrije actie — 4e-niveauvermogen">Rapid Augment</a></td></tr>
+<tr><td>5</td><td>5</td><td>4</td><td><a href="class-abilities/artificer.html#greater-creation" class="ability-tip" data-tip="Maak krachtigere items. — 5e-niveauvermogen">Greater Creation</a>; <a href="class-abilities/artificer.html#heroic-boon" class="ability-tip" data-tip="Artificer heroic-opties volgens BFRD. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td>6</td><td>5</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/artificer.html#engineers-insight" class="ability-tip" data-tip="Flits van mechanisch genie. — 6e-niveauvermogen">Engineer's Insight</a></td></tr>
+<tr><td>7</td><td>7</td><td>5</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of utility/martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/artificer.html#ranged-augment" class="ability-tip" data-tip="Pas augments op afstand toe. — 7e-niveauvermogen">Ranged Augment</a></td></tr>
+<tr><td>8</td><td>8</td><td>6</td><td><a href="class-abilities/artificer.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/artificer.html#always-prepared" class="ability-tip" data-tip="Augments blijven bestaan na rust. — 8e-niveauvermogen">Always Prepared</a></td></tr>
+<tr><td>9</td><td>8</td><td>7</td><td><a href="class-abilities/artificer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of utility/martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/artificer.html#perfect-creation" class="ability-tip" data-tip="Meesterlijk gemaakte magical items. — 9e-niveauvermogen">Perfect Creation</a></td></tr>
+<tr><td>10</td><td>9</td><td>7</td><td><a href="class-abilities/artificer.html#epic-boon" class="ability-tip" data-tip="Capstone-uitvinding. — 10e-niveauvermogen">Epic Boon</a></td></tr>
+</tbody></table></div>
+<h3 id="artificer-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/artificer.html">Alle Artificer-vermogens →</a> (<a href="class-abilities/index.html#artificer">index</a>) · <a href="class-abilities/artificer.html#subclasses">subclasses</a></p>
+<h3 id="artificer-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/artificer.html#alchemist" class="ability-tip" data-tip="Brouw vluchtige concoctions en ondersteunende elixirs.">Alchemist</a></strong></li>
+<li><strong><a href="class-abilities/artificer.html#armorer" class="ability-tip" data-tip="Mystiek metalen pantser en absorberende augments (BFRD Metallurgist).">Armorer</a></strong></li>
+<li><strong><a href="class-abilities/artificer.html#artillerist" class="ability-tip" data-tip="Zet ranged magische munitie in.">Artillerist</a></strong></li>
+<li><strong><a href="class-abilities/artificer.html#battle-smith" class="ability-tip" data-tip="Stel een steel defender-metgezel op.">Battle Smith</a></strong></li>
+<li><strong><a href="class-abilities/artificer.html#cog-augur" class="ability-tip" data-tip="Sommige mechanists zien het universum als wiskundige berekeningen. Ze richten hun expertise op barokke apparaten om die te lezen">Cog Augur</a></strong></li>
+<li><strong><a href="class-abilities/artificer.html#grenadier" class="ability-tip" data-tip="Mechanists van het Grenadier-vak zijn discipelen van entropie, meer geïnteresseerd in hoe dingen uit elkaar vallen dan samenkomen. Grenadiers manipuleren">Grenadier</a></strong></li>
+<li><strong><a href="class-abilities/artificer.html#toymaker" class="ability-tip" data-tip="Toymakers zijn mechanists die genieten van miniatuurreplica's van dieren en mensen — voor vermaak, taken, en om een">Toymaker</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/mechanist/" rel="noopener">BFRD Artificer</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="monk">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Monk</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een martial artist die technique points kanaliseert voor bovennatuurlijke slagen en mobiliteit.</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Simple weapons, shortswords; geen pantser.</p>
+<h3 id="monk-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Martial Arts</th><th>Technique Pts</th><th>Movement</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>1d4</td><td>—</td><td>—</td><td><a href="class-abilities/monk.html#martial-arts" class="ability-tip" data-tip="Ongewapende aanvallen en monk weapons. — 1e-niveauvermogen">Martial Arts</a>, <a href="class-abilities/monk.html#unarmored-defense" class="ability-tip" data-tip="Verdediging uit behendigheid en insight. — 1e-niveauvermogen">Unarmored Defense</a></td></tr>
+<tr><td>2</td><td>1d4</td><td>3</td><td>+10 ft</td><td><a href="class-abilities/monk.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Monk Subclass</a>; <a href="class-abilities/monk.html#techniques" class="ability-tip" data-tip="Besteed technique points aan bovennatuurlijke manoeuvres. — 2e-niveauvermogen">Techniques</a>, <a href="class-abilities/monk.html#unarmored-movement" class="ability-tip" data-tip="Bovennatuurlijke snelheid zonder pantser. — 2e-niveauvermogen">Unarmored Movement</a></td></tr>
+<tr><td>3</td><td>1d6</td><td>5</td><td>+10 ft</td><td><a href="class-abilities/monk.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/monk.html#multiattack" class="ability-tip" data-tip="Twee aanvallen per Attack-actie. — 3e-niveauvermogen">Multiattack (2)</a>, <a href="class-abilities/monk.html#stunning-strike" class="ability-tip" data-tip="Verdoving door ki-geladen slagen. — 3e-niveauvermogen">Stunning Strike</a></td></tr>
+<tr><td>4</td><td>1d6</td><td>7</td><td>+15 ft</td><td><a href="class-abilities/monk.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/monk.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/monk.html#empowered-strikes" class="ability-tip" data-tip="Ongewapende aanvallen tellen als magical. — 4e-niveauvermogen">Empowered Strikes</a>, <a href="class-abilities/monk.html#evasion" class="ability-tip" data-tip="Ontwijk gebiedseffecten. — 4e-niveauvermogen">Evasion</a></td></tr>
+<tr><td>5</td><td>1d6</td><td>9</td><td>+15 ft</td><td><a href="class-abilities/monk.html#perfect-motion" class="ability-tip" data-tip="Ren over muren en val veilig. — 5e-niveauvermogen">Perfect Motion</a>; <a href="class-abilities/monk.html#heroic-boon" class="ability-tip" data-tip="Purity of Body of Mind. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td>1d8</td><td>11</td><td>+20 ft</td><td><a href="class-abilities/monk.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>7</td><td>1d8</td><td>13</td><td>+20 ft</td><td><a href="class-abilities/monk.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/monk.html#astral-teachings" class="ability-tip" data-tip="Beheers tijdelijk elke skill. — 7e-niveauvermogen">Astral Teachings</a>, <a href="class-abilities/monk.html#diamond-soul" class="ability-tip" data-tip="Behendigheid in alle saves; gooi mislukkingen opnieuw. — 7e-niveauvermogen">Diamond Soul</a></td></tr>
+<tr><td>8</td><td>1d8</td><td>15</td><td>+25 ft</td><td><a href="class-abilities/monk.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/monk.html#timeless-self" class="ability-tip" data-tip="Gedragen door innerlijke energie. — 8e-niveauvermogen">Timeless Self</a></td></tr>
+<tr><td>9</td><td>1d10</td><td>17</td><td>+25 ft</td><td><a href="class-abilities/monk.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/monk.html#empty-body" class="ability-tip" data-tip="Invisibility en astrale reis. — 9e-niveauvermogen">Empty Body</a></td></tr>
+<tr><td>10</td><td>1d10</td><td>20</td><td>+30 ft</td><td><a href="class-abilities/monk.html#epic-boon" class="ability-tip" data-tip="Technique points vullen bij wanneer gevecht begint. — 10e-niveauvermogen">Epic Boon: Boundless Technique</a></td></tr>
+</tbody></table></div>
+<h3 id="monk-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/monk.html">Alle Monk-vermogens →</a> (<a href="class-abilities/index.html#monk">index</a>) · <a href="class-abilities/monk.html#subclasses">subclasses</a></p>
+<h3 id="monk-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/monk.html#flickering-dark" class="ability-tip" data-tip="Benut schaduwenergie tussen slagen.">Flickering Dark</a></strong></li>
+<li><strong><a href="class-abilities/monk.html#open-hand" class="ability-tip" data-tip="Duwt, struikel en verbrijzel vijanden met perfecte techniek.">Open Hand</a></strong></li>
+<li><strong><a href="class-abilities/monk.html#affliction-eater" class="ability-tip" data-tip="Sommige monks doorzien de balans tussen leven en dood en slijpen lichaam en geest zodat die balans in hun voordeel kantelt. Toch">Affliction Eater</a></strong></li>
+<li><strong><a href="class-abilities/monk.html#elemental-voice" class="ability-tip" data-tip="Monks van the Elemental Voice willen de primordiale wereld naar hun wil hervormen. Ze delen vaak manieren of kleding">Elemental Voice</a></strong></li>
+<li><strong><a href="class-abilities/monk.html#seal-guardian" class="ability-tip" data-tip="Seal Guardian-monks zetten kennis uit transcriptie om in magische zegels, die ze bieden ter bescherming of om uit te drijven">Seal Guardian</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/monk/" rel="noopener">BFRD Monk</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="paladin">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Paladin</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een heilige krijger die martial kunde combineert met divine spells en smites.</p>
+<p><strong>Max. wonden (start):</strong> 10 + Fitness-modifier. <strong>Kernvermogen:</strong> Fitness (FIT). <strong>Saves:</strong> INS (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Alle armor, shields, simple en martial weapons.</p>
+<p><strong>Spellcasting:</strong> Divine spells known (half caster). Oath spells altijd known.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>—</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>1</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>2</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>3</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>4</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="paladin-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/paladin.html#divine-sense" class="ability-tip" data-tip="Detecteer celestials, fiends en undead. — 1e-niveauvermogen">Divine Sense</a>, <a href="class-abilities/paladin.html#lay-on-hands" class="ability-tip" data-tip="Pool van genezende aanraking. — Actie: actie — 1e-niveauvermogen">Lay on Hands</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/paladin.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Paladin Subclass</a>; <a href="class-abilities/paladin.html#divine-smite" class="ability-tip" data-tip="Besteed Spell Power voor een radiant burst bij een hit. — 2e-niveauvermogen">Divine Smite</a>, <a href="class-abilities/paladin.html#martial-action" class="ability-tip" data-tip="Guard of Wind Up als tweede actie. — 2e-niveauvermogen">Martial Action</a>, <a href="class-abilities/paladin.html#spellcasting" class="ability-tip" data-tip="Divine spells known (half caster). — 2e-niveauvermogen">Spellcasting</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/paladin.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/paladin.html#multiattack" class="ability-tip" data-tip="Twee aanvallen per Attack-actie. — 3e-niveauvermogen">Multiattack (2)</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/paladin.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/paladin.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/paladin.html#aura-of-protection" class="ability-tip" data-tip="Versterk de saves van bondgenoten. — 4e-niveauvermogen">Aura of Protection</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/paladin.html#heroic-boon" class="ability-tip" data-tip="Divine Recovery of Radiant Strikes. — 5e-niveauvermogen">Heroic Boon</a>; <a href="class-abilities/paladin.html#aura-of-courage" class="ability-tip" data-tip="Bondgenoten kunnen niet frightened zijn. — 5e-niveauvermogen">Aura of Courage</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/paladin.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/paladin.html#channel-divinity" class="ability-tip" data-tip="Eed-specifieke channel divinity. — 6e en 9e niveau">Channel Divinity (2/rest)</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/paladin.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/paladin.html#cleansing-touch" class="ability-tip" data-tip="Beëindig spells op jezelf of bondgenoten. — 7e-niveauvermogen">Cleansing Touch</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/paladin.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/paladin.html#aura-improvements" class="ability-tip" data-tip="Aura-bereik stijgt tot 30 voet. — 8e-niveauvermogen">Aura Improvements (30 ft)</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/paladin.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/paladin.html#channel-divinity" class="ability-tip" data-tip="Eed-specifieke channel divinity. — 6e en 9e niveau">Channel Divinity (3/rest)</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/paladin.html#epic-boon" class="ability-tip" data-tip="Kalmerende aura van redding. — 10e-niveauvermogen">Epic Boon: Aura of Salvation</a></td></tr>
+</tbody></table></div>
+<h3 id="paladin-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/paladin.html">Alle Paladin-vermogens →</a> (<a href="class-abilities/index.html#paladin">index</a>) · <a href="class-abilities/paladin.html#subclasses">subclasses</a></p>
+<h3 id="paladin-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/paladin.html#devotion" class="ability-tip" data-tip="Eedgebonden ridder van plicht, eer en rechtvaardige orde.">Devotion</a></strong></li>
+<li><strong><a href="class-abilities/paladin.html#justice" class="ability-tip" data-tip="Paladin van de wet die schuldigen zonder genade straft.">Justice</a></strong></li>
+<li><strong><a href="class-abilities/paladin.html#anathema" class="ability-tip" data-tip="Paladins die directe dreiging van kwaadaardige wezens willen beëindigen — en de smet van nauwe omgang ermee niet schuwen — zweren een eed of Anathema. Deze">Anathema</a></strong></li>
+<li><strong><a href="class-abilities/paladin.html#safekeeping" class="ability-tip" data-tip="Een eed of Safekeeping bindt een paladin aan een persoon, plaats of object dat hij standvastig bewaakt. Ze kunnen beschermden wisselen, maar">Safekeeping</a></strong></li>
+<li><strong><a href="class-abilities/paladin.html#unbound" class="ability-tip" data-tip="Paladins die bedrog bij leiders zagen of zich uitgebuit voelen, zweren vaak een eed of the Unbound. Ze zagen corruptie en nonchalante">Unbound</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/paladin/" rel="noopener">BFRD Paladin</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="ranger">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Ranger</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een wildernisjager gemarkeerd door mystic quarry en primordiale magie.</p>
+<p><strong>Max. wonden (start):</strong> 10 + Fitness-modifier. <strong>Kernvermogen:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light en medium pantser, shields, alle weapons; herbalist-, navigator- of trapper-tools.</p>
+<p><strong>Spellcasting:</strong> Primordial spells known (half caster).</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>—</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>1</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>2</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>3</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>4</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="ranger-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/ranger.html#explorer" class="ability-tip" data-tip="Ongeëvenaarde mobiliteit in de wildernis. — 1e-niveauvermogen">Explorer</a>, <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Markeer je prooi voor extra schade. — 1e niveau en hoger">Mystic Mark</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Ranger Subclass</a>; <a href="class-abilities/ranger.html#martial-action" class="ability-tip" data-tip="Aim of Quick Strike als tweede actie. — 2e-niveauvermogen">Martial Action</a>, <a href="class-abilities/ranger.html#spellcasting" class="ability-tip" data-tip="Primordial spells known. — 2e-niveauvermogen">Spellcasting</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of martial/utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/ranger.html#multiattack" class="ability-tip" data-tip="Twee aanvallen per Attack-actie. — 3e-niveauvermogen">Multiattack (2)</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Markeer je prooi voor extra schade. — 1e niveau en hoger">Mystic Mark (d6)</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of martial/utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/ranger.html#empowered-mark" class="ability-tip" data-tip="Voel en sla je prooi. — 4e-niveauvermogen">Empowered Mark</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/ranger.html#stalkers-step" class="ability-tip" data-tip="Verdwiin in natuurlijke dekking. — 5e-niveauvermogen">Stalker's Step</a>; <a href="class-abilities/ranger.html#heroic-boon" class="ability-tip" data-tip="Path of the Predator of Sage. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Markeer je prooi voor extra schade. — 1e niveau en hoger">Mystic Mark (d8)</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of martial/utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/ranger.html#keensense" class="ability-tip" data-tip="Blindsight op gehoor. — 7e-niveauvermogen">Keensense</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/ranger.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/ranger.html#strider" class="ability-tip" data-tip="Beweeg zonder opportunity attacks uit te lokken. — 8e-niveauvermogen">Strider</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/ranger.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of martial/utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/ranger.html#mystic-mark" class="ability-tip" data-tip="Markeer je prooi voor extra schade. — 1e niveau en hoger">Mystic Mark (d10)</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/ranger.html#epic-boon" class="ability-tip" data-tip="Wijsheid leidt elke slag tegen je mark. — 10e-niveauvermogen">Epic Boon: Foe Slayer</a></td></tr>
+</tbody></table></div>
+<h3 id="ranger-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/ranger.html">Alle Ranger-vermogens →</a> (<a href="class-abilities/index.html#ranger">index</a>) · <a href="class-abilities/ranger.html#subclasses">subclasses</a></p>
+<h3 id="ranger-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/ranger.html#hunter" class="ability-tip" data-tip="Jager van bovennatuurlijke roofdieren die de wildernis bedreigen.">Hunter</a></strong></li>
+<li><strong><a href="class-abilities/ranger.html#pack-master" class="ability-tip" data-tip="Leid beast-metgezellen en gecoördineerde pack tactics.">Pack Master</a></strong></li>
+<li><strong><a href="class-abilities/ranger.html#arrow-binder" class="ability-tip" data-tip="Arrow binders zijn rangers die meesterschap over wildernis en boog vermengen. Ze kanaliseren primordiale magie in hun munitie en ontketenen spell">Arrow Binder</a></strong></li>
+<li><strong><a href="class-abilities/ranger.html#shadow" class="ability-tip" data-tip="The Shadow’s calling is zeldzaam en trekt vaak rangers die veel verloren aan monsters. Zij putten uit nachtelijk duister en zonloze grotten">Shadow</a></strong></li>
+<li><strong><a href="class-abilities/ranger.html#trailblazer" class="ability-tip" data-tip="Trailblazers leiden expedities het onbekende in en beschermen reizigers door gevaarlijke wildernis. Zij zijn ongeëvenaarde kenners van de natuur en navigeren">Trailblazer</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/ranger/" rel="noopener">BFRD Ranger</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="rogue">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Rogue</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een bekwame infiltrant die precisie-Sneak Attack-schade uitdeelt.</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Fitness (FIT). <strong>Saves:</strong> FIT (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light armor; simple en martial finesse weapons; thieves' tools; vier skills.</p>
+<h3 id="rogue-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Sneak Attack</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>1d6</td><td><a href="class-abilities/rogue.html#expertise" class="ability-tip" data-tip="+2×PB op gekozen skill checks. — 1e en 4e niveau">Expertise (2)</a>, <a href="class-abilities/rogue.html#sneak-attack" class="ability-tip" data-tip="Extra precisieschade één keer per beurt. — 1e-niveauvermogen">Sneak Attack</a>, <a href="class-abilities/rogue.html#thieves-cant" class="ability-tip" data-tip="Geheime criminele dialect. — 1e-niveauvermogen">Thieves' Cant</a></td></tr>
+<tr><td>2</td><td>1d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Rogue Subclass</a>; <a href="class-abilities/rogue.html#cunning-action" class="ability-tip" data-tip="Dash, Disengage of Hide als vrije actie. — Actie: vrije actie — 2e-niveauvermogen">Cunning Action (vrije actie)</a></td></tr>
+<tr><td>3</td><td>2d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/rogue.html#uncanny-dodge" class="ability-tip" data-tip="Halveer schade van één aanval. — 3e-niveauvermogen">Uncanny Dodge</a></td></tr>
+<tr><td>4</td><td>3d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/rogue.html#evasion" class="ability-tip" data-tip="Negeer gebiedsschade bij geslaagde saves. — 4e-niveauvermogen">Evasion</a>, <a href="class-abilities/rogue.html#expertise" class="ability-tip" data-tip="+2×PB op gekozen skill checks. — 1e en 4e niveau">Expertise (4)</a></td></tr>
+<tr><td>5</td><td>4d6</td><td><a href="class-abilities/rogue.html#reliable-talent" class="ability-tip" data-tip="Behandel lage worpen als 10 op behendige checks. — 5e-niveauvermogen">Reliable Talent</a>; <a href="class-abilities/rogue.html#heroic-boon" class="ability-tip" data-tip="Escape Artist of Jack of All Trades. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td>5d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/rogue.html#precise-critical" class="ability-tip" data-tip="Critical hits op 19–20 met finesse/ranged. — 6e en 8e niveau">Precise Critical (1 die)</a></td></tr>
+<tr><td>7</td><td>6d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/rogue.html#keensense" class="ability-tip" data-tip="Blindsight op gehoor, 10 voet. — 7e-niveauvermogen">Keensense</a></td></tr>
+<tr><td>8</td><td>7d6</td><td><a href="class-abilities/rogue.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/rogue.html#precise-critical" class="ability-tip" data-tip="Critical hits op 19–20 met finesse/ranged. — 6e en 8e niveau">Precise Critical (2 dice)</a></td></tr>
+<tr><td>9</td><td>8d6</td><td><a href="class-abilities/rogue.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een utility-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/rogue.html#elusive" class="ability-tip" data-tip="Aanvallers hebben zelden voordeel tegen je. — 9e-niveauvermogen">Elusive</a></td></tr>
+<tr><td>10</td><td>10d6</td><td><a href="class-abilities/rogue.html#epic-boon" class="ability-tip" data-tip="Maak van falen een succes. — 10e-niveauvermogen">Epic Boon: Stroke of Luck</a></td></tr>
+</tbody></table></div>
+<h3 id="rogue-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/rogue.html">Alle Rogue-vermogens →</a> (<a href="class-abilities/index.html#rogue">index</a>) · <a href="class-abilities/rogue.html#subclasses">subclasses</a></p>
+<h3 id="rogue-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/rogue.html#enforcer" class="ability-tip" data-tip="Intimidatie, controle en meedogenloze precisie.">Enforcer</a></strong></li>
+<li><strong><a href="class-abilities/rogue.html#thief" class="ability-tip" data-tip="Klim, taxeer en sla toe vóór vijanden reageren.">Thief</a></strong></li>
+<li><strong><a href="class-abilities/rogue.html#con-arcanist" class="ability-tip" data-tip="Je voegt magie toe aan je trucs om vijanden te verwarren of anderen van hun bezit te ontdoen. Spellcasting laat je gevaarlijkere stunts op afstand doen.">Con Arcanist</a></strong></li>
+<li><strong><a href="class-abilities/rogue.html#nightblade" class="ability-tip" data-tip="In plaats van fysieke wapens put je uit innerlijke resolve om soul-bound knives te manifesteren. Naarmate je groeit, kun je met die messen je">Nightblade</a></strong></li>
+<li><strong><a href="class-abilities/rogue.html#trapsmith" class="ability-tip" data-tip="Sommige rogues richten zich volledig op vallen. Die fixatie maakt hen beter in gevaar vermijden en metgezellen beschermen. Trapsmith-rogues">Trapsmith</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/rogue/" rel="noopener">BFRD Rogue</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="sorcerer">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Sorcerer</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een aangeboren spellcaster die arcane magie vormt met metamagic en sorcery points.</p>
+<p><strong>Max. wonden (start):</strong> 6 + Fitness-modifier. <strong>Kernvermogen:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Simple weapons.</p>
+<p><strong>Spellcasting:</strong> Arcane spells known. Sorcery points voor metamagic en flexible casting.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="sorcerer-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Sorcery Pts</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>2</td><td><a href="class-abilities/sorcerer.html#font-of-magic" class="ability-tip" data-tip="Innerlijke bron van sorcery points. — 1e-niveauvermogen">Font of Magic</a>, <a href="class-abilities/sorcerer.html#spellcasting" class="ability-tip" data-tip="Arcane spells known. — 1e-niveauvermogen">Spellcasting</a></td></tr>
+<tr><td>2</td><td>3</td><td><a href="class-abilities/sorcerer.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Sorcerer Subclass</a>; <a href="class-abilities/sorcerer.html#metamagic" class="ability-tip" data-tip="Verdraai spells met sorcery points. — 2e niveau en hoger">Metamagic (2)</a></td></tr>
+<tr><td>3</td><td>5</td><td><a href="class-abilities/sorcerer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/sorcerer.html#sorcerous-renewal" class="ability-tip" data-tip="Herwin sorcery points bij korte rust. — 3e niveau en hoger">Sorcerous Renewal</a></td></tr>
+<tr><td>4</td><td>7</td><td><a href="class-abilities/sorcerer.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/sorcerer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/sorcerer.html#metamagic" class="ability-tip" data-tip="Verdraai spells met sorcery points. — 2e niveau en hoger">Metamagic (3)</a></td></tr>
+<tr><td>5</td><td>9</td><td><a href="class-abilities/sorcerer.html#heroic-boon" class="ability-tip" data-tip="Arcane Instruction of Innate Spell. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td>11</td><td><a href="class-abilities/sorcerer.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/sorcerer.html#sorcerous-renewal" class="ability-tip" data-tip="Herwin sorcery points bij korte rust. — 3e niveau en hoger">Sorcerous Renewal (2 dice)</a></td></tr>
+<tr><td>7</td><td>13</td><td><a href="class-abilities/sorcerer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/sorcerer.html#devour-spell" class="ability-tip" data-tip="Absorbeer vijandige spell-energie. — 7e-niveauvermogen">Devour Spell</a></td></tr>
+<tr><td>8</td><td>15</td><td><a href="class-abilities/sorcerer.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/sorcerer.html#metamagic" class="ability-tip" data-tip="Verdraai spells met sorcery points. — 2e niveau en hoger">Metamagic (4)</a></td></tr>
+<tr><td>9</td><td>17</td><td><a href="class-abilities/sorcerer.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/sorcerer.html#sorcerous-renewal" class="ability-tip" data-tip="Herwin sorcery points bij korte rust. — 3e niveau en hoger">Sorcerous Renewal (3 dice)</a></td></tr>
+<tr><td>10</td><td>21</td><td><a href="class-abilities/sorcerer.html#epic-boon" class="ability-tip" data-tip="Deel spell-effecten met een ander doelwit. — 10e-niveauvermogen">Epic Boon: Arcane Conjunction</a>; <a href="class-abilities/sorcerer.html#metamagic" class="ability-tip" data-tip="Verdraai spells met sorcery points. — 2e niveau en hoger">Metamagic (5)</a></td></tr>
+</tbody></table></div>
+<h3 id="sorcerer-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/sorcerer.html">Alle Sorcerer-vermogens →</a> (<a href="class-abilities/index.html#sorcerer">index</a>) · <a href="class-abilities/sorcerer.html#subclasses">subclasses</a></p>
+<h3 id="sorcerer-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/sorcerer.html#chaos" class="ability-tip" data-tip="Wilde surges van ongecontroleerde arcane kracht.">Chaos</a></strong></li>
+<li><strong><a href="class-abilities/sorcerer.html#draconic" class="ability-tip" data-tip="Aangeboren kracht uit draconische afkomst.">Draconic</a></strong></li>
+<li><strong><a href="class-abilities/sorcerer.html#abominable" class="ability-tip" data-tip="Je magie komt van primordiale wezens van vóór de schepping, die onverschillig blijven over bestaan of hun afgrijselijke">Abominable</a></strong></li>
+<li><strong><a href="class-abilities/sorcerer.html#cyclonic" class="ability-tip" data-tip="De kracht van de storm dondert in je. De magie die door je stroomt is even onontkoombaar als een blizzard, even onweerlegbaar als een orkaan. Zeer gewild bij zeelieden">Cyclonic</a></strong></li>
+<li><strong><a href="class-abilities/sorcerer.html#sacred" class="ability-tip" data-tip="Je magische kracht komt van een deity. Een avatar of machtige celestial/fiendish proxy kan in je verre afkomst zitten, of je bent verbonden met een grote">Sacred</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/sorcerer/" rel="noopener">BFRD Sorcerer</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="warlock">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Warlock</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een pactgebonden spellcaster met eldritch invocations en herstel bij korte rust.</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light en medium pantser, shields, simple weapons.</p>
+<p><strong>Spellcasting:</strong> Arcane spells (pact magic). Weinig slots, herstel bij korte rust. Invocations op 2e niveau.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>1</td></tr>
+<tr><td>3</td><td>2</td></tr>
+<tr><td>4</td><td>2</td></tr>
+<tr><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>4</td></tr>
+<tr><td>8</td><td>4</td></tr>
+<tr><td>9</td><td>5</td></tr>
+<tr><td>10</td><td>5</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="warlock-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Slots</th><th>Slot Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>1st</td><td><a href="class-abilities/warlock.html#pact-magic" class="ability-tip" data-tip="Weinig slots, herstel bij korte rust. — 1e-niveauvermogen">Pact Magic</a>, <a href="class-abilities/warlock.html#eldritch-invocations" class="ability-tip" data-tip="Pas je pact aan met invocations. — 1e niveau en hoger">Eldritch Invocations (2)</a></td></tr>
+<tr><td>2</td><td>2</td><td>1st</td><td><a href="class-abilities/warlock.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Warlock Subclass</a></td></tr>
+<tr><td>3</td><td>2</td><td>2nd</td><td><a href="class-abilities/warlock.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/warlock.html#eldritch-invocations" class="ability-tip" data-tip="Pas je pact aan met invocations. — 1e niveau en hoger">Eldritch Invocations (3)</a></td></tr>
+<tr><td>4</td><td>2</td><td>2nd</td><td><a href="class-abilities/warlock.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/warlock.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>5</td><td>2</td><td>3rd</td><td><a href="class-abilities/warlock.html#heroic-boon" class="ability-tip" data-tip="Warlock heroic boon volgens BFRD. — 5e-niveauvermogen">Heroic Boon</a>; <a href="class-abilities/warlock.html#eldritch-invocations" class="ability-tip" data-tip="Pas je pact aan met invocations. — 1e niveau en hoger">Eldritch Invocations (4)</a></td></tr>
+<tr><td>6</td><td>2</td><td>3rd</td><td><a href="class-abilities/warlock.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>7</td><td>2</td><td>4th</td><td><a href="class-abilities/warlock.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/warlock.html#eldritch-invocations" class="ability-tip" data-tip="Pas je pact aan met invocations. — 1e niveau en hoger">Eldritch Invocations (5)</a></td></tr>
+<tr><td>8</td><td>2</td><td>4th</td><td><a href="class-abilities/warlock.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td>2</td><td>5th</td><td><a href="class-abilities/warlock.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/warlock.html#eldritch-invocations" class="ability-tip" data-tip="Pas je pact aan met invocations. — 1e niveau en hoger">Eldritch Invocations (6)</a></td></tr>
+<tr><td>10</td><td>2</td><td>5th</td><td><a href="class-abilities/warlock.html#epic-boon" class="ability-tip" data-tip="Warlock epic boon volgens BFRD. — 10e-niveauvermogen">Epic Boon</a></td></tr>
+</tbody></table></div>
+<h3 id="warlock-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/warlock.html">Alle Warlock-vermogens →</a> (<a href="class-abilities/index.html#warlock">index</a>) · <a href="class-abilities/warlock.html#subclasses">subclasses</a></p>
+<h3 id="warlock-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/warlock.html#archfey" class="ability-tip" data-tip="Deals met grillige fey-lords.">Archfey</a></strong></li>
+<li><strong><a href="class-abilities/warlock.html#fiend" class="ability-tip" data-tip="Kracht van een grotere fiend-patron.">Fiend</a></strong></li>
+<li><strong><a href="class-abilities/warlock.html#great-old-one" class="ability-tip" data-tip="Gefluister van voorbij de sterren.">Great Old One</a></strong></li>
+<li><strong><a href="class-abilities/warlock.html#archon" class="ability-tip" data-tip="Je patron is een buitenaards wezen gebonden aan wet en orde. Archon-patrons volgen meedogenloos hun kosmische plan en elimineren alles wat">Archon</a></strong></li>
+<li><strong><a href="class-abilities/warlock.html#elemental-regent" class="ability-tip" data-tip="Je patron is een elementaire entiteit met heerschappij over een groot gebied in zijn plane. Jij bent een van diens vertegenwoordigers op the Material Plane, en">Elemental Regent</a></strong></li>
+<li><strong><a href="class-abilities/warlock.html#fey-noble" class="ability-tip" data-tip="Je patron is een onsterfelijke fey van vóór de komst van stervelingen. Diens bedoelingen blijven onbekend, of het bedriegt je over">Fey Noble</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/warlock/" rel="noopener">BFRD Warlock</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="wizard">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Wizard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een geleerde arcane caster met een spellbook en ritual-meesterschap.</p>
+<p><strong>Max. wonden (start):</strong> 6 + Fitness-modifier. <strong>Kernvermogen:</strong> Insight (INS). <strong>Saves:</strong> INS (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Simple weapons.</p>
+<p><strong>Spellcasting:</strong> Arcane spells (prepared uit spellbook). Rituals en rote spells.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="wizard-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/wizard.html#arcane-recovery" class="ability-tip" data-tip="Herwin Spell Power bij een korte rust. — 1e-niveauvermogen">Arcane Recovery</a>, <a href="class-abilities/wizard.html#spellcasting" class="ability-tip" data-tip="Prepared Arcane spells uit je spellbook. — 1e-niveauvermogen">Spellcasting</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/wizard.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Wizard Subclass</a>; <a href="class-abilities/wizard.html#magic-sense" class="ability-tip" data-tip="Detecteer magie binnen 30 voet. — 2e-niveauvermogen">Magic Sense</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/wizard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/wizard.html#rote-spell" class="ability-tip" data-tip="Altijd-prepared signature spells. — 3e niveau en hoger">Rote Spell (1st)</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/wizard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/wizard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/wizard.html#superior-recovery" class="ability-tip" data-tip="Wissel prepared spells tijdens Arcane Recovery. — 4e-niveauvermogen">Superior Recovery</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/wizard.html#rote-spell" class="ability-tip" data-tip="Altijd-prepared signature spells. — 3e niveau en hoger">Rote Spell (2nd)</a>; <a href="class-abilities/wizard.html#heroic-boon" class="ability-tip" data-tip="Rite of the Ritualist of Source Master. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/wizard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/wizard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/wizard.html#rote-spell" class="ability-tip" data-tip="Altijd-prepared signature spells. — 3e niveau en hoger">Rote Spell (3rd)</a>; <a href="class-abilities/wizard.html#spellguard" class="ability-tip" data-tip="Weersta vijandige magie. — 7e-niveauvermogen">Spellguard</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/wizard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/wizard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/wizard.html#rote-spell" class="ability-tip" data-tip="Altijd-prepared signature spells. — 3e niveau en hoger">Rote Spell (4th)</a>; <a href="class-abilities/wizard.html#spell-mastery" class="ability-tip" data-tip="Cast rote spells zonder slots te gebruiken. — 9e-niveauvermogen">Spell Mastery</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/wizard.html#epic-boon" class="ability-tip" data-tip="Kans om uitgegeven Spell Power te herstellen. — 10e-niveauvermogen">Epic Boon: Archmage</a></td></tr>
+</tbody></table></div>
+<h3 id="wizard-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/wizard.html">Alle Wizard-vermogens →</a> (<a href="class-abilities/index.html#wizard">index</a>) · <a href="class-abilities/wizard.html#subclasses">subclasses</a></p>
+<h3 id="wizard-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/wizard.html#battle-mage" class="ability-tip" data-tip="Arcane aanval met martial discipline.">Battle Mage</a></strong></li>
+<li><strong><a href="class-abilities/wizard.html#cantrip-adept" class="ability-tip" data-tip="Cantrip-meesterschap en ritual-vernuft.">Cantrip Adept</a></strong></li>
+<li><strong><a href="class-abilities/wizard.html#arcanist" class="ability-tip" data-tip="Onder wizards die nieuwsgierigheid stillen met onderzoek, geldt the Arcanist vaak als meest gericht op empirische en esoterische">Arcanist</a></strong></li>
+<li><strong><a href="class-abilities/wizard.html#necromancer" class="ability-tip" data-tip="Sommige wizards worden van nature tot necromancy getrokken, anderen door trauma — en leren de macht van de doden te bevelen terwijl ze">Necromancer</a></strong></li>
+<li><strong><a href="class-abilities/wizard.html#summoner" class="ability-tip" data-tip="Elke goede avonturier weet dat goede metgezellen onmisbaar zijn. Summoners weten dat hoeveelheid even belangrijk is. Waarom jezelf in gevaar brengen">Summoner</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://bfrd.net/classes/wizard/" rel="noopener">BFRD Wizard</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="theurge">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Theurge</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een dual-source caster die Arcane- en Divine-spells prepared uit een mystic libram en magie stuurt met Spellcraft.</p>
+<p><strong>Max. wonden (start):</strong> 6 + Fitness-modifier. <strong>Kernvermogen:</strong> Insight (INS). <strong>Saves:</strong> INS (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Simple weapons. Skills: kies er twee uit Arcana, History, Insight, Investigation, Medicine en Religion.</p>
+<p><strong>Spellcasting:</strong> Arcane- en Divine-spells (prepared uit libram). Rituals known per niveau. Moet spells van beide lijsten bevatten bij het leren.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="theurge-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/theurge.html#spell-nexus" class="ability-tip" data-tip="Wissel prepared spells via je libram. — Actie: vrije actie — 1e-niveauvermogen">Spell Nexus</a>, <a href="class-abilities/theurge.html#spellcasting" class="ability-tip" data-tip="Prepared Arcane- en Divine-spells uit je libram. — 1e-niveauvermogen">Spellcasting (Libram)</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Theurge Subclass</a>; <a href="class-abilities/theurge.html#spellcraft" class="ability-tip" data-tip="Insight-dobbelstenen om spell-uitkomsten te sturen. — 2e-niveauvermogen">Spellcraft</a>, <a href="class-abilities/theurge.html#summon-libram" class="ability-tip" data-tip="Voel en roep je libram terug over planes. — Actie: vrije actie — 2e-niveauvermogen">Summon Libram</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/theurge.html#spell-synthesis" class="ability-tip" data-tip="Cast Arcane- en Divine-spells in één beurt. — 5e-niveauvermogen">Spell Synthesis</a>; <a href="class-abilities/theurge.html#heroic-boon" class="ability-tip" data-tip="Careful Craft, Persistent Craft of Precise Craft. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/theurge.html#superior-focus" class="ability-tip" data-tip="Dubbele concentratie op Arcane- en Divine-spells. — 6e-niveauvermogen">Superior Focus</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/theurge.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/theurge.html#spellcraft" class="ability-tip" data-tip="Insight-dobbelstenen om spell-uitkomsten te sturen. — 2e-niveauvermogen">Spellcraft (d8)</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/theurge.html#epic-boon" class="ability-tip" data-tip="Epic theurge-boon uit ToV Player's Guide 2. — 10e-niveauvermogen">Epic Boon</a>; <a href="class-abilities/theurge.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="theurge-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/theurge.html">Alle Theurge-vermogens →</a> (<a href="class-abilities/index.html#theurge">index</a>) · <a href="class-abilities/theurge.html#subclasses">subclasses</a></p>
+<h3 id="theurge-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/theurge.html#conduit" class="ability-tip" data-tip="Ruil vitaliteit voor Spell Power en verstoor vijandige magie.">Conduit</a></strong></li>
+<li><strong><a href="class-abilities/theurge.html#illuminary" class="ability-tip" data-tip="Graveer heilige tekens en sigils om je magie te verlengen.">Illuminary</a></strong></li>
+<li><strong><a href="class-abilities/theurge.html#source-spinner" class="ability-tip" data-tip="Ontrafel en herschik de weave van magie.">Source Spinner</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Theurge</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="vanguard">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Vanguard</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een slagveldcommandant die war banners plant, stratagems geeft en bondgenoten beschermt via tactisch leiderschap.</p>
+<p><strong>Max. wonden (start):</strong> 12 + Fitness-modifier. <strong>Kernvermogen:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Alle armor, shields, simple en martial weapons. Skills: kies er twee uit Animal Handling, Athletics, History, Insight, Intimidation, Medicine en Persuasion.</p>
+<h3 id="vanguard-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/vanguard.html#born-leader" class="ability-tip" data-tip="Authority- of Community-leiderschapsaura. — 1e-niveauvermogen">Born Leader</a>, <a href="class-abilities/vanguard.html#war-banner" class="ability-tip" data-tip="Mystieke battle standard in gevecht. — Actie: actie — 1e-niveauvermogen">War Banner</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Vanguard Subclass</a>; <a href="class-abilities/vanguard.html#stratagems" class="ability-tip" data-tip="Tactische bevelen op het slagveld. — 2e-niveauvermogen">Stratagems</a>, <a href="class-abilities/vanguard.html#support-action" class="ability-tip" data-tip="Stabiliseer en verzamel gevallen bondgenoten. — 2e-niveauvermogen">Support Action</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/vanguard.html#multiattack" class="ability-tip" data-tip="Twee aanvallen met de Attack-actie. — 3e-niveauvermogen">Multiattack (2)</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/vanguard.html#stratagems" class="ability-tip" data-tip="Tactische bevelen op het slagveld. — 2e-niveauvermogen">Superior Stratagems</a>; <a href="class-abilities/vanguard.html#heroic-boon" class="ability-tip" data-tip="Vanguard heroic boon uit ToV PG2. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/vanguard.html#war-banner-lucky-colors" class="ability-tip" data-tip="Derde war banner-optie. — 6e-niveauvermogen">War Banner: Lucky Colors</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/vanguard.html#manifold-tactic" class="ability-tip" data-tip="Combineer twee stratagems. — 7e-niveauvermogen">Manifold Tactic</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/vanguard.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/vanguard.html#valiant-commander" class="ability-tip" data-tip="Vergroot bereik van banner en stratagem. — 9e-niveauvermogen">Valiant Commander</a>, <a href="class-abilities/vanguard.html#battlefield-resolve" class="ability-tip" data-tip="Doorzettingsvermogen ondanks pijn aan het front. — 9e-niveauvermogen">Battlefield Resolve</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/vanguard.html#epic-boon" class="ability-tip" data-tip="Vanguard epic boon uit ToV PG2. — 10e-niveauvermogen">Epic Boon</a>; <a href="class-abilities/vanguard.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een martial talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="vanguard-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/vanguard.html">Alle Vanguard-vermogens →</a> (<a href="class-abilities/index.html#vanguard">index</a>) · <a href="class-abilities/vanguard.html#subclasses">subclasses</a></p>
+<h3 id="vanguard-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/vanguard.html#bulwark" class="ability-tip" data-tip="Slagveldgenezer en beschermer met the Surgeon's Standard-banner.">Bulwark</a></strong></li>
+<li><strong><a href="class-abilities/vanguard.html#herald" class="ability-tip" data-tip="Levende standaarddrager die bondgenoten door het gevecht teleporteert.">Herald</a></strong></li>
+<li><strong><a href="class-abilities/vanguard.html#marshal" class="ability-tip" data-tip="Inspirerende commandant die bondgenootaanvallen coördineert.">Marshal</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Vanguard</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+<div class="lineage-item" id="witch">
+<button class="lineage-header" onclick="toggleClass(this)"><span class="lineage-title-wrap"><span class="lineage-title">Witch</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span><span class="lineage-toggle-icon">▼</span></button>
+<div class="lineage-content">
+<p class="class-summary">Een Wyrd-caster die vijanden hexet, geesten bindt en kracht put uit buitenaardse covens.</p>
+<p><strong>Max. wonden (start):</strong> 8 + Fitness-modifier. <strong>Kernvermogen:</strong> Willpower (WIL). <strong>Saves:</strong> WIL (+PB op save).</p>
+<p><strong>Behendigheden:</strong> Light armor, simple weapons. Skills: kies er twee uit Arcana, Animal Handling, Insight, Intimidation, Nature en Religion.</p>
+<p><strong>Spellcasting:</strong> Wyrd spells (known, niet prepared). Rituals known per niveau. Coven spells van subclass.</p>
+<p><strong>Max. spell-niveau per personageniveau:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Max Spell Level</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>2</td></tr>
+<tr><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td></tr>
+<tr><td>5</td><td>5</td></tr>
+<tr><td>6</td><td>6</td></tr>
+<tr><td>7</td><td>7</td></tr>
+<tr><td>8</td><td>8</td></tr>
+<tr><td>9</td><td>9</td></tr>
+<tr><td>10</td><td>9</td></tr></tbody></table></div>
+<p>Casters gebruiken <a href="core.html#magic-and-spell-resources">Spell Power (SP)</a> in plaats van spell slots. Spellkosten zijn gelijk aan het spellniveau.</p>
+<h3 id="witch-progression">Progressie</h3>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Features</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="class-abilities/witch.html#hex" class="ability-tip" data-tip="Vervloek vijanden met een Hex-dobbelsteen. — Actie: vrije actie — 1e-niveauvermogen">Hex (d6)</a>, <a href="class-abilities/witch.html#spellcasting" class="ability-tip" data-tip="Known Wyrd spells. — 1e-niveauvermogen">Spellcasting</a></td></tr>
+<tr><td>2</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Kies je subclass op 2e niveau. Subclass-vermogens komen op 2e, 4e, 6e en 8e niveau.">Witch Subclass</a>; <a href="class-abilities/witch.html#shadow-craft" class="ability-tip" data-tip="Kleine illusions en witch-light craft. — 2e-niveauvermogen">Shadow Craft</a>, <a href="class-abilities/witch.html#spirit-binding" class="ability-tip" data-tip="Bind behulpzame geesten. — 2e-niveauvermogen">Spirit Binding</a></td></tr>
+<tr><td>3</td><td><a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>4</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a>; <a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>5</td><td><a href="class-abilities/witch.html#greater-hex" class="ability-tip" data-tip="Gehexte vijanden raken je moeilijk. — 5e-niveauvermogen">Greater Hex</a>; <a href="class-abilities/witch.html#heroic-boon" class="ability-tip" data-tip="Witch heroic boon uit ToV PG2. — 5e-niveauvermogen">Heroic Boon</a></td></tr>
+<tr><td>6</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>7</td><td><a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+<tr><td>8</td><td><a href="class-abilities/witch.html#subclasses" class="ability-tip" data-tip="Subclass-vermogen op dit niveau. Zie de subclass-regels op de class-vermogenskagina.">Subclass Feature</a></td></tr>
+<tr><td>9</td><td><a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a>; <a href="class-abilities/witch.html#otherworldly-form" class="ability-tip" data-tip="Korte geesttransformatie. — Actie: actie — 9e-niveauvermogen">Otherworldly Form</a></td></tr>
+<tr><td>10</td><td><a href="class-abilities/witch.html#epic-boon" class="ability-tip" data-tip="Witch epic boon uit ToV PG2. — 10e-niveauvermogen">Epic Boon</a>; <a href="class-abilities/witch.html#improvement" class="ability-tip" data-tip="Eigenschapsverhogingen of een magic-talent. — 3e, 5e, 7e, 9e en 10e niveau">Improvement</a></td></tr>
+</tbody></table></div>
+<h3 id="witch-features">Class-vermogens</h3>
+<p>Volledige regels: <a href="class-abilities/witch.html">Alle Witch-vermogens →</a> (<a href="class-abilities/index.html#witch">index</a>) · <a href="class-abilities/witch.html#subclasses">subclasses</a></p>
+<h3 id="witch-subclasses">Subclasses</h3>
+<p>Kies op 2e niveau; vermogens op 2e, 4e, 6e en 8e.</p>
+<ul>
+<li><strong><a href="class-abilities/witch.html#crimson-cord" class="ability-tip" data-tip="Vitality-witch die bondgenoten geneest en vijanden met bloedmagie uitteert.">Crimson Cord</a></strong></li>
+<li><strong><a href="class-abilities/witch.html#night-song" class="ability-tip" data-tip="Predator-witch versterkt door duisternis en nachtzegeningen.">Night Song</a></strong></li>
+<li><strong><a href="class-abilities/witch.html#twilight-soul" class="ability-tip" data-tip="Geestendiplomaat met een sentinel-metgezel.">Twilight Soul</a></strong></li>
+</ul>
+<p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> (<a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Witch</a>) voor YMIAT 10-niveau-spel.</p>
+</div></div>
+    </div>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script> function classItems(){
+  return document.querySelectorAll('.lineages-container > .lineage-item');
+}
+function setClassExpanded(item, expanded){
+  const content = item.querySelector('.lineage-content');
+  const btn = item.querySelector('.lineage-header');
+  if(!content || !btn) return;
+  const icon = btn.querySelector('.lineage-toggle-icon');
+  content.classList.toggle('expanded', expanded);
+  content.style.removeProperty('display');
+  icon.textContent = expanded ? '▲' : '▼';
+  btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+}
+function collapseAllClasses(){
+  classItems().forEach(function(item){ setClassExpanded(item, false); });
+}
+function expandClassFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item') || !target.closest('.lineages-container')) return;
+  collapseAllClasses();
+  setClassExpanded(target, true);
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+function toggleClass(button){
+  const item = button.closest('.lineage-item');
+  if(!item) return;
+  const content = item.querySelector('.lineage-content');
+  setClassExpanded(item, !content.classList.contains('expanded'));
+}
+function expandAllClasses(){
+  classItems().forEach(function(item){ setClassExpanded(item, true); });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  collapseAllClasses();
+  expandClassFromHash();
+  window.addEventListener('hashchange', expandClassFromHash);
+  const glance = document.getElementById('classes-at-a-glance');
+  if(glance){
+    glance.addEventListener('click', function(event){
+      const link = event.target.closest('a[href^="#"]');
+      if(!link) return;
+      window.setTimeout(expandClassFromHash, 0);
+    });
+  }
+  initAbilityTooltips();
+});
+function initAbilityTooltips(){
+  let tipEl = document.getElementById('ability-hover-tip');
+  if(!tipEl){
+    tipEl = document.createElement('div');
+    tipEl.id = 'ability-hover-tip';
+    tipEl.setAttribute('role', 'tooltip');
+    tipEl.hidden = true;
+    document.body.appendChild(tipEl);
+  }
+  let active = null;
+  function position(link){
+    const rect = link.getBoundingClientRect();
+    const margin = 8;
+    let left = rect.left;
+    let top = rect.bottom + margin;
+    tipEl.style.left = left + 'px';
+    tipEl.style.top = top + 'px';
+    const box = tipEl.getBoundingClientRect();
+    if(box.right > window.innerWidth - margin){
+      left -= box.right - window.innerWidth + margin;
+      tipEl.style.left = Math.max(margin, left) + 'px';
+    }
+    if(box.bottom > window.innerHeight - margin){
+      tipEl.style.top = Math.max(margin, rect.top - box.height - margin) + 'px';
+    }
+  }
+  function show(link){
+    const text = link.getAttribute('data-tip');
+    if(!text) return;
+    active = link;
+    tipEl.textContent = text;
+    tipEl.hidden = false;
+    position(link);
+  }
+  function hide(){
+    active = null;
+    tipEl.hidden = true;
+  }
+  document.querySelectorAll('.ability-tip[data-tip]').forEach(function(link){
+    link.removeAttribute('title');
+    link.addEventListener('mouseenter', function(){ show(link); });
+    link.addEventListener('focus', function(){ show(link); });
+    link.addEventListener('mouseleave', hide);
+    link.addEventListener('blur', hide);
+    link.addEventListener('mousemove', function(){ if(active === link) position(link); });
+  });
+} </script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

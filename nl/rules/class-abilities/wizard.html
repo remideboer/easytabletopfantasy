@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/wizard.html" />
+<link rel="alternate" hreflang="nl" href="wizard.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/wizard.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wizard-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Wizard class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/wizard.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Wizard-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Wizard vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#wizard">← Terug naar Wizard</a> · <a href="index.html#wizard">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Wizard abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#arcane-recovery">Arcane Recovery</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#spellcasting">Spellcasting</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#magic-sense">Magic Sense</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#rote-spell">Rote Spell</a> <span class="text-muted">(3e niveau en hoger)</span></li>
+<li><a href="#superior-recovery">Superior Recovery</a> <span class="text-muted">(4e-niveauvermogen)</span></li>
+<li><a href="#spellguard">Spellguard</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#spell-mastery">Spell Mastery</a> <span class="text-muted">(9e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#battle-mage">Battle Mage</a></li>
+<li class="toc-sub toc-feature"><a href="#battle-mage-expanded-talent-list">Expanded Talent List</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-mage-spell-ward">Spell Ward</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-mage-tactical-caster">Tactical Caster</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-mage-contingency-plan">Contingency Plan</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-mage-blasting-power">Blasting Power</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#battle-mage-counterstrike">Counterstrike</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#cantrip-adept">Cantrip Adept</a></li>
+<li class="toc-sub toc-feature"><a href="#cantrip-adept-arcane-alacrity">Arcane Alacrity</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cantrip-adept-cantrip-polymath">Cantrip Polymath</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cantrip-adept-versatile-cantrips">Versatile Cantrips</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cantrip-adept-potent-cantrip">Potent Cantrip</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#cantrip-adept-empowered-cantrips">Empowered Cantrips</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#arcanist">Arcanist</a></li>
+<li class="toc-sub toc-feature"><a href="#arcanist-economical-transcription">Economical Transcription</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#arcanist-swift-ritual">Swift Ritual</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#arcanist-arcane-conflux">Arcane Conflux</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#arcanist-eidetic-scribe">Eidetic Scribe</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#arcanist-mastered-spell">Mastered Spell</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#necromancer">Necromancer</a></li>
+<li class="toc-sub toc-feature"><a href="#necromancer-reanimation-rites">Reanimation Rites</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#necromancer-undead-thrall">Undead Thrall</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#necromancer-enhanced-undead">Enhanced Undead</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#necromancer-necromantic-reversal">Necromantic Reversal</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#necromancer-monstrous-creations">Monstrous Creations</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#summoner">Summoner</a></li>
+<li class="toc-sub toc-feature"><a href="#summoner-conjuration-specialist">Conjuration Specialist</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#summoner-unbreakable-focus">Unbreakable Focus</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#summoner-master-summoner">Master Summoner</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#summoner-synchronized-companions">Synchronized Companions</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#summoner-twinned-conjuration">Twinned Conjuration</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="arcane-recovery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arcane Recovery</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Herstel Spell Power bij een korte rust.</em></p>
+    <p>Eén keer per dag, bij een korte rust, herstel je uitgegeven spellniveaus tot de helft van je wizard-niveau (naar boven afgerond) als Spell Power, of volgens BFRD-slotrecovery aangepast aan SP.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellcasting</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Prepared Arcane spells uit je spellbook.</em></p>
+    <p>Als kanaal voor <strong>Arcane</strong> magie cast je spells met <a href="../core.html#magic-and-spell-resources">Spell Power (SP)</a>. Spellkosten gelijk aan spellniveau. Je max. spellniveau per personageniveau staat in de <a href="../classes.html#wizard">Wizard</a>-progressietabel.</p>
+<p>Je houdt een spellbook bij. Prepareer spells eruit gelijk aan je Insight (INS)-modifier + je wizard-niveau (minimaal één). Voeg twee spells toe aan je spellbook elke keer dat je een niveau stijgt.</p>
+<p><strong>Spellcasting ability:</strong> Insight (INS). Spell-save-DC en spell-aanvalsmodifier gebruiken je behendigheidsbonus + Insight (INS)-modifier.</p>
+<p><strong>Cantrips &amp; rituals:</strong> Zoals op je progressietabel. Rituals kosten geen Spell Power wanneer je ze cast volgens de ritualregels in <a href="../magic.html">Magie</a>.</p>
+<p><strong>Tweede-actie-casting:</strong> Cast je een spell als je tweede actie (omdat je deze beurt niet hebt bewogen), dan zijn spellaanvallen met nadeel en hebben doelwitten voordeel op saves tegen die spell.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="magic-sense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Magic Sense</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Detecteer magie binnen 30 voet.</em></p>
+    <p>Actie: tot het einde van je volgende beurt voel je spellcasters, actieve spelleffecten en magic items binnen 30 voet (geblokkeerd door 1 voet steen, 1 inch metaal, dun lood, 3 voet hout/aarde). Gebruiken = PB + 1 per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="rote-spell">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Rote Spell</h4>
+    <span class="spell-card-level">3e niveau en hoger</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Altijd-prepared signature spells.</em></p>
+    <p>Kies één spell op 3e (1e niveau), 5e (2e), 7e (3e) en 9e (4e) personageniveau als altijd-prepared rote spells. Wissel tijdens een lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="superior-recovery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Superior Recovery</h4>
+    <span class="spell-card-level">4e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Wissel prepared spells tijdens Arcane Recovery.</em></p>
+    <p>Wanneer je Arcane Recovery gebruikt, wissel je tot de helft van je behendigheidsbonus (naar beneden) prepared spells uit je spellbook.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spellguard">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spellguard</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Weersta vijandige magie.</em></p>
+    <p>Voordeel op saves tegen spells; weerstand tegen schade van spells en spellaanvallen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-mastery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Mastery</h4>
+    <span class="spell-card-level">9e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Cast rote spells zonder SP te spenderen.</em></p>
+    <p>Cast elke rote spell één keer per korte rust op het laagste niveau zonder Spell Power te spenderen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Rite of the Ritualist of Source Master.</em></p>
+    <p><strong>Ritualist:</strong> leer rituals uit elke magic source. <strong>Source Master:</strong> voeg bij level-up spells toe uit Divine, Primordial of Wyrd.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Kans om uitgegeven Spell Power terug te krijgen.</em></p>
+    <p>Wanneer je een spell van 1e niveau of hoger cast met Spell Power, rol je d10. Is het resultaat hoger dan het uitgegeven niveau, dan herstel je die Spell Power. Eén keer per korte rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een magic-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Magie-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="battle-mage">
+  <h3 class="subclass-name">Battle Mage</h3>
+  <p class="subclass-summary">Arcane aanvalskracht met martiale discipline.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="battle-mage-expanded-talent-list">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expanded Talent List</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Mage</span></div>
+  <div class="spell-card-description">
+<p><em>Magic- of martial-talenten bij Improvement.</em></p>
+    <p>Wanneer je een talent van Improvement krijgt, kies je uit de magic- of martial-talentlijsten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-mage-spell-ward">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Ward</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Mage</span></div>
+  <div class="spell-card-description">
+<p><em>AC en fysieke weerstand na casting.</em></p>
+    <p>Wanneer je een Arcane spell van 1e niveau+ cast, weef je 1 minuut een ward: <strong>+PB AC</strong> en weerstand tegen B/P/S (eindigt als je bewusteloos raakt of een beurt eindigt zonder een leveled spell te casten). PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-mage-tactical-caster">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Tactical Caster</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Mage</span></div>
+  <div class="spell-card-description">
+<p><em>Bondgenoten immuun voor jouw schadende spells.</em></p>
+    <p>Wanneer je een schadende Arcane spell cast, kies je jezelf en bondgenoten die je kunt zien om immuun te zijn voor de schade van die spell. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-mage-contingency-plan">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Contingency Plan</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Mage</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Leid een gemiste spellaanval om naar een ander doelwit.</em></p>
+    <p>Wanneer een spellaanval mist, gebruik je je reactie om die om te leiden naar een ander doelwit in bereik met een nieuwe aanvalsworp.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-mage-blasting-power">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Blasting Power</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Mage</span></div>
+  <div class="spell-card-description">
+<p><em>Versterkte spellschade na geslaagde saves.</em></p>
+    <p>Wanneer een wezen slaagt op een save tegen jouw Arcane spell maar geen schade neemt, neemt het force-schade gelijk aan <strong>spellniveau d6 + Insight-modifier</strong>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="battle-mage-counterstrike">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Counterstrike</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Battle Mage</span></div>
+  <div class="spell-card-description">
+<p><em>Straf wezens die saves tegen jouw spells slagen.</em></p>
+    <p>Wanneer een wezen slaagt op een save tegen jouw Arcane spell en geen effect zou ondergaan, neemt het force-schade volgens Blasting Power. Eén keer per beurt.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="cantrip-adept">
+  <h3 class="subclass-name">Cantrip Adept</h3>
+  <p class="subclass-summary">Meesterschap over cantrips en rituele vindingrijkheid.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="cantrip-adept-arcane-alacrity">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arcane Alacrity</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cantrip Adept</span><span><strong>Actie:</strong> bonusactie</span></div>
+  <div class="spell-card-description">
+<p><em>Cast actie-cantrips als vrije actie.</em></p>
+    <p>Wanneer je een Arcane cantrip met casting time 1 actie cast, kun je die casting als <strong>vrije actie</strong> doen. PB gebruiken per lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cantrip-adept-cantrip-polymath">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cantrip Polymath</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cantrip Adept</span></div>
+  <div class="spell-card-description">
+<p><em>Leer cantrips uit elke magic source.</em></p>
+    <p>Leer <strong>twee cantrips</strong> van elke spelllijst; ze tellen als Arcane cantrips en tellen niet mee voor cantrips known. Elke cantrip van lineage of talenten telt voor jou ook als Arcane.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cantrip-adept-versatile-cantrips">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Versatile Cantrips</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cantrip Adept</span></div>
+  <div class="spell-card-description">
+<p><em>Wissel één cantrip na elke rust.</em></p>
+    <p>Wanneer je een korte of lange rust afrondt, vervang je één Arcane cantrip die je kent door een andere van je beschikbare lijsten (inclusief Polymath-keuzes).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cantrip-adept-potent-cantrip">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Potent Cantrip</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cantrip Adept</span></div>
+  <div class="spell-card-description">
+<p><em>Tel Insight op bij één cantrip-schadenrol.</em></p>
+    <p>Tel je <strong>Insight-modifier</strong> op bij één schaderol van elke Arcane cantrip die je cast.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cantrip-adept-empowered-cantrips">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Empowered Cantrips</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Cantrip Adept</span></div>
+  <div class="spell-card-description">
+<p><em>Maximale schade op cantrips.</em></p>
+    <p>Eén keer per beurt, wanneer je een schadende Arcane cantrip cast, doe je maximale schade. PB gebruiken per lange rust.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="arcanist">
+  <h3 class="subclass-name">Arcanist</h3>
+  <p class="subclass-summary">De Arcanist is de wizard die empirische en esoterische studie tot het uiterste drijft.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="arcanist-economical-transcription">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Economical Transcription</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Wissel een Arcane cantrip na elke rust.</em></p>
+    <p>Je vermogen om spells te verzamelen, te ontcijferen en te onthouden is ongeëvenaard. Wanneer je een korte of lange rust afrondt, kun je één Arcane cantrip die je kent vervangen door een andere cantrip van de Arcane source-spelllijst.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="arcanist-swift-ritual">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Swift Ritual</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Cast een Arcane ritual als actie in plaats van de normale casting time.</em></p>
+    <p>Als actie kun je een Arcane ritual casten die in je spellbook staat, in plaats van de normale casting time van het ritual. Het ritual mag geen evocation-spell zijn en mag geen casting time langer dan 10 minuten hebben. Je moet nog steeds alle componenten leveren. Eén keer gebruikt, kun je dit vermogen niet opnieuw gebruiken tot je een lange rust afrondt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="arcanist-arcane-conflux">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arcane Conflux</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Stapelende bonus na missers en geslaagde saves.</em></p>
+    <p>Elke keer dat je een spell-aanvalsworp mist en voor elk wezen dat slaagt op een save tegen een spell die je cast, krijg je een stapelende +1-bonus op spell-aanvalsworpen en je spell-save-DC.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="arcanist-eidetic-scribe">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Eidetic Scribe</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: onthoud een Arcane spell die je ziet casten.</em></p>
+    <p>Als reactie, wanneer een wezen dat je kunt zien en horen een spell van de Arcane source-lijst cast, kun je die proberen te memoriseren. Maak een INT (Arcana)-test met DC 10 + het spellniveau. Bij succes kun je die spell casten alsof je die prepared hebt tot je een korte of lange rust afrondt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="arcanist-mastered-spell">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mastered Spell</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Master één non-ritual spell; altijd prepared, gratis op laagste niveau.</em></p>
+    <p>Als onderdeel van een lange rust kun je één non-ritual spell van 3e niveau of lager uit je spellbook masteren. Die spell is altijd voor je prepared en telt niet mee voor het aantal spells dat je kunt prepareren. Je kunt die spell op het laagste niveau casten zonder Spell Power uit te geven, al moet je nog steeds spellcomponenten leveren.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Arcanist</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="necromancer">
+  <h3 class="subclass-name">Necromancer</h3>
+  <p class="subclass-summary">Wizards die necromancy omarmen — of door trauma — en de doden gebruiken om hun wil te doen.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="necromancer-reanimation-rites">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Reanimation Rites</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Necromancer</span></div>
+  <div class="spell-card-description">
+<p><em>Voeg necromancy-spells toe ongeacht source.</em></p>
+    <p>Je studie van dood en Undead maakt je bedreven in necromantic magic. Je kunt elke spell van de necromancy-school aan je spellbook toevoegen, ongeacht de spell source. Die spells tellen voor jou als Arcane spells.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="necromancer-undead-thrall">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Undead Thrall</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Necromancer</span></div>
+  <div class="spell-card-description">
+<p><em>Animeer een thrall uit botten of een lijk.</em></p>
+    <p>Je kunt 1 minuut besteden aan het aanraken van een bottenstapel of het lijk van een Medium of Small Beast of Humanoid.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="necromancer-enhanced-undead">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enhanced Undead</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Necromancer</span></div>
+  <div class="spell-card-description">
+<p><em>Cast animate dead als actie zonder material component.</em></p>
+    <p>Je kunt de ritual spell <em>animate dead</em> als actie casten in plaats van de normale casting time, en je mag de material spell component negeren. Je kunt dit vermogen een aantal keren gebruiken gelijk aan je PB, en je krijgt alle gebruiken terug wanneer je een lange rust afrondt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="necromancer-necromantic-reversal">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Necromantic Reversal</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Necromancer</span></div>
+  <div class="spell-card-description">
+<p><em>Necromantic Reversal — Necromancer subclass-vermogen.</em></p>
+    <p>Necromantic Reversal: zie Tales of the Valiant Player's Guide 2 (Necromancer-subclass).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="necromancer-monstrous-creations">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Monstrous Creations</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Necromancer</span></div>
+  <div class="spell-card-description">
+<p><em>Animate dead op Beasts en Humanoids.</em></p>
+    <p>Wanneer je de ritual spell <em>animate dead</em> cast, kun je nu Medium of Small Beasts en Humanoids targeten.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Necromancer</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="summoner">
+  <h3 class="subclass-name">Summoner</h3>
+  <p class="subclass-summary">Summoners weten dat kwaliteit én kwantiteit van bondgenoten telt: waarom zelf in gevaar gaan?</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="summoner-conjuration-specialist">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Conjuration Specialist</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Summoner</span></div>
+  <div class="spell-card-description">
+<p><em>Voeg creature-conjuration-spells toe aan je spellbook.</em></p>
+    <p>Je bent bedreven in magie die wezens creëert of oproept. Je kunt elke spell van de conjuration-school aan je spellbook toevoegen, mits die spell één of meer wezens conjureert, creëert of oproept (zoals <em>find steed</em> en <em>conjure woodland beings</em>). Die spells tellen voor jou als Arcane. Dit geldt niet voor conjuration-spells die geen echte wezens maken, zoals <em>guardian of faith</em> en <em>spirit guardians</em>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="summoner-unbreakable-focus">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Unbreakable Focus</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Summoner</span></div>
+  <div class="spell-card-description">
+<p><em>Voordeel op CON-saves om conjuration-concentratie te behouden.</em></p>
+    <p>Je hebt voordeel op CON-saves om concentratie te behouden op spells van de conjuration-school.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="summoner-master-summoner">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Master Summoner</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Summoner</span></div>
+  <div class="spell-card-description">
+<p><em>Extra rote conjuration-spells die wezens oproepen.</em></p>
+    <p>Je mag per spellniveau waarvoor je al een rote spell hebt één extra spell van Rote Spell hebben. Die extra rote spells moeten conjuration-spells zijn die één of meer wezens creëren of oproepen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="summoner-synchronized-companions">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Synchronized Companions</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Summoner</span></div>
+  <div class="spell-card-description">
+<p><em>Bondgenoten krijgen voordeel nabij jouw summons.</em></p>
+    <p>Een vriendelijk wezen dat je niet zelf met een spell hebt gecreëerd of opgeroepen heeft voordeel op aanvalsworpen tegen elk wezen binnen 5 voet van een wezen dat jij met een conjuration-spell hebt gecreëerd of opgeroepen, zolang dat wezen niet incapacitated is.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="summoner-twinned-conjuration">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Twinned Conjuration</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Summoner</span></div>
+  <div class="spell-card-description">
+<p><em>Verdubbel het aantal opgeroepen wezens.</em></p>
+    <p>Wanneer je een conjuration-spell cast die een wezen creëert of oproept, kun je twee keer zoveel wezens creëren of oproepen, tenzij de spell voorkomt dat je meer dan één wezen tegelijk hebt (zoals <em>create familiar</em>).</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Summoner</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#wizard">← Terug naar Wizard</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

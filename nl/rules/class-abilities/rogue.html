@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/rogue.html" />
+<link rel="alternate" hreflang="nl" href="rogue.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/rogue.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rogue-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Rogue class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/rogue.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Rogue-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Rogue vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#rogue">← Terug naar Rogue</a> · <a href="index.html#rogue">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Rogue abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#sneak-attack">Sneak Attack</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#expertise">Expertise</a> <span class="text-muted">(1st and 4th level)</span></li>
+<li><a href="#thieves-cant">Thieves' Cant</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#cunning-action">Cunning Action</a> <span class="text-muted">(2e-niveauvermogen)</span></li>
+<li><a href="#uncanny-dodge">Uncanny Dodge</a> <span class="text-muted">(3e-niveauvermogen)</span></li>
+<li><a href="#evasion">Evasion</a> <span class="text-muted">(4e-niveauvermogen)</span></li>
+<li><a href="#reliable-talent">Reliable Talent</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#precise-critical">Precise Critical</a> <span class="text-muted">(6th and 8th level)</span></li>
+<li><a href="#keensense">Keensense</a> <span class="text-muted">(7e-niveauvermogen)</span></li>
+<li><a href="#elusive">Elusive</a> <span class="text-muted">(9e-niveauvermogen)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#enforcer">Enforcer</a></li>
+<li class="toc-sub toc-feature"><a href="#enforcer-ambush">Ambush</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#enforcer-cold-blooded">Cold-Blooded</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#enforcer-expanded-talent-list">Expanded Talent List</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#enforcer-brawler">Brawler</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#enforcer-ready-to-rumble">Ready to Rumble</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#enforcer-kill-shot">Kill Shot</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#thief">Thief</a></li>
+<li class="toc-sub toc-feature"><a href="#thief-fast-hands">Fast Hands</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#thief-second-story-work">Second-Story Work</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#thief-appraising-eye">Appraising Eye</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#thief-trap-specialist">Trap Specialist</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#thief-thiefs-reflexes">Thief's Reflexes</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#con-arcanist">Con Arcanist</a></li>
+<li class="toc-sub toc-feature"><a href="#con-arcanist-con-arcanist-feature">Con Arcanist Feature</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#con-arcanist-con-arcanist-feature">Con Arcanist Feature</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#con-arcanist-con-arcanist-feature">Con Arcanist Feature</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#con-arcanist-con-arcanist-feature">Con Arcanist Feature</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#nightblade">Nightblade</a></li>
+<li class="toc-sub toc-feature"><a href="#nightblade-psychic-blade">Psychic Blade</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#nightblade-psychic-bulwark">Psychic Bulwark</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#nightblade-enhanced-blades">Enhanced Blades (+1)</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#nightblade-home-in">Home In</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#nightblade-enhanced-blades">Enhanced Blades (+2, spiritual weapon)</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#trapsmith">Trapsmith</a></li>
+<li class="toc-sub toc-feature"><a href="#trapsmith-makeshift-trap">Makeshift Trap</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#trapsmith-trap-expertise">Trap Expertise</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#trapsmith-rework-trap">Rework Trap</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#trapsmith-improved-traps">Improved Traps</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#trapsmith-trap-mastery">Trap Mastery</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="sneak-attack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Sneak Attack</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Extra precisieschade één keer per beurt.</em></p>
+    <p>Eén keer per beurt doe je extra Sneak Attack-dobbelstenen wanneer je raakt met een finesse- of ranged-wapen als je voordeel hebt, of als een bondgenoot binnen 5 voet van het doelwit staat. Schade volgens de kolom Sneak Attack.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="expertise">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expertise</h4>
+    <span class="spell-card-level">1st and 4th level</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>+2×PB op gekozen skill-tests.</em></p>
+    <p>Kies twee behendigheden (vier op 4e niveau). Je hebt Expertise ermee: tel <strong>+2×PB</strong> in plaats van +PB op bij gerelateerde eigenschapstests.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="thieves-cant">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Thieves' Cant</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Geheim crimineel dialect.</em></p>
+    <p>Je kent Thieves' Cant voor verborgen boodschappen en herkent criminele tekens.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="cunning-action">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cunning Action</h4>
+    <span class="spell-card-level">2e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> vrije actie</span></div>
+  <div class="spell-card-description">
+<p><em>Dash, Disengage of Hide als vrije actie.</em></p>
+    <p>Op je beurt kun je als <strong>vrije actie</strong> Dash, Disengage of Hide gebruiken.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="uncanny-dodge">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Uncanny Dodge</h4>
+    <span class="spell-card-level">3e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Halveer de schade van één aanval.</em></p>
+    <p>Wanneer een aanvaller die je kunt zien je raakt, gebruik je je <strong>reactie</strong> om de Wonden van die aanval te halveren.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="evasion">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Evasion</h4>
+    <span class="spell-card-level">4e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Geen gebiedsschade bij geslaagde saves.</em></p>
+    <p>Bij geslaagde Fitness-saves tegen gebiedseffecten neem je geen schade; de helft bij falen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="reliable-talent">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Reliable Talent</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Behandel lage rollen als 10 op behendige tests.</em></p>
+    <p>Behandel d20-rollen van 9 of lager als 10 op eigenschapstests met skills of tools waarmee je behendig bent.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="precise-critical">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Precise Critical</h4>
+    <span class="spell-card-level">6th and 8th level</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Critical hits op 19–20 met finesse/ranged.</em></p>
+    <p>Critical hit op 19–20 met finesse- of ranged-wapens. Rol 1 extra wapen-dobbelsteen bij crit op 6e niveau, 2 extra op 8e.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="keensense">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Keensense</h4>
+    <span class="spell-card-level">7e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Gehoor-gebaseerde blindsight 10 voet.</em></p>
+    <p>Keensense 10 voet tenzij je deafened bent.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="elusive">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elusive</h4>
+    <span class="spell-card-level">9e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Aanvallers hebben zelden voordeel tegen jou.</em></p>
+    <p>Zolang je niet incapacitated bent, kunnen aanvalsworpen geen voordeel tegen jou hebben.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Escape Artist of Jack of All Trades.</em></p>
+    <p><strong>Escape Artist:</strong> gebiedssaves doen bij succes geen schade. <strong>Jack of All Trades:</strong> kies talenten uit elke lijst; krijg er meteen één.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Draai falen om in succes.</em></p>
+    <p>Verander een gemiste aanval in een treffer, of behandel een gefaalde eigenschapstest-d20 als 20. Eén keer per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een utility-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Utility-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="enforcer">
+  <h3 class="subclass-name">Enforcer</h3>
+  <p class="subclass-summary">Intimidatie, controle en meedogenloze precisie.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="enforcer-ambush">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ambush</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Enforcer</span></div>
+  <div class="spell-card-description">
+<p><em>Voordeel in de eerste ronde; auto-crit tegen verraste vijanden.</em></p>
+    <p>Tijdens de eerste ronde van gevecht heb je voordeel op de eerste aanvalsworp die je tegen elk wezen in het gevecht maakt. Aanvallen tegen verraste wezens zijn automatische critical hits.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="enforcer-cold-blooded">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Cold-Blooded</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Enforcer</span></div>
+  <div class="spell-card-description">
+<p><em>Extra aanval wanneer je een vijand uitschakelt.</em></p>
+    <p>Eén keer per beurt, wanneer je een wezen tot 0 Wonden reduceert met een wapenaanval, maak je meteen één extra wapenaanval tegen een ander wezen in bereik (geen Sneak Attack op deze extra aanval).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="enforcer-expanded-talent-list">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expanded Talent List</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Enforcer</span></div>
+  <div class="spell-card-description">
+<p><em>Martial- of utility-talenten bij Improvement.</em></p>
+    <p>Wanneer je een talent van Improvement krijgt, kies je uit de martial- of utility-talentlijsten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="enforcer-brawler">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Brawler</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Enforcer</span></div>
+  <div class="spell-card-description">
+<p><em>Sneak Attack in melee zonder nabije bondgenoot; unarmed mag.</em></p>
+    <p>Sneak Attack werkt tegen een doelwit binnen 5 voet, ook als er geen andere wezens naast staan — je hebt geen voordeel nodig, maar mag geen nadeel hebben. Sneak Attack geldt ook voor ongewapende aanvallen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="enforcer-ready-to-rumble">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Ready to Rumble</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Enforcer</span></div>
+  <div class="spell-card-description">
+<p><em>Niet te verrassen; voorsprong in de eerste beurt.</em></p>
+    <p>Zolang je niet incapacitated bent, kun je niet verrast worden. Wanneer gevecht begint en je niet verrast bent, heb je voordeel op de eerste aanvalsworp die je op je eerste beurt maakt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="enforcer-kill-shot">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Kill Shot</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Enforcer</span></div>
+  <div class="spell-card-description">
+<p><em>Herrol Sneak Attack-dobbelstenen; Sneak Attack op opportunity attacks.</em></p>
+    <p>Wanneer je Sneak Attack-schade rolt, herrol je dobbelstenen (je moet de nieuwe resultaten gebruiken). Je mag Sneak Attack toepassen op een geldige opportunity attack als je Sneak Attack deze ronde nog niet hebt gebruikt.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="thief">
+  <h3 class="subclass-name">Thief</h3>
+  <p class="subclass-summary">Klim, taxeer en sla toe voordat vijanden reageren.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="thief-fast-hands">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fast Hands</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Thief</span></div>
+  <div class="spell-card-description">
+<p><em>Cunning Action kan ook sleight of hand, object of sloten.</em></p>
+    <p>Je Cunning Action-vrije actie kan ook: Sleight of Hand; Use an Object; of thieves' tools gebruiken om een val te ontmantelen of een slot te openen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="thief-second-story-work">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Second-Story Work</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Thief</span></div>
+  <div class="spell-card-description">
+<p><em>Klimsnelheid en betere sprongen.</em></p>
+    <p>Klimsnelheid gelijk aan loopsnelheid (+10 voet als je al klimsnelheid had). Verspringing gebruikt loopsnelheid met 10 voet aanloop; staande verspringing de helft van je snelheid. Je mag Acrobatics in plaats van Athletics gebruiken voor sprongtests.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="thief-appraising-eye">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Appraising Eye</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Thief</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Bepaal waarde en magie van objecten.</em></p>
+    <p>Als actie inspecteer je een object binnen 10 voet: leer of het nonmagical is (en de waarde) of magical (1 minuut studie onthult type, zeldzaamheid, curse, attunement; na studie kun je class-eisen negeren).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="thief-trap-specialist">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Trap Specialist</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Thief</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: ontmantel vallen, ook magische.</em></p>
+    <p>Wanneer jij of een bondgenoot binnen 5 voet een val activeert, gebruik je een reactie om die te ontmantelen. Magische vallen: eigenschapstest met Fitness-modifier tegen de DC van de val.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="thief-thiefs-reflexes">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Thief's Reflexes</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Thief</span></div>
+  <div class="spell-card-description">
+<p><em>Twee beurten in de eerste ronde van gevecht.</em></p>
+    <p>Wanneer gevecht begint en je niet verrast bent, mag je op je eerste beurt een <strong>tweede actie</strong> nemen alsof je 0 voet hebt bewogen, <strong>zonder</strong> de gebruikelijke straffen voor een tweede actie. Je kunt dit vermogen niet gebruiken als je verrast bent.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="con-arcanist">
+  <h3 class="subclass-name">Con Arcanist</h3>
+  <p class="subclass-summary">Je voegt magie toe aan je trucendoos om vijanden te verwarren of bezittingen te ontfutselen — ook op afstand.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="con-arcanist-con-arcanist-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Con Arcanist Feature</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Con Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Con Arcanist subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Con Arcanist subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="con-arcanist-con-arcanist-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Con Arcanist Feature</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Con Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Con Arcanist subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Con Arcanist subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="con-arcanist-con-arcanist-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Con Arcanist Feature</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Con Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Con Arcanist subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Con Arcanist subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+<div class="spell-card ability-feature-card" id="con-arcanist-con-arcanist-feature">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Con Arcanist Feature</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Con Arcanist</span></div>
+  <div class="spell-card-description">
+<p><em>Con Arcanist subclass-vermogen uit ToV Player's Guide 2.</em></p>
+    <p>Con Arcanist subclass-vermogens uit Tales of the Valiant Player's Guide 2. Pas toe met YMIAT-terminologie (Wonden, Fitness/Insight/Willpower, spellniveaus).</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Con Arcanist</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="nightblade">
+  <h3 class="subclass-name">Nightblade</h3>
+  <p class="subclass-summary">In plaats van fysieke wapens trek je op je innerlijke resolve om soul-bound messen te manifesteren.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="nightblade-psychic-blade">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Psychic Blade</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Nightblade</span></div>
+  <div class="spell-card-description">
+<p><em>Je manifesteert een deel van je ziel als psychic blades.</em></p>
+    <p>Je manifesteert een deel van je ziel als psychic blades.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="nightblade-psychic-bulwark">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Psychic Bulwark</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Nightblade</span></div>
+  <div class="spell-card-description">
+<p><em>Weerstand tegen psychic-schade.</em></p>
+    <p>Je hebt tijd besteed aan het aanscherpen van je geest. Je hebt weerstand tegen psychic-schade.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="nightblade-enhanced-blades">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enhanced Blades (+1)</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Nightblade</span></div>
+  <div class="spell-card-description">
+<p><em>Psychic blade wordt magisch; +1 op aanval en schade.</em></p>
+    <p>Je psychic blade wordt magisch, en je krijgt een +1-bonus op aanvals- en schaderollen ermee.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="nightblade-home-in">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Home In</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Nightblade</span></div>
+  <div class="spell-card-description">
+<p><em>Psychic blades fungeren als bakens.</em></p>
+    <p>Je psychic blades fungeren nu als bakens.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="nightblade-enhanced-blades">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enhanced Blades (+2, spiritual weapon)</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Nightblade</span></div>
+  <div class="spell-card-description">
+<p><em>Psychic blade wordt magisch; +1 op aanval en schade.</em></p>
+    <p>Je psychic blade wordt magisch, en je krijgt een +1-bonus op aanvals- en schaderollen ermee.</p>
+  </div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Nightblade</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="trapsmith">
+  <h3 class="subclass-name">Trapsmith</h3>
+  <p class="subclass-summary">Rogue die alles op traps zet: gevaren vermijden, bondgenoten beschermen, en zelf vallen zetten.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="trapsmith-makeshift-trap">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Makeshift Trap</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trapsmith</span></div>
+  <div class="spell-card-description">
+<p><em>Craft een eenvoudige makeshift trap in 1 minuut.</em></p>
+    <p>Je kunt 1 minuut besteden om met voorhanden materiaal een eenvoudige makeshift trap te craften. De val is een Small of kleiner object met AC 10 + je PB en Wonden gelijk aan tweemaal je rogue-niveau. Je kunt de val als actie plaatsen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="trapsmith-trap-expertise">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Trap Expertise</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trapsmith</span></div>
+  <div class="spell-card-description">
+<p><em>Voordeel op vinden, begrijpen en ontmantelen van vallen.</em></p>
+    <p>Je hebt voordeel op tests om vallen te vinden of op te merken, tests om te bepalen hoe vallen werken, en tests om vallen met thieves' tools te ontmantelen of uit te schakelen. Zonder thieves' tools kun je het met voorhanden materiaal proberen, maar dan met nadeel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="trapsmith-rework-trap">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Rework Trap</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trapsmith</span></div>
+  <div class="spell-card-description">
+<p><em>Herschik een ontmantelde val en pas effecten toe.</em></p>
+    <p>Wanneer je een val ontmantelt die je niet zelf hebt gemaakt of gezet, kun je die ongetriggerd laten en de DC om die uit te schakelen wijzigen naar je trap-save-DC. Je kunt ook effecten toevoegen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="trapsmith-improved-traps">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improved Traps</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trapsmith</span></div>
+  <div class="spell-card-description">
+<p><em>Maak een val als actie en zet die als vrije actie.</em></p>
+    <p>Je kunt nu een val als actie maken en als vrije actie zetten. Wanneer je een val zet die je hebt gemaakt, mag die in elke onbezette ruimte staan die je binnen 30 voet kunt zien, en de afstand waarop je een val op afstand kunt triggeren met Rework Trap stijgt naar 60 voet.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="trapsmith-trap-mastery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Trap Mastery</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Trapsmith</span></div>
+  <div class="spell-card-description">
+<p><em>Gefaalde ontmanteling triggert niet meteen; tweede kans.</em></p>
+    <p>Wanneer je faalt om een val te ontmantelen die bij een gefaalde ontmantelingspoging automatisch triggert, triggert de val niet, en mag je opnieuw proberen. Faal je een tweede keer, dan triggert de val wel.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Trapsmith</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#rogue">← Terug naar Rogue</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

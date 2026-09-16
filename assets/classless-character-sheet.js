@@ -42,8 +42,16 @@
     return "../".repeat(depth);
   }
 
+  function assetsPath() {
+    if (typeof window.ymiatGetAssetsPath === "function") {
+      return window.ymiatGetAssetsPath();
+    }
+    return rootPath();
+  }
+
   function rp(url) {
     if (!url || url.startsWith("http")) return url;
+    if (url.startsWith("assets/") || url.startsWith("data/")) return assetsPath() + url;
     return rootPath() + url;
   }
 

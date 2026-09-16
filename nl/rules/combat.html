@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/combat.html" />
+<link rel="alternate" hreflang="nl" href="combat.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/combat.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gevecht | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Gevechtsregels voor You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/combat.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+<meta property="og:title" content="Gevecht | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:description" content="Gevechtsregels voor You-Meet-In-A-Tavern (YMIAT)." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="rules/combat.html" />
+
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Gevecht</h1>
+  <div class="layout">
+    <aside class="toc">
+      <h2>Op deze pagina</h2>
+      <div data-toc></div>
+    </aside>
+    <div class="content">
+      <p class="lede">Gevecht in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) gebruikt een gestroomlijnd systeem met duidelijke keuzes, consistente resolutie en snelle actie. Op jouw beurt kun je <strong>één actie</strong> nemen en tot je snelheid bewegen. Die eenvoudige structuur maakt gevecht makkelijk te leren, met tactische diepte via positionering, spellkeuze en resourcebeheer.</p>
+      
+      <h2 id="turn-examples">Beurtvoorbeelden</h2>
+      <p>Hier zijn voorbeelden van typische beurten in gevecht:</p>
+
+      <ul>
+        <li><strong>Fighter:</strong> Beweeg tot je snelheid, neem daarna de Attack-actie (met Extra Attack maak je meerdere aanvallen als onderdeel van die ene actie).</li>
+        <li><strong>Wizard (stilstaand):</strong> Blijf staan (0 beweging), cast <em>fireball</em> (eerste actie), cast daarna <em>fire bolt</em> (tweede actie — aanvalsrol met nadeel).</li>
+        <li><strong>Cleric:</strong> Beweeg naar een gewonde bondgenoot, cast daarna <em>healing word</em> (1 actie) om Wonden te helen.</li>
+        <li><strong>Rogue:</strong> Gebruik Cunning Action om te Disengage (vrije actie), beweeg tot je snelheid, neem daarna de Attack-actie.</li>
+        <li><strong>Barbarian:</strong> Ga in rage (vrije actie), beweeg naar een vijand, neem daarna de Attack-actie.</li>
+      </ul>
+      
+      <h2 id="the-order-of-combat">De volgorde van gevecht</h2>
+      <p>Een typische gevechtsencounter volgt deze volgorde:</p>
+      <ol>
+        <li><strong>Verrassing.</strong> De Spelleider bepaalt of iemand verrast is.</li>
+        <li><strong>Gevechtsvolgorde.</strong> Deelnemers handelen in gevechtsvolgorde (zie <a href="#combat-order">Gevechtsvolgorde</a> voor de standaard en initiative-varianten).</li>
+        <li><strong>Gevechtsrondes.</strong> Elke ronde handelen deelnemers in gevechtsvolgorde.</li>
+        <li><strong>Einde van het gevecht.</strong> De encounter eindigt wanneer één kant is verslagen, vlucht of zich overgeeft.</li>
+      </ol>
+      
+      <h2 id="surprise">Verrassing</h2>
+      <p>Een groep avonturiers sluipt naar een bandietenkamp en springt uit de struiken. Een gelatinous cube glijdt door een dungeon-gang, onopgemerkt tot de cube er één van hen opslokt. In zulke situaties krijgt één kant verrassing over de ander.</p>
+      <p>De Spelleider bepaalt wie verrast kan zijn. Probeert geen van beide kanten stealthy te zijn, dan merken ze elkaar automatisch op. Anders vergelijkt de Spelleider de Fitness (Stealth)-checks van wie zich verstopt met de passieve Insight (Perception)-score van elk wezen aan de andere kant. Elk personage of monster dat een dreiging niet opmerkt, is verrast aan het begin van de encounter.</p>
+      <p>Ben je verrast, dan kun je op je eerste beurt van het gevecht niet bewegen of een actie nemen, en kun je geen reaction nemen tot die beurt eindigt. Een lid van een groep kan verrast zijn terwijl de anderen dat niet zijn.</p>
+      
+      <h2 id="combat-order">Gevechtsvolgorde</h2>
+      <p>Gevechtsvolgorde bepaalt wie wanneer handelt in een ronde. Kies <strong>één</strong> methode voor de sessie — of voor één encounter — en houd je daaraan, zodat iedereen weet wanneer de beurt komt. De standaard heeft geen dobbelstenen nodig. De varianten hieronder voegen zitplaats, checks of beurt-doorgeven toe wanneer je meer spanning of afwisseling wilt.</p>
+      <p>Tenzij een variant anders zegt, betekent een “passende eigenschapstest” een d20 + vermogensmodifier gekozen voor de situatie. <strong>Fitness</strong> is de standaard. De Spelleider kan Insight of Willpower vragen wanneer reflexen, alertheid of moed beter bij de scène passen.</p>
+
+      <h3 id="combat-order-default">Standaard: spelers eerst</h3>
+      <p>Standaard gaan <strong>de spelers eerst</strong>, in de volgorde die het best bij het verhaal past. De spelers bepalen onderling in welke volgorde ze hun beurten nemen. Monsters en andere tegenstanders handelen daarna, in een volgorde die bij de situatie past.</p>
+      <p>Zijn de spelers verrast, dan gaan de <strong>monsters (of andere dreigingen) eerst</strong>, in een narratief passende volgorde. Daarna nemen de spelers hun beurten zoals hierboven. Of iemand verrast is, kan via een check of via de situatie; dat is aan de Spelleider.</p>
+      <p><strong>Het best voor:</strong> snelle tavern-tafels, nieuwe spelers, en gevechten waar verhaalflow belangrijker is dan dobbelstenen voor wie wanneer handelt.</p>
+
+      <p><strong>Wanneer gevecht begint:</strong> Veel class features en talenten triggeren op dit moment — nadat verrassing is opgelost, vóór de beurten van de eerste ronde. Voorbeelden: herpositioneren (Fast Movement), resources terugkrijgen, of een quarry markeren. Dit vervangt legacy “roll initiative”-triggers uit andere rulesets. Gebruik dezelfde timing met elke gevechtsvolgorde-methode hieronder.</p>
+
+      <h3 id="combat-order-variants">Initiative-varianten</h3>
+      <p>Deze opties vervangen het standaardblok “spelers eerst” wanneer de tafel een gerolde of zitplaats-gebaseerde volgorde wil. Features die voordeel (of vergelijkbare bonussen) op initiative geven, gelden <strong>alleen</strong> bij een variant die een initiative-check gebruikt.</p>
+
+      <h4 id="variant-highest-leads-clockwise">Hoogste leidt, met de klok mee</h4>
+      <p>Iedereen aan tafel — elke speler en de Spelleider — maakt een passende eigenschapstest (standaard Fitness). De Spelleider mag één roll voor de hele tegenpartij gebruiken, of aparte rolls per monstergroep als dat beter bij het gevecht past.</p>
+      <p>Het hoogste totaal handelt eerst. Daarna gaat het spel <strong>met de klok mee rond de tafel</strong> vanaf die persoon, inclusief de stoel van de Spelleider. Wanneer de beurt bij de Spelleider is, handelen monsters en andere NPC’s (in elke volgorde die de Spelleider voor die stoel kiest). Daarna gaat de volgende speler met de klok mee verder, enzovoort tot de ronde eindigt en dezelfde volgorde herhaalt.</p>
+      <p>Bij een tie wint de hogere Fitness-modifier. Is het dan nog gelijk, dan gaat de buur met de klok mee van de starter van de vorige ronde eerst, of mogen de gelijke personages opnieuw rollen.</p>
+      <p>Is één kant verrast, dan slaan verraste wezens hun eerste beurt nog steeds over; de zitvolgorde verandert niet.</p>
+      <p><strong>Het best voor:</strong> tafels die een duidelijke fysieke beurtvolgorde willen en de Spelleider in hetzelfde ritme als de spelers willen.</p>
+
+      <h4 id="variant-beat-the-gm">Versla de GM</h4>
+      <p>Zitvolgorde is vast: begin bij de speler <strong>direct links van de Spelleider</strong>, ga daarna met de klok mee. Elke speler en de Spelleider maken een passende eigenschapstest (standaard Fitness). De Spelleider gebruikt één roll voor de tegenpartij tenzij aparte monstergroepen eigen rolls nodig hebben.</p>
+      <p>Splits de ronde in drie banden, handelend in deze volgorde. Binnen elke band handelen personages in de zitvolgorde hierboven:</p>
+      <ol>
+        <li><strong>Boven de GM.</strong> Spelers waarvan de checks het totaal van de Spelleider verslaan.</li>
+        <li><strong>Spelleider.</strong> Monsters en andere tegenstanders.</li>
+        <li><strong>Op of onder de GM.</strong> Spelers waarvan de checks gelijk zijn aan of lager dan het totaal van de Spelleider.</li>
+      </ol>
+      <p>Zijn de spelers verrast, keer de banden om: de kant van de Spelleider eerst, dan spelers op of onder het GM-totaal, dan spelers die de GM verslaan (nog steeds zitvolgorde binnen elke band). Verraste wezens kunnen op hun eerste beurt nog steeds niet handelen of reageren.</p>
+      <p><strong>Het best voor:</strong> een “spelers eerst”-gevoel met een snelle “wie was de dreiging voor?”-contest en een eenvoudige driedelige ronde.</p>
+
+      <h4 id="variant-popcorn">Popcorn (geef de beurt door)</h4>
+      <p>Er is geen vaste lijst. Na je beurt kies je wie daarna handelt — een bondgenoot of een vijand die deze ronde nog niet gehandeld heeft. Niemand mag een tweede beurt in dezelfde ronde nemen tot iedereen één beurt heeft gehad. Wanneer iedereen gehandeld heeft, begint een nieuwe ronde; de laatste die handelde mag kiezen wie de volgende ronde opent, of de Spelleider kiest een logische starter.</p>
+      <p><strong>Het best voor:</strong> cinematische, verhaalgedreven gevechten waar spotlight en teamwork belangrijker zijn dan dobbelstenen.</p>
+
+      <h4 id="variant-alertness">Alertheid (Insight)</h4>
+      <p>Gebruik <strong>Hoogste leidt, met de klok mee</strong> of <strong>Versla de GM</strong>, maar de check is <strong>Insight (Perception)</strong> in plaats van Fitness. De Spelleider zit nog steeds in de loop of zet het tegenstanderstotaal zoals die variant vereist.</p>
+      <p><strong>Het best voor:</strong> hinderlagen, nachtwacht, en scènes die van praten naar messen omslaan — wanneer de dreiging opmerken belangrijker is dan rauwe snelheid.</p>
+
+      <h4 id="variant-self-ordered">Zelf-geordend na hoge roll</h4>
+      <p>Elke speler (en optioneel de Spelleider voor de tegenpartij) maakt een passende eigenschapstest (standaard Fitness). De hoogste roll onder de spelers markeert wie “het voordeel” heeft, maar daarna bepalen de <strong>spelers alleen</strong> hun beurtvolgorde voor de ronde. De kant van de Spelleider handelt dan als blok na de spelers — of vóór hen als de spelers verrast zijn — tenzij de Spelleider liever interleaveert na het horen van de spelersvolgorde.</p>
+      <p><strong>Het best voor:</strong> een lichte initiative-roll zonder de hele tafel in zitvolgorde vast te zetten.</p>
+      
+      <h2 id="your-turn">Jouw beurt</h2>
+      <p>Op jouw beurt kun je <strong>tot je snelheid bewegen</strong> en <strong>één actie</strong> nemen. Gebruik je <strong>geen</strong> beweging (0 voet), dan mag je een <strong>tweede actie</strong> nemen — zie <a href="#trading-movement-for-action">Beweging inruilen voor een tweede actie</a> hieronder. Je beslist of je eerst beweegt of eerst je actie neemt, en je kunt je beweging splitsen: een deel vóór en een deel na je actie.</p>
+      <p>De basisactie-opties staan hieronder. Veel class features en spells geven extra opties voor wat je met je actie kunt doen.</p>
+
+      <h3 id="free-actions">Vrije acties</h3>
+      <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) gebruikt geen bonusacties. Naast je actie en beweging kun je kleine activiteiten doen die geen actie kosten. Die heten <strong>vrije acties</strong>.</p>
+
+      <h4>Objectinteractie (iedereen)</h4>
+      <p>Elk personage kan tijdens de beurt gratis met één object of omgevingsfeature interactie hebben, tijdens beweging of als onderdeel van de actie. Dat zijn eenvoudige, snelle interacties die geen gerichte inspanning vragen. Voorbeelden:</p>
+      <ul>
+        <li>Een wapen trekken of opbergen</li>
+        <li>Een deur openen of sluiten</li>
+        <li>Een item oppakken of laten vallen</li>
+        <li>Een hendel trekken of een knop indrukken</li>
+        <li>Een item uit een pack halen of opbergen</li>
+      </ul>
+      <p>Wil je op je beurt met een tweede object interactie, dan heb je de Use an Object-actie nodig. Sommige objecten, zoals magic items of complexe mechanismen, vereisen altijd een actie, zoals in hun beschrijving staat.</p>
+
+      <h4>Class-feature vrije acties (wanneer je die hebt)</h4>
+      <p>Sommige class features en vermogens kun je als vrije actie activeren: ze gebruiken je actie voor de beurt niet. Dat zijn typisch snelle activaties naast je hoofdactie. Bevestigde voorbeelden:</p>
+      <ul>
+        <li><strong>Rage</strong> (Barbarian)</li>
+        <li><strong>Second Wind</strong> (Fighter)</li>
+        <li><strong>Cunning Action</strong> (Rogue)—Dash, Disengage of Hide als vrije actie</li>
+        <li><strong>Bardic Inspiration</strong> (Bard)—inspiratie aan een bondgenoot geven</li>
+        <li><strong>Wild Shape</strong> (Circle of the Moon Druid—de versterkte, directe transformatie)</li>
+        <li><strong>Channel Divinity</strong> (Cleric/Paladin—alleen snelle activatie-effecten, zoals in de feature staat)</li>
+        <li>Andere vermogens die in hun beschrijving expliciet als vrije actie staan</li>
+      </ul>
+      <p><strong>Spellcasting is geen vrije actie</strong> tenzij een spell of vermogen dat expliciet zegt. Cantrips en leveled spells gebruiken normaal je actie. Reaction-spells gebruiken je reaction.</p>
+      <p>Je activeert in het algemeen hoogstens één class-feature vrije actie per beurt, tenzij een vermogen anders zegt. Je objectinteractie mag je nog steeds naast een class-feature vrije actie gebruiken.</p>
+      
+      <h3 id="movement">Beweging</h3>
+      <p>Op jouw beurt kun je een afstand tot je snelheid bewegen. Je mag zoveel of zo weinig van je snelheid gebruiken als je wilt, volgens de regels hier.</p>
+      <p>Je beweging kan springen, klimmen en zwemmen omvatten. Die bewegingswijzen kun je combineren met lopen, of ze kunnen je hele move zijn. Hoe je ook beweegt: trek de afstand van elk deel van je move af van je snelheid tot die op is of tot je klaar bent met bewegen.</p>
+      
+      <h4>Je move opsplitsen</h4>
+      <p>Je kunt je beweging op je beurt opsplitsen: een deel van je snelheid vóór en na je actie. Bij een snelheid van 30 voet kun je bijvoorbeeld 10 voet bewegen, je actie nemen, en dan 20 voet bewegen.</p>
+      
+      <h4>Om andere wezens heen bewegen</h4>
+      <p>Je mag door de ruimte van een niet-vijandig wezen bewegen. Door de ruimte van een vijandig wezen mag je alleen als dat wezen minstens twee size-categorieën groter of kleiner is dan jij. Onthoud: de ruimte van een ander wezen is difficult terrain voor jou.</p>
+      <p>Of een wezen vriend of vijand is: je mag je move niet vrijwillig in diens ruimte eindigen.</p>
+
+      <h4 id="trading-movement-for-action">Beweging inruilen voor een tweede actie</h4>
+      <p>Beweging staat voor tijd besteed aan in positie komen. Gebruik je <strong>geen</strong> beweging op je beurt (je beweegt 0 voet), dan mag je een <strong>tweede actie</strong> nemen. Zelfs een korte verplaatsing kost dit voordeel.</p>
+      <p>De tweede actie gebruikt dezelfde opties als de eerste (Attack, Cast a Spell, Dash, Dodge, Help, Hide, Ready, Search, Use an Object, enz.). Omdat ze gehaast is, krijgen schadelijke tweede acties straffen:</p>
+      <ul>
+        <li><strong>Aanvallen:</strong> Is de tweede actie de Attack-actie of bevat die een aanval, dan worden die aanvalsrollen met <strong>nadeel</strong> gemaakt (rol 2d20, neem de laagste).</li>
+        <li><strong>Spells:</strong> Is de tweede actie Cast a Spell en vereist de spell een aanvalsrol, dan is die rol met nadeel. Forceert de spell een saving throw, dan hebben doelwitten <strong>voordeel</strong> op die save (rol 2d20, neem de hoogste).</li>
+        <li><strong>Andere acties:</strong> Dash, Dodge, Help, Hide, Ready, Search en Use an Object hebben geen straf als tweede actie.</li>
+      </ul>
+      <p>Deze regel verbindt de standaard actie-economie met het optionele <a href="#variant-3-moments-system">3 Momenten-systeem</a>: stilstaan koopt tijd voor nog een daad, maar herpositioneren kost die kans.</p>
+      
+      <h3 id="actions">Acties</h3>
+      <p>Op jouw beurt kun je één actie nemen — of twee als je je beweging voor een tweede actie inruilde. De meest voorkomende acties staan hier. Veel class features en andere vermogens geven extra opties voor je actie.</p>
+
+      <h4>Attack</h4>
+      <p>De meest voorkomende actie in gevecht is de Attack-actie: of je nu een zwaard zwaait, een pijl uit een boog schiet, of met vuisten vecht.</p>
+      <p>Met deze actie maak je één melee- of ranged-aanval. Zie de sectie “Aanvallen en Verdediging” in de <a href="core.html#attacks-and-defense">Kernregels</a> voor de regels over aanvallen. Ben je proficient met het wapen dat je gebruikt, tel dan je PB op bij de aanvalsrol — zie <a href="core.html#weapon-proficiency">Wapenproficiency</a> in de Kernregels.</p>
+      <p>Bepaalde class features, zoals Extra Attack van de Fighter, laten je meer dan één aanval maken wanneer je de Attack-actie neemt. Die extra aanvallen horen allemaal bij dezelfde actie. Zie de sectie <a href="#multiple-attacks">Meerdere aanvallen</a> hieronder.</p>
+      
+      <h4>Cast a Spell</h4>
+      <p>Spellcasters zoals wizards en clerics, en veel monsters, hebben toegang tot spells en kunnen die krachtig inzetten in gevecht. Elke spell heeft een casting time die aangeeft of je die als actie, reaction of met andere timing cast.</p>
+      <p>De meeste gevechtsspells gebruiken je <strong>actie</strong> op je beurt:</p>
+      <ul>
+        <li><strong>Cantrips:</strong> Gebruik je actie (bijv. <em>fire bolt</em>, <em>sacred flame</em>)</li>
+        <li><strong>Leveled spells:</strong> Gebruik je actie (bijv. <em>fireball</em>, <em>healing word</em>, <em>cure wounds</em>)</li>
+        <li><strong>Reaction-spells:</strong> Gebruik je reaction wanneer getriggerd (bijv. <em>shield</em>, <em>counterspell</em>) — niet je actie, geen vrije actie</li>
+      </ul>
+      <p>Wanneer je een spell cast die je actie gebruikt, verbruikt die die actie voor de beurt. Je kunt op dezelfde beurt nog bewegen, tenzij je de tweede-actie-regel gebruikt (0 beweging). Een spell als je <strong>tweede actie</strong> geeft nadeel op spell attack rolls, en doelwitten hebben voordeel op saving throws ertegen.</p>
+      
+      <h4>Dash</h4>
+      <p>Wanneer je de Dash-actie neemt, krijg je extra beweging voor de huidige beurt. De toename is gelijk aan je snelheid, na eventuele modifiers. Met een snelheid van 30 voet kun je bijvoorbeeld tot 60 voet bewegen als je dasht.</p>
+      <p>Elke verhoging of verlaging van je snelheid verandert deze extra beweging met hetzelfde bedrag. Is je snelheid van 30 voet teruggebracht tot 15 voet, dan kun je tot 30 voet dashen in plaats van 60 voet.</p>
+      <p>De Dash-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h4>Disengage</h4>
+      <p>Neem je de Disengage-actie, dan lokt je beweging tot het einde van je beurt geen reactions van vijanden uit. Zo kun je weg van gevaarlijke posities zonder vijandelijke reacties te triggeren. Deze actie staat voor voorzichtige, defensieve beweging waarbij je klaar blijft om op dreigingen te reageren.</p>
+      <p>De Disengage-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h4>Dodge</h4>
+      <p>Wanneer je de Dodge-actie neemt, focus je volledig op aanvallen vermijden. Tot het begin van je volgende beurt heeft elke aanvalsrol tegen jou nadeel als je de aanvaller kunt zien, en maak je Fitness-saves met voordeel. Je verliest dit voordeel als je incapacitated bent of als je snelheid tot 0 daalt.</p>
+      <p>De Dodge-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h4>Help</h4>
+      <p>Je kunt een ander wezen helpen bij een taak. Wanneer je de Help-actie neemt, krijgt het wezen dat je helpt voordeel op de volgende eigenschapstest voor die taak, mits die check vóór het begin van je volgende beurt wordt gemaakt.</p>
+      <p>Je kunt ook een vriendelijk wezen helpen bij het aanvallen van een wezen binnen 5 voet van jou. Je feint, leidt af, of werkt op een andere manier samen zodat de aanval van je bondgenoot effectiever is. Valt je bondgenoot het doelwit aan vóór je volgende beurt, dan wordt de eerste aanvalsrol met voordeel gemaakt.</p>
+      <p>De Help-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h4>Hide</h4>
+      <p>Wanneer je de Hide-actie neemt, maak je een Fitness (Stealth)-check om je te verbergen, volgens de regels voor hiding. Als je slaagt, krijg je bepaalde voordelen, zoals beschreven in de regels voor onzichtbare aanvallers en doelwitten.</p>
+      <p>De Hide-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h4>Ready</h4>
+      <p>Soms wil je een vijand te slim af zijn of wachten op een bepaalde omstandigheid vóór je handelt. Daarvoor kun je op je beurt de Ready-actie nemen, waarmee je met je reaction kunt handelen vóór het begin van je volgende beurt.</p>
+      <p>Eerst bepaal je welke waarneembare omstandigheid je reaction triggert. Daarna kies je de actie die je als reactie neemt, of je kiest om tot je snelheid te bewegen als reactie. Voorbeelden: “Als de cultist op de valdeur stapt, trek ik de hendel die die opent,” en “Als de goblin naast me stapt, beweeg ik weg.”</p>
+      <p>Wanneer de trigger optreedt, kun je je reaction meteen na de trigger nemen of de trigger negeren. Onthoud: je hebt maar één reaction per ronde.</p>
+      <p>Wanneer je een spell ready’t, cast je die normaal maar houd je de energie vast, die je met je reaction vrijgeeft wanneer de trigger optreedt. Om ready te zijn moet een spell een casting time van 1 actie hebben, en het vasthouden van de magie vereist concentration. Wordt je concentration verbroken, dan verdwijnt de spell zonder effect. Concentreer je bijvoorbeeld op de spell <em>web</em> en ready je <em>magic missile</em>, dan eindigt je <em>web</em>-spell; krijg je Wonden vóór je <em>magic missile</em> met je reaction vrijgeeft, kan je concentration verbroken worden.</p>
+      <p>De Ready-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h4>Search</h4>
+      <p>Wanneer je de Search-actie neemt, besteed je aandacht aan iets vinden. Afhankelijk van de aard van je zoektocht kan de Spelleider je een Insight (Perception)-check of een Insight (Investigation)-check laten maken.</p>
+      <p>De Search-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h4>Use an Object</h4>
+      <p>Normaal interacteer je met een object terwijl je iets anders doet, zoals een zwaard trekken als onderdeel van een aanval. Wanneer een object je actie vereist om het te gebruiken, neem je de Use an Object-actie. Deze actie is ook nuttig als je op je beurt met meer dan één object wilt interactie hebben.</p>
+      <p>De Use an Object-actie gebruiken kost je actie voor de beurt.</p>
+      
+      <h3 id="other-activity-on-your-turn">Andere activiteit op jouw beurt</h3>
+      <p>Je beurt kan allerlei details bevatten die noch je actie noch je move kosten.</p>
+      <p><strong>Communicatie:</strong> Je kunt communiceren zoals je kunt, met korte uitingen en gebaren terwijl je je beurt neemt. Een paar zinnen, een kort bevel, of je actie beschrijven horen bij je beurt. Een lange speech of monoloog kan naar inzicht van de Spelleider je actie kosten.</p>
+      <p><strong>Omgevingsinteracties:</strong> Zie de sectie <a href="#free-actions">Vrije acties</a> voor details over interactie met objecten en de omgeving tijdens je beurt.</p>
+      <p>De Spelleider is de uiteindelijke arbiter van wat acties vereist en wat bij de natuurlijke flow van je beurt hoort. Twijfel je: beschrijf wat je wilt doen, en de GM zegt of het een actie kost.</p>
+      
+      <h2 id="reactions">Reacties</h2>
+      <p>Bepaalde speciale vermogens, spells en situaties laten je een speciale actie nemen die een reaction heet. Een reaction is een directe reactie op een trigger, die op jouw beurt of die van een ander kan optreden.</p>
+      <p><strong>Eén reaction per ronde:</strong> Je hebt één reaction beschikbaar per ronde. Wanneer je een reaction neemt, kun je geen andere nemen tot het begin van je volgende beurt. Je reaction vernieuwt aan het begin van je beurt, zodat je elke gevechtsronde één reaction hebt.</p>
+      <p>Reactions gebruiken je actie niet en kunnen buiten je beurt genomen worden wanneer getriggerd. Onderbreekt de reaction de beurt van een ander wezen, dan kan dat wezen de beurt meteen na de reaction voortzetten.</p>
+
+      <h3>Veelvoorkomende reactions</h3>
+      <ul>
+        <li><strong>Spells:</strong> Sommige spells kun je als reaction casten, zoals <em>shield</em> (wanneer je geraakt wordt door een aanval) of <em>counterspell</em> (wanneer je een wezen binnen bereik een spell ziet casten).</li>
+        <li><strong>Class features:</strong> Veel class features triggeren als reaction, zoals Riposte van de Fighter of Deflect Missiles van de Monk.</li>
+        <li><strong>Readied actions:</strong> Wanneer je de Ready-actie gebruikt, houd je je actie vast om als reaction te gebruiken wanneer een specifieke trigger optreedt.</li>
+      </ul>
+      
+      <h2 id="multiple-attacks">Meerdere aanvallen</h2>
+      <p>Wanneer je de Attack-actie neemt, maak je normaal één aanval. Bepaalde class features geven je echter de mogelijkheid om met één Attack-actie meer dan één aanval te maken.</p>
+
+      <h3>Extra Attack</h3>
+      <p>Class features zoals <strong>Extra Attack</strong> van de Fighter laten je meerdere aanvallen maken wanneer je de Attack-actie neemt. Al die aanvallen horen bij dezelfde actie en gebeuren tijdens je beurt.</p>
+      <p>Een Fighter van niveau 5 met Extra Attack neemt bijvoorbeeld de Attack-actie en maakt twee aanvallen. Beide horen bij één Attack-actie, en de Fighter kan nog steeds bewegen voor, na of tussen die aanvallen.</p>
+
+      <h3>Two-Weapon Fighting</h3>
+      <p>Wanneer je de Attack-actie neemt en in elke hand een light melee-wapen hebt, kun je een extra aanval met je offhand-wapen maken als onderdeel van dezelfde Attack-actie. Dat vereist geen aparte actie — het hoort bij je Attack-actie.</p>
+      <p>Je telt je vermogensmodifier niet op bij offhand-Wonden tenzij de modifier negatief is, of tenzij je een feature hebt die dat expliciet toestaat.</p>
+
+      <h3>Class features en vermogens</h3>
+      <p>Veel D&amp;D 5e-vermogens die oorspronkelijk een bonusactie gebruikten voor een extra aanval (zoals Polearm Master, Crossbow Expert of Martial Arts) laten in <strong>You-Meet-In-A-Tavern</strong> (YMIAT) een extra aanval toe als onderdeel van je Attack-actie.</p>
+      <p>Bij conversie vanuit D&amp;D 5e volg je deze richtlijnen:</p>
+      <ul>
+        <li><strong>Bonusactie-aanvallen:</strong> De meeste worden extra aanvallen als onderdeel van de Attack-actie (zoals Two-Weapon Fighting hierboven)</li>
+        <li><strong>Features die aanvallen versterken:</strong> Die werken als onderdeel van de Attack-actie (bijv. Sneak Attack, Divine Smite)</li>
+        <li><strong>Snelle activaties:</strong> Vermogens zoals Rage, Second Wind, Cunning Action, Bardic Inspiration, Channel Divinity (snelle effecten) of Wild Shape van Circle of the Moon worden <strong>vrije acties</strong></li>
+        <li><strong>Bonusactie-spells:</strong> De meeste worden <strong>acties</strong> in YMIAT (bijv. <em>healing word</em>). Markeer een spell alleen als vrije actie als je die uitzondering bewust wilt.</li>
+      </ul>
+      
+      <h3>Aanvallen verdelen</h3>
+      <p>Je kunt je aanvallen op één doelwit richten of over meerdere doelwitten verdelen, zolang alle doelwitten binnen je bereik (melee) of range (ranged) zijn. Je moet alle doelwitten declareren vóór je aanvalsrollen maakt.</p>
+
+      <h3>Tactische positionering</h3>
+      <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) heeft geen specifieke regels voor tactische positionering zoals flanking, facing of vergelijkbare mechanics. Die elementen zijn aan de Spelleider. De Spelleider mag voordeel geven, nadeel opleggen, of andere modifiers toepassen op basis van tactische positionering en narratieve omstandigheden, zoals past bij het spel.</p>
+
+      <h2 id="variant-3-moments-system">Variant: 3 Momenten-systeem</h2>
+      <p>Voor groepen die meer tactische flexibiliteit en een fijnere actie-economie willen, kun je het <strong>3 Momenten-systeem</strong> gebruiken. Deze variant laat personages hun beurt in kleinere eenheden splitsen voor complexere tactische keuzes.</p>
+
+      <h3>Hoe het werkt</h3>
+      <p>Elke beurt bestaat uit <strong>3 Momenten</strong>. Je kunt die Momenten als volgt uitgeven aan beweging, acties en spellcasting:</p>
+      <ul>
+        <li><strong>Beweging:</strong> 1 Moment om tot je snelheid te bewegen</li>
+        <li><strong>Aanval:</strong> 1 Moment per aanval</li>
+        <li><strong>Cantrip:</strong> 1 Moment</li>
+        <li><strong>Leveled spell:</strong> 2 Momenten</li>
+        <li><strong>De meeste andere acties:</strong> 1 Moment (Dash, Dodge, Hide, Help, enz.)</li>
+      </ul>
+
+      <h3>Stapelend nadeel</h3>
+      <p>Wanneer je in het 3 Momenten-systeem meerdere aanvallen tijdens je beurt maakt, krijgt elke aanval na de eerste stapelend nadeel. Dat staat voor de moeilijkheid om precisie en kracht te behouden bij snelle aanvallen. Dit systeem is geïnspireerd door <a href="https://nimblerpg.com/" target="_blank" rel="noopener">Nimble (1e)</a>.</p>
+      <ul>
+        <li><strong>Eerste aanval:</strong> Geen nadeel. Maak je aanvalsrol normaal.</li>
+        <li><strong>Tweede aanval:</strong> Nadeel op de aanvalsrol (rol 2d20, neem de laagste).</li>
+        <li><strong>Derde aanval:</strong> Nadeel op nadeel (rol 3d20, neem de laagste).</li>
+      </ul>
+
+      <h3>Agile wapens</h3>
+      <p>Sommige wapens zijn gemaakt voor snelle, vloeiende gevechten en verminderen het stapelende nadeel. Met een wapen met de eigenschap <strong>agile</strong> heeft de tweede aanval in een beurt geen nadeel. De derde aanval heeft nog steeds nadeel (niet nadeel op nadeel), en volgende aanvallen stapelen normaal verder.</p>
+      <p>Voorbeelden van agile wapens: shortswords, scimitars, daggers en handaxes.</p>
+
+      <h3>Extra Attack en class features</h3>
+      <p>In het 3 Momenten-systeem werken class features zoals Extra Attack anders. Met Extra Attack kun je meerdere aanvallen maken door Momenten uit te geven, maar je hebt nog steeds baat bij je class feature door verminderde of weggenomen nadeelstraffen op die aanvallen, zoals in de class feature-beschrijving staat.</p>
+
+      <h3>Beurtvoorbeelden met 3 Momenten</h3>
+      <p>Voorbeelden van hoe je je 3 Momenten kunt uitgeven:</p>
+      <ul>
+        <li><strong>Mobiele Fighter:</strong> Bewegen (1 Moment), Aanval (1 Moment), Aanval (1 Moment, met nadeel)</li>
+        <li><strong>Wizard:</strong> Cast <em>fireball</em> (2 Momenten), beweeg weg naar veiligheid (1 Moment)</li>
+        <li><strong>Agressieve vechter:</strong> Aanval (1 Moment), Aanval (1 Moment, met nadeel), Aanval (1 Moment, met dubbel nadeel)</li>
+        <li><strong>Tactische Rogue:</strong> Hide (1 Moment), beweeg in positie (1 Moment), Aanval met Voordeel vanuit hiding (1 Moment)</li>
+      </ul>
+
+      <h3>Wanneer deze variant te gebruiken</h3>
+      <p>Het 3 Momenten-systeem past het best bij groepen die houden van:</p>
+      <ul>
+        <li>Meer tactische besluitvorming tijdens gevecht</li>
+        <li>Flexibiliteit om beweging en acties creatief te mengen</li>
+        <li>Sneller gevecht waarin personages meerdere dingen per beurt kunnen doen</li>
+      </ul>
+      <p>Het standaard actiesysteem (1 actie + beweging) wordt aanbevolen voor nieuwe spelers of groepen die eenvoudigere, snellere gevechtsresolutie prefereren.</p>
+    
+      <h2 id="cover">Dekking</h2>
+      <p>Muren, bomen, wezens en andere obstakels kunnen tijdens gevecht dekking geven, waardoor een doelwit moeilijker te raken is. Een doelwit heeft alleen baat bij dekking wanneer een aanval of ander effect vanaf de andere kant van die dekking komt.</p>
+      <p>Er zijn drie graden van dekking. Staat een doelwit achter meerdere bronnen van dekking, dan geldt alleen de meest beschermende graad; de graden worden niet opgeteld. Staat een doelwit bijvoorbeeld achter een wezen dat halve dekking geeft en een boomstam die driekwart dekking geeft, dan heeft het doelwit driekwart dekking.</p>
+      
+      <h3>Halve dekking</h3>
+      <p>Een doelwit met halve dekking heeft +2 bonus op Verdediging en Fitness-saves. Een doelwit heeft halve dekking als een obstakel minstens de helft van het lichaam blokkeert. Dat kan een lage muur, een groot meubelstuk, een smalle boomstam of een wezen zijn — vriend of vijand.</p>
+      
+      <h3>Driekwart dekking</h3>
+      <p>Een doelwit met driekwart dekking heeft +5 bonus op Verdediging en Fitness-saves. Een doelwit heeft driekwart dekking als een obstakel minstens driekwart van het lichaam blokkeert. Dat kan een portcullis, een schietgleuf of een dikke boomstam zijn.</p>
+      
+      <h3>Volledige dekking</h3>
+      <p>Een doelwit met volledige dekking kan niet direct als doelwit van een aanval of spell gekozen worden, hoewel sommige spells zo’n doelwit kunnen bereiken door het in een gebiedseffect te laten vallen. Een doelwit heeft volledige dekking als het volledig door een obstakel is afgeschermd.</p>
+      
+      <h2 id="wounds-and-healing">Wonden en genezing</h2>
+      <p>Verwonding en het risico op dood zijn vaste metgezellen van wie fantasy-werelden verkent. De steek van een zwaard, een goed geplaatste pijl of een uitbarsting van felfire-magie kunnen zelfs de taaiste wezens schaden of doden.</p>
+      <p>In <strong>You-Meet-In-A-Tavern</strong> (YMIAT) wordt schade uitgedrukt in <strong>Wonden</strong>. Personages beginnen op 0 Wonden (WD) en stapelen Wonden op bij schade, tot hun Max. wonden. Een geslaagde aanval doet 1 Wond. Een critical hit doet 2 Wonden. Zie de sectie <a href="core.html#attacks-and-defense">Aanvallen en Verdediging</a> voor meer details.</p>
+      
+      <h3>Wondtypes</h3>
+      <p>Verschillende aanvallen, schadelijke spells en andere schadelijke effecten doen verschillende types Wonden. Wondtypes hebben geen eigen regels, maar andere regels — zoals resistance — steunen erop.</p>
+      <p>De wondtypes volgen, met voorbeelden om een Spelleider te helpen een wondtype aan een nieuw effect toe te wijzen.</p>
+      <ul>
+        <li><strong>Acid.</strong> De corrosieve spray van de breath van een black dragon en de oplossende enzymen van een black pudding doen Acid Wonden.</li>
+        <li><strong>Bludgeoning.</strong> Stompe kracht — hamers, vallen, constriction en dergelijke — doet Bludgeoning Wonden.</li>
+        <li><strong>Cold.</strong> De infernale kou van de speer van een ice devil en de ijzige blast van de breath van een white dragon doen Cold Wonden.</li>
+        <li><strong>Fire.</strong> Red dragons ademen vuur, en veel spells roepen vlammen op die Fire Wonden doen.</li>
+        <li><strong>Force.</strong> Force is pure magische energie in een schadelijke vorm. De meeste effecten die Force Wonden doen zijn spells, waaronder <em>magic missile</em> en <em>spiritual weapon</em>.</li>
+        <li><strong>Lightning.</strong> Een lightning bolt-spell en de breath van een blue dragon doen Lightning Wonden.</li>
+        <li><strong>Necrotic.</strong> Necrotic Wonden, toegebracht door bepaalde undead en sommige spells, laten materie en zelfs de ziel verschrompelen.</li>
+        <li><strong>Piercing.</strong> Stekende en doorborende aanvallen, inclusief speerpunten en beten van monsters, doen Piercing Wonden.</li>
+        <li><strong>Poison.</strong> Giftige steken en het giftige gas van de breath van een green dragon doen Poison Wonden.</li>
+        <li><strong>Psychic.</strong> Mentale vermogens zoals een psionic blast doen Psychic Wonden.</li>
+        <li><strong>Radiant.</strong> Radiant Wonden, toegebracht door de flame strike van een cleric of het smiting-wapen van een angel, schroeien vlees als vuur en overbelasten de geest met kracht.</li>
+        <li><strong>Slashing.</strong> Zwaarden, bijlen en klauwen van monsters doen Slashing Wonden.</li>
+        <li><strong>Thunder.</strong> Een schokkende geluidsuitbarsting, zoals het effect van de spell <em>thunderwave</em>, doet Thunder Wonden.</li>
+      </ul>
+      
+      <h3>Resistentie en kwetsbaarheid</h3>
+      <p>Sommige wezens en objecten zijn buitengewoon moeilijk of juist ongewoon makkelijk te raken met bepaalde types Wonden.</p>
+      <p>Heeft een wezen of object <strong>resistance</strong> tegen een wondtype, dan worden aanvallen die Wonden van dat type doen met <strong>nadeel</strong> ertegen gemaakt. Heeft een wezen of object <strong>vulnerability</strong> tegen een wondtype, dan worden aanvallen die Wonden van dat type doen met <strong>voordeel</strong> ertegen gemaakt.</p>
+      <p>Resistance en vulnerability raken alleen de aanvalsrol; ze veranderen niet het aantal Wonden bij een hit. Wordt een wezen met resistance tegen bludgeoning bijvoorbeeld aangevallen met een bludgeoning-wapen: de aanvaller rolt met nadeel. Raakt de aanval, dan doet die nog steeds de normale Wonden (bijv. 1 Wond, of 2 bij een critical).</p>
+      <p>Meerdere bronnen van resistance of vulnerability voor hetzelfde wondtype tellen als één. Een wezen met meerdere bronnen van resistance tegen fire legt nog steeds maar één keer nadeel op fire-aanvallen; een wezen met meerdere bronnen van vulnerability tegen fire geeft nog steeds maar één keer voordeel.</p>
+      
+      <h3>Genezing</h3>
+      <p>Tenzij het uit de dood voortkomt, zijn Wonden niet permanent. Zelfs de dood is omkeerbaar met krachtige magie. Rust kan Wonden helen (zoals uitgelegd in de sectie <a href="core.html#recovery-points-and-rest">Herstelpunten en rust</a>), en magische methoden zoals een <em>cure wounds</em>-spell of een <em>potion of healing</em> kunnen Wonden in een oogwenk wegnemen.</p>
+      <p>Wanneer een wezen healing van welke aard dan ook ontvangt, worden geheelde Wonden afgetrokken van de huidige Wonden. De Wonden van een wezen kunnen niet onder 0 gaan; healing daarboven gaat verloren. Een druid heelt bijvoorbeeld een ranger voor 3 Wonden. Heeft de ranger 14 huidige Wonden en Max. wonden 20, dan heelt de ranger 3 Wonden en daalt het huidige totaal naar 11.</p>
+      <p>Een wezen dat is gestorven kan geen Wonden helen tot magie zoals de spell <em>revivify</em> het weer tot leven heeft gewekt.</p>
+      
+      <h3 id="life-and-death-saves">Life en Death Saves</h3>
+      <p>Een personage heeft 3 harten (levens). Wanneer de Wonden van een personage Max. wonden bereiken, triggert de Life-regel: er moet een Death Save gemaakt worden om in leven te blijven. Dat is een Willpower saving throw.</p>
+      <p>Bij een mislukte save verliest het personage één hart en wordt het 1 niveau verzwakt. Elk niveau verzwakking legt stapelend nadeel op alle rolls (eerste verzwakking: nadeel; tweede: nadeel op nadeel, enzovoort) en vermindert het aantal beschikbare Momenten per beurt met 1.</p>
+      <p><strong>Straffen bij hartverlies:</strong> Per verloren hart daalt elke vermogensmodifier — Fitness, Insight en Willpower — met 1, daalt je maximale snelheid met 5 voet (één stap), en daalt je Max. wonden met 2. Deze straffen stapelen: een personage met 2 harten over (−1 hart verloren) heeft −1 op elke modifier, −5 ft snelheid en −2 Max. wonden; met 1 hart over (−2 harten verloren): −2 op elk, −10 ft snelheid en −4 Max. wonden. Straffen van verloren harten blijven tot die harten hersteld zijn.</p>
+      <p>Zolang het personage op Max. wonden blijft, moet er een nieuwe Death Save gemaakt worden elke keer dat er Wonden bijkomen. Dit herhaalt tot alle harten weg zijn; bij het verlies van het laatste hart sterft het personage.</p>
+      <p>Een verloren hart herstellen kost één lange rust en verwijdert de −1-vermogen-, −5 ft-snelheid- en −2 Max. wonden-straffen van dat hart. Tijdens deze rust worden echter geen Wonden geheeld; Wonden moeten apart geheeld worden via spells, healing of andere effecten. Pas wanneer het aantal harten weer op 3 staat, heelt een lange rust ook weer Wonden.</p>
+      <p>De volgorde van herstel tijdens een lange rust is altijd: eerst harten, dan Wonden.</p>
+      
+    </div>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

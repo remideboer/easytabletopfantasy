@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../rules/lineages.html" />
+<link rel="alternate" hreflang="nl" href="lineages.html" />
+<link rel="alternate" hreflang="x-default" href="../../rules/lineages.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Afkomsten | You-Meet-In-A-Tavern (YMIAT)</title>
+<meta name="description" content="Personage-afkomsten voor You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/lineages.html" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<script src="../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Afkomsten</h1>
+  <div class="content">
+    <p class="lede">Afkomst staat voor bloedbanden en erfelijke trekken — YMIAT’s vervanging van traditionele species/rassen.</p>
+    <p>Afkomsten en varianten uit de <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> Player’s Guide (2024) en Player’s Guide 2 (2026), aangepast aan Fitness, Insight en Willpower. Combineer bij personagecreatie met een culturele <a href="heritages.html">erfenis</a>.</p>
+    <div class="lineages-controls">
+      <button id="expand-all-lineages" class="lineage-control-btn" onclick="expandAllLineages()">Alles uitklappen</button>
+      <button id="collapse-all-lineages" class="lineage-control-btn" onclick="collapseAllLineages()">Alles inklappen</button>
+    </div>
+    <div class="lineages-container">
+      <div class="lineage-item" id="beastkin">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Beastkin</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Leeftijd.</strong> Volwassen binnen 5 jaar; levensduur tot een eeuw (sommigen slechts 20–30 jaar).</p>
+<p><strong>Grootte.</strong> Medium of Small (korter dan 4 voet → Small).</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Animal Instinct.</strong> Behendigheid in Perception of Survival.</p>
+<p><strong>Natural Weapons.</strong> Ongewapende aanvallen doen 1 Wond + Fitness-modifier (spreek met je GM over het schade-type).</p>
+<p><strong>Natural Adaptation.</strong> Kies er één: Avian (vliegsnelheid = loopsnelheid), Agile (klimsnelheid = loopsnelheid; voordeel tegen prone), Aquatic (zwemsnelheid = loopsnelheid; 20 min adem inhouden), of Sturdy (AC 13 + Fitness zonder pantser; telt als één maat groter voor draagvermogen).</p>
+<p><em>PG2-uitbreiding:</em> Fossorial (graven 20 ft door zachte aarde) of Quillback (reactie-stekelaanval wanneer je in melee geraakt wordt).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="dhampir">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dhampir</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Kinderen van vampiers en stervelingen — aantrekkelijk of afstotelijk voor wie ze ontmoeten.</p>
+<p><strong>Leeftijd.</strong> Volwassen in de late tienerjaren; kunnen tot 750 jaar worden.</p>
+<p><strong>Grootte.</strong> Medium of Small.</p>
+<p><strong>Snelheid.</strong> 30 voet lopen, 30 voet klimmen (handen vrij).</p>
+<p><strong>Dark Thirst.</strong> Beet: 1 Wond piercing; optioneel voeden voor +1 Wond necrotic, tijdelijke Wonden, en voordeel op je volgende aanval.</p>
+<p><strong>Darkvision.</strong> 60 voet; nadeel op Insight (Perception) op zicht in zonlicht.</p>
+<p><strong>Hybrid Humanoid.</strong> Voordeel tegen poisoned en exhaustion-tests.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="dragonborn">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dragonborn</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Draconische humanoïden met ademwapens en geschubde huid.</p>
+<p><strong>Leeftijd.</strong> Volwassen rond 15; ~80 jaar.</p>
+<p><strong>Grootte.</strong> Medium (~6–7 ft, ~300 lb).</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Breath Weapon.</strong> Bonusactie: lijn 30×5 ft of kegel van 15 ft (Fitness-save); 1 Wond bij falen, geen bij slagen; schade-type volgens afstamming; schaalt op hogere niveaus. Gebruik = behendigheidsbonus per lange rust.</p>
+<p><strong>Draconic Ancestry.</strong> Black/Copper acid, Blue/Bronze lightning, Brass/Gold/Red fire, Green poison, Silver/White cold, Void necrotic, Yellow radiant.</p>
+<p><strong>Dragon Hide.</strong> Weerstand tegen het schade-type van je afstamming.</p>
+<p><strong>Dragon Sight.</strong> Darkvision 60 ft en keensense 10 ft.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="drow">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Drow</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2 variant" onclick="event.stopPropagation()">PG2 variant</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Elf-variant-afkomst, aangepast aan de onderwereld.</p>
+<p><strong>Leeftijd.</strong> Fysiek volwassen ~20; volledig volwassen ~100; levensduur tot 750.</p>
+<p><strong>Grootte.</strong> Medium.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Arachnid Kismet.</strong> Voordeel bij interactie met spinnen en schorpioenen; wanneer een d20-resultaat een 8 bevat, krijg je 1 Resolve.</p>
+<p><strong>Superior Darkvision.</strong> 120 voet; nadeel op Perception op zicht in zonlicht.</p>
+<p><strong>Trance.</strong> 4 uur trance vervangt slaap.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="duergar">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Duergar</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2 variant" onclick="event.stopPropagation()">PG2 variant</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Dwarf-variant-afkomst uit de diepe onderwereld.</p>
+<p><strong>Leeftijd.</strong> Volwassen rond 20; ~350 jaar (vaak korter in de diepte).</p>
+<p><strong>Grootte.</strong> Medium, 4–5 ft, stevig gebouwd.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Duergar Resilience.</strong> Voordeel tegen charmed of paralyzed; voordeel tegen illusies.</p>
+<p><strong>Enlarge.</strong> Bonusactie: Large voor 1 minuut, verdubbel wapenschade-dobbelstenen, voordeel op Fitness-tests/saves (één keer per lange rust).</p>
+<p><strong>Superior Darkvision.</strong> 120 voet.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="dwarf">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Dwarf</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Leeftijd.</strong> Volwassen ~20; jong tot 50; ~350 jaar.</p>
+<p><strong>Grootte.</strong> Medium, 4–5 ft, breed postuur.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Darkvision.</strong> 60 voet.</p>
+<p><strong>Dwarven Resilience.</strong> Voordeel tegen poisoned; weerstand tegen poison-Wonden.</p>
+<p><strong>Dwarven Toughness.</strong> Max. wonden +1, en +1 Max. wonden per niveau.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="elemental-scion">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Elemental Scion</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Stervelingen doordrenkt met elementaire kracht (soms jinnborn genoemd).</p>
+<p><strong>Leeftijd.</strong> Volwassen ~15; ~75 jaar (tot 150).</p>
+<p><strong>Grootte.</strong> Medium, 5–7 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Darkvision.</strong> 60 voet.</p>
+<p><strong>Hybrid Humanoid.</strong> Poison-weerstand; weerstand volgens adaptatie; voordeel tegen paralyzed, petrified, poisoned.</p>
+<p><strong>Natural Adaptation.</strong> Earthborn (tremorsense 10 ft, negeer moeilijk terrein), Fireborn (straal licht uit; +behendigheid fire bij melee-treffer), Waterborn (zwemsnelheid, door spleten van 1 inch), of Windborn (vlieg 10 ft hover; adem inhouden voor behendigheidsbonus uren).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="elf">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Elf</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Leeftijd.</strong> Fysiek volwassen ~20; emotioneel volwassen ~100; tot 750 jaar.</p>
+<p><strong>Grootte.</strong> Medium, slank gebouwd.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Heightened Senses.</strong> Voordeel op Perception (zicht/gehoor); zie door lichte obscurement.</p>
+<p><strong>Magie Ancestry.</strong> Voordeel tegen charmed; magie kan je niet in slaap brengen.</p>
+<p><strong>Trance.</strong> 4 uur trance vervangt slaap.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="gearforged">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Gearforged</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Levende geesten in mechanische lichamen van metaal en hout.</p>
+<p><strong>Leeftijd.</strong> Leeftijd van de ziel varieert; het lichaam houdt onbeperkt stand met onderhoud.</p>
+<p><strong>Grootte.</strong> Medium of Small (kies een chassis-afkomst zoals human of kobold).</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Constructed Vitality.</strong> Geen eten/drinken/ademen; 6 uur slapende rust.</p>
+<p><strong>Hybrid Humanoid.</strong> Immuun voor ziekte; poison-weerstand; voordeel tegen paralyzed, petrified, poisoned.</p>
+<p><strong>Machine Speech.</strong> Spreek en begrijp Machine Speech.</p>
+<p><strong>Upgrade.</strong> Always Armed (geïntegreerde wapens), Bulk Up (tijdelijk Large), of Quick Fix (tijdelijke Wonden onder de helft van Max. wonden).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="goblin">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Goblin</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Aanpasbare humanoïden die in grote aantallen in harde omgevingen voorkomen.</p>
+<p><strong>Leeftijd.</strong> Volwassen 14–16; zelden ouder dan 100.</p>
+<p><strong>Grootte.</strong> Small, 3–4 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Darkvision.</strong> 60 voet.</p>
+<p><strong>Nimble Escape.</strong> Bonusactie Disengage of Hide.</p>
+<p><strong>Strength in Numbers.</strong> Extra schade gelijk aan je behendigheidsbonus wanneer een bondgenoot binnen 5 voet van je doelwit staat.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="gnoll">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Gnoll</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Hyena-achtige humanoïden; vaak te vinden in woestijnen en havensteden.</p>
+<p><strong>Leeftijd.</strong> Volwassen ~12; zelden ouder dan 70.</p>
+<p><strong>Grootte.</strong> Medium, 7–8 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Darkvision.</strong> 60 voet.</p>
+<p><strong>Scent Prey.</strong> Voordeel op Survival-tests die op geur berusten.</p>
+<p><strong>Sprinter.</strong> Wanneer je Dasht, beweeg je driedubbele snelheid (gebruik per dag = behendigheidsbonus).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="human">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Human</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Leeftijd.</strong> Volwassen in de late tienerjaren; zelden ouder dan 100.</p>
+<p><strong>Grootte.</strong> Medium of Small.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Ambitious.</strong> Eén skill-behendigheid en één talent (elke lijst, mits je aan de voorwaarden voldoet).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="kobold">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Kobold</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Kleine draconische humanoïden met een talent voor mechaniek.</p>
+<p><strong>Leeftijd.</strong> Volwassen als tiener; oud ~80; zelden 100.</p>
+<p><strong>Grootte.</strong> Small, of Medium bij truescale (~5 ft).</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Darkvision.</strong> 60 voet.</p>
+<p><strong>Tinker's Fascination.</strong> Voeg 1d8 toe aan tool-eigenschapstests.</p>
+<p><strong>Natural Adaptation.</strong> Fierce (Small: reactie-aanval wanneer Large+ je raakt) of Truescale (Medium: AC 13 + Fitness; één elementaire weerstand).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="orc">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Orc</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Taaie ontdekkers, gedreven om te reizen en extreme omstandigheden te overleven.</p>
+<p><strong>Leeftijd.</strong> Volwassen binnen twintig jaar; zelden ouder dan 60.</p>
+<p><strong>Grootte.</strong> Medium, 6–8 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Heightened Senses.</strong> Zoals elf (zicht/gehoor).</p>
+<p><strong>Orcish Perseverance.</strong> In plaats van te sterven door verstikking of exhaustion-niveaus, ga je in een doodachtige stasis tot je genezen of vernietigd wordt.</p>
+<p><strong>Stalwart.</strong> Maak saves van einde-van-beurt aan het begin van je beurt.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="rachisan">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Rachisan</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Plantachtige humanoïden die lijken op groenten die uit de grond groeien.</p>
+<p><strong>Leeftijd.</strong> Volwassen ~5; meestal ~50 (tot 100).</p>
+<p><strong>Grootte.</strong> Small, 3–4 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Hybrid Humanoid.</strong> Voordeel tegen paralyzed, petrified en exhaustion-effecten.</p>
+<p><strong>Green Thumb.</strong> +1d8 op plantgerelateerde tests; negeer moeilijk terrein door plantengroei.</p>
+<p><strong>Natural Adaptation.</strong> Alliumite (verblindende spore-reactie), Cruciferan (rustmaaltijd geneest bondgenoten), of Tuberkith (immuun blinded; horen terwijl bewusteloos).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="sapopova">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sapopova</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Amfibische volkeren met kikker- of paddentrekken.</p>
+<p><strong>Leeftijd.</strong> Volwassen ~8; zelden ouder dan 50.</p>
+<p><strong>Grootte.</strong> Small, 2–4 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet lopen, 30 voet zwemmen.</p>
+<p><strong>Amphibian.</strong> Adem lucht en water.</p>
+<p><strong>Superior Vision.</strong> Darkvision 60 ft; kleur in schemer/duisternis; voordeel bij het lokaliseren van bewegende doelen.</p>
+<p><strong>Natural Adaptation.</strong> Frogkin (Athletics-behendigheid; staande verspring/hoogsprong) of Toadfolk (wangopslag; spuug geïmproviseerde afstandsaanvallen 30 ft).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="sea-elf">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Sea Elf</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2 variant" onclick="event.stopPropagation()">PG2 variant</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Elf-variant-afkomst uit onderzeese rijken.</p>
+<p><strong>Leeftijd.</strong> Zoals elf.</p>
+<p><strong>Grootte.</strong> Medium, gestroomlijnd zwemmersbouw.</p>
+<p><strong>Snelheid.</strong> 30 voet lopen, zwemsnelheid gelijk aan lopen; Dash als bonusactie onder water.</p>
+<p><strong>Darkvision.</strong> 60 voet.</p>
+<p><strong>Seaborn.</strong> Adem lucht en water; comfortabel tot 0°F; negeer extreme kou als hazard.</p>
+<p><strong>Trance.</strong> 4 uur.</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="shade">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Shade</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Wezens tussen leven en undeath, gevormd uit herinnering.</p>
+<p><strong>Leeftijd.</strong> Verschijnen zoals bij hun dood; potentieel eeuwen.</p>
+<p><strong>Grootte.</strong> Medium of Small (levende-vorm-afkomst).</p>
+<p><strong>Snelheid.</strong> Als levende vorm.</p>
+<p><strong>Hybrid Humanoid.</strong> Poison-weerstand; voordeel tegen poisoned en exhaustion.</p>
+<p><strong>Phantasmal Form.</strong> Actie: spookachtige vorm 1 minuut (weerstand tegen niet-magische B/P/S, door wezens/objecten, vlieg 30 ft hover) één keer per lange rust.</p>
+<p><strong>Spectral Sight.</strong> Darkvision 60 ft; zie in Ethereal Plane 30 ft (gebruik = behendigheidsbonus per lange rust).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="smallfolk">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Smallfolk</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p><strong>Leeftijd.</strong> Volwassen ~20; ~150 jaar (gnomes soms het dubbele).</p>
+<p><strong>Grootte.</strong> Small.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Grounded.</strong> Eén keer per dag herrol een gefaalde save en krijg 1 Resolve.</p>
+<p><strong>Small Stature.</strong> Beweeg door Medium+-ruimtes; verberg je achter Medium+-wezens.</p>
+<p><strong>Natural Adaptation.</strong> Gnomish (darkvision 60 ft, <em>minor illusion</em>) of Halfling (voordeel tegen charmed/frightened).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="syderean">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Syderean</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Plane-touched stervelingen (starborn) verbonden met kosmische krachten.</p>
+<p><strong>Leeftijd.</strong> Volwassen ~20; ~150 jaar.</p>
+<p><strong>Grootte.</strong> Medium, 5–7 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Far Sight.</strong> Darkvision 60 ft; zie in magische duisternis 30 ft.</p>
+<p><strong>Otherworldly Form.</strong> Necrotic-weerstand; dubbele tijd zonder lucht, voedsel, water of slaap.</p>
+<p><strong>Natural Adaptation.</strong> Celestial (Blessed Guise), Fiendish (Dreadful Guise), Aberrant, of Spellborn (zie PG2-uitbreiding).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="tiefling">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Tiefling</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Nakomelingen van mensen en fiends met uiteenlopende infernale trekken.</p>
+<p><strong>Leeftijd.</strong> Als human, iets langer.</p>
+<p><strong>Grootte.</strong> Medium.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Darkvision.</strong> 60 voet.</p>
+<p><strong>Fiendish Legacy.</strong> Abyssal, Chthonic of Infernal: weerstand, cantrip, en spells op niveau op 3e en 5e (Willpower als spellcasting-eigenschap).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="tosculi">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Tosculi</span><a href="https://www.talesofthevaliant.com/" class="source-pill source-pill-tov" rel="noopener" title="Tales of the Valiant Player's Guide" onclick="event.stopPropagation()">ToV</a><span class="source-pill source-pill-edition" title="PG2" onclick="event.stopPropagation()">PG2</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Insectachtige wespenvolkeren, vaak hive-born.</p>
+<p><strong>Leeftijd.</strong> Volwassen ~13; zelden ouder dan 40.</p>
+<p><strong>Grootte.</strong> Small, 3–4 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Glide.</strong> Reactie bij een val van 10+ ft: glijd 30 ft horizontaal.</p>
+<p><strong>Hive Mind.</strong> Bonusactie telepathische link 30 ft (gebruik = behendigheidsbonus).</p>
+<p><strong>Hiveborn Duty.</strong> Detached Drone (Golden Song charm/deafen) of Roving Trooper (stinger ongewapbeëindigt + poison).</p>
+        </div>
+      </div>
+      <div class="lineage-item" id="eonic-human">
+        <button class="lineage-header" onclick="toggleLineages(this)">
+          <span class="lineage-title-wrap"><span class="lineage-title">Eonic Human</span></span>
+          <span class="lineage-toggle-icon">▼</span>
+        </button>
+        <div class="lineage-content">
+          <p>Verplaatste tijdreizigers uit een stervende verre-toekomstbeschaving.</p>
+<p><strong>Leeftijd.</strong> Effectief onsterfelijk door tijdsdilatatie.</p>
+<p><strong>Grootte.</strong> Medium, 5–6 ft.</p>
+<p><strong>Snelheid.</strong> 30 voet.</p>
+<p><strong>Jittery.</strong> Kan niet verrast worden terwijl bewust; onzichtbare aanvallers krijgen geen voordeel op je eerste gevechtsbeurt.</p>
+<p><strong>Practiced en Prepared.</strong> Eén keer per rust, voeg 1d6 toe aan een eigenschapstest wanneer je vastgelegde geschiedenis vormgeeft.</p>
+<p><strong>Wizened Flesh.</strong> Nadeel op Willpower (Persuasion); +behendigheidsbonus op Verdediging; exhaustion door pantser te dragen (licht 1, medium 2, zwaar 3 niveaus, hersteld wanneer uitgetrokken).</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script> function toggleLineages(button){
+  const item = button.closest('.lineage-item');
+  const content = item.querySelector('.lineage-content');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  const isExpanded = content.style.display === 'block' || content.classList.contains('expanded');
+  if(isExpanded){
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+    icon.textContent = '▼';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    icon.textContent = '▲';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+function expandAllLineages(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'block';
+    content.classList.add('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▲';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'true');
+  });
+}
+function collapseAllLineages(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+    content.classList.remove('expanded');
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-toggle-icon').forEach(icon => {
+    icon.textContent = '▼';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+}
+function expandLineagesFromHash(){
+  const raw = window.location.hash;
+  if(!raw || raw.length < 2) return;
+  const target = document.getElementById(decodeURIComponent(raw.slice(1)));
+  if(!target || !target.classList.contains('lineage-item')) return;
+  const content = target.querySelector('.lineage-content');
+  const button = target.querySelector('.lineage-header');
+  if(!content || !button) return;
+  content.style.display = 'block';
+  content.classList.add('expanded');
+  const icon = button.querySelector('.lineage-toggle-icon');
+  if(icon) icon.textContent = '▲';
+  button.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(function(){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  document.querySelectorAll('.lineages-container > .lineage-item .lineage-header').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+  });
+  expandLineagesFromHash();
+});
+window.addEventListener('hashchange', expandLineagesFromHash); </script>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/fighter.html" />
+<link rel="alternate" hreflang="nl" href="fighter.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/fighter.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fighter-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Fighter class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/fighter.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Fighter-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Fighter vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#fighter">← Terug naar Fighter</a> · <a href="index.html#fighter">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Fighter abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#last-stand">Last Stand</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#martial-action">Martial Action</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#action-surge">Action Surge</a> <span class="text-muted">(2e, 7e en 10e niveau)</span></li>
+<li><a href="#multiattack">Multiattack</a> <span class="text-muted">(3e, 6e en 9e niveau)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#spell-blade">Spell Blade</a></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-arcane-spellcasting">Arcane Spellcasting</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-enchant-weapon">Enchant Weapon</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-spell-multiattack">Spell Multiattack</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-follow-through">Follow Through</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#spell-blade-charged-strike">Charged Strike</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#weapon-master">Weapon Master</a></li>
+<li class="toc-sub toc-feature"><a href="#weapon-master-mastery">Mastery</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#weapon-master-stunts">Stunts</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#weapon-master-deadly-flourish">Deadly Flourish</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#weapon-master-advanced-stunts">Advanced Stunts</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#weapon-master-grand-finale">Grand Finale</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#scrapper">Scrapper</a></li>
+<li class="toc-sub toc-feature"><a href="#scrapper-grappling-superiority">Grappling Superiority</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#scrapper-mighty-fists">Mighty Fists</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#scrapper-grappling-maneuvers">Grappling Maneuvers</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#scrapper-expert-grappler">Expert Grappler</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#scrapper-knockout-punch">Knockout Punch</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#stunt-archer">Stunt Archer</a></li>
+<li class="toc-sub toc-feature"><a href="#stunt-archer-bow-mastery">Bow Mastery</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stunt-archer-stunt-shots">Stunt Shots</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stunt-archer-keen-eye">Keen Eye</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stunt-archer-advanced-stunt-shots">Advanced Stunt Shots</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#stunt-archer-absolute-mastery">Absolute Mastery</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#twinblade">Twinblade</a></li>
+<li class="toc-sub toc-feature"><a href="#twinblade-blade-dance">Blade Dance</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twinblade-deadly-grace">Deadly Grace</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twinblade-double-edged">Double Edged</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twinblade-one-thousand-cuts">One Thousand Cuts</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#twinblade-moving-target">Moving Target</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="last-stand">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Last Stand</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Noodherstel wanneer je zwaar gewond bent.</em></p>
+    <p>Wanneer schade je Wonden boven de helft van je Max. wonden zou brengen, kun je je <strong>reactie</strong> gebruiken om hit dice uit te geven (tot je behendigheidsbonus). Rol ze en heel Wonden gelijk aan het totaal + je Fitness-modifier.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="martial-action">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Martial Action</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Tactische tweede actie wanneer je je grond houdt.</em></p>
+    <p>Kies één martial action: <strong>Aim</strong>, <strong>Guard</strong>, <strong>Quick Strike</strong> of <strong>Wind Up</strong> (zie BFRD Fighter).</p>
+<p>In YMIAT gebruik je dit als je <strong>tweede actie</strong> wanneer je deze beurt <strong>niet hebt bewogen</strong>. Is de tweede actie een aanval, dan is die aanval met <strong>nadeel</strong>.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="action-surge">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Action Surge</h4>
+    <span class="spell-card-level">2e, 7e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Krijg een extra actie op je beurt.</em></p>
+    <p>Op je beurt krijg je <strong>nog een actie</strong> naast je normale actie. Eén keer per korte rust op 2e niveau; twee keer op 7e; drie keer op 10e (nog steeds maar één keer per beurt).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Multiattack</h4>
+    <span class="spell-card-level">3e, 6e en 9e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Meerdere aanvallen per Attack-actie.</em></p>
+    <p>Maak <strong>twee</strong> aanvallen met de Attack-actie op 3e niveau, <strong>drie</strong> op 6e en <strong>vier</strong> op 9e.</p>
+<p>In YMIAT veroorzaakt elke succesvolle wapenaanval doorgaans <strong>1 Wond</strong> (2 bij een critical hit).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Defiant saves of unstoppable herstel.</em></p>
+    <p>Kies één:</p>
+<ul>
+<li><strong>Defiant.</strong> Wanneer je een save faalt, slaag je in plaats daarvan. Eén keer per lange rust (twee keer op 7e, drie keer op 9e).</li>
+<li><strong>Unstoppable.</strong> Aan het begin van je beurt beëindig je één van: blinded, charmed, frightened, incapacitated, paralyzed of stunned. Gebruiken gelijk aan je behendigheidsbonus per lange rust.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Verwoestende slagen die verdediging negeren.</em></p>
+    <p>Eén keer per beurt, wanneer je raakt met een wapenaanval, doe je extra schade gelijk aan je <strong>Fitness- of Insight-score</strong> (jouw keuze). Die schade negeert weerstand en immuniteit en kan niet verlaagd worden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een martiaal talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Martiale talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="spell-blade">
+  <h3 class="subclass-name">Spell Blade</h3>
+  <p class="subclass-summary">Meng arcane magie met wapenmeesterschap.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="spell-blade-arcane-spellcasting">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Arcane Spellcasting</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
+  <div class="spell-card-description">
+<p><em>Gedeeltelijke Arcane spellcasting (focus abjuration/evocation).</em></p>
+    <p>Je cast Arcane spells met <strong>Insight</strong> als spellcasting ability (save-DC 8 + PB + Insight; aanval + PB + Insight).</p>
+<p>Op 2e niveau: leer <strong>2 cantrips</strong> en <strong>3 1e-niveau</strong> abjuration- of evocation-spells (één mag uit elke school). Je hebt <strong>2 1e-niveau slots</strong>, terug bij een lange rust. Leer extra cantrips en spells op 4e, 6e en 8e niveau volgens de Spell Blade-tabel in de Player's Guide (aangepast aan YMIAT-spellniveaus).</p>
+<p>Wanneer Improvement een talent geeft, kies je uit de magic- of martial-lijsten.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-enchant-weapon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Enchant Weapon</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span><span><strong>Actie:</strong> bonusactie</span></div>
+  <div class="spell-card-description">
+<p><em>Imbue een wapen (+1, schaalt tot +3); oproepen als vrije actie.</em></p>
+    <p>Na 1 uur focus op een wapen (tijdens een rust) imbue je het als magic weapon: als <strong>vrije actie</strong> roep je het naar je hand als het op hetzelfde vlak is; <strong>+1</strong> op aanval en schade (stapelt met bestaande magic-bonussen). De bonus wordt <strong>+2</strong> op 6e niveau en <strong>+3</strong> op 8e. Slechts één enchanted weapon tegelijk.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-spell-multiattack">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Spell Multiattack</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
+  <div class="spell-card-description">
+<p><em>Vervang één Multiattack-slag door een cantrip.</em></p>
+    <p>Wanneer je Multiattack gebruikt, kun je één aanval vervangen door een cantrip die je kent te casten (casting time 1 actie). Slechts één cantrip per Attack-actie.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-follow-through">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Follow Through</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
+  <div class="spell-card-description">
+<p><em>Wapenaanval na het casten van een spell.</em></p>
+    <p>Wanneer je de Cast a Spell-actie neemt, kun je als onderdeel van diezelfde actie één wapenaanval maken als er een doelwit in bereik is.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="spell-blade-charged-strike">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Charged Strike</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Spell Blade</span></div>
+  <div class="spell-card-description">
+<p><em>Tel Insight op bij melee-schade; wapenschade telt als magisch.</em></p>
+    <p>Tel je <strong>Insight-modifier</strong> (minimaal +1) op bij melee-wapenschade naast Fitness of Dexterity. Alle wapenschade die je doet is magisch.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="weapon-master">
+  <h3 class="subclass-name">Weapon Master</h3>
+  <p class="subclass-summary">Meesterschap over gekozen wapens en tactische stunts.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="weapon-master-mastery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mastery</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Weapon Master</span></div>
+  <div class="spell-card-description">
+<p><em>Beheers drie wapentypes; herrol schade of wapenoptie-schade.</em></p>
+    <p>Kies drie simple of martial wapentypes waarmee je behendig bent. Eén keer per beurt, wanneer je schade rolt met een mastered wapen, herrol je de wapen-schadedices en gebruik je een van beide resultaten. Eén keer per beurt met een mastered wapenoptie kun je schade rollen, ook als de optie dat normaal niet zou doen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="weapon-master-stunts">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stunts</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Weapon Master</span></div>
+  <div class="spell-card-description">
+<p><em>Tactische manoeuvres met wapenspecifieke eisen.</em></p>
+    <p>Stunt-save-DC = 8 + PB + Fitness-modifier. Gebruiken per korte of lange rust = PB + 1. Eén stunt per beurt.</p>
+<ul>
+<li><strong>Arcing Strike</strong> (heavy melee): spat de helft van de schade naar een tweede doelwit in bereik.</li>
+<li><strong>Cheap Shot</strong> (melee): extra ongewapende aanval bij treffer tijdens de Attack-actie.</li>
+<li><strong>Make It Count</strong>: enkele aanval op +10; extra schade gelijk aan je fighter-niveau.</li>
+<li><strong>Parry</strong> (melee, reactie): verlaag schade met 1d10 + PB.</li>
+<li><strong>Redirect</strong> (reactie): herrol een gemiste aanval tegen een aangrenzend doelwit.</li>
+<li><strong>Riposte</strong> (melee, reactie): val aan wanneer een vijand je mist.</li>
+<li><strong>Straight Through</strong> (ranged): spat de helft van de schade naar een aangrenzend doelwit.</li>
+<li><strong>Tactical Retreat</strong> (melee): beweeg na een treffer tot de helft van je snelheid zonder opportunity attacks.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="weapon-master-deadly-flourish">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Deadly Flourish</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Weapon Master</span></div>
+  <div class="spell-card-description">
+<p><em>19–20 crits met mastered wapens; reactie-aanvallen bij crit.</em></p>
+    <p>Aanvallen met mastered wapens critten op <strong>19–20</strong>. Bij een crit gebruik je je reactie om ofwel: een ranged-aanval te maken tegen tot PB wezens binnen 15 voet van het doelwit, ofwel een aparte melee-aanval te maken tegen elk wezen binnen 5 voet van jou.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="weapon-master-advanced-stunts">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Advanced Stunts</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Weapon Master</span></div>
+  <div class="spell-card-description">
+<p><em>Krachtige stunts wanneer je een stunt zou mogen gebruiken.</em></p>
+    <ul>
+<li><strong>Assassin's Ambush</strong>: dubbele schadedices vanuit verborgen positie.</li>
+<li><strong>Bulwark</strong> (schild, reactie): verlaag spellschade met AC.</li>
+<li><strong>Felling Sweep</strong> (heavy melee, actie): één aanvalsworp tegen allen in bereik.</li>
+<li><strong>Preemptive Strike</strong> (melee, reactie): val aan wanneer een vijand je bereik binnenkomt.</li>
+<li><strong>Rapid Release</strong> (ranged/geworpen): extra aanval na de Attack-actie.</li>
+<li><strong>Wrestler's Clutch</strong> (melee): grapple bij treffer; stunts tegen een grappled vijand kosten geen gebruiken.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="weapon-master-grand-finale">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Grand Finale</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Weapon Master</span></div>
+  <div class="spell-card-description">
+<p><em>Krijg stunt-gebruiken terug wanneer gevecht begint zonder resterende.</em></p>
+    <p>Wanneer gevecht begint zonder resterende Stunt-gebruiken, krijg je <strong>3</strong> gebruiken terug. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://bfrd.net/classes/fighter/fighter-subclasses/" rel="noopener">BFRD Weapon Master</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="scrapper">
+  <h3 class="subclass-name">Scrapper</h3>
+  <p class="subclass-summary">Sommige fighters gebruiken hun lichaam als wapen: grapples, vuisten en brute fysieke controle.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="scrapper-grappling-superiority">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Grappling Superiority</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Scrapper</span></div>
+  <div class="spell-card-description">
+<p><em>Behendigheid in Athletics; dubbele PB als je die al hebt.</em></p>
+    <p>Je krijgt behendigheid in de skill Athletics. Heb je die al, tel dan in plaats daarvan dubbele PB op bij tests met die skill.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="scrapper-mighty-fists">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Mighty Fists</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Scrapper</span></div>
+  <div class="spell-card-description">
+<p><em>Je ongewapende aanvallen worden krachtiger.</em></p>
+    <p>Wanneer je een ongewapende aanval maakt, stijgt de schade van 1 + je STR-modifier naar 1d4 + je STR-modifier. Die stijgt verder naar 1d6 op 7e niveau, 1d8 op 11e niveau en 1d10 op 15e niveau.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="scrapper-grappling-maneuvers">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Grappling Maneuvers</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Scrapper</span></div>
+  <div class="spell-card-description">
+<p><em>Vrije actie tijdens grapple: chokehold, makeshift shield of pin.</em></p>
+    <p>Als <strong>vrije actie</strong> terwijl je een wezen grappled houdt, kun je één van de volgende grappling maneuvers uitvoeren. Je maakt een STR (Athletics)-test, betwist door de STR (Athletics)- of DEX (Acrobatics)-test van het grappled wezen (keuze van het doelwit). Bij succes blijft het doelwit onder de maneuver tot de grapple eindigt of tot je een andere grappling maneuver erop gebruikt:</p>
+<ul>
+<li><strong>Chokehold.</strong> Je wurgt een wezen dat ademt of spreekt; het kan niet spreken of spells met verbale componenten casten. Blijft het twee opeenvolgende beurten in een chokehold, dan begint het te stikken tot de grapple of deze maneuver eindigt.</li>
+<li><strong>Makeshift Shield.</strong> Je trekt het wezen tussen jou en gevaar. Je hebt half cover als het doelwit jouw grootte of kleiner is, en three-quarters cover als het groter is.</li>
+<li><strong>Pin.</strong> Je immobiliseert het wezen. Het doelwit is restrained.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="scrapper-expert-grappler">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Expert Grappler</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Scrapper</span></div>
+  <div class="spell-card-description">
+<p><em>Expert in vastpakken en vastzetten van vijanden.</em></p>
+    <p>Je bent een expert in het vastpakken en vastzetten van vijanden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="scrapper-knockout-punch">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Knockout Punch</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Scrapper</span></div>
+  <div class="spell-card-description">
+<p><em>Stun bij twee ongewapende treffers of een unarmed crit.</em></p>
+    <p>Wanneer je in dezelfde beurt een wezen met twee ongewapende aanvallen raakt (en het minder dan de helft van zijn Max. wonden heeft), of wanneer je een critical hit scoort met een ongewapende aanval, moet het doelwit slagen op een CON-save (DC 8 + je PB + je STR-modifier) of 1 minuut stunned zijn. Het doelwit mag de save herhalen aan het einde van elk van zijn beurten en beëindigt het effect bij succes.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Scrapper</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="stunt-archer">
+  <h3 class="subclass-name">Stunt Archer</h3>
+  <p class="subclass-summary">Fighters die melee links laten liggen en met boog of kruisboog onwaarschijnlijke schoten mogelijk maken.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="stunt-archer-bow-mastery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Bow Mastery</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stunt Archer</span></div>
+  <div class="spell-card-description">
+<p><em>Focused training met bogen en kruisbogen.</em></p>
+    <p>Je hebt je training gericht op ranged-wapens, specifiek bogen en kruisbogen, en krijgt verschillende bonussen wanneer je die hanteert. Wanneer je er een aanvalsworp mee maakt, heb je geen nadeel doordat je binnen 5 voet van een vijandig wezen staat, al kun je nog steeds nadeel hebben uit andere bronnen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="stunt-archer-stunt-shots">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Stunt Shots</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stunt Archer</span></div>
+  <div class="spell-card-description">
+<p><em>Speciale manoeuvres: stunt shots.</em></p>
+    <p>Je kent bogen en kruisbogen zo goed dat je schoten kunt maken die anderen onwaarschijnlijk vinden. Je krijgt toegang tot speciale manoeuvres genaamd stunt shots.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="stunt-archer-keen-eye">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Keen Eye</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stunt Archer</span></div>
+  <div class="spell-card-description">
+<p><em>Vergroot het normale bereik van bogen en kruisbogen.</em></p>
+    <p>Je vergroot het normale bereik van elke boog of kruisboog die je hanteert:</p>
+<ul>
+<li>Is het normale bereik minder dan 50 voet, dan stijgt het met 10 voet.</li>
+<li>Is het normale bereik tussen 50 en 100 voet, dan stijgt het met 20 voet.</li>
+<li>Is het normale bereik groter dan 100 voet, dan stijgt het met 30 voet.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="stunt-archer-advanced-stunt-shots">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Advanced Stunt Shots</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stunt Archer</span></div>
+  <div class="spell-card-description">
+<p><em>Krachtigere stunt shots wanneer je een stunt shot mag gebruiken.</em></p>
+    <p>De volgende krachtige stunt shots zijn beschikbaar wanneer je een stunt shot zou mogen gebruiken. Sommige advanced stunt shots vereisen dat je een specifiek type boog of kruisboog hanteert.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="stunt-archer-absolute-mastery">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Absolute Mastery</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Stunt Archer</span></div>
+  <div class="spell-card-description">
+<p><em>Behandel alle bogen en kruisbogen met die eigenschappen.</em></p>
+    <p>Je behandelt alle bogen en kruisbogen alsof ze die eigenschappen hadden.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Stunt Archer</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="twinblade">
+  <h3 class="subclass-name">Twinblade</h3>
+  <p class="subclass-summary">Meesters van dual wield: een wervelende dood die zonder zware bepantsering door het gevecht danst.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="twinblade-blade-dance">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Blade Dance</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twinblade</span></div>
+  <div class="spell-card-description">
+<p><em>Vrije actie: begin een blade dance met dual melee-wapens.</em></p>
+    <p>Als <strong>vrije actie</strong> kun je een blade dance beginnen zolang je niet grappled of restrained bent en je snelheid niet anders tot 0 is teruggebracht. Tijdens een blade dance krijg je de volgende voordelen als je in elke hand een melee-wapen hanteert en geen medium of zwaar pantser draagt:</p>
+<ul>
+<li>Je hebt voordeel op DEX-saves en DEX-eigenschapstests om grappled of restrained te vermijden of om te voorkomen dat je snelheid wordt verlaagd. Word je grappled of restrained, dan heb je voordeel op tests om te ontsnappen of het effect te beëindigen zolang je blade dance actief is.</li>
+<li>Je beweging provoceert geen opportunity attacks.</li>
+<li>Je snelheid stijgt met 10 voet.</li>
+</ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="twinblade-deadly-grace">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Deadly Grace</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twinblade</span></div>
+  <div class="spell-card-description">
+<p><em>Behendigheid in Acrobatics of Performance; dubbele PB als je die al hebt.</em></p>
+    <p>Je krijgt behendigheid in Acrobatics of Performance. Ben je al behendig in een of beide skills, tel dan dubbele PB op bij tests met die skill.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="twinblade-double-edged">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Double Edged</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twinblade</span></div>
+  <div class="spell-card-description">
+<p><em>Tel DEX op bij vrije-actie-extra-aanvallen; activeer Blade Dance mee.</em></p>
+    <p>Wanneer je op je beurt de Attack-actie neemt en daarna als vrije actie één of meer extra aanvallen maakt (zoals two-weapon fighting en de Quick Strike martial action), kun je je DEX-modifier optellen bij de schade van die extra aanvallen. Heb je minstens één gebruik van Blade Dance over, dan kun je die activeren als onderdeel van dezelfde vrije actie waarmee je die aanvallen maakte.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="twinblade-one-thousand-cuts">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">One Thousand Cuts</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twinblade</span></div>
+  <div class="spell-card-description">
+<p><em>Eén melee-aanval tegen alle wezens binnen 5 voet tijdens blade dance.</em></p>
+    <p>Wanneer je op je beurt de Attack-actie neemt terwijl je blade dance actief is, kun je het normale aantal aanvallen van Multiattack opgeven om in plaats daarvan één melee-wapenaanval te maken die elk wezen binnen 5 voet van jou als doelwit heeft, met één aanvalsworp en één schaderol.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="twinblade-moving-target">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Moving Target</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Twinblade</span></div>
+  <div class="spell-card-description">
+<p><em>Immuun voor grapple, restraint en snelheidsverlaging.</em></p>
+    <p>Zolang je niet incapacitated bent, kun je niet grappled of restrained worden, en kan je snelheid op geen enkele manier verlaagd worden.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Twinblade</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#fighter">← Terug naar Fighter</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>

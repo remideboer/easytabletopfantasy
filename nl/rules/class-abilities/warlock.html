@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<link rel="alternate" hreflang="en" href="../../../rules/class-abilities/warlock.html" />
+<link rel="alternate" hreflang="nl" href="warlock.html" />
+<link rel="alternate" hreflang="x-default" href="../../../rules/class-abilities/warlock.html" />
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Warlock-vermogens | YMIAT</title>
+<meta name="description" content="Volledige regels voor elk Warlock class- en subclass-vermogen in You-Meet-In-A-Tavern (YMIAT)." />
+<link rel="canonical" href="rules/class-abilities/warlock.html" />
+<link rel="stylesheet" href="../../../assets/styles.css" />
+<script src="../../../assets/includes.js"></script>
+</head>
+<body>
+<header data-include="nav"></header>
+<main>
+  <h1>Warlock-vermogen</h1>
+  <div class="content">
+    <p class="lede">Volledige regels voor elk Warlock vermogen en subclass, aangepast van <a href="https://www.talesofthevaliant.com/" rel="noopener">Tales of the Valiant</a> en het <a href="https://bfrd.net/classes/" rel="noopener">Black Flag Reference Document</a> voor YMIAT-spel met 10 niveaus.</p>
+    <p><a href="../classes.html#warlock">← Terug naar Warlock</a> · <a href="index.html#warlock">Alle classes</a></p>
+    <nav class="ability-toc toc" aria-label="Warlock abilities">
+      <h2 id="contents">Op deze pagina</h2>
+      <ul>
+<li><a href="#pact-magic">Pact Magic</a> <span class="text-muted">(1e-niveauvermogen)</span></li>
+<li><a href="#eldritch-invocations">Eldritch Invocations</a> <span class="text-muted">(1e niveau en hoger)</span></li>
+<li><a href="#heroic-boon">Heroic Boon</a> <span class="text-muted">(5e-niveauvermogen)</span></li>
+<li><a href="#epic-boon">Epic Boon</a> <span class="text-muted">(10e-niveauvermogen)</span></li>
+<li><a href="#improvement">Improvement</a> <span class="text-muted">(3e, 5e, 7e, 9e en 10e niveau)</span></li>
+<li><a href="#subclasses">Subclass-vermogens</a></li>
+<li class="toc-sub"><a href="#archfey">Archfey</a></li>
+<li class="toc-sub toc-feature"><a href="#archfey-archfey-pact-spells">Archfey Pact Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archfey-fey-presence">Fey Presence</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archfey-misty-escape">Misty Escape</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archfey-beguiling-defenses">Beguiling Defenses</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archfey-dark-delirium">Dark Delirium</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#fiend">Fiend</a></li>
+<li class="toc-sub toc-feature"><a href="#fiend-dark-ones-blessing">Dark One's Blessing</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fiend-fiend-pact-spells">Fiend Pact Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fiend-dark-ones-own-luck">Dark One's Own Luck</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fiend-fiendish-resilience">Fiendish Resilience</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fiend-hurl-through-hell">Hurl Through Hell</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#great-old-one">Great Old One</a></li>
+<li class="toc-sub toc-feature"><a href="#great-old-one-great-old-one-pact-spells">Great Old One Pact Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#great-old-one-awakened-mind">Awakened Mind</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#great-old-one-entropic-ward">Entropic Ward</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#great-old-one-thought-shield">Thought Shield</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#great-old-one-create-thrall">Create Thrall</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#archon">Archon</a></li>
+<li class="toc-sub toc-feature"><a href="#archon-archon-pact-spells">Archon Pact Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archon-equalize">Equalize</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archon-restore-efficiency">Restore Efficiency</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archon-entropic-dispersal">Entropic Dispersal</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#archon-invoke-order">Invoke Order</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#elemental-regent">Elemental Regent</a></li>
+<li class="toc-sub toc-feature"><a href="#elemental-regent-elemental-blast">Elemental Blast</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#elemental-regent-elemental-regent-pact">Elemental Regent Pact</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub"><a href="#fey-noble">Fey Noble</a></li>
+<li class="toc-sub toc-feature"><a href="#fey-noble-fey-noble-pact-spells">Fey Noble Pact Spells</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-noble-fey-presence">Fey Presence</a> <span class="text-muted">(2e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-noble-death-ruse">Death Ruse</a> <span class="text-muted">(4e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-noble-emotional-redirection">Emotional Redirection</a> <span class="text-muted">(6e-niveau subclass-vermogen)</span></li>
+<li class="toc-sub toc-feature"><a href="#fey-noble-induce-fugue-state">Induce Fugue State</a> <span class="text-muted">(8e-niveau subclass-vermogen)</span></li>
+      </ul>
+    </nav>
+<section class="ability-features-section" id="class-features">
+  <h2>Class-vermogens</h2>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="pact-magic">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Pact Magic</h4>
+    <span class="spell-card-level">1e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Weinig slots, herstel bij korte rust.</em></p>
+    <p>Pact spell slots volgens de progressietabel (alle slots zijn je slotniveau). Terug bij <strong>korte of lange rust</strong>. Cast ook met <a href="../core.html#magic-and-spell-resources">Spell Power</a> volgens YMIAT-regels. Spells known volgens de tabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="eldritch-invocations">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Eldritch Invocations</h4>
+    <span class="spell-card-level">1e niveau en hoger</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Pas je pact aan met invocations.</em></p>
+    <p>Kies invocations uit de BFRD Warlock-lijst. Krijg meer op de niveaus in je progressietabel. Prerequisites gelden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="heroic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Heroic Boon</h4>
+    <span class="spell-card-level">5e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Warlock heroic boon volgens BFRD.</em></p>
+    <p>Kies een heroic boon uit de BFRD Warlock-lijst, aangepast voor YMIAT.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="epic-boon">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Epic Boon</h4>
+    <span class="spell-card-level">10e-niveauvermogen</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Warlock epic boon volgens BFRD.</em></p>
+    <p>Krijg je Warlock Epic Boon uit BFRD, aangepast voor YMIAT.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="improvement">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Improvement</h4>
+    <span class="spell-card-level">3e, 5e, 7e, 9e en 10e niveau</span>
+  </div>
+    <div class="spell-card-description">
+<p><em>Eigenschapsverhogingen of een magic-talent.</em></p>
+    <p>Op 3e, 5e, 7e, 9e en 10e niveau kies je één improvement (eigenschapsmodifiers mogen met dit vermogen +7 niet overschrijden):</p>
+<ul>
+<li>Verhoog één eigenschapsmodifier met 2.</li>
+<li>Verhoog twee verschillende eigenschapsmodifiers elk met 1.</li>
+<li>Verhoog één eigenschapsmodifier met 1 en kies een talent uit de lijst <a href="../talents.html">Magie-talenten</a>.</li>
+</ul></div>
+</div>
+
+  </div>
+</section>
+
+<hr class="ability-section-divider" id="subclasses" />
+<section class="ability-features-section ability-features-subclasses">
+<h2>Subclass-vermogens</h2>
+<p class="subclasses-intro">Kies je subclass op <strong>2e niveau</strong>. Subclass-vermogens volgen op <strong>2e, 4e, 6e en 8e</strong> niveau.</p>
+<div class="subclass-group" id="archfey">
+  <h3 class="subclass-name">Archfey</h3>
+  <p class="subclass-summary">Pacten met grillige fey lords.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="archfey-archfey-pact-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Archfey Pact Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archfey</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende archfey pact spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> faerie fire, sleep</li><li><strong>Niveau 5:</strong> calm emotions, phantasmal force</li><li><strong>Niveau 9:</strong> blink, plant growth</li><li><strong>Niveau 10:</strong> dominate beast, greater invisibility</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="archfey-fey-presence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fey Presence</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archfey</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Actie: charm of frighten wezens nabij jou.</em></p>
+    <p>Als <strong>actie</strong> maakt elk wezen in een kubus van 10 voet vanaf jou een <strong>Willpower-save</strong> of is charmed of frightened (jouw keuze) tot einde van je volgende beurt. Eén keer per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="archfey-misty-escape">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Misty Escape</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archfey</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Word invisible en teleport wanneer je geraakt wordt.</em></p>
+    <p>Wanneer je schade neemt, gebruik je je <strong>reactie</strong> om invisible te worden en tot 60 voet te teleporteren naar een onbezette ruimte die je kunt zien. Invisibility duurt tot begin van je volgende beurt of tot je aanvalt of een spell cast. Eén keer per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="archfey-beguiling-defenses">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Beguiling Defenses</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archfey</span></div>
+  <div class="spell-card-description">
+<p><em>Immuun voor charm; charmer moet saven of door jou charmed raken.</em></p>
+    <p>Je kunt niet charmed zijn. Wanneer een wezen je probeert te charmen, maakt het een Willpower-save; bij falen is het 1 minuut door jou charmed of tot het schade neemt.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="archfey-dark-delirium">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Dark Delirium</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archfey</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Val een vijand in een fey-illusie.</em></p>
+    <p>Als <strong>actie</strong> maakt één wezen binnen 60 voet een Willpower-save of is charmed en incapacitated, en ziet zichzelf in een idyllisch fey-rijk. Het effect eindigt na 1 minuut, als jij het beëindigt (geen actie), als het doelwit schade neemt, of als iemand als actie het wakker schudt. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="fiend">
+  <h3 class="subclass-name">Fiend</h3>
+  <p class="subclass-summary">Kracht van een grotere fiend-patron.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="fiend-dark-ones-blessing">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Dark One's Blessing</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fiend</span></div>
+  <div class="spell-card-description">
+<p><em>Tijdelijke Wonden wanneer vijanden nabij vallen.</em></p>
+    <p>Wanneer je een vijandig wezen tot 0 Wonden reduceert, of één binnen 30 voet dat doet, krijg je tijdelijke Wonden gelijk aan <strong>PB + warlock-niveau</strong> tot uitgegeven of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fiend-fiend-pact-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fiend Pact Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fiend</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende fiend pact spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> burning hands, command</li><li><strong>Niveau 5:</strong> scorching ray, suggestion</li><li><strong>Niveau 9:</strong> fireball, stinking cloud</li><li><strong>Niveau 10:</strong> blight, wall of fire</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="fiend-dark-ones-own-luck">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Dark One's Own Luck</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fiend</span></div>
+  <div class="spell-card-description">
+<p><em>Tel 1d10 op bij een gefaalde check of save.</em></p>
+    <p>Wanneer je een eigenschapstest of save maakt, tel <strong>1d10</strong> op. Eén keer per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fiend-fiendish-resilience">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fiendish Resilience</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fiend</span></div>
+  <div class="spell-card-description">
+<p><em>Weerstand tegen een gekozen schadetype.</em></p>
+    <p>Na een korte of lange rust kies je een schadetype. Je hebt weerstand tot je opnieuw kiest.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fiend-hurl-through-hell">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Hurl Through Hell</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fiend</span></div>
+  <div class="spell-card-description">
+<p><em>Baniseer een aanvaller door een nachtmerrie.</em></p>
+    <p>Wanneer je raakt met een aanval, verdwijnt het doelwit tot einde van je volgende beurt en keert dan terug (of dichtstbijzijnde ruimte). Non-fiends nemen <strong>10d10 psychic</strong>-schade. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="great-old-one">
+  <h3 class="subclass-name">Great Old One</h3>
+  <p class="subclass-summary">Fluisteringen van voorbij de sterren.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="great-old-one-great-old-one-pact-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Great Old One Pact Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Great Old One</span></div>
+  <div class="spell-card-description">
+<p><em>Altijd-bekende GOO pact spells.</em></p>
+    <p>Deze domain spells zijn altijd prepared:</p><ul><li><strong>Niveau 2:</strong> dissonant whispers, hideous laughter</li><li><strong>Niveau 5:</strong> detect thoughts, phantasmal force</li><li><strong>Niveau 9:</strong> clairvoyance, sending</li><li><strong>Niveau 10:</strong> dominate beast, evard's black tentacles</li></ul></div>
+</div>
+<div class="spell-card ability-feature-card" id="great-old-one-awakened-mind">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Awakened Mind</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Great Old One</span></div>
+  <div class="spell-card-description">
+<p><em>Telepathie met wezens die je kunt zien.</em></p>
+    <p>Je kunt telepathisch communiceren met elk wezen dat je binnen 30 voet kunt zien. Je hoeft geen gemeenschappelijke taal te delen, maar het doelwit moet minstens één taal begrijpen.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="great-old-one-entropic-ward">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Entropic Ward</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Great Old One</span><span><strong>Actie:</strong> reactie</span></div>
+  <div class="spell-card-description">
+<p><em>Leg nadeel op bij een aanval tegen jou.</em></p>
+    <p>Wanneer een wezen een aanvalsworp tegen jou maakt, gebruik je je <strong>reactie</strong> om nadeel op te leggen. Mist de aanval, dan heb je voordeel op de volgende aanvalsworp tegen dat wezen vóór einde van je volgende beurt. Eén keer per korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="great-old-one-thought-shield">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Thought Shield</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Great Old One</span></div>
+  <div class="spell-card-description">
+<p><em>Psychic-weerstand; kaats psychic-schade terug.</em></p>
+    <p>Je hebt weerstand tegen psychic-schade. Wanneer een wezen jou psychic-schade toebrengt, neemt dat wezen dezelfde hoeveelheid psychic-schade.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="great-old-one-create-thrall">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Create Thrall</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Great Old One</span><span><strong>Actie:</strong> actie</span></div>
+  <div class="spell-card-description">
+<p><em>Charm een humanoid permanent (tot verbroken).</em></p>
+    <p>Als <strong>actie</strong> maakt één humanoid binnen 30 voet een Willpower-save of is charmed door jou tot je dit vermogen opnieuw gebruikt of tot je sterft. De thrall gehoorzaamt telepathische bevelen als jullie op hetzelfde vlak zijn. Het doelwit herhaalt de save elke keer dat het schade neemt. Eén keer per lange rust.</p></div>
+</div>
+
+  </div>
+  
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="archon">
+  <h3 class="subclass-name">Archon</h3>
+  <p class="subclass-summary">Je patron is een otherworldly wezen gebonden aan wet en orde.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="archon-archon-pact-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Archon Pact Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archon</span></div>
+  <div class="spell-card-description">
+<p><em>Pact spells volgens de Archon Pact Spells-tabel.</em></p>
+    <p>Je krijgt pact spells op de warlock-niveaus vermeld in de Archon Pact Spells-tabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="archon-equalize">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Equalize</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archon</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: annuleer voordeel of nadeel op een rol.</em></p>
+    <p>Als reactie, wanneer jij of een wezen dat je kunt zien een eigenschapstest, aanvalsworp of save met voordeel of nadeel zou maken, kun je alle bronnen van voordeel of nadeel annuleren zodat er één d20 gerold wordt. Eenmaal zo aangepast, kan die check niet meer door voordeel/nadeel of Luck gewijzigd worden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="archon-restore-efficiency">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Restore Efficiency</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archon</span></div>
+  <div class="spell-card-description">
+<p><em>Beëindig een condition of magisch effect met een Wyrd-spellniveau.</em></p>
+    <p>Als vrije actie kun je een Wyrd spellniveau van 1e of hoger uitgeven om één condition of magisch effect op jou of een wezen dat je aanraakt te beëindigen. Is het effect van een spell van gelijk of lager niveau, dan eindigt het automatisch. Bij effecten van spells van een hoger niveau maak je een check.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="archon-entropic-dispersal">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Entropic Dispersal</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archon</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: verspreid schade naar een nabij wezen.</em></p>
+    <p>Als reactie wanneer je schade neemt, kun je een deel van die schade naar een nabij wezen verspreiden. De schade die jij neemt daalt met tot je warlock-niveau, en één wezen dat je binnen 5 voet kunt zien neemt dat bedrag. Is het doelwit onwillig, dan mag het een CON-save maken tegen je spell-save-DC. Bij succes of immuniteit neemt het geen schade en daalt jouw schade niet.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="archon-invoke-order">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Invoke Order</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Archon</span></div>
+  <div class="spell-card-description">
+<p><em>Roep je patron aan om kosmische onevenwichtigheden te corrigeren.</em></p>
+    <p>Je kunt je patron aanroepen om onevenwichtigheden te corrigeren die de vervulling van het kosmische plan bedreigen. Als actie geef je een gebruik van Pact Magic uit (zie Player's Guide).</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Archon</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="elemental-regent">
+  <h3 class="subclass-name">Elemental Regent</h3>
+  <p class="subclass-summary">Je patron is een elemental met heerschappij over een groot gebied in diens plane.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="elemental-regent-elemental-blast">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Blast</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elemental Regent</span></div>
+  <div class="spell-card-description">
+<p><em>Pas Eldritch Blast aan met je Elemental Regent-pact.</em></p>
+    <p>Wanneer je Eldritch Blast gebruikt (zie Player's Guide).</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="elemental-regent-elemental-regent-pact">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Elemental Regent Pact</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Elemental Regent</span></div>
+  <div class="spell-card-description">
+<p><em>Pact spells volgens de Elemental Regent Pact Spells-tabel.</em></p>
+    <p>Je krijgt pact spells op de warlock-niveaus vermeld in de Elemental Regent Pact Spells-tabel.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Elemental Regent</a>.</p>
+</div>
+
+<hr class="subclass-divider" />
+<div class="subclass-group" id="fey-noble">
+  <h3 class="subclass-name">Fey Noble</h3>
+  <p class="subclass-summary">Je patron is een onsterfelijke fey wiens bedoelingen onbekend of bedrieglijk zijn.</p>
+  <div class="spells-container">
+<div class="spell-card ability-feature-card" id="fey-noble-fey-noble-pact-spells">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fey Noble Pact Spells</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey Noble</span></div>
+  <div class="spell-card-description">
+<p><em>Pact spells volgens de Fey Noble Pact Spells-tabel.</em></p>
+    <p>Je krijgt pact spells op de warlock-niveaus vermeld in de Fey Noble Pact Spells-tabel.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-noble-fey-presence">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Fey Presence</h4>
+    <span class="spell-card-level">2e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey Noble</span></div>
+  <div class="spell-card-description">
+<p><em>Weerstand tegen fey-trucs; voordeel om illusies te doorzien.</em></p>
+    <p>De kracht van je patron beschermt je tegen fey-trucs en laat je er zelf iets van gebruiken. Je hebt weerstand tegen de charmed- en unconscious-condities, en voordeel op eigenschapstests en saves om de waarheid van een illusie te doorzien.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-noble-death-ruse">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Death Ruse</h4>
+    <span class="spell-card-level">4e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey Noble</span></div>
+  <div class="spell-card-description">
+<p><em>Reactie: doe alsof je dood bent na schade.</em></p>
+    <p>Als reactie wanneer je schade neemt, kun je prone vallen en lijken tot 0 HP gereduceerd. Maak een CHA (Deception)-check; dat wordt de DC voor WIS (Insight of Medicine)-tests om te bepalen of je echt dood bent. Val je een wezen aan dat nog niet heeft doorzien dat je niet dood of unconscious bent, dan heb je voordeel op de aanvalsworp; bij een spell heeft het nadeel op de save. Eén uur lang kan dat wezen niet opnieuw door dit vermogen getroffen worden.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-noble-emotional-redirection">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Emotional Redirection</h4>
+    <span class="spell-card-level">6e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey Noble</span></div>
+  <div class="spell-card-description">
+<p><em>Immuun voor charmed/frightened; meer Fey Presence-gebruiken.</em></p>
+    <p>De emotionele lichtzinnigheid van de fey heeft je gestaald tegen emotiemanipulatie en beter gemaakt in het beïnvloeden van anderen. Je bent immuun voor charmed en frightened, en je kunt Fey Presence een aantal keren gebruiken gelijk aan je PB, terug bij korte of lange rust.</p></div>
+</div>
+<div class="spell-card ability-feature-card" id="fey-noble-induce-fugue-state">
+  <div class="spell-card-header">
+    <h4 class="spell-card-name">Induce Fugue State</h4>
+    <span class="spell-card-level">8e-niveau subclass-vermogen</span>
+  </div>
+  <div class="spell-card-meta"><span><strong>Subclass:</strong> Fey Noble</span></div>
+  <div class="spell-card-description">
+<p><em>Trek doelwitten in een illusoire scenario.</em></p>
+    <p>Als actie creëer je een illusoire scenario dat wezens erin trekt. Kies tot PB doelwitten binnen 60 voet die je kunt zien. Elk doelwit moet een WIS-save maken tegen je spell-save-DC.</p></div>
+</div>
+
+  </div>
+  <p class="source-note">Aangepast vanuit <a href="https://www.talesofthevaliant.com/" rel="noopener">BFRD Fey Noble</a>.</p>
+</div>
+
+</section>
+
+    <p class="source-note"><a href="../classes.html#warlock">← Terug naar Warlock</a></p>
+  </div>
+</main>
+<footer class="legal" data-include="footer"></footer>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>
