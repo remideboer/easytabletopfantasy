@@ -4367,11 +4367,58 @@
     border-bottom:1px solid var(--line);
     flex-wrap:wrap;
   }
+  .cs-spell-row-modal.is-expanded{
+    padding:8px 6px;
+    margin:0 -6px;
+    background:color-mix(in srgb, var(--brand-primary) 6%, transparent);
+    border-radius:6px;
+    border-bottom-color:transparent;
+  }
   .cs-spell-check{display:flex;align-items:center;gap:6px;font-size:.88rem;cursor:pointer}
   .cs-spell-check--prep{font-size:.8rem;color:var(--muted);margin-left:auto}
   .cs-spell-name{font-weight:600}
   .cs-spell-tag{font-size:.72rem;color:var(--muted);margin-left:auto}
   .cs-spell-meta{font-size:.72rem;color:var(--muted);flex-basis:100%}
+  .cs-spell-details-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    min-height:32px;
+    padding:4px 6px;
+    margin:0;
+    border:none;
+    background:none;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    color:var(--brand-primary);
+    cursor:pointer;
+    text-decoration:underline;
+    white-space:nowrap;
+  }
+  .cs-spell-details-toggle:hover,
+  .cs-spell-details-toggle:focus-visible{
+    color:var(--brand-primary);
+    outline:2px solid var(--brand-primary);
+    outline-offset:2px;
+  }
+  .cs-spell-chevron{
+    display:inline-block;
+    font-size:.9rem;
+    line-height:1;
+    text-decoration:none;
+    transition:transform .15s ease;
+  }
+  .cs-spell-details-toggle[aria-expanded="true"] .cs-spell-chevron{
+    transform:none;
+  }
+  .cs-spell-details{
+    flex-basis:100%;
+    padding:8px 4px 4px;
+    margin-top:2px;
+  }
+  .cs-spell-details .cs-spell-view-meta{margin:0 0 6px}
+  .cs-spell-details .cs-spell-view-desc{margin:0;font-size:.88rem}
   .cs-modal--view{max-width:480px}
   .cs-spell-view-meta{font-size:.82rem;color:var(--muted);margin:0 0 6px}
   .cs-spell-view-desc{font-size:.92rem;line-height:1.5;margin:10px 0 0;white-space:pre-line}

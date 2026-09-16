@@ -78,6 +78,7 @@
   let eventsBound = false;
   let spellModalOpen = false;
   let spellModalFilter = "";
+  const spellModalExpandedIds = new Set();
   let spellViewId = null;
   let talentViewName = null;
   let skillModalOpen = false;
@@ -1064,6 +1065,22 @@
     </div>`;
   }
 
+  function spellRowDetailsToggle(s, expanded) {
+    const label = expanded ? "Hide details" : "Show details";
+    const chevron = expanded ? "⌄" : "›";
+    return `<button type="button" class="cs-spell-details-toggle" data-spell-details="${escapeHtml(s.id)}" aria-expanded="${expanded ? "true" : "false"}" aria-controls="cs-spell-details-${escapeHtml(s.id)}">
+      ${label} <span class="cs-spell-chevron" aria-hidden="true">${chevron}</span>
+    </button>`;
+  }
+
+  function spellRowDetailsPanel(s, expanded) {
+    if (!expanded) return "";
+    return `<div class="cs-spell-details" id="cs-spell-details-${escapeHtml(s.id)}">
+      <p class="cs-spell-view-meta">Range: ${escapeHtml(s.range)} · Duration: ${escapeHtml(s.duration)} · Components: ${escapeHtml(s.components)}</p>
+      <p class="cs-spell-view-desc">${escapeHtml(s.description)}</p>
+    </div>`;
+  }
+
   function renderManageSpellsModal() {
     const cls = findClass(char);
     const mode = spellMode(cls);
@@ -1100,34 +1117,42 @@
         .map((s) => {
           const learned = char.learnedSpellIds.includes(s.id);
           const prepared = char.preparedSpellIds.includes(s.id);
+          const expanded = spellModalExpandedIds.has(s.id);
+          const rowClass = `cs-spell-row-modal${expanded ? " is-expanded" : ""}`;
+          const toggle = spellRowDetailsToggle(s, expanded);
+          const details = spellRowDetailsPanel(s, expanded);
 
           if (isCantrip) {
             const disabled = !learned && cantripLearnedCount >= cCap;
-            return `<li class="cs-spell-row-modal">
+            return `<li class="${rowClass}">
               <label class="cs-spell-check">
                 <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
                 <span class="cs-spell-name">${escapeHtml(s.name)}</span>
               </label>
               <span class="cs-spell-tag">Always active</span>
+              ${toggle}
               <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+              ${details}
             </li>`;
           }
 
           if (!tiered) {
             const disabled = !learned && activeLeveledCount >= activeCap;
-            return `<li class="cs-spell-row-modal">
+            return `<li class="${rowClass}">
               <label class="cs-spell-check">
                 <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
                 <span class="cs-spell-name">${escapeHtml(s.name)}</span>
               </label>
               <span class="cs-spell-tag">${label}</span>
+              ${toggle}
               <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+              ${details}
             </li>`;
           }
 
           const learnDisabled = !learned && learnedLeveledCount >= learnedCap;
           const prepDisabled = !learned || (!prepared && activeLeveledCount >= activeCap);
-          return `<li class="cs-spell-row-modal">
+          return `<li class="${rowClass}">
             <label class="cs-spell-check">
               <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${learnDisabled ? " disabled" : ""} />
               <span class="cs-spell-name">${escapeHtml(s.name)}</span>
@@ -1136,7 +1161,9 @@
               <input type="checkbox" data-spell-prepare="${s.id}"${prepared ? " checked" : ""}${prepDisabled ? " disabled" : ""} />
               Prepared
             </label>
+            ${toggle}
             <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+            ${details}
           </li>`;
         })
         .join("");
@@ -2027,6 +2054,7 @@
       if (e.target.closest("#cs-manage-spells")) {
         spellModalOpen = true;
         spellModalFilter = "";
+        spellModalExpandedIds.clear();
         spellViewId = null;
         renderModals();
         return;
@@ -2133,6 +2161,14 @@
 
     if (el.modalRoot) {
       el.modalRoot.addEventListener("click", (e) => {
+        const detailsBtn = e.target.closest("[data-spell-details]");
+        if (detailsBtn) {
+          const id = detailsBtn.dataset.spellDetails;
+          if (spellModalExpandedIds.has(id)) spellModalExpandedIds.delete(id);
+          else spellModalExpandedIds.add(id);
+          renderModals();
+          return;
+        }
         if (e.target.id === "cs-spell-modal-overlay" || e.target.id === "cs-spell-modal-close") {
           spellModalOpen = false;
           renderModals();
