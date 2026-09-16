@@ -27,6 +27,7 @@
 
   let state = loadState();
   let eventsBound = false;
+  const cardExpandedIds = new Set();
 
   const el = {};
 
@@ -398,29 +399,65 @@
       .replace(/"/g, "&quot;");
   }
 
+  function cardShortText(item) {
+    return String(item.teaser || item.summary || item.hint || "").trim();
+  }
+
+  function cardLongHtml(item) {
+    const body = String(item.body || "").trim();
+    if (body) return body;
+    return "";
+  }
+
+  function cardHasLongDetails(item) {
+    const longHtml = cardLongHtml(item);
+    if (!longHtml) return false;
+    const short = cardShortText(item);
+    const longPlain = longHtml.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    return longPlain.length > short.length + 40;
+  }
+
   function cardGrid(items, options = {}) {
     const { badge } = options;
     return `<div class="cc-card-grid" role="listbox">${items
       .map((item) => {
-        const selected = false;
+        const short = cardShortText(item);
+        const hasLong = cardHasLongDetails(item);
+        const expanded = cardExpandedIds.has(item.id);
         const badgeHtml = badge ? badge(item) : "";
-        return `<button type="button" class="cc-card" role="option" aria-selected="false" data-id="${item.id}">
+        const detailsToggle = hasLong
+          ? `<button type="button" class="cc-card-details-toggle" data-card-details="${escapeHtml(item.id)}" aria-expanded="${expanded ? "true" : "false"}" aria-controls="cc-card-details-${escapeHtml(item.id)}">
+              ${expanded ? "Hide details" : "Show details"}
+              <span class="cc-card-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>
+            </button>`
+          : "";
+        const detailsPanel =
+          hasLong && expanded
+            ? `<div class="cc-card-details" id="cc-card-details-${escapeHtml(item.id)}">${cardLongHtml(item)}</div>`
+            : hasLong
+              ? `<div class="cc-card-details" id="cc-card-details-${escapeHtml(item.id)}" hidden></div>`
+              : "";
+        return `<div class="cc-card${expanded ? " is-expanded" : ""}" role="option" tabindex="0" aria-selected="false" data-id="${escapeHtml(item.id)}">
           ${badgeHtml}
           <span class="cc-card-title">${escapeHtml(item.name || item.label)}</span>
-          <span class="cc-card-teaser">${escapeHtml(item.teaser || item.summary || item.hint || "")}</span>
+          ${short ? `<span class="cc-card-teaser">${escapeHtml(short)}</span>` : ""}
           ${item.tag ? `<span class="cc-card-tag">${escapeHtml(item.tag)}</span>` : ""}
           ${item.maxWd ? `<span class="cc-card-meta">Max WD ${item.maxWd}</span>` : ""}
           ${item.keyAbilityLabel ? `<span class="cc-card-meta">${escapeHtml(item.keyAbilityLabel)}</span>` : ""}
-        </button>`;
+          ${detailsToggle}
+          ${detailsPanel}
+        </div>`;
       })
       .join("")}</div>`;
   }
 
   function clearDetailPanel(message) {
     if (el.detailPlaceholder) {
-      el.detailPlaceholder.hidden = false;
-      el.detailPlaceholder.textContent =
-        message || "Select or hover an option to see its full description.";
+      const empty = message === "";
+      el.detailPlaceholder.hidden = empty;
+      el.detailPlaceholder.textContent = empty
+        ? ""
+        : message || "Select an option to pin its summary here.";
     }
     if (el.detailTitle) el.detailTitle.hidden = true;
     if (el.detailBody) el.detailBody.innerHTML = "";
@@ -429,7 +466,7 @@
 
   function showDetailPanel(item, detailKey = "body") {
     if (!item) {
-      clearDetailPanel();
+      clearDetailPanel("");
       return;
     }
     if (el.detailPlaceholder) el.detailPlaceholder.hidden = true;
@@ -438,7 +475,15 @@
       el.detailTitle.textContent = item.name || item.label || "";
     }
     if (el.detailBody) {
-      el.detailBody.innerHTML = item[detailKey] || item.summary || item.hint || "";
+      const longHtml = cardLongHtml(item);
+      if ((detailKey === "body" || !item[detailKey]) && longHtml) {
+        el.detailBody.innerHTML = longHtml;
+      } else {
+        const text = item[detailKey] || item.summary || item.hint || item.teaser || "";
+        el.detailBody.innerHTML = /<[a-z][\s\S]*>/i.test(String(text))
+          ? text
+          : `<p>${escapeHtml(text)}</p>`;
+      }
     }
     if (el.detailLink) {
       if (item.rulesUrl) {
@@ -453,28 +498,71 @@
   function bindCardGrid(container, items, selectedId, onSelect, detailKey = "body") {
     const cards = container.querySelectorAll(".cc-card");
 
+    function selectCard(id) {
+      onSelect(id);
+      cards.forEach((c) => {
+        const sel = c.dataset.id === id;
+        c.classList.toggle("is-selected", sel);
+        c.setAttribute("aria-selected", sel ? "true" : "false");
+      });
+      showDetailPanel(byId(items, id), detailKey);
+      saveState();
+      updateNavButtons();
+      renderSummary();
+    }
+
     cards.forEach((card) => {
       const id = card.dataset.id;
       const selected = id === selectedId;
       card.classList.toggle("is-selected", selected);
       card.setAttribute("aria-selected", selected ? "true" : "false");
 
-      card.addEventListener("click", () => {
-        onSelect(id);
-        cards.forEach((c) => {
-          const sel = c.dataset.id === id;
-          c.classList.toggle("is-selected", sel);
-          c.setAttribute("aria-selected", sel ? "true" : "false");
-        });
-        showDetailPanel(byId(items, id), detailKey);
-        saveState();
-        updateNavButtons();
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("[data-card-details]")) return;
+        selectCard(id);
       });
-      card.addEventListener("mouseenter", () => showDetailPanel(byId(items, card.dataset.id), detailKey));
-      card.addEventListener("focus", () => showDetailPanel(byId(items, card.dataset.id), detailKey));
+      card.addEventListener("keydown", (e) => {
+        if (e.target.closest("[data-card-details]")) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          selectCard(id);
+        }
+      });
     });
 
-    showDetailPanel(byId(items, selectedId), detailKey);
+    container.querySelectorAll("[data-card-details]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.cardDetails;
+        const item = byId(items, id);
+        if (!item || !cardHasLongDetails(item)) return;
+        if (cardExpandedIds.has(id)) cardExpandedIds.delete(id);
+        else cardExpandedIds.add(id);
+        const card = btn.closest(".cc-card");
+        const expanded = cardExpandedIds.has(id);
+        btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+        btn.innerHTML = `${expanded ? "Hide details" : "Show details"} <span class="cc-card-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`;
+        let panel = card.querySelector(".cc-card-details");
+        if (!panel) {
+          panel = document.createElement("div");
+          panel.className = "cc-card-details";
+          panel.id = `cc-card-details-${id}`;
+          card.appendChild(panel);
+        }
+        if (expanded) {
+          panel.hidden = false;
+          panel.innerHTML = cardLongHtml(item);
+          card.classList.add("is-expanded");
+        } else {
+          panel.hidden = true;
+          panel.innerHTML = "";
+          card.classList.remove("is-expanded");
+        }
+      });
+    });
+
+    if (selectedId) showDetailPanel(byId(items, selectedId), detailKey);
+    else clearDetailPanel("");
   }
 
   /* ── Step renderers ── */
@@ -526,14 +614,6 @@
     el.body.querySelector("#cc-level-up").addEventListener("click", () => setLevel(state.level + 1));
     el.body.querySelectorAll(".cc-chip").forEach((chip) => {
       const arch = () => data.conceptArchetypes.find((a) => a.id === chip.dataset.id);
-      chip.addEventListener("mouseenter", () => {
-        const a = arch();
-        if (a) showDetailPanel({ label: a.label, hint: a.hint, summary: a.hint }, "hint");
-      });
-      chip.addEventListener("focus", () => {
-        const a = arch();
-        if (a) showDetailPanel({ label: a.label, hint: a.hint, summary: a.hint }, "hint");
-      });
       chip.addEventListener("click", () => {
         state.conceptArchetype = chip.dataset.id;
         el.body.querySelectorAll(".cc-chip").forEach((c) =>
@@ -542,13 +622,14 @@
         showDetailPanel(arch(), "hint");
         saveState();
         updateNavButtons();
+        renderSummary();
       });
     });
 
     if (state.conceptArchetype) {
       showDetailPanel(data.conceptArchetypes.find((a) => a.id === state.conceptArchetype), "hint");
     } else {
-      clearDetailPanel("Pick an archetype to see how it guides your build.");
+      clearDetailPanel("");
     }
   }
 
@@ -752,6 +833,7 @@
         ${el.summaryFeatures && !el.summaryFeatures.hidden ? `<div class="cc-review-features">${el.summaryFeatures.innerHTML}</div>` : ""}
         ${maxWd !== null ? `<p class="cc-review-wd">Level ${state.level} Max Wounds: <strong>${maxWd}</strong></p>` : ""}
         ${state.conceptNotes ? `<p><strong>Notes:</strong> ${escapeHtml(state.conceptNotes)}</p>` : ""}
+        <p class="cc-hint">Finish opens your character sheet with this character filled in.</p>
       </div>
       <div class="cc-review-actions">
         <button type="button" class="btn" id="cc-copy-summary">Copy summary</button>
@@ -841,6 +923,7 @@
   }
 
   function renderStepBody(step) {
+    cardExpandedIds.clear();
     switch (step.type) {
       case "concept":
         renderConcept();
@@ -926,7 +1009,9 @@
       stepIndex += 1;
       render();
       el.title.focus({ preventScroll: false });
+      return;
     }
+    finishToSheet();
   }
 
   function goBack() {
@@ -934,6 +1019,114 @@
       stepIndex -= 1;
       render();
     }
+  }
+
+  const SHEET_STORAGE_KEY = "ymiat-characters-v1";
+  const INVENTORY_SLOT_COUNT = 18;
+
+  function xpThreshold(level) {
+    const n = Math.max(0, level - 1);
+    return (n * level * 100) / 2;
+  }
+
+  function clampAbility(n) {
+    return Math.min(5, Math.max(-5, Number(n) || 0));
+  }
+
+  function parseLineageDefaults(lineage) {
+    const text = (lineage?.body || lineage?.teaser || "").replace(/\n/g, " ");
+    const speedMatch = text.match(/Speed\.?\s*([^.<]+)/i);
+    const sizeMatch = text.match(/Size\.?\s*([^.<]+)/i);
+    let speed = 30;
+    if (speedMatch) {
+      const num = speedMatch[1].match(/(\d+)/);
+      if (num) speed = parseInt(num[1], 10);
+    }
+    let size = "Medium";
+    if (sizeMatch) {
+      const s = sizeMatch[1].trim();
+      if (/small/i.test(s)) size = "Small";
+      else if (/large/i.test(s)) size = "Large";
+      else size = "Medium";
+    }
+    return { speed, size };
+  }
+
+  function spellcastingAbilityForClass(cls) {
+    if (!cls || !cls.spellcasting) return null;
+    const sc = String(cls.spellcasting).toLowerCase();
+    if (sc.includes("divine") || sc.includes("primordial")) {
+      if (cls.keyAbility === "fit") return "ins";
+    }
+    if (sc.includes("wyrd")) return "wil";
+    return cls.keyAbility;
+  }
+
+  function finishToSheet() {
+    saveState();
+    const cls = findClass();
+    const level = Math.max(1, Number(state.level) || 1);
+    const abilities = { fit: 0, ins: 0, wil: 0 };
+    ABILITIES.forEach((ab) => {
+      if (state.abilities[ab] != null) abilities[ab] = clampAbility(state.abilities[ab]);
+    });
+
+    const character = {
+      id: "c-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 9),
+      name: state.name.trim() || "Unnamed Hero",
+      level,
+      xp: xpThreshold(level),
+      hearts: 3,
+      abilities,
+      woundsNow: 0,
+      woundsTemp: 0,
+      resolve: 0,
+      spellPowerNow: 0,
+      learnedSpellIds: [],
+      preparedSpellIds: [],
+      chosenSkills: [],
+      chosenLanguages: [],
+      chosenTalents: [],
+      classId: state.classId || "",
+      subclassId: state.subclassId || "",
+      lineageId: state.lineageId || "",
+      heritageId: state.heritageId || "",
+      backgroundId: state.backgroundId || "",
+      armorId: "",
+      hasShield: false,
+      weaponId: "",
+      speed: 30,
+      size: "Medium",
+      currency: { gold: 0, silver: 0, copper: 0 },
+      equippedText: "",
+      inventory: Array(INVENTORY_SLOT_COUNT).fill(""),
+    };
+
+    if (character.lineageId) {
+      const lineage = byId(data.lineages, character.lineageId);
+      if (lineage) Object.assign(character, parseLineageDefaults(lineage));
+    }
+
+    const spellAb = spellcastingAbilityForClass(cls);
+    if (spellAb) {
+      character.spellPowerNow = Math.max(0, 3 * abilities[spellAb]);
+    }
+
+    let store = { characters: [], activeId: null };
+    try {
+      const raw = localStorage.getItem(SHEET_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && Array.isArray(parsed.characters)) store = parsed;
+      }
+    } catch (_) {
+      /* start fresh store */
+    }
+    if (!Array.isArray(store.characters)) store.characters = [];
+    store.characters.push(character);
+    store.activeId = character.id;
+    localStorage.setItem(SHEET_STORAGE_KEY, JSON.stringify(store));
+    window.location.href = "character-sheet.html";
   }
 
   function bindEvents() {
