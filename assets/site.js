@@ -12,7 +12,8 @@
     if(main.querySelector('.lineages-container')) return;
     
     // Add IDs to headings FIRST (before any scroll happens)
-    const headings = Array.from(main.querySelectorAll('h2, h3'));
+    const headings = Array.from(main.querySelectorAll('h2, h3'))
+      .filter(h => !h.closest('.toc'));
     headings.forEach(h=>{ if(!h.id) h.id = slug(h.textContent); });
     
     // Build TOC
@@ -45,12 +46,72 @@
     }
   }
   
+  // Compact "On this page" accordion on phone/tablet; sidebar stays open on desktop.
+  function enhanceCollapsibleTocs(){
+    const mq = window.matchMedia('(min-width: 1164px)');
+
+    function syncOpen(details){
+      if(mq.matches){
+        details.open = true;
+        details.dataset.forceOpen = '1';
+      } else if(details.dataset.forceOpen === '1'){
+        details.open = false;
+        delete details.dataset.forceOpen;
+      }
+    }
+
+    document.querySelectorAll('.toc').forEach(toc => {
+      if(toc.querySelector(':scope > .toc-details')) return;
+
+      const heading = toc.querySelector(':scope > h2');
+      const label = (heading && heading.textContent.trim()) || 'On this page';
+      const details = document.createElement('details');
+      details.className = 'toc-details';
+      const summary = document.createElement('summary');
+      summary.className = 'toc-summary';
+      summary.textContent = label;
+      if(heading && heading.id) summary.id = heading.id;
+
+      const panel = document.createElement('div');
+      panel.className = 'toc-panel';
+
+      Array.from(toc.childNodes).forEach(node => {
+        if(node === heading) return;
+        panel.appendChild(node);
+      });
+      if(heading) heading.remove();
+
+      details.appendChild(summary);
+      details.appendChild(panel);
+      toc.appendChild(details);
+      toc.classList.add('toc--collapsible');
+
+      panel.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+          if(!mq.matches) details.open = false;
+        });
+      });
+
+      syncOpen(details);
+    });
+
+    const onBreakpoint = () => {
+      document.querySelectorAll('.toc-details').forEach(syncOpen);
+    };
+    if(typeof mq.addEventListener === 'function') mq.addEventListener('change', onBreakpoint);
+    else if(typeof mq.addListener === 'function') mq.addListener(onBreakpoint);
+  }
+
   // Run as early as possible to set IDs before browser scrolls
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initTOC);
+    document.addEventListener('DOMContentLoaded', () => {
+      initTOC();
+      enhanceCollapsibleTocs();
+    });
   } else {
     // DOM already ready, run immediately
     initTOC();
+    enhanceCollapsibleTocs();
   }
   
   // Tab functionality for gear page

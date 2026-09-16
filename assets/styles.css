@@ -1764,12 +1764,84 @@
     background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(250,248,244,.9));
     box-shadow:var(--shadow);
   }
-  .toc h2{margin:0 0 10px;font-size:1rem;color:var(--muted);letter-spacing:.02em;text-transform:uppercase}
+  .toc h2,
+  .toc-summary{
+    margin:0 0 10px;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--muted);
+    letter-spacing:.02em;
+    text-transform:uppercase;
+  }
   .toc ul{margin:0 0 0 18px}
   .toc li{margin:0 0 6px}
   .toc a{color:var(--muted);text-decoration:none}
   .toc a:hover{color:var(--fg);text-decoration:underline}
   .toc-h3{margin-left:10px}
+
+  /* Phone/tablet: collapse long page TOCs so content starts sooner */
+  .toc-details{margin:0}
+  .toc-summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin:0;
+    padding:2px 0;
+    cursor:pointer;
+    list-style:none;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+  .toc-summary::-webkit-details-marker{display:none}
+  .toc-summary::after{
+    content:"";
+    flex:0 0 auto;
+    width:.55em;
+    height:.55em;
+    border-right:2px solid currentColor;
+    border-bottom:2px solid currentColor;
+    transform:rotate(45deg);
+    transition:transform .15s ease;
+    opacity:.7;
+  }
+  .toc-details[open] > .toc-summary{
+    margin-bottom:10px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .toc-details[open] > .toc-summary::after{
+    transform:rotate(-135deg);
+    margin-top:4px;
+  }
+  .toc-panel{
+    max-height:min(50vh, 22rem);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    scrollbar-color:var(--accent-gold-soft) transparent;
+  }
+  @media(min-width:1164px){
+    .toc-summary{
+      cursor:default;
+      pointer-events:none;
+    }
+    .toc-summary::after{display:none}
+    .toc-details[open] > .toc-summary{
+      margin-bottom:10px;
+      padding-bottom:0;
+      border-bottom:none;
+    }
+    .layout > .toc .toc-panel{
+      max-height:none;
+      overflow:visible;
+    }
+    /* ability-toc stays in-flow; keep a modest scroll if huge */
+    .ability-toc .toc-panel{
+      max-height:min(60vh, 28rem);
+    }
+  }
   
   /* Content "card" with fantasy decorative border */
   .content{
@@ -1813,7 +1885,8 @@
       background:var(--bg-card);
       border-color:var(--accent-gold-soft);
     }
-    .toc h2{
+    .toc h2,
+    .toc-summary{
       color:var(--text-secondary);
     }
     .toc a{
