@@ -344,14 +344,20 @@
     return data?.levelRange || { min: 1, max: 10, subclassMin: 2 };
   }
 
-  // XP threshold per core.html#experience-points: (level - 1) * 100.
+  // XP threshold per core.html#experience-points: 100 * (level - 1) * level / 2.
   function xpThreshold(level) {
-    return Math.max(0, level - 1) * 100;
+    const n = Math.max(0, level - 1);
+    return (n * level * 100) / 2;
   }
 
   function levelFromXp(xp, range) {
-    const lvl = Math.floor(Math.max(0, xp) / 100) + 1;
-    return Math.min(range.max, Math.max(range.min, lvl));
+    const total = Math.max(0, Number(xp) || 0);
+    let level = range.min;
+    for (let L = range.min; L <= range.max; L++) {
+      if (xpThreshold(L) <= total) level = L;
+      else break;
+    }
+    return level;
   }
 
   function clampAbility(n) {
