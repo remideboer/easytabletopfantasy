@@ -2,6 +2,7 @@
    Uses foundation/kleurenschema.css as base for WCAG-compliant colors
 */
 @import url('../foundation/kleurenschema.css');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap');
 
 /* Map new color schema to existing variable names for compatibility */
 :root{
@@ -57,8 +58,8 @@
     --shadow:0 2px 8px rgba(0,0,0,.1),0 8px 24px rgba(0,0,0,.08);
     --shadow-strong:0 4px 12px rgba(0,0,0,.15),0 12px 32px rgba(0,0,0,.12);
     --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-    --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    --serif:Georgia,serif;
+    --sans:"Source Sans 3",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    --serif:"EB Garamond",Georgia,serif;
     
     /* Callout colors with new theme */
     --note-b:rgba(199,184,243,.5); --note-bg:rgba(243,241,255,.8);
@@ -929,7 +930,7 @@
   }
   
   /* Typography */
-  h1,h2,h3,h4{letter-spacing:-.01em;color:var(--brand-primary)}
+  h1,h2,h3,h4{font-family:var(--serif);letter-spacing:-.01em;color:var(--brand-primary)}
   h1{
     font-size:1.85rem;
     line-height:1.15;
@@ -1586,6 +1587,7 @@
     border-radius:var(--r2);
     box-shadow:0 2px 8px rgba(184,134,11,.15);
     font-family:var(--serif);
+    font-style:normal;
     font-size:1.1rem;
     line-height:1.6;
     color:var(--fantasy-blue);
@@ -1606,12 +1608,13 @@
     display:block;
     font-size:1.3rem;
     font-weight:600;
+    font-style:normal;
     color:var(--fantasy-blue);
     margin:8px 0;
   }
   
   .formula-box .formula-equation .variable{
-    font-style:italic;
+    font-style:normal;
     color:var(--fantasy-burgundy);
   }
   
