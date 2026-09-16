@@ -378,10 +378,7 @@
     /* Accordion: no hover-open; only .is-open */
     .nav-dropdown:hover > .nav-dropdown-menu,
     .nav-dropdown:focus-within > .nav-dropdown-menu{
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-      transform:none;
+      display:none;
     }
     .nav-dropdown-menu,
     .nav-dropdown-menu-wide{
@@ -399,18 +396,16 @@
       border-radius:0;
       box-shadow:none;
       background:transparent;
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
+      display:none;
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
       transform:none;
       transition:none;
     }
     .nav-dropdown.is-open > .nav-dropdown-menu,
     .nav-dropdown.is-open:hover > .nav-dropdown-menu,
     .nav-dropdown.is-open:focus-within > .nav-dropdown-menu{
-      opacity:1;
-      visibility:visible;
-      pointer-events:auto;
       display:block;
     }
     .nav-dropdown-menu a{
@@ -469,9 +464,13 @@
     body.nav-drawer-open{
       overflow:hidden;
     }
+    /* Keep backdrop under sticky header so drawer stays clickable */
     body.nav-drawer-open .nav-dropdown-backdrop{
       display:block;
-      z-index:1001;
+      z-index:999;
+    }
+    body.nav-drawer-open header{
+      z-index:1002;
     }
   }
   
@@ -819,6 +818,113 @@
     .nav-dropdown-menu a:hover,
     .nav-dropdown-menu a[aria-current="page"]{
       color:var(--accent-gold);
+    }
+  }
+
+  /*
+   * Compact accordion overrides must come AFTER desktop flyout rules,
+   * otherwise absolute/hover styles win the cascade on phone/tablet.
+   */
+  @media (max-width:1024px){
+    .nav-dropdown-menu,
+    .nav-dropdown-menu-wide,
+    .nav-dropdown-menu-nested{
+      position:static !important;
+      left:auto !important;
+      top:auto !important;
+      right:auto !important;
+      columns:1 !important;
+      column-gap:0;
+      max-height:none !important;
+      overflow:visible !important;
+      min-width:0 !important;
+      width:100%;
+      margin:4px 0 8px;
+      padding:4px 0 4px 8px;
+      border:none;
+      border-left:2px solid var(--accent-gold-soft);
+      border-radius:0;
+      box-shadow:none;
+      background:transparent;
+      display:none;
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+      transform:none;
+      transition:none;
+      z-index:auto;
+    }
+    .nav-dropdown:hover > .nav-dropdown-menu,
+    .nav-dropdown:focus-within > .nav-dropdown-menu,
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu{
+      display:none;
+    }
+    .nav-dropdown.is-open > .nav-dropdown-menu,
+    .nav-dropdown.is-open .nav-dropdown-menu,
+    .nav-dropdown.is-open:hover > .nav-dropdown-menu,
+    .nav-dropdown.is-open:focus-within > .nav-dropdown-menu,
+    .nav-dropdown.is-open:hover .nav-dropdown-menu,
+    .nav-dropdown.is-open:focus-within .nav-dropdown-menu{
+      display:block !important;
+    }
+    .nav-submenu--branch > .nav-submenu-panel,
+    .nav-submenu-panel-inner--branch-list .nav-submenu--branch > .nav-submenu-panel,
+    .nav-submenu-panel-inner--branch-list > .nav-submenu--branch:hover > .nav-submenu-panel,
+    .nav-submenu-panel-inner--branch-list > .nav-submenu--branch:focus-within > .nav-submenu-panel,
+    .nav-submenu-panel-inner--branch-list > .nav-submenu--branch.is-open > .nav-submenu-panel{
+      position:static !important;
+      left:auto !important;
+      top:auto !important;
+      right:auto !important;
+      margin:4px 0 8px 8px;
+      min-width:0 !important;
+      width:auto;
+      opacity:1;
+      visibility:visible !important;
+      pointer-events:auto;
+      transform:none;
+      display:none;
+      border:none;
+      border-left:2px solid var(--accent-gold-soft);
+      box-shadow:none;
+      background:transparent;
+      padding:0;
+      z-index:auto;
+    }
+    .nav-submenu--branch.is-open > .nav-submenu-panel,
+    .nav-submenu-panel-inner--branch-list .nav-submenu--branch.is-open > .nav-submenu-panel,
+    .nav-submenu-panel-inner--branch-list > .nav-submenu--branch.is-open > .nav-submenu-panel{
+      display:block !important;
+      visibility:visible !important;
+    }
+    .nav-submenu--branch:not(.is-open):hover > .nav-submenu-panel,
+    .nav-submenu--branch:not(.is-open):focus-within > .nav-submenu-panel{
+      display:none !important;
+    }
+    .nav-submenu-panel.is-placed{
+      display:none !important;
+      visibility:hidden !important;
+      pointer-events:none !important;
+    }
+    .nav-submenu-panel-inner,
+    .nav-submenu-panel-inner--intro,
+    .nav-submenu-panel-inner--branch-list,
+    .nav-submenu-panel-inner--scroll{
+      max-height:none !important;
+      overflow:visible !important;
+    }
+    .nav-submenu--branch > .nav-submenu-label::after,
+    .nav-submenu--branch > .nav-submenu-link::after{
+      content:'▼';
+      font-size:.7em;
+    }
+    .nav-submenu--branch.is-open > .nav-submenu-label::after,
+    .nav-submenu--branch.is-open > .nav-submenu-link::after{
+      transform:translateY(-50%) rotate(180deg);
+    }
+    .nav-dropdown.is-open > a::after{
+      transform:translateY(-50%) rotate(180deg);
     }
   }
   

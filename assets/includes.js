@@ -497,6 +497,7 @@ function ymiatBindLangSwitch() {
     const nav = getSiteNav();
     const toggle = getNavToggle();
     if(!nav || !toggle) return;
+    restoreAllFlyoutPanels();
     nav.classList.add('is-drawer-open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('nav-drawer-open');
@@ -531,6 +532,9 @@ function ymiatBindLangSwitch() {
       toggleNavDrawer();
     });
     window.addEventListener('resize', () => {
+      if(needsCompactNav()){
+        restoreAllFlyoutPanels();
+      }
       if(!needsCompactNav() && document.body.classList.contains('nav-drawer-open')){
         closeNavDrawer();
       }
@@ -637,6 +641,15 @@ function ymiatBindLangSwitch() {
 
       menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
+          // Branch triggers only accordion-toggle; do not close the drawer.
+          const branch = link.closest('.nav-submenu--branch');
+          if(
+            link.classList.contains('nav-submenu-link') &&
+            branch &&
+            branch.querySelector(':scope > .nav-submenu-panel')
+          ){
+            return;
+          }
           if(needsCompactNav()) closeNavDrawer();
           else if(needsTouchNav()) closeAllNavDropdowns();
         });
