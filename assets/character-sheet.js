@@ -90,6 +90,7 @@
   let languageModalOpen = false;
   let talentModalOpen = false;
   let ddbModalOpen = false;
+  const talentModalExpandedIds = new Set();
 
   const el = {};
 
@@ -885,14 +886,38 @@
     }
     const chosen = char.chosenTalents[0] || "";
     const rows = choice.options
-      .map(
-        (opt) => `<li class="cs-choice-row">
+      .map((opt) => {
+        const talent = talentByName(opt);
+        const expanded = talentModalExpandedIds.has(opt);
+        const detailId = "cs-talent-details-" + String(opt).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        const label = expanded ? t("hideDetails", "Hide details") : t("showDetails", "Show details");
+        const chevron = expanded ? "⌄" : "›";
+        const toggle = `<button type="button" class="cs-spell-details-toggle" data-talent-details="${escapeHtml(opt)}" aria-expanded="${expanded ? "true" : "false"}" aria-controls="${escapeHtml(detailId)}">
+          ${label} <span class="cs-spell-chevron" aria-hidden="true">${chevron}</span>
+        </button>`;
+        let details = "";
+        if (expanded) {
+          if (talent) {
+            details = `<div class="cs-spell-details" id="${escapeHtml(detailId)}">
+              ${talent.prerequisite ? `<p class="cs-spell-view-meta">Prerequisite: ${escapeHtml(talent.prerequisite)}</p>` : ""}
+              <p class="cs-spell-view-desc">${escapeHtml(talent.description || "")}</p>
+            </div>`;
+          } else {
+            details = `<div class="cs-spell-details" id="${escapeHtml(detailId)}">
+              <p class="cs-spell-view-desc cs-muted">No details available for this talent.</p>
+            </div>`;
+          }
+        }
+        const rowClass = `cs-choice-row cs-choice-row--talent${expanded ? " is-expanded" : ""}`;
+        return `<li class="${rowClass}">
           <label class="cs-spell-check">
             <input type="radio" name="cs-talent-radio" data-talent-option="${escapeHtml(opt)}"${opt === chosen ? " checked" : ""} />
-            ${escapeHtml(opt)}
+            <span class="cs-spell-name">${escapeHtml(opt)}</span>
           </label>
-        </li>`
-      )
+          ${toggle}
+          ${details}
+        </li>`;
+      })
       .join("");
 
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-choice-modal-overlay">
@@ -1566,6 +1591,7 @@
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
+    talentModalExpandedIds.clear();
     ddbModalOpen = false;
     if (!id) {
       store.activeId = null;
@@ -1587,6 +1613,7 @@
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
+    talentModalExpandedIds.clear();
     ddbModalOpen = false;
     const c = defaultCharacter();
     store.characters.push(c);
@@ -1603,6 +1630,7 @@
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
+    talentModalExpandedIds.clear();
     ddbModalOpen = false;
     const name = char.name || "Unnamed";
     if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
@@ -2084,6 +2112,7 @@
       }
       if (e.target.closest("#cs-choose-talent")) {
         talentModalOpen = true;
+        talentModalExpandedIds.clear();
         renderModals();
         return;
       }
@@ -2182,6 +2211,14 @@
           renderModals();
           return;
         }
+        const talentDetailsBtn = e.target.closest("[data-talent-details]");
+        if (talentDetailsBtn) {
+          const name = talentDetailsBtn.dataset.talentDetails;
+          if (talentModalExpandedIds.has(name)) talentModalExpandedIds.delete(name);
+          else talentModalExpandedIds.add(name);
+          renderModals();
+          return;
+        }
         if (e.target.id === "cs-spell-modal-overlay" || e.target.id === "cs-spell-modal-close") {
           spellModalOpen = false;
           renderModals();
@@ -2195,6 +2232,7 @@
           skillModalOpen = false;
           languageModalOpen = false;
           talentModalOpen = false;
+          talentModalExpandedIds.clear();
           renderModals();
         } else if (e.target.id === "cs-ddb-overlay" || e.target.id === "cs-ddb-close") {
           ddbModalOpen = false;
@@ -2326,6 +2364,7 @@
           skillModalOpen = false;
           languageModalOpen = false;
           talentModalOpen = false;
+          talentModalExpandedIds.clear();
           ddbModalOpen = false;
           renderModals();
         }

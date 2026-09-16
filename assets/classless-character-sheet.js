@@ -16,6 +16,7 @@
   let abilityModalSelectedIds = [];
   let abilityModalMessage = "";
   let abilityEditLine = null;
+  const abilityModalExpandedIds = new Set();
 
   const el = {};
 
@@ -682,6 +683,23 @@
     return groups;
   }
 
+  function abilityDetailsToggle(abilityId, expanded) {
+    const label = expanded ? "Hide details" : "Show details";
+    const chevron = expanded ? "⌄" : "›";
+    const safeId = escapeHtml(abilityId);
+    return `<button type="button" class="cs-spell-details-toggle" data-ability-details="${safeId}" aria-expanded="${expanded ? "true" : "false"}" aria-controls="cls-ability-details-${safeId}">
+      ${label} <span class="cs-spell-chevron" aria-hidden="true">${chevron}</span>
+    </button>`;
+  }
+
+  function abilityDetailsPanel(ability, expanded) {
+    if (!expanded) return "";
+    const safeId = escapeHtml(ability.id);
+    return `<div class="cs-spell-details cls-ability-card-details" id="cls-ability-details-${safeId}">
+      <p class="cs-spell-view-desc">${escapeHtml(ability.description || "")}</p>
+    </div>`;
+  }
+
   function renderAbilityCards(items, sectionDisabled) {
     return items.map((item) => {
       const ability = item.ability;
@@ -690,6 +708,7 @@
       const cost = item.cost;
       const isCurrent = item.isCurrent;
       const selected = abilityModalSelectedIds.includes(ability.id);
+      const expanded = abilityModalExpandedIds.has(ability.id);
       const xpLabel = cost ? cost + " XP" : "";
       const reasonText = reasons.length ? reasons.join(" · ") : "";
       // Selected cards stay clickable so you can unselect/clear them even if prereqs break.
@@ -699,15 +718,22 @@
         selected ? "is-selected" : "",
         cardDisabled ? "is-disabled" : "",
         isCurrent ? "is-current" : "",
+        expanded ? "is-expanded" : "",
       ].filter(Boolean).join(" ");
-      return `<button type="button" class="${classes}" data-ability-id="${escapeHtml(ability.id)}" data-selectable="${selectable ? "1" : "0"}" aria-pressed="${selected ? "true" : "false"}"${cardDisabled ? ' aria-disabled="true"' : ""}>
-        <span class="cls-ability-card-header">
-          <span class="cls-ability-card-title">${escapeHtml(ability.name)}</span>
-          ${xpLabel ? `<span class="cls-ability-card-xp">${escapeHtml(xpLabel)}</span>` : ""}
-        </span>
-        <span class="cls-ability-card-body">${escapeHtml(ability.description)}</span>
-        ${reasonText ? `<span class="cls-ability-card-reason">${escapeHtml(reasonText)}</span>` : ""}
-      </button>`;
+      const safeId = escapeHtml(ability.id);
+      return `<div class="${classes}">
+        <div class="cls-ability-card-top">
+          <button type="button" class="cls-ability-card-select" data-ability-id="${safeId}" data-selectable="${selectable ? "1" : "0"}" aria-pressed="${selected ? "true" : "false"}"${cardDisabled ? " disabled" : ""}>
+            <span class="cls-ability-card-header">
+              <span class="cls-ability-card-title">${escapeHtml(ability.name)}</span>
+              ${xpLabel ? `<span class="cls-ability-card-xp">${escapeHtml(xpLabel)}</span>` : ""}
+            </span>
+            ${reasonText ? `<span class="cls-ability-card-reason">${escapeHtml(reasonText)}</span>` : ""}
+          </button>
+          ${abilityDetailsToggle(ability.id, expanded)}
+        </div>
+        ${abilityDetailsPanel(ability, expanded)}
+      </div>`;
     }).join("");
   }
 
@@ -738,6 +764,7 @@
     abilityModalLine = lineIndex;
     abilityModalSelectedIds = trainedAbilityIdsInOrder();
     abilityModalMessage = "";
+    abilityModalExpandedIds.clear();
     renderAbilityModal();
   }
 
@@ -745,6 +772,7 @@
     abilityModalLine = null;
     abilityModalSelectedIds = [];
     abilityModalMessage = "";
+    abilityModalExpandedIds.clear();
     if (el.modalRoot && abilityEditLine == null) el.modalRoot.innerHTML = "";
   }
 
@@ -756,6 +784,7 @@
     abilityModalLine = null;
     abilityModalSelectedIds = [];
     abilityModalMessage = "";
+    abilityModalExpandedIds.clear();
     renderAbilityEditModal();
   }
 
@@ -1110,9 +1139,17 @@
           applyAbilityEdit();
           return;
         }
-        const card = e.target.closest(".cls-ability-card");
-        if (card) {
-          trySelectAbilityCard(card.dataset.abilityId);
+        const detailsBtn = e.target.closest("[data-ability-details]");
+        if (detailsBtn) {
+          const id = detailsBtn.dataset.abilityDetails;
+          if (abilityModalExpandedIds.has(id)) abilityModalExpandedIds.delete(id);
+          else abilityModalExpandedIds.add(id);
+          renderAbilityModal();
+          return;
+        }
+        const selectBtn = e.target.closest(".cls-ability-card-select[data-ability-id]");
+        if (selectBtn && !selectBtn.disabled) {
+          trySelectAbilityCard(selectBtn.dataset.abilityId);
         }
       });
     }
