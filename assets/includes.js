@@ -871,10 +871,29 @@ function ymiatBindLangSwitch() {
     initSubmenuTouchToggle(placeBranchFlyout);
   }
 
+  function ensureFavicons(assetsPath){
+    if(!document.head) return;
+    const base = (assetsPath || '') + 'assets/';
+    document.head.querySelectorAll('link[data-ymiat-favicon]').forEach(el => el.remove());
+
+    [
+      { rel: 'icon', type: 'image/svg+xml', href: base + 'favicon.svg' },
+      { rel: 'icon', type: 'image/x-icon', href: base + 'favicon.ico', sizes: 'any' },
+      { rel: 'apple-touch-icon', href: base + 'favicon-512.png' }
+    ].forEach(attrs => {
+      const link = document.createElement('link');
+      link.setAttribute('data-ymiat-favicon', '1');
+      Object.keys(attrs).forEach(key => link.setAttribute(key, attrs[key]));
+      document.head.appendChild(link);
+    });
+  }
+
   function loadIncludes(){
     const locale = ymiatDetectLocale();
     const rootPath = getRootPath();
     const assetsPath = getAssetsPath();
+
+    ensureFavicons(assetsPath);
 
     const navPlaceholder = document.querySelector('[data-include="nav"]');
     if(navPlaceholder){

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="YMIAT">
+  <!-- Compact RPG mark: purple badge + gold d20, readable at 16px -->
+  <rect width="32" height="32" rx="7" fill="#4c1d95"/>
+  <rect x="1.5" y="1.5" width="29" height="29" rx="5.5" fill="none" stroke="#c9a227" stroke-width="1.75"/>
+  <!-- Outer d20 silhouette -->
+  <path fill="#c9a227" d="M16 4.5 26 10.2v11.6L16 27.5 6 21.8V10.2Z"/>
+  <!-- Inner face -->
+  <path fill="#3b1575" d="M16 7 23.8 11.4v9.2L16 25 8.2 20.6v-9.2Z"/>
+  <!-- Top facet highlight -->
+  <path fill="#d4af37" d="M16 7 23.8 11.4 16 14.6 8.2 11.4Z"/>
+  <!-- Facet edges -->
+  <path fill="none" stroke="#c9a227" stroke-width="1" stroke-linejoin="round"
+        d="M16 14.6 23.8 11.4v9.2L16 25 8.2 20.6v-9.2Z M8.2 11.4 16 25 23.8 11.4"/>
+  <!-- Center pip -->
+  <circle cx="16" cy="17.6" r="1.35" fill="#c9a227"/>
+</svg>
