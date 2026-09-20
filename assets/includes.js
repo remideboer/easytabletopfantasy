@@ -204,6 +204,15 @@ function ymiatDetectLocale() {
   return parts[0] === 'nl' ? 'nl' : 'en';
 }
 
+/** Legal footer only on the home page (both locales); legal page already has the text in main. */
+function ymiatShouldShowLegalFooter() {
+  const parts = ymiatSiteParts();
+  const after = parts[0] === 'nl' ? parts.slice(1) : parts.slice();
+  if (after.length === 0) return true;
+  if (after.length === 1 && after[0] === 'index.html') return true;
+  return false;
+}
+
 function ymiatPathDepth() {
   const parts = ymiatSiteParts();
   if (!parts.length) return 0;
@@ -913,7 +922,11 @@ function ymiatBindLangSwitch() {
 
     const footerPlaceholder = document.querySelector('[data-include="footer"]');
     if(footerPlaceholder){
-      footerPlaceholder.innerHTML = ymiatBuildFooter(locale);
+      if(ymiatShouldShowLegalFooter()){
+        footerPlaceholder.innerHTML = ymiatBuildFooter(locale);
+      } else {
+        footerPlaceholder.remove();
+      }
     }
   }
 
