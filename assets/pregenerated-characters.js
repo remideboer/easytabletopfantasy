@@ -249,10 +249,16 @@
 
     let spellsHtml = "";
     if (vm.spells) {
+      function spellListOrSpace(items) {
+        const list = items || [];
+        if (list.length) return list.join(", ");
+        // Two blank writing rows (no ruled lines) when nothing is selected yet.
+        return '<div class="pg-write-space pg-write-space--spells" aria-hidden="true"></div>';
+      }
       spellsHtml =
         '<div class="pg-section"><h3 class="pg-section-title">Spells</h3>' +
-        '<p class="pg-prose"><span class="pg-label">Cantrips</span>' + (vm.spells.cantrips || []).join(", ") + "</p>" +
-        '<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Voorbereid" : "Prepared") + "</span>" + (vm.spells.prepared || []).join(", ") + "</p>";
+        '<div class="pg-person-field"><span class="pg-label">Cantrips</span>' + spellListOrSpace(vm.spells.cantrips) + "</div>" +
+        '<div class="pg-person-field"><span class="pg-label">' + (lang === "nl" ? "Voorbereid" : "Prepared") + "</span>" + spellListOrSpace(vm.spells.prepared) + "</div>";
       if (vm.spells.note) {
         spellsHtml += '<p class="pg-prose">' + vm.spells.note + "</p>";
       }
@@ -263,19 +269,20 @@
       return "<li>" + item + "</li>";
     }).join("") || "<li>—</li>";
 
-    const personBits = [];
-    if (vm.motivation) {
-      personBits.push('<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Motivatie" : "Motivation") + "</span>" + vm.motivation + "</p>");
-    }
-    if (vm.personality) {
-      personBits.push('<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Persoonlijkheid" : "Personality") + "</span>" + vm.personality + "</p>");
-    }
-    if (vm.background) {
-      personBits.push('<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Achtergrond" : "Background") + "</span>" + vm.background + "</p>");
-    }
-    if (!personBits.length) {
-      personBits.push('<p class="pg-prose">' + (vm.concept || "—") + "</p>");
-    }
+    const personFields = [
+      { key: "motivation", en: "Motivation", nl: "Motivatie" },
+      { key: "personality", en: "Personality", nl: "Persoonlijkheid" },
+      { key: "background", en: "Background", nl: "Achtergrond" },
+    ];
+    const personBits = personFields.map(function (field) {
+      const label = lang === "nl" ? field.nl : field.en;
+      const text = String(vm[field.key] || "").trim();
+      // Always keep header + writing room so players can fill blanks on paper/PDF.
+      const body = text
+        ? '<p class="pg-prose">' + text + "</p>"
+        : '<div class="pg-write-space" aria-hidden="true"></div>';
+      return '<div class="pg-person-field"><span class="pg-label">' + label + "</span>" + body + "</div>";
+    });
 
     let chrome = "";
     if (includeChrome) {

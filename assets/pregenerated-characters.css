@@ -190,6 +190,16 @@
 .pg-prose{margin:0 0 6px;color:#222}
 .pg-prose:last-child{margin-bottom:0}
 .pg-label{font-weight:700;display:block;margin:0 0 1px;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:#444}
+.pg-person-field{margin:0 0 8px}
+.pg-person-field:last-child{margin-bottom:0}
+.pg-write-space{
+  display:block;
+  min-height:2.6em;
+  margin:2px 0 0;
+}
+.pg-write-space--spells{
+  min-height:2.4em; /* ~2 handwriting rows */
+}
 .pg-foot-note{
   grid-column:1/-1;
   padding:4px 12px 6px;

@@ -782,14 +782,15 @@
 
     const className = cls ? cls.name : "—";
     const bgName = background ? background.name : "";
-    const conceptParts = [className !== "—" ? className : "", bgName].filter(Boolean);
+    const subclassName = sub ? sub.name : "";
 
     return {
       name: c.name || (langNl ? "Naamloos" : "Unnamed"),
       className: className,
       level: c.level,
-      concept: conceptParts.join(" · "),
-      role: sub ? sub.name : className,
+      // Meta line after Level: subclass (background already appears in the facts row).
+      concept: subclassName,
+      role: subclassName || className,
       lineageName: lineage ? lineage.name : "—",
       heritageName: heritage ? heritage.name : "—",
       backgroundName: bgName || "—",
