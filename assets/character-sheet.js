@@ -684,6 +684,23 @@
       .filter(Boolean);
   }
 
+  /** Parse lineage HTML body into { name, text } trait lines for PDF Person block. */
+  function parseLineageTraits(lineage) {
+    if (!lineage || !lineage.body) return [];
+    const traits = [];
+    const re = /<p>\s*<strong>([^<]+)<\/strong>\s*([\s\S]*?)<\/p>/gi;
+    let m;
+    while ((m = re.exec(lineage.body))) {
+      const name = String(m[1] || "").replace(/\.$/, "").trim();
+      const text = String(m[2] || "")
+        .replace(/<[^>]+>/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (name && text) traits.push({ name: name, text: text });
+    }
+    return traits;
+  }
+
   function formatSaveShort(cls) {
     if (!cls || !cls.saves) return "—";
     return String(cls.saves).replace(/\s+on save/i, "").trim() || "—";
@@ -836,6 +853,7 @@
       motivation: "",
       personality: "",
       background: "",
+      lineageTraits: parseLineageTraits(lineage),
       equipment: equipment,
       footer: "YMIAT · " + (langNl ? "Personageblad" : "Character sheet") + " · L" + c.level,
       downloadHref: "",
@@ -919,12 +937,69 @@
     return el.pgExport.querySelector(".pg-sheet");
   }
 
+  /**
+   * All learned spells as printable card objects, sorted by circle then name.
+   * Spellbook casters get prepared true/false on leveled spells; others null.
+   */
+  function buildSpellCardsForExport(c) {
+    if (!c || !Array.isArray(c.learnedSpellIds) || !c.learnedSpellIds.length) return [];
+    const cls = findClass(c);
+    const tiered = usesLearnedTier(spellMode(cls));
+    const preparedIds = new Set(c.preparedSpellIds || []);
+    return c.learnedSpellIds
+      .map(spellById)
+      .filter(Boolean)
+      .sort(function (a, b) {
+        const d = (a.circle || 0) - (b.circle || 0);
+        return d !== 0 ? d : String(a.name).localeCompare(String(b.name));
+      })
+      .map(function (s) {
+        return {
+          id: s.id,
+          name: s.name,
+          circle: s.circle,
+          school: s.school || "",
+          castingTime: s.castingTime || "",
+          range: s.range || "",
+          duration: s.duration || "",
+          components: s.components || "",
+          description: s.description || "",
+          prepared: tiered && s.circle > 0 ? preparedIds.has(s.id) : null,
+        };
+      });
+  }
+
+  function renderSpellPagesHtmlForChar(c) {
+    if (typeof window.ymiatRenderPregenSpellPagesHtml !== "function") return "";
+    const cards = buildSpellCardsForExport(c);
+    if (!cards.length) return "";
+    return window.ymiatRenderPregenSpellPagesHtml(cards, {
+      characterName: c.name || "",
+      lang: sheetLocale(),
+      perPage: 6,
+    });
+  }
+
+  function addCanvasToPdf(pdf, canvas, margin) {
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const maxW = pageW - margin * 2;
+    const maxH = pageH - margin * 2;
+    const ratio = Math.min(maxW / canvas.width, maxH / canvas.height);
+    const drawW = canvas.width * ratio;
+    const drawH = canvas.height * ratio;
+    const x = (pageW - drawW) / 2;
+    const y = (pageH - drawH) / 2;
+    pdf.addImage(canvas.toDataURL("image/png"), "PNG", x, y, drawW, drawH);
+  }
+
   /** Print uses an isolated iframe so conflicting page @page/portrait rules cannot win. */
   function printPregenSheet() {
     if (!char || typeof window.ymiatRenderPregenSheetHtml !== "function") return;
     const lang = sheetLocale();
     const vm = buildPregenViewModel(char);
     const sheetHtml = window.ymiatRenderPregenSheetHtml(vm, { lang: lang, includeChrome: false });
+    const spellHtml = renderSpellPagesHtmlForChar(char);
     const cssHref = new URL(rp("assets/pregenerated-characters.css"), window.location.href).href;
 
     const iframe = document.createElement("iframe");
@@ -952,7 +1027,8 @@
       ".pg-head{display:grid !important;grid-template-columns:minmax(11rem,1.05fr) minmax(0,1.7fr) !important}" +
       ".pg-col{border-right:1px solid #bbb !important;border-bottom:0 !important}" +
       ".pg-col:last-child{border-right:0 !important}" +
-      "</style></head><body>" + sheetHtml + "</body></html>"
+      ".pg-spell-page{page-break-before:always;break-before:page;width:auto;min-height:0;border:0;padding:0}" +
+      "</style></head><body>" + sheetHtml + spellHtml + "</body></html>"
     );
     doc.close();
 
@@ -993,6 +1069,8 @@
       cleanupPgExport();
       return;
     }
+    const spellHtml = renderSpellPagesHtmlForChar(char);
+    if (spellHtml) el.pgExport.insertAdjacentHTML("beforeend", spellHtml);
     el.pgExport.classList.add("cs-pg-export--ready");
 
     const label = t("exportPdf", "Export PDF");
@@ -1011,28 +1089,25 @@
         throw new Error("PDF libraries unavailable");
       }
 
-      // High scale for sharp text; A4 landscape usable area ≈ 297−16 × 210−16 mm.
-      const canvas = await html2canvas(sheetEl, {
+      const margin = 8;
+      const captureOpts = {
         scale: 2,
         backgroundColor: "#ffffff",
         logging: false,
         useCORS: true,
-      });
-      const imgData = canvas.toDataURL("image/png");
+      };
       const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
-      const pageW = pdf.internal.pageSize.getWidth();
-      const pageH = pdf.internal.pageSize.getHeight();
-      const margin = 8;
-      const maxW = pageW - margin * 2;
-      const maxH = pageH - margin * 2;
-      const imgW = canvas.width;
-      const imgH = canvas.height;
-      const ratio = Math.min(maxW / imgW, maxH / imgH);
-      const drawW = imgW * ratio;
-      const drawH = imgH * ratio;
-      const x = (pageW - drawW) / 2;
-      const y = (pageH - drawH) / 2;
-      pdf.addImage(imgData, "PNG", x, y, drawW, drawH);
+
+      const sheetCanvas = await html2canvas(sheetEl, captureOpts);
+      addCanvasToPdf(pdf, sheetCanvas, margin);
+
+      const spellPages = el.pgExport.querySelectorAll(".pg-spell-page");
+      for (let i = 0; i < spellPages.length; i++) {
+        pdf.addPage();
+        const pageCanvas = await html2canvas(spellPages[i], captureOpts);
+        addCanvasToPdf(pdf, pageCanvas, margin);
+      }
+
       pdf.save(pdfSafeFilename(char.name));
     } catch (err) {
       console.error(err);

@@ -275,19 +275,35 @@
       return "<li>" + item + "</li>";
     }).join("") || "<li>—</li>";
 
+    const personBits = [];
+    const lineageTraits = Array.isArray(vm.lineageTraits) ? vm.lineageTraits : [];
+    if (lineageTraits.length) {
+      const traitLines = lineageTraits.map(function (trait) {
+        const label = String(trait.name || "").replace(/\.$/, "");
+        const body = String(trait.text || "").trim();
+        if (!label || !body) return "";
+        return '<p class="pg-trait"><strong>' + label + ".</strong> " + body + "</p>";
+      }).filter(Boolean).join("");
+      personBits.push(
+        '<div class="pg-person-field">' +
+        '<span class="pg-label">' + (lang === "nl" ? "Lineage-traits" : "Lineage traits") + "</span>" +
+        '<div class="pg-trait-list">' + traitLines + "</div>" +
+        "</div>"
+      );
+    }
     const personFields = [
       { key: "motivation", en: "Motivation", nl: "Motivatie" },
       { key: "personality", en: "Personality", nl: "Persoonlijkheid" },
       { key: "background", en: "Background", nl: "Achtergrond" },
     ];
-    const personBits = personFields.map(function (field) {
+    personFields.forEach(function (field) {
       const label = lang === "nl" ? field.nl : field.en;
       const text = String(vm[field.key] || "").trim();
       // Always keep header + writing room so players can fill blanks on paper/PDF.
       const body = text
         ? '<p class="pg-prose">' + text + "</p>"
         : '<div class="pg-write-space" aria-hidden="true"></div>';
-      return '<div class="pg-person-field"><span class="pg-label">' + label + "</span>" + body + "</div>";
+      personBits.push('<div class="pg-person-field"><span class="pg-label">' + label + "</span>" + body + "</div>");
     });
 
     let chrome = "";
@@ -416,6 +432,104 @@
 
   window.ymiatRenderPregenSheetHtml = renderPgSheetHtml;
   window.ymiatPregenViewModelFromJson = viewModelFromJsonChar;
+  window.ymiatRenderPregenSpellPagesHtml = renderPregenSpellPagesHtml;
+
+  /**
+   * Render B&W spell-card pages (4 cards / landscape page) for PDF/print.
+   * @param {Array} spells card objects from the character sheet
+   * @param {object} [options]
+   * @param {string} [options.characterName]
+   * @param {string} [options.lang]
+   * @param {number} [options.perPage=6]
+   */
+  function renderPregenSpellPagesHtml(spells, options) {
+    options = options || {};
+    const lang = options.lang || locale();
+    const perPage = options.perPage || 6;
+    const charName = options.characterName || "";
+    const list = Array.isArray(spells) ? spells.slice() : [];
+    if (!list.length) return "";
+
+    function esc(s) {
+      return String(s == null ? "" : s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function levelBadge(circle) {
+      const n = Number(circle) || 0;
+      if (n <= 0) return lang === "nl" ? "Cantrip" : "Cantrip";
+      return "L" + n;
+    }
+
+    function statusBadge(prepared) {
+      if (prepared === true) return lang === "nl" ? "Voorbereid" : "Prepared";
+      if (prepared === false) return lang === "nl" ? "Known" : "Known";
+      return "";
+    }
+
+    function descHtml(text) {
+      const raw = String(text || "").trim();
+      if (!raw) return "<p>—</p>";
+      return raw.split(/\n+/).filter(Boolean).map(function (para) {
+        return "<p>" + esc(para) + "</p>";
+      }).join("");
+    }
+
+    function cardHtml(spell) {
+      const level = levelBadge(spell.circle);
+      const status = statusBadge(spell.prepared);
+      const metaBits = [
+        spell.school,
+        spell.castingTime,
+        spell.range ? (lang === "nl" ? "Bereik: " : "Range: ") + spell.range : "",
+        spell.duration ? (lang === "nl" ? "Duur: " : "Duration: ") + spell.duration : "",
+        spell.components ? (lang === "nl" ? "Comp: " : "Comp: ") + spell.components : "",
+      ].filter(Boolean);
+      return (
+        '<article class="pg-spell-card">' +
+        '<div class="pg-spell-card-head">' +
+        '<h4 class="pg-spell-card-name">' + esc(spell.name) + "</h4>" +
+        '<div class="pg-spell-card-badges">' +
+        '<span class="pg-spell-badge pg-spell-badge--level">' + esc(level) + "</span>" +
+        (status ? '<span class="pg-spell-badge pg-spell-badge--status">' + esc(status) + "</span>" : "") +
+        "</div></div>" +
+        '<p class="pg-spell-card-meta">' + esc(metaBits.join(" · ")) + "</p>" +
+        '<div class="pg-spell-card-body">' + descHtml(spell.description) + "</div>" +
+        "</article>"
+      );
+    }
+
+    const pages = [];
+    for (let i = 0; i < list.length; i += perPage) {
+      pages.push(list.slice(i, i + perPage));
+    }
+
+    const title = lang === "nl" ? "Spells" : "Spells";
+    return (
+      '<div class="pg-spell-pages">' +
+      pages.map(function (pageSpells, pageIdx) {
+        const cards = pageSpells.map(cardHtml).join("");
+        // Pad empty slots so the 3-column grid stays even on the last page.
+        let pad = "";
+        for (let p = pageSpells.length; p < perPage; p++) {
+          pad += '<div class="pg-spell-card" aria-hidden="true" style="visibility:hidden;border:0"></div>';
+        }
+        return (
+          '<section class="pg-spell-page" data-spell-page="' + (pageIdx + 1) + '">' +
+          '<div class="pg-spell-page-head">' +
+          '<p class="pg-spell-page-title">' + esc(title) + (charName ? " · " + esc(charName) : "") + "</p>" +
+          '<p class="pg-spell-page-sub">' + (lang === "nl" ? "Pagina" : "Page") + " " + (pageIdx + 2) + "</p>" +
+          "</div>" +
+          '<div class="pg-spell-grid">' + cards + pad + "</div>" +
+          "</section>"
+        );
+      }).join("") +
+      "</div>"
+    );
+  }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
