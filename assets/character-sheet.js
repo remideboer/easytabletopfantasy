@@ -826,22 +826,23 @@
       const learned = c.learnedSpellIds.map(spellById).filter(Boolean);
       const cantrips = learned.filter((s) => s.circle === 0).map((s) => s.name);
       const mode = spellMode(cls);
-      let prepared = [];
-      let knownUnprepared;
+      const leveledLabels = learned.filter((s) => s.circle > 0).map(formatSpellExportLabel);
       if (usesLearnedTier(mode)) {
         const preparedIds = new Set(c.preparedSpellIds);
-        prepared = c.preparedSpellIds
+        const prepared = c.preparedSpellIds
           .map(spellById)
           .filter((s) => s && s.circle > 0)
           .map(formatSpellExportLabel);
-        knownUnprepared = learned
+        const knownUnprepared = learned
           .filter((s) => s.circle > 0 && !preparedIds.has(s.id))
           .map(formatSpellExportLabel);
+        spells = { cantrips: cantrips, prepared: prepared, knownUnprepared: knownUnprepared, note: "" };
+      } else if (mode === "known" || mode === "known-formula") {
+        spells = { cantrips: cantrips, known: leveledLabels, note: "" };
       } else {
-        prepared = learned.filter((s) => s.circle > 0).map(formatSpellExportLabel);
+        // full (and any other prepare-from-list mode)
+        spells = { cantrips: cantrips, prepared: leveledLabels, note: "" };
       }
-      spells = { cantrips: cantrips, prepared: prepared, note: "" };
-      if (knownUnprepared) spells.knownUnprepared = knownUnprepared;
     }
 
     const className = cls ? cls.name : "—";
@@ -2582,9 +2583,13 @@
     }
 
     const unmatched = [];
+    const notOnList = [];
     const learned = [];
     const prepared = [];
     const seen = new Set();
+    // Only import spells the sheet can manage (class list + circle for level);
+    // otherwise they land in learnedSpellIds with no unlearn checkbox.
+    const eligibleIds = new Set(eligibleSpells(c).map((s) => s.id));
 
     entries.forEach((entry) => {
       const def = entry.definition || entry;
@@ -2593,6 +2598,10 @@
       const match = ddbMatchExact(SPELLS, name);
       if (!match) {
         unmatched.push(name);
+        return;
+      }
+      if (!eligibleIds.has(match.id)) {
+        if (!notOnList.includes(name)) notOnList.push(name);
         return;
       }
       if (seen.has(match.id)) {
@@ -2617,8 +2626,9 @@
       return s && s.circle > 0;
     });
 
+    const isKnownMode = mode === "known" || mode === "known-formula";
     c.learnedSpellIds = cantrips.concat(leveled);
-    if (mode === "known" || mode === "known-formula") {
+    if (isKnownMode) {
       c.preparedSpellIds = [];
     } else if (mode === "full") {
       const prepSource = prepared.length ? prepared : leveled;
@@ -2638,15 +2648,52 @@
     } finally {
       char = prevActive;
     }
-    if (c.learnedSpellIds.length < beforeLearn || c.preparedSpellIds.length < beforePrep) {
+
+    // Known casters: keep the full imported known list for sheet/export even if
+    // over the YMIAT known cap (cantrips still clamped). Soft over-cap on import only.
+    if (isKnownMode) {
+      const keptCantrips = c.learnedSpellIds.filter((id) => {
+        const s = spellById(id);
+        return s && s.circle === 0;
+      });
+      if (keptCantrips.length < cantrips.length) {
+        report.push("Some imported cantrips were trimmed to fit YMIAT cantrip caps for this class and level.");
+      }
+      if (leveled.length) {
+        c.learnedSpellIds = keptCantrips.concat(leveled);
+        const activeCap = computeActiveCap(c);
+        if (leveled.length > activeCap) {
+          report.push(
+            `Imported ${leveled.length} known spell(s) (YMIAT known cap is ${activeCap}) — all kept for listing; trim in Manage Spells if needed.`
+          );
+        }
+      }
+    } else if (c.learnedSpellIds.length < beforeLearn || c.preparedSpellIds.length < beforePrep) {
       report.push("Some imported spells were trimmed to fit YMIAT cantrip/known/prepared caps for this class and level.");
     }
+
     if (unmatched.length) {
       const sample = unmatched.slice(0, 8).join(", ");
       const more = unmatched.length > 8 ? ` (+${unmatched.length - 8} more)` : "";
       report.push(`Could not match ${unmatched.length} D&D Beyond spell(s) to YMIAT: ${sample}${more}.`);
-    } else if (learned.length) {
-      report.push(`Imported ${learned.length} spell(s) from D&D Beyond (verify prepared/known lists).`);
+    }
+    if (notOnList.length) {
+      const sample = notOnList.slice(0, 8).join(", ");
+      const more = notOnList.length > 8 ? ` (+${notOnList.length - 8} more)` : "";
+      report.push(
+        `Skipped ${notOnList.length} spell(s) not on this class's YMIAT list (not marked known): ${sample}${more}.`
+      );
+    }
+
+    if (c.learnedSpellIds.length) {
+      const names = c.learnedSpellIds
+        .map(spellById)
+        .filter(Boolean)
+        .map((s) => s.name);
+      const sample = names.slice(0, 12).join(", ");
+      const more = names.length > 12 ? ` (+${names.length - 12} more)` : "";
+      const kind = isKnownMode ? "known" : mode === "full" ? "prepared" : "spellbook";
+      report.push(`Imported ${names.length} ${kind} spell(s): ${sample}${more}.`);
     }
   }
 

@@ -257,8 +257,18 @@
       }
       spellsHtml =
         '<div class="pg-section"><h3 class="pg-section-title">Spells</h3>' +
-        '<div class="pg-person-field"><span class="pg-label">Cantrips</span>' + spellListOrSpace(vm.spells.cantrips) + "</div>" +
-        '<div class="pg-person-field"><span class="pg-label">' + (lang === "nl" ? "Voorbereid" : "Prepared") + "</span>" + spellListOrSpace(vm.spells.prepared) + "</div>";
+        '<div class="pg-person-field"><span class="pg-label">Cantrips</span>' + spellListOrSpace(vm.spells.cantrips) + "</div>";
+      if (Array.isArray(vm.spells.known)) {
+        spellsHtml +=
+          '<div class="pg-person-field"><span class="pg-label">' +
+          (lang === "nl" ? "Bekend" : "Known") +
+          "</span>" + spellListOrSpace(vm.spells.known) + "</div>";
+      } else {
+        spellsHtml +=
+          '<div class="pg-person-field"><span class="pg-label">' +
+          (lang === "nl" ? "Voorbereid" : "Prepared") +
+          "</span>" + spellListOrSpace(vm.spells.prepared) + "</div>";
+      }
       if (Array.isArray(vm.spells.knownUnprepared)) {
         spellsHtml +=
           '<div class="pg-person-field"><span class="pg-label">' +
