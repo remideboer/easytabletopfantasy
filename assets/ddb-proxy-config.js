@@ -1,9 +1,8 @@
 /**
- * Optional D&D Beyond character fetch proxy (Cloudflare Worker).
- * Leave empty to keep paste-JSON as the reliable path.
+ * D&D Beyond character fetch proxy (Cloudflare Worker).
+ * Default: set the workers.dev URL so Import fetches in one click.
+ * Leave empty for paste-only fallback.
  *
  * Deploy: cd workers/ddb-character-proxy && npx wrangler deploy
- * Then set the workers.dev (or custom) URL below, e.g.:
- *   window.YMIAT_DDB_PROXY_URL = "https://ymiat-ddb-proxy.YOUR_SUBDOMAIN.workers.dev";
  */
-window.YMIAT_DDB_PROXY_URL = window.YMIAT_DDB_PROXY_URL || "";
+window.YMIAT_DDB_PROXY_URL = "https://ymiat-ddb-character-proxy.gitaarremi.workers.dev";

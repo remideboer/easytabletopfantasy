@@ -5126,6 +5126,24 @@
   .cs-modal-body{overflow-y:auto;padding:8px 16px 16px}
   .cs-modal-body .cs-label{display:block;margin:12px 0 4px}
   .cs-modal-body textarea.cs-input{font-family:var(--mono);font-size:.85rem;resize:vertical}
+  .cs-ddb-fallback{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+  }
+  .cs-ddb-fallback[hidden]{display:none !important}
+  .cs-ddb-review-list{
+    margin:8px 0 14px;
+    padding-left:1.25rem;
+    font-size:.9rem;
+    line-height:1.45;
+  }
+  .cs-ddb-review-list li{margin:6px 0}
+  #cs-ddb-json-link.is-disabled{
+    pointer-events:none;
+    opacity:.55;
+    text-decoration:none;
+  }
   .cs-ddb-actions{margin:10px 0}
   .cs-ddb-actions--row{
     display:flex;

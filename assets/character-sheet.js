@@ -112,6 +112,8 @@
   let languageModalOpen = false;
   let talentModalOpen = false;
   let ddbModalOpen = false;
+  let ddbReview = null; // { name, lines } after import, shown as in-app modal
+  let ddbFallbackVisible = false;
   const talentModalExpandedIds = new Set();
 
   const el = {};
@@ -1378,6 +1380,8 @@
       renderLanguageModal();
     } else if (talentModalOpen && char) {
       renderTalentModal();
+    } else if (ddbReview) {
+      renderDdbReviewModal();
     } else if (ddbModalOpen) {
       renderDdbImportModal();
     } else {
@@ -2113,6 +2117,8 @@
     talentModalOpen = false;
     talentModalExpandedIds.clear();
     ddbModalOpen = false;
+    ddbReview = null;
+    ddbFallbackVisible = false;
     if (!id) {
       store.activeId = null;
       saveStore();
@@ -2137,6 +2143,8 @@
     talentModalOpen = false;
     talentModalExpandedIds.clear();
     ddbModalOpen = false;
+    ddbReview = null;
+    ddbFallbackVisible = false;
     const c = defaultCharacter();
     store.characters.push(c);
     store.activeId = c.id;
@@ -2155,6 +2163,8 @@
     talentModalOpen = false;
     talentModalExpandedIds.clear();
     ddbModalOpen = false;
+    ddbReview = null;
+    ddbFallbackVisible = false;
     const name = char.name || "Unnamed";
     if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
@@ -2646,11 +2656,14 @@
     store.activeId = character.id;
     saveStore();
     ddbModalOpen = false;
+    ddbFallbackVisible = false;
+    if (report.length) {
+      ddbReview = { name: character.name || "Unnamed", lines: report.slice() };
+    } else {
+      ddbReview = null;
+    }
     render();
     syncToolbarFoldout(true);
-    if (report.length) {
-      alert(`Imported "${character.name}" from D&D Beyond.\n\nReview needed:\n- ${report.join("\n- ")}`);
-    }
   }
 
   async function fetchDdbCharacter(idOrUrl) {
@@ -2658,9 +2671,10 @@
     if (!id) throw new Error("Couldn't find a D&D Beyond character ID in that input.");
 
     const proxyBase = String(window.YMIAT_DDB_PROXY_URL || "").replace(/\/$/, "");
-    const url = proxyBase
-      ? `${proxyBase}/?id=${encodeURIComponent(id)}`
-      : `https://character-service.dndbeyond.com/character/v5/character/${id}`;
+    if (!proxyBase) {
+      throw new Error("No proxy configured — use the paste fallback below.");
+    }
+    const url = `${proxyBase}/?id=${encodeURIComponent(id)}`;
 
     const res = await fetch(url, { headers: { Accept: "application/json" } });
     let payload = null;
@@ -2677,9 +2691,7 @@
       if (payload && payload.error === "not_found") {
         throw new Error("Character not found on D&D Beyond.");
       }
-      throw new Error(proxyBase
-        ? `Proxy returned HTTP ${res.status}.`
-        : `D&D Beyond returned HTTP ${res.status}.`);
+      throw new Error(`Proxy returned HTTP ${res.status}.`);
     }
     if (!payload || !payload.data) {
       throw new Error("Unexpected response — is the character set to Public?");
@@ -2696,13 +2708,38 @@
     return id ? `https://character-service.dndbeyond.com/character/v5/character/${id}` : null;
   }
 
+  function renderDdbReviewModal() {
+    if (!ddbReview) {
+      el.modalRoot.innerHTML = "";
+      return;
+    }
+    const bullets = (ddbReview.lines || [])
+      .map((line) => `<li>${escapeHtml(line)}</li>`)
+      .join("");
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-ddb-review-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="Import review">
+        <div class="cs-modal-header">
+          <h2>Imported “${escapeHtml(ddbReview.name)}”</h2>
+          <button type="button" class="cs-modal-close" id="cs-ddb-review-close" aria-label="Close">×</button>
+        </div>
+        <div class="cs-modal-body">
+          <p class="cs-hint">Review these notes and adjust the sheet if needed.</p>
+          <ul class="cs-ddb-review-list">${bullets}</ul>
+          <div class="cs-ddb-actions">
+            <button type="button" class="btn" id="cs-ddb-review-done">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+
   function renderDdbImportModal() {
     const proxyOn = ddbProxyConfigured();
-    const proxyBlock = proxyOn
-      ? `<div class="cs-ddb-actions">
-          <button type="button" class="btn cs-btn-secondary" id="cs-ddb-fetch">Fetch via proxy</button>
-        </div>`
-      : "";
+    const showFallback = !proxyOn || ddbFallbackVisible;
+    const fallbackHidden = showFallback ? "" : " hidden";
+    const primaryHint = proxyOn
+      ? "Paste a Public D&amp;D Beyond character URL (or ID), then Import — fetched via proxy in one step."
+      : "Proxy is not configured. Use the paste fallback below.";
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-ddb-overlay">
       <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="Import from D&D Beyond">
         <div class="cs-modal-header">
@@ -2710,29 +2747,39 @@
           <button type="button" class="cs-modal-close" id="cs-ddb-close" aria-label="Close">×</button>
         </div>
         <div class="cs-modal-body">
-          <p class="cs-hint">Character must be <strong>Public</strong>. Imports abilities, gear, weapons, and matched spells (<a href="${rp("rules/conversion.html")}" target="_blank" rel="noopener">conversion rules</a>). Talents stay manual.</p>
-          <ol class="cs-ddb-steps">
-            <li>Paste your D&amp;D Beyond character URL (or ID) below.</li>
-            <li>Click <strong>Open JSON</strong> — a new tab shows raw character data.</li>
-            <li>In that tab: <kbd>Ctrl</kbd>+<kbd>A</kbd>, then <kbd>Ctrl</kbd>+<kbd>C</kbd> (Mac: <kbd>⌘</kbd>+<kbd>A</kbd> / <kbd>⌘</kbd>+<kbd>C</kbd>).</li>
-            <li>Back here: <strong>Paste from clipboard</strong> (or paste into the box), then <strong>Import</strong>.</li>
-          </ol>
+          <p class="cs-hint">${primaryHint} See <a href="${rp("rules/conversion.html")}" target="_blank" rel="noopener">conversion rules</a>. Talents stay manual.</p>
           <label class="cs-label" for="cs-ddb-input">Character URL or ID</label>
           <input type="text" id="cs-ddb-input" class="cs-input" placeholder="https://www.dndbeyond.com/characters/12345678" autocomplete="off" />
-          <div class="cs-ddb-actions cs-ddb-actions--row">
-            <button type="button" class="btn" id="cs-ddb-open-json">Open JSON</button>
-            <button type="button" class="btn cs-btn-secondary" id="cs-ddb-paste">Paste from clipboard</button>
-          </div>
-          ${proxyBlock}
-          <p id="cs-ddb-status" class="cs-hint" aria-live="polite">Enter a URL, then Open JSON.</p>
-          <label class="cs-label" for="cs-ddb-json">Character JSON</label>
-          <textarea id="cs-ddb-json" class="cs-input" rows="5" placeholder="Paste JSON here (Ctrl+V)…" spellcheck="false"></textarea>
-          <div class="cs-ddb-actions">
-            <button type="button" class="btn" id="cs-ddb-convert">Import</button>
+          ${
+            proxyOn
+              ? `<div class="cs-ddb-actions">
+            <button type="button" class="btn" id="cs-ddb-import">Import</button>
+          </div>`
+              : ""
+          }
+          <p id="cs-ddb-status" class="cs-hint" aria-live="polite">${
+            proxyOn ? "Enter a URL, then Import." : "Paste JSON below to import."
+          }</p>
+          <div id="cs-ddb-fallback" class="cs-ddb-fallback"${fallbackHidden}>
+            <h3 class="cs-subhead">Paste fallback</h3>
+            <ol class="cs-ddb-steps">
+              <li>Open the <a id="cs-ddb-json-link" href="#" target="_blank" rel="noopener">character JSON</a> (Public characters only).</li>
+              <li>Select all → copy (<kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd>).</li>
+              <li>Paste here, then Import pasted JSON.</li>
+            </ol>
+            <div class="cs-ddb-actions cs-ddb-actions--row">
+              <button type="button" class="btn cs-btn-secondary" id="cs-ddb-paste">Paste from clipboard</button>
+            </div>
+            <label class="cs-label" for="cs-ddb-json">Character JSON</label>
+            <textarea id="cs-ddb-json" class="cs-input" rows="5" placeholder="Paste JSON here (Ctrl+V)…" spellcheck="false"></textarea>
+            <div class="cs-ddb-actions">
+              <button type="button" class="btn" id="cs-ddb-import-paste">Import pasted JSON</button>
+            </div>
           </div>
         </div>
       </div>
     </div>`;
+    updateDdbJsonLink();
     const input = document.getElementById("cs-ddb-input");
     if (input) {
       requestAnimationFrame(() => input.focus());
@@ -2744,6 +2791,29 @@
     if (!status) return;
     if (isHtml) status.innerHTML = msg;
     else status.textContent = msg;
+  }
+
+  function showDdbFallback() {
+    ddbFallbackVisible = true;
+    const block = document.getElementById("cs-ddb-fallback");
+    if (block) block.hidden = false;
+    updateDdbJsonLink();
+  }
+
+  function updateDdbJsonLink() {
+    const link = document.getElementById("cs-ddb-json-link");
+    const input = document.getElementById("cs-ddb-input");
+    if (!link) return;
+    const url = ddbJsonUrl(input ? input.value.trim() : "");
+    if (url) {
+      link.href = url;
+      link.removeAttribute("aria-disabled");
+      link.classList.remove("is-disabled");
+    } else {
+      link.href = "#";
+      link.setAttribute("aria-disabled", "true");
+      link.classList.add("is-disabled");
+    }
   }
 
   function parseDdbPayloadText(raw) {
@@ -2767,17 +2837,31 @@
     applyDdbImport(payload);
   }
 
-  function openDdbJsonTab() {
+  async function importDdbViaProxy() {
     const input = document.getElementById("cs-ddb-input");
+    const btn = document.getElementById("cs-ddb-import");
     const idOrUrl = input ? input.value.trim() : "";
-    const url = ddbJsonUrl(idOrUrl);
-    if (!url) {
+    if (!extractDdbId(idOrUrl)) {
       setDdbStatus("Enter a valid D&D Beyond character URL or numeric ID first.");
       if (input) input.focus();
       return;
     }
-    window.open(url, "_blank", "noopener");
-    setDdbStatus("JSON tab opened. Select all → copy, then come back and use Paste from clipboard (or Ctrl+V in the box).");
+    if (!ddbProxyConfigured()) {
+      setDdbStatus("No proxy configured — use the paste fallback below.");
+      showDdbFallback();
+      return;
+    }
+    setDdbStatus("Importing…");
+    if (btn) btn.disabled = true;
+    try {
+      const payload = await fetchDdbCharacter(idOrUrl);
+      applyDdbImport(payload);
+    } catch (err) {
+      setDdbStatus(err && err.message ? err.message : "Import failed.");
+      showDdbFallback();
+    } finally {
+      if (btn) btn.disabled = false;
+    }
   }
 
   async function pasteDdbClipboard() {
@@ -2795,14 +2879,14 @@
       }
       fillDdbJsonBox(text);
       parseDdbPayloadText(text);
-      setDdbStatus("JSON looks good — click Import.");
-      const convertBtn = document.getElementById("cs-ddb-convert");
+      setDdbStatus("JSON looks good — click Import pasted JSON.");
+      const convertBtn = document.getElementById("cs-ddb-import-paste");
       if (convertBtn) convertBtn.focus();
     } catch (err) {
       if (err && err.name === "NotAllowedError") {
         setDdbStatus("Clipboard permission denied — click the JSON box and press Ctrl+V (⌘+V), then Import.");
       } else if (err instanceof SyntaxError) {
-        setDdbStatus("Clipboard isn’t valid character JSON. Open the JSON URL (not the character sheet), copy everything, try again.");
+        setDdbStatus("Clipboard isn’t valid character JSON. Open the JSON link, copy everything, try again.");
       } else {
         setDdbStatus(err && err.message ? err.message : "Couldn’t read clipboard — paste manually into the box.");
       }
@@ -2848,6 +2932,8 @@
     el.btnImport.addEventListener("click", importCreatorDraft);
     if (el.btnImportDdb) {
       el.btnImportDdb.addEventListener("click", () => {
+        ddbReview = null;
+        ddbFallbackVisible = !ddbProxyConfigured();
         ddbModalOpen = true;
         renderModals();
       });
@@ -3031,35 +3117,24 @@
           renderModals();
         } else if (e.target.id === "cs-ddb-overlay" || e.target.id === "cs-ddb-close") {
           ddbModalOpen = false;
+          ddbFallbackVisible = false;
           renderModals();
-        } else if (e.target.id === "cs-ddb-open-json") {
-          openDdbJsonTab();
+        } else if (e.target.id === "cs-ddb-review-overlay" || e.target.id === "cs-ddb-review-close" || e.target.id === "cs-ddb-review-done") {
+          ddbReview = null;
+          renderModals();
+        } else if (e.target.id === "cs-ddb-import") {
+          importDdbViaProxy();
         } else if (e.target.id === "cs-ddb-paste") {
           pasteDdbClipboard();
-        } else if (e.target.id === "cs-ddb-fetch") {
-          const input = document.getElementById("cs-ddb-input");
-          const idOrUrl = input ? input.value.trim() : "";
-          setDdbStatus("Fetching…");
-          e.target.disabled = true;
-          fetchDdbCharacter(idOrUrl)
-            .then((payload) => {
-              fillDdbJsonBox(JSON.stringify(payload, null, 2));
-              setDdbStatus("Fetched successfully — click Import.");
-              const convertBtn = document.getElementById("cs-ddb-convert");
-              if (convertBtn) convertBtn.focus();
-            })
-            .catch((err) => {
-              setDdbStatus(err && err.message ? err.message : "Fetch failed.");
-            })
-            .finally(() => {
-              e.target.disabled = false;
-            });
-        } else if (e.target.id === "cs-ddb-convert") {
+        } else if (e.target.id === "cs-ddb-import-paste") {
           try {
             tryImportDdbFromBox();
           } catch (err) {
             setDdbStatus(err && err.message ? err.message : "Couldn't import that JSON.");
           }
+        } else if (e.target.id === "cs-ddb-json-link" && e.target.classList.contains("is-disabled")) {
+          e.preventDefault();
+          setDdbStatus("Enter a valid character URL or ID first so the JSON link works.");
         } else if (e.target.dataset.languageRemove) {
           const lang = e.target.dataset.languageRemove;
           char.chosenLanguages = char.chosenLanguages.filter((l) => l !== lang);
@@ -3100,18 +3175,25 @@
           }
           try {
             parseDdbPayloadText(raw);
-            setDdbStatus("JSON looks good — click Import.");
+            setDdbStatus("JSON looks good — click Import pasted JSON.");
           } catch (_) {
             setDdbStatus("Paste the full character JSON (must include a \"data\" field).");
           }
+        } else if (e.target.id === "cs-ddb-input") {
+          updateDdbJsonLink();
         }
       });
 
       el.modalRoot.addEventListener("keydown", (e) => {
+        if (ddbReview) return;
         if (!ddbModalOpen) return;
         if (e.key === "Enter" && e.target && e.target.id === "cs-ddb-input") {
           e.preventDefault();
-          openDdbJsonTab();
+          if (ddbProxyConfigured()) importDdbViaProxy();
+          else {
+            showDdbFallback();
+            setDdbStatus("Proxy not configured — use paste fallback.");
+          }
         }
       });
 
@@ -3182,7 +3264,7 @@
       });
 
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || skillModalOpen || languageModalOpen || talentModalOpen || ddbModalOpen)) {
+        if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || skillModalOpen || languageModalOpen || talentModalOpen || ddbModalOpen || ddbReview)) {
           spellModalOpen = false;
           spellViewId = null;
           talentViewName = null;
@@ -3191,6 +3273,8 @@
           talentModalOpen = false;
           talentModalExpandedIds.clear();
           ddbModalOpen = false;
+          ddbReview = null;
+          ddbFallbackVisible = false;
           renderModals();
         }
       });
