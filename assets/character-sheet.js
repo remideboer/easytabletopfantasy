@@ -2583,11 +2583,12 @@
     }
 
     const unmatched = [];
-    const notOnList = [];
+    const notOnListCantrips = [];
+    const notOnListSpells = [];
     const learned = [];
     const prepared = [];
     const seen = new Set();
-    // Only import spells the sheet can manage (class list + circle for level);
+    // Only import spells/cantrips the sheet can manage (class list + circle for level);
     // otherwise they land in learnedSpellIds with no unlearn checkbox.
     const eligibleIds = new Set(eligibleSpells(c).map((s) => s.id));
 
@@ -2601,7 +2602,8 @@
         return;
       }
       if (!eligibleIds.has(match.id)) {
-        if (!notOnList.includes(name)) notOnList.push(name);
+        const bucket = match.circle === 0 ? notOnListCantrips : notOnListSpells;
+        if (!bucket.includes(name)) bucket.push(name);
         return;
       }
       if (seen.has(match.id)) {
@@ -2649,27 +2651,32 @@
       char = prevActive;
     }
 
-    // Known casters: keep the full imported known list for sheet/export even if
-    // over the YMIAT known cap (cantrips still clamped). Soft over-cap on import only.
+    // Known casters: keep the full imported known list (cantrips + leveled) for
+    // sheet/export even if over YMIAT caps. Soft over-cap on import only.
+    // Never re-add anything outside eligibleIds (unlearnable otherwise).
     if (isKnownMode) {
-      const keptCantrips = c.learnedSpellIds.filter((id) => {
-        const s = spellById(id);
-        return s && s.circle === 0;
-      });
-      if (keptCantrips.length < cantrips.length) {
-        report.push("Some imported cantrips were trimmed to fit YMIAT cantrip caps for this class and level.");
+      const eligibleCantrips = cantrips.filter((id) => eligibleIds.has(id));
+      const eligibleLeveled = leveled.filter((id) => eligibleIds.has(id));
+      c.learnedSpellIds = eligibleCantrips.concat(eligibleLeveled);
+      const activeCap = computeActiveCap(c);
+      const cCap = cantripCap(cls, c.level);
+      if (eligibleCantrips.length > cCap) {
+        report.push(
+          `Imported ${eligibleCantrips.length} cantrip(s) (YMIAT cantrip cap is ${cCap}) — all kept for listing; trim in Manage Spells if needed.`
+        );
       }
-      if (leveled.length) {
-        c.learnedSpellIds = keptCantrips.concat(leveled);
-        const activeCap = computeActiveCap(c);
-        if (leveled.length > activeCap) {
-          report.push(
-            `Imported ${leveled.length} known spell(s) (YMIAT known cap is ${activeCap}) — all kept for listing; trim in Manage Spells if needed.`
-          );
-        }
+      if (eligibleLeveled.length > activeCap) {
+        report.push(
+          `Imported ${eligibleLeveled.length} known spell(s) (YMIAT known cap is ${activeCap}) — all kept for listing; trim in Manage Spells if needed.`
+        );
       }
-    } else if (c.learnedSpellIds.length < beforeLearn || c.preparedSpellIds.length < beforePrep) {
-      report.push("Some imported spells were trimmed to fit YMIAT cantrip/known/prepared caps for this class and level.");
+    } else {
+      // Belt-and-suspenders: drop anything not on this class's YMIAT list.
+      c.learnedSpellIds = c.learnedSpellIds.filter((id) => eligibleIds.has(id));
+      c.preparedSpellIds = c.preparedSpellIds.filter((id) => c.learnedSpellIds.includes(id));
+      if (c.learnedSpellIds.length < beforeLearn || c.preparedSpellIds.length < beforePrep) {
+        report.push("Some imported spells were trimmed to fit YMIAT cantrip/known/prepared caps for this class and level.");
+      }
     }
 
     if (unmatched.length) {
@@ -2677,13 +2684,16 @@
       const more = unmatched.length > 8 ? ` (+${unmatched.length - 8} more)` : "";
       report.push(`Could not match ${unmatched.length} D&D Beyond spell(s) to YMIAT: ${sample}${more}.`);
     }
-    if (notOnList.length) {
-      const sample = notOnList.slice(0, 8).join(", ");
-      const more = notOnList.length > 8 ? ` (+${notOnList.length - 8} more)` : "";
+    function pushSkipped(kind, names) {
+      if (!names.length) return;
+      const sample = names.slice(0, 8).join(", ");
+      const more = names.length > 8 ? ` (+${names.length - 8} more)` : "";
       report.push(
-        `Skipped ${notOnList.length} spell(s) not on this class's YMIAT list (not marked known): ${sample}${more}.`
+        `Skipped ${names.length} ${kind} not on this class's YMIAT list (not marked known): ${sample}${more}.`
       );
     }
+    pushSkipped("cantrip(s)", notOnListCantrips);
+    pushSkipped("spell(s)", notOnListSpells);
 
     if (c.learnedSpellIds.length) {
       const names = c.learnedSpellIds
