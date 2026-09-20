@@ -2154,6 +2154,16 @@
       }
       const spMax = computeSpellPowerMax(c);
       c.spellPowerNow = spMax !== null ? spMax : 0;
+      // Mirror creator Finish: packages → inventory / currency / equipped.
+      const method = draft.equipmentMethod || "packages";
+      if (method === "packages" && window.ymiatStartingEquipment) {
+        const bg = byId(data.backgrounds, c.backgroundId);
+        window.ymiatStartingEquipment.applyPackageEquipment(c, {
+          classId: c.classId,
+          background: bg,
+          slotCount: INVENTORY_SLOT_COUNT,
+        });
+      }
       store.characters.push(c);
       store.activeId = c.id;
       saveStore();

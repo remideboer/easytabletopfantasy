@@ -824,12 +824,18 @@
       <div class="cc-equipment-summary">
         ${cls ? `<p><strong>Class:</strong> See starting equipment on <a href="${rp(cls.rulesUrl)}">${escapeHtml(cls.name)}</a>.</p>` : ""}
         ${bg ? `<p><strong>Background:</strong> ${escapeHtml(bg.name)} — see equipment in the panel on the right.</p>` : ""}
+        ${
+          state.equipmentMethod === "packages"
+            ? `<p class="cc-hint">Finish fills the character sheet inventory with class package gear (option A) plus your background equipment.</p>`
+            : `<p class="cc-hint">Starting wealth leaves inventory empty—buy gear on the sheet.</p>`
+        }
       </div>`;
 
     el.body.querySelectorAll('input[name="equipment-method"]').forEach((input) => {
       input.addEventListener("change", () => {
         state.equipmentMethod = input.value;
         saveState();
+        render();
       });
     });
 
@@ -1118,6 +1124,16 @@
     if (character.lineageId) {
       const lineage = byId(data.lineages, character.lineageId);
       if (lineage) Object.assign(character, parseLineageDefaults(lineage));
+    }
+
+    // Packages method: class option A + background gear → inventory / currency / equipped.
+    if (state.equipmentMethod === "packages" && window.ymiatStartingEquipment) {
+      const bg = byId(data.backgrounds, character.backgroundId);
+      window.ymiatStartingEquipment.applyPackageEquipment(character, {
+        classId: character.classId,
+        background: bg,
+        slotCount: INVENTORY_SLOT_COUNT,
+      });
     }
 
     const spellAb = spellcastingAbilityForClass(cls);
