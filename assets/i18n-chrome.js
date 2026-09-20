@@ -10,6 +10,20 @@ window.YMIAT_I18N_CHROME = {
       "switchToEn": "Switch to English",
       "switchToNl": "Schakel naar Nederlands"
     },
+    "theme": {
+      "label": "Color mode",
+      "toLight": "Switch to light mode",
+      "toDark": "Switch to dark mode",
+      "light": "Light",
+      "dark": "Dark",
+      "paletteLabel": "Color scheme",
+      "paletteTetra": "Tetra",
+      "paletteTetraRed": "Tetra red",
+      "paletteLegacy": "Legacy",
+      "paletteTetraTitle": "Tetrahedral palette from #37A2F3",
+      "paletteTetraRedTitle": "Tetra with red accents (#c50009) for stronger contrast",
+      "paletteLegacyTitle": "Previous purple and gold palette"
+    },
     "nav": {
       "logoAlt": "You-Meet-In-A-Tavern (YMIAT)",
       "rules": "Rules",
@@ -87,6 +101,20 @@ window.YMIAT_I18N_CHROME = {
       "nl": "Nederlands",
       "switchToEn": "Switch to English",
       "switchToNl": "Schakel naar Nederlands"
+    },
+    "theme": {
+      "label": "Kleurmodus",
+      "toLight": "Schakel naar lichte modus",
+      "toDark": "Schakel naar donkere modus",
+      "light": "Licht",
+      "dark": "Donker",
+      "paletteLabel": "Kleurschema",
+      "paletteTetra": "Tetra",
+      "paletteTetraRed": "Tetra rood",
+      "paletteLegacy": "Legacy",
+      "paletteTetraTitle": "Tetraedrisch palet vanaf #37A2F3",
+      "paletteTetraRedTitle": "Tetra met rode accenten (#c50009) voor meer contrast",
+      "paletteLegacyTitle": "Vorig paars-en-goud palet"
     },
     "nav": {
       "logoAlt": "You-Meet-In-A-Tavern (YMIAT)",

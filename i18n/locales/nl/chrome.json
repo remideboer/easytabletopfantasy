@@ -8,6 +8,20 @@
     "switchToEn": "Switch to English",
     "switchToNl": "Schakel naar Nederlands"
   },
+  "theme": {
+    "label": "Kleurmodus",
+    "toLight": "Schakel naar lichte modus",
+    "toDark": "Schakel naar donkere modus",
+    "light": "Licht",
+    "dark": "Donker",
+    "paletteLabel": "Kleurschema",
+    "paletteTetra": "Tetra",
+    "paletteTetraRed": "Tetra rood",
+    "paletteLegacy": "Legacy",
+    "paletteTetraTitle": "Tetraedrisch palet vanaf #37A2F3",
+    "paletteTetraRedTitle": "Tetra met rode accenten (#c50009) voor meer contrast",
+    "paletteLegacyTitle": "Vorig paars-en-goud palet"
+  },
   "nav": {
     "logoAlt": "You-Meet-In-A-Tavern (YMIAT)",
     "rules": "Regels",

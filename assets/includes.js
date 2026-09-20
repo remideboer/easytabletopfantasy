@@ -1,3 +1,67 @@
+/* Early theme/palette boot — runs before paint when includes.js is in <head>.
+   Defaults: light → tetra-red, dark → tetra. Explicit ymiat-palette wins. */
+window.ymiatDefaultPalette = function ymiatDefaultPalette(theme){
+  return theme === 'dark' ? 'tetra' : 'tetra-red';
+};
+
+(function ymiatThemeBoot(){
+  try {
+    var root = document.documentElement;
+    var storedTheme = null;
+    var storedPalette = null;
+    try {
+      storedTheme = localStorage.getItem('ymiat-theme');
+      storedPalette = localStorage.getItem('ymiat-palette');
+    } catch (err) {}
+    var theme = (storedTheme === 'light' || storedTheme === 'dark')
+      ? storedTheme
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var palette = (storedPalette === 'legacy' || storedPalette === 'tetra' || storedPalette === 'tetra-red')
+      ? storedPalette
+      : window.ymiatDefaultPalette(theme);
+    root.setAttribute('data-theme', theme);
+    root.setAttribute('data-palette', palette);
+    root.style.colorScheme = theme;
+  } catch (err) {}
+})();
+
+window.ymiatApplyTheme = function ymiatApplyTheme(theme){
+  if(theme !== 'light' && theme !== 'dark') return;
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.style.colorScheme = theme;
+  try { localStorage.setItem('ymiat-theme', theme); } catch (err) {}
+  var storedPalette = null;
+  try { storedPalette = localStorage.getItem('ymiat-palette'); } catch (err) {}
+  if(storedPalette !== 'legacy' && storedPalette !== 'tetra' && storedPalette !== 'tetra-red'){
+    var nextPalette = window.ymiatDefaultPalette(theme);
+    document.documentElement.setAttribute('data-palette', nextPalette);
+    var sel = document.getElementById('site-palette-select');
+    if(sel) sel.value = nextPalette;
+  }
+};
+
+window.ymiatApplyPalette = function ymiatApplyPalette(palette){
+  if(palette !== 'tetra' && palette !== 'legacy' && palette !== 'tetra-red') return;
+  document.documentElement.setAttribute('data-palette', palette);
+  try { localStorage.setItem('ymiat-palette', palette); } catch (err) {}
+};
+
+window.ymiatToggleTheme = function ymiatToggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  window.ymiatApplyTheme(cur === 'dark' ? 'light' : 'dark');
+  return document.documentElement.getAttribute('data-theme');
+};
+
+window.ymiatTogglePalette = function ymiatTogglePalette(){
+  var order = ['tetra', 'tetra-red', 'legacy'];
+  var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  var cur = document.documentElement.getAttribute('data-palette') || window.ymiatDefaultPalette(theme);
+  var idx = order.indexOf(cur);
+  var next = order[(idx < 0 ? 0 : idx + 1) % order.length];
+  window.ymiatApplyPalette(next);
+  return document.documentElement.getAttribute('data-palette');
+};
+
 // --- i18n chrome catalogs (also in assets/i18n-chrome.js / i18n/locales) ---
 // Auto-synced from i18n/locales/*/chrome.json — edit JSON then re-run sync if needed
 window.YMIAT_I18N_CHROME = {
@@ -10,6 +74,20 @@ window.YMIAT_I18N_CHROME = {
       "nl": "Nederlands",
       "switchToEn": "Switch to English",
       "switchToNl": "Schakel naar Nederlands"
+    },
+    "theme": {
+      "label": "Color mode",
+      "toLight": "Switch to light mode",
+      "toDark": "Switch to dark mode",
+      "light": "Light",
+      "dark": "Dark",
+      "paletteLabel": "Color scheme",
+      "paletteTetra": "Tetra",
+      "paletteTetraRed": "Tetra red",
+      "paletteLegacy": "Legacy",
+      "paletteTetraTitle": "Tetrahedral palette from #37A2F3",
+      "paletteTetraRedTitle": "Tetra with red accents (#c50009) for stronger contrast",
+      "paletteLegacyTitle": "Previous purple and gold palette"
     },
     "nav": {
       "logoAlt": "You-Meet-In-A-Tavern (YMIAT)",
@@ -88,6 +166,20 @@ window.YMIAT_I18N_CHROME = {
       "nl": "Nederlands",
       "switchToEn": "Switch to English",
       "switchToNl": "Schakel naar Nederlands"
+    },
+    "theme": {
+      "label": "Kleurmodus",
+      "toLight": "Schakel naar lichte modus",
+      "toDark": "Schakel naar donkere modus",
+      "light": "Licht",
+      "dark": "Donker",
+      "paletteLabel": "Kleurschema",
+      "paletteTetra": "Tetra",
+      "paletteTetraRed": "Tetra rood",
+      "paletteLegacy": "Legacy",
+      "paletteTetraTitle": "Tetraedrisch palet vanaf #37A2F3",
+      "paletteTetraRedTitle": "Tetra met rode accenten (#c50009) voor meer contrast",
+      "paletteLegacyTitle": "Vorig paars-en-goud palet"
     },
     "nav": {
       "logoAlt": "You-Meet-In-A-Tavern (YMIAT)",
@@ -306,6 +398,7 @@ function ymiatBuildNav(locale) {
   const chrome = ymiatChrome(locale);
   const n = (chrome && chrome.nav) || {};
   const t = (chrome && chrome.toggle) || {};
+  const th = (chrome && chrome.theme) || {};
   const e = ymiatEscapeHtml;
   const chars = ymiatLocalizeCharactersNav(GENERATED_CHARACTERS_NAV, n);
   const activeEn = locale === 'en' ? ' is-active' : '';
@@ -314,6 +407,15 @@ function ymiatBuildNav(locale) {
   const ariaNl = locale === 'nl' ? ' aria-current="true"' : '';
   const menuLabel = e(n.menu || 'Menu');
   const menuCloseLabel = e(n.menuClose || 'Close menu');
+  const themeIsDark = (typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'dark');
+  const currentPalette = (typeof document !== 'undefined' && document.documentElement.getAttribute('data-palette'))
+    || (typeof window.ymiatDefaultPalette === 'function' ? window.ymiatDefaultPalette(themeIsDark ? 'dark' : 'light') : 'tetra-red');
+  const themeLabel = e(themeIsDark ? (th.toLight || 'Switch to light mode') : (th.toDark || 'Switch to dark mode'));
+  const themeText = e(themeIsDark ? (th.dark || 'Dark') : (th.light || 'Light'));
+  const paletteLabel = e(th.paletteLabel || 'Color scheme');
+  const paletteTitle = currentPalette === 'legacy'
+    ? (th.paletteLegacyTitle || '')
+    : (currentPalette === 'tetra-red' ? (th.paletteTetraRedTitle || '') : (th.paletteTetraTitle || ''));
   return (
     '<nav class="site-nav" aria-label="' + e(n.logoAlt || 'YMIAT') + '">' +
     '<a href="{{ROOT}}index.html" class="logo-link"><img src="{{ASSETS}}assets/You-Meet-In-A-Tavern.png" alt="' + e(n.logoAlt || 'YMIAT') + '" class="nav-logo" /></a>' +
@@ -361,6 +463,20 @@ function ymiatBuildNav(locale) {
     '<a href="{{ROOT}}legal.html">' + e(n.legal) + '</a>' +
     '</div>' +
     '<div class="nav-bar-end">' +
+    '<div class="theme-controls">' +
+    '<button type="button" class="theme-toggle" id="site-theme-toggle" aria-pressed="' + (themeIsDark ? 'true' : 'false') + '" aria-label="' + themeLabel + '" title="' + themeLabel + '" data-label-light="' + e(th.toLight || 'Switch to light mode') + '" data-label-dark="' + e(th.toDark || 'Switch to dark mode') + '" data-text-light="' + e(th.light || 'Light') + '" data-text-dark="' + e(th.dark || 'Dark') + '">' +
+    '<span class="theme-toggle-icon" aria-hidden="true">' + (themeIsDark ? '☾' : '☀') + '</span>' +
+    '<span class="theme-toggle-text">' + themeText + '</span>' +
+    '</button>' +
+    '<label class="palette-switch" title="' + e(paletteTitle) + '">' +
+    '<span class="visually-hidden">' + paletteLabel + '</span>' +
+    '<select id="site-palette-select" class="palette-select" aria-label="' + paletteLabel + '">' +
+    '<option value="tetra"' + (currentPalette === 'tetra' ? ' selected' : '') + '>' + e(th.paletteTetra || 'Tetra') + '</option>' +
+    '<option value="tetra-red"' + (currentPalette === 'tetra-red' ? ' selected' : '') + '>' + e(th.paletteTetraRed || 'Tetra red') + '</option>' +
+    '<option value="legacy"' + (currentPalette === 'legacy' ? ' selected' : '') + '>' + e(th.paletteLegacy || 'Legacy') + '</option>' +
+    '</select>' +
+    '</label>' +
+    '</div>' +
     '<div class="lang-switch" role="group" aria-label="' + e(t.label || 'Language') + '">' +
     '<a class="lang-switch-btn' + activeEn + '" href="#" data-lang-switch="en" title="' + e(t.switchToEn || 'English') + '"' + ariaEn + '>' +
     '<img src="{{ASSETS}}assets/flag-gb.svg" alt="' + e(t.en || 'English') + '" width="24" height="18" />' +
@@ -434,6 +550,49 @@ function ymiatBindLangSwitch() {
       window.location.href = ymiatSiblingUrl(target);
     });
   });
+}
+
+function ymiatSyncThemeToggleUi() {
+  const btn = document.getElementById('site-theme-toggle');
+  if (!btn) return;
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const label = isDark
+    ? (btn.getAttribute('data-label-light') || 'Switch to light mode')
+    : (btn.getAttribute('data-label-dark') || 'Switch to dark mode');
+  const text = isDark
+    ? (btn.getAttribute('data-text-dark') || 'Dark')
+    : (btn.getAttribute('data-text-light') || 'Light');
+  btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+  btn.setAttribute('aria-label', label);
+  btn.setAttribute('title', label);
+  const icon = btn.querySelector('.theme-toggle-icon');
+  const labelEl = btn.querySelector('.theme-toggle-text');
+  if (icon) icon.textContent = isDark ? '☾' : '☀';
+  if (labelEl) labelEl.textContent = text;
+}
+
+function ymiatBindThemeControls() {
+  const themeBtn = document.getElementById('site-theme-toggle');
+  if (themeBtn && !themeBtn.dataset.bound) {
+    themeBtn.dataset.bound = '1';
+    themeBtn.addEventListener('click', function () {
+      window.ymiatToggleTheme();
+      ymiatSyncThemeToggleUi();
+    });
+  }
+  const paletteSelect = document.getElementById('site-palette-select');
+  if (paletteSelect && !paletteSelect.dataset.bound) {
+    paletteSelect.dataset.bound = '1';
+    paletteSelect.addEventListener('change', function () {
+      var value = paletteSelect.value;
+      if (value !== 'tetra' && value !== 'tetra-red' && value !== 'legacy') {
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        value = window.ymiatDefaultPalette(theme);
+      }
+      window.ymiatApplyPalette(value);
+    });
+  }
+  ymiatSyncThemeToggleUi();
 }
 
 // Load includes into page - works with file:// protocol and web deployments
@@ -918,6 +1077,7 @@ function ymiatBindLangSwitch() {
       initBranchListFlyouts();
       initNavDropdowns();
       ymiatBindLangSwitch();
+      ymiatBindThemeControls();
     }
 
     const footerPlaceholder = document.querySelector('[data-include="footer"]');
