@@ -6,6 +6,7 @@
 
 /* Map color schema to existing variable names for compatibility.
    Defaults (no stored palette): light → tetra-red, dark → tetra.
+   Default theme (no stored ymiat-theme): dark.
    Toggle: tetra | tetra-red (red accents) | legacy (purple/gold). */
 :root{
     color-scheme:light;

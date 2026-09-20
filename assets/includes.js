@@ -1,5 +1,5 @@
 /* Early theme/palette boot — runs before paint when includes.js is in <head>.
-   Defaults: light → tetra-red, dark → tetra. Explicit ymiat-palette wins. */
+   Default theme: dark. Palettes: light → tetra-red, dark → tetra. Explicit ymiat-palette wins. */
 window.ymiatDefaultPalette = function ymiatDefaultPalette(theme){
   return theme === 'dark' ? 'tetra' : 'tetra-red';
 };
@@ -15,7 +15,7 @@ window.ymiatDefaultPalette = function ymiatDefaultPalette(theme){
     } catch (err) {}
     var theme = (storedTheme === 'light' || storedTheme === 'dark')
       ? storedTheme
-      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      : 'dark';
     var palette = (storedPalette === 'legacy' || storedPalette === 'tetra' || storedPalette === 'tetra-red')
       ? storedPalette
       : window.ymiatDefaultPalette(theme);
