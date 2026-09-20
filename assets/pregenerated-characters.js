@@ -152,9 +152,12 @@
     const includeChrome = options.includeChrome !== false;
 
     const abilitiesHtml = ["fit", "ins", "wil"].map(function (key) {
+      const isSpell = vm.spellcastingAbility === key;
       return (
-        '<div class="pg-ability">' +
-        '<span class="pg-ability-lbl">' + ABILITY_LABEL[key] + "</span>" +
+        '<div class="pg-ability' + (isSpell ? " is-spellcasting" : "") + '">' +
+        '<span class="pg-ability-lbl"' + (isSpell ? ' title="Spellcasting ability"' : "") + ">" +
+        ABILITY_LABEL[key] + (isSpell ? "*" : "") +
+        "</span>" +
         '<span class="pg-ability-val">' + fmtMod(vm.abilities[key]) + "</span>" +
         "</div>"
       );
@@ -204,6 +207,9 @@
       ["Save", vm.save || "—"],
     ];
     if (hasSp) stats.push(["Spell Power", String(vm.spellPower)]);
+    if (vm.spellcastingLine) {
+      stats.push([lang === "nl" ? "Spellcasting" : "Spellcasting", String(vm.spellcastingLine).replace(/^Spellcasting:\s*/i, "")]);
+    }
 
     const statsHtml = stats.map(function (pair) {
       return '<div class="pg-stat"><dt>' + pair[0] + "</dt><dd>" + pair[1] + "</dd></div>";

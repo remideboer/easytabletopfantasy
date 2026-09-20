@@ -7,6 +7,7 @@
   const CREATOR_KEY = "ymiat-character-creator-v1";
   const ABILITIES = ["fit", "ins", "wil"];
   const ABILITY_LABELS = { fit: "FIT", ins: "INS", wil: "WIL" };
+  const ABILITY_FULL = { fit: "Fitness", ins: "Insight", wil: "Willpower" };
   // YMIAT skill → ability (3-score model). Used for pregen-format PDF export.
   const SKILL_ABILITY = {
     Athletics: "fit",
@@ -214,6 +215,8 @@
       spellPowerNow: 0,
       learnedSpellIds: [],
       preparedSpellIds: [],
+      grantedSpellIds: [],
+      grantedSpellChoices: {},
       chosenSkills: [],
       chosenLanguages: [],
       chosenTalents: [],
@@ -284,6 +287,13 @@
       : [];
     c.preparedSpellIds = Array.isArray(c.preparedSpellIds)
       ? [...new Set(c.preparedSpellIds.filter((id) => typeof id === "string"))].filter((id) => c.learnedSpellIds.includes(id))
+      : [];
+    c.grantedSpellChoices =
+      c.grantedSpellChoices && typeof c.grantedSpellChoices === "object" && !Array.isArray(c.grantedSpellChoices)
+        ? { ...c.grantedSpellChoices }
+        : {};
+    c.grantedSpellIds = Array.isArray(c.grantedSpellIds)
+      ? [...new Set(c.grantedSpellIds.filter((id) => typeof id === "string"))]
       : [];
     c.chosenSkills = Array.isArray(c.chosenSkills)
       ? [...new Set(c.chosenSkills.filter((s) => typeof s === "string"))]
@@ -454,6 +464,17 @@
     return Boolean(cls && cls.spellcasting);
   }
 
+  /** "Spellcasting: Willpower (WIL +2)" or null for non-casters. */
+  function formatSpellcastingLine(c) {
+    const cls = findClass(c);
+    const ab = spellcastingAbility(cls);
+    if (!ab) return null;
+    const full = ABILITY_FULL[ab] || ab;
+    const code = ABILITY_LABELS[ab] || String(ab).toUpperCase();
+    const mod = formatMod(effectiveMod(c, ab));
+    return "Spellcasting: " + full + " (" + code + " " + mod + ")";
+  }
+
   function computeMaxWd(c) {
     const cls = findClass(c);
     const base = cls ? cls.maxWd : 8;
@@ -621,6 +642,215 @@
     if (!cls) return [];
     const maxCircle = maxSpellCircle(cls, c.level);
     return SPELLS.filter((s) => s.classes.includes(cls.id) && s.circle <= maxCircle);
+  }
+
+  // Bonus spells from lineage/heritage/background — outside class caps.
+  // Fixed grants resolve immediately; choice/legacy grants need grantedSpellChoices.
+  // Missing SPELLS ids are skipped (not invented).
+  const TIEFLING_LEGACY_BRANCHES = {
+    abyssal: { label: "Abyssal", cantrip: "poison-spray", level3: "ray-of-sickness", level5: "hold-person" },
+    chthonic: { label: "Chthonic", cantrip: "chill-touch", level3: "false-life", level5: "ray-of-enfeeblement" },
+    infernal: { label: "Infernal", cantrip: "firebolt", level3: "hellish-rebuke", level5: "darkness" },
+  };
+
+  const GRANT_DEFS = [
+    {
+      key: "anointed-favored-disciple",
+      sourceType: "heritage",
+      sourceId: "anointed",
+      label: "Favored Disciple",
+      kind: "fixed",
+      spellIds: ["thaumaturgy"],
+    },
+    {
+      key: "fireforge-forgecraft",
+      sourceType: "heritage",
+      sourceId: "fireforge",
+      label: "Forgecraft",
+      kind: "fixed",
+      spellIds: ["mending"],
+    },
+    {
+      key: "feysworn-trickery",
+      sourceType: "heritage",
+      sourceId: "feysworn",
+      label: "Accustomed to Trickery",
+      kind: "fixed",
+      spellIds: ["prestidigitation"],
+    },
+    {
+      key: "kithren-search-rescue",
+      sourceType: "heritage",
+      sourceId: "kithren",
+      label: "Search and Rescue",
+      kind: "fixed",
+      spellIds: ["mending"],
+    },
+    {
+      key: "cloud-cantrip",
+      sourceType: "heritage",
+      sourceId: "cloud",
+      label: "Touch of Magic",
+      kind: "choice",
+      choiceLabel: "Cantrip",
+      filter: { circle: 0 },
+    },
+    {
+      key: "cloud-circle1",
+      sourceType: "heritage",
+      sourceId: "cloud",
+      label: "Touch of Magic",
+      kind: "choice",
+      choiceLabel: "Spell Level 1",
+      minLevel: 3,
+      filter: { circle: 1 },
+    },
+    {
+      key: "covenant-cantrip",
+      sourceType: "heritage",
+      sourceId: "covenant",
+      label: "Expert Caster",
+      kind: "choice",
+      choiceLabel: "Cantrip",
+      filter: { circle: 0 },
+    },
+    {
+      key: "tiefling-legacy",
+      sourceType: "lineage",
+      sourceId: "tiefling",
+      label: "Fiendish Legacy",
+      kind: "legacy",
+      branches: TIEFLING_LEGACY_BRANCHES,
+    },
+  ];
+
+  function grantSourceMatches(c, def) {
+    if (!c || !def) return false;
+    if (def.sourceType === "heritage") return c.heritageId === def.sourceId;
+    if (def.sourceType === "lineage") return c.lineageId === def.sourceId;
+    if (def.sourceType === "background") return c.backgroundId === def.sourceId;
+    return false;
+  }
+
+  function grantSourceTag(sourceType) {
+    if (sourceType === "heritage") return t("heritage", "Heritage");
+    if (sourceType === "lineage") return t("lineage", "Lineage");
+    if (sourceType === "background") return t("background", "Background");
+    return t("granted", "Granted");
+  }
+
+  function grantChoiceOptions(def) {
+    if (!def || def.kind !== "choice" || !def.filter) return [];
+    const circle = def.filter.circle;
+    return SPELLS.filter((s) => s.circle === circle).sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  function resolveLegacySpellIds(def, branchKey, level) {
+    const branch = def.branches && def.branches[branchKey];
+    if (!branch) return [];
+    const ids = [];
+    if (branch.cantrip) ids.push(branch.cantrip);
+    if (level >= 3 && branch.level3) ids.push(branch.level3);
+    if (level >= 5 && branch.level5) ids.push(branch.level5);
+    return ids.filter((id) => Boolean(spellById(id)));
+  }
+
+  function activeGrantDefs(c) {
+    const level = Number(c && c.level) || 1;
+    return GRANT_DEFS.filter((def) => {
+      if (!grantSourceMatches(c, def)) return false;
+      if (def.minLevel && level < def.minLevel) return false;
+      return true;
+    });
+  }
+
+  /**
+   * Rebuild grantedSpellIds from catalog + choices; drop stale choice keys.
+   * Never invents spell ids — missing SPELLS entries are skipped.
+   */
+  function syncGrantedSpells(c) {
+    if (!c) return;
+    const choices =
+      c.grantedSpellChoices && typeof c.grantedSpellChoices === "object" && !Array.isArray(c.grantedSpellChoices)
+        ? c.grantedSpellChoices
+        : {};
+    c.grantedSpellChoices = choices;
+
+    const activeKeys = new Set();
+    const ids = [];
+    const metaById = {};
+
+    activeGrantDefs(c).forEach((def) => {
+      activeKeys.add(def.key);
+      let resolved = [];
+      if (def.kind === "fixed") {
+        resolved = (def.spellIds || []).filter((id) => Boolean(spellById(id)));
+      } else if (def.kind === "choice") {
+        const pick = choices[def.key];
+        if (typeof pick === "string" && pick && spellById(pick)) {
+          const opts = grantChoiceOptions(def);
+          if (opts.some((s) => s.id === pick)) resolved = [pick];
+        }
+      } else if (def.kind === "legacy") {
+        const branch = choices[def.key];
+        if (typeof branch === "string" && def.branches && def.branches[branch]) {
+          resolved = resolveLegacySpellIds(def, branch, Number(c.level) || 1);
+        }
+      }
+      resolved.forEach((id) => {
+        if (!ids.includes(id)) ids.push(id);
+        metaById[id] = { sourceType: def.sourceType, label: def.label, key: def.key };
+      });
+    });
+
+    Object.keys(choices).forEach((key) => {
+      if (!activeKeys.has(key)) delete choices[key];
+    });
+
+    c.grantedSpellIds = ids;
+    c._grantedSpellMeta = metaById;
+  }
+
+  function isGrantedSpellId(c, id) {
+    return Boolean(c && Array.isArray(c.grantedSpellIds) && c.grantedSpellIds.includes(id));
+  }
+
+  function grantedSpellMeta(c, id) {
+    if (!c) return null;
+    if (c._grantedSpellMeta && c._grantedSpellMeta[id]) return c._grantedSpellMeta[id];
+    syncGrantedSpells(c);
+    return (c._grantedSpellMeta && c._grantedSpellMeta[id]) || null;
+  }
+
+  function hasBonusSpellUi(c) {
+    if (!c) return false;
+    syncGrantedSpells(c);
+    if ((c.grantedSpellIds || []).length) return true;
+    return activeGrantDefs(c).some((def) => def.kind === "choice" || def.kind === "legacy");
+  }
+
+  function countClassCantrips(c) {
+    return (c.learnedSpellIds || []).filter((id) => {
+      if (isGrantedSpellId(c, id)) return false;
+      const s = spellById(id);
+      return s && s.circle === 0;
+    }).length;
+  }
+
+  function countClassLeveledLearned(c) {
+    return (c.learnedSpellIds || []).filter((id) => {
+      if (isGrantedSpellId(c, id)) return false;
+      const s = spellById(id);
+      return s && s.circle > 0;
+    }).length;
+  }
+
+  function countClassLeveledPrepared(c) {
+    return (c.preparedSpellIds || []).filter((id) => {
+      if (isGrantedSpellId(c, id)) return false;
+      const s = spellById(id);
+      return s && s.circle > 0;
+    }).length;
   }
 
   function computeDefense(c) {
@@ -817,31 +1047,52 @@
     });
 
     let spells = null;
-    if (isCaster(c)) {
+    syncGrantedSpells(c);
+    const grantedIds = c.grantedSpellIds || [];
+    if (isCaster(c) || grantedIds.length) {
       function formatSpellExportLabel(spell) {
         if (!spell) return "";
         if (spell.circle === 0) return spell.name;
         return spell.name + " (" + spell.circle + ")";
       }
-      const learned = c.learnedSpellIds.map(spellById).filter(Boolean);
+      function mergeUniqueSpellIds(primary, extra) {
+        const out = [];
+        const seen = new Set();
+        (primary || []).concat(extra || []).forEach((id) => {
+          if (!id || seen.has(id)) return;
+          seen.add(id);
+          out.push(id);
+        });
+        return out;
+      }
+      const allIds = mergeUniqueSpellIds(c.learnedSpellIds, grantedIds);
+      const learned = allIds.map(spellById).filter(Boolean);
       const cantrips = learned.filter((s) => s.circle === 0).map((s) => s.name);
       const mode = spellMode(cls);
       const leveledLabels = learned.filter((s) => s.circle > 0).map(formatSpellExportLabel);
+      const grantedNote = grantedIds.length
+        ? (langNl ? "Inclusief bonus-spells van lineage/heritage." : "Includes bonus spells from lineage/heritage.")
+        : "";
       if (usesLearnedTier(mode)) {
         const preparedIds = new Set(c.preparedSpellIds);
-        const prepared = c.preparedSpellIds
-          .map(spellById)
-          .filter((s) => s && s.circle > 0)
+        grantedIds.forEach((id) => {
+          const s = spellById(id);
+          if (s && s.circle > 0) preparedIds.add(id);
+        });
+        const prepared = learned
+          .filter((s) => s.circle > 0 && preparedIds.has(s.id))
           .map(formatSpellExportLabel);
         const knownUnprepared = learned
           .filter((s) => s.circle > 0 && !preparedIds.has(s.id))
           .map(formatSpellExportLabel);
-        spells = { cantrips: cantrips, prepared: prepared, knownUnprepared: knownUnprepared, note: "" };
+        spells = { cantrips: cantrips, prepared: prepared, knownUnprepared: knownUnprepared, note: grantedNote };
       } else if (mode === "known" || mode === "known-formula") {
-        spells = { cantrips: cantrips, known: leveledLabels, note: "" };
-      } else {
+        spells = { cantrips: cantrips, known: leveledLabels, note: grantedNote };
+      } else if (mode) {
         // full (and any other prepare-from-list mode)
-        spells = { cantrips: cantrips, prepared: leveledLabels, note: "" };
+        spells = { cantrips: cantrips, prepared: leveledLabels, note: grantedNote };
+      } else {
+        spells = { cantrips: cantrips, known: leveledLabels, note: grantedNote || (langNl ? "Bonus-spells." : "Bonus spells.") };
       }
     }
 
@@ -871,6 +1122,8 @@
       abilities: abilities,
       hearts: c.hearts,
       spellPower: computeSpellPowerMax(c),
+      spellcastingAbility: spellcastingAbility(cls),
+      spellcastingLine: formatSpellcastingLine(c) || "",
       pb: pb,
       maxWd: computeMaxWd(c),
       resolve: resolveMax(c),
@@ -976,11 +1229,26 @@
    * Spellbook casters get prepared true/false on leveled spells; others null.
    */
   function buildSpellCardsForExport(c) {
-    if (!c || !Array.isArray(c.learnedSpellIds) || !c.learnedSpellIds.length) return [];
+    if (!c) return [];
+    syncGrantedSpells(c);
+    const grantedIds = c.grantedSpellIds || [];
+    const learnedIds = Array.isArray(c.learnedSpellIds) ? c.learnedSpellIds : [];
+    const allIds = [];
+    const seen = new Set();
+    learnedIds.concat(grantedIds).forEach((id) => {
+      if (!id || seen.has(id)) return;
+      seen.add(id);
+      allIds.push(id);
+    });
+    if (!allIds.length) return [];
     const cls = findClass(c);
     const tiered = usesLearnedTier(spellMode(cls));
     const preparedIds = new Set(c.preparedSpellIds || []);
-    return c.learnedSpellIds
+    grantedIds.forEach((id) => {
+      const s = spellById(id);
+      if (s && s.circle > 0) preparedIds.add(id);
+    });
+    return allIds
       .map(spellById)
       .filter(Boolean)
       .sort(function (a, b) {
@@ -988,6 +1256,7 @@
         return d !== 0 ? d : String(a.name).localeCompare(String(b.name));
       })
       .map(function (s) {
+        const granted = grantedIds.includes(s.id);
         return {
           id: s.id,
           name: s.name,
@@ -998,7 +1267,8 @@
           duration: s.duration || "",
           components: s.components || "",
           description: s.description || "",
-          prepared: tiered && s.circle > 0 ? preparedIds.has(s.id) : null,
+          prepared: granted ? true : tiered && s.circle > 0 ? preparedIds.has(s.id) : null,
+          granted: granted,
         };
       });
   }
@@ -1312,51 +1582,146 @@
     return talentBlock + skillsBlock + languagesBlock;
   }
 
+  function renderGrantChoiceUi(c) {
+    const defs = activeGrantDefs(c).filter((def) => def.kind === "choice" || def.kind === "legacy");
+    if (!defs.length) return "";
+    const rows = defs
+      .map((def) => {
+        const current = (c.grantedSpellChoices && c.grantedSpellChoices[def.key]) || "";
+        const sourceTag = grantSourceTag(def.sourceType);
+        if (def.kind === "legacy") {
+          const opts = Object.keys(def.branches || {})
+            .map((key) => {
+              const branch = def.branches[key];
+              return `<option value="${escapeHtml(key)}"${current === key ? " selected" : ""}>${escapeHtml(branch.label || key)}</option>`;
+            })
+            .join("");
+          return `<div class="cs-grant-pick">
+            <label class="cs-label" for="cs-grant-${escapeHtml(def.key)}">${escapeHtml(def.label)} <span class="cs-muted">(${escapeHtml(sourceTag)} · Willpower)</span></label>
+            <select id="cs-grant-${escapeHtml(def.key)}" class="cs-select" data-grant-choice="${escapeHtml(def.key)}">
+              <option value="">— Choose legacy —</option>
+              ${opts}
+            </select>
+          </div>`;
+        }
+        const spells = grantChoiceOptions(def);
+        const opts = spells
+          .map((s) => `<option value="${escapeHtml(s.id)}"${current === s.id ? " selected" : ""}>${escapeHtml(s.name)}${s.school ? ` (${escapeHtml(s.school)})` : ""}</option>`)
+          .join("");
+        const pickLabel = def.choiceLabel ? `${def.label} — ${def.choiceLabel}` : def.label;
+        return `<div class="cs-grant-pick">
+          <label class="cs-label" for="cs-grant-${escapeHtml(def.key)}">${escapeHtml(pickLabel)} <span class="cs-muted">(${escapeHtml(sourceTag)})</span></label>
+          <select id="cs-grant-${escapeHtml(def.key)}" class="cs-select" data-grant-choice="${escapeHtml(def.key)}">
+            <option value="">— Choose spell —</option>
+            ${opts}
+          </select>
+        </div>`;
+      })
+      .join("");
+    return `<div class="cs-grant-picks">${rows}</div>`;
+  }
+
+  function renderSpellChip(s, opts) {
+    const granted = Boolean(opts && opts.granted);
+    const active = granted || Boolean(opts && opts.active);
+    const stateLabel = granted
+      ? `Always active · from ${opts.sourceTag || "Granted"}`
+      : opts && opts.stateLabel
+        ? opts.stateLabel
+        : "Active";
+    const tag = granted
+      ? ` <span class="cs-spell-chip-tag">${escapeHtml(opts.sourceTag || "Granted")}</span>`
+      : "";
+    const circleLabel = s.circle === 0 ? "Cantrip" : `Spell Level ${s.circle}`;
+    return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}${granted ? " is-granted" : ""}" data-spell-view="${s.id}" title="${escapeHtml(s.school)} · ${circleLabel} · ${escapeHtml(stateLabel)} · Click for details">${escapeHtml(s.name)}${tag}</span>`;
+  }
+
   function renderSpellsPane(c, cls) {
+    syncGrantedSpells(c);
     const mode = spellMode(cls);
     const tiered = usesLearnedTier(mode);
-    const cCap = cantripCap(cls, c.level);
-    const activeCap = computeActiveCap(c);
-    const label = activeCapLabel(mode);
+    const cCap = mode ? cantripCap(cls, c.level) : 0;
+    const activeCap = mode ? computeActiveCap(c) : 0;
+    const label = mode ? activeCapLabel(mode) : "Spells";
+    const grantedSet = new Set(c.grantedSpellIds || []);
 
-    const learned = c.learnedSpellIds.map(spellById).filter((s) => s && s.classes.includes(cls.id));
-    const cantrips = learned.filter((s) => s.circle === 0).sort((a, b) => a.name.localeCompare(b.name));
-    const leveled = learned.filter((s) => s.circle > 0).sort((a, b) => a.circle - b.circle || a.name.localeCompare(b.name));
+    const classLearned = mode
+      ? c.learnedSpellIds.map(spellById).filter((s) => s && cls && s.classes.includes(cls.id) && !grantedSet.has(s.id))
+      : [];
+    const grantedSpells = (c.grantedSpellIds || []).map(spellById).filter(Boolean);
 
-    let counterText;
-    if (tiered) {
-      const learnedCap = computeLearnedCap(c);
-      const activeCount = leveled.filter((s) => c.preparedSpellIds.includes(s.id)).length;
-      counterText = `Learned ${leveled.length}/${learnedCap} · Prepared ${activeCount}/${activeCap}`;
-    } else {
-      counterText = `${label} ${leveled.length}/${activeCap}`;
+    const byIdMap = new Map();
+    classLearned.forEach((s) => byIdMap.set(s.id, { spell: s, granted: false }));
+    grantedSpells.forEach((s) => byIdMap.set(s.id, { spell: s, granted: true }));
+
+    const all = [...byIdMap.values()];
+    const cantrips = all.filter((x) => x.spell.circle === 0).sort((a, b) => a.spell.name.localeCompare(b.spell.name));
+    const leveled = all.filter((x) => x.spell.circle > 0).sort((a, b) => a.spell.circle - b.spell.circle || a.spell.name.localeCompare(b.spell.name));
+
+    const classCantripCount = cantrips.filter((x) => !x.granted).length;
+    const classLeveled = leveled.filter((x) => !x.granted);
+
+    let counterText = "";
+    if (mode) {
+      if (tiered) {
+        const learnedCap = computeLearnedCap(c);
+        const activeCount = classLeveled.filter((x) => c.preparedSpellIds.includes(x.spell.id)).length;
+        counterText = `Learned ${classLeveled.length}/${learnedCap} · Prepared ${activeCount}/${activeCap}`;
+      } else {
+        counterText = `${label} ${classLeveled.length}/${activeCap}`;
+      }
     }
 
     const groups = [];
     if (cantrips.length) {
       const chips = cantrips
-        .map((s) => `<span class="cs-spell-chip is-active" data-spell-view="${s.id}" title="${escapeHtml(s.school)} · Cantrip · Click for details">${escapeHtml(s.name)}</span>`)
+        .map((x) => {
+          const meta = x.granted ? grantedSpellMeta(c, x.spell.id) : null;
+          return renderSpellChip(x.spell, {
+            granted: x.granted,
+            active: true,
+            sourceTag: meta ? grantSourceTag(meta.sourceType) : "",
+            stateLabel: "Always active",
+          });
+        })
         .join("");
       groups.push(renderSpellChipGroup("Cantrips", chips));
     }
 
-    const maxCircle = leveled.length ? leveled[leveled.length - 1].circle : 0;
+    const maxCircle = leveled.length ? leveled[leveled.length - 1].spell.circle : 0;
     for (let circle = 1; circle <= maxCircle; circle++) {
-      const spells = leveled.filter((s) => s.circle === circle);
+      const spells = leveled.filter((x) => x.spell.circle === circle);
       if (!spells.length) continue;
       const chips = spells
-        .map((s) => {
-          const active = tiered ? c.preparedSpellIds.includes(s.id) : true;
+        .map((x) => {
+          if (x.granted) {
+            const meta = grantedSpellMeta(c, x.spell.id);
+            return renderSpellChip(x.spell, {
+              granted: true,
+              active: true,
+              sourceTag: meta ? grantSourceTag(meta.sourceType) : "",
+            });
+          }
+          const active = tiered ? c.preparedSpellIds.includes(x.spell.id) : true;
           const stateLabel = tiered ? (active ? "Prepared" : "Learned") : label;
-          return `<span class="cs-spell-chip${active ? " is-active" : " is-inactive"}" data-spell-view="${s.id}" title="${escapeHtml(s.school)} · Spell Level ${circle} · ${stateLabel} · Click for details">${escapeHtml(s.name)}</span>`;
+          return renderSpellChip(x.spell, { granted: false, active: active, stateLabel: stateLabel });
         })
         .join("");
       groups.push(renderSpellChipGroup(`Spell Level ${circle}`, chips));
     }
 
+    const manageBtn =
+      mode || grantedSpells.length
+        ? `<button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-manage-spells">${escapeHtml(t("manageSpells", "Manage Spells"))}</button>`
+        : "";
+    const counterLine = mode
+      ? `<p class="cs-muted">Cantrips ${classCantripCount}/${cCap} · ${counterText}</p>`
+      : `<p class="cs-muted">${escapeHtml(t("grantedSpellsOnly", "Bonus spells from lineage / heritage (outside class caps)."))}</p>`;
+
     return `<div class="cs-pane cs-pane--spells">
-      <h2 class="cs-pane-title cs-pane-title--with-action">${escapeHtml(t("spells", "Spells"))} <button type="button" class="btn cs-btn-secondary cs-btn-small" id="cs-manage-spells">${escapeHtml(t("manageSpells", "Manage Spells"))}</button></h2>
-      <p class="cs-muted">Cantrips ${cantrips.length}/${cCap} · ${counterText}</p>
+      <h2 class="cs-pane-title cs-pane-title--with-action">${escapeHtml(t("spells", "Spells"))} ${manageBtn}</h2>
+      ${counterLine}
+      ${renderGrantChoiceUi(c)}
       ${groups.length ? groups.join("") : '<p class="cs-muted">No spells learned yet.</p>'}
     </div>`;
   }
@@ -1638,108 +2003,140 @@
   function renderManageSpellsModal() {
     const cls = findClass(char);
     const mode = spellMode(cls);
+    syncGrantedSpells(char);
+    const grantedSet = new Set(char.grantedSpellIds || []);
     const tiered = usesLearnedTier(mode);
     const label = activeCapLabel(mode);
-    const maxCircle = maxSpellCircle(cls, char.level);
-    const cCap = cantripCap(cls, char.level);
-    const activeCap = computeActiveCap(char);
+    const maxCircle = mode ? maxSpellCircle(cls, char.level) : 0;
+    const cCap = mode ? cantripCap(cls, char.level) : 0;
+    const activeCap = mode ? computeActiveCap(char) : 0;
     const learnedCap = tiered ? computeLearnedCap(char) : null;
     const filterText = spellModalFilter.trim().toLowerCase();
-    const eligible = eligibleSpells(char).filter((s) => !filterText || s.name.toLowerCase().includes(filterText));
+    const eligible = mode
+      ? eligibleSpells(char).filter((s) => !filterText || s.name.toLowerCase().includes(filterText))
+      : [];
 
-    const cantripLearnedCount = char.learnedSpellIds.filter((id) => {
-      const s = spellById(id);
-      return s && s.circle === 0;
-    }).length;
-    const learnedLeveledCount = char.learnedSpellIds.filter((id) => {
-      const s = spellById(id);
-      return s && s.circle > 0;
-    }).length;
-    const activeLeveledCount = tiered
-      ? char.preparedSpellIds.filter((id) => {
-          const s = spellById(id);
-          return s && s.circle > 0;
-        }).length
-      : learnedLeveledCount;
+    const cantripLearnedCount = countClassCantrips(char);
+    const learnedLeveledCount = countClassLeveledLearned(char);
+    const activeLeveledCount = tiered ? countClassLeveledPrepared(char) : learnedLeveledCount;
+
+    const grantedSpells = (char.grantedSpellIds || [])
+      .map(spellById)
+      .filter((s) => s && (!filterText || s.name.toLowerCase().includes(filterText)))
+      .sort((a, b) => a.circle - b.circle || a.name.localeCompare(b.name));
 
     const groups = [];
-    for (let circle = 0; circle <= maxCircle; circle++) {
-      const spells = eligible.filter((s) => s.circle === circle).sort((a, b) => a.name.localeCompare(b.name));
-      if (!spells.length) continue;
-      const isCantrip = circle === 0;
-      const rows = spells
+
+    if (grantedSpells.length) {
+      const rows = grantedSpells
         .map((s) => {
-          const learned = char.learnedSpellIds.includes(s.id);
-          const prepared = char.preparedSpellIds.includes(s.id);
+          const meta = grantedSpellMeta(char, s.id);
+          const sourceTag = meta ? grantSourceTag(meta.sourceType) : t("granted", "Granted");
+          const featureLabel = meta && meta.label ? meta.label : sourceTag;
           const expanded = spellModalExpandedIds.has(s.id);
-          const rowClass = `cs-spell-row-modal${expanded ? " is-expanded" : ""}`;
-          const toggle = spellRowDetailsToggle(s, expanded);
-          const details = spellRowDetailsPanel(s, expanded);
-
-          if (isCantrip) {
-            const disabled = !learned && cantripLearnedCount >= cCap;
-            return `<li class="${rowClass}">
-              <label class="cs-spell-check">
-                <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
-                <span class="cs-spell-name">${escapeHtml(s.name)}</span>
-              </label>
-              <span class="cs-spell-tag">Always active</span>
-              ${toggle}
-              <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
-              ${details}
-            </li>`;
-          }
-
-          if (!tiered) {
-            const disabled = !learned && activeLeveledCount >= activeCap;
-            return `<li class="${rowClass}">
-              <label class="cs-spell-check">
-                <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
-                <span class="cs-spell-name">${escapeHtml(s.name)}</span>
-              </label>
-              <span class="cs-spell-tag">${label}</span>
-              ${toggle}
-              <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
-              ${details}
-            </li>`;
-          }
-
-          const learnDisabled = !learned && learnedLeveledCount >= learnedCap;
-          const prepDisabled = !learned || (!prepared && activeLeveledCount >= activeCap);
+          const rowClass = `cs-spell-row-modal is-granted${expanded ? " is-expanded" : ""}`;
           return `<li class="${rowClass}">
             <label class="cs-spell-check">
-              <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${learnDisabled ? " disabled" : ""} />
+              <input type="checkbox" checked disabled data-granted-spell="${s.id}" />
               <span class="cs-spell-name">${escapeHtml(s.name)}</span>
             </label>
-            <label class="cs-spell-check cs-spell-check--prep">
-              <input type="checkbox" data-spell-prepare="${s.id}"${prepared ? " checked" : ""}${prepDisabled ? " disabled" : ""} />
-              Prepared
-            </label>
-            ${toggle}
-            <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
-            ${details}
+            <span class="cs-spell-tag">Always active · from ${escapeHtml(sourceTag)}</span>
+            ${spellRowDetailsToggle(s, expanded)}
+            <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(featureLabel)}</span>
+            ${spellRowDetailsPanel(s, expanded)}
           </li>`;
         })
         .join("");
       groups.push(`<div class="cs-spell-group">
-        <h3 class="cs-spell-group-title">${circle === 0 ? "Cantrips" : `Spell Level ${circle}`}</h3>
+        <h3 class="cs-spell-group-title">${escapeHtml(t("grantedSpells", "Granted spells"))}</h3>
         <ul class="cs-spell-list">${rows}</ul>
       </div>`);
     }
 
-    const counterText = tiered
-      ? `Learned ${learnedLeveledCount}/${learnedCap} · Prepared ${activeLeveledCount}/${activeCap}`
-      : `${label} ${activeLeveledCount}/${activeCap}`;
+    if (mode) {
+      for (let circle = 0; circle <= maxCircle; circle++) {
+        const spells = eligible
+          .filter((s) => s.circle === circle && !grantedSet.has(s.id))
+          .sort((a, b) => a.name.localeCompare(b.name));
+        if (!spells.length) continue;
+        const isCantrip = circle === 0;
+        const rows = spells
+          .map((s) => {
+            const learned = char.learnedSpellIds.includes(s.id);
+            const prepared = char.preparedSpellIds.includes(s.id);
+            const expanded = spellModalExpandedIds.has(s.id);
+            const rowClass = `cs-spell-row-modal${expanded ? " is-expanded" : ""}`;
+            const toggle = spellRowDetailsToggle(s, expanded);
+            const details = spellRowDetailsPanel(s, expanded);
 
+            if (isCantrip) {
+              const disabled = !learned && cantripLearnedCount >= cCap;
+              return `<li class="${rowClass}">
+                <label class="cs-spell-check">
+                  <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
+                  <span class="cs-spell-name">${escapeHtml(s.name)}</span>
+                </label>
+                <span class="cs-spell-tag">Always active</span>
+                ${toggle}
+                <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+                ${details}
+              </li>`;
+            }
+
+            if (!tiered) {
+              const disabled = !learned && activeLeveledCount >= activeCap;
+              return `<li class="${rowClass}">
+                <label class="cs-spell-check">
+                  <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${disabled ? " disabled" : ""} />
+                  <span class="cs-spell-name">${escapeHtml(s.name)}</span>
+                </label>
+                <span class="cs-spell-tag">${label}</span>
+                ${toggle}
+                <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+                ${details}
+              </li>`;
+            }
+
+            const learnDisabled = !learned && learnedLeveledCount >= learnedCap;
+            const prepDisabled = !learned || (!prepared && activeLeveledCount >= activeCap);
+            return `<li class="${rowClass}">
+              <label class="cs-spell-check">
+                <input type="checkbox" data-spell-learn="${s.id}"${learned ? " checked" : ""}${learnDisabled ? " disabled" : ""} />
+                <span class="cs-spell-name">${escapeHtml(s.name)}</span>
+              </label>
+              <label class="cs-spell-check cs-spell-check--prep">
+                <input type="checkbox" data-spell-prepare="${s.id}"${prepared ? " checked" : ""}${prepDisabled ? " disabled" : ""} />
+                Prepared
+              </label>
+              ${toggle}
+              <span class="cs-spell-meta">${escapeHtml(s.school)} · ${escapeHtml(s.castingTime)}</span>
+              ${details}
+            </li>`;
+          })
+          .join("");
+        groups.push(`<div class="cs-spell-group">
+          <h3 class="cs-spell-group-title">${circle === 0 ? "Cantrips" : `Spell Level ${circle}`}</h3>
+          <ul class="cs-spell-list">${rows}</ul>
+        </div>`);
+      }
+    }
+
+    const counterText = !mode
+      ? escapeHtml(t("grantedSpellsOnly", "Bonus spells from lineage / heritage (outside class caps)."))
+      : tiered
+        ? `Learned ${learnedLeveledCount}/${learnedCap} · Prepared ${activeLeveledCount}/${activeCap}`
+        : `${label} ${activeLeveledCount}/${activeCap}`;
+
+    const titleClass = cls ? cls.name : t("grantedSpells", "Granted spells");
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-spell-modal-overlay">
       <div class="cs-modal" role="dialog" aria-modal="true" aria-label="${escapeHtml(t("manageSpells", "Manage Spells"))}">
         <div class="cs-modal-header">
-          <h2>${escapeHtml(t("manageSpells", "Manage Spells"))} — ${escapeHtml(cls ? cls.name : "")}</h2>
+          <h2>${escapeHtml(t("manageSpells", "Manage Spells"))} — ${escapeHtml(titleClass)}</h2>
           <button type="button" class="cs-modal-close" id="cs-spell-modal-close" aria-label="${escapeHtml(t("close", "Close"))}">×</button>
         </div>
         <div class="cs-modal-sub">
           <input type="text" id="cs-spell-search" class="cs-input" placeholder="Search spells…" value="${escapeHtml(spellModalFilter)}" />
-          <span class="cs-modal-counter">Cantrips ${cantripLearnedCount}/${cCap} · ${counterText}</span>
+          <span class="cs-modal-counter">${mode ? `Cantrips ${cantripLearnedCount}/${cCap} · ` : ""}${counterText}</span>
         </div>
         <div class="cs-modal-body">
           ${groups.length ? groups.join("") : '<p class="cs-muted">No spells match.</p>'}
@@ -1759,6 +2156,7 @@
     const maxWd = computeMaxWd(c);
     const spMax = computeSpellPowerMax(c);
     const caster = isCaster(c);
+    const showSpells = caster || hasBonusSpellUi(c);
     const effSpeed = computeSpeed(c);
     const lost = heartsLost(c);
     const range = levelRange();
@@ -1775,12 +2173,17 @@
       return `<button type="button" class="cs-heart${filled ? " is-full" : " is-empty"}" data-heart="${i}" aria-label="Heart ${i + 1}${filled ? ", remaining" : ", lost"}">${filled ? "♥" : "♡"}</button>`;
     }).join("");
 
+    const spellAb = spellcastingAbility(cls);
     const abilityBoxes = ABILITIES.map((ab) => {
       const base = c.abilities[ab];
       const eff = effectiveMod(c, ab);
       const effHint = lost ? `<span class="cs-eff-mod" title="After ${lost} lost heart(s)">→ ${formatMod(eff)}</span>` : "";
+      const isSpellAb = spellAb === ab;
+      const label = ABILITY_LABELS[ab] + (isSpellAb ? "*" : "");
+      const labelTitle = isSpellAb ? ' title="Spellcasting ability"' : "";
+      const labelClass = isSpellAb ? "cs-stat-label is-spellcasting" : "cs-stat-label";
       return `<div class="cs-stat-box">
-        <span class="cs-stat-label">${ABILITY_LABELS[ab]}</span>
+        <span class="${labelClass}"${labelTitle}>${label}</span>
         ${stepper(`ability-${ab}`, base, ABILITY_LABELS[ab], { display: formatMod(base) })}
         ${effHint}
       </div>`;
@@ -1834,6 +2237,7 @@
       </div>`;
     }).join("");
 
+    const spellcastingLine = formatSpellcastingLine(c);
     const spSection = caster
       ? `<div class="cs-stat-box cs-stat-box--wide">
           <span class="cs-stat-label">Spell Power</span>
@@ -1841,6 +2245,7 @@
             <div class="cs-wd-cell"><span class="cs-wd-lbl">MAX</span><span class="cs-wd-val cs-wd-val--calc">${spMax}</span></div>
             <div class="cs-wd-cell"><span class="cs-wd-lbl">NOW</span>${stepper("sp-now", c.spellPowerNow, "Spell Power now", { min: 0, max: spMax, display: String(c.spellPowerNow) })}</div>
           </div>
+          ${spellcastingLine ? `<p class="cs-muted cs-spellcasting-line">${escapeHtml(spellcastingLine)}</p>` : ""}
         </div>`
       : "";
 
@@ -1941,7 +2346,7 @@
           <div class="cs-inv-grid">${inventoryRows}</div>
         </div>
 
-        ${caster ? renderSpellsPane(c, cls) : ""}
+        ${showSpells ? renderSpellsPane(c, cls) : ""}
       </div>
 
       <div class="cs-col cs-col--identity">
@@ -2041,6 +2446,7 @@
   function persistAndRender() {
     if (!char) return;
     normalizeCharacter(char);
+    syncGrantedSpells(char);
     clampWoundsAndSp();
     saveStore();
     render();
@@ -2055,14 +2461,17 @@
     const cls = findClass(char);
     const mode = spellMode(cls);
     if (mode) {
+      const granted = new Set(char.grantedSpellIds || []);
       const cCap = cantripCap(cls, char.level);
       const cantripIds = char.learnedSpellIds.filter((id) => {
+        if (granted.has(id)) return false;
         const s = spellById(id);
         return s && s.circle === 0;
       });
       if (cantripIds.length > cCap) {
         const keep = new Set(cantripIds.slice(0, cCap));
         char.learnedSpellIds = char.learnedSpellIds.filter((id) => {
+          if (granted.has(id)) return true;
           const s = spellById(id);
           return !s || s.circle > 0 || keep.has(id);
         });
@@ -2072,35 +2481,41 @@
       if (usesLearnedTier(mode)) {
         const learnedCap = computeLearnedCap(char);
         const learnedLeveledIds = char.learnedSpellIds.filter((id) => {
+          if (granted.has(id)) return false;
           const s = spellById(id);
           return s && s.circle > 0;
         });
         if (learnedLeveledIds.length > learnedCap) {
           const keep = new Set(learnedLeveledIds.slice(0, learnedCap));
           char.learnedSpellIds = char.learnedSpellIds.filter((id) => {
+            if (granted.has(id)) return true;
             const s = spellById(id);
             return !s || s.circle === 0 || keep.has(id);
           });
         }
         const preparedLeveledIds = char.preparedSpellIds.filter((id) => {
+          if (granted.has(id)) return false;
           const s = spellById(id);
           return s && s.circle > 0;
         });
         if (preparedLeveledIds.length > activeCap) {
           const keep = new Set(preparedLeveledIds.slice(0, activeCap));
           char.preparedSpellIds = char.preparedSpellIds.filter((id) => {
+            if (granted.has(id)) return true;
             const s = spellById(id);
             return !s || s.circle === 0 || keep.has(id);
           });
         }
       } else {
         const activeLeveledIds = char.learnedSpellIds.filter((id) => {
+          if (granted.has(id)) return false;
           const s = spellById(id);
           return s && s.circle > 0;
         });
         if (activeLeveledIds.length > activeCap) {
           const keep = new Set(activeLeveledIds.slice(0, activeCap));
           char.learnedSpellIds = char.learnedSpellIds.filter((id) => {
+            if (granted.has(id)) return true;
             const s = spellById(id);
             return !s || s.circle === 0 || keep.has(id);
           });
@@ -2213,6 +2628,8 @@
           slotCount: INVENTORY_SLOT_COUNT,
         });
       }
+      normalizeCharacter(c);
+      syncGrantedSpells(c);
       store.characters.push(c);
       store.activeId = c.id;
       saveStore();
@@ -2234,6 +2651,9 @@
       "half orc": "Orc",
       genasi: "Elemental Scion",
       warforged: "Gearforged",
+    },
+    background: {
+      sage: "Scholar",
     },
   };
 
@@ -2472,10 +2892,15 @@
       report.push("No confident Heritage match from your race's languages/proficiencies — pick one manually (see the conversion guide: Heritage carries a race's learned/cultural traits, Lineage carries its innate/physical ones).");
     }
 
-    const bgMatch = ddbMatchExact(data.backgrounds, char.background?.definition?.name);
+    const bgName = char.background?.definition?.name || "";
+    let bgMatch = ddbMatchExact(data.backgrounds, bgName);
+    if (!bgMatch && bgName) {
+      const alias = DDB_ALIASES.background[ddbNormalizeName(bgName)];
+      if (alias) bgMatch = ddbMatchExact(data.backgrounds, alias);
+    }
     if (bgMatch) c.backgroundId = bgMatch.id;
-    else if (char.background?.definition?.name) {
-      report.push(`Background "${char.background.definition.name}" has no clear YMIAT match — pick one manually.`);
+    else if (bgName) {
+      report.push(`Background "${bgName}" has no clear YMIAT match — pick one manually.`);
     }
 
     const inventory = Array.isArray(char.inventory) ? char.inventory : [];
@@ -2546,6 +2971,7 @@
     report.push("Talents aren't auto-imported — pick your background/class talent on this sheet.");
 
     normalizeCharacter(c);
+    syncGrantedSpells(c);
     return { character: c, report };
   }
 
@@ -3190,6 +3616,15 @@
         char.level = levelFromXp(char.xp, range);
         if (char.level < (range.subclassMin || 2)) char.subclassId = "";
         persistAndRender();
+      } else if (t.dataset && t.dataset.grantChoice) {
+        const key = t.dataset.grantChoice;
+        if (!char.grantedSpellChoices || typeof char.grantedSpellChoices !== "object") {
+          char.grantedSpellChoices = {};
+        }
+        if (t.value) char.grantedSpellChoices[key] = t.value;
+        else delete char.grantedSpellChoices[key];
+        syncGrantedSpells(char);
+        persistAndRender();
       }
     });
 
@@ -3435,6 +3870,12 @@
       } catch (_) {
         TALENTS = [];
       }
+      // Resolve bonus spells now that SPELLS is loaded (store init runs earlier).
+      store.characters.forEach((c) => {
+        normalizeCharacter(c);
+        syncGrantedSpells(c);
+      });
+      saveStore();
       showApp();
       applyToolbarI18n();
       bindEvents();

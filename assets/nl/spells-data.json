@@ -134,6 +134,26 @@
     "description": "Je gooit een vonkje vuur naar een wezen of object binnen bereik. Doe een spreukaanval (afstand) tegen het doelwit. Bij een treffer krijgt het doelwit 2 Fire - wonden . Een brandbaar object dat geraakt wordt begint te branden als het niet gedragen of vastgehouden wordt.\n\nCantrip-upgrade: De wonden stijgen met 1 wanneer je niveau 5 (2), 11 (3) en 17 (4) bereikt."
   },
   {
+    "id": "mending",
+    "name": "Mending",
+    "circle": 0,
+    "school": "Transmutation",
+    "classes": [
+      "bard",
+      "cleric",
+      "druid",
+      "sorcerer",
+      "wizard",
+      "artificer",
+      "theurge"
+    ],
+    "castingTime": "1 minute",
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "components": "V, S, M",
+    "description": "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage. Magical items can be repaired this way, but their magic is not restored."
+  },
+  {
     "id": "mind-sliver",
     "name": "Mind Sliver",
     "circle": 0,
@@ -169,6 +189,24 @@
     "duration": "Onmiddellijk",
     "components": "V, S",
     "description": "Je sproeit giftige mist naar een wezen binnen bereik. Doe een spreukaanval (afstand) tegen het doelwit. Bij een treffer krijgt het doelwit 2 Poison - wonden .\n\nCantrip-upgrade: De wonden stijgen met 2 wanneer je niveau 5 (4), 11 (6) en 17 (8) bereikt."
+  },
+  {
+    "id": "prestidigitation",
+    "name": "Prestidigitation",
+    "circle": 0,
+    "school": "Transmutation",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard",
+      "theurge"
+    ],
+    "castingTime": "1 Moment",
+    "range": "10 feet",
+    "duration": "Up to 1 hour",
+    "components": "V, S",
+    "description": "You create a minor magical trick: a sensory effect, light or snuff a small flame, clean or soil an object, chill/warm/flavor nonliving material, make a color/mark/symbol appear, or create a nonmagical trinket or illusory image that fits in your hand. You can have multiple effects active within the spell limits."
   },
   {
     "id": "produce-flame",
@@ -275,6 +313,21 @@
     "duration": "Onmiddellijk",
     "components": "V, S",
     "description": "Je lanceert een lichtje naar één wezen of object binnen bereik. Doe een spreukaanval (afstand) tegen het doelwit. Bij een treffer krijgt het doelwit 1 Radiant - wond , en tot het einde van jouw volgende beurt geeft het dim licht in een straal van 10 voet en kan het niet profiteren van de Invisible-conditie.\n\nCantrip-upgrade: De wonden stijgen met 1 wanneer je niveau 5 (2), 11 (3) en 17 (4) bereikt."
+  },
+  {
+    "id": "thaumaturgy",
+    "name": "Thaumaturgy",
+    "circle": 0,
+    "school": "Transmutation",
+    "classes": [
+      "cleric",
+      "theurge"
+    ],
+    "castingTime": "1 Moment",
+    "range": "30 feet",
+    "duration": "Up to 1 minute",
+    "components": "V",
+    "description": "You create a minor magical effect within range: amplify your voice, cause flames to flicker, create a harmless sensory effect, open or close an unlocked door or window, or alter the appearance of your eyes. You can have up to three such effects active at once."
   },
   {
     "id": "thorn-whip",
@@ -1677,6 +1730,26 @@
     "duration": "Concentratie, tot 1 minute",
     "components": "V, S, M (a piece of iron and a flame)",
     "description": "Kies een vervaardigd metalen object (metalen wapen, Heavy of Medium metalen pantser) dat je binnen bereik kunt zien. Het gaat gloeien. Elk wezen in fysiek contact krijgt 3 Fire - wonden wanneer je cast. Tot de spreuk eindigt kun je op latere beurten als vrije actie opnieuw deze schade doen als het object binnen bereik is. Houdt of draagt een wezen het object en krijgt het de schade, dan moet het slagen voor een Fitness-saving throw of het object laten vallen (als dat kan). Doet het dat niet, dan heeft het nadeel op aanvalsworpen en ability checks tot het begin van jouw volgende beurt.\n\nCasten op hoger niveau. De wonden stijgen met 1 voor elk spreukniveau boven 2."
+  },
+  {
+    "id": "hold-person",
+    "name": "Hold Person",
+    "circle": 2,
+    "school": "Enchantment",
+    "classes": [
+      "bard",
+      "cleric",
+      "druid",
+      "sorcerer",
+      "warlock",
+      "wizard",
+      "theurge"
+    ],
+    "castingTime": "1 Moment",
+    "range": "60 feet",
+    "duration": "Concentration, up to 1 minute",
+    "components": "V, S, M",
+    "description": "Choose a Humanoid you can see within range. The target must succeed on a Willpower saving throw or be Paralyzed for the duration. At the end of each of its turns, the target can make another Willpower saving throw. On a success, the spell ends on the target."
   },
   {
     "id": "invisibility",

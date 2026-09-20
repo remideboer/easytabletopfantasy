@@ -134,6 +134,26 @@
     "description": "You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 2 Fire Wounds. A flammable object hit by this spell starts burning if it isn't being worn or carried.\n\nCantrip Upgrade: The Wounds increase by 1 when you reach levels 5 (2), 11 (3), and 17 (4)."
   },
   {
+    "id": "mending",
+    "name": "Mending",
+    "circle": 0,
+    "school": "Transmutation",
+    "classes": [
+      "bard",
+      "cleric",
+      "druid",
+      "sorcerer",
+      "wizard",
+      "artificer",
+      "theurge"
+    ],
+    "castingTime": "1 minute",
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "components": "V, S, M",
+    "description": "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage. Magical items can be repaired this way, but their magic is not restored."
+  },
+  {
     "id": "mind-sliver",
     "name": "Mind Sliver",
     "circle": 0,
@@ -169,6 +189,24 @@
     "duration": "Instantaneous",
     "components": "V, S",
     "description": "You spray toxic mist at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2 Poison Wounds.\n\nCantrip Upgrade: The Wounds increase by 2 when you reach levels 5 (4), 11 (6), and 17 (8)."
+  },
+  {
+    "id": "prestidigitation",
+    "name": "Prestidigitation",
+    "circle": 0,
+    "school": "Transmutation",
+    "classes": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard",
+      "theurge"
+    ],
+    "castingTime": "1 Moment",
+    "range": "10 feet",
+    "duration": "Up to 1 hour",
+    "components": "V, S",
+    "description": "You create a minor magical trick: a sensory effect, light or snuff a small flame, clean or soil an object, chill/warm/flavor nonliving material, make a color/mark/symbol appear, or create a nonmagical trinket or illusory image that fits in your hand. You can have multiple effects active within the spell limits."
   },
   {
     "id": "produce-flame",
@@ -275,6 +313,21 @@
     "duration": "Instantaneous",
     "components": "V, S",
     "description": "You launch a mote of light at one creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1 Radiant Wound, and until the end of your next turn, it emits Dim Light in a 10-foot radius and can't benefit from the Invisible condition.\n\nCantrip Upgrade: The Wounds increase by 1 when you reach levels 5 (2), 11 (3), and 17 (4)."
+  },
+  {
+    "id": "thaumaturgy",
+    "name": "Thaumaturgy",
+    "circle": 0,
+    "school": "Transmutation",
+    "classes": [
+      "cleric",
+      "theurge"
+    ],
+    "castingTime": "1 Moment",
+    "range": "30 feet",
+    "duration": "Up to 1 minute",
+    "components": "V",
+    "description": "You create a minor magical effect within range: amplify your voice, cause flames to flicker, create a harmless sensory effect, open or close an unlocked door or window, or alter the appearance of your eyes. You can have up to three such effects active at once."
   },
   {
     "id": "thorn-whip",
@@ -1677,6 +1730,26 @@
     "duration": "Concentration, up to 1 minute",
     "components": "V, S, M (a piece of iron and a flame)",
     "description": "Choose a manufactured metal object, such as a metal weapon or a suit of Heavy or Medium metal armor, that you can see within range. You cause the object to glow redhot. Any creature in physical contact with the object takes 3 Fire Wounds when you cast the spell. Until the spell ends, you can take a Bonus Action on each of your later turns to inflict these Wounds again if the object is within range. If a creature is holding or wearing the object and takes the Wounds from it, the creature must succeed on a Fitness saving throw or drop the object if it can. If it doesn’t drop the object, it has disadvantage on attack rolls and ability checks until the start of your next turn.\n\nCasting at a Higher Level. The Wounds increase by 1 for each spell level above 2."
+  },
+  {
+    "id": "hold-person",
+    "name": "Hold Person",
+    "circle": 2,
+    "school": "Enchantment",
+    "classes": [
+      "bard",
+      "cleric",
+      "druid",
+      "sorcerer",
+      "warlock",
+      "wizard",
+      "theurge"
+    ],
+    "castingTime": "1 Moment",
+    "range": "60 feet",
+    "duration": "Concentration, up to 1 minute",
+    "components": "V, S, M",
+    "description": "Choose a Humanoid you can see within range. The target must succeed on a Willpower saving throw or be Paralyzed for the duration. At the end of each of its turns, the target can make another Willpower saving throw. On a success, the spell ends on the target."
   },
   {
     "id": "invisibility",

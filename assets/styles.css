@@ -4624,6 +4624,8 @@
     letter-spacing:.06em;
     margin-bottom:2px;
   }
+  .cs-stat-label.is-spellcasting{color:var(--brand-primary)}
+  .cs-spellcasting-line{margin:6px 0 0;font-size:.8rem}
   .cs-eff-mod{
     display:block;
     font-size:.75rem;
@@ -5131,6 +5133,28 @@
     background:rgba(124,58,237,.08);
   }
   .cs-spell-chip.is-inactive{opacity:.6}
+  .cs-spell-chip.is-granted{
+    border-style:dashed;
+    background:rgba(16,185,129,.08);
+  }
+  .cs-spell-chip-tag{
+    display:inline-block;
+    margin-left:4px;
+    font-size:.65em;
+    font-weight:600;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    opacity:.85;
+  }
+  .cs-grant-picks{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin:8px 0 10px;
+  }
+  .cs-grant-pick .cs-select{width:100%}
+  .cs-spell-row-modal.is-granted{opacity:.95}
+  .cs-spell-row-modal.is-granted .cs-spell-tag{color:var(--brand-primary)}
 
   .cs-modal-overlay{
     position:fixed;
