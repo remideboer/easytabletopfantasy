@@ -1,0 +1,386 @@
+[
+  {
+    "id": "arcanist",
+    "name": "Arcanist",
+    "prerequisite": "Spellcasting class-vermogen",
+    "description": "• Dubbele behendigheidsbonus op Arcana-tests.\n• Eén keer per rust: vervang één bekende cantrip of spell (niet uit spellbook) door een andere van hetzelfde niveau uit je bronlijst.\n• Leer één extra cantrip uit je spellcasting-bron."
+  },
+  {
+    "id": "combat-casting",
+    "name": "Combat Casting",
+    "prerequisite": "",
+    "description": "• Op Fitness-saves om concentratie te behouden: behandel d20-resultaten van 7 of lager als 8.\n• Wanneer een wezen een opportunity attack uitlokt, cast je met je reactie een cantrip in plaats van een melee-aanval.\n• Gebruik een schild of wapen als spellcasting focus."
+  },
+  {
+    "id": "elemental-savant",
+    "name": "Elemental Savant",
+    "prerequisite": "Minstens één damaging spell kunnen casten",
+    "description": "Kies acid, cold, fire, lightning of thunder. Wanneer je een spell cast die schade doet, mag je het schade-type omzetten naar je gekozen type. Bij schade-rollen voor spells die dat type van nature gebruiken, gooi je 1'en op damage dice opnieuw. Meerdere keren selecteerbaar voor verschillende types."
+  },
+  {
+    "id": "mental-fortitude",
+    "name": "Mental Fortitude",
+    "prerequisite": "",
+    "description": "• Eén keer per korte rust: gooi een mislukte Insight- of Willpower-save opnieuw.\n• Wanneer je beurt begint terwijl je charmed, frightened, paralyzed of stunned bent, krijg je 1 Resolve."
+  },
+  {
+    "id": "ritualist",
+    "name": "Ritualist",
+    "prerequisite": "Spellcasting class feature",
+    "description": "Krijg een ritual book. Kies Arcane, Divine, Primordial of Wyrd als ritual-bron. Voeg één ritual toe per spell-niveau dat je hebt ontgrendeld; voeg er één toe wanneer je toegang krijgt tot een nieuw niveau."
+  },
+  {
+    "id": "school-specialization",
+    "name": "School Specialization",
+    "prerequisite": "",
+    "description": "• +1 op spell attack en save DC voor je gekozen school.\n• Halveer goud en tijd om spells van die school in een spellbook te kopiëren.\n• Wanneer je 2+ sorcery points uitgeeft aan een spell van die school, krijg je aan het einde van je beurt 1 sorcery point terug."
+  },
+  {
+    "id": "spell-duelist",
+    "name": "Spell Duelist",
+    "prerequisite": "Je kunt één of meer cantrips casten",
+    "description": "• Wanneer je schade oploopt door een spell, reageer met een cantrip op de aanvaller.\n• Spell attacks negeren half/three-quarters cover; touch-bereik wordt 15 voet; verdubbel anders spell-bereik."
+  },
+  {
+    "id": "chaos-caster",
+    "name": "Chaos Caster",
+    "prerequisite": "Spellcasting class feature",
+    "description": "Bij casten met Spell Power: probeer één niveau hoger te casten (eigenschapstest vs DC 11 + basisniveau). Bij succes: rol op de Volatile Spell Effect-tabel. Gebruik per lange rust gelijk aan behendigheidsbonus."
+  },
+  {
+    "id": "spell-recall",
+    "name": "Spell Recall",
+    "prerequisite": "Prepared spellcaster (Cleric, Druid, Theurge of Wizard)",
+    "description": "• Bereid extra spells voor gelijk aan de helft van behendigheidsbonus (naar beneden afgerond).\n• Als vrije actie: wissel één prepared spell voor een andere (eigenschapstest DC 10 + niveau of verlies de poging)."
+  },
+  {
+    "id": "magical-trickster",
+    "name": "Magical Trickster",
+    "prerequisite": "",
+    "description": "• Leer minor illusion en prestidigitation of thaumaturgy (geen components; dubbel bereik).\n• Als vrije actie: leg nadeel op op de volgende aanval van één wezen (Willpower-save); gebruik per dag gelijk aan behendigheidsbonus."
+  },
+  {
+    "id": "magic-initiate",
+    "name": "Magic Initiate",
+    "prerequisite": "",
+    "description": "Leer twee cantrips naar keuze uit de Cleric-, Druid- of Wizard spell-lijst. Insight of Willpower is je spellcasting-eigenschap voor spells van dit talent (kies bij selectie).\n\nKies een 1e-niveau spell uit dezelfde lijst. Je hebt het altijd prepared en cast het één keer zonder Spell Power, met herstel bij lange rust. Je kunt het ook normaal casten door Spell Power gelijk aan het niveau uit te geven.\n\nWanneer je een niveau krijgt, mag je één spell van dit talent vervangen door een andere van hetzelfde niveau uit de gekozen lijst.\n\nHerhaalbaar: kies elke keer een andere spell-lijst."
+  },
+  {
+    "id": "boon-of-spell-recall",
+    "name": "Boon of Spell Recall",
+    "prerequisite": "Niveau 10, Spellcasting class feature",
+    "description": "Verhoog je Insight- of Willpower-modifier met 1, tot maximaal +5. Telkens wanneer je een spell van 1e–4e niveau cast met Spell Power, rol 1d4. Als het resultaat gelijk is aan het spell-niveau, wordt die Spell Power niet uitgegeven."
+  },
+  {
+    "id": "armor-expert",
+    "name": "Armor Expert",
+    "prerequisite": "Fitness +1 of hoger",
+    "description": "• Met medium of zwaar pantser waarin je behendig bent: +1 Verdediging, voordeel op Fitness-saves tegen pull/shove/prone."
+  },
+  {
+    "id": "armor-training",
+    "name": "Armor Training",
+    "prerequisite": "Behendigheid met light of medium pantser",
+    "description": "• Krijg de volgende armor-behendigheidsstap (light→medium→heavy en schilden).\n• Geen nadeel op Stealth in medium pantser; voeg tot +3 Fitness toe aan Verdediging in medium pantser."
+  },
+  {
+    "id": "athletic",
+    "name": "Athletic",
+    "prerequisite": "",
+    "description": "• Dubbele behendigheid op Athletics-tests.\n• Meer draag-/duw-/tilcapaciteit; opstaan uit prone voor 5 ft beweging; +10 ft running long jump, +3 ft high jump."
+  },
+  {
+    "id": "artillerist",
+    "name": "Artillerist",
+    "prerequisite": "Fitness +1 of hoger",
+    "description": "• Negeer Loading op ranged weapons waarin je behendig bent.\n• Voordeel op siege weapon-aanvallen.\n• Met voordeel op een ranged-aanval: gooi één d20 opnieuw."
+  },
+  {
+    "id": "brave",
+    "name": "Brave",
+    "prerequisite": "",
+    "description": "• Voordeel op saves tegen fear; inspireer bondgenoot binnen 5× behendigheidsbonus voet met voordeel op één fear-save.\n• Eén keer per lange rust: beëindig frightened op jezelf of een bondgenoot binnen 5 voet als vrije actie."
+  },
+  {
+    "id": "combat-conditioning",
+    "name": "Combat Conditioning",
+    "prerequisite": "",
+    "description": "• Max. wonden +2 per personageniveau (met terugwerkende kracht en op toekomstige niveaus).\n• +1 maximum Herstelpunten; herstel alle Herstelpunten bij lange rust."
+  },
+  {
+    "id": "critical-training",
+    "name": "Critical Training",
+    "prerequisite": "",
+    "description": "• Critical hit op 19–20 met wapens.\n• Bij weapon-crits: voeg de attack-eigenschapsmodifier nogmaals toe aan schade."
+  },
+  {
+    "id": "hand-to-hand",
+    "name": "Hand to Hand",
+    "prerequisite": "",
+    "description": "• Unarmed strikes doen 1d6 + Fitness-modifier.\n• Behendigheid met improvised weapons (minimaal 1d8 eenhandig, 1d10 tweehands).\n• Voordeel op grapple-tests; grappled tegenstanders krijgen Fitness-modifier bludgeoning aan het begin van je beurt."
+  },
+  {
+    "id": "opportunist",
+    "name": "Opportunist",
+    "prerequisite": "",
+    "description": "• Voordeel op opportunity attacks.\n• Opportunity attacks wanneer tegenstanders opstaan uit prone of Use an Object doen."
+  },
+  {
+    "id": "physical-fortitude",
+    "name": "Physical Fortitude",
+    "prerequisite": "",
+    "description": "• Eén keer per beurt: gooi mislukte Fitness-save opnieuw door Herstelpunten uit te geven.\n• Krijg 1 Resolve wanneer je beurt begint terwijl je blinded, deafened, restrained of poisoned bent.\n• Voordeel tegen prone, pull of push."
+  },
+  {
+    "id": "return-fire",
+    "name": "Return Fire",
+    "prerequisite": "",
+    "description": "Wanneer een zichtbare aanvaller je raakt of mist met een ranged-aanval, reageer met een ranged- of thrown weapon-aanval indien binnen bereik."
+  },
+  {
+    "id": "spell-hunter",
+    "name": "Spell Hunter",
+    "prerequisite": "",
+    "description": "• Reageer met melee-aanval wanneer bereikbare tegenstander cast; extra schade gelijk aan spell-niveau (crit onderbreekt spell).\n• Voordeel op saves tegen hun spells binnen 5 voet; zij hebben nadeel op concentratie.\n• Grappled wezens kunnen geen spells met somatic components casten."
+  },
+  {
+    "id": "vanguard",
+    "name": "Vanguard",
+    "prerequisite": "",
+    "description": "• Reageer met melee-aanval wanneer tegenstander in reach iemand anders aanvalt.\n• Opportunity attacks wanneer wezens reach verlaten, ook zonder provocatie.\n• Readied melee-aanvallen krijgen +behendigheidsbonus; bij treffer wordt snelheid doelwit 0 tot einde volgende beurt."
+  },
+  {
+    "id": "weapon-discipline",
+    "name": "Weapon Discipline",
+    "prerequisite": "Behendigheid met minstens één martial weapon",
+    "description": "Kies één simple of martial wapen waarin je behendig bent: +1 aanval en schade; extra weapon die bij crit; tijdelijke Wonden gelijk aan behendigheidsbonus wanneer je tegenstander neerhaalt met dat wapen."
+  },
+  {
+    "id": "savage-attacker",
+    "name": "Savage Attacker",
+    "prerequisite": "",
+    "description": "Eén keer per beurt wanneer je een doelwit raakt met een weapon-aanval, kun je 1 extra Wond van het schade-type van dat wapen toevoegen."
+  },
+  {
+    "id": "grappler-5-5e",
+    "name": "Grappler",
+    "prerequisite": "Niveau 3+, Fitness +1 of hoger",
+    "description": "• Verhoog je Fitness-modifier met 1, tot maximaal +5.\n• Wanneer je een wezen raakt met een Unarmed Strike als onderdeel van de Attack-actie, kun je het ook proberen te Grapplen. Alleen één keer per beurt bruikbaar.\n• Voordeel op aanvalsworpen tegen een wezen dat door jou Grappled is.\n• Geen extra bewegingskosten om een wezen dat door jou Grappled is te verplaatsen als het jouw grootte of kleiner is."
+  },
+  {
+    "id": "grappler",
+    "name": "Grappler",
+    "prerequisite": "Fitness +1 of hoger",
+    "description": "• Voordeel op aanvalsworpen tegen een wezen dat door jou Grappled is.\n• Als actie probeer je een wezen dat door jou Grappled is te pinnen met nog een grapple-check. Bij succes hebben jij en het wezen beide de Restrained-conditie tot de grapple eindigt."
+  },
+  {
+    "id": "archery",
+    "name": "Archery",
+    "prerequisite": "Behendigheid met minstens één ranged weapon",
+    "description": "+2 bonus op aanvalsworpen met ranged weapons."
+  },
+  {
+    "id": "defense",
+    "name": "Defense",
+    "prerequisite": "Behendigheid met light, medium of zwaar pantser",
+    "description": "Met light, medium of zwaar pantser: +1 Verdediging."
+  },
+  {
+    "id": "great-weapon-fighting",
+    "name": "Great Weapon Fighting",
+    "prerequisite": "Behendigheid met minstens één Two-Handed of Versatile weapon",
+    "description": "Wanneer je raakt met een Melee-wapen dat je tweehands hanteert (Two-Handed of Versatile), doe je 1 extra Wond."
+  },
+  {
+    "id": "two-weapon-fighting",
+    "name": "Two-Weapon Fighting",
+    "prerequisite": "Two-Weapon Fighting (dual-wielding light weapons)",
+    "description": "Bij een off-hand-aanval via Two-Weapon Fighting voeg je je Fitness-modifier toe aan de Wonden, ook als de modifier niet negatief is."
+  },
+  {
+    "id": "boon-of-combat-prowess",
+    "name": "Boon of Combat Prowess",
+    "prerequisite": "Niveau 10",
+    "description": "• Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.\n• Wanneer je mist met een aanvalsworp, kun je in plaats daarvan raken. Zodra je dit gebruikt, kun je het niet opnieuw tot het begin van je volgende beurt."
+  },
+  {
+    "id": "boon-of-irresistible-offense",
+    "name": "Boon of Irresistible Offense",
+    "prerequisite": "Niveau 10",
+    "description": "• Verhoog je Fitness-modifier met 1, tot maximaal +5.\n• Bludgeoning-, Piercing- en Slashing-Wonden die je doet negeren altijd resistance.\n• Wanneer je een natural 20 gooit op een aanvalsworp, doe je extra Wonden gelijk aan je Fitness-modifier."
+  },
+  {
+    "id": "alchemy-adept",
+    "name": "Alchemy Adept",
+    "prerequisite": "Behendigheid met alchemist's tools",
+    "description": "• Dubbele behendigheid op alchemist's tool-tests.\n• Maak alchemische items sneller tijdens downtime; behendig met alchemische ranged-aanvallen met Fitness of Insight.\n• +behendigheidsbonus op concoction save DC; bereik 30/60 ft."
+  },
+  {
+    "id": "aware",
+    "name": "Aware",
+    "prerequisite": "",
+    "description": "• Op initiative: behandel d20-resultaten van 9 of lager als 10.\n• Je kunt niet verrast worden terwijl je bij bewustzijn bent.\n• Verborgen aanvallers krijgen geen voordeel tegen jou."
+  },
+  {
+    "id": "bottomless-luck",
+    "name": "Bottomless Luck",
+    "prerequisite": "",
+    "description": "• Wanneer je 20 gooit op d20, krijgt één bondgenoot die je ziet of hoort 1 Resolve.\n• Bij Reset Resolve: rol d20 in vier banden (zie core-regels) en houd de betere van twee worpen als je twee keer rolt.\n• Bij Resolve uitgeven om opnieuw te rollen: rol twee keer en houd het beste resultaat."
+  },
+  {
+    "id": "comrade",
+    "name": "Comrade",
+    "prerequisite": "",
+    "description": "• Help als vrije actie.\n• Geef Resolve uit om de worp van een bondgenoot binnen 30 voet te versterken.\n• Wanneer bondgenoot binnen 30 voet een Life Save faalt of Max. wonden bereikt, krijg je 2 Resolve."
+  },
+  {
+    "id": "covert",
+    "name": "Covert",
+    "prerequisite": "Stealth proficiency, Fitness +1",
+    "description": "• Hide in three-quarters cover of terwijl je licht obscured bent.\n• Darkvision-gebruikers zien je niet wanneer je stilstaat in dim light of darkness.\n• Geen nadeel bij aanvallen of waarnemen in dim light.\n• Reactie Stealth vs. Perception om verborgen te blijven na ontdekking (één keer per wezen per 24 uur)."
+  },
+  {
+    "id": "dungeoneer",
+    "name": "Dungeoneer",
+    "prerequisite": "",
+    "description": "• Voeg behendigheidsbonus toe aan ontmantelen vallen/deuren openen zonder tools; eerste mislukking op vallen activeert ze niet.\n• Voordeel bij vinden van geheimen, vallen en illusies; voordeel tegen vallen en gevaren; weerstand tegen trap/hazard-schade.\n• Bij gevechtsstart mogen jij en bondgenoten binnen 5 voet Stealth rollen voor verrassing."
+  },
+  {
+    "id": "empathetic",
+    "name": "Empathetic",
+    "prerequisite": "",
+    "description": "• Lees eenvoudige intentie uit lichaamstaal in onbekende talen.\n• +5 passive Insight; behendigheid in Persuasion (of dubbele behendigheid).\n• Na 10 minuten vriendelijk gesprek: voordeel op Willpower (Persuasion)-tests."
+  },
+  {
+    "id": "escamotage",
+    "name": "Escamotage",
+    "prerequisite": "",
+    "description": "• Behendigheid in Sleight of Hand (of dubbele behendigheid).\n• Geef 2 Resolve uit om Sleight of Hand-tests opnieuw te rollen.\n• Actie om zichtbaar gedragen nonmagical item te stelen (DC 10 + Fitness-bonus doelwit + CR)."
+  },
+  {
+    "id": "far-traveler",
+    "name": "Far Traveler",
+    "prerequisite": "",
+    "description": "• Reis 10 uur/dag vóór forced march-saves; fast pace verlaagt passive Perception niet.\n• Voordeel op Survival-tests om de weg niet kwijt te raken.\n• Negeer één niveau exhaustion."
+  },
+  {
+    "id": "field-medic",
+    "name": "Field Medic",
+    "prerequisite": "",
+    "description": "• Op Medicine-tests: behandel d20-resultaten van 9 of lager als 10.\n• Actie: genees Wonden gelijk aan behendigheidsbonus + Fitness-modifier (één keer per doelwit per rust).\n• Bij Herstelpunten uitgeven tijdens korte rust: gooi tot behendigheidsbonus dice opnieuw."
+  },
+  {
+    "id": "hardy",
+    "name": "Hardy",
+    "prerequisite": "Fitness +1 of hoger",
+    "description": "• Eén keer per lange rust: zak naar 1 Wond in plaats van 0 wanneer je naar 0 Wonden gaat.\n• Voordeel op tests om exhaustion te vermijden of te verlagen; één keer per lange rust negeer je het krijgen van een exhaustion-niveau."
+  },
+  {
+    "id": "learned-researcher",
+    "name": "Learned Researcher",
+    "prerequisite": "",
+    "description": "Kies twee uit Arcana, History, Nature of Religion: behandel d20-resultaten van 9 of lager als 10 (gebruik per dag = behendigheidsbonus). Downtime-onderzoekskosten en -tijd gedeeld door behendigheidsbonus; voordeel op research resolution-rolls."
+  },
+  {
+    "id": "polyglot",
+    "name": "Polyglot",
+    "prerequisite": "",
+    "description": "• Leer drie talen.\n• Eén keer per lange rust: voordeel op één Willpower-test om een wezen te beïnvloeden waarmee je een niet-Common taal deelt.\n• Voeg behendigheidsbonus toe bij ontcijferen van onbekende talen (dubbel als je ook behendig bent in relevante skill/tool)."
+  },
+  {
+    "id": "quick",
+    "name": "Quick",
+    "prerequisite": "",
+    "description": "• +10 ft snelheid zonder medium/zwaar pantser.\n• Dash langs verticale oppervlakken; verminder valafstand met 5× behendigheidsbonus als reactie.\n• Vrije actie: beweeg 5 voet zonder opportunity attacks uit te lokken."
+  },
+  {
+    "id": "scrutinous",
+    "name": "Scrutinous",
+    "prerequisite": "",
+    "description": "• Lees lippen in talen die je kent.\n• +5 passive Perception en Investigation.\n• Na 1 minuut een voorwerp onderzoeken: stel de GM één waarheidsgetrouwe vraag erover.\n• Imiteer stemmen na 1 minuut spraak horen."
+  },
+  {
+    "id": "situational-awareness",
+    "name": "Situational Awareness",
+    "prerequisite": "",
+    "description": "• Voordeel op tests om verrassing te vermijden.\n• Na melee-schade: reageer om 10 voet te bewegen zonder opportunity attacks uit te lokken."
+  },
+  {
+    "id": "sleuth",
+    "name": "Sleuth",
+    "prerequisite": "Insight +1 of Willpower +1",
+    "description": "Kies twee uit Insight, Investigation, Perception of Survival: behandel 9 of lager als 10. Na 1 minuut praten met een wezen: zone of truth -effect (gebruik per dag = behendigheidsbonus)."
+  },
+  {
+    "id": "slippery",
+    "name": "Slippery",
+    "prerequisite": "",
+    "description": "• Eerste 5× behendigheidsbonus voet moeilijk terrein per beweging kost normale beweging.\n• Voordeel om grappled te vermijden en te beëindigen."
+  },
+  {
+    "id": "tag-team",
+    "name": "Tag Team",
+    "prerequisite": "",
+    "description": "Markeer een vijand binnen 30 voet voor 1 minuut. Als je een melee-aanval op het merk mist zonder nadeel, krijgt de volgende bondgenoot die het aanvalt voordeel. Eén keer per korte of lange rust."
+  },
+  {
+    "id": "touch-of-luck",
+    "name": "Touch of Luck",
+    "prerequisite": "",
+    "description": "• Wanneer je 1 Resolve zou krijgen door mislukte save of aanval, krijg je 2.\n• Bij 4 Resolve: wanneer je meer zou krijgen, reset Resolve via de d20-bandtabel in de core-regels."
+  },
+  {
+    "id": "trade-skills",
+    "name": "Trade Skills",
+    "prerequisite": "",
+    "description": "• Krijg behendigheid in één skill en gerelateerde tool/vehicle (of twee tools/vehicles).\n• Dubbele behendigheid op één gekozen skill.\n• Voordeel wanneer zowel behendige tool als skill van toepassing zijn."
+  },
+  {
+    "id": "trailblazer",
+    "name": "Trailblazer",
+    "prerequisite": "",
+    "description": "• Klim- en zwemsnelheid gelijk aan loopsnelheid.\n• Voordeel op exhaustion-tests tijdens klimmen of zwemmen.\n• Adem inhouden voor 1 + tweemaal Fitness-modifier minuten."
+  },
+  {
+    "id": "alert",
+    "name": "Alert",
+    "prerequisite": "",
+    "description": "Met de Initiative-variant: voeg behendigheidsbonus toe aan je Fitness-check. Direct na rollen kun je je Initiative wisselen met die van een bereidwillige bondgenoot in hetzelfde gevecht, tenzij een van jullie Incapacitated is."
+  },
+  {
+    "id": "skilled",
+    "name": "Skilled",
+    "prerequisite": "",
+    "description": "Krijg behendigheid in elke combinatie van drie skills of tools naar keuze. Herhaalbaar."
+  },
+  {
+    "id": "ability-score-improvement",
+    "name": "Ability Score Improvement",
+    "prerequisite": "Level 3+",
+    "description": "Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5. Herhaalbaar."
+  },
+  {
+    "id": "boon-of-dimensional-travel",
+    "name": "Boon of Dimensional Travel",
+    "prerequisite": "Niveau 10",
+    "description": "• Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.\n• Direct nadat je de Attack-actie of de Cast a Spell-actie neemt, kun je tot 30 voet teleporteren naar een onbezette ruimte die je kunt zien."
+  },
+  {
+    "id": "boon-of-fate",
+    "name": "Boon of Fate",
+    "prerequisite": "Niveau 10",
+    "description": "• Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.\n• Wanneer jij of een ander wezen binnen 60 voet van je slaagt of faalt voor een d20-test, kun je 2d4 rollen en het totaal als bonus of straf op die worp toepassen. Zodra je dit gebruikt, kun je het niet opnieuw tot je een korte of lange rust afrondt."
+  },
+  {
+    "id": "boon-of-the-night-spirit",
+    "name": "Boon of the Night Spirit",
+    "prerequisite": "Niveau 10",
+    "description": "• Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.\n• In schemerlicht of duisternis kun je jezelf als vrije actie de Invisible-conditie geven. Die eindigt meteen nadat je een actie, vrije actie of reactie neemt.\n• In schemerlicht of duisternis heb je resistance tegen alle schade behalve Psychic en Radiant."
+  },
+  {
+    "id": "boon-of-truesight",
+    "name": "Boon of Truesight",
+    "prerequisite": "Niveau 10",
+    "description": "Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5. Je hebt truesight met een bereik van 60 voet."
+  }
+]

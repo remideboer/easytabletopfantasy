@@ -3826,7 +3826,13 @@
     padding:16px 18px;
     border:2px solid var(--accent-gold-soft);
     border-radius:var(--r);
-    background:linear-gradient(180deg, rgba(250,248,244,.97), var(--bg-card));
+    color:var(--text-primary);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--brand-primary) 8%, var(--bg-card)),
+        var(--bg-card)
+      );
     box-shadow:var(--shadow-strong);
     -webkit-overflow-scrolling:touch;
     scrollbar-width:thin;
@@ -3844,7 +3850,8 @@
     padding:12px 14px;
     border:1px solid var(--line);
     border-radius:10px;
-    background:rgba(255,255,255,.45);
+    background:color-mix(in srgb, var(--brand-primary) 6%, var(--bg-page));
+    color:var(--text-primary);
     -webkit-overflow-scrolling:touch;
     scrollbar-width:thin;
     scrollbar-color:var(--accent-gold-soft) transparent;
@@ -4130,20 +4137,23 @@
     text-align:left;
     border:2px solid var(--line);
     border-radius:12px;
-    background:rgba(255,255,255,.5);
+    background:var(--bg-card);
     cursor:pointer;
     transition:all .2s ease;
     font:inherit;
     color:var(--text-primary);
   }
-  .cc-chip:hover{border-color:var(--accent-gold-soft)}
+  .cc-chip:hover{
+    border-color:var(--accent-gold-soft);
+    background:color-mix(in srgb, var(--brand-primary) 8%, var(--bg-card));
+  }
   .cc-chip.is-selected{
     border-color:var(--accent-gold-soft);
-    background:linear-gradient(135deg, rgba(184,134,11,.1), rgba(107,47,168,.05));
-    box-shadow:0 2px 8px rgba(184,134,11,.15);
+    background:color-mix(in srgb, var(--brand-primary) 14%, var(--bg-card));
+    box-shadow:var(--shadow);
   }
   .cc-chip-label{font-weight:600;color:var(--brand-primary)}
-  .cc-chip-hint{font-size:.85rem;color:var(--muted);line-height:1.35}
+  .cc-chip-hint{font-size:.85rem;color:var(--text-secondary);line-height:1.35}
   .cc-card-grid{
     display:grid;
     grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
@@ -4153,7 +4163,8 @@
     padding:12px 14px;
     border:1px solid var(--line);
     border-radius:10px;
-    background:rgba(255,255,255,.45);
+    background:color-mix(in srgb, var(--brand-primary) 6%, var(--bg-page));
+    color:var(--text-primary);
     box-shadow:none;
   }
   .cc-detail-placeholder{

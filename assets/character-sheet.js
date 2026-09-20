@@ -3392,6 +3392,25 @@
     }
   }
 
+  /**
+   * Fetch a sheet data JSON, preferring assets/nl/ on the Dutch sheet.
+   * Falls back to the English assets/ path when the NL pack is missing.
+   */
+  async function fetchSheetDataJson(fileName) {
+    const enPath = "assets/" + fileName;
+    if (sheetLocale() === "nl") {
+      try {
+        const nlRes = await fetch(rp("assets/nl/" + fileName));
+        if (nlRes.ok) return await nlRes.json();
+      } catch (_) {
+        /* fall through to EN */
+      }
+    }
+    const res = await fetch(rp(enPath));
+    if (!res.ok) throw new Error("Could not load " + fileName + " (HTTP " + res.status + ").");
+    return await res.json();
+  }
+
   async function init() {
     cacheElements();
     if (!el.loading || !el.app || !el.sheet) {
@@ -3400,21 +3419,19 @@
     }
 
     try {
-      const res = await fetch(rp("assets/character-creator-data.json"));
-      if (!res.ok) throw new Error("Could not load character options (HTTP " + res.status + ").");
-      data = await res.json();
+      data = await fetchSheetDataJson("character-creator-data.json");
       if (!data || !Array.isArray(data.classes)) {
         throw new Error("Character options file is invalid. Regenerate it with generate-character-creator-data.py.");
       }
       try {
-        const spellsRes = await fetch(rp("assets/spells-data.json"));
-        SPELLS = spellsRes.ok ? await spellsRes.json() : [];
+        SPELLS = await fetchSheetDataJson("spells-data.json");
+        if (!Array.isArray(SPELLS)) SPELLS = [];
       } catch (_) {
         SPELLS = [];
       }
       try {
-        const talentsRes = await fetch(rp("assets/talents-data.json"));
-        TALENTS = talentsRes.ok ? await talentsRes.json() : [];
+        TALENTS = await fetchSheetDataJson("talents-data.json");
+        if (!Array.isArray(TALENTS)) TALENTS = [];
       } catch (_) {
         TALENTS = [];
       }
