@@ -1494,8 +1494,17 @@
     border-radius:8px;
     padding:10px 12px;
     font:inherit;
-    background:var(--panel, #fff);
-    color:var(--text-primary);
+    background:#fff;
+    color:#111;
+    caret-color:#111;
+  }
+  .home-ddb-input::placeholder{
+    color:#666;
+    opacity:1;
+  }
+  .home-ddb-input:focus{
+    outline:2px solid var(--brand-focus);
+    outline-offset:1px;
   }
   .home-ddb-status{
     margin:8px 0 0;
