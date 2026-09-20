@@ -87,6 +87,14 @@
       "exportPdfFailed": "Could not create the PDF. Try again, or use Print.",
       "toolbarToggle": "Controls",
       "toolbarShow": "Show controls",
-      "toolbarHide": "Hide controls"
+      "toolbarHide": "Hide controls",
+      "equipped": "Equipped",
+      "armor": "Armor",
+      "shield": "Shield",
+      "weapons": "Weapons",
+      "weapon": "Weapon",
+      "attackBonus": "Attack",
+      "attackBonusPbHint": "Attack bonus is FIT + weapon; add your proficiency bonus on attack rolls.",
+      "equippedPlaceholder": "Other worn items, ammo, tools…"
     }
 }

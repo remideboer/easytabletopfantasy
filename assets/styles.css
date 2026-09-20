@@ -4674,6 +4674,35 @@
     font-weight:700;
     color:var(--brand-primary);
   }
+  .cs-subhead{
+    margin:12px 0 6px;
+    font-size:.9rem;
+    font-weight:800;
+  }
+  .cs-weapon-rows{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-bottom:4px;
+  }
+  .cs-weapon-row{
+    display:grid;
+    grid-template-columns:minmax(4.5rem,auto) minmax(0,1fr) auto;
+    gap:6px 10px;
+    align-items:center;
+  }
+  .cs-weapon-row-lbl{
+    margin:0;
+    font-size:.75rem;
+  }
+  .cs-weapon-row .cs-select{min-width:0}
+  .cs-weapon-atk-hint{margin:4px 0 8px;font-size:.75rem}
+  @media (max-width:520px){
+    .cs-weapon-row{
+      grid-template-columns:1fr;
+      gap:2px 0;
+    }
+  }
   .cs-currency{
     display:flex;
     gap:12px;
@@ -5098,6 +5127,29 @@
   .cs-modal-body .cs-label{display:block;margin:12px 0 4px}
   .cs-modal-body textarea.cs-input{font-family:var(--mono);font-size:.85rem;resize:vertical}
   .cs-ddb-actions{margin:10px 0}
+  .cs-ddb-actions--row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:center;
+  }
+  .cs-ddb-steps{
+    margin:10px 0 14px;
+    padding-left:1.25rem;
+    font-size:.9rem;
+    line-height:1.45;
+    color:var(--text-primary);
+  }
+  .cs-ddb-steps li{margin:4px 0}
+  .cs-ddb-steps kbd{
+    display:inline-block;
+    padding:1px 5px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    font-family:var(--mono);
+    font-size:.8em;
+    background:var(--bg-elevated, var(--bg-subtle, transparent));
+  }
   .cs-spell-group-title{
     font-size:.8rem;
     text-transform:uppercase;

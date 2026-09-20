@@ -35,6 +35,7 @@
   }
   const INVENTORY_THRESHOLDS = [-2, -2, -1, -1, 0, 1, 1, 2, 2];
   const INVENTORY_SLOT_COUNT = INVENTORY_THRESHOLDS.length * 2;
+  const WEAPON_SLOT_COUNT = 4;
 
   // Defense bonus per gear.html Armor table: base + FIT mod (capped where noted; heavy excludes FIT).
   const ARMOR = [
@@ -222,6 +223,7 @@
       armorId: "",
       hasShield: false,
       weaponId: "",
+      weaponIds: Array(WEAPON_SLOT_COUNT).fill(""),
       speed: 30,
       size: "Medium",
       currency: { gold: 0, silver: 0, copper: 0 },
@@ -273,6 +275,7 @@
     c.armorId = typeof c.armorId === "string" ? c.armorId : "";
     c.hasShield = Boolean(c.hasShield);
     c.weaponId = typeof c.weaponId === "string" ? c.weaponId : "";
+    normalizeWeaponIds(c);
     c.spellPowerNow = Math.max(0, Number(c.spellPowerNow) || 0);
     c.learnedSpellIds = Array.isArray(c.learnedSpellIds)
       ? [...new Set(c.learnedSpellIds.filter((id) => typeof id === "string"))]
@@ -640,10 +643,25 @@
     return `${weapon.name} (${formatMod(weapon.bonus)})`;
   }
 
-  function computeAttackBonus(c) {
-    const weapon = byId(WEAPONS, c.weaponId);
+  function normalizeWeaponIds(c) {
+    let ids = Array.isArray(c.weaponIds)
+      ? c.weaponIds.filter((id) => typeof id === "string")
+      : [];
+    if (!ids.some(Boolean) && c.weaponId) ids = [c.weaponId];
+    ids = ids.map((id) => (id && byId(WEAPONS, id) ? id : ""));
+    while (ids.length < WEAPON_SLOT_COUNT) ids.push("");
+    c.weaponIds = ids.slice(0, WEAPON_SLOT_COUNT);
+    c.weaponId = c.weaponIds.find(Boolean) || "";
+  }
+
+  function computeAttackBonusForWeaponId(c, weaponId) {
+    const weapon = byId(WEAPONS, weaponId);
     if (!weapon) return null;
     return effectiveMod(c, "fit") + weapon.bonus;
+  }
+
+  function computeAttackBonus(c) {
+    return computeAttackBonusForWeaponId(c, c.weaponId);
   }
 
   function computeSpeed(c) {
@@ -763,7 +781,20 @@
     const talent = talentName ? talentByName(talentName) : null;
 
     const attacks = [];
-    if (weapon) {
+    const seenWeaponIds = new Set();
+    (c.weaponIds || []).forEach((wid) => {
+      if (!wid || seenWeaponIds.has(wid)) return;
+      const w = byId(WEAPONS, wid);
+      if (!w) return;
+      seenWeaponIds.add(wid);
+      const atk = computeAttackBonusForWeaponId(c, wid);
+      attacks.push({
+        weapon: w.name,
+        bonus: atk != null ? atk + pb : pb,
+        wounds: 1,
+      });
+    });
+    if (!attacks.length && weapon) {
       const atk = computeAttackBonus(c);
       attacks.push({
         weapon: weapon.name,
@@ -1765,12 +1796,25 @@
     const heritageOptions = optionList(data.heritages, c.heritageId, "Heritage");
     const backgroundOptions = optionList(data.backgrounds, c.backgroundId, "Background");
     const armorOptions = groupedOptionList(ARMOR, c.armorId, "No Armor", armorOptionLabel);
-    const weaponOptions = groupedOptionList(WEAPONS, c.weaponId, "No Weapon", weaponOptionLabel);
     const defBonus = computeDefense(c);
-    const attackBonus = computeAttackBonus(c);
     const pb = computePB(c);
     const selectedArmor = byId(ARMOR, c.armorId);
-    const selectedWeapon = byId(WEAPONS, c.weaponId);
+    const weaponRowsHtml = (c.weaponIds || Array(WEAPON_SLOT_COUNT).fill(""))
+      .slice(0, WEAPON_SLOT_COUNT)
+      .map((wid, idx) => {
+        const opts = groupedOptionList(WEAPONS, wid, "No Weapon", weaponOptionLabel);
+        const atk = computeAttackBonusForWeaponId(c, wid);
+        const atkLabel =
+          atk !== null
+            ? `${escapeHtml(t("attackBonus", "Attack"))}: ${formatMod(atk)}`
+            : "—";
+        return `<div class="cs-weapon-row">
+          <label class="cs-label cs-weapon-row-lbl" for="cs-weapon-${idx}">${escapeHtml(t("weapon", "Weapon"))} ${idx + 1}</label>
+          <select id="cs-weapon-${idx}" class="cs-select" data-weapon-slot="${idx}">${opts}</select>
+          <span class="cs-atk-bonus" aria-label="${escapeHtml(t("attackBonus", "Attack bonus"))}">${atkLabel}</span>
+        </div>`;
+      })
+      .join("");
 
     const inventoryRows = INVENTORY_THRESHOLDS.map((threshold, rowIdx) => {
       const rowOpen = rowIdx < inventoryUnlockedRows(c);
@@ -1868,29 +1912,23 @@
         </div>
 
         <div class="cs-pane cs-pane--equipped">
-          <h2 class="cs-pane-title">Equipped</h2>
-          <div class="cs-class-row">
-            <div class="cs-field">
-              <label class="cs-label" for="cs-armor">Armor</label>
-              <select id="cs-armor" class="cs-select">${armorOptions}</select>
-              <p class="cs-print-value">${escapeHtml(selectedArmor ? selectedArmor.name : "None")}</p>
-              <p class="cs-props">${selectedArmor ? escapeHtml(selectedArmor.props || "—") : "—"}</p>
-            </div>
-            <div class="cs-field">
-              <label class="cs-label" for="cs-weapon">Weapon</label>
-              <select id="cs-weapon" class="cs-select">${weaponOptions}</select>
-              <p class="cs-print-value">${escapeHtml(selectedWeapon ? selectedWeapon.name : "None")}</p>
-              <p class="cs-props">${selectedWeapon ? escapeHtml(selectedWeapon.props) : "—"}</p>
-            </div>
+          <h2 class="cs-pane-title">${escapeHtml(t("equipped", "Equipped"))}</h2>
+          <div class="cs-field">
+            <label class="cs-label" for="cs-armor">${escapeHtml(t("armor", "Armor"))}</label>
+            <select id="cs-armor" class="cs-select">${armorOptions}</select>
+            <p class="cs-print-value">${escapeHtml(selectedArmor ? selectedArmor.name : "None")}</p>
+            <p class="cs-props">${selectedArmor ? escapeHtml(selectedArmor.props || "—") : "—"}</p>
           </div>
           <div class="cs-equip-summary-row">
             <label class="cs-checkbox-field">
               <input type="checkbox" id="cs-shield"${c.hasShield ? " checked" : ""} />
-              Shield (+${SHIELD_BONUS} DEF)
+              ${escapeHtml(t("shield", "Shield"))} (+${SHIELD_BONUS} DEF)
             </label>
-            ${attackBonus !== null ? `<span class="cs-atk-bonus">Attack bonus: ${formatMod(attackBonus)}</span>` : ""}
           </div>
-          <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="Other worn items, ammo, tools…">${escapeHtml(c.equippedText)}</textarea>
+          <h3 class="cs-subhead">${escapeHtml(t("weapons", "Weapons"))}</h3>
+          <div class="cs-weapon-rows">${weaponRowsHtml}</div>
+          <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack bonus is FIT + weapon; add your proficiency bonus on attack rolls."))}</p>
+          <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="${escapeHtml(t("equippedPlaceholder", "Other worn items, ammo, tools…"))}">${escapeHtml(c.equippedText)}</textarea>
         </div>
 
         <div class="cs-pane cs-pane--inventory">
@@ -2175,11 +2213,10 @@
   }
 
   // ─── D&D Beyond import ──────────────────────────────────────────────────────
-  // D&D Beyond's character API sends no CORS header, so a browser fetch() from
-  // this static page is blocked by the browser itself before we ever see a
-  // response. Direct fetch is attempted anyway (works if the user has a CORS
-  // extension, or D&D Beyond ever adds the header); the reliable path is
-  // opening the JSON URL in a new tab and pasting its contents here.
+  // Direct browser fetch to character-service.dndbeyond.com is blocked by CORS.
+  // With window.YMIAT_DDB_PROXY_URL set (Cloudflare Worker in workers/ddb-character-proxy),
+  // fetch goes through that proxy — same pattern as dprcalc.com /api/c.
+  // Without a proxy, paste the public character JSON URL contents into the modal.
   const DDB_ALIASES = {
     lineage: {
       halfling: "Smallfolk",
@@ -2448,13 +2485,39 @@
     if (armorMatch) c.armorId = armorMatch.id;
     c.hasShield = shieldFound;
 
-    let weaponMatch = null;
-    for (const item of equipped) {
+    // Weapons: equipped first, then unequipped; fill weaponIds (max WEAPON_SLOT_COUNT).
+    const weaponIds = [];
+    const pushWeapon = (item) => {
+      if (weaponIds.length >= WEAPON_SLOT_COUNT) return;
       const nm = ddbEquippedName(item);
+      if (/shield/i.test(nm)) return;
       const m = ddbMatchExact(WEAPONS, nm);
-      if (m && (!weaponMatch || m.bonus > weaponMatch.bonus)) weaponMatch = m;
+      if (m) weaponIds.push(m.id);
+    };
+    equipped.forEach(pushWeapon);
+    inventory.filter((item) => item && item.definition && !item.equipped).forEach(pushWeapon);
+    c.weaponIds = weaponIds.slice();
+    while (c.weaponIds.length < WEAPON_SLOT_COUNT) c.weaponIds.push("");
+    c.weaponId = c.weaponIds.find(Boolean) || "";
+
+    // Inventory text slots from all DDB items.
+    const invLines = [];
+    inventory.forEach((item) => {
+      if (!item || !item.definition) return;
+      const nm = ddbEquippedName(item);
+      if (!nm) return;
+      const qty = Number(item.quantity) || 1;
+      invLines.push(qty > 1 ? `${nm} ×${qty}` : nm);
+    });
+    c.inventory = Array(INVENTORY_SLOT_COUNT).fill("");
+    invLines.slice(0, INVENTORY_SLOT_COUNT).forEach((line, i) => {
+      c.inventory[i] = line;
+    });
+    if (invLines.length > INVENTORY_SLOT_COUNT) {
+      const overflow = invLines.slice(INVENTORY_SLOT_COUNT);
+      c.equippedText = overflow.join(", ");
+      report.push(`${overflow.length} inventory item(s) exceeded ${INVENTORY_SLOT_COUNT} slots — extras were put in the equipped notes field.`);
     }
-    if (weaponMatch) c.weaponId = weaponMatch.id;
 
     const curr = char.currencies || {};
     c.currency = {
@@ -2468,9 +2531,113 @@
     const spMax = computeSpellPowerMax(c);
     c.spellPowerNow = spMax !== null ? spMax : 0;
 
-    report.push("Spells and talents aren't auto-imported — YMIAT spellcasting is derived automatically from class/level, and talents come from your background/class choices on this sheet.");
+    applyDdbSpells(c, char, report);
+    report.push("Talents aren't auto-imported — pick your background/class talent on this sheet.");
 
+    normalizeCharacter(c);
     return { character: c, report };
+  }
+
+  function ddbCollectSpellEntries(char) {
+    const entries = [];
+    const pushList = (list) => {
+      (list || []).forEach((s) => {
+        if (s) entries.push(s);
+      });
+    };
+    const spells = char.spells || {};
+    pushList(spells.class);
+    pushList(spells.race);
+    pushList(spells.feat);
+    pushList(spells.item);
+    pushList(spells.background);
+    (char.classSpells || []).forEach((block) => pushList(block.spells));
+    pushList(char.knownSpells);
+    pushList(char.subclassSpells);
+    return entries;
+  }
+
+  function applyDdbSpells(c, ddbChar, report) {
+    const cls = findClass(c);
+    const mode = spellMode(cls);
+    if (!mode) {
+      report.push("Class is not a caster on this sheet — D&D Beyond spells were skipped.");
+      return;
+    }
+
+    const entries = ddbCollectSpellEntries(ddbChar);
+    if (!entries.length) {
+      report.push("No spells found on the D&D Beyond character to import.");
+      return;
+    }
+
+    const unmatched = [];
+    const learned = [];
+    const prepared = [];
+    const seen = new Set();
+
+    entries.forEach((entry) => {
+      const def = entry.definition || entry;
+      const name = def.name || entry.name;
+      if (!name) return;
+      const match = ddbMatchExact(SPELLS, name);
+      if (!match) {
+        unmatched.push(name);
+        return;
+      }
+      if (seen.has(match.id)) {
+        if (entry.prepared || entry.alwaysPrepared || def.alwaysPrepared) {
+          if (!prepared.includes(match.id)) prepared.push(match.id);
+        }
+        return;
+      }
+      seen.add(match.id);
+      learned.push(match.id);
+      if (entry.prepared || entry.alwaysPrepared || def.alwaysPrepared) {
+        prepared.push(match.id);
+      }
+    });
+
+    const cantrips = learned.filter((id) => {
+      const s = spellById(id);
+      return s && s.circle === 0;
+    });
+    const leveled = learned.filter((id) => {
+      const s = spellById(id);
+      return s && s.circle > 0;
+    });
+
+    c.learnedSpellIds = cantrips.concat(leveled);
+    if (mode === "known" || mode === "known-formula") {
+      c.preparedSpellIds = [];
+    } else if (mode === "full") {
+      const prepSource = prepared.length ? prepared : leveled;
+      c.learnedSpellIds = cantrips.concat(prepSource);
+      c.preparedSpellIds = prepSource.slice();
+    } else {
+      // spellbook / spellbook-fixed
+      c.preparedSpellIds = prepared.filter((id) => c.learnedSpellIds.includes(id));
+    }
+
+    const beforeLearn = c.learnedSpellIds.length;
+    const beforePrep = c.preparedSpellIds.length;
+    const prevActive = char;
+    char = c;
+    try {
+      clampWoundsAndSp();
+    } finally {
+      char = prevActive;
+    }
+    if (c.learnedSpellIds.length < beforeLearn || c.preparedSpellIds.length < beforePrep) {
+      report.push("Some imported spells were trimmed to fit YMIAT cantrip/known/prepared caps for this class and level.");
+    }
+    if (unmatched.length) {
+      const sample = unmatched.slice(0, 8).join(", ");
+      const more = unmatched.length > 8 ? ` (+${unmatched.length - 8} more)` : "";
+      report.push(`Could not match ${unmatched.length} D&D Beyond spell(s) to YMIAT: ${sample}${more}.`);
+    } else if (learned.length) {
+      report.push(`Imported ${learned.length} spell(s) from D&D Beyond (verify prepared/known lists).`);
+    }
   }
 
   function applyDdbImport(payload) {
@@ -2489,11 +2656,39 @@
   async function fetchDdbCharacter(idOrUrl) {
     const id = extractDdbId(idOrUrl);
     if (!id) throw new Error("Couldn't find a D&D Beyond character ID in that input.");
-    const res = await fetch(`https://character-service.dndbeyond.com/character/v5/character/${id}`, {
-      headers: { Accept: "application/json" },
-    });
-    if (!res.ok) throw new Error(`D&D Beyond returned HTTP ${res.status}.`);
-    return res.json();
+
+    const proxyBase = String(window.YMIAT_DDB_PROXY_URL || "").replace(/\/$/, "");
+    const url = proxyBase
+      ? `${proxyBase}/?id=${encodeURIComponent(id)}`
+      : `https://character-service.dndbeyond.com/character/v5/character/${id}`;
+
+    const res = await fetch(url, { headers: { Accept: "application/json" } });
+    let payload = null;
+    try {
+      payload = await res.json();
+    } catch (_) {
+      payload = null;
+    }
+
+    if (!res.ok) {
+      if (payload && payload.error === "private") {
+        throw new Error("Character is private — set it to Public on D&D Beyond, then try again.");
+      }
+      if (payload && payload.error === "not_found") {
+        throw new Error("Character not found on D&D Beyond.");
+      }
+      throw new Error(proxyBase
+        ? `Proxy returned HTTP ${res.status}.`
+        : `D&D Beyond returned HTTP ${res.status}.`);
+    }
+    if (!payload || !payload.data) {
+      throw new Error("Unexpected response — is the character set to Public?");
+    }
+    return payload;
+  }
+
+  function ddbProxyConfigured() {
+    return Boolean(String(window.YMIAT_DDB_PROXY_URL || "").trim());
   }
 
   function ddbJsonUrl(idOrUrl) {
@@ -2502,6 +2697,12 @@
   }
 
   function renderDdbImportModal() {
+    const proxyOn = ddbProxyConfigured();
+    const proxyBlock = proxyOn
+      ? `<div class="cs-ddb-actions">
+          <button type="button" class="btn cs-btn-secondary" id="cs-ddb-fetch">Fetch via proxy</button>
+        </div>`
+      : "";
     el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-ddb-overlay">
       <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="Import from D&D Beyond">
         <div class="cs-modal-header">
@@ -2509,21 +2710,104 @@
           <button type="button" class="cs-modal-close" id="cs-ddb-close" aria-label="Close">×</button>
         </div>
         <div class="cs-modal-body">
-          <p class="cs-hint">The character must be set to <strong>Public</strong> on D&amp;D Beyond. Converts ability scores, level, class, race, and background using YMIAT's <a href="${rp("rules/conversion.html")}" target="_blank" rel="noopener">conversion rules</a>. Spells, talents, and heritage aren't auto-mapped—those still need a manual pick after import.</p>
-          <label class="cs-label" for="cs-ddb-input">Character ID or D&amp;D Beyond URL</label>
+          <p class="cs-hint">Character must be <strong>Public</strong>. Imports abilities, gear, weapons, and matched spells (<a href="${rp("rules/conversion.html")}" target="_blank" rel="noopener">conversion rules</a>). Talents stay manual.</p>
+          <ol class="cs-ddb-steps">
+            <li>Paste your D&amp;D Beyond character URL (or ID) below.</li>
+            <li>Click <strong>Open JSON</strong> — a new tab shows raw character data.</li>
+            <li>In that tab: <kbd>Ctrl</kbd>+<kbd>A</kbd>, then <kbd>Ctrl</kbd>+<kbd>C</kbd> (Mac: <kbd>⌘</kbd>+<kbd>A</kbd> / <kbd>⌘</kbd>+<kbd>C</kbd>).</li>
+            <li>Back here: <strong>Paste from clipboard</strong> (or paste into the box), then <strong>Import</strong>.</li>
+          </ol>
+          <label class="cs-label" for="cs-ddb-input">Character URL or ID</label>
           <input type="text" id="cs-ddb-input" class="cs-input" placeholder="https://www.dndbeyond.com/characters/12345678" autocomplete="off" />
-          <div class="cs-ddb-actions">
-            <button type="button" class="btn cs-btn-secondary" id="cs-ddb-fetch">Try automatic fetch</button>
+          <div class="cs-ddb-actions cs-ddb-actions--row">
+            <button type="button" class="btn" id="cs-ddb-open-json">Open JSON</button>
+            <button type="button" class="btn cs-btn-secondary" id="cs-ddb-paste">Paste from clipboard</button>
           </div>
-          <p id="cs-ddb-status" class="cs-hint" aria-live="polite"></p>
-          <label class="cs-label" for="cs-ddb-json">Or paste the character JSON here</label>
-          <textarea id="cs-ddb-json" class="cs-input" rows="6" placeholder="Paste the contents of the D&amp;D Beyond character JSON URL here"></textarea>
+          ${proxyBlock}
+          <p id="cs-ddb-status" class="cs-hint" aria-live="polite">Enter a URL, then Open JSON.</p>
+          <label class="cs-label" for="cs-ddb-json">Character JSON</label>
+          <textarea id="cs-ddb-json" class="cs-input" rows="5" placeholder="Paste JSON here (Ctrl+V)…" spellcheck="false"></textarea>
           <div class="cs-ddb-actions">
-            <button type="button" class="btn" id="cs-ddb-convert">Convert &amp; Import</button>
+            <button type="button" class="btn" id="cs-ddb-convert">Import</button>
           </div>
         </div>
       </div>
     </div>`;
+    const input = document.getElementById("cs-ddb-input");
+    if (input) {
+      requestAnimationFrame(() => input.focus());
+    }
+  }
+
+  function setDdbStatus(msg, isHtml) {
+    const status = document.getElementById("cs-ddb-status");
+    if (!status) return;
+    if (isHtml) status.innerHTML = msg;
+    else status.textContent = msg;
+  }
+
+  function parseDdbPayloadText(raw) {
+    const text = String(raw || "").trim();
+    if (!text) throw new Error("Nothing to import — paste the JSON first.");
+    const payload = JSON.parse(text);
+    if (!payload || !payload.data) {
+      throw new Error("JSON must include a top-level \"data\" object (open the character JSON URL, not the character sheet page).");
+    }
+    return payload;
+  }
+
+  function fillDdbJsonBox(raw) {
+    const jsonBox = document.getElementById("cs-ddb-json");
+    if (jsonBox) jsonBox.value = typeof raw === "string" ? raw : JSON.stringify(raw);
+  }
+
+  function tryImportDdbFromBox() {
+    const jsonBox = document.getElementById("cs-ddb-json");
+    const payload = parseDdbPayloadText(jsonBox ? jsonBox.value : "");
+    applyDdbImport(payload);
+  }
+
+  function openDdbJsonTab() {
+    const input = document.getElementById("cs-ddb-input");
+    const idOrUrl = input ? input.value.trim() : "";
+    const url = ddbJsonUrl(idOrUrl);
+    if (!url) {
+      setDdbStatus("Enter a valid D&D Beyond character URL or numeric ID first.");
+      if (input) input.focus();
+      return;
+    }
+    window.open(url, "_blank", "noopener");
+    setDdbStatus("JSON tab opened. Select all → copy, then come back and use Paste from clipboard (or Ctrl+V in the box).");
+  }
+
+  async function pasteDdbClipboard() {
+    const jsonBox = document.getElementById("cs-ddb-json");
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.readText) {
+        setDdbStatus("Clipboard read isn’t available here — click the JSON box and press Ctrl+V (⌘+V).");
+        if (jsonBox) jsonBox.focus();
+        return;
+      }
+      const text = await navigator.clipboard.readText();
+      if (!String(text || "").trim()) {
+        setDdbStatus("Clipboard is empty — copy the JSON tab first (Ctrl+A, Ctrl+C).");
+        return;
+      }
+      fillDdbJsonBox(text);
+      parseDdbPayloadText(text);
+      setDdbStatus("JSON looks good — click Import.");
+      const convertBtn = document.getElementById("cs-ddb-convert");
+      if (convertBtn) convertBtn.focus();
+    } catch (err) {
+      if (err && err.name === "NotAllowedError") {
+        setDdbStatus("Clipboard permission denied — click the JSON box and press Ctrl+V (⌘+V), then Import.");
+      } else if (err instanceof SyntaxError) {
+        setDdbStatus("Clipboard isn’t valid character JSON. Open the JSON URL (not the character sheet), copy everything, try again.");
+      } else {
+        setDdbStatus(err && err.message ? err.message : "Couldn’t read clipboard — paste manually into the box.");
+      }
+      if (jsonBox) jsonBox.focus();
+    }
   }
 
   function handleStepper(id, delta) {
@@ -2690,9 +2974,16 @@
       } else if (t.id === "cs-armor") {
         char.armorId = t.value;
         persistAndRender();
-      } else if (t.id === "cs-weapon") {
-        char.weaponId = t.value;
-        persistAndRender();
+      } else if (t.dataset && t.dataset.weaponSlot != null) {
+        const slot = parseInt(t.dataset.weaponSlot, 10);
+        if (!char.weaponIds || char.weaponIds.length !== WEAPON_SLOT_COUNT) {
+          char.weaponIds = Array(WEAPON_SLOT_COUNT).fill("");
+        }
+        if (Number.isFinite(slot) && slot >= 0 && slot < WEAPON_SLOT_COUNT) {
+          char.weaponIds[slot] = t.value;
+          normalizeWeaponIds(char);
+          persistAndRender();
+        }
       } else if (t.id === "cs-shield") {
         char.hasShield = t.checked;
         persistAndRender();
@@ -2741,39 +3032,33 @@
         } else if (e.target.id === "cs-ddb-overlay" || e.target.id === "cs-ddb-close") {
           ddbModalOpen = false;
           renderModals();
+        } else if (e.target.id === "cs-ddb-open-json") {
+          openDdbJsonTab();
+        } else if (e.target.id === "cs-ddb-paste") {
+          pasteDdbClipboard();
         } else if (e.target.id === "cs-ddb-fetch") {
           const input = document.getElementById("cs-ddb-input");
-          const status = document.getElementById("cs-ddb-status");
-          const jsonBox = document.getElementById("cs-ddb-json");
           const idOrUrl = input ? input.value.trim() : "";
-          if (status) status.textContent = "Fetching…";
+          setDdbStatus("Fetching…");
           e.target.disabled = true;
           fetchDdbCharacter(idOrUrl)
             .then((payload) => {
-              if (jsonBox) jsonBox.value = JSON.stringify(payload);
-              if (status) status.textContent = "Fetched successfully — click Convert & Import below.";
+              fillDdbJsonBox(JSON.stringify(payload, null, 2));
+              setDdbStatus("Fetched successfully — click Import.");
+              const convertBtn = document.getElementById("cs-ddb-convert");
+              if (convertBtn) convertBtn.focus();
             })
             .catch((err) => {
-              const url = ddbJsonUrl(idOrUrl);
-              if (status) {
-                status.innerHTML = `Automatic fetch failed (browsers block this by default — see the Import guide above). ${
-                  url
-                    ? `Open <a href="${url}" target="_blank" rel="noopener">this link</a> in a new tab, copy everything on the page, and paste it below.`
-                    : "Enter a valid character ID or URL first."
-                }`;
-              }
+              setDdbStatus(err && err.message ? err.message : "Fetch failed.");
             })
             .finally(() => {
               e.target.disabled = false;
             });
         } else if (e.target.id === "cs-ddb-convert") {
-          const jsonBox = document.getElementById("cs-ddb-json");
-          const status = document.getElementById("cs-ddb-status");
           try {
-            const payload = JSON.parse(jsonBox ? jsonBox.value : "");
-            applyDdbImport(payload);
+            tryImportDdbFromBox();
           } catch (err) {
-            if (status) status.textContent = `Couldn't parse that as character JSON: ${err.message}`;
+            setDdbStatus(err && err.message ? err.message : "Couldn't import that JSON.");
           }
         } else if (e.target.dataset.languageRemove) {
           const lang = e.target.dataset.languageRemove;
@@ -2807,7 +3092,43 @@
             const pos = spellModalFilter.length;
             input.setSelectionRange(pos, pos);
           }
+        } else if (e.target.id === "cs-ddb-json") {
+          const raw = e.target.value.trim();
+          if (!raw) {
+            setDdbStatus("Paste JSON here, or use Paste from clipboard.");
+            return;
+          }
+          try {
+            parseDdbPayloadText(raw);
+            setDdbStatus("JSON looks good — click Import.");
+          } catch (_) {
+            setDdbStatus("Paste the full character JSON (must include a \"data\" field).");
+          }
         }
+      });
+
+      el.modalRoot.addEventListener("keydown", (e) => {
+        if (!ddbModalOpen) return;
+        if (e.key === "Enter" && e.target && e.target.id === "cs-ddb-input") {
+          e.preventDefault();
+          openDdbJsonTab();
+        }
+      });
+
+      el.modalRoot.addEventListener("paste", (e) => {
+        if (!ddbModalOpen || !e.target || e.target.id !== "cs-ddb-json") return;
+        // After paste settles, validate.
+        requestAnimationFrame(() => {
+          const jsonBox = document.getElementById("cs-ddb-json");
+          const raw = jsonBox ? jsonBox.value.trim() : "";
+          if (!raw) return;
+          try {
+            parseDdbPayloadText(raw);
+            setDdbStatus("JSON looks good — click Import.");
+          } catch (_) {
+            setDdbStatus("That paste isn’t valid character JSON yet.");
+          }
+        });
       });
 
       el.modalRoot.addEventListener("change", (e) => {

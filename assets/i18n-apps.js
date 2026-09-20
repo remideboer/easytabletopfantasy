@@ -88,7 +88,15 @@ window.YMIAT_I18N_APPS = {
       "exportPdfFailed": "Could not create the PDF. Try again, or use Print.",
       "toolbarToggle": "Controls",
       "toolbarShow": "Show controls",
-      "toolbarHide": "Hide controls"
+      "toolbarHide": "Hide controls",
+      "equipped": "Equipped",
+      "armor": "Armor",
+      "shield": "Shield",
+      "weapons": "Weapons",
+      "weapon": "Weapon",
+      "attackBonus": "Attack",
+      "attackBonusPbHint": "Attack bonus is FIT + weapon; add your proficiency bonus on attack rolls.",
+      "equippedPlaceholder": "Other worn items, ammo, tools…"
     }
   },
   "nl": {
@@ -180,7 +188,15 @@ window.YMIAT_I18N_APPS = {
       "exportPdfFailed": "Kon de PDF niet maken. Probeer opnieuw, of gebruik Afdrukken.",
       "toolbarToggle": "Bediening",
       "toolbarShow": "Toon bediening",
-      "toolbarHide": "Verberg bediening"
+      "toolbarHide": "Verberg bediening",
+      "equipped": "Uitrusting",
+      "armor": "Armor",
+      "shield": "Schild",
+      "weapons": "Wapens",
+      "weapon": "Wapen",
+      "attackBonus": "Aanval",
+      "attackBonusPbHint": "Aanvalsbonus is FIT + wapen; tel je proficiency bonus bij bij attack rolls.",
+      "equippedPlaceholder": "Andere gedragen items, munitie, tools…"
     }
   }
 };

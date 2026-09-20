@@ -87,6 +87,14 @@
       "exportPdfFailed": "Kon de PDF niet maken. Probeer opnieuw, of gebruik Afdrukken.",
       "toolbarToggle": "Bediening",
       "toolbarShow": "Toon bediening",
-      "toolbarHide": "Verberg bediening"
+      "toolbarHide": "Verberg bediening",
+      "equipped": "Uitrusting",
+      "armor": "Armor",
+      "shield": "Schild",
+      "weapons": "Wapens",
+      "weapon": "Wapen",
+      "attackBonus": "Aanval",
+      "attackBonusPbHint": "Aanvalsbonus is FIT + wapen; tel je proficiency bonus bij bij attack rolls.",
+      "equippedPlaceholder": "Andere gedragen items, munitie, tools…"
     }
 }
