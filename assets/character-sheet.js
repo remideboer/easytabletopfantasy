@@ -2479,7 +2479,10 @@
     const weaponRows = activeWeaponRowIds(c);
     const weaponRowsHtml = weaponRows
       .map((wid, idx) => {
-        const opts = groupedOptionList(WEAPONS, wid, "Choose weapon", weaponOptionLabel);
+        const emptyLabel = wid
+          ? t("removeWeapon", "Remove weapon")
+          : t("chooseWeapon", "Choose weapon");
+        const opts = groupedOptionList(WEAPONS, wid, emptyLabel, weaponOptionLabel);
         const atk = wid ? computeAttackBonusForWeaponId(c, wid) : null;
         const atkTitle = wid ? attackBonusBreakdownTitle(c, wid) : "";
         const proficient = wid ? isWeaponProficient(c, wid) === true : false;
@@ -2633,7 +2636,7 @@
             ${addWeaponBtn}
           </div>
           <div class="cs-weapon-rows">${weaponRowsHtml || ""}</div>
-          <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown. Choose weapon → empty removes that row."))}</p>
+          <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown. Pick Remove weapon to drop a row."))}</p>
           <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="${escapeHtml(t("equippedPlaceholder", "Other worn items, ammo, tools…"))}">${escapeHtml(c.equippedText)}</textarea>
         </div>
 
@@ -3906,7 +3909,7 @@
         if (Number.isFinite(slot) && slot >= 0 && slot < char.weaponIds.length) {
           const next = t.value || "";
           if (!next) {
-            // Choosing empty / "Choose weapon" removes this row and compacts.
+            // Choosing empty / "Remove weapon" removes this row and compacts.
             weaponPickPending = false;
             char.weaponIds.splice(slot, 1);
           } else {

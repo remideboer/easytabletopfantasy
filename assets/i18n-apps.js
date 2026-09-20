@@ -94,8 +94,11 @@ window.YMIAT_I18N_APPS = {
       "shield": "Shield",
       "weapons": "Weapons",
       "weapon": "Weapon",
+      "chooseWeapon": "Choose weapon",
+      "removeWeapon": "Remove weapon",
+      "addWeapon": "+ Add weapon",
       "attackBonus": "Attack",
-      "attackBonusPbHint": "Attack bonus is FIT + weapon; add your proficiency bonus on attack rolls.",
+      "attackBonusPbHint": "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown. Pick Remove weapon to drop a row.",
       "equippedPlaceholder": "Other worn items, ammo, tools…"
     }
   },
@@ -194,8 +197,11 @@ window.YMIAT_I18N_APPS = {
       "shield": "Schild",
       "weapons": "Wapens",
       "weapon": "Wapen",
+      "chooseWeapon": "Kies wapen",
+      "removeWeapon": "Verwijder wapen",
+      "addWeapon": "+ Wapen toevoegen",
       "attackBonus": "Aanval",
-      "attackBonusPbHint": "Aanvalsbonus is FIT + wapen; tel je proficiency bonus bij bij attack rolls.",
+      "attackBonusPbHint": "Aanval = FIT + wapenbonus (+ PB bij proficiency). * = proficient — hover voor de opsplitsing. Kies Verwijder wapen om een rij te wissen.",
       "equippedPlaceholder": "Andere gedragen items, munitie, tools…"
     }
   }
