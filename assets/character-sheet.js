@@ -2921,6 +2921,60 @@
     }
   }
 
+  /**
+   * Home page (and deep links) pass ?ddb=<url-or-id>. After the sheet boots,
+   * run the same proxy import, then strip the query so refresh doesn't re-import.
+   */
+  async function maybeImportDdbFromQuery() {
+    let params;
+    try {
+      params = new URLSearchParams(window.location.search || "");
+    } catch (_) {
+      return;
+    }
+    const raw = params.get("ddb");
+    if (raw == null || raw === "") return;
+    const idOrUrl = String(raw).trim();
+    try {
+      history.replaceState(null, "", window.location.pathname + window.location.hash);
+    } catch (_) {
+      /* ignore */
+    }
+    if (!extractDdbId(idOrUrl)) {
+      ddbFallbackVisible = true;
+      ddbModalOpen = true;
+      render();
+      const input = document.getElementById("cs-ddb-input");
+      if (input) input.value = idOrUrl;
+      setDdbStatus("Enter a valid D&D Beyond character URL or numeric ID first.");
+      return;
+    }
+    if (!ddbProxyConfigured()) {
+      ddbFallbackVisible = true;
+      ddbModalOpen = true;
+      render();
+      const input = document.getElementById("cs-ddb-input");
+      if (input) input.value = idOrUrl;
+      setDdbStatus("No proxy configured — use the paste fallback below.");
+      updateDdbJsonLink();
+      return;
+    }
+    ddbModalOpen = true;
+    ddbFallbackVisible = false;
+    render();
+    const input = document.getElementById("cs-ddb-input");
+    if (input) input.value = idOrUrl;
+    setDdbStatus("Importing…");
+    try {
+      const payload = await fetchDdbCharacter(idOrUrl);
+      applyDdbImport(payload);
+    } catch (err) {
+      showDdbFallback();
+      setDdbStatus(err && err.message ? err.message : "Import failed.");
+      updateDdbJsonLink();
+    }
+  }
+
   async function pasteDdbClipboard() {
     const jsonBox = document.getElementById("cs-ddb-json");
     try {
@@ -3370,6 +3424,7 @@
       try {
         render();
         syncToolbarFoldout(Boolean(store.activeId));
+        maybeImportDdbFromQuery();
       } catch (renderErr) {
         console.error(renderErr);
         throw new Error("Character sheet failed to render. Try clearing saved data or refreshing.");

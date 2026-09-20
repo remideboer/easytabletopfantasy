@@ -49,6 +49,19 @@
     </div>
     <p class="lede"><strong>You-Meet-In-A-Tavern</strong> (YMIAT) is een beginners- en kindvriendelijke D&amp;D 5e-homebrew — zeg maar een lichte D&amp;D-variant. Je leert snel de kern van D&amp;D 5e en andere tabletop-RPG’s, zonder dobbelsteenchaos. Meer kijken naar de tafel, minder naar het personageblad. Door de lichte regels past YMIAT ook goed in begeleidende of therapeutische settings, mits een getrainde begeleider aanwezig is—zie <a href="therapeutic-use.html">Therapeutisch gebruik</a>.</p>
 
+    <div class="home-ddb callout note" id="home-ddb">
+      <h2 class="callout-title">Importeren vanuit D&amp;D Beyond</h2>
+      <p>Je kunt je D&amp;D Beyond-personage importeren met een <strong>openbare</strong> personagelink als startpunt op het YMIAT-blad. Het blijft een benadering — YMIAT gebruikt andere regels (eigenschappen, Spell Power, known/prepared-limieten) en niet elke class, heritage of spell mappt één-op-één — dus controleer en werk het blad na de import bij. Na importeren open je het personageblad.</p>
+      <form class="home-ddb-form" id="home-ddb-form" data-sheet-href="character-sheet.html" action="character-sheet.html" method="get">
+        <label class="home-ddb-label" for="home-ddb-input">Openbare personage-URL of ID</label>
+        <div class="home-ddb-row">
+          <input type="text" id="home-ddb-input" name="ddb" class="home-ddb-input" placeholder="https://www.dndbeyond.com/characters/12345678" autocomplete="off" required />
+          <button type="submit" class="btn" id="home-ddb-submit">Importeren</button>
+        </div>
+        <p class="home-ddb-status" id="home-ddb-status" aria-live="polite"></p>
+      </form>
+    </div>
+
     <h2>Ontwerpdoelen</h2>
     <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) kiest voor tempo, consistente resolutie en makkelijk leren. Eén kernmechanic, een compacte getallenschaal en een beperkt aantal betekenisvolle keuzes. Spelers snappen altijd wat een actie kost, waar hun kunnen vandaan komt, en wat hun keuzes betekenen in het verhaal aan tafel.</p>
 
@@ -88,6 +101,7 @@
   </div>
 </main>
 <footer class="legal" data-include="footer"></footer>
+<script src="../assets/home-ddb-import.js"></script>
 <script src="../assets/site.js"></script>
 </body>
 </html>

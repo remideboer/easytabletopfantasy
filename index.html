@@ -47,7 +47,20 @@
       </div>
     </div>
     <p class="lede"><strong>You-Meet-In-A-Tavern</strong> (YMIAT) is a beginner, kid-friendly D&amp;D 5e homebrew ruleset, you could call it a D&amp;D light version. It teaches the core of playing D&amp;D 5e and other tabletop RPGs quickly and intuitively without the dice confusion. More looking at the table, less looking at the character sheet. Because the rules stay lightweight, YMIAT can also work well in guided or therapeutic settings when a trained facilitator is present—see <a href="therapeutic-use.html">Therapeutic use</a>.</p>
-    
+
+    <div class="home-ddb callout note" id="home-ddb">
+      <h2 class="callout-title">Import from D&amp;D Beyond</h2>
+      <p>You can import your D&amp;D Beyond character with a <strong>public</strong> character link as a starting point on the YMIAT sheet. It will be an approximation — YMIAT uses different rules (abilities, Spell Power, known/prepared caps) and not every class, heritage, or spell maps one-to-one — so verify and finish the sheet after import. Importing opens the character sheet.</p>
+      <form class="home-ddb-form" id="home-ddb-form" data-sheet-href="character-sheet.html" action="character-sheet.html" method="get">
+        <label class="home-ddb-label" for="home-ddb-input">Public character URL or ID</label>
+        <div class="home-ddb-row">
+          <input type="text" id="home-ddb-input" name="ddb" class="home-ddb-input" placeholder="https://www.dndbeyond.com/characters/12345678" autocomplete="off" required />
+          <button type="submit" class="btn" id="home-ddb-submit">Import</button>
+        </div>
+        <p class="home-ddb-status" id="home-ddb-status" aria-live="polite"></p>
+      </form>
+    </div>
+
     <h2>Design Goals</h2>
     <p><strong>You-Meet-In-A-Tavern</strong> (YMIAT) favors speed of play, consistent resolution, and ease of learning. It uses a single core mechanic, a compressed numerical scale, and a limited set of meaningful decisions. The system is designed so that players always understand what their actions cost, where their capabilities come from, and what effects their choices have on the fiction at the table.</p>
     
@@ -87,6 +100,7 @@
   </div>
 </main>
 <footer class="legal" data-include="footer"></footer>
+<script src="assets/home-ddb-import.js"></script>
 <script src="assets/site.js"></script>
 </body>
 </html>
