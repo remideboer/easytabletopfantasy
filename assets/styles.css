@@ -4738,6 +4738,24 @@
     font-size:.9rem;
     font-weight:800;
   }
+  .cs-weapon-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    margin:12px 0 6px;
+  }
+  .cs-weapon-head .cs-subhead{margin:0}
+  .cs-weapon-head .cs-btn-link{
+    flex-shrink:0;
+    white-space:nowrap;
+    font-size:.8rem;
+  }
+  .cs-weapon-head .cs-btn-link:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    text-decoration:none;
+  }
   .cs-weapon-rows{
     display:flex;
     flex-direction:column;

@@ -36,7 +36,9 @@
   }
   const INVENTORY_THRESHOLDS = [-2, -2, -1, -1, 0, 1, 1, 2, 2];
   const INVENTORY_SLOT_COUNT = INVENTORY_THRESHOLDS.length * 2;
-  const WEAPON_SLOT_COUNT = 4;
+  const WEAPON_SLOT_COUNT = 5;
+  // True while an empty “choose weapon” row is shown after + Add weapon.
+  let weaponPickPending = false;
 
   // Defense bonus per gear.html Armor table: base + FIT mod (capped where noted; heavy excludes FIT).
   const ARMOR = [
@@ -228,7 +230,7 @@
       armorId: "",
       hasShield: false,
       weaponId: "",
-      weaponIds: Array(WEAPON_SLOT_COUNT).fill(""),
+      weaponIds: [],
       speed: 30,
       size: "Medium",
       currency: { gold: 0, silver: 0, copper: 0 },
@@ -880,10 +882,37 @@
       ? c.weaponIds.filter((id) => typeof id === "string")
       : [];
     if (!ids.some(Boolean) && c.weaponId) ids = [c.weaponId];
-    ids = ids.map((id) => (id && byId(WEAPONS, id) ? id : ""));
-    while (ids.length < WEAPON_SLOT_COUNT) ids.push("");
-    c.weaponIds = ids.slice(0, WEAPON_SLOT_COUNT);
+    const filled = ids
+      .map((id) => (id && byId(WEAPONS, id) ? id : ""))
+      .filter(Boolean)
+      .slice(0, WEAPON_SLOT_COUNT);
+    c.weaponIds = filled;
+    if (weaponPickPending && c.weaponIds.length < WEAPON_SLOT_COUNT) {
+      c.weaponIds.push("");
+    } else {
+      weaponPickPending = false;
+    }
     c.weaponId = c.weaponIds.find(Boolean) || "";
+  }
+
+  function activeWeaponRowIds(c) {
+    return Array.isArray(c.weaponIds) ? c.weaponIds.slice() : [];
+  }
+
+  function canAddWeaponRow(c) {
+    const rows = activeWeaponRowIds(c);
+    if (rows.length >= WEAPON_SLOT_COUNT) return false;
+    if (rows.length && !rows[rows.length - 1]) return false; // already picking
+    return true;
+  }
+
+  function addWeaponRow(c) {
+    if (!c || !canAddWeaponRow(c)) return false;
+    normalizeWeaponIds(c);
+    if (c.weaponIds.length >= WEAPON_SLOT_COUNT) return false;
+    weaponPickPending = true;
+    c.weaponIds.push("");
+    return true;
   }
 
   // Attack bonus per gear.html: weapon table bonus + FIT mod.
@@ -2447,11 +2476,11 @@
     const defBonus = computeDefense(c);
     const pb = computePB(c);
     const selectedArmor = byId(ARMOR, c.armorId);
-    const weaponRowsHtml = (c.weaponIds || Array(WEAPON_SLOT_COUNT).fill(""))
-      .slice(0, WEAPON_SLOT_COUNT)
+    const weaponRows = activeWeaponRowIds(c);
+    const weaponRowsHtml = weaponRows
       .map((wid, idx) => {
-        const opts = groupedOptionList(WEAPONS, wid, "No Weapon", weaponOptionLabel);
-        const atk = computeAttackBonusForWeaponId(c, wid);
+        const opts = groupedOptionList(WEAPONS, wid, "Choose weapon", weaponOptionLabel);
+        const atk = wid ? computeAttackBonusForWeaponId(c, wid) : null;
         const atkTitle = wid ? attackBonusBreakdownTitle(c, wid) : "";
         const proficient = wid ? isWeaponProficient(c, wid) === true : false;
         const atkLabel =
@@ -2461,7 +2490,6 @@
         const profTitle = proficient
           ? (atkTitle ? `${atkTitle} · ${t("includesPb", "Includes proficiency bonus")}` : t("includesPb", "Includes proficiency bonus"))
           : atkTitle;
-        // Fixed * slot so dropdown width stays equal whether proficient or not.
         const star = proficient
           ? `<span class="cs-atk-star is-on" aria-label="${escapeHtml(t("proficient", "Proficient"))}">*</span>`
           : `<span class="cs-atk-star" aria-hidden="true"></span>`;
@@ -2472,6 +2500,8 @@
         </div>`;
       })
       .join("");
+    const addWeaponDisabled = !canAddWeaponRow(c);
+    const addWeaponBtn = `<button type="button" class="cs-btn-link" id="cs-add-weapon"${addWeaponDisabled ? " disabled" : ""}>${escapeHtml(t("addWeapon", "+ Add weapon"))}</button>`;
 
     const inventoryRows = INVENTORY_THRESHOLDS.map((threshold, rowIdx) => {
       const rowOpen = rowIdx < inventoryUnlockedRows(c);
@@ -2598,9 +2628,12 @@
             </label>
           </div>
           ${shieldWarn}
-          <h3 class="cs-subhead">${escapeHtml(t("weapons", "Weapons"))}</h3>
-          <div class="cs-weapon-rows">${weaponRowsHtml}</div>
-          <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown."))}</p>
+          <div class="cs-weapon-head">
+            <h3 class="cs-subhead">${escapeHtml(t("weapons", "Weapons"))}</h3>
+            ${addWeaponBtn}
+          </div>
+          <div class="cs-weapon-rows">${weaponRowsHtml || ""}</div>
+          <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown. Choose weapon → empty removes that row."))}</p>
           <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="${escapeHtml(t("equippedPlaceholder", "Other worn items, ammo, tools…"))}">${escapeHtml(c.equippedText)}</textarea>
         </div>
 
@@ -2798,6 +2831,7 @@
     ddbModalOpen = false;
     ddbReview = null;
     ddbFallbackVisible = false;
+    weaponPickPending = false;
     if (!id) {
       store.activeId = null;
       saveStore();
@@ -2824,6 +2858,7 @@
     ddbModalOpen = false;
     ddbReview = null;
     ddbFallbackVisible = false;
+    weaponPickPending = false;
     const c = defaultCharacter();
     store.characters.push(c);
     store.activeId = c.id;
@@ -3191,13 +3226,13 @@
       const nm = ddbEquippedName(item);
       if (/shield/i.test(nm)) return;
       const m = ddbMatchExact(WEAPONS, nm);
-      if (m) weaponIds.push(m.id);
+      if (m && !weaponIds.includes(m.id)) weaponIds.push(m.id);
     };
     equipped.forEach(pushWeapon);
     inventory.filter((item) => item && item.definition && !item.equipped).forEach(pushWeapon);
-    c.weaponIds = weaponIds.slice();
-    while (c.weaponIds.length < WEAPON_SLOT_COUNT) c.weaponIds.push("");
+    c.weaponIds = weaponIds.slice(0, WEAPON_SLOT_COUNT);
     c.weaponId = c.weaponIds.find(Boolean) || "";
+    weaponPickPending = false;
 
     // Inventory text slots from all DDB items.
     const invLines = [];
@@ -3774,6 +3809,11 @@
         renderModals();
         return;
       }
+      if (e.target.closest("#cs-add-weapon")) {
+        if (!char) return;
+        if (addWeaponRow(char)) persistAndRender();
+        return;
+      }
       if (e.target.closest("#cs-choose-skills")) {
         skillModalOpen = true;
         renderModals();
@@ -3862,11 +3902,17 @@
         persistAndRender();
       } else if (t.dataset && t.dataset.weaponSlot != null) {
         const slot = parseInt(t.dataset.weaponSlot, 10);
-        if (!char.weaponIds || char.weaponIds.length !== WEAPON_SLOT_COUNT) {
-          char.weaponIds = Array(WEAPON_SLOT_COUNT).fill("");
-        }
-        if (Number.isFinite(slot) && slot >= 0 && slot < WEAPON_SLOT_COUNT) {
-          char.weaponIds[slot] = t.value;
+        if (!Array.isArray(char.weaponIds)) char.weaponIds = [];
+        if (Number.isFinite(slot) && slot >= 0 && slot < char.weaponIds.length) {
+          const next = t.value || "";
+          if (!next) {
+            // Choosing empty / "Choose weapon" removes this row and compacts.
+            weaponPickPending = false;
+            char.weaponIds.splice(slot, 1);
+          } else {
+            char.weaponIds[slot] = next;
+            if (slot === char.weaponIds.length - 1) weaponPickPending = false;
+          }
           normalizeWeaponIds(char);
           persistAndRender();
         }
