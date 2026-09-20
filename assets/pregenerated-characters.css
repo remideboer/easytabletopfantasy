@@ -108,6 +108,12 @@
 .pg-ability.is-spellcasting .pg-ability-lbl{
   font-weight:800;
 }
+.pg-armor-warn{
+  margin:4px 0 0;
+  font-size:10px;
+  line-height:1.35;
+  color:#7a3e00;
+}
 .pg-ability-val,
 .pg-track-val{
   display:block;

@@ -348,6 +348,9 @@
       " · <strong>" + (lang === "nl" ? "Achtergrond" : "Background") + ":</strong> " + (vm.backgroundName || "—") + "</p>" +
       '<p class="pg-tags-row"><strong>' + (lang === "nl" ? "Pantser" : "Armor") + ":</strong> " + (vm.armorLabel || "—") +
       " · <strong>" + (lang === "nl" ? "Rol" : "Role") + ":</strong> " + (vm.role || vm.className || "—") + "</p>" +
+      (vm.armorWarning
+        ? '<p class="pg-armor-warn"><strong>' + (lang === "nl" ? "Niet proficient" : "Not proficient") + ":</strong> " + vm.armorWarning + "</p>"
+        : "") +
       "</div></div>" +
       '<div class="pg-col">' +
       '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Eigenschappen" : "Abilities") + "</h3>" +

@@ -477,6 +477,7 @@
 
         <div class="cs-pane cs-pane--ability-list">
           <h2 class="cs-pane-title">Abilities</h2>
+          ${renderClasslessCombatProficiencyBlock()}
           <div class="cls-ability-lines">${abilityLinesHtml}</div>
         </div>
       </div>
@@ -529,6 +530,31 @@
       if (id && !ids.includes(id)) ids.push(id);
     });
     return ids;
+  }
+
+  function trainedWeaponArmorAbilities() {
+    return trainedAbilityIdsInOrder()
+      .map((id) => abilityById(id))
+      .filter((a) => a && a.categoryId === "weapon-armor-proficiency");
+  }
+
+  function renderClasslessCombatProficiencyBlock() {
+    const trained = trainedWeaponArmorAbilities();
+    const isNl = document.documentElement.lang === "nl" || /\/nl\//.test(location.pathname);
+    const coreHref = rp(isNl ? "nl/rules/core.html#armor-proficiency" : "rules/core.html#armor-proficiency");
+    const chips = trained.length
+      ? trained
+          .map((a) => `<span class="cs-spell-chip is-active" title="${escapeHtml(a.description || "")}">${escapeHtml(a.name)}</span>`)
+          .join("")
+      : `<span class="cs-muted">${isNl ? "Nog geen pantser-/wapenbehendigheid getraind." : "No armor/weapon proficiency trained yet."}</span>`;
+    const reminder = isNl
+      ? "Pantser boven je getrainde categorie: stapelend nadeel op alle d20-rollen (1 extra d20 per stap), plus nadeel op Fitness-tests, Verdedigingsrollen en spellcasting-rollen."
+      : "Armor above your trained category: stacking disadvantage on all d20 rolls (1 extra d20 per step), plus disadvantage on Fitness checks, Defense rolls, and spellcasting rolls.";
+    return `<div class="cs-prof-block cls-prof-block">
+      <h3 class="cs-spell-group-sheet-title">${isNl ? "Pantser &amp; wapens" : "Armor &amp; weapons"}</h3>
+      <div class="cs-spell-chips">${chips}</div>
+      <p class="cs-hint cls-armor-rule-reminder">${escapeHtml(reminder)} <a href="${escapeHtml(coreHref)}" target="_blank" rel="noopener">${isNl ? "Volledige regels" : "Full rules"}</a></p>
+    </div>`;
   }
 
   function abilityCost(abilityOrId) {

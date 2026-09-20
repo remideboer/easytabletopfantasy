@@ -56,7 +56,7 @@
   ];
   const SHIELD_BONUS = 2;
 
-  // Attack bonus per gear.html weapon tables: weapon bonus + FIT mod.
+  // Attack bonus per gear.html weapon tables: weapon bonus + FIT mod (+ PB when proficient).
   const WEAPONS = [
     { id: "club", name: "Club", category: "Simple Melee", bonus: 1, props: "Bludgeoning, Light, Slow" },
     { id: "dagger", name: "Dagger", category: "Simple Melee", bonus: 1, props: "Piercing, Finesse, Light, Thrown (Range 20/60)" },
@@ -886,14 +886,27 @@
     c.weaponId = c.weaponIds.find(Boolean) || "";
   }
 
+  // Attack bonus per gear.html: weapon table bonus + FIT mod.
+  // When proficient with the weapon, also add Proficiency Bonus (PB).
   function computeAttackBonusForWeaponId(c, weaponId) {
     const weapon = byId(WEAPONS, weaponId);
     if (!weapon) return null;
-    return effectiveMod(c, "fit") + weapon.bonus;
+    let total = effectiveMod(c, "fit") + weapon.bonus;
+    if (isWeaponProficient(c, weaponId)) total += computePB(c);
+    return total;
   }
 
   function computeAttackBonus(c) {
     return computeAttackBonusForWeaponId(c, c.weaponId);
+  }
+
+  function attackBonusBreakdownTitle(c, weaponId) {
+    const weapon = byId(WEAPONS, weaponId);
+    if (!weapon) return "";
+    const fit = effectiveMod(c, "fit");
+    const parts = [`FIT ${formatMod(fit)}`, `weapon ${formatMod(weapon.bonus)}`];
+    if (isWeaponProficient(c, weaponId)) parts.push(`PB ${formatMod(computePB(c))}`);
+    return parts.join(" + ");
   }
 
   function computeSpeed(c) {
@@ -925,6 +938,8 @@
   }
 
   function deriveProficiencyLines(cls) {
+    const combat = parseClassCombatProficiency(cls);
+    if (combat.lines && combat.lines.length) return combat.lines.slice();
     if (!cls || !cls.proficiencies) return [];
     const text = String(cls.proficiencies).replace(/\s*Skills?:[\s\S]*$/i, "").trim();
     if (!text) return [];
@@ -932,6 +947,230 @@
       .split(/,\s*/)
       .map((s) => s.replace(/\.$/, "").trim())
       .filter(Boolean);
+  }
+
+  const ARMOR_STEP_LABELS = { 0: "None", 1: "Light", 2: "Medium", 3: "Heavy" };
+
+  function armorCategoryStep(category) {
+    const c = String(category || "").toLowerCase();
+    if (c.includes("heavy")) return 3;
+    if (c.includes("medium")) return 2;
+    if (c.includes("light")) return 1;
+    return 0;
+  }
+
+  /**
+   * Parse class.proficiencies into structured combat proficiency.
+   * Skills clause is ignored; subclass grants are not included (v1).
+   */
+  function parseClassCombatProficiency(cls) {
+    const empty = {
+      armorStep: 0,
+      shields: false,
+      weaponSummary: "",
+      weaponFlags: { all: false, simple: false, martial: false, martialFinesseOnly: false, shortswords: false },
+      lines: [],
+      armorLabel: "None",
+    };
+    if (!cls || !cls.proficiencies) return empty;
+    const combatText = String(cls.proficiencies).replace(/\s*Skills?:[\s\S]*$/i, "").trim().replace(/\.$/, "");
+    if (!combatText) return empty;
+    const lower = combatText.toLowerCase();
+
+    let armorStep = 0;
+    if (/\bno armor\b/.test(lower)) {
+      armorStep = 0;
+    } else if (/\ball armor\b/.test(lower)) {
+      armorStep = 3;
+    } else if (/\bheavy\b/.test(lower) && /\barmor\b/.test(lower)) {
+      armorStep = 3;
+    } else if (/\blight and medium armor\b/.test(lower) || /\bmedium armor\b/.test(lower)) {
+      armorStep = 2;
+    } else if (/\blight armor\b/.test(lower)) {
+      armorStep = 1;
+    }
+
+    const shields = /\bshields?\b/.test(lower);
+
+    const weaponFlags = {
+      all: false,
+      simple: false,
+      martial: false,
+      martialFinesseOnly: false,
+      shortswords: false,
+    };
+    // Phrases like "simple and martial finesse weapons" (Rogue) must grant
+    // simple weapons — not only the martial-finesse half.
+    if (/\ball weapons\b/.test(lower) || /\bsimple and martial weapons\b/.test(lower)) {
+      weaponFlags.all = true;
+      weaponFlags.simple = true;
+      weaponFlags.martial = true;
+    } else {
+      if (
+        /\bsimple weapons\b/.test(lower) ||
+        /\bsimple and martial\b/.test(lower) ||
+        /\bsimple melee\b/.test(lower) ||
+        /\bsimple ranged\b/.test(lower)
+      ) {
+        weaponFlags.simple = true;
+      }
+      if (/\bmartial finesse weapons\b/.test(lower)) {
+        weaponFlags.martialFinesseOnly = true;
+        weaponFlags.martial = true;
+      } else if (/\bmartial weapons\b/.test(lower)) {
+        weaponFlags.martial = true;
+      }
+      if (/\bshortswords?\b/.test(lower)) weaponFlags.shortswords = true;
+    }
+
+    const parts = combatText
+      .split(/;\s*|,\s*/)
+      .map((s) => s.replace(/\.$/, "").trim())
+      .filter(Boolean);
+    const weaponParts = parts.filter((p) => {
+      const l = p.toLowerCase();
+      if (/\barmor\b/.test(l) || /\bshields?\b/.test(l) || /\bno armor\b/.test(l)) return false;
+      if (/\btools?\b/.test(l) || /\binstrument/.test(l) || /\bskills?\b/.test(l)) return false;
+      return /\bweapon/.test(l) || /\bshortsword/.test(l) || /\bfinesse/.test(l);
+    });
+    const weaponSummary = weaponParts.length
+      ? weaponParts.join("; ")
+      : weaponFlags.all
+        ? "Simple and martial weapons"
+        : "";
+
+    const lines = [];
+    if (armorStep >= 3) lines.push("All armor");
+    else if (armorStep === 2) lines.push("Light and medium armor");
+    else if (armorStep === 1) lines.push("Light armor");
+    else lines.push("No armor");
+    if (shields) lines.push("Shields");
+    if (weaponSummary) lines.push(weaponSummary);
+
+    return {
+      armorStep: armorStep,
+      shields: shields,
+      weaponSummary: weaponSummary,
+      weaponFlags: weaponFlags,
+      lines: lines,
+      armorLabel: ARMOR_STEP_LABELS[armorStep] || "None",
+    };
+  }
+
+  function wornArmorStep(c) {
+    const armor = byId(ARMOR, c && c.armorId);
+    if (!armor) return 0;
+    return armorCategoryStep(armor.category);
+  }
+
+  function armorProficiencyGap(c) {
+    const cls = findClass(c);
+    const prof = parseClassCombatProficiency(cls);
+    const worn = wornArmorStep(c);
+    return Math.max(0, worn - prof.armorStep);
+  }
+
+  function isWeaponProficient(c, weaponId) {
+    const weapon = byId(WEAPONS, weaponId);
+    if (!weapon) return null;
+    const prof = parseClassCombatProficiency(findClass(c));
+    const flags = prof.weaponFlags || {};
+    if (flags.all) return true;
+    const cat = String(weapon.category || "").toLowerCase();
+    const isSimple = cat.includes("simple");
+    const isMartial = cat.includes("martial");
+    if (isSimple && flags.simple) return true;
+    if (weapon.id === "shortsword" && flags.shortswords) return true;
+    if (isMartial && flags.martial) {
+      if (flags.martialFinesseOnly) {
+        return /\bfinesse\b/i.test(weapon.props || "");
+      }
+      return true;
+    }
+    return false;
+  }
+
+  function formatArmorWarning(c) {
+    const gap = armorProficiencyGap(c);
+    if (gap <= 0) return "";
+    const armor = byId(ARMOR, c.armorId);
+    const prof = parseClassCombatProficiency(findClass(c));
+    const langNl = sheetLocale() === "nl";
+    const stepsWord = gap === 1 ? (langNl ? "stap" : "step") : langNl ? "stappen" : "steps";
+    const dice = gap + 1;
+    if (langNl) {
+      return (
+        "Niet proficient met " +
+        (armor ? armor.name : "dit pantser") +
+        " (" +
+        gap +
+        " " +
+        stepsWord +
+        " boven " +
+        (prof.armorLabel || "None") +
+        "). Stapelend nadeel: rol " +
+        dice +
+        "d20, neem de laagste op alle d20-rollen; nadeel op Fitness-tests, Verdedigingsrollen en spellcasting-rollen."
+      );
+    }
+    return (
+      "Not proficient with " +
+      (armor ? armor.name : "this armor") +
+      " (" +
+      gap +
+      " " +
+      stepsWord +
+      " above " +
+      (prof.armorLabel || "None") +
+      "). Stacking disadvantage: roll " +
+      dice +
+      "d20, take lowest on all d20 rolls; disadvantage on Fitness checks, Defense rolls, and spellcasting rolls."
+    );
+  }
+
+  function renderCombatProficiencyBlock(c, cls) {
+    const prof = parseClassCombatProficiency(cls);
+    if (!cls) {
+      return `<div class="cs-prof-block">
+        <h3 class="cs-spell-group-sheet-title">${escapeHtml(t("armorWeapons", "Armor & weapons"))}</h3>
+        <p class="cs-muted">${escapeHtml(t("chooseClassProf", "Choose a class to see armor and weapon proficiencies."))}</p>
+      </div>`;
+    }
+    const armorCats = [];
+    if (prof.armorStep >= 1) armorCats.push("Light");
+    if (prof.armorStep >= 2) armorCats.push("Medium");
+    if (prof.armorStep >= 3) armorCats.push("Heavy");
+    const armorText = armorCats.length ? armorCats.join(", ") : "None";
+    const shieldText = prof.shields ? t("yes", "Yes") : t("no", "No");
+    const weaponsText = prof.weaponSummary || "—";
+    const coreHref = rp(sheetLocale() === "nl" ? "nl/rules/core.html#armor-proficiency" : "rules/core.html#armor-proficiency");
+    return `<div class="cs-prof-block">
+      <h3 class="cs-spell-group-sheet-title">${escapeHtml(t("armorWeapons", "Armor & weapons"))} <span class="cs-muted">(${escapeHtml(t("fromClass", "from Class"))})</span></h3>
+      <ul class="cs-prof-list">
+        <li><strong>${escapeHtml(t("armor", "Armor"))}:</strong> ${escapeHtml(armorText)}</li>
+        <li><strong>${escapeHtml(t("shield", "Shield"))}:</strong> ${escapeHtml(shieldText)}</li>
+        <li><strong>${escapeHtml(t("weapons", "Weapons"))}:</strong> ${escapeHtml(weaponsText)}</li>
+      </ul>
+      <p class="cs-hint"><a href="${escapeHtml(coreHref)}" target="_blank" rel="noopener">${escapeHtml(t("armorProfRules", "Armor proficiency rules"))}</a></p>
+    </div>`;
+  }
+
+  function renderArmorProficiencyWarning(c) {
+    const gap = armorProficiencyGap(c);
+    if (gap <= 0) return "";
+    const warn = formatArmorWarning(c);
+    const coreHref = rp(sheetLocale() === "nl" ? "nl/rules/core.html#armor-proficiency" : "rules/core.html#armor-proficiency");
+    const dice = gap + 1;
+    return `<div class="cs-armor-warn" role="status">
+      <p class="cs-armor-warn-title"><span class="cs-armor-warn-tag">${escapeHtml(t("notProficient", "Not proficient"))}</span> ${gap} ${escapeHtml(gap === 1 ? t("stepAbove", "step above training") : t("stepsAbove", "steps above training"))}</p>
+      <ul class="cs-armor-warn-list">
+        <li>${escapeHtml(t("stackingDisadv", "Stacking disadvantage"))}: ${dice}d20 ${escapeHtml(t("takeLowest", "take lowest"))} ${escapeHtml(t("onAllD20", "on all d20 rolls"))}</li>
+        <li>${escapeHtml(t("disadvFitness", "Disadvantage on Fitness checks"))}</li>
+        <li>${escapeHtml(t("disadvDefense", "Disadvantage on Defense rolls"))}</li>
+        <li>${escapeHtml(t("disadvSpellcasting", "Disadvantage on spellcasting rolls"))}</li>
+      </ul>
+      <p class="cs-hint"><a href="${escapeHtml(coreHref)}" target="_blank" rel="noopener">${escapeHtml(t("fullArmorRules", "Full rules"))}</a> · ${escapeHtml(warn)}</p>
+    </div>`;
   }
 
   /** Parse lineage HTML body into { name, text } trait lines for PDF Person block. */
@@ -1022,7 +1261,7 @@
       const atk = computeAttackBonusForWeaponId(c, wid);
       attacks.push({
         weapon: w.name,
-        bonus: atk != null ? atk + pb : pb,
+        bonus: atk != null ? atk : pb,
         wounds: 1,
       });
     });
@@ -1030,7 +1269,7 @@
       const atk = computeAttackBonus(c);
       attacks.push({
         weapon: weapon.name,
-        bonus: atk != null ? atk + pb : pb,
+        bonus: atk != null ? atk : pb,
         wounds: 1,
       });
     }
@@ -1142,6 +1381,7 @@
       background: "",
       lineageTraits: parseLineageTraits(lineage),
       equipment: equipment,
+      armorWarning: formatArmorWarning(c),
       footer: "YMIAT · " + (langNl ? "Personageblad" : "Character sheet") + " · L" + c.level,
       downloadHref: "",
     };
@@ -2212,14 +2452,23 @@
       .map((wid, idx) => {
         const opts = groupedOptionList(WEAPONS, wid, "No Weapon", weaponOptionLabel);
         const atk = computeAttackBonusForWeaponId(c, wid);
+        const atkTitle = wid ? attackBonusBreakdownTitle(c, wid) : "";
+        const proficient = wid ? isWeaponProficient(c, wid) === true : false;
         const atkLabel =
           atk !== null
             ? `${escapeHtml(t("attackBonus", "Attack"))}: ${formatMod(atk)}`
             : "—";
+        const profTitle = proficient
+          ? (atkTitle ? `${atkTitle} · ${t("includesPb", "Includes proficiency bonus")}` : t("includesPb", "Includes proficiency bonus"))
+          : atkTitle;
+        // Fixed * slot so dropdown width stays equal whether proficient or not.
+        const star = proficient
+          ? `<span class="cs-atk-star is-on" aria-label="${escapeHtml(t("proficient", "Proficient"))}">*</span>`
+          : `<span class="cs-atk-star" aria-hidden="true"></span>`;
         return `<div class="cs-weapon-row">
-          <label class="cs-label cs-weapon-row-lbl" for="cs-weapon-${idx}">${escapeHtml(t("weapon", "Weapon"))} ${idx + 1}</label>
-          <select id="cs-weapon-${idx}" class="cs-select" data-weapon-slot="${idx}">${opts}</select>
-          <span class="cs-atk-bonus" aria-label="${escapeHtml(t("attackBonus", "Attack bonus"))}">${atkLabel}</span>
+          <select id="cs-weapon-${idx}" class="cs-select" data-weapon-slot="${idx}" aria-label="${escapeHtml(t("weapon", "Weapon"))} ${idx + 1}">${opts}</select>
+          <span class="cs-atk-bonus${proficient ? " is-proficient" : ""}" title="${escapeHtml(profTitle)}" aria-label="${escapeHtml(t("attackBonus", "Attack bonus"))}${profTitle ? ` (${profTitle})` : ""}">${atkLabel}</span>
+          ${star}
         </div>`;
       })
       .join("");
@@ -2238,6 +2487,12 @@
     }).join("");
 
     const spellcastingLine = formatSpellcastingLine(c);
+    const armorGap = armorProficiencyGap(c);
+    const combatProf = parseClassCombatProficiency(cls);
+    const shieldWarn =
+      c.hasShield && cls && !combatProf.shields
+        ? `<p class="cs-muted cs-shield-warn">${escapeHtml(t("shieldNotProficient", "Not proficient with shields — expect disadvantage while using one."))}</p>`
+        : "";
     const spSection = caster
       ? `<div class="cs-stat-box cs-stat-box--wide">
           <span class="cs-stat-label">Spell Power</span>
@@ -2248,6 +2503,10 @@
           ${spellcastingLine ? `<p class="cs-muted cs-spellcasting-line">${escapeHtml(spellcastingLine)}</p>` : ""}
         </div>`
       : "";
+    const defWarnNote =
+      armorGap > 0
+        ? `<span class="cs-armor-warn-tag cs-armor-warn-tag--inline" title="${escapeHtml(formatArmorWarning(c))}">${escapeHtml(t("notProficient", "Not proficient"))}</span>`
+        : "";
 
     el.sheet.innerHTML = `
       <div class="cs-col cs-col--stats">
@@ -2293,6 +2552,7 @@
           <div class="cs-stat-box">
             <span class="cs-stat-label">DEF</span>
             <span class="cs-wd-val cs-wd-val--calc" title="Armor bonus + FIT mod (or FIT mod alone, unarmored), + shield if carried">${formatMod(defBonus)}</span>
+            ${defWarnNote}
           </div>
           <div class="cs-stat-box">
             <span class="cs-stat-label">Resolve</span>
@@ -2309,6 +2569,7 @@
         <div class="cs-pane cs-pane--abilities">
           <h2 class="cs-pane-title">Abilities</h2>
           ${cls ? `<p class="cs-class-summary">${escapeHtml(cls.summary || "")}</p>` : '<p class="cs-muted">Choose a class to see features.</p>'}
+          ${renderCombatProficiencyBlock(c, cls)}
           ${abilitiesHtml}
           ${renderSkillsLanguagesSection(c, background, heritage)}
         </div>
@@ -2328,6 +2589,7 @@
             <select id="cs-armor" class="cs-select">${armorOptions}</select>
             <p class="cs-print-value">${escapeHtml(selectedArmor ? selectedArmor.name : "None")}</p>
             <p class="cs-props">${selectedArmor ? escapeHtml(selectedArmor.props || "—") : "—"}</p>
+            ${renderArmorProficiencyWarning(c)}
           </div>
           <div class="cs-equip-summary-row">
             <label class="cs-checkbox-field">
@@ -2335,9 +2597,10 @@
               ${escapeHtml(t("shield", "Shield"))} (+${SHIELD_BONUS} DEF)
             </label>
           </div>
+          ${shieldWarn}
           <h3 class="cs-subhead">${escapeHtml(t("weapons", "Weapons"))}</h3>
           <div class="cs-weapon-rows">${weaponRowsHtml}</div>
-          <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack bonus is FIT + weapon; add your proficiency bonus on attack rolls."))}</p>
+          <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown."))}</p>
           <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="${escapeHtml(t("equippedPlaceholder", "Other worn items, ammo, tools…"))}">${escapeHtml(c.equippedText)}</textarea>
         </div>
 

@@ -4746,20 +4746,84 @@
   }
   .cs-weapon-row{
     display:grid;
-    grid-template-columns:minmax(4.5rem,auto) minmax(0,1fr) auto;
-    gap:6px 10px;
+    grid-template-columns:minmax(0,1fr) auto 0.85rem;
+    gap:6px 6px;
     align-items:center;
   }
-  .cs-weapon-row-lbl{
-    margin:0;
-    font-size:.75rem;
+  .cs-weapon-row .cs-select{
+    min-width:0;
+    width:100%;
   }
-  .cs-weapon-row .cs-select{min-width:0}
   .cs-weapon-atk-hint{margin:4px 0 8px;font-size:.75rem}
+  .cs-atk-bonus{
+    white-space:nowrap;
+    font-size:.8rem;
+    cursor:help;
+    justify-self:end;
+  }
+  .cs-atk-bonus.is-proficient{
+    font-weight:700;
+    color:var(--brand-primary);
+  }
+  .cs-atk-star{
+    display:inline-block;
+    width:0.85rem;
+    text-align:center;
+    font-weight:700;
+    line-height:1;
+    color:transparent;
+    user-select:none;
+  }
+  .cs-atk-star.is-on{
+    color:var(--brand-primary);
+  }
+  .cs-prof-block{
+    margin:10px 0 12px;
+    padding:8px 0 0;
+    border-top:1px solid var(--line);
+  }
+  .cs-prof-list{
+    margin:4px 0 6px;
+    padding-left:1.1rem;
+    font-size:.88rem;
+  }
+  .cs-prof-list li{margin:2px 0}
+  .cs-armor-warn{
+    margin:8px 0 0;
+    padding:8px 10px;
+    border:1px solid #b45309;
+    border-radius:var(--r);
+    background:rgba(180,83,9,.08);
+    font-size:.82rem;
+  }
+  .cs-armor-warn-title{margin:0 0 4px;font-weight:700}
+  .cs-armor-warn-tag{
+    display:inline-block;
+    margin-right:4px;
+    padding:1px 6px;
+    border-radius:4px;
+    background:#b45309;
+    color:#fff;
+    font-size:.68rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .cs-armor-warn-tag--inline{
+    display:block;
+    margin:4px auto 0;
+    width:fit-content;
+    text-align:center;
+  }
+  .cs-armor-warn-list{
+    margin:0 0 4px;
+    padding-left:1.1rem;
+  }
+  .cs-armor-warn-list li{margin:2px 0}
+  .cs-shield-warn{margin:4px 0 0;font-size:.8rem}
   @media (max-width:520px){
     .cs-weapon-row{
-      grid-template-columns:1fr;
-      gap:2px 0;
+      grid-template-columns:minmax(0,1fr) auto 0.85rem;
+      gap:6px 6px;
     }
   }
   .cs-currency{
