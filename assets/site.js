@@ -102,16 +102,33 @@
     else if(typeof mq.addListener === 'function') mq.addListener(onBreakpoint);
   }
 
+  // Glossary term hover/focus tips: copy <dd> text onto a.term[href^="#g-"]
+  function initTermTooltips(){
+    document.querySelectorAll('a.term[href^="#g-"]').forEach(a => {
+      if(a.getAttribute('data-tip')) return;
+      const id = a.getAttribute('href').slice(1);
+      if(!id) return;
+      const dt = document.getElementById(id);
+      const dd = dt && dt.nextElementSibling;
+      if(!dd || dd.tagName !== 'DD') return;
+      const tip = dd.textContent.replace(/\s+/g, ' ').trim();
+      if(!tip) return;
+      a.setAttribute('data-tip', tip);
+    });
+  }
+
   // Run as early as possible to set IDs before browser scrolls
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', () => {
       initTOC();
       enhanceCollapsibleTocs();
+      initTermTooltips();
     });
   } else {
     // DOM already ready, run immediately
     initTOC();
     enhanceCollapsibleTocs();
+    initTermTooltips();
   }
   
   // Tab functionality for gear page

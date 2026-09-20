@@ -1890,6 +1890,41 @@
   .text-muted{color:var(--muted)}
   .refs{margin:0 0 24px 0;padding-left:1.25rem}
   .refs li{margin:0 0 12px;line-height:1.45}
+  .glossary{margin:0 0 24px 0}
+  .glossary dt{margin:14px 0 4px;font-weight:600;scroll-margin-top:5rem}
+  .glossary dt:target{outline:2px solid var(--brand-focus);outline-offset:3px;border-radius:2px}
+  .glossary dd{margin:0 0 0 0;color:var(--muted);line-height:1.45}
+  a.term{
+    position:relative;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-underline-offset:3px;
+    cursor:help
+  }
+  @media (hover:hover) and (pointer:fine){
+    a.term[data-tip]:hover::after,
+    a.term[data-tip]:focus-visible::after{
+      content:attr(data-tip);
+      position:absolute;
+      left:50%;
+      bottom:calc(100% + 8px);
+      transform:translateX(-50%);
+      z-index:50;
+      box-sizing:border-box;
+      width:max(12rem, min(22rem, 72vw));
+      padding:8px 10px;
+      border-radius:6px;
+      background:var(--bg-card);
+      color:var(--fg);
+      border:1px solid var(--line);
+      box-shadow:0 10px 28px rgba(0,0,0,.14);
+      font:400 .85rem/1.35 var(--sans, inherit);
+      text-align:left;
+      text-decoration:none;
+      white-space:normal;
+      pointer-events:none
+    }
+  }
 
   /* Phone/tablet: collapse long page TOCs so content starts sooner */
   .toc-details{margin:0}
