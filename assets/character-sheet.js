@@ -768,16 +768,30 @@
 
     let spells = null;
     if (isCaster(c)) {
+      function formatSpellExportLabel(spell) {
+        if (!spell) return "";
+        if (spell.circle === 0) return spell.name;
+        return spell.name + " (" + spell.circle + ")";
+      }
       const learned = c.learnedSpellIds.map(spellById).filter(Boolean);
       const cantrips = learned.filter((s) => s.circle === 0).map((s) => s.name);
       const mode = spellMode(cls);
       let prepared = [];
+      let knownUnprepared;
       if (usesLearnedTier(mode)) {
-        prepared = c.preparedSpellIds.map(spellById).filter((s) => s && s.circle > 0).map((s) => s.name);
+        const preparedIds = new Set(c.preparedSpellIds);
+        prepared = c.preparedSpellIds
+          .map(spellById)
+          .filter((s) => s && s.circle > 0)
+          .map(formatSpellExportLabel);
+        knownUnprepared = learned
+          .filter((s) => s.circle > 0 && !preparedIds.has(s.id))
+          .map(formatSpellExportLabel);
       } else {
-        prepared = learned.filter((s) => s.circle > 0).map((s) => s.name);
+        prepared = learned.filter((s) => s.circle > 0).map(formatSpellExportLabel);
       }
       spells = { cantrips: cantrips, prepared: prepared, note: "" };
+      if (knownUnprepared) spells.knownUnprepared = knownUnprepared;
     }
 
     const className = cls ? cls.name : "—";

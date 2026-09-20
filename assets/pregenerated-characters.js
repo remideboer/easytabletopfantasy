@@ -259,6 +259,12 @@
         '<div class="pg-section"><h3 class="pg-section-title">Spells</h3>' +
         '<div class="pg-person-field"><span class="pg-label">Cantrips</span>' + spellListOrSpace(vm.spells.cantrips) + "</div>" +
         '<div class="pg-person-field"><span class="pg-label">' + (lang === "nl" ? "Voorbereid" : "Prepared") + "</span>" + spellListOrSpace(vm.spells.prepared) + "</div>";
+      if (Array.isArray(vm.spells.knownUnprepared)) {
+        spellsHtml +=
+          '<div class="pg-person-field"><span class="pg-label">' +
+          (lang === "nl" ? "Known (niet voorbereid)" : "Known (unprepared)") +
+          "</span>" + spellListOrSpace(vm.spells.knownUnprepared) + "</div>";
+      }
       if (vm.spells.note) {
         spellsHtml += '<p class="pg-prose">' + vm.spells.note + "</p>";
       }
