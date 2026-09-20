@@ -64,7 +64,7 @@
     /* Callout colors with new theme */
     --note-b:rgba(199,184,243,.5); --note-bg:rgba(243,241,255,.8);
     --ex-b:rgba(230,214,163,.5); --ex-bg:rgba(255,250,240,.8);
-    --warn-b:rgba(243,180,180,.5); --ex-bg:rgba(255,243,243,.8);
+    --warn-b:rgba(243,180,180,.5); --warn-bg:rgba(255,243,243,.8);
   }
   
   /* Dark mode mapping */
@@ -1887,6 +1887,9 @@
   .toc a{color:var(--muted);text-decoration:none}
   .toc a:hover{color:var(--fg);text-decoration:underline}
   .toc-h3{margin-left:10px}
+  .text-muted{color:var(--muted)}
+  .refs{margin:0 0 24px 0;padding-left:1.25rem}
+  .refs li{margin:0 0 12px;line-height:1.45}
 
   /* Phone/tablet: collapse long page TOCs so content starts sooner */
   .toc-details{margin:0}

@@ -48,6 +48,7 @@ window.YMIAT_I18N_CHROME = {
       "oneShots": "One Shots",
       "wildSheepChase": "The Wild Sheep Chase",
       "faq": "FAQ",
+      "therapeuticUse": "Therapeutic use",
       "legal": "Legal",
       "menu": "Menu",
       "menuClose": "Close menu",
@@ -125,6 +126,7 @@ window.YMIAT_I18N_CHROME = {
       "oneShots": "One-shots",
       "wildSheepChase": "The Wild Sheep Chase",
       "faq": "FAQ",
+      "therapeuticUse": "Therapeutisch gebruik",
       "legal": "Juridisch",
       "menu": "Menu",
       "menuClose": "Menu sluiten",
@@ -346,6 +348,7 @@ function ymiatBuildNav(locale) {
     '<a href="{{ROOT}}rules/adventures/wild-sheep-chase.html">' + e(n.wildSheepChase) + '</a>' +
     '</div></div>' +
     '<a href="{{ROOT}}faq.html">' + e(n.faq) + '</a>' +
+    '<a href="{{ROOT}}therapeutic-use.html">' + e(n.therapeuticUse || 'Therapeutic use') + '</a>' +
     '<a href="{{ROOT}}legal.html">' + e(n.legal) + '</a>' +
     '</div>' +
     '<div class="nav-bar-end">' +
