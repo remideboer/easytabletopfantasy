@@ -1,7 +1,7 @@
 /**
  * USER STORY: As a new player, I want ready-made YMIAT characters on compact
  * printable sheets so I can start playing without building from scratch.
- * FEATURE: Pregenerated Characters
+ * FEATURE: Pregenerated Characters + character-sheet PDF export
  * COMPONENT: assets/pregenerated-characters.js
  */
 (function () {
@@ -43,27 +43,23 @@
 
   function computeSpellPower(char, data) {
     if (!data.spellcasters.includes(char.classId)) return null;
-    const mod = char.classId === "cleric" || char.classId === "wizard"
-      ? Number(char.abilities.ins) || 0
-      : Number(char.abilities.ins) || 0;
+    const mod = Number(char.abilities.ins) || 0;
     return 2 + 2 * mod;
   }
 
-  function skillBonus(char, skill) {
-    const ab = Number(char.abilities[skill.ability]) || 0;
-    const pb = Number(char.pb) || 1;
+  function skillBonus(abilities, pb, skill) {
+    const ab = Number(abilities[skill.ability]) || 0;
+    const p = Number(pb) || 1;
     let bonus = ab;
-    if (skill.proficient) bonus += skill.expertise ? 2 * pb : pb;
+    if (skill.proficient) bonus += skill.expertise ? 2 * p : p;
     return bonus;
   }
 
-  function attackBonus(char, attack) {
-    return (Number(attack.weaponBonus) || 0) + (Number(char.abilities.fit) || 0) + (Number(char.pb) || 1);
+  function attackBonus(abilities, pb, attack) {
+    return (Number(attack.weaponBonus) || 0) + (Number(abilities.fit) || 0) + (Number(pb) || 1);
   }
 
   function assetPrefix() {
-    const depth = (location.pathname.match(/\//g) || []).length;
-    // rough: /rules/pregenerated-characters/x.html → ../../assets/
     if (/\/nl\/rules\//.test(location.pathname)) return "../../../assets/";
     if (/\/rules\//.test(location.pathname)) return "../../assets/";
     return "assets/";
@@ -76,34 +72,108 @@
     return "";
   }
 
-  function renderSheet(char, data, lang) {
+  /**
+   * Build a locale-ready view model from pregenerated-characters.json entry.
+   */
+  function viewModelFromJsonChar(char, data, lang) {
     const copy = char.copy[lang] || char.copy.en;
     const maxWd = computeMaxWd(char, data);
     const defense = computeDefense(char, data);
     const resolve = maxResolve(char.abilities.wil);
     const sp = computeSpellPower(char, data);
-    const pdfHref = assetPrefix() + "pdfs/pregenerated-characters/" + char.id + ".pdf";
+    const armorLabel = t(char.armorName, lang) + (char.shield ? (lang === "nl" ? " + schild" : " + shield") : "");
+
+    return {
+      name: copy.name,
+      className: t(char.className, lang),
+      level: 1,
+      concept: copy.concept,
+      role: copy.role,
+      lineageName: t(char.lineageName, lang),
+      heritageName: t(char.heritageName, lang),
+      backgroundName: t(char.backgroundName, lang),
+      armorLabel: armorLabel,
+      abilities: char.abilities,
+      hearts: 3,
+      spellPower: sp,
+      pb: char.pb,
+      maxWd: maxWd,
+      resolve: resolve,
+      defense: defense,
+      speed: char.speed,
+      save: t(char.save, lang),
+      features: (char.features || []).map(function (f) {
+        return { name: t(f.name, lang), summary: t(f.summary, lang) };
+      }),
+      talentName: t(char.talent, lang),
+      talentSummary: t(char.talentSummary, lang),
+      skills: (char.skills || []).map(function (s) {
+        return {
+          name: t(s.name, lang),
+          ability: s.ability,
+          expertise: Boolean(s.expertise),
+          bonus: skillBonus(char.abilities, char.pb, s),
+        };
+      }),
+      proficiencies: t(char.proficiencies, lang) || [],
+      attacks: (char.attacks || []).map(function (a) {
+        return {
+          weapon: t(a.weapon, lang),
+          bonus: attackBonus(char.abilities, char.pb, a),
+          wounds: a.wounds,
+        };
+      }),
+      spells: char.spells
+        ? {
+            cantrips: t(char.spells.cantrips, lang) || [],
+            prepared: t(char.spells.prepared, lang) || [],
+            note: char.spells.spellbookNote ? t(char.spells.spellbookNote, lang) : "",
+          }
+        : null,
+      motivation: copy.motivation,
+      personality: copy.personality,
+      background: copy.background,
+      equipment: t(char.equipment, lang) || [],
+      footer: "YMIAT · " + (lang === "nl" ? "Voorgemaakt personage" : "Pregenerated character") + " · L1",
+      downloadHref: assetPrefix() + "pdfs/pregenerated-characters/" + char.id + ".pdf",
+    };
+  }
+
+  /**
+   * Render compact landscape sheet HTML from a view model.
+   * @param {object} vm locale-ready view model
+   * @param {object} [options]
+   * @param {boolean} [options.includeChrome=true] party overview / print / download toolbar
+   * @param {string} [options.lang] for chrome labels
+   */
+  function renderPgSheetHtml(vm, options) {
+    options = options || {};
+    const lang = options.lang || locale();
+    const includeChrome = options.includeChrome !== false;
 
     const abilitiesHtml = ["fit", "ins", "wil"].map(function (key) {
       return (
         '<div class="pg-ability">' +
         '<span class="pg-ability-lbl">' + ABILITY_LABEL[key] + "</span>" +
-        '<span class="pg-ability-val">' + fmtMod(char.abilities[key]) + "</span>" +
+        '<span class="pg-ability-val">' + fmtMod(vm.abilities[key]) + "</span>" +
         "</div>"
       );
     }).join("");
 
+    const heartCount = Math.max(0, Math.min(3, Number(vm.hearts) || 3));
+    let heartsMarks = "";
+    for (let i = 0; i < 3; i++) {
+      heartsMarks += '<span class="pg-heart-mark" aria-hidden="true">' + (i < heartCount ? "♥" : "♡") + "</span>";
+    }
     const heartsHtml =
-      '<span class="pg-hearts" aria-label="' + (lang === "nl" ? "Leven 3 van 3" : "Life 3 of 3") + '">' +
-      '<span class="pg-heart-mark" aria-hidden="true">♥</span>' +
-      '<span class="pg-heart-mark" aria-hidden="true">♥</span>' +
-      '<span class="pg-heart-mark" aria-hidden="true">♥</span>' +
-      "</span>";
+      '<span class="pg-hearts" aria-label="' + (lang === "nl" ? "Leven" : "Life") + " " + heartCount + "/3\">" +
+      heartsMarks + "</span>";
 
     const blankVal = '<span class="pg-track-val"><span class="pg-track-blank" aria-hidden="true">&nbsp;</span></span>';
+    const hasSp = vm.spellPower != null;
 
     let trackHtml =
-      '<div class="pg-track' + (sp != null ? " pg-track--caster" : "") + '" role="group" aria-label="' + (lang === "nl" ? "Leven en wonden" : "Life and wounds") + '">' +
+      '<div class="pg-track' + (hasSp ? " pg-track--caster" : "") + '" role="group" aria-label="' + (lang === "nl" ? "Leven en wonden" : "Life and wounds") + '">' +
       '<div class="pg-track-cell pg-track-cell--life">' +
       '<span class="pg-track-lbl">' + (lang === "nl" ? "Leven" : "Life") + "</span>" +
       heartsHtml +
@@ -116,7 +186,7 @@
       '<span class="pg-track-lbl">Temp</span>' +
       blankVal +
       "</div>";
-    if (sp != null) {
+    if (hasSp) {
       trackHtml +=
         '<div class="pg-track-cell">' +
         '<span class="pg-track-lbl">SP</span>' +
@@ -126,40 +196,43 @@
     trackHtml += "</div>";
 
     const stats = [
-      ["PB", fmtMod(char.pb)],
-      ["Max WD", String(maxWd)],
-      [lang === "nl" ? "Resolve" : "Resolve", String(resolve)],
-      [lang === "nl" ? "Defense" : "Defense", fmtMod(defense)],
-      [lang === "nl" ? "Speed" : "Speed", char.speed + " ft"],
-      [lang === "nl" ? "Save" : "Save", t(char.save, lang)],
+      ["PB", fmtMod(vm.pb)],
+      ["Max WD", String(vm.maxWd)],
+      ["Resolve", String(vm.resolve)],
+      [lang === "nl" ? "Defense" : "Defense", fmtMod(vm.defense)],
+      [lang === "nl" ? "Speed" : "Speed", vm.speed + " ft"],
+      ["Save", vm.save || "—"],
     ];
-    if (sp != null) stats.push(["Spell Power", String(sp)]);
+    if (hasSp) stats.push(["Spell Power", String(vm.spellPower)]);
 
     const statsHtml = stats.map(function (pair) {
       return '<div class="pg-stat"><dt>' + pair[0] + "</dt><dd>" + pair[1] + "</dd></div>";
     }).join("");
 
-    const featuresHtml = (char.features || []).map(function (f) {
+    const featuresHtml = (vm.features || []).map(function (f) {
       return (
         '<div class="pg-feature">' +
-        '<span class="pg-feature-name">' + t(f.name, lang) + "</span>" +
-        '<span class="pg-feature-sum">' + t(f.summary, lang) + "</span>" +
+        '<span class="pg-feature-name">' + f.name + "</span>" +
+        '<span class="pg-feature-sum">' + (f.summary || "") + "</span>" +
         "</div>"
       );
     }).join("");
 
-    const talentHtml =
-      '<div class="pg-feature">' +
-      '<span class="pg-feature-name">' + (lang === "nl" ? "Talent: " : "Talent: ") + t(char.talent, lang) + "</span>" +
-      '<span class="pg-feature-sum">' + t(char.talentSummary, lang) + "</span>" +
-      "</div>";
+    let talentHtml = "";
+    if (vm.talentName) {
+      talentHtml =
+        '<div class="pg-feature">' +
+        '<span class="pg-feature-name">' + (lang === "nl" ? "Talent: " : "Talent: ") + vm.talentName + "</span>" +
+        '<span class="pg-feature-sum">' + (vm.talentSummary || "") + "</span>" +
+        "</div>";
+    }
 
-    const skillsHtml = (char.skills || []).map(function (s) {
-      const label = t(s.name, lang) + (s.expertise ? " ★" : "");
-      return "<li><strong>" + label + "</strong> " + fmtMod(skillBonus(char, s)) + " <span>(" + ABILITY_LABEL[s.ability] + ")</span></li>";
+    const skillsHtml = (vm.skills || []).map(function (s) {
+      const label = s.name + (s.expertise ? " ★" : "");
+      return "<li><strong>" + label + "</strong> " + fmtMod(s.bonus) + " <span>(" + ABILITY_LABEL[s.ability] + ")</span></li>";
     }).join("");
 
-    const profList = t(char.proficiencies, lang) || [];
+    const profList = vm.proficiencies || [];
     const profHtml = profList.length
       ? ('<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Behendigheden" : "Proficiencies") + "</h3>" +
         '<ul class="pg-list pg-list--compact">' + profList.map(function (line) {
@@ -167,61 +240,81 @@
         }).join("") + "</ul></div>")
       : "";
 
-    const attacksHtml = (char.attacks || []).map(function (a) {
+    const attacksHtml = (vm.attacks || []).map(function (a) {
       return (
-        "<li><strong>" + t(a.weapon, lang) + "</strong> " + fmtMod(attackBonus(char, a)) +
-        " · " + a.wounds + (lang === "nl" ? " Wound" : " Wound") + "</li>"
+        "<li><strong>" + a.weapon + "</strong> " + fmtMod(a.bonus) +
+        " · " + a.wounds + " Wound</li>"
       );
-    }).join("");
+    }).join("") || "<li>—</li>";
 
     let spellsHtml = "";
-    if (char.spells) {
+    if (vm.spells) {
       spellsHtml =
-        '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Spells" : "Spells") + "</h3>" +
-        '<p class="pg-prose"><span class="pg-label">Cantrips</span>' + t(char.spells.cantrips, lang).join(", ") + "</p>" +
-        '<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Voorbereid" : "Prepared") + "</span>" + t(char.spells.prepared, lang).join(", ") + "</p>";
-      if (char.spells.spellbookNote) {
-        spellsHtml += '<p class="pg-prose">' + t(char.spells.spellbookNote, lang) + "</p>";
+        '<div class="pg-section"><h3 class="pg-section-title">Spells</h3>' +
+        '<p class="pg-prose"><span class="pg-label">Cantrips</span>' + (vm.spells.cantrips || []).join(", ") + "</p>" +
+        '<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Voorbereid" : "Prepared") + "</span>" + (vm.spells.prepared || []).join(", ") + "</p>";
+      if (vm.spells.note) {
+        spellsHtml += '<p class="pg-prose">' + vm.spells.note + "</p>";
       }
       spellsHtml += "</div>";
     }
 
-    const equipHtml = (t(char.equipment, lang) || []).map(function (item) {
+    const equipHtml = (vm.equipment || []).map(function (item) {
       return "<li>" + item + "</li>";
-    }).join("");
+    }).join("") || "<li>—</li>";
 
-    const armorLabel = t(char.armorName, lang) + (char.shield ? (lang === "nl" ? " + schild" : " + shield") : "");
+    const personBits = [];
+    if (vm.motivation) {
+      personBits.push('<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Motivatie" : "Motivation") + "</span>" + vm.motivation + "</p>");
+    }
+    if (vm.personality) {
+      personBits.push('<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Persoonlijkheid" : "Personality") + "</span>" + vm.personality + "</p>");
+    }
+    if (vm.background) {
+      personBits.push('<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Achtergrond" : "Background") + "</span>" + vm.background + "</p>");
+    }
+    if (!personBits.length) {
+      personBits.push('<p class="pg-prose">' + (vm.concept || "—") + "</p>");
+    }
 
-    return (
-      '<div class="pg-toolbar pg-no-print">' +
-      '<a class="btn" href="' + rootPrefix() + (lang === "nl" ? "nl/" : "") + 'rules/pregenerated-characters/index.html">' +
-      (lang === "nl" ? "← Overzicht" : "← Party overview") + "</a>" +
-      '<button type="button" class="btn" id="pg-print">' + (lang === "nl" ? "Afdrukken" : "Print") + "</button>" +
-      '<a class="btn" href="' + pdfHref + '" download>' + (lang === "nl" ? "Download PDF" : "Download PDF") + "</a>" +
-      "</div>" +
+    let chrome = "";
+    if (includeChrome) {
+      chrome =
+        '<div class="pg-toolbar pg-no-print">' +
+        '<a class="btn" href="' + rootPrefix() + (lang === "nl" ? "nl/" : "") + 'rules/pregenerated-characters/index.html">' +
+        (lang === "nl" ? "← Overzicht" : "← Party overview") + "</a>" +
+        '<button type="button" class="btn" id="pg-print">' + (lang === "nl" ? "Afdrukken" : "Print") + "</button>" +
+        (vm.downloadHref
+          ? '<a class="btn" href="' + vm.downloadHref + '" download>' + (lang === "nl" ? "Download PDF" : "Download PDF") + "</a>"
+          : "") +
+        "</div>";
+    }
+
+    const sheet =
       '<div class="pg-sheet-wrap">' +
-      '<article class="pg-sheet" aria-label="' + copy.name + '">' +
+      '<article class="pg-sheet" aria-label="' + vm.name + '">' +
       '<div class="pg-head">' +
-      '<div class="pg-head-id"><p class="pg-name">' + copy.name + "</p>" +
-      '<p class="pg-meta"><strong>' + t(char.className, lang) + "</strong> · " + (lang === "nl" ? "Level" : "Level") + " 1 · " + copy.concept + "</p></div>" +
+      '<div class="pg-head-id"><p class="pg-name">' + vm.name + "</p>" +
+      '<p class="pg-meta"><strong>' + vm.className + "</strong> · " + (lang === "nl" ? "Level" : "Level") + " " + vm.level +
+      (vm.concept ? " · " + vm.concept : "") + "</p></div>" +
       '<div class="pg-head-facts">' +
-      '<p class="pg-tags-row"><strong>' + (lang === "nl" ? "Lineage" : "Lineage") + ":</strong> " + t(char.lineageName, lang) +
-      " · <strong>Heritage:</strong> " + t(char.heritageName, lang) +
-      " · <strong>" + (lang === "nl" ? "Achtergrond" : "Background") + ":</strong> " + t(char.backgroundName, lang) + "</p>" +
-      '<p class="pg-tags-row"><strong>' + (lang === "nl" ? "Pantser" : "Armor") + ":</strong> " + armorLabel +
-      " · <strong>" + (lang === "nl" ? "Rol" : "Role") + ":</strong> " + copy.role + "</p>" +
+      '<p class="pg-tags-row"><strong>Lineage:</strong> ' + (vm.lineageName || "—") +
+      " · <strong>Heritage:</strong> " + (vm.heritageName || "—") +
+      " · <strong>" + (lang === "nl" ? "Achtergrond" : "Background") + ":</strong> " + (vm.backgroundName || "—") + "</p>" +
+      '<p class="pg-tags-row"><strong>' + (lang === "nl" ? "Pantser" : "Armor") + ":</strong> " + (vm.armorLabel || "—") +
+      " · <strong>" + (lang === "nl" ? "Rol" : "Role") + ":</strong> " + (vm.role || vm.className || "—") + "</p>" +
       "</div></div>" +
       '<div class="pg-col">' +
       '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Eigenschappen" : "Abilities") + "</h3>" +
       '<div class="pg-abilities">' + abilitiesHtml + "</div>" +
       trackHtml +
       '<dl class="pg-stat-grid">' + statsHtml + "</dl></div>" +
-      '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Features" : "Features") + "</h3>" +
+      '<div class="pg-section"><h3 class="pg-section-title">Features</h3>' +
       featuresHtml + talentHtml + "</div>" +
       "</div>" +
       '<div class="pg-col">' +
-      '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Skills" : "Skills") + "</h3>" +
-      '<ul class="pg-list">' + skillsHtml + "</ul></div>" +
+      '<div class="pg-section"><h3 class="pg-section-title">Skills</h3>' +
+      '<ul class="pg-list">' + (skillsHtml || "<li>—</li>") + "</ul></div>" +
       profHtml +
       '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Aanvallen" : "Attacks") + "</h3>" +
       '<ul class="pg-list">' + attacksHtml + "</ul></div>" +
@@ -229,16 +322,15 @@
       "</div>" +
       '<div class="pg-col">' +
       '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Persoon" : "Person") + "</h3>" +
-      '<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Motivatie" : "Motivation") + "</span>" + copy.motivation + "</p>" +
-      '<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Persoonlijkheid" : "Personality") + "</span>" + copy.personality + "</p>" +
-      '<p class="pg-prose"><span class="pg-label">' + (lang === "nl" ? "Achtergrond" : "Background") + "</span>" + copy.background + "</p>" +
+      personBits.join("") +
       "</div>" +
       '<div class="pg-section"><h3 class="pg-section-title">' + (lang === "nl" ? "Inventaris" : "Inventory") + "</h3>" +
       '<ul class="pg-list">' + equipHtml + "</ul></div>" +
       "</div>" +
-      '<p class="pg-foot-note">YMIAT · ' + (lang === "nl" ? "Voorgemaakt personage" : "Pregenerated character") + " · L1</p>" +
-      "</article></div>"
-    );
+      '<p class="pg-foot-note">' + (vm.footer || "YMIAT") + "</p>" +
+      "</article></div>";
+
+    return chrome + sheet;
   }
 
   function renderHub(data, lang) {
@@ -299,14 +391,18 @@
         root.innerHTML = "<p>Character not found.</p>";
         return;
       }
-      root.innerHTML = renderSheet(char, data, lang);
+      const vm = viewModelFromJsonChar(char, data, lang);
+      root.innerHTML = renderPgSheetHtml(vm, { lang: lang, includeChrome: true });
       const btn = document.getElementById("pg-print");
       if (btn) btn.addEventListener("click", function () { window.print(); });
-      document.title = (char.copy[lang] || char.copy.en).name + " | YMIAT";
+      document.title = vm.name + " | YMIAT";
     } else {
       root.innerHTML = renderHub(data, lang);
     }
   }
+
+  window.ymiatRenderPregenSheetHtml = renderPgSheetHtml;
+  window.ymiatPregenViewModelFromJson = viewModelFromJsonChar;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

@@ -11,6 +11,7 @@
 <meta name="description" content="Manage YMIAT characters—track wounds, abilities, inventory, and progression. Saved locally in your browser." />
 <link rel="canonical" href="character-sheet.html" />
 <link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="assets/pregenerated-characters.css" />
 <script src="assets/includes.js"></script>
 <meta property="og:title" content="Character Sheet | You-Meet-In-A-Tavern (YMIAT)" />
 <meta property="og:description" content="Create and manage YMIAT characters with automatic Max Wounds, Spell Power, and inventory calculations." />
@@ -26,6 +27,41 @@
     body.cs-page #cs-hint,
     body.cs-page #cs-modal-root {
       display: none !important;
+    }
+    body.cs-page #cs-pg-export {
+      display: none !important;
+    }
+    body.cs-page.cs-pg-exporting .cs-app,
+    body.cs-page.cs-pg-exporting .cs-hero,
+    body.cs-page.cs-pg-exporting #cs-loading,
+    body.cs-page.cs-pg-exporting #cs-error,
+    body.cs-page.cs-pg-exporting #cs-modal-root,
+    body.cs-page.cs-pg-exporting header,
+    body.cs-page.cs-pg-exporting footer {
+      display: none !important;
+    }
+    body.cs-page.cs-pg-exporting #cs-pg-export {
+      display: block !important;
+    }
+    body.cs-page.cs-pg-exporting #cs-pg-export .pg-sheet-wrap {
+      max-width: none;
+      margin: 0;
+    }
+    /* Force pregen landscape 3-column layout even on narrow viewports. */
+    body.cs-page.cs-pg-exporting #cs-pg-export .pg-sheet {
+      display: grid !important;
+      grid-template-columns: 1.05fr 1fr 1fr !important;
+    }
+    body.cs-page.cs-pg-exporting #cs-pg-export .pg-head {
+      display: grid !important;
+      grid-template-columns: minmax(11rem, 1.05fr) minmax(0, 1.7fr) !important;
+    }
+    body.cs-page.cs-pg-exporting #cs-pg-export .pg-col {
+      border-right: 1px solid #bbb !important;
+      border-bottom: 0 !important;
+    }
+    body.cs-page.cs-pg-exporting #cs-pg-export .pg-col:last-child {
+      border-right: 0 !important;
     }
     body.cs-page {
       background: #fff !important;
@@ -149,21 +185,27 @@
   </div>
 
   <div id="cs-app" class="cs-app" hidden>
-    <div class="cs-toolbar">
-      <div class="cs-toolbar-group">
-        <label class="cs-toolbar-label" for="cs-char-select">Character</label>
-        <select id="cs-char-select" class="cs-select cs-select--char"></select>
+    <div class="cs-toolbar is-open" id="cs-toolbar">
+      <div class="cs-toolbar-bar">
+        <div class="cs-toolbar-group">
+          <label class="cs-toolbar-label" for="cs-char-select">Character</label>
+          <select id="cs-char-select" class="cs-select cs-select--char"></select>
+        </div>
+        <button type="button" class="btn cs-btn-secondary cs-toolbar-toggle" id="cs-toolbar-toggle" aria-expanded="true" aria-controls="cs-toolbar-panel">Controls</button>
       </div>
-      <div class="cs-toolbar-actions">
-        <button type="button" class="btn cs-btn-secondary" id="cs-btn-new">New character</button>
-        <button type="button" class="btn cs-btn-secondary" id="cs-btn-import">Import creator draft</button>
-        <button type="button" class="btn cs-btn-secondary" id="cs-btn-import-ddb">Import from D&amp;D Beyond</button>
-        <select id="cs-print-orientation" class="cs-select cs-select--print" aria-label="Print orientation">
-          <option value="landscape">Landscape</option>
-          <option value="portrait" selected>Portrait</option>
-        </select>
-        <button type="button" class="btn cs-btn-secondary" id="cs-btn-print">Print</button>
-        <button type="button" class="btn cs-btn-danger" id="cs-btn-delete" disabled>Delete</button>
+      <div id="cs-toolbar-panel" class="cs-toolbar-panel">
+        <div class="cs-toolbar-actions">
+          <button type="button" class="btn cs-btn-secondary" id="cs-btn-new">New character</button>
+          <button type="button" class="btn cs-btn-secondary" id="cs-btn-import">Import creator draft</button>
+          <button type="button" class="btn cs-btn-secondary" id="cs-btn-import-ddb">Import from D&amp;D Beyond</button>
+          <select id="cs-print-orientation" class="cs-select cs-select--print" aria-label="Print orientation">
+            <option value="landscape">Landscape</option>
+            <option value="portrait" selected>Portrait</option>
+          </select>
+          <button type="button" class="btn cs-btn-secondary" id="cs-btn-print">Print</button>
+          <button type="button" class="btn cs-btn-secondary" id="cs-btn-export-pdf" disabled>Export PDF</button>
+          <button type="button" class="btn cs-btn-danger" id="cs-btn-delete" disabled>Delete</button>
+        </div>
       </div>
     </div>
 
@@ -172,10 +214,12 @@
     <div class="cs-sheet" id="cs-sheet" aria-label="Character sheet" hidden></div>
     <p class="cs-hint" id="cs-hint" hidden>Changes save automatically. Max Wounds = class + FIT mod + (level − 1) − 2 per lost heart. Spell Power = 2 + 2 × spellcasting ability mod. Defense = armor bonus + FIT mod (or FIT mod alone, unarmored), plus +2 if a shield is carried. XP to reach a level = 100 × (level − 1) × level ÷ 2; leveling up doesn't heal Wounds or restore lost hearts.</p>
   </div>
+  <div id="cs-pg-export" class="cs-pg-export" hidden aria-hidden="true"></div>
   <div id="cs-modal-root"></div>
 </main>
 <footer class="legal" data-include="footer"></footer>
 <script src="assets/i18n-apps.js"></script>
+<script src="assets/pregenerated-characters.js"></script>
 <script src="assets/character-sheet.js"></script>
 <script src="assets/site.js"></script>
 </body>

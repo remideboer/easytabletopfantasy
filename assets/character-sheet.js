@@ -7,6 +7,27 @@
   const CREATOR_KEY = "ymiat-character-creator-v1";
   const ABILITIES = ["fit", "ins", "wil"];
   const ABILITY_LABELS = { fit: "FIT", ins: "INS", wil: "WIL" };
+  // YMIAT skill → ability (3-score model). Used for pregen-format PDF export.
+  const SKILL_ABILITY = {
+    Athletics: "fit",
+    Acrobatics: "fit",
+    "Sleight of Hand": "fit",
+    Stealth: "fit",
+    "Animal Handling": "ins",
+    Arcana: "ins",
+    History: "ins",
+    Insight: "ins",
+    Investigation: "ins",
+    Medicine: "ins",
+    Nature: "ins",
+    Perception: "ins",
+    Religion: "ins",
+    Survival: "ins",
+    Deception: "wil",
+    Intimidation: "wil",
+    Performance: "wil",
+    Persuasion: "wil",
+  };
 
   function t(key, fallback) {
     const pack = (window.ymiatAppStrings && window.ymiatAppStrings("sheet")) || {};
@@ -106,22 +127,29 @@
     el.btnImport = document.getElementById("cs-btn-import");
     el.btnImportDdb = document.getElementById("cs-btn-import-ddb");
     el.btnPrint = document.getElementById("cs-btn-print");
+    el.btnExportPdf = document.getElementById("cs-btn-export-pdf");
     el.printOrientation = document.getElementById("cs-print-orientation");
     el.btnDelete = document.getElementById("cs-btn-delete");
     el.modalRoot = document.getElementById("cs-modal-root");
+    el.toolbar = document.getElementById("cs-toolbar");
+    el.toolbarToggle = document.getElementById("cs-toolbar-toggle");
+    el.pgExport = document.getElementById("cs-pg-export");
   }
 
-  // The static @page rule in character-sheet.html defaults to landscape;
-  // this overrides it per print by appending a later, higher-priority rule
-  // (the "Portrait" option is what's dynamic here).
-  function applyPrintOrientation(orientation) {
+  // Overrides the static @page rule in character-sheet.html by appending a
+  // later style at the end of <head>. Interactive Print uses 1cm margins;
+  // Export PDF uses landscape + 8mm to match pregenerated sheets.
+  function applyPrintOrientation(orientation, options) {
     let styleEl = document.getElementById("cs-print-orientation-style");
     if (!styleEl) {
       styleEl = document.createElement("style");
       styleEl.id = "cs-print-orientation-style";
-      document.head.appendChild(styleEl);
     }
-    styleEl.textContent = `@media print { @page { size: A4 ${orientation === "portrait" ? "portrait" : "landscape"}; margin: 1cm; } }`;
+    // Always move to end of head so this @page wins over page/inline rules.
+    document.head.appendChild(styleEl);
+    const margin = (options && options.margin) || "1cm";
+    const size = orientation === "portrait" ? "portrait" : "landscape";
+    styleEl.textContent = `@media print { @page { size: A4 ${size}; margin: ${margin}; } }`;
   }
 
   function rootPath() {
@@ -640,6 +668,298 @@
   function featuresAtLevel(items, level) {
     if (!items || !items.length) return [];
     return items.filter((item) => (item.minLevel || 1) <= level);
+  }
+
+  function skillAbility(name) {
+    return SKILL_ABILITY[name] || "ins";
+  }
+
+  function deriveProficiencyLines(cls) {
+    if (!cls || !cls.proficiencies) return [];
+    const text = String(cls.proficiencies).replace(/\s*Skills?:[\s\S]*$/i, "").trim();
+    if (!text) return [];
+    return text
+      .split(/,\s*/)
+      .map((s) => s.replace(/\.$/, "").trim())
+      .filter(Boolean);
+  }
+
+  function formatSaveShort(cls) {
+    if (!cls || !cls.saves) return "—";
+    return String(cls.saves).replace(/\s+on save/i, "").trim() || "—";
+  }
+
+  function truncateSummary(text, maxLen) {
+    const s = String(text || "").trim();
+    if (!s) return "";
+    if (s.length <= maxLen) return s;
+    return s.slice(0, maxLen - 1).trim() + "…";
+  }
+
+  /**
+   * Map a live sheet character to the pregen sheet view-model shape.
+   * Uses live formulas (level, hearts, effective mods) so export matches play.
+   */
+  function buildPregenViewModel(c) {
+    const cls = findClass(c);
+    const sub = findSubclass(c);
+    const lineage = byId(data.lineages, c.lineageId);
+    const heritage = byId(data.heritages, c.heritageId);
+    const background = byId(data.backgrounds, c.backgroundId);
+    const armor = byId(ARMOR, c.armorId);
+    const weapon = byId(WEAPONS, c.weaponId);
+    const pb = computePB(c);
+    const langNl = document.documentElement.lang === "nl" || /\/nl\//.test(location.pathname);
+
+    const abilities = {
+      fit: effectiveMod(c, "fit"),
+      ins: effectiveMod(c, "ins"),
+      wil: effectiveMod(c, "wil"),
+    };
+
+    const skillChoice = parseBackgroundSkillChoice(background);
+    const skillNames = [];
+    if (skillChoice) {
+      skillChoice.fixed.forEach((s) => skillNames.push(s));
+      c.chosenSkills.filter((s) => skillChoice.options.includes(s)).forEach((s) => skillNames.push(s));
+    } else {
+      c.chosenSkills.forEach((s) => skillNames.push(s));
+    }
+    const skills = skillNames.map((name) => {
+      const ability = skillAbility(name);
+      return {
+        name: name,
+        ability: ability,
+        expertise: false,
+        bonus: (Number(abilities[ability]) || 0) + pb,
+      };
+    });
+
+    const classFeatures = cls ? featuresAtLevel(cls.abilities, c.level) : [];
+    const subFeatures = sub ? featuresAtLevel(sub.features, c.level) : [];
+    const features = classFeatures.concat(subFeatures).map((f) => ({
+      name: f.name,
+      summary: truncateSummary(f.summary, 90),
+    }));
+
+    const talentName = c.chosenTalents[0] || "";
+    const talent = talentName ? talentByName(talentName) : null;
+
+    const attacks = [];
+    if (weapon) {
+      const atk = computeAttackBonus(c);
+      attacks.push({
+        weapon: weapon.name,
+        bonus: atk != null ? atk + pb : pb,
+        wounds: 1,
+      });
+    }
+
+    const equipment = [];
+    if (armor) {
+      equipment.push(armor.name + (c.hasShield ? (langNl ? " + schild" : " + shield") : ""));
+    } else if (c.hasShield) {
+      equipment.push(langNl ? "Schild" : "Shield");
+    }
+    (c.inventory || []).forEach((item) => {
+      const line = String(item || "").trim();
+      if (line) equipment.push(line);
+    });
+
+    let spells = null;
+    if (isCaster(c)) {
+      const learned = c.learnedSpellIds.map(spellById).filter(Boolean);
+      const cantrips = learned.filter((s) => s.circle === 0).map((s) => s.name);
+      const mode = spellMode(cls);
+      let prepared = [];
+      if (usesLearnedTier(mode)) {
+        prepared = c.preparedSpellIds.map(spellById).filter((s) => s && s.circle > 0).map((s) => s.name);
+      } else {
+        prepared = learned.filter((s) => s.circle > 0).map((s) => s.name);
+      }
+      spells = { cantrips: cantrips, prepared: prepared, note: "" };
+    }
+
+    const className = cls ? cls.name : "—";
+    const bgName = background ? background.name : "";
+    const conceptParts = [className !== "—" ? className : "", bgName].filter(Boolean);
+
+    return {
+      name: c.name || (langNl ? "Naamloos" : "Unnamed"),
+      className: className,
+      level: c.level,
+      concept: conceptParts.join(" · "),
+      role: sub ? sub.name : className,
+      lineageName: lineage ? lineage.name : "—",
+      heritageName: heritage ? heritage.name : "—",
+      backgroundName: bgName || "—",
+      armorLabel: armor
+        ? armor.name + (c.hasShield ? (langNl ? " + schild" : " + shield") : "")
+        : c.hasShield
+          ? langNl
+            ? "Schild"
+            : "Shield"
+          : langNl
+            ? "Geen"
+            : "None",
+      abilities: abilities,
+      hearts: c.hearts,
+      spellPower: computeSpellPowerMax(c),
+      pb: pb,
+      maxWd: computeMaxWd(c),
+      resolve: resolveMax(c),
+      defense: computeDefense(c),
+      speed: computeSpeed(c),
+      save: formatSaveShort(cls),
+      features: features,
+      talentName: talentName,
+      talentSummary: talent ? truncateSummary(talent.description || talent.summary || "", 90) : "",
+      skills: skills,
+      proficiencies: deriveProficiencyLines(cls),
+      attacks: attacks,
+      spells: spells,
+      motivation: "",
+      personality: "",
+      background: "",
+      equipment: equipment,
+      footer: "YMIAT · " + (langNl ? "Personageblad" : "Character sheet") + " · L" + c.level,
+      downloadHref: "",
+    };
+  }
+
+  function sheetLocale() {
+    return document.documentElement.lang === "nl" || /\/nl\//.test(location.pathname) ? "nl" : "en";
+  }
+
+  function syncToolbarFoldout(hasChar, force) {
+    if (!el.toolbar) return;
+    const open = force != null ? force : !hasChar;
+    el.toolbar.classList.toggle("is-open", open);
+    if (el.toolbarToggle) {
+      el.toolbarToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      el.toolbarToggle.textContent = open
+        ? t("toolbarHide", t("toolbarToggle", "Controls"))
+        : t("toolbarShow", t("toolbarToggle", "Controls"));
+    }
+  }
+
+  function applyToolbarI18n() {
+    if (el.btnExportPdf) el.btnExportPdf.textContent = t("exportPdf", "Export PDF");
+    if (el.toolbarToggle) {
+      const open = el.toolbar && el.toolbar.classList.contains("is-open");
+      el.toolbarToggle.textContent = open
+        ? t("toolbarHide", t("toolbarToggle", "Controls"))
+        : t("toolbarShow", t("toolbarToggle", "Controls"));
+    }
+  }
+
+  function loadScriptOnce(src) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[data-cs-lib="${src}"]`);
+      if (existing) {
+        if (existing.dataset.loaded === "1") resolve();
+        else existing.addEventListener("load", () => resolve(), { once: true });
+        return;
+      }
+      const s = document.createElement("script");
+      s.src = rp(src);
+      s.async = true;
+      s.dataset.csLib = src;
+      s.onload = () => {
+        s.dataset.loaded = "1";
+        resolve();
+      };
+      s.onerror = () => reject(new Error("Failed to load " + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  function pdfSafeFilename(name) {
+    const base = String(name || "character")
+      .trim()
+      .replace(/[<>:"/\\|?*\x00-\x1f]/g, "")
+      .replace(/\s+/g, "-")
+      .slice(0, 60);
+    return (base || "character") + ".pdf";
+  }
+
+  function cleanupPgExport() {
+    if (!el.pgExport) return;
+    el.pgExport.classList.remove("cs-pg-export--ready");
+    el.pgExport.innerHTML = "";
+    el.pgExport.hidden = true;
+    el.pgExport.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("cs-pg-exporting");
+  }
+
+  async function exportPregenPdf() {
+    if (!char || typeof window.ymiatRenderPregenSheetHtml !== "function" || !el.pgExport) return;
+    if (el.btnExportPdf && el.btnExportPdf.dataset.busy === "1") return;
+
+    const lang = sheetLocale();
+    const vm = buildPregenViewModel(char);
+    const html = window.ymiatRenderPregenSheetHtml(vm, { lang: lang, includeChrome: false });
+    el.pgExport.innerHTML = html;
+    el.pgExport.hidden = false;
+    el.pgExport.setAttribute("aria-hidden", "false");
+    el.pgExport.classList.add("cs-pg-export--ready");
+
+    const sheetEl = el.pgExport.querySelector(".pg-sheet");
+    if (!sheetEl) {
+      cleanupPgExport();
+      return;
+    }
+
+    const label = t("exportPdf", "Export PDF");
+    if (el.btnExportPdf) {
+      el.btnExportPdf.dataset.busy = "1";
+      el.btnExportPdf.disabled = true;
+      el.btnExportPdf.textContent = t("exportPdfBusy", "Creating PDF…");
+    }
+
+    try {
+      await loadScriptOnce("assets/lib/html2canvas.min.js");
+      await loadScriptOnce("assets/lib/jspdf.umd.min.js");
+      const html2canvas = window.html2canvas;
+      const jsPDF = window.jspdf && window.jspdf.jsPDF;
+      if (typeof html2canvas !== "function" || typeof jsPDF !== "function") {
+        throw new Error("PDF libraries unavailable");
+      }
+
+      // High scale for sharp text; A4 landscape usable area ≈ 297−16 × 210−16 mm.
+      const canvas = await html2canvas(sheetEl, {
+        scale: 2,
+        backgroundColor: "#ffffff",
+        logging: false,
+        useCORS: true,
+      });
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const margin = 8;
+      const maxW = pageW - margin * 2;
+      const maxH = pageH - margin * 2;
+      const imgW = canvas.width;
+      const imgH = canvas.height;
+      const ratio = Math.min(maxW / imgW, maxH / imgH);
+      const drawW = imgW * ratio;
+      const drawH = imgH * ratio;
+      const x = (pageW - drawW) / 2;
+      const y = (pageH - drawH) / 2;
+      pdf.addImage(imgData, "PNG", x, y, drawW, drawH);
+      pdf.save(pdfSafeFilename(char.name));
+    } catch (err) {
+      console.error(err);
+      alert(t("exportPdfFailed", "Could not create the PDF. Try again, or use Print."));
+    } finally {
+      cleanupPgExport();
+      if (el.btnExportPdf) {
+        el.btnExportPdf.dataset.busy = "0";
+        el.btnExportPdf.disabled = !char;
+        el.btnExportPdf.textContent = label;
+      }
+    }
   }
 
   function parseLineageDefaults(lineage) {
@@ -1498,6 +1818,7 @@
     if (el.empty) el.empty.hidden = hasChar;
     if (el.hint) el.hint.hidden = !hasChar;
     if (el.btnDelete) el.btnDelete.disabled = !hasChar;
+    if (el.btnExportPdf) el.btnExportPdf.disabled = !hasChar;
   }
 
   function render() {
@@ -1597,12 +1918,14 @@
       store.activeId = null;
       saveStore();
       render();
+      syncToolbarFoldout(false);
       return;
     }
     if (store.characters.some((c) => c.id === id)) {
       store.activeId = id;
       saveStore();
       render();
+      syncToolbarFoldout(true);
     }
   }
 
@@ -1620,6 +1943,7 @@
     store.activeId = c.id;
     saveStore();
     render();
+    syncToolbarFoldout(true);
   }
 
   function deleteCharacter() {
@@ -1638,6 +1962,7 @@
     store.activeId = store.characters.length ? store.characters[0].id : null;
     saveStore();
     render();
+    syncToolbarFoldout(Boolean(store.activeId));
   }
 
   function importCreatorDraft() {
@@ -1672,6 +1997,7 @@
       store.activeId = c.id;
       saveStore();
       render();
+      syncToolbarFoldout(true);
     } catch (e) {
       alert("Could not import creator draft.");
     }
@@ -1983,6 +2309,7 @@
     saveStore();
     ddbModalOpen = false;
     render();
+    syncToolbarFoldout(true);
     if (report.length) {
       alert(`Imported "${character.name}" from D&D Beyond.\n\nReview needed:\n- ${report.join("\n- ")}`);
     }
@@ -2074,6 +2401,15 @@
       el.btnPrint.addEventListener("click", () => {
         applyPrintOrientation(el.printOrientation ? el.printOrientation.value : "portrait");
         window.print();
+      });
+    }
+    if (el.btnExportPdf) {
+      el.btnExportPdf.addEventListener("click", exportPregenPdf);
+    }
+    if (el.toolbarToggle && el.toolbar) {
+      el.toolbarToggle.addEventListener("click", () => {
+        const open = !el.toolbar.classList.contains("is-open");
+        syncToolbarFoldout(Boolean(char), open);
       });
     }
 
@@ -2399,9 +2735,11 @@
         TALENTS = [];
       }
       showApp();
+      applyToolbarI18n();
       bindEvents();
       try {
         render();
+        syncToolbarFoldout(Boolean(store.activeId));
       } catch (renderErr) {
         console.error(renderErr);
         throw new Error("Character sheet failed to render. Try clearing saved data or refreshing.");

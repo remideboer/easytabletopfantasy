@@ -78,9 +78,15 @@
     "defense": "Defense",
     "resolve": "Resolve",
     "recoveryPoints": "Recovery Points",
-    "save": "Save",
-    "load": "Load",
-    "export": "Export",
-    "import": "Import"
-  }
+      "save": "Save",
+      "load": "Load",
+      "export": "Export",
+      "import": "Import",
+      "exportPdf": "Export PDF",
+      "exportPdfBusy": "Creating PDF…",
+      "exportPdfFailed": "Could not create the PDF. Try again, or use Print.",
+      "toolbarToggle": "Controls",
+      "toolbarShow": "Show controls",
+      "toolbarHide": "Hide controls"
+    }
 }

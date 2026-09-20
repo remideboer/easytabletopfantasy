@@ -82,7 +82,13 @@ window.YMIAT_I18N_APPS = {
       "save": "Save",
       "load": "Load",
       "export": "Export",
-      "import": "Import"
+      "import": "Import",
+      "exportPdf": "Export PDF",
+      "exportPdfBusy": "Creating PDF…",
+      "exportPdfFailed": "Could not create the PDF. Try again, or use Print.",
+      "toolbarToggle": "Controls",
+      "toolbarShow": "Show controls",
+      "toolbarHide": "Hide controls"
     }
   },
   "nl": {
@@ -168,7 +174,13 @@ window.YMIAT_I18N_APPS = {
       "save": "Opslaan",
       "load": "Laden",
       "export": "Exporteren",
-      "import": "Importeren"
+      "import": "Importeren",
+      "exportPdf": "Exporteer PDF",
+      "exportPdfBusy": "PDF maken…",
+      "exportPdfFailed": "Kon de PDF niet maken. Probeer opnieuw, of gebruik Afdrukken.",
+      "toolbarToggle": "Bediening",
+      "toolbarShow": "Toon bediening",
+      "toolbarHide": "Verberg bediening"
     }
   }
 };

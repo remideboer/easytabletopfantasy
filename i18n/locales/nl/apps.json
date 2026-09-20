@@ -78,9 +78,15 @@
     "defense": "Verdediging",
     "resolve": "Resolve",
     "recoveryPoints": "Herstelpunten",
-    "save": "Opslaan",
-    "load": "Laden",
-    "export": "Exporteren",
-    "import": "Importeren"
-  }
+      "save": "Opslaan",
+      "load": "Laden",
+      "export": "Exporteren",
+      "import": "Importeren",
+      "exportPdf": "Exporteer PDF",
+      "exportPdfBusy": "PDF maken…",
+      "exportPdfFailed": "Kon de PDF niet maken. Probeer opnieuw, of gebruik Afdrukken.",
+      "toolbarToggle": "Bediening",
+      "toolbarShow": "Toon bediening",
+      "toolbarHide": "Verberg bediening"
+    }
 }

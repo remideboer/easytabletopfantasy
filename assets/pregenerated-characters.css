@@ -217,6 +217,7 @@
   .pg-sheet-wrap{max-width:none;margin:0}
   .pg-sheet{
     display:grid !important;
+    grid-template-columns:1.05fr 1fr 1fr !important;
     box-shadow:none;
     border-color:#000;
     font-size:10.5px;
@@ -225,6 +226,11 @@
     break-inside:avoid;
     page-break-inside:avoid;
   }
+  .pg-col{
+    border-right:1px solid #bbb !important;
+    border-bottom:0 !important;
+  }
+  .pg-col:last-child{border-right:0 !important}
   /* Override global styles.css print rules that hide bare header/h1 */
   .pg-head{
     display:grid !important;

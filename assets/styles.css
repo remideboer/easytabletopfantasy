@@ -4374,9 +4374,59 @@
     border-radius:12px;
     background:var(--bg-card);
   }
+  .cs-toolbar-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 14px;
+    align-items:flex-end;
+    justify-content:space-between;
+    flex:1;
+    min-width:180px;
+  }
   .cs-toolbar-group{display:flex;flex-direction:column;gap:4px;min-width:180px;flex:1}
   .cs-toolbar-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .cs-toolbar-panel{flex:0 1 auto}
   .cs-toolbar-actions{display:flex;flex-wrap:wrap;gap:8px}
+  .cs-toolbar-toggle{display:none}
+  /* Off-screen render target for client-side PDF export (A4 landscape width). */
+  .cs-pg-export{display:none}
+  .cs-pg-export.cs-pg-export--ready{
+    display:block !important;
+    position:absolute;
+    left:-12000px;
+    top:0;
+    width:1100px;
+    background:#fff;
+    color:#111;
+    pointer-events:none;
+  }
+  .cs-pg-export.cs-pg-export--ready .pg-sheet{
+    display:grid !important;
+    grid-template-columns:1.05fr 1fr 1fr !important;
+    box-shadow:none;
+  }
+  .cs-pg-export.cs-pg-export--ready .pg-head{
+    display:grid !important;
+    grid-template-columns:minmax(11rem,1.05fr) minmax(0,1.7fr) !important;
+  }
+  .cs-pg-export.cs-pg-export--ready .pg-col{
+    border-right:1px solid #bbb !important;
+    border-bottom:0 !important;
+  }
+  .cs-pg-export.cs-pg-export--ready .pg-col:last-child{border-right:0 !important}
+  @media (max-width:768px){
+    .cs-toolbar{
+      align-items:stretch;
+      flex-direction:column;
+    }
+    .cs-toolbar-bar{width:100%;flex:none}
+    .cs-toolbar-toggle{display:inline-flex;align-self:flex-end;flex-shrink:0}
+    .cs-toolbar-panel{display:none;width:100%;margin-top:2px}
+    .cs-toolbar.is-open .cs-toolbar-panel{display:block}
+    .cs-toolbar-actions{flex-direction:column;align-items:stretch}
+    .cs-toolbar-actions .btn,
+    .cs-toolbar-actions .cs-select--print{width:100%;max-width:none}
+  }
   .cs-btn-secondary{background:var(--bg-card);border:2px solid var(--accent-gold-soft);color:var(--brand-primary)}
   .cs-btn-secondary:disabled{
     background:var(--line);
