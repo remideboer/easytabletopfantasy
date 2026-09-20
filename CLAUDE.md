@@ -1,5 +1,6 @@
 # Project rules
 
+- Locale mirror: the site is EN at the root and NL under `/nl/`. When you change content, rules text, or i18n strings, update **both** locales in the same task (matching paths, e.g. `rules/core.html` ↔ `nl/rules/core.html`) unless the user explicitly scopes to one language. Shared `assets/` files are locale-agnostic.
 - If a request is ambiguous or underspecified (rules text, homebrew taxonomy, naming, mechanics), you MUST ask a clarifying question before writing content. Do NOT silently pick an interpretation, ship it, and flag it as "an assumption you can override" — ask first, then write.
 - In adventures/one-shots, boxed scene-description text must be labeled "Paraphrase" (not "Read Aloud"). This nudges GMs to reword the scene in their own voice instead of reading verbatim.
 - Adventures/one-shots must be self-contained documents. Every creature/NPC a GM needs to run the adventure gets its own boxed stat block inline (including reflavored/reskinned variants of an existing monster, e.g. a monster using another's statistics with one score changed) — a link to monsters.html/magic.html is a supplement, never a substitute. Spells or other mechanics referenced by name (e.g. an NPC's spellcasting) get a short inline parenthetical covering the effect actually used in play, so a GM doesn't need a second tab open to run the session.

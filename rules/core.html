@@ -65,9 +65,9 @@
 <ul>
 <li><strong>Wounds (WD):</strong> Current injury track. Characters start at 0 Wounds. Taking harm adds Wounds until Max Wounds is reached. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
 <li><strong>Max Wounds:</strong> Capacity before the Life rule applies. Max Wounds = class start Max Wounds + Fitness modifier + (level − 1). When Wounds reach Max Wounds, the Life rule triggers. See <a href="#wounds-and-scale">Wounds and Scale</a> for details.</li>
-<li><strong>Spell Power (SP):</strong> Represents a spellcaster's magical capacity. SP equals 3 × spellcasting ability modifier. Spellcasters spend SP to cast spells and regain it through rest and Recovery Points. See <a href="#magic-and-spell-resources">Magic and Spell Resources</a> for details.</li>
+<li><strong>Spell Power (SP):</strong> Represents a spellcaster's magical capacity. SP = 2 + 2 × spellcasting ability modifier. Spellcasters spend SP to cast spells and regain it through rest and Recovery Points. See <a href="#magic-and-spell-resources">Magic and Spell Resources</a> for details.</li>
 <li><strong>Proficiency Bonus (PB):</strong> Added to rolls when you are proficient (or Expert/Master) with a weapon, skill, tool, or similar. Features that say "PB" for damage, DCs, or uses per rest also use this number. PB = level ÷ 2, rounded up. See <a href="#proficiency-and-advantage">Proficiency Bonus</a> for details.</li>
-<li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character's Wounds reach Max Wounds, they must make Death Saves; failing a Death Save costs one heart. For each heart lost, every ability modifier (Fitness, Insight, and Willpower) is reduced by 1, maximum speed is reduced by 5 feet (one step), and Max Wounds is reduced by 2 until that heart is restored. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life and Death Saves</a> for details.</li>
+<li><strong>Life (hearts):</strong> Represents a character's lifeforce. Each character starts with 3 hearts. When a character's Wounds reach Max Wounds, they must make Life Saves (Willpower, DC 10); failing a Life Save costs one heart. For each heart lost, every ability modifier (Fitness, Insight, and Willpower) is reduced by 1, maximum speed is reduced by 5 feet (one step), and Max Wounds is reduced by 2 until that heart is restored. Restoring a lost heart requires one long rest. See <a href="combat.html#life-and-death-saves">Life Saves</a> for details.</li>
 </ul>
 <hr>
 <h3>Determining Ability Modifiers</h3>
@@ -399,7 +399,9 @@
   <span class="formula-equation">
     <span class="variable">Spell Power</span>
     <span class="operator">=</span>
-    <span>3</span>
+    <span>2</span>
+    <span class="operator">+</span>
+    <span>2</span>
     <span class="operator">×</span>
     <span class="variable">spellcasting ability modifier</span>
   </span>
@@ -434,7 +436,7 @@
 <h3>Recovery Points and Rest</h3>
 <p>During a short rest, a character gains a pool of <strong>Recovery Points</strong> equal to the character’s level. The player can spend Recovery Points to heal Wounds and/or regain Spell Power in any combination. Unspent Recovery Points remain available for later short rests until they are used.</p>
 <p>A character’s maximum Recovery Points equal the character’s level. During a long rest, a character regains half of their total Recovery Points (rounded up), </p>
-<p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. When a heart is restored, the −1 penalty to each ability modifier, the −5 ft speed penalty, and the −2 Max Wounds penalty from that lost heart are removed as well. During this rest, however, no Wounds are healed; Wounds must be healed separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also heal Wounds again. The order of recovery during a long rest is always: first hearts, then Wounds. See the <a href="combat.html#life-and-death-saves">Life and Death Saves</a> section for more details on hearts and death saves.</p>
+<p><strong>Restoring Hearts:</strong> Restoring a lost heart requires one long rest. When a heart is restored, the −1 penalty to each ability modifier, the −5 ft speed penalty, and the −2 Max Wounds penalty from that lost heart are removed as well. During this rest, however, no Wounds are healed; Wounds must be healed separately through spells, healing, or other effects. Only when the number of hearts is back to 3 does a long rest also heal Wounds again. The order of recovery during a long rest is always: first hearts, then Wounds. See the <a href="combat.html#life-and-death-saves">Life Saves</a> section for more details on hearts and Life Saves.</p>
 <hr>
 <h3>Spell School Expertise</h3>
 <p>Some spellcasters specialize in particular schools of magic. A character with expertise in a spell school adds <strong>+2×PB</strong> (Expert) to spell attack rolls for spells of that school, and targets of those spells have disadvantage on saving throws against them.</p>

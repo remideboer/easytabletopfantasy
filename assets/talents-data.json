@@ -231,7 +231,7 @@
     "id": "comrade",
     "name": "Comrade",
     "prerequisite": "",
-    "description": "• Help as a bonus action.\n• Spend Resolve to boost an ally's roll within 30 feet.\n• When an ally within 30 feet fails a death save or reaches Max Wounds, gain 2 Resolve."
+    "description": "• Help as a bonus action.\n• Spend Resolve to boost an ally's roll within 30 feet.\n• When an ally within 30 feet fails a Life Save or reaches Max Wounds, gain 2 Resolve."
   },
   {
     "id": "covert",

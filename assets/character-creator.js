@@ -1122,7 +1122,7 @@
 
     const spellAb = spellcastingAbilityForClass(cls);
     if (spellAb) {
-      character.spellPowerNow = Math.max(0, 3 * abilities[spellAb]);
+      character.spellPowerNow = Math.max(0, 2 + 2 * abilities[spellAb]);
     }
 
     let store = { characters: [], activeId: null };

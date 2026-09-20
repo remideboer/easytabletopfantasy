@@ -435,7 +435,7 @@
     const spellAb = spellcastingAbility(cls);
     if (!spellAb) return null;
     const mod = effectiveMod(c, spellAb);
-    return Math.max(0, 3 * mod);
+    return Math.max(0, 2 + 2 * mod);
   }
 
   // Proficiency Bonus per core.html#proficiency-and-advantage: PB = level / 2, rounded up.

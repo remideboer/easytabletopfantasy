@@ -4178,15 +4178,15 @@
     {
       "id": "anointed",
       "name": "Anointed",
-      "teaser": "You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden. Favored Disciple. You know the thaumaturgy cantrip and have advantage on death saves.…",
-      "body": "<p>You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden.</p>\n<p><strong>Favored Disciple.</strong> You know the <em>thaumaturgy</em> cantrip and have advantage on death saves.</p>\n<p><strong>Occult Studies.</strong> Proficiency in History or Religion. Advantage on checks to recall information about Celestials, Fiends, or Outsiders.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Abyssal, Celestial, or Infernal).</p>",
+      "teaser": "You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden. Favored Disciple. You know the thaumaturgy cantrip and have advantage on Life Saves.…",
+      "body": "<p>You have accepted a supernatural connection to extraplanar forces or cosmic purpose—marked by omens, rites, or ancestral burden.</p>\n<p><strong>Favored Disciple.</strong> You know the <em>thaumaturgy</em> cantrip and have advantage on Life Saves.</p>\n<p><strong>Occult Studies.</strong> Proficiency in History or Religion. Advantage on checks to recall information about Celestials, Fiends, or Outsiders.</p>\n<p><strong>Languages.</strong> Common plus two additional (typical: Abyssal, Celestial, or Infernal).</p>",
       "tag": null,
       "recommendedFor": "Syderean",
       "rulesUrl": "rules/heritages.html#anointed",
       "features": [
         {
           "name": "Favored Disciple",
-          "summary": "You know the thaumaturgy cantrip and have advantage on death saves."
+          "summary": "You know the thaumaturgy cantrip and have advantage on Life Saves."
         },
         {
           "name": "Occult Studies",

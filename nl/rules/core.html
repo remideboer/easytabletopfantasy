@@ -65,9 +65,9 @@
 <ul>
 <li><strong>Wonden (WD):</strong> Huidige verwondingsstaat. Personages beginnen op 0 Wonden. Schade voegt Wonden toe tot Max. wonden is bereikt. Zie <a href="#wounds-and-scale">Wonden en schaal</a>.</li>
 <li><strong>Max. wonden:</strong> Capaciteit voordat de Life-regel geldt. Max. wonden = class start Max. wonden + Fitness-modifier + (niveau − 1). Wanneer Wonden Max. wonden bereiken, geldt de Life-regel. Zie <a href="#wounds-and-scale">Wonden en schaal</a>.</li>
-<li><strong>Spell Power (SP):</strong> De magische capaciteit van een spellcaster. SP = 3 × spellcasting-vermogensmodifier. Spellcasters geven SP uit om spells te casten en krijgen het terug via rust en Herstelpunten. Zie <a href="#magic-and-spell-resources">Magie en spellbronnen</a>.</li>
+<li><strong>Spell Power (SP):</strong> De magische capaciteit van een spellcaster. SP = 2 + 2 × spellcasting-vermogensmodifier. Spellcasters geven SP uit om spells te casten en krijgen het terug via rust en Herstelpunten. Zie <a href="#magic-and-spell-resources">Magie en spellbronnen</a>.</li>
 <li><strong>Behendigheidsbonus (PB):</strong> Wordt opgeteld bij rollen waar je Proficient (of Expert/Master) mee bent: wapen, skill, tool, of vergelijkbaar. Features die “PB” noemen voor schade, DC’s of gebruiken per rust gebruiken dit getal ook. PB = niveau ÷ 2, naar boven afgerond. Zie <a href="#proficiency-and-advantage">Behendigheidsbonus</a>.</li>
-<li><strong>Life (harten):</strong> De levensenergie van een personage. Elk personage start met 3 harten. Wanneer Wonden Max. wonden bereiken, moet je Death Saves maken; een mislukte Death Save kost één hart. Per verloren hart daalt elke vermogensmodifier (Fitness, Insight en Willpower) met 1, daalt de maximale snelheid met 5 voet (één stap), en daalt Max. wonden met 2 tot dat hart is hersteld. Een verloren hart herstellen kost één lange rust. Zie <a href="combat.html#life-and-death-saves">Life en Death Saves</a>.</li>
+<li><strong>Life (harten):</strong> De levensenergie van een personage. Elk personage start met 3 harten. Wanneer Wonden Max. wonden bereiken, moet je Life Saves maken (Willpower, DC 10); een mislukte Life Save kost één hart. Per verloren hart daalt elke vermogensmodifier (Fitness, Insight en Willpower) met 1, daalt de maximale snelheid met 5 voet (één stap), en daalt Max. wonden met 2 tot dat hart is hersteld. Een verloren hart herstellen kost één lange rust. Zie <a href="combat.html#life-and-death-saves">Life Saves</a>.</li>
 </ul>
 <hr>
 <h3>Vermogensmodifiers bepalen</h3>
@@ -399,7 +399,9 @@
   <span class="formula-equation">
     <span class="variable">Spell Power</span>
     <span class="operator">=</span>
-    <span>3</span>
+    <span>2</span>
+    <span class="operator">+</span>
+    <span>2</span>
     <span class="operator">×</span>
     <span class="variable">spellcasting-vermogensmodifier</span>
   </span>
@@ -434,7 +436,7 @@
 <h3>Herstelpunten en rust</h3>
 <p>Tijdens een korte rust krijgt een personage een pool van <strong>Herstelpunten</strong> gelijk aan het niveau van het personage. De speler kan Herstelpunten uitgeven om Wonden te helen en/of Spell Power terug te krijgen, in elke combinatie. Onuitgegeven Herstelpunten blijven beschikbaar voor latere korte rusten tot ze gebruikt zijn.</p>
 <p>Het maximum aan Herstelpunten van een personage is gelijk aan het niveau. Tijdens een lange rust krijgt een personage de helft van het totale aantal Herstelpunten terug (naar boven afgerond).</p>
-<p><strong>Harten herstellen:</strong> Een verloren hart herstellen kost één lange rust. Wanneer een hart is hersteld, verdwijnen ook de −1-straf op elke vermogensmodifier, de −5 ft-snelheidsstraf en de −2 Max. wonden-straf van dat verloren hart. Tijdens deze rust worden echter geen Wonden geheeld; Wonden moeten apart geheeld worden via spells, genezing of andere effecten. Pas wanneer het aantal harten weer op 3 staat, heelt een lange rust ook weer Wonden. De volgorde van herstel tijdens een lange rust is altijd: eerst harten, dan Wonden. Zie de sectie <a href="combat.html#life-and-death-saves">Life en Death Saves</a> voor meer over harten en Death Saves.</p>
+<p><strong>Harten herstellen:</strong> Een verloren hart herstellen kost één lange rust. Wanneer een hart is hersteld, verdwijnen ook de −1-straf op elke vermogensmodifier, de −5 ft-snelheidsstraf en de −2 Max. wonden-straf van dat verloren hart. Tijdens deze rust worden echter geen Wonden geheeld; Wonden moeten apart geheeld worden via spells, genezing of andere effecten. Pas wanneer het aantal harten weer op 3 staat, heelt een lange rust ook weer Wonden. De volgorde van herstel tijdens een lange rust is altijd: eerst harten, dan Wonden. Zie de sectie <a href="combat.html#life-and-death-saves">Life Saves</a> voor meer over harten en Life Saves.</p>
 <hr>
 <h3>Schoolspecialisatie</h3>
 <p>Sommige spellcasters specialiseren zich in bepaalde magiescholen. Een personage met expertise in een spell school telt <strong>+2×PB</strong> (Expert) op bij spellaanvalsrollen voor spells van die school, en doelwitten van die spells hebben nadeel op saves ertegen.</p>
