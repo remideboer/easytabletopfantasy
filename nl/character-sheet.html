@@ -67,8 +67,8 @@
       background: #fff !important;
     }
     @page {
-      size: A4 portrait;
-      margin: 1cm;
+      size: A4 landscape;
+      margin: 8mm;
     }
 
     /* A printed sheet is filled in by hand at the table - hide the on-screen
@@ -198,11 +198,7 @@
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-new">Nieuw personage</button>
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-import">Importeer maker-concept</button>
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-import-ddb">Importeer van D&amp;D Beyond</button>
-          <select id="cs-print-orientation" class="cs-select cs-select--print" aria-label="Afdrukstand">
-            <option value="landscape">Liggend</option>
-            <option value="portrait" selected>Staand</option>
-          </select>
-          <button type="button" class="btn cs-btn-secondary" id="cs-btn-print">Afdrukken</button>
+          <button type="button" class="btn cs-btn-secondary" id="cs-btn-print" disabled>Afdrukken</button>
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-export-pdf" disabled>Exporteer PDF</button>
           <button type="button" class="btn cs-btn-danger" id="cs-btn-delete" disabled>Verwijderen</button>
         </div>

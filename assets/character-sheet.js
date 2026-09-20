@@ -907,23 +907,93 @@
     document.body.classList.remove("cs-pg-exporting");
   }
 
-  async function exportPregenPdf() {
-    if (!char || typeof window.ymiatRenderPregenSheetHtml !== "function" || !el.pgExport) return;
-    if (el.btnExportPdf && el.btnExportPdf.dataset.busy === "1") return;
-
+  /** Mount the pregen-format sheet for the active character into #cs-pg-export. */
+  function mountPregenExportSheet() {
+    if (!char || typeof window.ymiatRenderPregenSheetHtml !== "function" || !el.pgExport) return null;
     const lang = sheetLocale();
     const vm = buildPregenViewModel(char);
     const html = window.ymiatRenderPregenSheetHtml(vm, { lang: lang, includeChrome: false });
     el.pgExport.innerHTML = html;
     el.pgExport.hidden = false;
     el.pgExport.setAttribute("aria-hidden", "false");
-    el.pgExport.classList.add("cs-pg-export--ready");
+    return el.pgExport.querySelector(".pg-sheet");
+  }
 
-    const sheetEl = el.pgExport.querySelector(".pg-sheet");
+  /** Print uses an isolated iframe so conflicting page @page/portrait rules cannot win. */
+  function printPregenSheet() {
+    if (!char || typeof window.ymiatRenderPregenSheetHtml !== "function") return;
+    const lang = sheetLocale();
+    const vm = buildPregenViewModel(char);
+    const sheetHtml = window.ymiatRenderPregenSheetHtml(vm, { lang: lang, includeChrome: false });
+    const cssHref = new URL(rp("assets/pregenerated-characters.css"), window.location.href).href;
+
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("title", "Print character sheet");
+    iframe.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;opacity:0;pointer-events:none;";
+    document.body.appendChild(iframe);
+
+    const doc = iframe.contentDocument;
+    doc.open();
+    doc.write(
+      "<!DOCTYPE html><html><head><meta charset=\"utf-8\" />" +
+      "<title>" + (vm.name || "Character") + "</title>" +
+      "<link rel=\"stylesheet\" href=\"" + cssHref + "\" />" +
+      "<style>" +
+      "@page{size:A4 landscape;margin:8mm}" +
+      "html,body{margin:0;padding:0;background:#fff !important;color:#111}" +
+      ".pg-sheet-wrap{max-width:none;margin:0}" +
+      ".pg-sheet{" +
+      "display:grid !important;" +
+      "grid-template-columns:1.05fr 1fr 1fr !important;" +
+      "box-shadow:none !important;" +
+      "break-inside:avoid;page-break-inside:avoid;" +
+      "-webkit-print-color-adjust:exact;print-color-adjust:exact" +
+      "}" +
+      ".pg-head{display:grid !important;grid-template-columns:minmax(11rem,1.05fr) minmax(0,1.7fr) !important}" +
+      ".pg-col{border-right:1px solid #bbb !important;border-bottom:0 !important}" +
+      ".pg-col:last-child{border-right:0 !important}" +
+      "</style></head><body>" + sheetHtml + "</body></html>"
+    );
+    doc.close();
+
+    const cleanup = () => {
+      if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+    };
+
+    let printed = false;
+    const runPrint = () => {
+      if (printed) return;
+      printed = true;
+      try {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      } finally {
+        // Keep iframe briefly so the print dialog can read it, then remove.
+        setTimeout(cleanup, 2000);
+      }
+    };
+
+    const link = doc.querySelector("link[rel=\"stylesheet\"]");
+    if (link) {
+      link.addEventListener("load", runPrint, { once: true });
+      link.addEventListener("error", runPrint, { once: true });
+      // Fallback if load already fired or is cached without event.
+      setTimeout(runPrint, 400);
+    } else {
+      runPrint();
+    }
+  }
+
+  async function exportPregenPdf() {
+    if (!char || !el.pgExport) return;
+    if (el.btnExportPdf && el.btnExportPdf.dataset.busy === "1") return;
+
+    const sheetEl = mountPregenExportSheet();
     if (!sheetEl) {
       cleanupPgExport();
       return;
     }
+    el.pgExport.classList.add("cs-pg-export--ready");
 
     const label = t("exportPdf", "Export PDF");
     if (el.btnExportPdf) {
@@ -1834,6 +1904,7 @@
     if (el.hint) el.hint.hidden = !hasChar;
     if (el.btnDelete) el.btnDelete.disabled = !hasChar;
     if (el.btnExportPdf) el.btnExportPdf.disabled = !hasChar;
+    if (el.btnPrint) el.btnPrint.disabled = !hasChar;
   }
 
   function render() {
@@ -2413,10 +2484,7 @@
       });
     }
     if (el.btnPrint) {
-      el.btnPrint.addEventListener("click", () => {
-        applyPrintOrientation(el.printOrientation ? el.printOrientation.value : "portrait");
-        window.print();
-      });
+      el.btnPrint.addEventListener("click", printPregenSheet);
     }
     if (el.btnExportPdf) {
       el.btnExportPdf.addEventListener("click", exportPregenPdf);
