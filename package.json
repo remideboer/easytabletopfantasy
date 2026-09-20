@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "generate-pregen-pdfs": "node scripts/generate-pregen-pdfs.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

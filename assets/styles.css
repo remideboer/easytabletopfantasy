@@ -3616,8 +3616,15 @@
       padding: 0;
     }
     
-    /* Hide non-essential elements */
-    header, nav, .toc, .btnrow, .print-controls, footer, h1 {
+    /* Hide non-essential chrome (keep in-sheet .pg-head / titles) */
+    body > header,
+    header[data-include],
+    nav,
+    .toc,
+    .btnrow,
+    .print-controls,
+    footer,
+    main > h1 {
       display: none !important;
     }
     

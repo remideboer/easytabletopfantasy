@@ -122,6 +122,8 @@ window.YMIAT_I18N_CHROME = {
       "gear": "Gear",
       "services": "Services & Lodging",
       "monsters": "Monsters",
+      "resources": "Resources",
+      "pregeneratedCharacters": "Pregenerated Characters",
       "adventures": "Adventures",
       "oneShots": "One Shots",
       "wildSheepChase": "The Wild Sheep Chase",
@@ -214,6 +216,8 @@ window.YMIAT_I18N_CHROME = {
       "gear": "Uitrusting",
       "services": "Diensten & onderdak",
       "monsters": "Monsters",
+      "resources": "Bronnen",
+      "pregeneratedCharacters": "Voorgemaakte personages",
       "adventures": "Avonturen",
       "oneShots": "One-shots",
       "wildSheepChase": "The Wild Sheep Chase",
@@ -454,9 +458,12 @@ function ymiatBuildNav(locale) {
     '<a href="{{ROOT}}rules/gear.html">' + e(n.gear) + '</a>' +
     '<a href="{{ROOT}}rules/services.html">' + e(n.services) + '</a>' +
     '<a href="{{ROOT}}rules/monsters.html">' + e(n.monsters) + '</a>' +
-    '<div class="nav-dropdown"><a href="{{ROOT}}rules/adventures/index.html">' + e(n.adventures) + '</a><div class="nav-dropdown-menu">' +
+    '<div class="nav-dropdown"><a href="{{ROOT}}rules/pregenerated-characters/index.html">' + e(n.resources || 'Resources') + '</a><div class="nav-dropdown-menu nav-dropdown-menu-nested">' +
+    '<a href="{{ROOT}}rules/pregenerated-characters/index.html">' + e(n.pregeneratedCharacters || 'Pregenerated Characters') + '</a>' +
+    '<div class="nav-submenu nav-submenu--branch"><span class="nav-submenu-label">' + e(n.adventures) + '</span><div class="nav-submenu-panel"><div class="nav-submenu-panel-inner">' +
     '<a href="{{ROOT}}rules/adventures/index.html">' + e(n.oneShots) + '</a>' +
     '<a href="{{ROOT}}rules/adventures/wild-sheep-chase.html">' + e(n.wildSheepChase) + '</a>' +
+    '</div></div></div>' +
     '</div></div>' +
     '<a href="{{ROOT}}faq.html">' + e(n.faq) + '</a>' +
     '<a href="{{ROOT}}therapeutic-use.html">' + e(n.therapeuticUse || 'Therapeutic use') + '</a>' +

@@ -1,0 +1,1038 @@
+{
+  "meta": {
+    "level": 1,
+    "system": "YMIAT",
+    "note": {
+      "en": "Legal level-1 builds using the Character Creation steps (class, abilities, lineage, heritage, background, equipment).",
+      "nl": "Geldige level-1 builds volgens de stappen van Karaktercreatie (klasse, eigenschappen, lineage, heritage, achtergrond, uitrusting)."
+    }
+  },
+  "characters": [
+    {
+      "id": "mara-marshward",
+      "classId": "ranger",
+      "className": {
+        "en": "Ranger",
+        "nl": "Ranger"
+      },
+      "abilities": {
+        "fit": 2,
+        "ins": 1,
+        "wil": 0
+      },
+      "pb": 1,
+      "lineageId": "human",
+      "lineageName": {
+        "en": "Human",
+        "nl": "Mens"
+      },
+      "heritageId": "wildlands",
+      "heritageName": {
+        "en": "Wildlands",
+        "nl": "Wildlanden"
+      },
+      "backgroundId": "homesteader",
+      "backgroundName": {
+        "en": "Homesteader",
+        "nl": "Homesteader"
+      },
+      "talent": {
+        "en": "Aware",
+        "nl": "Aware"
+      },
+      "talentSummary": {
+        "en": "Advantage on Initiative; notice threats early.",
+        "nl": "Voordeel op Initiatief; merkt dreigingen vroeg op."
+      },
+      "armorId": "leather",
+      "armorName": {
+        "en": "Leather",
+        "nl": "Leer"
+      },
+      "shield": false,
+      "speed": 30,
+      "save": {
+        "en": "FIT (+PB)",
+        "nl": "FIT (+PB)"
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Survival",
+            "nl": "Survival"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Perception",
+            "nl": "Perception"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Stealth",
+            "nl": "Stealth"
+          },
+          "ability": "fit",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Nature",
+            "nl": "Nature"
+          },
+          "ability": "ins",
+          "proficient": true
+        }
+      ],
+      "attacks": [
+        {
+          "weapon": {
+            "en": "Longbow",
+            "nl": "Langboog"
+          },
+          "weaponBonus": 3,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Shortsword",
+            "nl": "Kortzwaard"
+          },
+          "weaponBonus": 2,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Dagger",
+            "nl": "Dolk"
+          },
+          "weaponBonus": 1,
+          "wounds": 1
+        }
+      ],
+      "features": [
+        {
+          "name": {
+            "en": "Explorer",
+            "nl": "Explorer"
+          },
+          "summary": {
+            "en": "Climb/swim speed = walk; advantage on tracking; speed not halved in difficult terrain.",
+            "nl": "Klim-/zwemsnelheid = lopen; voordeel op spoorzoeken; snelheid niet gehalveerd in moeilijk terrein."
+          }
+        },
+        {
+          "name": {
+            "en": "Mystic Mark",
+            "nl": "Mystic Mark"
+          },
+          "summary": {
+            "en": "On hit, mark a creature 1 minute (extra d4 damage). Uses = PB / long rest.",
+            "nl": "Bij treffer: markeer een wezen 1 minuut (extra d4 schade). Gebruiken = PB / lange rust."
+          }
+        }
+      ],
+      "spells": null,
+      "equipment": {
+        "en": [
+          "Longbow",
+          "20 arrows",
+          "Shortsword",
+          "Dagger",
+          "Leather armor",
+          "Backpack",
+          "Hunting trap",
+          "Traveler's clothes",
+          "8 gp (quartz)"
+        ],
+        "nl": [
+          "Langboog",
+          "20 pijlen",
+          "Kortzwaard",
+          "Dolk",
+          "Leren pantser",
+          "Rugzak",
+          "Jachtval",
+          "Reizigerskleding",
+          "8 gp (kwarts)"
+        ]
+      },
+      "copy": {
+        "en": {
+          "name": "Mara Marshward",
+          "concept": "Warden, archer, tracker",
+          "role": "Scout, ranged damage, tracker",
+          "background": "Mara grew up on the edge of a vast swamp. She learned to read tracks, move silently through difficult terrain, and survive for days with little gear. Her younger brother vanished following strange tracks into the marsh—she never accepted that he simply died.",
+          "motivation": "Find her missing brother and learn what took him.",
+          "personality": "Quiet, observant, practical. Trusts tracks over rumours. Uneasy in crowded settlements."
+        },
+        "nl": {
+          "name": "Mara Veldkind",
+          "concept": "Woudloper, boogschutter, spoorzoeker",
+          "role": "Verkenner, afstandsschade, spoorzoeker",
+          "background": "Mara groeide op aan de rand van een uitgestrekt moeras. Ze leerde sporen lezen, stil door moeilijk terrein bewegen en dagenlang met weinig uitrusting overleven. Haar jongere broer verdween na vreemde sporen het moeras in—ze heeft nooit geaccepteerd dat hij simpelweg stierf.",
+          "motivation": "Haar verdwenen broer vinden en ontdekken wat hem wegnam.",
+          "personality": "Stil, oplettend, praktisch. Vertrouwt sporen boven geruchten. Ongemakkelijk in drukke nederzettingen."
+        }
+      },
+      "proficiencies": {
+        "en": [
+          "Armor: light, medium, shields",
+          "Weapons: all",
+          "Tools: navigator's tools",
+          "Save: FIT (+PB)"
+        ],
+        "nl": [
+          "Pantser: light, medium, schilden",
+          "Wapens: alle",
+          "Gereedschap: navigator's tools",
+          "Save: FIT (+PB)"
+        ]
+      }
+    },
+    {
+      "id": "alden-crowe",
+      "classId": "cleric",
+      "className": {
+        "en": "Cleric",
+        "nl": "Cleric"
+      },
+      "abilities": {
+        "fit": 0,
+        "ins": 2,
+        "wil": 1
+      },
+      "pb": 1,
+      "lineageId": "human",
+      "lineageName": {
+        "en": "Human",
+        "nl": "Mens"
+      },
+      "heritageId": "anointed",
+      "heritageName": {
+        "en": "Anointed",
+        "nl": "Anointed"
+      },
+      "backgroundId": "acolyte",
+      "backgroundName": {
+        "en": "Acolyte",
+        "nl": "Acolyte"
+      },
+      "talent": {
+        "en": "Field Medic",
+        "nl": "Field Medic"
+      },
+      "talentSummary": {
+        "en": "Stabilize and patch allies efficiently in the field.",
+        "nl": "Stabiliseer en verzorg bondgenoten efficiënt in het veld."
+      },
+      "armorId": "leather",
+      "armorName": {
+        "en": "Leather",
+        "nl": "Leer"
+      },
+      "shield": true,
+      "speed": 30,
+      "save": {
+        "en": "INS (+PB)",
+        "nl": "INS (+PB)"
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Insight",
+            "nl": "Insight"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Religion",
+            "nl": "Religion"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Medicine",
+            "nl": "Medicine"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Persuasion",
+            "nl": "Persuasion"
+          },
+          "ability": "wil",
+          "proficient": true
+        }
+      ],
+      "attacks": [
+        {
+          "weapon": {
+            "en": "Mace",
+            "nl": "Knots"
+          },
+          "weaponBonus": 2,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Light Crossbow",
+            "nl": "Lichte kruisboog"
+          },
+          "weaponBonus": 3,
+          "wounds": 1
+        }
+      ],
+      "features": [
+        {
+          "name": {
+            "en": "Manifestation of Faith",
+            "nl": "Manifestation of Faith"
+          },
+          "summary": {
+            "en": "Miracle Worker path: divine care and protection over martial zeal.",
+            "nl": "Pad van de wonderdoener: goddelijke zorg en bescherming boven krijgszucht."
+          }
+        },
+        {
+          "name": {
+            "en": "Spellcasting",
+            "nl": "Spellcasting"
+          },
+          "summary": {
+            "en": "Prepared Divine spells; Spell Power; casting ability Insight.",
+            "nl": "Voorbereide Divine spells; Spell Power; casting-eigenschap Insight."
+          }
+        }
+      ],
+      "spells": {
+        "cantrips": {
+          "en": [
+            "Guidance",
+            "Sacred Flame",
+            "Light"
+          ],
+          "nl": [
+            "Guidance",
+            "Sacred Flame",
+            "Light"
+          ]
+        },
+        "prepared": {
+          "en": [
+            "Cure Wounds",
+            "Bless",
+            "Protection from Evil and Good"
+          ],
+          "nl": [
+            "Cure Wounds",
+            "Bless",
+            "Protection from Evil and Good"
+          ]
+        }
+      },
+      "equipment": {
+        "en": [
+          "Mace",
+          "Shield",
+          "Leather armor",
+          "Light crossbow",
+          "20 bolts",
+          "Holy symbol",
+          "Prayer book",
+          "Vestments",
+          "Healer's kit",
+          "15 gp"
+        ],
+        "nl": [
+          "Knots",
+          "Schild",
+          "Leren pantser",
+          "Lichte kruisboog",
+          "20 bouten",
+          "Heilig symbool",
+          "Gebedenboek",
+          "Gewaden",
+          "Helerskit",
+          "15 gp"
+        ]
+      },
+      "copy": {
+        "en": {
+          "name": "Brother Alden Crowe",
+          "concept": "Priest, scholar, healer",
+          "role": "Healer, support, divine magic",
+          "background": "Raised in a temple archive, Alden spent as much time with forbidden manuscripts as with rites. One text speaks of a voice that answers readers—after he heard it himself, he left to learn whether it is divine, magical, or older still.",
+          "motivation": "Trace the mysterious voice and judge its nature.",
+          "personality": "Patient, scholarly, compassionate. Prefers knowledge to violence, but will not hesitate to protect the innocent."
+        },
+        "nl": {
+          "name": "Broeder Caldus",
+          "concept": "Priester, geleerde, genezer",
+          "role": "Genezer, ondersteuning, goddelijke magie",
+          "background": "Opgegroeid in een tempelarchief besteedde Caldus evenveel tijd aan verboden manuscripten als aan riten. Eén tekst noemt een stem die lezers antwoordt—nadat hij die zelf hoorde, ging hij op pad om te bepalen of die goddelijk, magisch of ouder is.",
+          "motivation": "De mysterieuze stem traceren en haar aard beoordelen.",
+          "personality": "Geduldig, geleerd, meelevend. Kiest kennis boven geweld, maar aarzelt niet onschuldigen te beschermen."
+        }
+      },
+      "proficiencies": {
+        "en": [
+          "Armor: light, medium, shields",
+          "Weapons: simple",
+          "Tools: calligrapher's supplies",
+          "Save: INS (+PB)"
+        ],
+        "nl": [
+          "Pantser: light, medium, schilden",
+          "Wapens: simple",
+          "Gereedschap: calligrapher's supplies",
+          "Save: INS (+PB)"
+        ]
+      }
+    },
+    {
+      "id": "rik-tanner",
+      "classId": "rogue",
+      "className": {
+        "en": "Rogue",
+        "nl": "Rogue"
+      },
+      "abilities": {
+        "fit": 2,
+        "ins": 1,
+        "wil": 0
+      },
+      "pb": 1,
+      "lineageId": "smallfolk",
+      "lineageName": {
+        "en": "Smallfolk",
+        "nl": "Smallfolk"
+      },
+      "heritageId": "cosmopolitan",
+      "heritageName": {
+        "en": "Cosmopolitan",
+        "nl": "Cosmopolitan"
+      },
+      "backgroundId": "criminal",
+      "backgroundName": {
+        "en": "Criminal",
+        "nl": "Criminal"
+      },
+      "talent": {
+        "en": "Covert",
+        "nl": "Covert"
+      },
+      "talentSummary": {
+        "en": "Stay unseen and leave fewer traces when you slip away.",
+        "nl": "Blijf ongezien en laat minder sporen achter als je verdwijnt."
+      },
+      "armorId": "leather",
+      "armorName": {
+        "en": "Leather",
+        "nl": "Leer"
+      },
+      "shield": false,
+      "speed": 30,
+      "save": {
+        "en": "FIT (+PB)",
+        "nl": "FIT (+PB)"
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Stealth",
+            "nl": "Stealth"
+          },
+          "ability": "fit",
+          "proficient": true,
+          "expertise": true
+        },
+        {
+          "name": {
+            "en": "Sleight of Hand",
+            "nl": "Sleight of Hand"
+          },
+          "ability": "fit",
+          "proficient": true,
+          "expertise": true
+        },
+        {
+          "name": {
+            "en": "Investigation",
+            "nl": "Investigation"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Deception",
+            "nl": "Deception"
+          },
+          "ability": "wil",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Perception",
+            "nl": "Perception"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Acrobatics",
+            "nl": "Acrobatics"
+          },
+          "ability": "fit",
+          "proficient": true
+        }
+      ],
+      "attacks": [
+        {
+          "weapon": {
+            "en": "Shortsword",
+            "nl": "Kortzwaard"
+          },
+          "weaponBonus": 2,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Dagger",
+            "nl": "Dolk"
+          },
+          "weaponBonus": 1,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Shortbow",
+            "nl": "Korte boog"
+          },
+          "weaponBonus": 2,
+          "wounds": 1
+        }
+      ],
+      "features": [
+        {
+          "name": {
+            "en": "Sneak Attack",
+            "nl": "Sneak Attack"
+          },
+          "summary": {
+            "en": "Once per turn, extra precision damage when you have advantage or an ally threatens the target.",
+            "nl": "Eens per beurt extra precisieschade bij voordeel of een bondgenoot die het doel bedreigt."
+          }
+        },
+        {
+          "name": {
+            "en": "Expertise",
+            "nl": "Expertise"
+          },
+          "summary": {
+            "en": "+2×PB on Stealth and Sleight of Hand.",
+            "nl": "+2×PB op Stealth en Sleight of Hand."
+          }
+        },
+        {
+          "name": {
+            "en": "Thieves' Cant",
+            "nl": "Thieves' Cant"
+          },
+          "summary": {
+            "en": "Secret criminal dialect and signs.",
+            "nl": "Geheim crimineel dialect en tekens."
+          }
+        }
+      ],
+      "spells": null,
+      "equipment": {
+        "en": [
+          "Shortsword",
+          "2 daggers",
+          "Shortbow",
+          "20 arrows",
+          "Leather armor",
+          "Thieves' tools",
+          "Dark traveler's clothes",
+          "Grappling hook",
+          "Chalk (5)",
+          "10 gp"
+        ],
+        "nl": [
+          "Kortzwaard",
+          "2 dolken",
+          "Korte boog",
+          "20 pijlen",
+          "Leren pantser",
+          "Dieventuig",
+          "Donkere reizigerskleding",
+          "Enterhaak",
+          "Krijt (5)",
+          "10 gp"
+        ]
+      },
+      "copy": {
+        "en": {
+          "name": "Rick \"Rik\" Tanner",
+          "concept": "Infiltrator, cutpurse, lookout",
+          "role": "Scout, infiltration, precision damage",
+          "background": "Rik grew up lifting purses in canal alleys and learning which doors stay unlocked after midnight. A job gone wrong left a friend dead—he still hears the whistle that should have warned them. He hires on with adventurers who pay in coin and ask few questions.",
+          "motivation": "Earn enough to vanish somewhere the guilds cannot find him—and repay a debt of silence.",
+          "personality": "Witty, restless, loyal once trust is earned. Jokes to deflect, watches exits first."
+        },
+        "nl": {
+          "name": "Rikket \"Rik\" Tander",
+          "concept": "Infiltrant, zakkenroller, uitkijk",
+          "role": "Verkenner, infiltratie, precisieschade",
+          "background": "Rik groeide op met beurzen tillen in grachtsteegjes en deuren die na middernacht openblijven. Een mislukte klus kostte een vriend het leven—hij hoort nog de fluit die had moeten waarschuwen. Hij werkt met avonturiers die betalen en weinig vragen.",
+          "motivation": "Genoeg verdienen om te verdwijnen waar gildes hem niet vinden—en een schuld van stilte aflossen.",
+          "personality": "Geestig, rusteloos, loyaal zodra vertrouwen er is. Grapjes als schild; eerst de uitgangen."
+        }
+      },
+      "proficiencies": {
+        "en": [
+          "Armor: light",
+          "Weapons: simple and martial finesse",
+          "Tools: thieves' tools",
+          "Save: FIT (+PB)"
+        ],
+        "nl": [
+          "Pantser: light",
+          "Wapens: simple en martial finesse",
+          "Gereedschap: thieves' tools",
+          "Save: FIT (+PB)"
+        ]
+      }
+    },
+    {
+      "id": "elias-voss",
+      "classId": "wizard",
+      "className": {
+        "en": "Wizard",
+        "nl": "Wizard"
+      },
+      "abilities": {
+        "fit": 0,
+        "ins": 2,
+        "wil": 1
+      },
+      "pb": 1,
+      "lineageId": "elf",
+      "lineageName": {
+        "en": "Elf",
+        "nl": "Elf"
+      },
+      "heritageId": "cosmopolitan",
+      "heritageName": {
+        "en": "Cosmopolitan",
+        "nl": "Cosmopolitan"
+      },
+      "backgroundId": "scholar",
+      "backgroundName": {
+        "en": "Scholar",
+        "nl": "Scholar"
+      },
+      "talent": {
+        "en": "Ritualist",
+        "nl": "Ritualist"
+      },
+      "talentSummary": {
+        "en": "Cast known rituals more reliably and with less haste.",
+        "nl": "Cast bekende rituals betrouwbaarder en met minder haast."
+      },
+      "armorId": null,
+      "armorName": {
+        "en": "None",
+        "nl": "Geen"
+      },
+      "shield": false,
+      "speed": 30,
+      "save": {
+        "en": "INS (+PB)",
+        "nl": "INS (+PB)"
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Arcana",
+            "nl": "Arcana"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "History",
+            "nl": "History"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Investigation",
+            "nl": "Investigation"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Insight",
+            "nl": "Insight"
+          },
+          "ability": "ins",
+          "proficient": true
+        }
+      ],
+      "attacks": [
+        {
+          "weapon": {
+            "en": "Quarterstaff",
+            "nl": "Staf"
+          },
+          "weaponBonus": 2,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Dagger",
+            "nl": "Dolk"
+          },
+          "weaponBonus": 1,
+          "wounds": 1
+        }
+      ],
+      "features": [
+        {
+          "name": {
+            "en": "Arcane Recovery",
+            "nl": "Arcane Recovery"
+          },
+          "summary": {
+            "en": "Recover Spell Power on a short rest (once per day).",
+            "nl": "Herstel Spell Power bij een korte rust (eens per dag)."
+          }
+        },
+        {
+          "name": {
+            "en": "Spellcasting",
+            "nl": "Spellcasting"
+          },
+          "summary": {
+            "en": "Prepared Arcane spells from spellbook; casting ability Insight.",
+            "nl": "Voorbereide Arcane spells uit spellbook; casting-eigenschap Insight."
+          }
+        }
+      ],
+      "spells": {
+        "cantrips": {
+          "en": [
+            "Fire Bolt",
+            "Mage Hand",
+            "Prestidigitation"
+          ],
+          "nl": [
+            "Fire Bolt",
+            "Mage Hand",
+            "Prestidigitation"
+          ]
+        },
+        "prepared": {
+          "en": [
+            "Magic Missile",
+            "Shield",
+            "Detect Magic (ritual)"
+          ],
+          "nl": [
+            "Magic Missile",
+            "Shield",
+            "Detect Magic (ritual)"
+          ]
+        },
+        "spellbookNote": {
+          "en": "Spellbook also holds Sleep and Fog Cloud (not prepared today).",
+          "nl": "Spellbook bevat ook Sleep en Fog Cloud (vandaag niet voorbereid)."
+        }
+      },
+      "equipment": {
+        "en": [
+          "Spellbook",
+          "Arcane focus (orb)",
+          "Quarterstaff",
+          "Dagger",
+          "Scholar's pack",
+          "Ink & quill",
+          "Reference notes",
+          "Common clothes",
+          "10 gp"
+        ],
+        "nl": [
+          "Spellbook",
+          "Arcane focus (orb)",
+          "Staf",
+          "Dolk",
+          "Geleerdenpak",
+          "Inkt & pen",
+          "Referentienotities",
+          "Gewone kleding",
+          "10 gp"
+        ]
+      },
+      "copy": {
+        "en": {
+          "name": "Elias Voss",
+          "concept": "Scholar, controller, investigator",
+          "role": "Arcane damage, control, magical investigation",
+          "background": "Elias apprenticed under a meticulous archivist who vanished mid-experiment. The incomplete ritual circle in the tower still hums on quiet nights. He travels to finish the work—or to stop whoever else tries.",
+          "motivation": "Complete or safely dismantle his master's unfinished ritual.",
+          "personality": "Precise, curious, dry-humored. Corrects terminology; forgets meals when research calls."
+        },
+        "nl": {
+          "name": "Elian Voss",
+          "concept": "Geleerde, controleur, onderzoeker",
+          "role": "Arcaneschade, controle, magisch onderzoek",
+          "background": "Elian was leerling van een nauwgezette archivaris die midden in een experiment verdween. De onvoltooide ritualecirkel in de toren zoemt nog op stille nachten. Hij reist om het werk af te maken—of te stoppen wie het anders probeert.",
+          "motivation": "Het onvoltooide ritueel van zijn meester voltooien of veilig ontmantelen.",
+          "personality": "Precies, nieuwsgierig, droog van humor. Corrigeert terminologie; vergeet maaltijden bij onderzoek."
+        }
+      },
+      "proficiencies": {
+        "en": [
+          "Armor: none",
+          "Weapons: simple",
+          "Tools: —",
+          "Save: INS (+PB)"
+        ],
+        "nl": [
+          "Pantser: geen",
+          "Wapens: simple",
+          "Gereedschap: —",
+          "Save: INS (+PB)"
+        ]
+      }
+    },
+    {
+      "id": "dane-ironhart",
+      "classId": "fighter",
+      "className": {
+        "en": "Fighter",
+        "nl": "Fighter"
+      },
+      "abilities": {
+        "fit": 2,
+        "ins": 1,
+        "wil": 0
+      },
+      "pb": 1,
+      "lineageId": "dwarf",
+      "lineageName": {
+        "en": "Dwarf",
+        "nl": "Dwerg"
+      },
+      "heritageId": "stone",
+      "heritageName": {
+        "en": "Stone",
+        "nl": "Stone"
+      },
+      "backgroundId": "soldier",
+      "backgroundName": {
+        "en": "Soldier",
+        "nl": "Soldier"
+      },
+      "talent": {
+        "en": "Combat Conditioning",
+        "nl": "Combat Conditioning"
+      },
+      "talentSummary": {
+        "en": "Hardened for marches and prolonged fights.",
+        "nl": "Gehard voor marsen en langdurige gevechten."
+      },
+      "armorId": "chain-mail",
+      "armorName": {
+        "en": "Chain Mail",
+        "nl": "Maliënkolder"
+      },
+      "shield": true,
+      "speed": 30,
+      "save": {
+        "en": "FIT (+PB)",
+        "nl": "FIT (+PB)"
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Athletics",
+            "nl": "Athletics"
+          },
+          "ability": "fit",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Survival",
+            "nl": "Survival"
+          },
+          "ability": "ins",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Intimidation",
+            "nl": "Intimidation"
+          },
+          "ability": "wil",
+          "proficient": true
+        },
+        {
+          "name": {
+            "en": "Perception",
+            "nl": "Perception"
+          },
+          "ability": "ins",
+          "proficient": true
+        }
+      ],
+      "attacks": [
+        {
+          "weapon": {
+            "en": "Longsword",
+            "nl": "Langzwaard"
+          },
+          "weaponBonus": 3,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Handaxe",
+            "nl": "Handbijl"
+          },
+          "weaponBonus": 2,
+          "wounds": 1
+        },
+        {
+          "weapon": {
+            "en": "Javelin",
+            "nl": "Speer (javelin)"
+          },
+          "weaponBonus": 2,
+          "wounds": 1
+        }
+      ],
+      "features": [
+        {
+          "name": {
+            "en": "Last Stand",
+            "nl": "Last Stand"
+          },
+          "summary": {
+            "en": "Reaction when pushed past half Max WD: spend hit dice (up to PB) to heal.",
+            "nl": "Reactie bij meer dan half Max WD: besteed hit dice (tot PB) om te helen."
+          }
+        },
+        {
+          "name": {
+            "en": "Martial Action",
+            "nl": "Martial Action"
+          },
+          "summary": {
+            "en": "Second action if you did not move: Aim, Guard, Quick Strike, or Wind Up (attack at disadvantage).",
+            "nl": "Tweede actie als je niet bewoog: Aim, Guard, Quick Strike of Wind Up (aanval met nadeel)."
+          }
+        }
+      ],
+      "spells": null,
+      "equipment": {
+        "en": [
+          "Longsword",
+          "Shield",
+          "Chain mail",
+          "2 handaxes",
+          "3 javelins",
+          "Dungeoneer's pack",
+          "Traveler's clothes",
+          "Insignia of rank",
+          "10 gp"
+        ],
+        "nl": [
+          "Langzwaard",
+          "Schild",
+          "Maliënkolder",
+          "2 handbijlen",
+          "3 javelins",
+          "Dungeonpak",
+          "Reizigerskleding",
+          "Rangsinsignes",
+          "10 gp"
+        ]
+      },
+      "copy": {
+        "en": {
+          "name": "Dane Ironhart",
+          "concept": "Front-liner, shield wall, veteran",
+          "role": "Front-line combatant, defender",
+          "background": "Dane served a border garrison until a raid burned his watchtower. He still carries the scorched insignia. Sellsword work pays, but he stays for the people who need a wall between them and the dark.",
+          "motivation": "Protect the living—and one day rebuild what the raid took.",
+          "personality": "Steady, blunt, protective. Speaks little in a fight; more at the fire afterward."
+        },
+        "nl": {
+          "name": "Daan IJzerhart",
+          "concept": "Frontlinie, schildmuur, veteraan",
+          "role": "Frontliniestrijder, verdediger",
+          "background": "Daan diende in een grensgarnizoen tot een overval zijn wachttoren verbrandde. Hij draagt nog de geschroeide insignes. Huurlingenwerk betaalt, maar hij blijft voor wie een muur tussen hen en de duisternis nodig heeft.",
+          "motivation": "De levenden beschermen—en ooit herbouwen wat de overval nam.",
+          "personality": "Standvastig, bot, beschermend. Weinig woorden in een gevecht; meer bij het vuur erna."
+        }
+      },
+      "proficiencies": {
+        "en": [
+          "Armor: all armor and shields",
+          "Weapons: simple and martial",
+          "Tools: —",
+          "Save: FIT (+PB)"
+        ],
+        "nl": [
+          "Pantser: alle pantsers en schilden",
+          "Wapens: simple en martial",
+          "Gereedschap: —",
+          "Save: FIT (+PB)"
+        ]
+      }
+    }
+  ],
+  "armorTable": {
+    "leather": {
+      "base": 1,
+      "addFit": true
+    },
+    "chain-mail": {
+      "base": 6,
+      "addFit": false
+    }
+  },
+  "classMaxWd": {
+    "ranger": 10,
+    "cleric": 8,
+    "rogue": 8,
+    "wizard": 6,
+    "fighter": 10
+  },
+  "spellcasters": [
+    "cleric",
+    "wizard"
+  ]
+}
