@@ -4,7 +4,6 @@
  */
 (function () {
   const STORAGE_KEY = "ymiat-characters-v1";
-  const CREATOR_KEY = "ymiat-character-creator-v1";
   const ABILITIES = ["fit", "ins", "wil"];
   const ABILITY_LABELS = { fit: "FIT", ins: "INS", wil: "WIL" };
   const ABILITY_FULL = { fit: "Fitness", ins: "Insight", wil: "Willpower" };
@@ -130,7 +129,7 @@
     el.empty = document.getElementById("cs-empty");
     el.hint = document.getElementById("cs-hint");
     el.btnNew = document.getElementById("cs-btn-new");
-    el.btnImport = document.getElementById("cs-btn-import");
+    el.btnCreator = document.getElementById("cs-btn-creator");
     el.btnImportDdb = document.getElementById("cs-btn-import-ddb");
     el.btnPrint = document.getElementById("cs-btn-print");
     el.btnExportPdf = document.getElementById("cs-btn-export-pdf");
@@ -332,7 +331,7 @@
 
   function syncDocumentTitle() {
     if (!manageDocumentTitle) {
-      manageDocumentTitle = document.title || "Character Sheet | You-Meet-In-A-Tavern (YMIAT)";
+      manageDocumentTitle = document.title || "Character Manager | You-Meet-In-A-Tavern (YMIAT)";
     }
     if (!playMode) {
       document.title = manageDocumentTitle;
@@ -1498,6 +1497,10 @@
 
   function applyToolbarI18n() {
     if (el.btnExportPdf) el.btnExportPdf.textContent = t("exportPdf", "Export PDF");
+    if (el.btnCreator) {
+      el.btnCreator.textContent = t("openCreator", "Character Creator");
+      el.btnCreator.setAttribute("href", rp("character-creator.html"));
+    }
     if (el.toolbarToggle) {
       const open = el.toolbar && el.toolbar.classList.contains("is-open");
       el.toolbarToggle.textContent = open
@@ -3041,55 +3044,7 @@
     syncToolbarFoldout(Boolean(store.activeId));
   }
 
-  function importCreatorDraft() {
-    try {
-      const raw = localStorage.getItem(CREATOR_KEY);
-      if (!raw) {
-        alert("No character creator draft found in this browser.");
-        return;
-      }
-      const draft = JSON.parse(raw);
-      const c = defaultCharacter();
-      c.name = draft.name || c.name;
-      c.level = Number(draft.level) || 1;
-      c.xp = xpThreshold(c.level);
-      c.classId = draft.classId || "";
-      c.subclassId = draft.subclassId || "";
-      c.lineageId = draft.lineageId || "";
-      c.heritageId = draft.heritageId || "";
-      c.backgroundId = draft.backgroundId || "";
-      if (draft.abilities) {
-        ABILITIES.forEach((ab) => {
-          if (draft.abilities[ab] != null) c.abilities[ab] = clampAbility(draft.abilities[ab]);
-        });
-      }
-      if (c.lineageId) {
-        const lin = byId(data.lineages, c.lineageId);
-        if (lin) Object.assign(c, parseLineageDefaults(lin));
-      }
-      const spMax = computeSpellPowerMax(c);
-      c.spellPowerNow = spMax !== null ? spMax : 0;
-      // Mirror creator Finish: packages → inventory / currency / equipped.
-      const method = draft.equipmentMethod || "packages";
-      if (method === "packages" && window.ymiatStartingEquipment) {
-        const bg = byId(data.backgrounds, c.backgroundId);
-        window.ymiatStartingEquipment.applyPackageEquipment(c, {
-          classId: c.classId,
-          background: bg,
-          slotCount: INVENTORY_SLOT_COUNT,
-        });
-      }
-      normalizeCharacter(c);
-      syncGrantedSpells(c);
-      store.characters.push(c);
-      store.activeId = c.id;
-      saveStore();
-      render();
-      syncToolbarFoldout(true);
-    } catch (e) {
-      alert("Could not import creator draft.");
-    }
-  }
+
 
   // ─── D&D Beyond import ──────────────────────────────────────────────────────
   // Direct browser fetch to character-service.dndbeyond.com is blocked by CORS.
@@ -3924,7 +3879,6 @@
     el.charSelect.addEventListener("change", (e) => setActive(e.target.value));
     el.btnNew.addEventListener("click", newCharacter);
     el.btnDelete.addEventListener("click", deleteCharacter);
-    el.btnImport.addEventListener("click", importCreatorDraft);
     if (el.btnImportDdb) {
       el.btnImportDdb.addEventListener("click", () => {
         ddbReview = null;

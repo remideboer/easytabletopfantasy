@@ -25,7 +25,7 @@
     const msgInvalid = langNl
       ? "Geen geldige D&D Beyond-personage-URL of ID gevonden."
       : "Couldn't find a valid D&D Beyond character URL or ID.";
-    const msgGo = langNl ? "Personageblad openen…" : "Opening character sheet…";
+    const msgGo = langNl ? "Personagebeheer openen…" : "Opening character manager…";
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();

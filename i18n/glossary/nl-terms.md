@@ -10,6 +10,7 @@ Natural table-language. Prefer how NL groups actually speak at the table over li
 | Characters | Personages |
 | Character Creation | Personage maken |
 | Character Creator | Personage-maker |
+| Character Manager | Personagebeheer |
 | Character Sheet | Personageblad |
 | Converter | Converter |
 | Conversion Guide | Conversiegids |

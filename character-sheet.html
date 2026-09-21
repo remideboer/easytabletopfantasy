@@ -7,13 +7,13 @@
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Character Sheet | You-Meet-In-A-Tavern (YMIAT)</title>
+<title>Character Manager | You-Meet-In-A-Tavern (YMIAT)</title>
 <meta name="description" content="Manage YMIAT characters—track wounds, abilities, inventory, and progression. Saved locally in your browser." />
 <link rel="canonical" href="character-sheet.html" />
 <link rel="stylesheet" href="assets/styles.css" />
 <link rel="stylesheet" href="assets/pregenerated-characters.css" />
 <script src="assets/includes.js"></script>
-<meta property="og:title" content="Character Sheet | You-Meet-In-A-Tavern (YMIAT)" />
+<meta property="og:title" content="Character Manager | You-Meet-In-A-Tavern (YMIAT)" />
 <meta property="og:description" content="Create and manage YMIAT characters with automatic Max Wounds, Spell Power, and inventory calculations." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="character-sheet.html" />
@@ -185,7 +185,7 @@
 <header data-include="nav"></header>
 <main class="cs-main">
   <div class="cs-hero">
-    <h1>Character Sheet</h1>
+    <h1>Character Manager</h1>
     <p class="lede">Create and manage characters on a digital sheet—Max Wounds, Spell Power, and inventory slots update from your choices. Saved in this browser (no account needed).</p>
   </div>
 
@@ -210,7 +210,7 @@
       <div id="cs-toolbar-panel" class="cs-toolbar-panel">
         <div class="cs-toolbar-actions">
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-new">New character</button>
-          <button type="button" class="btn cs-btn-secondary" id="cs-btn-import">Import creator draft</button>
+          <a class="btn cs-btn-secondary" id="cs-btn-creator" href="character-creator.html">Character Creator</a>
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-import-ddb">Import from D&amp;D Beyond</button>
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-print" disabled>Print</button>
           <button type="button" class="btn cs-btn-secondary" id="cs-btn-export-pdf" disabled>Export PDF</button>

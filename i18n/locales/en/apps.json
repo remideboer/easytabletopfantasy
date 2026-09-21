@@ -85,6 +85,7 @@
       "exportPdf": "Export PDF",
       "exportPdfBusy": "Creating PDF…",
       "exportPdfFailed": "Could not create the PDF. Try again, or use Print.",
+      "openCreator": "Character Creator",
       "toolbarToggle": "Controls",
       "toolbarShow": "Show controls",
       "toolbarHide": "Hide controls",

@@ -95,7 +95,7 @@ window.YMIAT_I18N_CHROME = {
       "characters": "Characters",
       "characterCreation": "Character Creation",
       "characterCreator": "Character Creator",
-      "characterSheet": "Character Sheet",
+      "characterSheet": "Character Manager",
       "classes": "Classes",
       "allClasses": "All classes",
       "classAbilitiesIndex": "Class abilities index",
@@ -189,7 +189,7 @@ window.YMIAT_I18N_CHROME = {
       "characters": "Personages",
       "characterCreation": "Personage maken",
       "characterCreator": "Personage-maker",
-      "characterSheet": "Personageblad",
+      "characterSheet": "Personagebeheer",
       "classes": "Classes",
       "allClasses": "Alle classes",
       "classAbilitiesIndex": "Class-vermogens index",
@@ -472,7 +472,7 @@ function ymiatBuildNav(locale) {
     '<div class="nav-dropdown nav-dropdown--characters">' +
     '<a href="{{ROOT}}character-sheet.html">' + e(n.characters || 'Characters') + '</a>' +
     '<div class="nav-dropdown-menu" id="nav-characters-menu">' +
-    '<a href="{{ROOT}}character-sheet.html" data-nav-cs-manage="1">' + e(n.characterSheet || 'Character Sheet') + '</a>' +
+    '<a href="{{ROOT}}character-sheet.html" data-nav-cs-manage="1">' + e(n.characterSheet || 'Character Manager') + '</a>' +
     '</div></div>' +
     '<div class="theme-controls">' +
     '<button type="button" class="theme-toggle" id="site-theme-toggle" aria-pressed="' + (themeIsDark ? 'true' : 'false') + '" aria-label="' + themeLabel + '" title="' + themeLabel + '" data-label-light="' + e(th.toLight || 'Switch to light mode') + '" data-label-dark="' + e(th.toDark || 'Switch to dark mode') + '" data-text-light="' + e(th.light || 'Light') + '" data-text-dark="' + e(th.dark || 'Dark') + '">' +
