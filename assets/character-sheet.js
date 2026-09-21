@@ -319,6 +319,67 @@
 
   function saveStore() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+    try {
+      window.dispatchEvent(new CustomEvent("ymiat-characters-changed"));
+    } catch (_) { /* ignore */ }
+    if (typeof window.ymiatRefreshNavCharacters === "function") {
+      window.ymiatRefreshNavCharacters();
+    }
+  }
+
+  let playMode = false;
+  let manageDocumentTitle = "";
+
+  function syncDocumentTitle() {
+    if (!manageDocumentTitle) {
+      manageDocumentTitle = document.title || "Character Sheet | You-Meet-In-A-Tavern (YMIAT)";
+    }
+    if (!playMode) {
+      document.title = manageDocumentTitle;
+      return;
+    }
+    const c = activeCharacter();
+    const name = (c && String(c.name || "").trim()) || "Unnamed";
+    document.title = name + " | You-Meet-In-A-Tavern (YMIAT)";
+  }
+
+  function applySheetModeFromUrl() {
+    let params;
+    try {
+      params = new URLSearchParams(window.location.search || "");
+    } catch (_) {
+      playMode = false;
+      document.body.classList.remove("cs-mode-play");
+      syncDocumentTitle();
+      return;
+    }
+    // DDB import wins — keep manage chrome.
+    if (params.get("ddb")) {
+      playMode = false;
+      document.body.classList.remove("cs-mode-play");
+      syncDocumentTitle();
+      return;
+    }
+    const playId = params.get("id");
+    if (!playId) {
+      playMode = false;
+      document.body.classList.remove("cs-mode-play");
+      syncDocumentTitle();
+      return;
+    }
+    if (store.characters.some((c) => c.id === playId)) {
+      playMode = true;
+      document.body.classList.add("cs-mode-play");
+      store.activeId = playId;
+      saveStore();
+    } else {
+      playMode = false;
+      document.body.classList.remove("cs-mode-play");
+      try {
+        history.replaceState(null, "", window.location.pathname + window.location.hash);
+      } catch (_) { /* ignore */ }
+    }
+    syncDocumentTitle();
   }
 
   function activeCharacter() {
@@ -2822,6 +2883,7 @@
     renderCharSelect();
     updateSheetVisibility();
     renderModals();
+    syncDocumentTitle();
     if (!char) {
       if (el.sheet) el.sheet.innerHTML = "";
       return;
@@ -4301,6 +4363,8 @@
         syncGrantedSpells(c);
       });
       saveStore();
+      manageDocumentTitle = document.title || manageDocumentTitle;
+      applySheetModeFromUrl();
       showApp();
       applyToolbarI18n();
       bindEvents();
