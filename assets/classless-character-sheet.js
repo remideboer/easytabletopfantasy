@@ -100,6 +100,63 @@
       .replace(/"/g, "&quot;");
   }
 
+  function t(key, fallback) {
+    const pack = (window.ymiatAppStrings && window.ymiatAppStrings("sheet")) || {};
+    return pack[key] != null && pack[key] !== "" ? pack[key] : fallback;
+  }
+
+  function normalizePortrait(value) {
+    if (typeof value !== "string") return "";
+    if (!value.startsWith("data:image/jpeg;base64,")) return "";
+    if (value.length > 200000) return "";
+    return value;
+  }
+
+  function resizeBitmapToPortrait(bitmap) {
+    const w = bitmap.width;
+    const h = bitmap.height;
+    if (!w || !h) throw new Error("Empty image");
+    const side = 256;
+    const scale = Math.max(side / w, side / h);
+    const dw = w * scale;
+    const dh = h * scale;
+    const canvas = document.createElement("canvas");
+    canvas.width = side;
+    canvas.height = side;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(bitmap, (side - dw) / 2, (side - dh) / 2, dw, dh);
+    return canvas.toDataURL("image/jpeg", 0.85);
+  }
+
+  async function blobToPortrait(blob) {
+    const bitmap = await createImageBitmap(blob);
+    try {
+      return resizeBitmapToPortrait(bitmap);
+    } finally {
+      if (bitmap.close) bitmap.close();
+    }
+  }
+
+  function portraitFrameHtml(c) {
+    const url = c.portraitUrl || "";
+    const addLabel = t("addPortrait", "Add photo");
+    const removeLabel = t("removePortrait", "Remove photo");
+    const portraitLabel = t("portrait", "Portrait");
+    const img = url
+      ? `<img class="cs-avatar-img" src="${escapeHtml(url)}" alt="${escapeHtml(portraitLabel)}" />`
+      : `<span class="cs-avatar-placeholder">${escapeHtml(addLabel)}</span>`;
+    const clear = url
+      ? `<button type="button" class="cs-avatar-clear" id="cls-avatar-clear" aria-label="${escapeHtml(removeLabel)}">×</button>`
+      : "";
+    return `<div class="cs-avatar">
+      <div class="cs-avatar-wrap">
+        <button type="button" class="cs-avatar-frame" id="cls-avatar-pick" aria-label="${escapeHtml(url ? portraitLabel : addLabel)}">${img}</button>
+        ${clear}
+      </div>
+      <input type="file" id="cls-avatar-file" class="cs-avatar-file" accept="image/*" hidden />
+    </div>`;
+  }
+
   function defaultCharacter() {
     return {
       id: uid(),
@@ -126,6 +183,7 @@
       backgroundText: "",
       spellListText: "",
       inventoryText: "",
+      portraitUrl: "",
     };
   }
 
@@ -220,6 +278,7 @@
     c.backgroundText = String(c.backgroundText ?? "");
     c.spellListText = String(c.spellListText ?? "");
     c.inventoryText = String(c.inventoryText ?? "");
+    c.portraitUrl = normalizePortrait(c.portraitUrl);
     return c;
   }
 
@@ -392,6 +451,7 @@
         </div>
 
         <div class="cs-life-level">
+          ${portraitFrameHtml(c)}
           <div class="cs-life">
             <span class="cs-label">Life</span>
             <div class="cls-hearts-row">
@@ -1068,6 +1128,17 @@
     }
 
     el.sheet.addEventListener("click", (e) => {
+      if (e.target.closest("#cls-avatar-pick")) {
+        const input = el.sheet.querySelector("#cls-avatar-file");
+        if (input) input.click();
+        return;
+      }
+      if (e.target.closest("#cls-avatar-clear")) {
+        if (!char) return;
+        char.portraitUrl = "";
+        persistAndRender();
+        return;
+      }
       const editBtn = e.target.closest(".cls-ability-edit");
       if (editBtn && char) {
         const idx = parseInt(editBtn.dataset.abilityEdit, 10);
@@ -1133,6 +1204,14 @@
     el.sheet.addEventListener("change", (e) => {
       if (!char) return;
       const t = e.target;
+      if (t.id === "cls-avatar-file" && t.files && t.files[0]) {
+        blobToPortrait(t.files[0]).then((dataUrl) => {
+          if (!char) return;
+          char.portraitUrl = dataUrl;
+          persistAndRender();
+        }).catch(() => {});
+        return;
+      }
       if (t.id === "cls-xp") {
         char.xp = Math.max(0, parseInt(t.value, 10) || 0);
         saveStore();

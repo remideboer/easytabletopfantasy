@@ -44,6 +44,16 @@
   border-bottom:1.5px solid #222;
   background:#f7f7f7;
 }
+.pg-head:has(.pg-avatar){
+  grid-template-columns:72px minmax(11rem,1.05fr) minmax(0,1.7fr);
+}
+.pg-avatar{
+  width:72px;
+  height:72px;
+  object-fit:cover;
+  display:block;
+  border:1.5px solid #222;
+}
 .pg-name{
   margin:0;
   font-family:var(--serif);
@@ -270,6 +280,14 @@
     display:grid !important;
     grid-template-columns:minmax(11rem,1.05fr) minmax(0,1.7fr) !important;
     background:#eee !important;
+  }
+  .pg-head:has(.pg-avatar){
+    grid-template-columns:56px minmax(9rem,1.05fr) minmax(0,1.7fr) !important;
+  }
+  .pg-avatar{
+    width:56px !important;
+    height:56px !important;
+    display:block !important;
   }
   .pg-head-facts{
     display:flex !important;

@@ -235,6 +235,7 @@
       size: "Medium",
       currency: { gold: 0, silver: 0, copper: 0 },
       equippedText: "",
+      portraitUrl: "",
       inventory: Array(INVENTORY_SLOT_COUNT).fill(""),
     };
   }
@@ -307,6 +308,7 @@
       ? [...new Set(c.chosenTalents.filter((s) => typeof s === "string"))].slice(0, 1)
       : [];
     c.currency = c.currency || { gold: 0, silver: 0, copper: 0 };
+    c.portraitUrl = normalizePortrait(c.portraitUrl);
     if (!Array.isArray(c.inventory) || c.inventory.length !== INVENTORY_SLOT_COUNT) {
       const inv = Array.isArray(c.inventory) ? c.inventory.slice(0, INVENTORY_SLOT_COUNT) : [];
       while (inv.length < INVENTORY_SLOT_COUNT) inv.push("");
@@ -1370,6 +1372,7 @@
 
     return {
       name: c.name || (langNl ? "Naamloos" : "Unnamed"),
+      portraitUrl: c.portraitUrl || "",
       className: className,
       level: c.level,
       // Meta line after Level: subclass (background already appears in the facts row).
@@ -1598,6 +1601,8 @@
       "-webkit-print-color-adjust:exact;print-color-adjust:exact" +
       "}" +
       ".pg-head{display:grid !important;grid-template-columns:minmax(11rem,1.05fr) minmax(0,1.7fr) !important}" +
+      ".pg-head:has(.pg-avatar){grid-template-columns:56px minmax(9rem,1.05fr) minmax(0,1.7fr) !important}" +
+      ".pg-avatar{width:56px;height:56px;object-fit:cover;display:block}" +
       ".pg-col{border-right:1px solid #bbb !important;border-bottom:0 !important}" +
       ".pg-col:last-child{border-right:0 !important}" +
       ".pg-spell-page{page-break-before:always;break-before:page;width:auto;min-height:0;border:0;padding:0}" +
@@ -1725,6 +1730,88 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
+  }
+
+  function normalizePortrait(value) {
+    if (typeof value !== "string") return "";
+    if (!value.startsWith("data:image/jpeg;base64,")) return "";
+    if (value.length > 200000) return "";
+    return value;
+  }
+
+  function resizeBitmapToPortrait(bitmap) {
+    const w = bitmap.width;
+    const h = bitmap.height;
+    if (!w || !h) throw new Error("Empty image");
+    const side = 256;
+    const scale = Math.max(side / w, side / h);
+    const dw = w * scale;
+    const dh = h * scale;
+    const canvas = document.createElement("canvas");
+    canvas.width = side;
+    canvas.height = side;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(bitmap, (side - dw) / 2, (side - dh) / 2, dw, dh);
+    return canvas.toDataURL("image/jpeg", 0.85);
+  }
+
+  async function blobToPortrait(blob) {
+    const bitmap = await createImageBitmap(blob);
+    try {
+      return resizeBitmapToPortrait(bitmap);
+    } finally {
+      if (bitmap.close) bitmap.close();
+    }
+  }
+
+  function portraitFrameHtml(c, ids) {
+    const url = c.portraitUrl || "";
+    const addLabel = t("addPortrait", "Add photo");
+    const removeLabel = t("removePortrait", "Remove photo");
+    const portraitLabel = t("portrait", "Portrait");
+    const img = url
+      ? `<img class="cs-avatar-img" src="${escapeHtml(url)}" alt="${escapeHtml(portraitLabel)}" />`
+      : `<span class="cs-avatar-placeholder">${escapeHtml(addLabel)}</span>`;
+    const clear = url
+      ? `<button type="button" class="cs-avatar-clear" id="${ids.clear}" aria-label="${escapeHtml(removeLabel)}">×</button>`
+      : "";
+    return `<div class="cs-avatar">
+      <div class="cs-avatar-wrap">
+        <button type="button" class="cs-avatar-frame" id="${ids.pick}" aria-label="${escapeHtml(url ? portraitLabel : addLabel)}">${img}</button>
+        ${clear}
+      </div>
+      <input type="file" id="${ids.file}" class="cs-avatar-file" accept="image/*" hidden />
+    </div>`;
+  }
+
+  function ddbAvatarSourceUrl(ddbChar) {
+    const dec = (ddbChar && ddbChar.decorations) || {};
+    return (
+      dec.avatarUrl ||
+      dec.thumbnailBackdropAvatarUrl ||
+      (dec.defaultBackdrop && dec.defaultBackdrop.thumbnailBackdropAvatarUrl) ||
+      ""
+    );
+  }
+
+  function isAllowedDdbImageUrl(raw) {
+    try {
+      const u = new URL(raw);
+      const host = u.hostname.toLowerCase();
+      return u.protocol === "https:" && (host === "dndbeyond.com" || host.endsWith(".dndbeyond.com"));
+    } catch (_) {
+      return false;
+    }
+  }
+
+  async function fetchDdbPortrait(remoteUrl) {
+    const proxyBase = String(window.YMIAT_DDB_PROXY_URL || "").replace(/\/$/, "");
+    if (!proxyBase || !isAllowedDdbImageUrl(remoteUrl)) return "";
+    const res = await fetch(proxyBase + "?img=" + encodeURIComponent(remoteUrl));
+    if (!res.ok) return "";
+    const blob = await res.blob();
+    if (!blob || !blob.size) return "";
+    return blobToPortrait(blob);
   }
 
   function renderFeatureList(items) {
@@ -2562,6 +2649,7 @@
         </div>
 
         <div class="cs-life-level">
+          ${portraitFrameHtml(c, { pick: "cs-avatar-pick", clear: "cs-avatar-clear", file: "cs-avatar-file" })}
           <div class="cs-life">
             <span class="cs-label">Life</span>
             <div class="cs-hearts" role="group" aria-label="Life hearts">${heartsHtml}</div>
@@ -3434,8 +3522,15 @@
     }
   }
 
-  function applyDdbImport(payload) {
+  async function applyDdbImport(payload) {
     const { character, report } = convertDdbCharacter(payload);
+    const remote = ddbAvatarSourceUrl(payload && payload.data);
+    if (remote) {
+      try {
+        const dataUrl = await fetchDdbPortrait(remote);
+        if (dataUrl) character.portraitUrl = dataUrl;
+      } catch (_) { /* leave empty if the avatar cannot be fetched */ }
+    }
     store.characters.push(character);
     store.activeId = character.id;
     saveStore();
@@ -3615,10 +3710,10 @@
     if (jsonBox) jsonBox.value = typeof raw === "string" ? raw : JSON.stringify(raw);
   }
 
-  function tryImportDdbFromBox() {
+  async function tryImportDdbFromBox() {
     const jsonBox = document.getElementById("cs-ddb-json");
     const payload = parseDdbPayloadText(jsonBox ? jsonBox.value : "");
-    applyDdbImport(payload);
+    await applyDdbImport(payload);
   }
 
   async function importDdbViaProxy() {
@@ -3639,7 +3734,7 @@
     if (btn) btn.disabled = true;
     try {
       const payload = await fetchDdbCharacter(idOrUrl);
-      applyDdbImport(payload);
+      await applyDdbImport(payload);
     } catch (err) {
       setDdbStatus(err && err.message ? err.message : "Import failed.");
       showDdbFallback();
@@ -3694,7 +3789,7 @@
     setDdbStatus("Importing…");
     try {
       const payload = await fetchDdbCharacter(idOrUrl);
-      applyDdbImport(payload);
+      await applyDdbImport(payload);
     } catch (err) {
       showDdbFallback();
       setDdbStatus(err && err.message ? err.message : "Import failed.");
@@ -3812,6 +3907,17 @@
         renderModals();
         return;
       }
+      if (e.target.closest("#cs-avatar-pick")) {
+        const input = el.sheet.querySelector("#cs-avatar-file");
+        if (input) input.click();
+        return;
+      }
+      if (e.target.closest("#cs-avatar-clear")) {
+        if (!char) return;
+        char.portraitUrl = "";
+        persistAndRender();
+        return;
+      }
       if (e.target.closest("#cs-add-weapon")) {
         if (!char) return;
         if (addWeaponRow(char)) persistAndRender();
@@ -3877,6 +3983,15 @@
     el.sheet.addEventListener("change", (e) => {
       if (!char) return;
       const t = e.target;
+      if (t.id === "cs-avatar-file" && t.files && t.files[0]) {
+        const file = t.files[0];
+        blobToPortrait(file).then((dataUrl) => {
+          if (!char) return;
+          char.portraitUrl = dataUrl;
+          persistAndRender();
+        }).catch(() => {});
+        return;
+      }
       if (t.id === "cs-class") {
         char.classId = t.value;
         char.subclassId = "";
@@ -3985,11 +4100,9 @@
         } else if (e.target.id === "cs-ddb-paste") {
           pasteDdbClipboard();
         } else if (e.target.id === "cs-ddb-import-paste") {
-          try {
-            tryImportDdbFromBox();
-          } catch (err) {
+          tryImportDdbFromBox().catch((err) => {
             setDdbStatus(err && err.message ? err.message : "Couldn't import that JSON.");
-          }
+          });
         } else if (e.target.id === "cs-ddb-json-link" && e.target.classList.contains("is-disabled")) {
           e.preventDefault();
           setDdbStatus("Enter a valid character URL or ID first so the JSON link works.");

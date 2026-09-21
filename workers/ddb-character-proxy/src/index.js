@@ -22,6 +22,11 @@ export default {
     }
 
     const url = new URL(request.url);
+    const img = (url.searchParams.get("img") || "").trim();
+    if (img) {
+      return proxyDdbImage(img, cors);
+    }
+
     const id = (url.searchParams.get("id") || url.searchParams.get("cid") || "").trim();
     if (!/^\d+$/.test(id)) {
       return json({ error: "missing_id", message: "Pass ?id= or ?cid= with a numeric D&D Beyond character id." }, 400, cors);
@@ -72,6 +77,45 @@ function json(obj, status, cors) {
     headers: {
       ...cors,
       "Content-Type": "application/json; charset=utf-8",
+    },
+  });
+}
+
+async function proxyDdbImage(raw, cors) {
+  let target;
+  try {
+    target = new URL(raw);
+  } catch (_) {
+    return json({ error: "bad_img" }, 400, cors);
+  }
+  const host = target.hostname.toLowerCase();
+  const allowed = target.protocol === "https:" && (host === "dndbeyond.com" || host.endsWith(".dndbeyond.com"));
+  if (!allowed) {
+    return json({ error: "forbidden_host" }, 403, cors);
+  }
+  let upstream;
+  try {
+    upstream = await fetch(target.toString(), { headers: { Accept: "image/*" } });
+  } catch (err) {
+    return json({ error: "image_fetch_failed", message: String(err && err.message ? err.message : err) }, 502, cors);
+  }
+  if (!upstream.ok) {
+    return json({ error: "image_fetch_failed", status: upstream.status }, 502, cors);
+  }
+  const type = (upstream.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
+  if (!type.startsWith("image/")) {
+    return json({ error: "not_an_image" }, 502, cors);
+  }
+  const buf = await upstream.arrayBuffer();
+  if (buf.byteLength > 2 * 1024 * 1024) {
+    return json({ error: "too_large" }, 413, cors);
+  }
+  return new Response(buf, {
+    status: 200,
+    headers: {
+      ...cors,
+      "Content-Type": type,
+      "Cache-Control": "public, max-age=86400",
     },
   });
 }

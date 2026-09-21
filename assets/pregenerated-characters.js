@@ -339,6 +339,9 @@
       '<div class="pg-sheet-wrap">' +
       '<article class="pg-sheet" aria-label="' + vm.name + '">' +
       '<div class="pg-head">' +
+      (vm.portraitUrl
+        ? '<img class="pg-avatar" src="' + String(vm.portraitUrl).replace(/"/g, "") + '" alt="" />'
+        : "") +
       '<div class="pg-head-id"><p class="pg-name">' + vm.name + "</p>" +
       '<p class="pg-meta"><strong>' + vm.className + "</strong> · " + (lang === "nl" ? "Level" : "Level") + " " + vm.level +
       (vm.concept ? " · " + vm.concept : "") + "</p></div>" +
