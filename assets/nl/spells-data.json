@@ -546,7 +546,7 @@
     "range": "90 voet",
     "duration": "Onmiddellijk",
     "components": "V, S, M (a diamond worth 50+ GP)",
-    "description": "Je gooit een bol energie naar een doelwit binnen bereik. Kies Acid, Cold, Fire, Lightning, Poison of Thunder als type voor de bol, en doe daarna een spreukaanval (afstand) tegen het doelwit. Bij een treffer krijgt het 4 wonden van het gekozen type. Rol je op twee of meer van de d8’s hetzelfde cijfer, dan springt de bol naar een ander doelwit naar keuze binnen 30 voet van het oorspronkelijke doelwit. Doe een nieuwe aanvalsworp tegen dat doelwit en gooi opnieuw voor wonden. De bol kan niet opnieuw springen tenzij je de spreuk cast op spreukniveau 2 of hoger.\n\nCasten op hoger niveau. De wonden stijgen met 1 voor elk spreukniveau boven 1. De bol kan maximaal zo vaak springen als het spreukniveau waarop je cast, en elk wezen kan per casting maar één keer doelwit zijn."
+    "description": "Je gooit een bol energie naar een doelwit binnen bereik. Kies Acid, Cold, Fire, Lightning, Poison of Thunder als type voor de bol, en doe daarna een spreukaanval (afstand) tegen het doelwit. Bij een treffer krijgt het 4 wonden van het gekozen type. Rol je een natuurlijke 20 (kritieke treffer), dan springt de bol naar een ander doelwit naar keuze binnen 30 voet van het doelwit. Doe een nieuwe aanvalsworp tegen dat doelwit; bij een treffer deelt die wonden zoals normaal. De bol kan niet opnieuw springen tenzij je de spreuk cast op spreukniveau 2 of hoger.\n\nCasten op hoger niveau. De wonden stijgen met 1 voor elk spreukniveau boven 1. De bol kan maximaal zo vaak springen als het spreukniveau waarop je cast, en elk wezen kan per casting maar één keer doelwit zijn."
   },
   {
     "id": "color-spray",

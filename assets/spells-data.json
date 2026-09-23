@@ -546,7 +546,7 @@
     "range": "90 feet",
     "duration": "Instantaneous",
     "components": "V, S, M (a diamond worth 50+ GP)",
-    "description": "You hurl an orb of energy at a target within range. Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create, and then make a ranged spell attack against the target. On a hit, the target takes 4 Wounds of the chosen type. On a natural 20, in addition to the usual critical hit, the orb leaps to a different target of your choice within 30 feet of the target: make a new attack roll against that creature (dealing Wounds on a hit as normal). The orb can’t leap again from that attack unless you cast the spell at spell level 2 or higher.\n\nCasting at a Higher Level. The Wounds increase by 1 for each spell level above 1. The orb can leap a maximum number of times equal to the spell level you cast at, and a creature can be targeted only once by each casting of this spell."
+    "description": "You hurl an orb of energy at a target within range. Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create, and then make a ranged spell attack against the target. On a hit, the target takes 4 Wounds of the chosen type. If you roll a natural 20 (critical hit), the orb leaps to a different target of your choice within 30 feet of the target. Make an attack roll against the new target, dealing Wounds on a hit as normal. The orb can’t leap again unless you cast the spell at spell level 2 or higher.\n\nCasting at a Higher Level. The Wounds increase by 1 for each spell level above 1. The orb can leap a maximum number of times equal to the spell level you cast at, and a creature can be targeted only once by each casting of this spell."
   },
   {
     "id": "color-spray",
