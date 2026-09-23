@@ -13,7 +13,7 @@
     
     // Add IDs to headings FIRST (before any scroll happens)
     const headings = Array.from(main.querySelectorAll('h2, h3'))
-      .filter(h => !h.closest('.toc'));
+      .filter(h => !h.closest('.toc') && !h.closest('[data-toc-skip]'));
     headings.forEach(h=>{ if(!h.id) h.id = slug(h.textContent); });
     
     // Build TOC

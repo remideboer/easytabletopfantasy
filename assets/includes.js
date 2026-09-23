@@ -110,9 +110,9 @@ window.YMIAT_I18N_CHROME = {
       "talentMagic": "Magic",
       "talentMartial": "Martial",
       "talentUtility": "Utility",
-      "converter": "Converter",
-      "conversionGuide": "Conversion Guide",
-      "conversionPf2e": "PF2e Conversion Guide",
+      "conversionGuides": "Conversion Guides",
+      "conversion5e": "D&D 5e",
+      "conversionPf2e": "Pathfinder 2e",
       "classless": "Classless",
       "classlessRules": "Classless Rules",
       "classlessSheet": "Character Sheet",
@@ -204,9 +204,9 @@ window.YMIAT_I18N_CHROME = {
       "talentMagic": "Magie",
       "talentMartial": "Martiaal",
       "talentUtility": "Nut",
-      "converter": "Converter",
-      "conversionGuide": "Conversiegids",
-      "conversionPf2e": "PF2e-conversiegids",
+      "conversionGuides": "Conversiegidsen",
+      "conversion5e": "D&D 5e",
+      "conversionPf2e": "Pathfinder 2e",
       "classless": "Classless",
       "classlessRules": "Classless-regels",
       "classlessSheet": "Personageblad",
@@ -445,9 +445,10 @@ function ymiatBuildNav(locale) {
     '<a href="{{ROOT}}rules/combat.html">' + e(n.combat) + '</a>' +
     '</div></div>' +
     chars +
-    '<a href="{{ROOT}}convert.html">' + e(n.converter) + '</a>' +
-    '<a href="{{ROOT}}rules/conversion.html">' + e(n.conversionGuide) + '</a>' +
-    '<a href="{{ROOT}}rules/conversion-pf2e.html">' + e(n.conversionPf2e) + '</a>' +
+    '<div class="nav-dropdown"><a href="{{ROOT}}rules/conversion.html">' + e(n.conversionGuides || 'Conversion Guides') + '</a><div class="nav-dropdown-menu">' +
+    '<a href="{{ROOT}}rules/conversion.html">' + e(n.conversion5e || 'D&D 5e') + '</a>' +
+    '<a href="{{ROOT}}rules/conversion-pf2e.html">' + e(n.conversionPf2e || 'Pathfinder 2e') + '</a>' +
+    '</div></div>' +
     '<div class="nav-dropdown"><a href="{{ROOT}}rules/classless.html">' + e(n.classless) + '</a><div class="nav-dropdown-menu">' +
     '<a href="{{ROOT}}rules/classless.html">' + e(n.classlessRules) + '</a>' +
     '<a href="{{ROOT}}classless-character-sheet.html">' + e(n.classlessSheet) + '</a>' +

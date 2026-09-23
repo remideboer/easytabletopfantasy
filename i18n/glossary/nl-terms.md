@@ -12,9 +12,9 @@ Natural table-language. Prefer how NL groups actually speak at the table over li
 | Character Creator | Personage-maker |
 | Character Manager | Personagebeheer |
 | Character Sheet | Personageblad |
-| Converter | Converter |
-| Conversion Guide | Conversiegids |
-| PF2e Conversion Guide | PF2e-conversiegids |
+| Conversion Guides | Conversiegidsen |
+| D&D 5e | D&D 5e |
+| Pathfinder 2e | Pathfinder 2e |
 | Classless | Classless |
 | Classless Rules | Classless-regels |
 | Abilities | Vermogens |
