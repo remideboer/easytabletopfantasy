@@ -3238,6 +3238,20 @@
     return best;
   }
 
+  // BUSINESS: YMIAT gear costs 6× the D&D gold price, paid in silver, so an imported
+  // purse must buy the same items as on the gear tables. Exchange is 1 gp = 10 sp = 100 cp.
+  function ddbCurrencyToYmiat(curr) {
+    const n = (v) => Math.max(0, Number(v) || 0);
+    const src = curr || {};
+    const ddbCopper = n(src.cp) + n(src.sp) * 10 + n(src.ep) * 50 + n(src.gp) * 100 + n(src.pp) * 1000;
+    const ymiatCopper = Math.round(ddbCopper * 6 / 10);
+    return {
+      gold: Math.floor(ymiatCopper / 100),
+      silver: Math.floor((ymiatCopper % 100) / 10),
+      copper: ymiatCopper % 10,
+    };
+  }
+
   // Maps a fetched D&D Beyond character JSON payload onto a fresh YMIAT
   // character. Returns { character, report } where report lists every field
   // that couldn't be matched, so the caller can tell the player what to set
@@ -3354,11 +3368,11 @@
     c.inventoryText = invLines.join("\n");
 
     const curr = char.currencies || {};
-    c.currency = {
-      gold: Math.floor((curr.pp || 0) * 10 + (curr.gp || 0) + (curr.ep || 0) * 0.5),
-      silver: curr.sp || 0,
-      copper: curr.cp || 0,
-    };
+    c.currency = ddbCurrencyToYmiat(curr);
+    const hadCoins = ["cp", "sp", "ep", "gp", "pp"].some((k) => (Number(curr[k]) || 0) > 0);
+    if (hadCoins) {
+      report.push(`Currency converted to YMIAT prices: ${c.currency.gold} gold, ${c.currency.silver} silver, ${c.currency.copper} copper.`);
+    }
 
     if (char.race?.weightSpeeds?.normal?.walk) c.speed = char.race.weightSpeeds.normal.walk;
 
