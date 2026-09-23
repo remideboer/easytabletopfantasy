@@ -1162,7 +1162,7 @@
     "range": "Aanraking",
     "duration": "8 hours",
     "components": "V, S, M (a piece of cured leather)",
-    "description": "Je raakt een willig wezen aan dat geen pantser draagt. Tot de spreuk eindigt wordt de basis-AC van het doelwit 13 plus zijn Fitness-modifier. De spreuk eindigt vroeg als het doelwit pantser aantrekt."
+    "description": "Je raakt een willig wezen aan dat geen pantser draagt. Tot de spreuk eindigt wordt de basisverdediging (DEF) van het doelwit 3 plus zijn Fitness-modifier. De spreuk eindigt vroeg als het doelwit pantser aantrekt."
   },
   {
     "id": "magic-missile",
@@ -1277,7 +1277,7 @@
     "range": "Zelf",
     "duration": "1 round",
     "components": "V, S",
-    "description": "Een onmerkbare barrière van magische kracht beschermt je. Tot het begin van jouw volgende beurt heb je een +5 bonus op AC, inclusief tegen de aanval die de spreuk triggerde, en je krijgt geen wonden van Magic Missile."
+    "description": "Een onmerkbare barrière van magische kracht beschermt je. Tot het begin van jouw volgende beurt heb je een +5 bonus op Verdediging (DEF), inclusief tegen de aanval die de spreuk triggerde, en je krijgt geen wonden van Magic Missile."
   },
   {
     "id": "shield-of-faith",
@@ -1293,7 +1293,7 @@
     "range": "60 voet",
     "duration": "Concentratie, tot 10 minutes",
     "components": "V, S, M (a prayer scroll)",
-    "description": "Een flikkerend veld omringt een wezen naar keuze binnen bereik en geeft +2 op AC voor de duur."
+    "description": "Een flikkerend veld omringt een wezen naar keuze binnen bereik en geeft +2 op Verdediging (DEF) voor de duur."
   },
   {
     "id": "silent-image",
@@ -1382,7 +1382,7 @@
     "range": "60 voet",
     "duration": "1 hour",
     "components": "V, S, M (a bit of string and of wood)",
-    "description": "Deze spell creëert een Invisible, gedachteloze, vormeloze Medium force die tot de spreuk eindigt eenvoudige taken uitvoert op jouw bevel. De dienaar verschijnt in een onbezette ruimte op de grond binnen bereik. Hij heeft AC 10, 1 Point, Fitness 2, en kan niet aanvallen. Bereikt hij Max. wonden, dan eindigt de spell. Eén keer per beurt kun je als vrije actie mentaal bevelen dat hij tot 15 voet beweegt en met een object interacteert. Hij kan eenvoudige taken die een mens kan: dingen ophalen, schoonmaken, repareren, kleren vouwen, vuren aansteken, eten serveren, drinken inschenken. Na het bevel voert hij de taak zo goed mogelijk uit en wacht dan op het volgende. Beveel je een taak die hem meer dan 60 voet van je weg zou brengen, dan eindigt de spell."
+    "description": "Deze spell creëert een Invisible, gedachteloze, vormeloze Medium force die tot de spreuk eindigt eenvoudige taken uitvoert op jouw bevel. De dienaar verschijnt in een onbezette ruimte op de grond binnen bereik. Hij heeft Verdediging (DEF) 0, 1 Point, Fitness 2, en kan niet aanvallen. Bereikt hij Max. wonden, dan eindigt de spell. Eén keer per beurt kun je als vrije actie mentaal bevelen dat hij tot 15 voet beweegt en met een object interacteert. Hij kan eenvoudige taken die een mens kan: dingen ophalen, schoonmaken, repareren, kleren vouwen, vuren aansteken, eten serveren, drinken inschenken. Na het bevel voert hij de taak zo goed mogelijk uit en wacht dan op het volgende. Beveel je een taak die hem meer dan 60 voet van je weg zou brengen, dan eindigt de spell."
   },
   {
     "id": "acid-arrow",
@@ -1494,7 +1494,7 @@
     "range": "Aanraking",
     "duration": "",
     "components": "",
-    "description": "Je raakt een willig wezen aan. Tot de spreuk eindigt krijgt de huid van het doelwit een bastachtig uiterlijk, en heeft het AC 17 als zijn AC lager is dan dat."
+    "description": "Je raakt een willig wezen aan. Tot de spreuk eindigt krijgt de huid van het doelwit een bastachtig uiterlijk, en de basisverdediging (DEF) van het doelwit wordt 7 als die lager is."
   },
   {
     "id": "blur",
@@ -2133,7 +2133,7 @@
     "range": "Aanraking",
     "duration": "",
     "components": "V, S, M (a pair of platinum rings worth",
-    "description": "Je raakt een ander willig wezen aan en creëert een mystieke verbinding tot de spreuk eindigt. Terwijl het doelwit binnen 60 voet is, krijgt het +1 op AC en saving throws, en Resistance tegen alle schade. Telkens wanneer het wonden oploopt, krijg jij evenveel schade. De spell eindigt als jij op 0 Points komt, als jullie meer dan 60 voet uit elkaar raken, of als de spell opnieuw op een van jullie wordt gecast."
+    "description": "Je raakt een ander willig wezen aan en creëert een mystieke verbinding tot de spreuk eindigt. Terwijl het doelwit binnen 60 voet is, krijgt het +1 op Verdediging (DEF) en saving throws, en Resistance tegen alle schade. Telkens wanneer het wonden oploopt, krijg jij evenveel schade. De spell eindigt als jij op 0 Points komt, als jullie meer dan 60 voet uit elkaar raken, of als de spell opnieuw op een van jullie wordt gecast."
   },
   {
     "id": "web",
@@ -2453,7 +2453,7 @@
     "range": "30 voet",
     "duration": "Concentratie, tot 1 minute",
     "components": "V, S, M (a shaving of licorice root)",
-    "description": "Kies een willig wezen dat je binnen bereik kunt zien. Tot de spreuk eindigt is de Speed verdubbeld, krijgt het +2 AC, heeft het voordeel op Fitness-saving throws, en krijgt het elke beurt een extra actie—alleen Attack (één aanval), Dash, Disengage, Hide of Utilize. Wanneer de spell eindigt is het doelwit Incapacitated met Speed 0 tot het einde van zijn volgende beurt door een golf van lethargie."
+    "description": "Kies een willig wezen dat je binnen bereik kunt zien. Tot de spreuk eindigt is de Speed verdubbeld, krijgt het +2 op Verdediging (DEF), heeft het voordeel op Fitness-saving throws, en krijgt het elke beurt een extra actie—alleen Attack (één aanval), Dash, Disengage, Hide of Utilize. Wanneer de spell eindigt is het doelwit Incapacitated met Speed 0 tot het einde van zijn volgende beurt door een golf van lethargie."
   },
   {
     "id": "hypnotic-pattern",
@@ -2681,7 +2681,7 @@
     "range": "120 voet",
     "duration": "Concentratie, tot 1 minute",
     "components": "V, S, M (a drop of molasses)",
-    "description": "Je verandert de tijd rond tot zes wezens naar keuze in een Cube van 40 voet binnen bereik. Elk doelwit moet slagen voor een Insight-saving throw of voor de duur beïnvloed zijn. Speed is gehalveerd, −2 op AC en Fitness-saving throws, geen Reactions. Op zijn beurt kan het óf een actie óf een vrije actie nemen (niet beide), en bij de Attack-actie maar één aanval. Cast het een spell met Somatic component, dan is er 25% kans dat die faalt door te trage gebaren. Aan het einde van elke beurt herhaalt het de save; bij slagen eindigt de spell voor dat wezen."
+    "description": "Je verandert de tijd rond tot zes wezens naar keuze in een Cube van 40 voet binnen bereik. Elk doelwit moet slagen voor een Insight-saving throw of voor de duur beïnvloed zijn. Speed is gehalveerd, −2 op Verdediging (DEF) en Fitness-saving throws, geen Reactions. Op zijn beurt kan het óf een actie óf een vrije actie nemen (niet beide), en bij de Attack-actie maar één aanval. Cast het een spell met Somatic component, dan is er 25% kans dat die faalt door te trage gebaren. Aan het einde van elke beurt herhaalt het de save; bij slagen eindigt de spell voor dat wezen."
   },
   {
     "id": "speak-with-dead",
@@ -3365,7 +3365,7 @@
     "range": "120 voet",
     "duration": "Concentratie, tot 1 minute",
     "components": "V, S, M (an eggshell and a glove)",
-    "description": "Je creëert een Large hand van glinsterende magische energie in een onbezette ruimte die je binnen bereik kunt zien, voor de duur. De hand beweegt op bevel en boots jouw hand na. Het is een object met AC 20 en wonden gelijk aan jouw Max. wonden; bij Max. wonden eindigt de spell. De hand bezet zijn ruimte niet. Bij het casten en als vrije actie op latere beurten kun je de hand tot 60 voet verplaatsen en één effect kiezen:\n\nClenched Fist. De hand slaat een doelwit binnen 5 voet. Doe een spreukaanval (nabij); bij treffer 7 Force - wonden .\n\nForceful Hand. Duwt een Huge of kleiner wezen binnen 5 voet; bij gefaalde Fitness-save tot 5 voet plus vijf keer je spellcasting ability modifier, en de hand blijft binnen 5 voet meebewegen.\n\nGrasping Hand. Grapple-poging op Huge of kleiner; bij gefaalde Fitness-save Grappled (escape DC = spell save DC). Als vrije actie kun je laten pletten: Bludgeoning gelijk aan 4 plus spellcasting ability modifier.\n\nInterposing Hand. Geeft je Half Cover tegen aanvallen/effecten vanuit of door zijn ruimte; die ruimte is moeilijk terrein voor vijanden.\n\nCasten op hoger niveau. Clenched Fist + 3 en Grasping Hand + 2 schade per spreukniveau boven 5."
+    "description": "Je creëert een Large hand van glinsterende magische energie in een onbezette ruimte die je binnen bereik kunt zien, voor de duur. De hand beweegt op bevel en boots jouw hand na. Het is een object met Verdediging (DEF) 10 en wonden gelijk aan jouw Max. wonden; bij Max. wonden eindigt de spell. De hand bezet zijn ruimte niet. Bij het casten en als vrije actie op latere beurten kun je de hand tot 60 voet verplaatsen en één effect kiezen:\n\nClenched Fist. De hand slaat een doelwit binnen 5 voet. Doe een spreukaanval (nabij); bij treffer 7 Force - wonden .\n\nForceful Hand. Duwt een Huge of kleiner wezen binnen 5 voet; bij gefaalde Fitness-save tot 5 voet plus vijf keer je spellcasting ability modifier, en de hand blijft binnen 5 voet meebewegen.\n\nGrasping Hand. Grapple-poging op Huge of kleiner; bij gefaalde Fitness-save Grappled (escape DC = spell save DC). Als vrije actie kun je laten pletten: Bludgeoning gelijk aan 4 plus spellcasting ability modifier.\n\nInterposing Hand. Geeft je Half Cover tegen aanvallen/effecten vanuit of door zijn ruimte; die ruimte is moeilijk terrein voor vijanden.\n\nCasten op hoger niveau. Clenched Fist + 3 en Grasping Hand + 2 schade per spreukniveau boven 5."
   },
   {
     "id": "awaken",
@@ -3860,7 +3860,7 @@
     "range": "120 voet",
     "duration": "Concentratie, tot 10 minutes",
     "components": "V, S, M (a cube of granite)",
-    "description": "Een niet-magische stenen muur verschijnt op een punt binnen bereik: 6 inch dik, tien panelen 10×10 voet (of 10×20 voet bij 3 inch), aaneengesloten. Snijdt door ruimte: push naar één kant. Zou een wezen omsloten raken, Fitness-save; bij slagen als reactie tot Speed bewegen om vrij te komen. Vorm naar wens, moet samensmelten met bestaande steen (brug, helling). Paneel: AC 15, 30 Points per inch dikte, Immunity tegen Poison en Psychic . Volle Concentratie-duur: permanente muur; anders verdwijnt bij einde."
+    "description": "Een niet-magische stenen muur verschijnt op een punt binnen bereik: 6 inch dik, tien panelen 10×10 voet (of 10×20 voet bij 3 inch), aaneengesloten. Snijdt door ruimte: push naar één kant. Zou een wezen omsloten raken, Fitness-save; bij slagen als reactie tot Speed bewegen om vrij te komen. Vorm naar wens, moet samensmelten met bestaande steen (brug, helling). Paneel: Verdediging (DEF) 5, 30 Points per inch dikte, Immunity tegen Poison en Psychic . Volle Concentratie-duur: permanente muur; anders verdwijnt bij einde."
   },
   {
     "id": "blade-barrier",
@@ -4287,7 +4287,7 @@
     "range": "120 voet",
     "duration": "Concentratie, tot 10 minutes",
     "components": "V, S, M (a piece of quartz)",
-    "description": "IJswand op vast oppervlak—koepel/bol straal tot 10 voet of tien panelen 10 voet, 1 voet dik. Snijdt ruimte: push + Fitness 10 Cold / helft. AC 12, 30 Points per 10 voet; Immunity Cold/Poison/Psychic; Vulnerability Fire. Bij 0 Points: koude lucht—Fitness 5 Cold / helft bij doorheen.\n\nCasten op hoger niveau. Verschijn-schade + 2 , koude-lucht + 1 per niveau boven 6."
+    "description": "IJswand op vast oppervlak—koepel/bol straal tot 10 voet of tien panelen 10 voet, 1 voet dik. Snijdt ruimte: push + Fitness 10 Cold / helft. Verdediging (DEF) 2, 30 Points per 10 voet; Immunity Cold/Poison/Psychic; Vulnerability Fire. Bij 0 Points: koude lucht—Fitness 5 Cold / helft bij doorheen.\n\nCasten op hoger niveau. Verschijn-schade + 2 , koude-lucht + 1 per niveau boven 6."
   },
   {
     "id": "wall-of-thorns",
@@ -5018,7 +5018,7 @@
     "range": "60 voet",
     "duration": "10 minutes",
     "components": "V, S",
-    "description": "Verticale opaak lichtmuur tot 90×30×1 inch of bol tot diameter 30 voet. Jij en aangewezen wezens veilig; anderen binnen 20 voet: Fitness of Blinded 1 min. Zeven lagen (rood→violet) elk met save/schade/vernietigingsmethode zoals Prismatic Layers; door de muur = alle lagen. AC 10; Antimagic Field doet niets; Dispel Magic alleen violet."
+    "description": "Verticale opaak lichtmuur tot 90×30×1 inch of bol tot diameter 30 voet. Jij en aangewezen wezens veilig; anderen binnen 20 voet: Fitness of Blinded 1 min. Zeven lagen (rood→violet) elk met save/schade/vernietigingsmethode zoals Prismatic Layers; door de muur = alle lagen. Verdediging (DEF) 0; Antimagic Field doet niets; Dispel Magic alleen violet."
   },
   {
     "id": "shapechange",
