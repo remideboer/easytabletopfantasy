@@ -94,6 +94,11 @@
       "shield": "Schild",
       "weapons": "Wapens",
       "weapon": "Wapen",
+      "portrait": "Portret",
+      "addPortrait": "Foto toevoegen",
+      "removePortrait": "Afbeelding wissen",
+      "clearPortraitConfirm": "Deze afbeelding wissen?",
+      "cancel": "Annuleren",
       "attackBonus": "Aanval",
       "attackBonusPbHint": "Aanvalsbonus is FIT + wapen; tel je proficiency bonus bij bij attack rolls.",
       "equippedPlaceholder": "Andere gedragen items, munitie, tools…"

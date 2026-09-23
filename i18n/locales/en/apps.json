@@ -94,6 +94,11 @@
       "shield": "Shield",
       "weapons": "Weapons",
       "weapon": "Weapon",
+      "portrait": "Portrait",
+      "addPortrait": "Add photo",
+      "removePortrait": "Clear image",
+      "clearPortraitConfirm": "Clear this image?",
+      "cancel": "Cancel",
       "attackBonus": "Attack",
       "attackBonusPbHint": "Attack bonus is FIT + weapon; add your proficiency bonus on attack rolls.",
       "equippedPlaceholder": "Other worn items, ammo, tools…"

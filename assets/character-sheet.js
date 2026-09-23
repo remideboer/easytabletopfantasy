@@ -116,6 +116,7 @@
   let ddbModalOpen = false;
   let ddbReview = null; // { name, lines } after import, shown as in-app modal
   let ddbFallbackVisible = false;
+  let portraitClearOpen = false;
   const talentModalExpandedIds = new Set();
 
   const el = {};
@@ -1831,19 +1832,19 @@
   function portraitFrameHtml(c, ids) {
     const url = c.portraitUrl || "";
     const addLabel = t("addPortrait", "Add photo");
-    const removeLabel = t("removePortrait", "Remove photo");
+    const removeLabel = t("removePortrait", "Clear image");
     const portraitLabel = t("portrait", "Portrait");
     const img = url
       ? `<img class="cs-avatar-img" src="${escapeHtml(url)}" alt="${escapeHtml(portraitLabel)}" />`
       : `<span class="cs-avatar-placeholder">${escapeHtml(addLabel)}</span>`;
     const clear = url
-      ? `<button type="button" class="cs-avatar-clear" id="${ids.clear}" aria-label="${escapeHtml(removeLabel)}">×</button>`
+      ? `<button type="button" class="cs-avatar-clear" id="${ids.clear}">${escapeHtml(removeLabel)}</button>`
       : "";
     return `<div class="cs-avatar">
       <div class="cs-avatar-wrap">
         <button type="button" class="cs-avatar-frame" id="${ids.pick}" aria-label="${escapeHtml(url ? portraitLabel : addLabel)}">${img}</button>
-        ${clear}
       </div>
+      ${clear}
       <input type="file" id="${ids.file}" class="cs-avatar-file" accept="image/*" hidden />
     </div>`;
   }
@@ -2154,7 +2155,9 @@
     const prevBody = el.modalRoot.querySelector(".cs-modal-body");
     const scrollTop = prevBody ? prevBody.scrollTop : 0;
 
-    if (spellModalOpen && char) {
+    if (portraitClearOpen && char) {
+      renderPortraitClearModal();
+    } else if (spellModalOpen && char) {
       renderManageSpellsModal();
     } else if (spellViewId && char) {
       renderSpellViewModal();
@@ -2176,6 +2179,25 @@
 
     const newBody = el.modalRoot.querySelector(".cs-modal-body");
     if (newBody) newBody.scrollTop = scrollTop;
+  }
+
+  function renderPortraitClearModal() {
+    const title = t("removePortrait", "Clear image");
+    const message = t("clearPortraitConfirm", "Clear this image?");
+    const cancel = t("cancel", "Cancel");
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-portrait-clear-overlay">
+      <div class="cs-modal cs-modal--confirm" role="dialog" aria-modal="true" aria-labelledby="cs-portrait-clear-title">
+        <div class="cs-modal-header">
+          <h2 id="cs-portrait-clear-title">${escapeHtml(title)}</h2>
+          <button type="button" class="cs-modal-close" id="cs-portrait-clear-close" aria-label="${escapeHtml(t("close", "Close"))}">×</button>
+        </div>
+        <p class="cs-portrait-clear-message">${escapeHtml(message)}</p>
+        <div class="cls-ability-modal-footer">
+          <button type="button" class="btn cs-btn-secondary" id="cs-portrait-clear-cancel">${escapeHtml(cancel)}</button>
+          <button type="button" class="btn cs-btn-danger" id="cs-portrait-clear-confirm">${escapeHtml(title)}</button>
+        </div>
+      </div>
+    </div>`;
   }
 
   function renderTalentModal() {
@@ -3929,9 +3951,9 @@
         return;
       }
       if (e.target.closest("#cs-avatar-clear")) {
-        if (!char) return;
-        char.portraitUrl = "";
-        persistAndRender();
+        if (!char || !char.portraitUrl) return;
+        portraitClearOpen = true;
+        renderModals();
         return;
       }
       if (e.target.closest("#cs-add-weapon")) {
@@ -4073,6 +4095,23 @@
 
     if (el.modalRoot) {
       el.modalRoot.addEventListener("click", (e) => {
+        if (portraitClearOpen) {
+          if (e.target.id === "cs-portrait-clear-confirm") {
+            portraitClearOpen = false;
+            if (char) char.portraitUrl = "";
+            persistAndRender();
+            return;
+          }
+          if (
+            e.target.id === "cs-portrait-clear-overlay" ||
+            e.target.id === "cs-portrait-clear-close" ||
+            e.target.id === "cs-portrait-clear-cancel"
+          ) {
+            portraitClearOpen = false;
+            renderModals();
+            return;
+          }
+        }
         const detailsBtn = e.target.closest("[data-spell-details]");
         if (detailsBtn) {
           const id = detailsBtn.dataset.spellDetails;
@@ -4251,6 +4290,11 @@
       });
 
       document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && portraitClearOpen) {
+          portraitClearOpen = false;
+          renderModals();
+          return;
+        }
         if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || skillModalOpen || languageModalOpen || talentModalOpen || ddbModalOpen || ddbReview)) {
           spellModalOpen = false;
           spellViewId = null;

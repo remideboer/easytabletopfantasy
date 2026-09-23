@@ -105,6 +105,33 @@
     return pack[key] != null && pack[key] !== "" ? pack[key] : fallback;
   }
 
+  let portraitClearOpen = false;
+
+  function renderPortraitClearModal() {
+    if (!el.modalRoot) return;
+    const title = t("removePortrait", "Clear image");
+    const message = t("clearPortraitConfirm", "Clear this image?");
+    const cancel = t("cancel", "Cancel");
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cls-portrait-clear-overlay">
+      <div class="cs-modal cs-modal--confirm" role="dialog" aria-modal="true" aria-labelledby="cls-portrait-clear-title">
+        <div class="cs-modal-header">
+          <h2 id="cls-portrait-clear-title">${escapeHtml(title)}</h2>
+          <button type="button" class="cs-modal-close" id="cls-portrait-clear-close" aria-label="${escapeHtml(t("close", "Close"))}">×</button>
+        </div>
+        <p class="cs-portrait-clear-message">${escapeHtml(message)}</p>
+        <div class="cls-ability-modal-footer">
+          <button type="button" class="btn cs-btn-secondary" id="cls-portrait-clear-cancel">${escapeHtml(cancel)}</button>
+          <button type="button" class="btn cs-btn-danger" id="cls-portrait-clear-confirm">${escapeHtml(title)}</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function closePortraitClearModal() {
+    portraitClearOpen = false;
+    if (el.modalRoot && abilityModalLine == null && abilityEditLine == null) el.modalRoot.innerHTML = "";
+  }
+
   function normalizePortrait(value) {
     if (typeof value !== "string") return "";
     if (!value.startsWith("data:image/jpeg;base64,")) return "";
@@ -140,19 +167,19 @@
   function portraitFrameHtml(c) {
     const url = c.portraitUrl || "";
     const addLabel = t("addPortrait", "Add photo");
-    const removeLabel = t("removePortrait", "Remove photo");
+    const removeLabel = t("removePortrait", "Clear image");
     const portraitLabel = t("portrait", "Portrait");
     const img = url
       ? `<img class="cs-avatar-img" src="${escapeHtml(url)}" alt="${escapeHtml(portraitLabel)}" />`
       : `<span class="cs-avatar-placeholder">${escapeHtml(addLabel)}</span>`;
     const clear = url
-      ? `<button type="button" class="cs-avatar-clear" id="cls-avatar-clear" aria-label="${escapeHtml(removeLabel)}">×</button>`
+      ? `<button type="button" class="cs-avatar-clear" id="cls-avatar-clear">${escapeHtml(removeLabel)}</button>`
       : "";
     return `<div class="cs-avatar">
       <div class="cs-avatar-wrap">
         <button type="button" class="cs-avatar-frame" id="cls-avatar-pick" aria-label="${escapeHtml(url ? portraitLabel : addLabel)}">${img}</button>
-        ${clear}
       </div>
+      ${clear}
       <input type="file" id="cls-avatar-file" class="cs-avatar-file" accept="image/*" hidden />
     </div>`;
   }
@@ -1134,9 +1161,9 @@
         return;
       }
       if (e.target.closest("#cls-avatar-clear")) {
-        if (!char) return;
-        char.portraitUrl = "";
-        persistAndRender();
+        if (!char || !char.portraitUrl) return;
+        portraitClearOpen = true;
+        renderPortraitClearModal();
         return;
       }
       const editBtn = e.target.closest(".cls-ability-edit");
@@ -1226,8 +1253,29 @@
       }
     });
 
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && portraitClearOpen) closePortraitClearModal();
+    });
+
     if (el.modalRoot) {
       el.modalRoot.addEventListener("click", (e) => {
+        if (portraitClearOpen) {
+          if (e.target.id === "cls-portrait-clear-confirm") {
+            portraitClearOpen = false;
+            if (char) char.portraitUrl = "";
+            if (el.modalRoot) el.modalRoot.innerHTML = "";
+            persistAndRender();
+            return;
+          }
+          if (
+            e.target.id === "cls-portrait-clear-overlay" ||
+            e.target.id === "cls-portrait-clear-close" ||
+            e.target.id === "cls-portrait-clear-cancel"
+          ) {
+            closePortraitClearModal();
+            return;
+          }
+        }
         if (e.target.id === "cls-ability-overlay" || e.target.id === "cls-ability-close" || e.target.id === "cls-ability-cancel") {
           closeAbilityModal();
           return;

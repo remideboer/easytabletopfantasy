@@ -4651,8 +4651,9 @@
     width:100%;
     min-width:0;
     display:flex;
+    flex-direction:column;
     justify-content:center;
-    align-items:flex-start;
+    align-items:center;
   }
   .cs-avatar-wrap{
     position:relative;
@@ -4697,20 +4698,19 @@
   }
   .cs-avatar-file{display:none}
   .cs-avatar-clear{
-    position:absolute;
-    top:-6px;
-    right:-6px;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    border:1px solid var(--text-primary);
-    background:#fff;
-    color:#111;
-    font-size:.85rem;
-    line-height:1;
-    padding:0;
+    margin-top:6px;
+    border:0;
+    background:transparent;
+    color:var(--text-muted, #666);
+    font:inherit;
+    font-size:.82rem;
+    text-decoration:underline;
     cursor:pointer;
-    z-index:1;
+    padding:4px 8px;
+    min-height:44px;
+  }
+  @media print {
+    .cs-avatar-clear{display:none !important}
   }
   .cs-life{
     grid-column:1 / 3;
@@ -5595,6 +5595,8 @@
   .cs-spell-details .cs-spell-view-meta{margin:0 0 6px}
   .cs-spell-details .cs-spell-view-desc{margin:0;font-size:.88rem}
   .cs-modal--view{max-width:480px}
+  .cs-modal--confirm{max-width:22rem}
+  .cs-portrait-clear-message{margin:0;padding:8px 16px 4px}
   .cs-spell-view-meta{font-size:.82rem;color:var(--muted);margin:0 0 6px}
   .cs-spell-view-desc{font-size:.92rem;line-height:1.5;margin:10px 0 0;white-space:pre-line}
   .cs-modal-header-title{display:flex;align-items:center;gap:10px;min-width:0}
