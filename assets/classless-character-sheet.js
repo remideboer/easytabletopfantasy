@@ -416,10 +416,17 @@
     render();
   }
 
-  function deleteCharacter() {
-    if (!char) return;
+  async function deleteCharacter() {
+    if (!char || !window.ymiatDialog) return;
     const name = char.name || "Unnamed";
-    if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
+    const message = t("deleteCharacterConfirm", 'Delete "{name}"? This cannot be undone.').replace("{name}", name);
+    const ok = await window.ymiatDialog({
+      title: t("deleteCharacter", "Delete character"),
+      message: message,
+      confirmLabel: t("deleteCharacterAction", "Delete"),
+      cancelLabel: t("cancel", "Cancel"),
+    });
+    if (!ok || !char) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
     store.activeId = store.characters.length ? store.characters[0].id : null;
     saveStore();

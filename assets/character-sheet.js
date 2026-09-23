@@ -1746,7 +1746,11 @@
       pdf.save(pdfSafeFilename(char.name));
     } catch (err) {
       console.error(err);
-      alert(t("exportPdfFailed", "Could not create the PDF. Try again, or use Print."));
+      if (window.ymiatDialog) {
+        window.ymiatDialog({
+          title: t("exportPdfFailed", "Could not create the PDF. Try again, or use Print."),
+        });
+      }
     } finally {
       cleanupPgExport();
       if (el.btnExportPdf) {
@@ -3023,8 +3027,17 @@
     syncToolbarFoldout(true);
   }
 
-  function deleteCharacter() {
-    if (!char) return;
+  async function deleteCharacter() {
+    if (!char || !window.ymiatDialog) return;
+    const name = char.name || "Unnamed";
+    const message = t("deleteCharacterConfirm", 'Delete "{name}"? This cannot be undone.').replace("{name}", name);
+    const ok = await window.ymiatDialog({
+      title: t("deleteCharacter", "Delete character"),
+      message: message,
+      confirmLabel: t("deleteCharacterAction", "Delete"),
+      cancelLabel: t("cancel", "Cancel"),
+    });
+    if (!ok || !char) return;
     spellModalOpen = false;
     spellViewId = null;
     talentViewName = null;
@@ -3035,8 +3048,6 @@
     ddbModalOpen = false;
     ddbReview = null;
     ddbFallbackVisible = false;
-    const name = char.name || "Unnamed";
-    if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
     store.characters = store.characters.filter((c) => c.id !== char.id);
     store.activeId = store.characters.length ? store.characters[0].id : null;
     saveStore();

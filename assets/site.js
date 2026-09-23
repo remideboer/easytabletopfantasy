@@ -162,4 +162,68 @@
   } else {
     initGearTabs();
   }
+
+  function dialogText(value){
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // In-page confirm or notice. Omit confirmLabel for a single Close button.
+  // Cancel, ×, Escape, and the overlay leave the action undone.
+  window.ymiatDialog = function(opts){
+    opts = opts || {};
+    var nl = document.documentElement.lang === 'nl';
+    var title = opts.title || '';
+    var message = opts.message || '';
+    var notice = !opts.confirmLabel;
+    var cancelLabel = opts.cancelLabel || (notice ? (nl ? 'Sluiten' : 'Close') : (nl ? 'Annuleren' : 'Cancel'));
+    var closeAria = nl ? 'Sluiten' : 'Close';
+    var heading = title || message;
+    var body = title && message ? message : '';
+
+    return new Promise(function(resolve){
+      var settled = false;
+      var overlay = document.createElement('div');
+      overlay.className = 'cs-modal-overlay';
+      overlay.innerHTML =
+        '<div class="cs-modal cs-modal--confirm" role="dialog" aria-modal="true" aria-labelledby="ymiat-dialog-title">' +
+          '<div class="cs-modal-header">' +
+            '<h2 id="ymiat-dialog-title">' + dialogText(heading) + '</h2>' +
+            '<button type="button" class="cs-modal-close" data-ymiat-dialog-dismiss aria-label="' + dialogText(closeAria) + '">×</button>' +
+          '</div>' +
+          (body ? '<p class="cs-portrait-clear-message">' + dialogText(body) + '</p>' : '') +
+          '<div class="cls-ability-modal-footer">' +
+            '<button type="button" class="btn cs-btn-secondary" data-ymiat-dialog-dismiss>' + dialogText(cancelLabel) + '</button>' +
+            (notice ? '' : '<button type="button" class="btn' + (opts.danger === false ? '' : ' cs-btn-danger') + '" data-ymiat-dialog-confirm>' + dialogText(opts.confirmLabel) + '</button>') +
+          '</div>' +
+        '</div>';
+
+      function finish(ok){
+        if(settled) return;
+        settled = true;
+        document.removeEventListener('keydown', onKey, true);
+        if(overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        resolve(!!ok);
+      }
+
+      function onKey(e){
+        if(e.key !== 'Escape') return;
+        e.preventDefault();
+        e.stopPropagation();
+        finish(false);
+      }
+
+      overlay.addEventListener('click', function(e){
+        if(e.target === overlay || e.target.closest('[data-ymiat-dialog-dismiss]')) finish(false);
+        else if(e.target.closest('[data-ymiat-dialog-confirm]')) finish(true);
+      });
+      document.body.appendChild(overlay);
+      document.addEventListener('keydown', onKey, true);
+      var focusEl = overlay.querySelector('[data-ymiat-dialog-dismiss]');
+      if(focusEl) focusEl.focus();
+    });
+  };
 })();

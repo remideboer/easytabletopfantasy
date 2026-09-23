@@ -875,13 +875,19 @@
       }
     });
 
-    el.body.querySelector("#cc-reset").addEventListener("click", () => {
-      if (window.confirm(t("clearConfirm", "Clear this character draft and start over?"))) {
-        state = defaultState();
-        stepIndex = 0;
-        saveState();
-        render();
-      }
+    el.body.querySelector("#cc-reset").addEventListener("click", async () => {
+      if (!window.ymiatDialog) return;
+      const ok = await window.ymiatDialog({
+        title: t("startOver", "Start over"),
+        message: t("clearConfirm", "Clear this character draft and start over?"),
+        confirmLabel: t("startOver", "Start over"),
+        cancelLabel: t("cancel", "Cancel"),
+      });
+      if (!ok) return;
+      state = defaultState();
+      stepIndex = 0;
+      saveState();
+      render();
     });
   }
 

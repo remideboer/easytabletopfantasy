@@ -1475,7 +1475,7 @@
     function printSelectedMonsters() {
       const checked = document.querySelectorAll('.monster-card-checkbox:checked').length;
       if (checked === 0) {
-        alert('Please select at least one monster to print.');
+        if (window.ymiatDialog) window.ymiatDialog({ title: 'Please select at least one monster to print.' });
         return;
       }
 

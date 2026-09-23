@@ -5874,7 +5874,7 @@ function deselectAll(){
 function printSelected(){
   const checked = document.querySelectorAll('.spell-card-checkbox:checked').length;
   if(checked === 0){
-    alert('Please select at least one spell to print.');
+    if(window.ymiatDialog) window.ymiatDialog({ title: 'Selecteer minstens één spreuk om af te drukken.' });
     return;
   }
   

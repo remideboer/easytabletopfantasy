@@ -5823,7 +5823,7 @@ function deselectAll(){
 function printSelected(){
   const checked = document.querySelectorAll('.spell-card-checkbox:checked').length;
   if(checked === 0){
-    alert('Please select at least one spell to print.');
+    if(window.ymiatDialog) window.ymiatDialog({ title: 'Please select at least one spell to print.' });
     return;
   }
   
