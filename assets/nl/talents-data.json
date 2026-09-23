@@ -15,7 +15,7 @@
     "id": "elemental-savant",
     "name": "Elemental Savant",
     "prerequisite": "Minstens één damaging spell kunnen casten",
-    "description": "Kies acid, cold, fire, lightning of thunder. Wanneer je een spell cast die schade doet, mag je het schade-type omzetten naar je gekozen type. Bij schade-rollen voor spells die dat type van nature gebruiken, gooi je 1'en op damage dice opnieuw. Meerdere keren selecteerbaar voor verschillende types."
+    "description": "Kies acid, cold, fire, lightning of thunder. Wanneer je een spell cast die schade doet, mag je het schade-type omzetten naar je gekozen type. Bij schadeworpen voor spells die dat type van nature gebruiken, gooi je 1'en op damage dice opnieuw. Meerdere keren selecteerbaar voor verschillende types."
   },
   {
     "id": "mental-fortitude",
@@ -45,7 +45,7 @@
     "id": "chaos-caster",
     "name": "Chaos Caster",
     "prerequisite": "Spellcasting class feature",
-    "description": "Bij casten met Spell Power: probeer één niveau hoger te casten (eigenschapstest vs DC 11 + basisniveau). Bij succes: rol op de Volatile Spell Effect-tabel. Gebruik per lange rust gelijk aan behendigheidsbonus."
+    "description": "Bij casten met Spell Power: probeer één niveau hoger te casten (eigenschapstest vs DC 11 + basisniveau). Bij succes: gooi op de Volatile Spell Effect-tabel. Gebruik per lange rust gelijk aan behendigheidsbonus."
   },
   {
     "id": "spell-recall",
@@ -69,7 +69,7 @@
     "id": "boon-of-spell-recall",
     "name": "Boon of Spell Recall",
     "prerequisite": "Niveau 10, Spellcasting class feature",
-    "description": "Verhoog je Insight- of Willpower-modifier met 1, tot maximaal +5. Telkens wanneer je een spell van 1e–4e niveau cast met Spell Power, rol 1d4. Als het resultaat gelijk is aan het spell-niveau, wordt die Spell Power niet uitgegeven."
+    "description": "Verhoog je Insight- of Willpower-modifier met 1, tot maximaal +5. Telkens wanneer je een spell van 1e–4e niveau cast met Spell Power, gooi 1d4. Als het resultaat gelijk is aan het spell-niveau, wordt die Spell Power niet uitgegeven."
   },
   {
     "id": "armor-expert",
@@ -225,7 +225,7 @@
     "id": "bottomless-luck",
     "name": "Bottomless Luck",
     "prerequisite": "",
-    "description": "• Wanneer je 20 gooit op d20, krijgt één bondgenoot die je ziet of hoort 1 Resolve.\n• Bij Reset Resolve: rol d20 in vier banden (zie core-regels) en houd de betere van twee worpen als je twee keer rolt.\n• Bij Resolve uitgeven om opnieuw te rollen: rol twee keer en houd het beste resultaat."
+    "description": "• Wanneer je 20 gooit op d20, krijgt één bondgenoot die je ziet of hoort 1 Resolve.\n• Bij Reset Resolve: gooi d20 in vier banden (zie core-regels) en houd de betere van twee worpen als je twee keer gooit.\n• Bij Resolve uitgeven om opnieuw te gooien: gooi twee keer en houd het beste resultaat."
   },
   {
     "id": "comrade",
@@ -243,7 +243,7 @@
     "id": "dungeoneer",
     "name": "Dungeoneer",
     "prerequisite": "",
-    "description": "• Voeg behendigheidsbonus toe aan ontmantelen vallen/deuren openen zonder tools; eerste mislukking op vallen activeert ze niet.\n• Voordeel bij vinden van geheimen, vallen en illusies; voordeel tegen vallen en gevaren; weerstand tegen trap/hazard-schade.\n• Bij gevechtsstart mogen jij en bondgenoten binnen 5 voet Stealth rollen voor verrassing."
+    "description": "• Voeg behendigheidsbonus toe aan ontmantelen vallen/deuren openen zonder tools; eerste mislukking op vallen activeert ze niet.\n• Voordeel bij vinden van geheimen, vallen en illusies; voordeel tegen vallen en gevaren; weerstand tegen trap/hazard-schade.\n• Bij gevechtsstart mogen jij en bondgenoten binnen 5 voet Stealth gooien voor verrassing."
   },
   {
     "id": "empathetic",
@@ -255,7 +255,7 @@
     "id": "escamotage",
     "name": "Escamotage",
     "prerequisite": "",
-    "description": "• Behendigheid in Sleight of Hand (of dubbele behendigheid).\n• Geef 2 Resolve uit om Sleight of Hand-tests opnieuw te rollen.\n• Actie om zichtbaar gedragen nonmagical item te stelen (DC 10 + Fitness-bonus doelwit + CR)."
+    "description": "• Behendigheid in Sleight of Hand (of dubbele behendigheid).\n• Geef 2 Resolve uit om Sleight of Hand-tests opnieuw te gooien.\n• Actie om zichtbaar gedragen nonmagical item te stelen (DC 10 + Fitness-bonus doelwit + CR)."
   },
   {
     "id": "far-traveler",
@@ -279,7 +279,7 @@
     "id": "learned-researcher",
     "name": "Learned Researcher",
     "prerequisite": "",
-    "description": "Kies twee uit Arcana, History, Nature of Religion: behandel d20-resultaten van 9 of lager als 10 (gebruik per dag = behendigheidsbonus). Downtime-onderzoekskosten en -tijd gedeeld door behendigheidsbonus; voordeel op research resolution-rolls."
+    "description": "Kies twee uit Arcana, History, Nature of Religion: behandel d20-resultaten van 9 of lager als 10 (gebruik per dag = behendigheidsbonus). Downtime-onderzoekskosten en -tijd gedeeld door behendigheidsbonus; voordeel op worpen om onderzoek af te ronden."
   },
   {
     "id": "polyglot",
@@ -345,7 +345,7 @@
     "id": "alert",
     "name": "Alert",
     "prerequisite": "",
-    "description": "Met de Initiative-variant: voeg behendigheidsbonus toe aan je Fitness-check. Direct na rollen kun je je Initiative wisselen met die van een bereidwillige bondgenoot in hetzelfde gevecht, tenzij een van jullie Incapacitated is."
+    "description": "Met de Initiative-variant: voeg behendigheidsbonus toe aan je Fitness-check. Direct na het gooien kun je je Initiative wisselen met die van een bereidwillige bondgenoot in hetzelfde gevecht, tenzij een van jullie Incapacitated is."
   },
   {
     "id": "skilled",
@@ -369,7 +369,7 @@
     "id": "boon-of-fate",
     "name": "Boon of Fate",
     "prerequisite": "Niveau 10",
-    "description": "• Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.\n• Wanneer jij of een ander wezen binnen 60 voet van je slaagt of faalt voor een d20-test, kun je 2d4 rollen en het totaal als bonus of straf op die worp toepassen. Zodra je dit gebruikt, kun je het niet opnieuw tot je een korte of lange rust afrondt."
+    "description": "• Verhoog één eigenschapsmodifier naar keuze met 1, tot maximaal +5.\n• Wanneer jij of een ander wezen binnen 60 voet van je slaagt of faalt voor een d20-test, kun je 2d4 gooien en het totaal als bonus of straf op die worp toepassen. Zodra je dit gebruikt, kun je het niet opnieuw tot je een korte of lange rust afrondt."
   },
   {
     "id": "boon-of-the-night-spirit",

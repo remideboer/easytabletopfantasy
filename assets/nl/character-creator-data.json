@@ -475,7 +475,7 @@
         {
           "name": "Bardic Inspiration",
           "minLevel": 1,
-          "summary": "Geef een inspiration-dobbelsteen om de rol van een bondgenoot te versterken."
+          "summary": "Geef een inspiration-dobbelsteen om de worp van een bondgenoot te versterken."
         },
         {
           "name": "Expertise",
@@ -495,7 +495,7 @@
         {
           "name": "Font of Inspiration",
           "minLevel": 3,
-          "summary": "Krijg inspiration terug bij korte rust; versterk gefaalde rollen."
+          "summary": "Krijg inspiration terug bij korte rust; versterk gefaalde worpen."
         },
         {
           "name": "Improvement",
@@ -1230,7 +1230,7 @@
             {
               "name": "Mastery",
               "minLevel": 2,
-              "summary": "Beheers drie wapentypes; herrol schade of wapenoptie-schade."
+              "summary": "Beheers drie wapentypes; gooi schade of wapenoptie-schade opnieuw."
             },
             {
               "name": "Stunts",
@@ -1714,7 +1714,7 @@
         {
           "name": "Diamond Soul",
           "minLevel": 7,
-          "summary": "Behendigheid in alle saves; herrol falen."
+          "summary": "Behendigheid in alle saves; gooi een mislukte save opnieuw."
         },
         {
           "name": "Timeless Self",
@@ -2335,7 +2335,7 @@
         {
           "name": "Reliable Talent",
           "minLevel": 5,
-          "summary": "Behandel lage rollen als 10 op behendige tests."
+          "summary": "Behandel lage worpen als 10 op behendige tests."
         },
         {
           "name": "Precise Critical",
@@ -2618,7 +2618,7 @@
             {
               "name": "Elemental Affinity",
               "minLevel": 4,
-              "summary": "Tel Willpower op bij één schaderol van je ancestry-type per cast."
+              "summary": "Tel Willpower op bij één schadeworp van je ancestry-type per cast."
             },
             {
               "name": "Imperious Wings",
@@ -2841,7 +2841,7 @@
             {
               "name": "Equalize",
               "minLevel": 2,
-              "summary": "Reactie: annuleer voordeel of nadeel op een rol."
+              "summary": "Reactie: annuleer voordeel of nadeel op een worp."
             },
             {
               "name": "Restore Efficiency",
@@ -3471,7 +3471,7 @@
             {
               "name": "General's Gambit",
               "minLevel": 4,
-              "summary": "Geef Recovery Points uit om gefaalde rollen te redden."
+              "summary": "Geef Recovery Points uit om gefaalde worpen te redden."
             },
             {
               "name": "Comrade in Arms",
@@ -4067,15 +4067,15 @@
     {
       "id": "smallfolk",
       "name": "Smallfolk",
-      "teaser": "Leeftijd. Volwassen ~20; ~150 jaar (gnomes soms het dubbele). Grootte. Small. Snelheid. 30 voet. Grounded. Eén keer per dag herrol een gefaalde save en krijg 1 Resolve. Small Stature. Beweeg door Medium+-ruimtes;…",
-      "body": "<p><strong>Leeftijd.</strong> Volwassen ~20; ~150 jaar (gnomes soms het dubbele).</p>\n<p><strong>Grootte.</strong> Small.</p>\n<p><strong>Snelheid.</strong> 30 voet.</p>\n<p><strong>Grounded.</strong> Eén keer per dag herrol een gefaalde save en krijg 1 Resolve.</p>\n<p><strong>Small Stature.</strong> Beweeg door Medium+-ruimtes; verberg je achter Medium+-wezens.</p>\n<p><strong>Natural Adaptation.</strong> Gnomish (darkvision 60 ft, <em>minor illusion</em>) of Halfling (voordeel tegen charmed/frightened).</p>",
+      "teaser": "Leeftijd. Volwassen ~20; ~150 jaar (gnomes soms het dubbele). Grootte. Small. Snelheid. 30 voet. Grounded. Eén keer per dag gooi een gefaalde save opnieuw en krijg 1 Resolve. Small Stature. Beweeg door Medium+-ruimtes;…",
+      "body": "<p><strong>Leeftijd.</strong> Volwassen ~20; ~150 jaar (gnomes soms het dubbele).</p>\n<p><strong>Grootte.</strong> Small.</p>\n<p><strong>Snelheid.</strong> 30 voet.</p>\n<p><strong>Grounded.</strong> Eén keer per dag gooi een gefaalde save opnieuw en krijg 1 Resolve.</p>\n<p><strong>Small Stature.</strong> Beweeg door Medium+-ruimtes; verberg je achter Medium+-wezens.</p>\n<p><strong>Natural Adaptation.</strong> Gnomish (darkvision 60 ft, <em>minor illusion</em>) of Halfling (voordeel tegen charmed/frightened).</p>",
       "tag": null,
       "recommendedFor": null,
       "rulesUrl": "rules/lineages.html#smallfolk",
       "features": [
         {
           "name": "Grounded",
-          "summary": "Eén keer per dag herrol een gefaalde save en krijg 1 Resolve."
+          "summary": "Eén keer per dag gooi een gefaalde save opnieuw en krijg 1 Resolve."
         },
         {
           "name": "Small Stature",
@@ -4526,7 +4526,7 @@
       "id": "coterminous",
       "name": "Coterminous",
       "teaser": "Veelvoorkomend bij afkomsten: Dragonborn, Elemental Scion Uit een grensgemeenschap waar het Material Plane een Elemental Plane raakt — handelsknooppunt, genie-heerschappij en elementair gevaar. Elemental Community.…",
-      "body": "<p><strong>Veelvoorkomend bij afkomsten:</strong> Dragonborn, Elemental Scion</p>\n<p>Uit een grensgemeenschap waar het Material Plane een Elemental Plane raakt — handelsknooppunt, genie-heerschappij en elementair gevaar.</p>\n<p><strong>Elemental Community.</strong> Kies Air (lightning), Earth (acid), Fire (fire) of Water (cold).</p>\n<p><strong>Ambient Absorption.</strong> Wanneer je schade van je elementtype neemt, rol d8s gelijk aan de helft van PB (min. 1) en verlaag schade met het totaal.</p>\n<p><strong>Environmental Acclimatization.</strong> Behendigheid op tests/saves tegen gevaren van je element (dubbele PB als je al behendig bent).</p>\n<p><strong>Talen.</strong> Common plus één extra (typisch: Primordial).</p>",
+      "body": "<p><strong>Veelvoorkomend bij afkomsten:</strong> Dragonborn, Elemental Scion</p>\n<p>Uit een grensgemeenschap waar het Material Plane een Elemental Plane raakt — handelsknooppunt, genie-heerschappij en elementair gevaar.</p>\n<p><strong>Elemental Community.</strong> Kies Air (lightning), Earth (acid), Fire (fire) of Water (cold).</p>\n<p><strong>Ambient Absorption.</strong> Wanneer je schade van je elementtype neemt, gooi d8s gelijk aan de helft van PB (min. 1) en verlaag schade met het totaal.</p>\n<p><strong>Environmental Acclimatization.</strong> Behendigheid op tests/saves tegen gevaren van je element (dubbele PB als je al behendig bent).</p>\n<p><strong>Talen.</strong> Common plus één extra (typisch: Primordial).</p>",
       "tag": "PG2",
       "recommendedFor": "Dragonborn, Elemental Scion",
       "rulesUrl": "rules/heritages.html#coterminous",
@@ -4541,7 +4541,7 @@
         },
         {
           "name": "Ambient Absorption",
-          "summary": "Wanneer je schade van je elementtype neemt, rol d8s gelijk aan de helft van PB (min. 1) en verlaag schade met het totaal."
+          "summary": "Wanneer je schade van je elementtype neemt, gooi d8s gelijk aan de helft van PB (min. 1) en verlaag schade met het totaal."
         },
         {
           "name": "Environmental Acclimatization",

@@ -51,6 +51,11 @@ Natural table-language. Prefer how NL groups actually speak at the table over li
 | Moments | Momenten |
 | Spell Points / Mana | Spell Points / Mana |
 | Advantage / Disadvantage | Voordeel / Nadeel |
+| roll (a die) | gooien |
+| a roll | worp |
+| rolls | worpen |
+| attack roll | aanvalsworp |
+| reroll | opnieuw gooien |
 
 ## Keep in English
 
@@ -64,3 +69,4 @@ Natural table-language. Prefer how NL groups actually speak at the table over li
 
 - Literal brand calques (“Je-Ontmoet-In-Een-Herberg”)
 - Forced Dutch for jargon the table already says in English (class names, many spells)
+- “rol” / “rollen” for a die. You throw a die (gooien); the result is a worp. “Rol” only means a role (a party role, the GM’s role).
