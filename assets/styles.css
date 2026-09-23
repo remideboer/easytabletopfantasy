@@ -5107,6 +5107,7 @@
     align-items:stretch;
     gap:6px;
   }
+  .cls-ability-row--chip{align-items:center}
   .cls-ability-slot{
     display:block;
     flex:1;
@@ -5378,7 +5379,13 @@
     background:var(--bg);
     color:var(--muted);
     cursor:pointer;
+    font-family:inherit;
+    line-height:1.3;
   }
+  .cs-feature-view-body p{margin:0 0 .65rem}
+  .cs-feature-view-body p:last-child{margin-bottom:0}
+  .cs-feature-view-body ul,.cs-feature-view-body ol{margin:.2rem 0 .65rem 1.15rem}
+  .cs-feature-view-body li{margin-bottom:.25rem}
   .cs-spell-chip:hover{border-color:var(--brand-primary)}
   .cs-spell-chip.is-active{
     border-color:var(--brand-primary);

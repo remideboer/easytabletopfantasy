@@ -13,6 +13,7 @@
   let eventsBound = false;
   let abilitiesData = null;
   let abilityModalLine = null;
+  let abilityRead = null;
   let abilityModalSelectedIds = [];
   let abilityModalMessage = "";
   let abilityEditLine = null;
@@ -395,6 +396,7 @@
   }
 
   function setActive(id) {
+    closeAbilityRead();
     if (!id) {
       store.activeId = null;
       saveStore();
@@ -409,6 +411,7 @@
   }
 
   function newCharacter() {
+    closeAbilityRead();
     const c = defaultCharacter();
     store.characters.push(c);
     store.activeId = c.id;
@@ -427,6 +430,7 @@
       cancelLabel: t("cancel", "Cancel"),
     });
     if (!ok || !char) return;
+    closeAbilityRead();
     store.characters = store.characters.filter((c) => c.id !== char.id);
     store.activeId = store.characters.length ? store.characters[0].id : null;
     saveStore();
@@ -455,18 +459,11 @@
       ? `<span class="cs-penalty-mark">(${effective})</span>`
       : "";
 
+    const isNl = document.documentElement.lang === "nl" || /\/nl\//.test(location.pathname);
     const abilityLinesHtml = c.abilityLines.map((entry, i) => {
       if (entry && entry.name) {
-        const notesHtml = entry.notes
-          ? `<span class="cls-ability-notes">${escapeHtml(entry.notes)}</span>`
-          : "";
-        return `<div class="cls-ability-row">
-          <button type="button" class="cls-ability-slot is-filled" data-ability-line="${i}" aria-label="Ability ${i + 1}: ${escapeHtml(entry.name)}. Click to change selection.">
-            <span class="cls-ability-main">
-              <strong class="cls-ability-name">${escapeHtml(entry.name)}</strong><span class="cls-ability-sep">: </span><span class="cls-ability-desc">${escapeHtml(entry.description)}</span>
-            </span>
-            ${notesHtml}
-          </button>
+        return `<div class="cls-ability-row cls-ability-row--chip">
+          <button type="button" class="cs-spell-chip is-active" data-ability-read="${i}" title="${isNl ? "Klik voor de tekst" : "Click for details"}">${escapeHtml(entry.name)}</button>
           <button type="button" class="cls-ability-edit" data-ability-edit="${i}" title="Edit ability text and notes" aria-label="Edit ability ${i + 1}">✎</button>
         </div>`;
       }
@@ -638,7 +635,7 @@
     const coreHref = rp(isNl ? "nl/rules/core.html#armor-proficiency" : "rules/core.html#armor-proficiency");
     const chips = trained.length
       ? trained
-          .map((a) => `<span class="cs-spell-chip is-active" title="${escapeHtml(a.description || "")}">${escapeHtml(a.name)}</span>`)
+          .map((a) => `<button type="button" class="cs-spell-chip is-active" data-ability-catalog="${escapeHtml(a.id)}">${escapeHtml(a.name)}</button>`)
           .join("")
       : `<span class="cs-muted">${isNl ? "Nog geen pantser-/wapenbehendigheid getraind." : "No armor/weapon proficiency trained yet."}</span>`;
     const reminder = isNl
@@ -878,8 +875,67 @@
     </div>`;
   }
 
+  function sheetIsNl() {
+    return document.documentElement.lang === "nl" || /\/nl\//.test(location.pathname);
+  }
+
+  function closeAbilityRead() {
+    abilityRead = null;
+    if (el.modalRoot && abilityModalLine == null && abilityEditLine == null && !portraitClearOpen) {
+      el.modalRoot.innerHTML = "";
+    }
+  }
+
+  function renderAbilityReadModal() {
+    if (!el.modalRoot || !abilityRead || !char) return;
+    const isNl = sheetIsNl();
+    let name = "";
+    let description = "";
+    let notes = "";
+    let lineIndex = null;
+    if (abilityRead.kind === "line") {
+      const entry = char.abilityLines[abilityRead.index];
+      if (!entry) {
+        closeAbilityRead();
+        return;
+      }
+      name = entry.name || "";
+      description = entry.description || "";
+      notes = entry.notes || "";
+      lineIndex = abilityRead.index;
+    } else {
+      const ability = abilityById(abilityRead.id);
+      if (!ability) {
+        closeAbilityRead();
+        return;
+      }
+      name = ability.name || "";
+      description = ability.description || "";
+    }
+    const changeBtn = lineIndex != null
+      ? `<button type="button" class="btn cs-btn-secondary" id="cls-ability-read-change">${isNl ? "Wijzigen" : "Change"}</button>`
+      : "";
+    const notesHtml = notes
+      ? `<p class="cs-spell-view-meta">${escapeHtml(isNl ? "Notities" : "Notes")}</p><p class="cs-spell-view-desc">${escapeHtml(notes)}</p>`
+      : "";
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cls-ability-read-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="${escapeHtml(name)}">
+        <div class="cs-modal-header">
+          <h2>${escapeHtml(name)}</h2>
+          <button type="button" class="cs-modal-close" id="cls-ability-read-close" aria-label="${isNl ? "Sluiten" : "Close"}">×</button>
+        </div>
+        <div class="cs-modal-body">
+          <p class="cs-spell-view-desc">${escapeHtml(description)}</p>
+          ${notesHtml}
+        </div>
+        ${changeBtn ? `<div class="cls-ability-modal-footer">${changeBtn}</div>` : ""}
+      </div>
+    </div>`;
+  }
+
   function openAbilityModal(lineIndex) {
     if (!abilitiesData || !char || !el.modalRoot) return;
+    abilityRead = null;
     abilityEditLine = null;
     abilityModalLine = lineIndex;
     abilityModalSelectedIds = trainedAbilityIdsInOrder();
@@ -900,6 +956,7 @@
     if (!char || !el.modalRoot) return;
     const entry = char.abilityLines[lineIndex];
     if (!entry) return;
+    abilityRead = null;
     abilityEditLine = lineIndex;
     abilityModalLine = null;
     abilityModalSelectedIds = [];
@@ -1173,6 +1230,18 @@
         renderPortraitClearModal();
         return;
       }
+      const readChip = e.target.closest("[data-ability-read]");
+      if (readChip && char) {
+        abilityRead = { kind: "line", index: parseInt(readChip.dataset.abilityRead, 10) };
+        renderAbilityReadModal();
+        return;
+      }
+      const catalogChip = e.target.closest("[data-ability-catalog]");
+      if (catalogChip && char) {
+        abilityRead = { kind: "catalog", id: catalogChip.dataset.abilityCatalog };
+        renderAbilityReadModal();
+        return;
+      }
       const editBtn = e.target.closest(".cls-ability-edit");
       if (editBtn && char) {
         const idx = parseInt(editBtn.dataset.abilityEdit, 10);
@@ -1262,6 +1331,7 @@
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && portraitClearOpen) closePortraitClearModal();
+      else if (e.key === "Escape" && abilityRead) closeAbilityRead();
     });
 
     if (el.modalRoot) {
@@ -1282,6 +1352,16 @@
             closePortraitClearModal();
             return;
           }
+        }
+        if (e.target.id === "cls-ability-read-overlay" || e.target.id === "cls-ability-read-close") {
+          closeAbilityRead();
+          return;
+        }
+        if (e.target.id === "cls-ability-read-change" && abilityRead && abilityRead.kind === "line") {
+          const index = abilityRead.index;
+          abilityRead = null;
+          openAbilityModal(index);
+          return;
         }
         if (e.target.id === "cls-ability-overlay" || e.target.id === "cls-ability-close" || e.target.id === "cls-ability-cancel") {
           closeAbilityModal();

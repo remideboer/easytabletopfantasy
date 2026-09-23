@@ -108,6 +108,7 @@
   const spellModalExpandedIds = new Set();
   let spellViewId = null;
   let talentViewName = null;
+  let featureViewName = null;
   let skillModalOpen = false;
   let languageModalOpen = false;
   let talentModalOpen = false;
@@ -1877,12 +1878,13 @@
 
   function renderFeatureList(items) {
     if (!items.length) return '<p class="cs-muted">No features at this level.</p>';
-    return `<ul class="cs-feature-list">${items
+    const chips = items
       .map(
         (item) =>
-          `<li><strong>${escapeHtml(item.name)}</strong>${item.summary ? ` — ${escapeHtml(item.summary)}` : ""}</li>`
+          `<button type="button" class="cs-spell-chip is-active" data-feature-view="${escapeHtml(item.name)}" title="Click for details">${escapeHtml(item.name)}</button>`
       )
-      .join("")}</ul>`;
+      .join("");
+    return `<div class="cs-spell-chips">${chips}</div>`;
   }
 
   function renderDetailPaneShell(title, rulesUrl) {
@@ -2159,6 +2161,8 @@
       renderSpellViewModal();
     } else if (talentViewName && char) {
       renderTalentViewModal();
+    } else if (featureViewName && char) {
+      renderFeatureViewModal();
     } else if (skillModalOpen && char) {
       renderSkillModal();
     } else if (languageModalOpen && char) {
@@ -2397,6 +2401,40 @@
           <p class="cs-spell-view-meta">${escapeHtml(spell.school)} · ${escapeHtml(circleLabel)} · ${escapeHtml(spell.castingTime)}</p>
           <p class="cs-spell-view-meta">Range: ${escapeHtml(spell.range)} · Duration: ${escapeHtml(spell.duration)} · Components: ${escapeHtml(spell.components)}</p>
           <p class="cs-spell-view-desc">${escapeHtml(spell.description)}</p>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function visibleFeatures(c) {
+    const cls = findClass(c);
+    const sub = findSubclass(c);
+    const classFeatures = cls ? featuresAtLevel(cls.abilities, c.level) : [];
+    const subFeatures = sub ? featuresAtLevel(sub.features, c.level) : [];
+    return classFeatures.concat(subFeatures);
+  }
+
+  function renderFeatureViewModal() {
+    const feature = visibleFeatures(char).find((item) => item.name === featureViewName);
+    if (!feature) {
+      el.modalRoot.innerHTML = "";
+      return;
+    }
+    const body = feature.descriptionHtml
+      ? `<div class="cs-feature-view-body">${feature.descriptionHtml}</div>`
+      : `<p class="cs-spell-view-desc">${escapeHtml(feature.summary || "")}</p>`;
+    const level = feature.levelLabel
+      ? `<p class="cs-spell-view-meta">${escapeHtml(feature.levelLabel)}</p>`
+      : "";
+    el.modalRoot.innerHTML = `<div class="cs-modal-overlay" id="cs-feature-view-overlay">
+      <div class="cs-modal cs-modal--view" role="dialog" aria-modal="true" aria-label="${escapeHtml(feature.name)}">
+        <div class="cs-modal-header">
+          <h2>${escapeHtml(feature.name)}</h2>
+          <button type="button" class="cs-modal-close" id="cs-feature-view-close" aria-label="${escapeHtml(t("close", "Close"))}">×</button>
+        </div>
+        <div class="cs-modal-body">
+          ${level}
+          ${body}
         </div>
       </div>
     </div>`;
@@ -2984,6 +3022,7 @@
     spellModalOpen = false;
     spellViewId = null;
     talentViewName = null;
+    featureViewName = null;
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
@@ -3011,6 +3050,7 @@
     spellModalOpen = false;
     spellViewId = null;
     talentViewName = null;
+    featureViewName = null;
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
@@ -3041,6 +3081,7 @@
     spellModalOpen = false;
     spellViewId = null;
     talentViewName = null;
+    featureViewName = null;
     skillModalOpen = false;
     languageModalOpen = false;
     talentModalOpen = false;
@@ -3982,6 +4023,12 @@
       if (talentChip) {
         talentViewName = talentChip.dataset.talentView;
         renderModals();
+        return;
+      }
+      const featureChip = e.target.closest("[data-feature-view]");
+      if (featureChip) {
+        featureViewName = featureChip.dataset.featureView;
+        renderModals();
       }
     });
 
@@ -4126,8 +4173,12 @@
         } else if (e.target.id === "cs-spell-view-overlay" || e.target.id === "cs-spell-view-close") {
           spellViewId = null;
           renderModals();
+        } else if (e.target.id === "cs-feature-view-overlay" || e.target.id === "cs-feature-view-close") {
+          featureViewName = null;
+          renderModals();
         } else if (e.target.id === "cs-talent-view-overlay" || e.target.id === "cs-talent-view-close") {
           talentViewName = null;
+          featureViewName = null;
           renderModals();
         } else if (e.target.id === "cs-choice-modal-overlay" || e.target.id === "cs-choice-modal-close") {
           skillModalOpen = false;
@@ -4287,10 +4338,11 @@
           renderModals();
           return;
         }
-        if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || skillModalOpen || languageModalOpen || talentModalOpen || ddbModalOpen || ddbReview)) {
+        if (e.key === "Escape" && (spellModalOpen || spellViewId || talentViewName || featureViewName || skillModalOpen || languageModalOpen || talentModalOpen || ddbModalOpen || ddbReview)) {
           spellModalOpen = false;
           spellViewId = null;
           talentViewName = null;
+          featureViewName = null;
           skillModalOpen = false;
           languageModalOpen = false;
           talentModalOpen = false;
