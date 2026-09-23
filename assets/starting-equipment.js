@@ -175,12 +175,11 @@
   }
 
   /**
-   * Fill inventory + currency (+ equipped armor/weapon/shield) from packages.
+   * Fill inventory text + currency (+ equipped armor/weapon/shield) from packages.
    * @param {object} character sheet character object (mutated)
-   * @param {{ classId?: string, background?: object|null, slotCount: number }} opts
+   * @param {{ classId?: string, background?: object|null }} opts
    */
   function applyPackageEquipment(character, opts) {
-    const slotCount = Math.max(0, Number(opts && opts.slotCount) || 0);
     const classId = (opts && opts.classId) || "";
     const background = opts && opts.background;
 
@@ -198,11 +197,11 @@
       currency.copper += parsed.currency.copper;
     }
 
-    const inventory = Array(slotCount).fill("");
-    items.slice(0, slotCount).forEach((item, i) => {
-      inventory[i] = item;
-    });
-    character.inventory = inventory;
+    character.inventoryText = items
+      .map((item) => String(item || "").trim())
+      .filter(Boolean)
+      .join("\n");
+    delete character.inventory;
     character.currency = {
       gold: Math.max(0, (character.currency && character.currency.gold) || 0) + currency.gold,
       silver: Math.max(0, (character.currency && character.currency.silver) || 0) + currency.silver,

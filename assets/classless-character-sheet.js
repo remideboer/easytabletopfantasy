@@ -599,7 +599,7 @@
 
         <div class="cs-pane cs-pane--inventory">
           <h2 class="cs-pane-title">Inventory</h2>
-          <textarea class="cs-textarea" id="cls-inventory" rows="8" placeholder="Carried gear…">${escapeHtml(c.inventoryText)}</textarea>
+          <textarea class="cs-textarea" id="cls-inventory" rows="8" placeholder="${escapeHtml(t("inventoryPlaceholder", "What you're carrying…"))}">${escapeHtml(c.inventoryText)}</textarea>
         </div>
       </div>`;
   }

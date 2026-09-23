@@ -101,6 +101,8 @@
       "cancel": "Cancel",
       "attackBonus": "Attack",
       "attackBonusPbHint": "Attack bonus is FIT + weapon; add your proficiency bonus on attack rolls.",
-      "equippedPlaceholder": "Other worn items, ammo, tools…"
+      "equippedPlaceholder": "Notes on weapons, gear, ammo…",
+      "inventory": "Inventory",
+      "inventoryPlaceholder": "What you're carrying…"
     }
 }

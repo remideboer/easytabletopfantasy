@@ -101,6 +101,8 @@
       "cancel": "Annuleren",
       "attackBonus": "Aanval",
       "attackBonusPbHint": "Aanvalsbonus is FIT + wapen; tel je proficiency bonus bij bij attack rolls.",
-      "equippedPlaceholder": "Andere gedragen items, munitie, tools…"
+      "equippedPlaceholder": "Notities over wapens, uitrusting, munitie…",
+      "inventory": "Inventaris",
+      "inventoryPlaceholder": "Wat je bij je draagt…"
     }
 }

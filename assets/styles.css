@@ -5075,37 +5075,14 @@
     background:var(--bg);
     color:var(--text-primary);
   }
-  .cs-inv-count{font-weight:400;font-size:.75rem;color:var(--muted)}
-  .cs-inv-grid{display:flex;flex-direction:column;gap:4px}
-  .cs-inv-row{
-    display:grid;
-    grid-template-columns:36px 1fr 1fr;
-    gap:4px;
-    align-items:center;
-  }
-  .cs-inv-row.is-locked{opacity:.45}
-  .cs-inv-fit{
-    font-size:.75rem;
-    font-weight:700;
-    font-family:var(--mono);
-    text-align:center;
-    border:1px solid var(--line);
-    border-radius:50%;
-    width:28px;height:28px;
+  .cs-pane--inventory{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto;
+    flex-direction:column;
   }
-  .cs-inv-slot{
-    width:100%;
-    padding:5px 6px;
-    border:1px solid var(--line);
-    border-radius:4px;
-    font-size:.82rem;
-    background:var(--bg);
+  .cs-textarea--inventory{
+    min-height:18rem;
+    flex:1 1 auto;
   }
-  .cs-inv-slot.is-locked{background:var(--line);cursor:not-allowed}
 
   /* Classless character sheet: ability-line list, details header + speed box */
   .cs-field--xp{text-align:center}
@@ -5678,7 +5655,6 @@
     .cs-input,
     .cs-select,
     .cs-textarea,
-    .cs-inv-slot,
     .cs-coin-input,
     .cs-input--xp{
       background:var(--bg-page);
@@ -5686,8 +5662,7 @@
       border-color:var(--line);
     }
     .cs-input::placeholder,
-    .cs-textarea::placeholder,
-    .cs-inv-slot::placeholder{
+    .cs-textarea::placeholder{
       color:var(--text-secondary);
       opacity:1;
     }
@@ -5711,10 +5686,6 @@
       background:var(--bg-card);
       color:var(--brand-primary);
       border-color:var(--accent-gold-soft);
-    }
-    .cs-inv-slot.is-locked{
-      background:var(--border-subtle);
-      color:var(--text-secondary);
     }
     .cs-modal{
       background:var(--bg-card);

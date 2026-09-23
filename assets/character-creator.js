@@ -1041,7 +1041,6 @@
   }
 
   const SHEET_STORAGE_KEY = "ymiat-characters-v1";
-  const INVENTORY_SLOT_COUNT = 18;
 
   function xpThreshold(level) {
     const n = Math.max(0, level - 1);
@@ -1118,7 +1117,7 @@
       size: "Medium",
       currency: { gold: 0, silver: 0, copper: 0 },
       equippedText: "",
-      inventory: Array(INVENTORY_SLOT_COUNT).fill(""),
+      inventoryText: "",
     };
 
     if (character.lineageId) {
@@ -1132,7 +1131,6 @@
       window.ymiatStartingEquipment.applyPackageEquipment(character, {
         classId: character.classId,
         background: bg,
-        slotCount: INVENTORY_SLOT_COUNT,
       });
     }
 

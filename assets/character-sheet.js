@@ -33,8 +33,6 @@
     const pack = (window.ymiatAppStrings && window.ymiatAppStrings("sheet")) || {};
     return pack[key] != null && pack[key] !== "" ? pack[key] : fallback;
   }
-  const INVENTORY_THRESHOLDS = [-2, -2, -1, -1, 0, 1, 1, 2, 2];
-  const INVENTORY_SLOT_COUNT = INVENTORY_THRESHOLDS.length * 2;
   const WEAPON_SLOT_COUNT = 5;
   // True while an empty “choose weapon” row is shown after + Add weapon.
   let weaponPickPending = false;
@@ -236,7 +234,7 @@
       currency: { gold: 0, silver: 0, copper: 0 },
       equippedText: "",
       portraitUrl: "",
-      inventory: Array(INVENTORY_SLOT_COUNT).fill(""),
+      inventoryText: "",
     };
   }
 
@@ -309,11 +307,15 @@
       : [];
     c.currency = c.currency || { gold: 0, silver: 0, copper: 0 };
     c.portraitUrl = normalizePortrait(c.portraitUrl);
-    if (!Array.isArray(c.inventory) || c.inventory.length !== INVENTORY_SLOT_COUNT) {
-      const inv = Array.isArray(c.inventory) ? c.inventory.slice(0, INVENTORY_SLOT_COUNT) : [];
-      while (inv.length < INVENTORY_SLOT_COUNT) inv.push("");
-      c.inventory = inv;
+    // Older sheets stored a fixed slot array. Fold non-empty lines into inventoryText once.
+    if (Array.isArray(c.inventory)) {
+      const lines = c.inventory.map((s) => String(s || "").trim()).filter(Boolean);
+      if (!String(c.inventoryText || "").trim() && lines.length) {
+        c.inventoryText = lines.join("\n");
+      }
+      delete c.inventory;
     }
+    c.inventoryText = c.inventoryText == null ? "" : String(c.inventoryText);
     return c;
   }
 
@@ -1006,20 +1008,6 @@
     return Math.max(0, base + heartPenalties(c).speed);
   }
 
-  function inventoryUnlockedRows(c) {
-    const fit = effectiveMod(c, "fit");
-    return INVENTORY_THRESHOLDS.filter((t) => fit >= t).length;
-  }
-
-  function inventoryUnlockedSlots(c) {
-    return inventoryUnlockedRows(c) * 2;
-  }
-
-  function isSlotUnlocked(c, index) {
-    const row = Math.floor(index / 2);
-    return row < inventoryUnlockedRows(c);
-  }
-
   function featuresAtLevel(items, level) {
     if (!items || !items.length) return [];
     return items.filter((item) => (item.minLevel || 1) <= level);
@@ -1372,10 +1360,14 @@
     } else if (c.hasShield) {
       equipment.push(langNl ? "Schild" : "Shield");
     }
-    (c.inventory || []).forEach((item) => {
-      const line = String(item || "").trim();
-      if (line) equipment.push(line);
-    });
+    String(c.inventoryText || "")
+      .split(/\r?\n/)
+      .forEach((item) => {
+        const line = item.trim();
+        if (line) equipment.push(line);
+      });
+    const equippedNotes = String(c.equippedText || "").trim();
+    if (equippedNotes) equipment.push(equippedNotes);
 
     let spells = null;
     syncGrantedSpells(c);
@@ -2603,7 +2595,6 @@
     const lost = heartsLost(c);
     const range = levelRange();
     const subclassMin = range.subclassMin || 2;
-    const unlocked = inventoryUnlockedSlots(c);
 
     const classFeatures = cls ? featuresAtLevel(cls.abilities, c.level) : [];
     const subFeatures = sub ? featuresAtLevel(sub.features, c.level) : [];
@@ -2678,19 +2669,6 @@
       .join("");
     const addWeaponDisabled = !canAddWeaponRow(c);
     const addWeaponBtn = `<button type="button" class="cs-btn-link" id="cs-add-weapon"${addWeaponDisabled ? " disabled" : ""}>${escapeHtml(t("addWeapon", "+ Add weapon"))}</button>`;
-
-    const inventoryRows = INVENTORY_THRESHOLDS.map((threshold, rowIdx) => {
-      const rowOpen = rowIdx < inventoryUnlockedRows(c);
-      const slots = [0, 1].map((col) => {
-        const idx = rowIdx * 2 + col;
-        const disabled = !rowOpen ? " disabled" : "";
-        return `<input type="text" class="cs-inv-slot${rowOpen ? "" : " is-locked"}" data-inv="${idx}" value="${escapeHtml(c.inventory[idx])}" placeholder="Item"${disabled} aria-label="Inventory slot ${idx + 1}" />`;
-      }).join("");
-      return `<div class="cs-inv-row${rowOpen ? "" : " is-locked"}">
-        <span class="cs-inv-fit" title="FIT mod needed">${formatMod(threshold)}</span>
-        ${slots}
-      </div>`;
-    }).join("");
 
     const spellcastingLine = formatSpellcastingLine(c);
     const armorGap = armorProficiencyGap(c);
@@ -2811,12 +2789,12 @@
           </div>
           <div class="cs-weapon-rows">${weaponRowsHtml || ""}</div>
           <p class="cs-hint cs-weapon-atk-hint">${escapeHtml(t("attackBonusPbHint", "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown. Pick Remove weapon to drop a row."))}</p>
-          <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="${escapeHtml(t("equippedPlaceholder", "Other worn items, ammo, tools…"))}">${escapeHtml(c.equippedText)}</textarea>
+          <textarea class="cs-textarea" id="cs-equipped" rows="3" placeholder="${escapeHtml(t("equippedPlaceholder", "Notes on weapons, gear, ammo…"))}">${escapeHtml(c.equippedText)}</textarea>
         </div>
 
         <div class="cs-pane cs-pane--inventory">
-          <h2 class="cs-pane-title">Inventory <span class="cs-inv-count">${unlocked}/${INVENTORY_SLOT_COUNT} slots (FIT ${formatMod(effectiveMod(c, "fit"))})</span></h2>
-          <div class="cs-inv-grid">${inventoryRows}</div>
+          <h2 class="cs-pane-title">${escapeHtml(t("inventory", "Inventory"))}</h2>
+          <textarea class="cs-textarea cs-textarea--inventory" id="cs-inventory" placeholder="${escapeHtml(t("inventoryPlaceholder", "What you're carrying…"))}">${escapeHtml(c.inventoryText)}</textarea>
         </div>
 
         ${showSpells ? renderSpellsPane(c, cls) : ""}
@@ -3364,7 +3342,7 @@
     c.weaponId = c.weaponIds.find(Boolean) || "";
     weaponPickPending = false;
 
-    // Inventory text slots from all DDB items.
+    // Every DDB item line goes in the inventory notes, including past the old slot cap.
     const invLines = [];
     inventory.forEach((item) => {
       if (!item || !item.definition) return;
@@ -3373,15 +3351,7 @@
       const qty = Number(item.quantity) || 1;
       invLines.push(qty > 1 ? `${nm} ×${qty}` : nm);
     });
-    c.inventory = Array(INVENTORY_SLOT_COUNT).fill("");
-    invLines.slice(0, INVENTORY_SLOT_COUNT).forEach((line, i) => {
-      c.inventory[i] = line;
-    });
-    if (invLines.length > INVENTORY_SLOT_COUNT) {
-      const overflow = invLines.slice(INVENTORY_SLOT_COUNT);
-      c.equippedText = overflow.join(", ");
-      report.push(`${overflow.length} inventory item(s) exceeded ${INVENTORY_SLOT_COUNT} slots — extras were put in the equipped notes field.`);
-    }
+    c.inventoryText = invLines.join("\n");
 
     const curr = char.currencies || {};
     c.currency = {
@@ -4004,12 +3974,9 @@
         saveStore();
         return;
       }
-      if (t.dataset.inv != null) {
-        const idx = parseInt(t.dataset.inv, 10);
-        if (isSlotUnlocked(char, idx)) {
-          char.inventory[idx] = t.value;
-          saveStore();
-        }
+      if (t.id === "cs-inventory") {
+        char.inventoryText = t.value;
+        saveStore();
         return;
       }
       if (t.dataset.coin) {

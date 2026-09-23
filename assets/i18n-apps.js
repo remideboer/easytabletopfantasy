@@ -105,7 +105,9 @@ window.YMIAT_I18N_APPS = {
       "addWeapon": "+ Add weapon",
       "attackBonus": "Attack",
       "attackBonusPbHint": "Attack = FIT + weapon bonus (+ PB when proficient). * means proficient — hover for the breakdown. Pick Remove weapon to drop a row.",
-      "equippedPlaceholder": "Other worn items, ammo, tools…"
+      "equippedPlaceholder": "Notes on weapons, gear, ammo…",
+      "inventory": "Inventory",
+      "inventoryPlaceholder": "What you're carrying…"
     }
   },
   "nl": {
@@ -214,7 +216,9 @@ window.YMIAT_I18N_APPS = {
       "addWeapon": "+ Wapen toevoegen",
       "attackBonus": "Aanval",
       "attackBonusPbHint": "Aanval = FIT + wapenbonus (+ PB bij proficiency). * = proficient — hover voor de opsplitsing. Kies Verwijder wapen om een rij te wissen.",
-      "equippedPlaceholder": "Andere gedragen items, munitie, tools…"
+      "equippedPlaceholder": "Notities over wapens, uitrusting, munitie…",
+      "inventory": "Inventaris",
+      "inventoryPlaceholder": "Wat je bij je draagt…"
     }
   }
 };
